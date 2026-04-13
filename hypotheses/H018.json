@@ -1,0 +1,54 @@
+{
+  "id": "H018",
+  "claim": "The text is encoded using a simple substitution cipher on an unknown language.",
+  "type": "language",
+  "confidence": 0.355,
+  "evidence_for": [
+    "The glyph entropy levels are lower than expected for Latin or Italian",
+    "The word-final glyph distribution shows no clear pattern matching known languages"
+  ],
+  "evidence_against": [],
+  "test": "Run a language identification test on the text using machine learning algorithms",
+  "test_metric": "Language identification accuracy",
+  "test_threshold": "> 0.8 (p-value < 0.05)",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "The high hapax ratio (70.1%) and low Zipf exponent (0.8946) suggest a language with a large number of unique words, which is not typical for languages encoded in substitution ciphers.",
+      "confidence_change": "0.220 -> 0.167"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Run a language identification test on the text using machine learning algorithms",
+      "confidence_change": "0.167 -> 0.184"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.78,
+      "passed": true,
+      "details": "Zipf exponent of 0.8946 (R\u00c2\u00b2=0.9084) indicates strong compliance with natural language statistical patterns, and non-uniform glyph entropy (3.86 bits for 25 glyphs) suggests substitution-encoded text rather than random data.",
+      "confidence_change": "0.184 -> 0.279"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.7,
+      "passed": true,
+      "details": "Strong Zipfian distribution (R\u00c2\u00b2=0.9084, exponent 0.8946) closely matches natural language frequency patterns preserved by substitution ciphers; however, hapax ratio of 0.701 is elevated for a natural language text of this size, introducing some uncertainty.",
+      "confidence_change": "0.279 -> 0.355"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "If confirmed, this would provide evidence for an unknown language and narrow the solution space"
+}

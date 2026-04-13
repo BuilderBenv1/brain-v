@@ -1,0 +1,63 @@
+{
+  "id": "H013",
+  "claim": "The text uses a simple substitution cipher on an unknown language.",
+  "type": "language",
+  "confidence": 0.18,
+  "evidence_for": [
+    "Glyph entropy is lower than expected for Latin or Italian"
+  ],
+  "evidence_against": [
+    "No clear evidence of an unknown language"
+  ],
+  "test": "Compute the frequency of word-final glyphs and compare to known languages",
+  "test_metric": "Frequency of word-final glyphs",
+  "test_threshold": "> 0.3",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.0,
+      "passed": false,
+      "details": "The high hapax ratio and low Zipf exponent suggest a language with a large number of unique words, which is inconsistent with the idea that the text uses a simple substitution cipher on an unknown language.",
+      "confidence_change": "0.380 -> 0.266"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.0,
+      "passed": false,
+      "details": "The high hapax ratio (70.1%) and low Zipf exponent (0.8946) suggest a language with a large number of unique words, which is inconsistent with the expectation that a simple substitution cipher would produce a more regular distribution of word frequencies.",
+      "confidence_change": "0.266 -> 0.186"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Compute the frequency of word-final glyphs and compare to known languages",
+      "confidence_change": "0.186 -> 0.202"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "The high hapax ratio (0.701) strongly contradicts simple substitution hypothesis\u00e2\u20ac\u201dnatural language texts show 40-60% hapax, not 70%, suggesting either artificial or more complex encrypted text.",
+      "confidence_change": "0.202 -> 0.163"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Compute the frequency of word-final glyphs and compare to known languages",
+      "confidence_change": "0.163 -> 0.180"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "If confirmed, this would suggest a new language or dialect"
+}

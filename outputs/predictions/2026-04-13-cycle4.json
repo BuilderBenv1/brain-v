@@ -1,0 +1,131 @@
+{
+  "date": "2026-04-13",
+  "cycle": "predict",
+  "model": "llama3.1:8b",
+  "belief_count": 11,
+  "existing_hypothesis_count": 34,
+  "new_hypotheses": [
+    "H015",
+    "H016",
+    "H017",
+    "H018",
+    "H019"
+  ],
+  "hypotheses": [
+    {
+      "id": "H015",
+      "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.",
+      "type": "structural",
+      "confidence": 0.7,
+      "evidence_for": [
+        "The herbal section has higher entropy levels compared to other sections",
+        "The word-final glyph distribution in the herbal section shows a higher frequency of 'y' and 'n', which are common in rhyming couplets"
+      ],
+      "evidence_against": [],
+      "test": "Run a chi-squared test on the word-final glyph distribution in the herbal section compared to other sections",
+      "test_metric": "Chi-squared statistic",
+      "test_threshold": "> 10.0 (p-value < 0.05)",
+      "tests_run": [],
+      "tests_remaining": [
+        "Run a chi-squared test on the word-final glyph distribution in the herbal section compared to other sections"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, this would explain the unique characteristics of the herbal section and provide insight into the manuscript's text structure"
+    },
+    {
+      "id": "H016",
+      "claim": "The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dialects.",
+      "type": "language",
+      "confidence": 0.537,
+      "evidence_for": [
+        "The Currier Language A and B splits show significant differences in vocabulary and syntax"
+      ],
+      "evidence_against": [],
+      "test": "Run a Kullback-Leibler divergence test on the language models of Currier Language A and B",
+      "test_metric": "KL divergence statistic",
+      "test_threshold": "> 0.5 (p-value < 0.05)",
+      "tests_run": [],
+      "tests_remaining": [
+        "Run a Kullback-Leibler divergence test on the language models of Currier Language A and B"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, this would provide strong evidence for a linguistic difference between two distinct languages or dialects"
+    },
+    {
+      "id": "H017",
+      "claim": "The text uses a combination of substitution and transposition ciphers in the biological section.",
+      "type": "cipher",
+      "confidence": 0.519,
+      "evidence_for": [
+        "The biological section has higher entropy levels compared to other sections",
+        "The word-final glyph distribution in the biological section shows a higher frequency of 'l' and 'r', which are common in transposition ciphers"
+      ],
+      "evidence_against": [],
+      "test": "Run a mutual information test on the relationship between glyphs in the biological section",
+      "test_metric": "Mutual information statistic",
+      "test_threshold": "> 0.2 (p-value < 0.05)",
+      "tests_run": [],
+      "tests_remaining": [
+        "Run a mutual information test on the relationship between glyphs in the biological section"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, this would provide insight into the cipher structure used in the manuscript"
+    },
+    {
+      "id": "H018",
+      "claim": "The text is encoded using a simple substitution cipher on an unknown language.",
+      "type": "language",
+      "confidence": 0.22,
+      "evidence_for": [
+        "The glyph entropy levels are lower than expected for Latin or Italian",
+        "The word-final glyph distribution shows no clear pattern matching known languages"
+      ],
+      "evidence_against": [],
+      "test": "Run a language identification test on the text using machine learning algorithms",
+      "test_metric": "Language identification accuracy",
+      "test_threshold": "> 0.8 (p-value < 0.05)",
+      "tests_run": [],
+      "tests_remaining": [
+        "Run a language identification test on the text using machine learning algorithms"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, this would provide evidence for an unknown language and narrow the solution space"
+    },
+    {
+      "id": "H019",
+      "claim": "The text uses a combination of substitution and transposition ciphers in the herbal section.",
+      "type": "cipher",
+      "confidence": 0.7,
+      "evidence_for": [
+        "The herbal section has higher entropy levels compared to other sections",
+        "The word-final glyph distribution in the herbal section shows a higher frequency of 'y' and 'n', which are common in transposition ciphers"
+      ],
+      "evidence_against": [],
+      "test": "Run a mutual information test on the relationship between glyphs in the herbal section",
+      "test_metric": "Mutual information statistic",
+      "test_threshold": "> 0.2 (p-value < 0.05)",
+      "tests_run": [],
+      "tests_remaining": [
+        "Run a mutual information test on the relationship between glyphs in the herbal section"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, this would provide insight into the cipher structure used in the manuscript"
+    }
+  ],
+  "raw_response": "{\n  \"hypotheses\": [\n    {\n      \"claim\": \"The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.\",\n      \"type\": \"structural\",\n      \"confidence\": 0.7,\n      \"evidence_for\": [\"The herbal section has higher entropy levels compared to other sections\", \"The word-final glyph distribution in the herbal section shows a higher frequency of 'y' and 'n', which are common in rhyming couplets\"],\n      \"evidence_against\": [],\n      \"test\": \"Run a chi-squared test on the word-final glyph distribution in the herbal section compared to other sections\",\n      \"test_metric\": \"Chi-squared statistic\",\n      \"test_threshold\": \"> 10.0 (p-value < 0.05)\",\n      \"reasoning\": \"If confirmed, this would explain the unique characteristics of the herbal section and provide insight into the manuscript's text structure\"\n    },\n    {\n      \"claim\": \"The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dialects.\",\n      \"type\": \"language\",\n      \"confidence\": 0.537,\n      \"evidence_for\": [\"The Currier Language A and B splits show significant differences in vocabulary and syntax\"],\n      \"evidence_against\": [],\n      \"test\": \"Run a Kullback-Leibler divergence test on the language models of Currier Language A and B\",\n      \"test_metric\": \"KL divergence statistic\",\n      \"test_threshold\": \"> 0.5 (p-value < 0.05)\",\n      \"reasoning\": \"If confirmed, this would provide strong evidence for a linguistic difference between two distinct languages or dialects\"\n    },\n    {\n      \"claim\": \"The text uses a combination of substitution and transposition ciphers in the biological section.\",\n      \"type\": \"cipher\",\n      \"confidence\": 0.519,\n      \"evidence_for\": [\"The biological section has higher entropy levels compared to other sections\", \"The word-final glyph distribution in the biological section shows a higher frequency of 'l' and 'r', which are common in transposition ciphers\"],\n      \"evidence_against\": [],\n      \"test\": \"Run a mutual information test on the relationship between glyphs in the biological section\",\n      \"test_metric\": \"Mutual information statistic\",\n      \"test_threshold\": \"> 0.2 (p-value < 0.05)\",\n      \"reasoning\": \"If confirmed, this would provide insight into the cipher structure used in the manuscript\"\n    },\n    {\n      \"claim\": \"The text is encoded using a simple substitution cipher on an unknown language.\",\n      \"type\": \"language\",\n      \"confidence\": 0.22,\n      \"evidence_for\": [\"The glyph entropy levels are lower than expected for Latin or Italian\", \"The word-final glyph distribution shows no clear pattern matching known languages\"],\n      \"evidence_against\": [],\n      \"test\": \"Run a language identification test on the text using machine learning algorithms\",\n      \"test_metric\": \"Language identification accuracy\",\n      \"test_threshold\": \"> 0.8 (p-value < 0.05)\",\n      \"reasoning\": \"If confirmed, this would provide evidence for an unknown language and narrow the solution space\"\n    },\n    {\n      \"claim\": \"The text uses a combination of substitution and transposition ciphers in the herbal section.\",\n      \"type\": \"cipher\",\n      \"confidence\": 0.7,\n      \"evidence_for\": [\"The herbal section has higher entropy levels compared to other sections\", \"The word-final glyph distribution in the herbal section shows a higher frequency of 'y' and 'n', which are common in transposition ciphers\"],\n      \"evidence_against\": [],\n      \"test\": \"Run a mutual information test on the relationship between glyphs in the herbal section\",\n      \"test_metric\": \"Mutual information statistic\",\n      \"test_threshold\": \"> 0.2 (p-value < 0.05)\",\n      \"reasoning\": \"If confirmed, this would provide insight into the cipher structure used in the manuscript\"\n    }\n  ]\n}"
+}

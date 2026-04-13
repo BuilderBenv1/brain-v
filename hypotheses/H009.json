@@ -1,0 +1,56 @@
+{
+  "id": "H009",
+  "claim": "The text is encoded using a simple substitution cipher on an unknown language.",
+  "type": "cipher",
+  "confidence": 0.184,
+  "evidence_for": [
+    "Glyph entropy levels are lower than expected for Latin or Italian",
+    "Word-final glyph distribution does not match Latin or Italian word endings"
+  ],
+  "evidence_against": [
+    "Other sections do not show similar patterns"
+  ],
+  "test": "Chi-squared test for independence between word-final glyphs and language model predictions",
+  "test_metric": "p-value",
+  "test_threshold": "<0.05",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "The high hapax ratio and low Zipf exponent suggest a language with a large number of unique words, which is inconsistent with the expectation that a simple substitution cipher would produce a more regular distribution of word frequencies.",
+      "confidence_change": "0.380 -> 0.289"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "The high hapax ratio and low Zipf exponent suggest a language with a large number of unique words, which is inconsistent with the idea that the text is encoded using a simple substitution cipher on an unknown language.",
+      "confidence_change": "0.289 -> 0.220"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "The high hapax ratio and low Zipf exponent suggest a language with a large number of unique words, which is inconsistent with the expectation that a simple substitution cipher would produce a more regular distribution of word frequencies.",
+      "confidence_change": "0.220 -> 0.167"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Chi-squared test for independence between word-final glyphs and language model predictions",
+      "confidence_change": "0.167 -> 0.184"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "If the text is encoded using a simple substitution cipher on an unknown language, we would expect to see significant correlations between word-final glyphs and language model predictions."
+}

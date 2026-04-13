@@ -1,0 +1,71 @@
+{
+  "id": "H011",
+  "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.",
+  "type": "structural",
+  "confidence": 0.82,
+  "evidence_for": [
+    "Herbal section has higher entropy levels compared to other sections"
+  ],
+  "evidence_against": [
+    "No clear evidence of rhyme or meter in other sections"
+  ],
+  "test": "Compute the average word length and frequency of consecutive words with identical first/last glyphs",
+  "test_metric": "Average word length",
+  "test_threshold": "> 5.2",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute the average word length and frequency of consecutive words with identical first/last glyphs",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.530 -> 0.599"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the average word length and frequency of consecutive words with identical first/last glyphs",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.599 -> 0.658"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the average word length and frequency of consecutive words with identical first/last glyphs",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.658 -> 0.709"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the average word length and frequency of consecutive words with identical first/last glyphs",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.709 -> 0.752"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the average word length and frequency of consecutive words with identical first/last glyphs",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.752 -> 0.789"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the average word length and frequency of consecutive words with identical first/last glyphs",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.789 -> 0.820"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "If confirmed, this would suggest a more complex text structure than previously thought"
+}

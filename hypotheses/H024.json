@@ -1,0 +1,35 @@
+{
+  "id": "H024",
+  "claim": "The text-only section (7 folios, entropy 3.9016 bits \u00e2\u20ac\u201d highest of all sections) represents unenciphered or minimally-enciphered natural language, while all other sections apply an additional cipher layer, making text-only the most direct window into the underlying language and the optimal starting point for statistical language identification.",
+  "type": "cipher",
+  "confidence": 0.371,
+  "evidence_for": [
+    "Text-only section entropy (3.9016) is closest to natural Latin (~4.0) and Italian (~3.95) among all sections",
+    "Absence of illustrations in text-only sections may indicate a different compositional mode",
+    "If some sections are more heavily enciphered, the least-enciphered section should show highest entropy (closer to plaintext)"
+  ],
+  "evidence_against": [
+    "7 folios and 2,349 words is a small sample \u00e2\u20ac\u201d entropy estimate has high variance",
+    "Higher entropy could reflect larger domain vocabulary rather than reduced encipherment",
+    "Current beliefs favor herbal section (0.245) as best starting point, not text-only"
+  ],
+  "test": "Compute the Kullback-Leibler divergence D_KL(text-only glyph distribution || section_X glyph distribution) for all other sections X; also compare text-only unigram and bigram distributions against frequency-matched medieval Latin and Italian corpora using chi-squared goodness-of-fit",
+  "test_metric": "KL divergence between text-only and each other section; chi-squared p-value for fit to Latin vs. Italian character frequency profiles",
+  "test_threshold": "KL divergence to natural-language profile below 0.05 bits for text-only but above 0.15 for herbal/biological would confirm differential encipherment; chi-squared p above 0.10 for one target language would identify candidate plaintext language",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute the kullback-leibler divergence d_kl(text-only glyph distribution || section_x glyph distrib",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.330 -> 0.371"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "Identifying whether one section is less enciphered than others would allow targeted cryptanalysis on that section first, potentially yielding a key applicable to other sections \u00e2\u20ac\u201d this directly addresses the decipherment strategy question encoded in belief 0.245."
+}

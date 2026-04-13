@@ -1,0 +1,142 @@
+{
+  "date": "2026-04-13",
+  "cycle": "predict",
+  "model": "llama3.1:8b",
+  "belief_count": 7,
+  "existing_hypothesis_count": 25,
+  "new_hypotheses": [
+    "H006",
+    "H007",
+    "H008",
+    "H009",
+    "H010"
+  ],
+  "hypotheses": [
+    {
+      "id": "H006",
+      "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.",
+      "type": "structural",
+      "confidence": 0.65,
+      "evidence_for": [
+        "Herbal section has higher entropy levels compared to other sections",
+        "Word-final glyph distribution in herbal section shows a possible rhyme scheme"
+      ],
+      "evidence_against": [
+        "Other sections do not show similar patterns"
+      ],
+      "test": "Chi-squared test for independence between word-final glyphs and section type",
+      "test_metric": "p-value",
+      "test_threshold": "<0.05",
+      "tests_run": [],
+      "tests_remaining": [
+        "Chi-squared test for independence between word-final glyphs and section type"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If the herbal section is primarily composed of short, rhyming couplets, we would expect to see a significant correlation between word-final glyphs and section type."
+    },
+    {
+      "id": "H007",
+      "claim": "The text uses a combination of substitution and transposition ciphers in the biological section.",
+      "type": "cipher",
+      "confidence": 0.58,
+      "evidence_for": [
+        "Biological section has higher entropy levels compared to other sections",
+        "Word-final glyph distribution in biological section shows possible patterns consistent with transposition"
+      ],
+      "evidence_against": [
+        "Other sections do not show similar patterns"
+      ],
+      "test": "Mutual information analysis between word-final glyphs and word positions",
+      "test_metric": "Average mutual information",
+      "test_threshold": ">0.5",
+      "tests_run": [],
+      "tests_remaining": [
+        "Mutual information analysis between word-final glyphs and word positions"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If the biological section uses a combination of substitution and transposition ciphers, we would expect to see significant correlations between word-final glyphs and word positions."
+    },
+    {
+      "id": "H008",
+      "claim": "The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dialects.",
+      "type": "language",
+      "confidence": 0.42,
+      "evidence_for": [
+        "Currier A has higher hapax ratio compared to Currier B",
+        "Word-final glyph distribution in Currier A is more consistent with Latin word endings"
+      ],
+      "evidence_against": [
+        "Other sections do not show similar patterns"
+      ],
+      "test": "Kullback-Leibler divergence between word-final glyph distributions of Currier A and B",
+      "test_metric": "KL divergence value",
+      "test_threshold": ">0.1",
+      "tests_run": [],
+      "tests_remaining": [
+        "Kullback-Leibler divergence between word-final glyph distributions of Currier A and B"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If the Currier A/B split reflects a genuine linguistic difference, we would expect to see significant differences in word-final glyph distributions between the two sections."
+    },
+    {
+      "id": "H009",
+      "claim": "The text is encoded using a simple substitution cipher on an unknown language.",
+      "type": "cipher",
+      "confidence": 0.38,
+      "evidence_for": [
+        "Glyph entropy levels are lower than expected for Latin or Italian",
+        "Word-final glyph distribution does not match Latin or Italian word endings"
+      ],
+      "evidence_against": [
+        "Other sections do not show similar patterns"
+      ],
+      "test": "Chi-squared test for independence between word-final glyphs and language model predictions",
+      "test_metric": "p-value",
+      "test_threshold": "<0.05",
+      "tests_run": [],
+      "tests_remaining": [
+        "Chi-squared test for independence between word-final glyphs and language model predictions"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If the text is encoded using a simple substitution cipher on an unknown language, we would expect to see significant correlations between word-final glyphs and language model predictions."
+    },
+    {
+      "id": "H010",
+      "claim": "The manuscript's text structure reflects a single, coherent narrative.",
+      "type": "structural",
+      "confidence": 0.45,
+      "evidence_for": [
+        "Word entropy levels are consistent across sections",
+        "Zipf exponent is moderate, indicating possible narrative structure"
+      ],
+      "evidence_against": [
+        "Other sections do not show similar patterns"
+      ],
+      "test": "PageRank algorithm for topic modeling",
+      "test_metric": "Topic coherence score",
+      "test_threshold": ">0.5",
+      "tests_run": [],
+      "tests_remaining": [
+        "PageRank algorithm for topic modeling"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If the manuscript's text structure reflects a single, coherent narrative, we would expect to see significant correlations between word positions and topics."
+    }
+  ],
+  "raw_response": "{\n  \"hypotheses\": [\n    {\n      \"claim\": \"The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.\",\n      \"type\": \"structural\",\n      \"confidence\": 0.65,\n      \"evidence_for\": [\"Herbal section has higher entropy levels compared to other sections\", \"Word-final glyph distribution in herbal section shows a possible rhyme scheme\"],\n      \"evidence_against\": [\"Other sections do not show similar patterns\"],\n      \"test\": \"Chi-squared test for independence between word-final glyphs and section type\",\n      \"test_metric\": \"p-value\",\n      \"test_threshold\": \"<0.05\",\n      \"reasoning\": \"If the herbal section is primarily composed of short, rhyming couplets, we would expect to see a significant correlation between word-final glyphs and section type.\"\n    },\n    {\n      \"claim\": \"The text uses a combination of substitution and transposition ciphers in the biological section.\",\n      \"type\": \"cipher\",\n      \"confidence\": 0.58,\n      \"evidence_for\": [\"Biological section has higher entropy levels compared to other sections\", \"Word-final glyph distribution in biological section shows possible patterns consistent with transposition\"],\n      \"evidence_against\": [\"Other sections do not show similar patterns\"],\n      \"test\": \"Mutual information analysis between word-final glyphs and word positions\",\n      \"test_metric\": \"Average mutual information\",\n      \"test_threshold\": \">0.5\",\n      \"reasoning\": \"If the biological section uses a combination of substitution and transposition ciphers, we would expect to see significant correlations between word-final glyphs and word positions.\"\n    },\n    {\n      \"claim\": \"The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dialects.\",\n      \"type\": \"language\",\n      \"confidence\": 0.42,\n      \"evidence_for\": [\"Currier A has higher hapax ratio compared to Currier B\", \"Word-final glyph distribution in Currier A is more consistent with Latin word endings\"],\n      \"evidence_against\": [\"Other sections do not show similar patterns\"],\n      \"test\": \"Kullback-Leibler divergence between word-final glyph distributions of Currier A and B\",\n      \"test_metric\": \"KL divergence value\",\n      \"test_threshold\": \">0.1\",\n      \"reasoning\": \"If the Currier A/B split reflects a genuine linguistic difference, we would expect to see significant differences in word-final glyph distributions between the two sections.\"\n    },\n    {\n      \"claim\": \"The text is encoded using a simple substitution cipher on an unknown language.\",\n      \"type\": \"cipher\",\n      \"confidence\": 0.38,\n      \"evidence_for\": [\"Glyph entropy levels are lower than expected for Latin or Italian\", \"Word-final glyph distribution does not match Latin or Italian word endings\"],\n      \"evidence_against\": [\"Other sections do not show similar patterns\"],\n      \"test\": \"Chi-squared test for independence between word-final glyphs and language model predictions\",\n      \"test_metric\": \"p-value\",\n      \"test_threshold\": \"<0.05\",\n      \"reasoning\": \"If the text is encoded using a simple substitution cipher on an unknown language, we would expect to see significant correlations between word-final glyphs and language model predictions.\"\n    },\n    {\n      \"claim\": \"The manuscript's text structure reflects a single, coherent narrative.\",\n      \"type\": \"structural\",\n      \"confidence\": 0.45,\n      \"evidence_for\": [\"Word entropy levels are consistent across sections\", \"Zipf exponent is moderate, indicating possible narrative structure\"],\n      \"evidence_against\": [\"Other sections do not show similar patterns\"],\n      \"test\": \"PageRank algorithm for topic modeling\",\n      \"test_metric\": \"Topic coherence score\",\n      \"test_threshold\": \">0.5\",\n      \"reasoning\": \"If the manuscript's text structure reflects a single, coherent narrative, we would expect to see significant correlations between word positions and topics.\"\n    }\n  ]\n}"
+}

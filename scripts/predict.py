@@ -1,7 +1,7 @@
 """
 predict.py — Brain-V's prediction layer
 
-Loads current beliefs and statistical profile, then asks the local LLM
+Loads current beliefs and statistical profile, then asks Claude (via CLI)
 to generate or refine decipherment hypotheses about the Voynich Manuscript.
 
 Each hypothesis must be testable against the corpus statistics.
@@ -13,6 +13,7 @@ Usage:
 
 import argparse
 import json
+import subprocess
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -23,13 +24,13 @@ STATS_PATH = PROJECT_ROOT / "raw" / "perception" / "voynich-stats.json"
 PREDICTIONS_DIR = PROJECT_ROOT / "outputs" / "predictions"
 HYPOTHESES_DIR = PROJECT_ROOT / "hypotheses"
 BELIEFS_PATH = PROJECT_ROOT / "scripts" / "beliefs.json"
-OLLAMA_URL = "http://localhost:11434/api/generate"
 AGENTOS_URL = "https://agentos-backend-production.up.railway.app"
 # Brain-V agents on SKALE
 ORCHESTRATOR_ID = 471
 PREDICTOR_ID = 473
 MASTER_AGENT_ID = ORCHESTRATOR_ID
-MODEL = "llama3.1:8b"
+MODEL = "claude-code-cli"
+CLAUDE_CLI = r"C:\Users\theka\AppData\Roaming\npm\claude.cmd"
 
 
 def load_beliefs_local() -> list[dict]:
@@ -187,21 +188,34 @@ Be specific and precise. "The text is encoded Latin" is too vague. "The text use
 JSON only. No markdown fences. No commentary."""
 
 
-def call_ollama(prompt: str) -> str:
-    body = json.dumps({
-        "model": MODEL,
-        "prompt": prompt,
-        "stream": False,
-        "options": {"temperature": 0.4, "num_predict": 2048},
-    }).encode("utf-8")
-    req = urllib.request.Request(
-        OLLAMA_URL, data=body,
-        headers={"Content-Type": "application/json"},
-        method="POST",
-    )
-    with urllib.request.urlopen(req, timeout=180) as resp:
-        data = json.loads(resp.read().decode("utf-8"))
-    return data.get("response", "")
+def call_claude(prompt: str) -> str:
+    """Call Claude via the claude CLI (uses the user's existing plan)."""
+    import tempfile, os
+    # Write prompt to a temp file to avoid shell escaping issues with long prompts
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".txt", delete=False, encoding="utf-8") as f:
+        f.write(prompt)
+        prompt_file = f.name
+    try:
+        # Run from home dir to avoid CLAUDE.md context pollution but keep auth
+        result = subprocess.run(
+            [
+                CLAUDE_CLI, "-p",
+                f"Read the file {prompt_file} and follow its instructions exactly. Output only raw JSON, no markdown, no commentary.",
+                "--model", "sonnet",
+                "--output-format", "text",
+                "--allowedTools", "Read",
+            ],
+            capture_output=True, text=True, timeout=120,
+            cwd=os.path.expanduser("~"),
+        )
+        if result.returncode != 0:
+            raise RuntimeError(
+                f"claude CLI exit {result.returncode}. "
+                f"stdout: {result.stdout[:500]}. stderr: {result.stderr[:500]}"
+            )
+        return result.stdout.strip()
+    finally:
+        os.unlink(prompt_file)
 
 
 def parse_hypotheses(raw: str) -> list[dict]:
@@ -284,8 +298,8 @@ def main():
 
     # Build prompt and call LLM
     prompt = build_prompt(beliefs, stats, existing)
-    print(f"[predict] Calling {MODEL} via Ollama...")
-    raw_response = call_ollama(prompt)
+    print(f"[predict] Calling Claude via CLI...")
+    raw_response = call_claude(prompt)
 
     # Parse hypotheses
     hypotheses = parse_hypotheses(raw_response)

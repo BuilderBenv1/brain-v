@@ -8,7 +8,14 @@
       "Bash(schtasks /query /fo CSV)",
       "Bash(schtasks.exe //query //fo CSV)",
       "Bash(schtasks.exe:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(python scripts/loop.py full)",
+      "Bash(ls C:/Projects/brain-v/hypotheses/FA*.json)",
+      "Bash(python:*)",
+      "Bash(claude:*)",
+      "Bash(echo \"EXIT: $?\")"
     ]
   }
 }

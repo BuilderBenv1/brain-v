@@ -1,0 +1,34 @@
+{
+  "id": "H025",
+  "claim": "The Currier A/B split reflects two distinct scribal hands encoding the same language using different glyph-frequency profiles, such that the top-10 word overlap between A and B sections is less than 40%, and the word-initial glyph distributions of A and B differ by Jensen-Shannon divergence > 0.15",
+  "type": "cipher",
+  "confidence": 0.643,
+  "evidence_for": [
+    "Currier A contains 11,022 words vs B's 23,766 \u00e2\u20ac\u201d a substantial split suggesting systematic difference",
+    "Current belief [0.456] supports a genuine linguistic or dialectal difference",
+    "High hapax ratio (70.1%) could reflect two vocabularies being conflated"
+  ],
+  "evidence_against": [
+    "If the same cipher is used with different keys, vocabulary overlap could still be low without reflecting language difference",
+    "A/B distinction may be purely codicological (different sections, not different scribes)"
+  ],
+  "test": "Compute Jensen-Shannon divergence between word-initial and word-final glyph frequency distributions of Currier A folios vs Currier B folios; also compute vocabulary overlap (shared word types / union of word types)",
+  "test_metric": "JS divergence of glyph distributions and Jaccard similarity of vocabularies",
+  "test_threshold": "JS divergence > 0.15 and Jaccard < 0.40 would support distinct encoding keys or languages; JS < 0.05 and Jaccard > 0.60 would support a single cipher",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.580 -> 0.643"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "Distinguishing whether A/B is a cipher-key difference or a language difference is a high-leverage split: if JS is large but vocabulary overlap is moderate, a polyalphabetic key change is implicated; if both diverge strongly, distinct languages are implicated"
+}

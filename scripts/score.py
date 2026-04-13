@@ -15,6 +15,7 @@ Usage:
 import argparse
 import json
 import math
+import subprocess
 import urllib.request
 from collections import Counter
 from datetime import datetime, timezone
@@ -27,13 +28,13 @@ CORPUS_PATH = PROJECT_ROOT / "raw" / "perception" / "voynich-corpus.json"
 HYPOTHESES_DIR = PROJECT_ROOT / "hypotheses"
 BELIEFS_PATH = PROJECT_ROOT / "scripts" / "beliefs.json"
 SCORES_DIR = PROJECT_ROOT / "outputs" / "scores"
-OLLAMA_URL = "http://localhost:11434/api/generate"
 AGENTOS_URL = "https://agentos-backend-production.up.railway.app"
 # Brain-V agents on SKALE
 ORCHESTRATOR_ID = 471
 SCORER_ID = 474
 MASTER_AGENT_ID = ORCHESTRATOR_ID
-MODEL = "llama3.1:8b"
+MODEL = "claude-code-cli"
+CLAUDE_CLI = r"C:\Users\theka\AppData\Roaming\npm\claude.cmd"
 
 # --- Reference language profiles (medieval Latin and 15th-century Italian) ---
 # These are approximate values from published linguistic studies.
@@ -315,7 +316,7 @@ def run_statistical_test(hypothesis: dict, stats: dict, corpus: dict) -> dict:
 
 
 def score_with_llm(hypothesis: dict, stats: dict) -> dict:
-    """Fallback: ask the LLM to evaluate a hypothesis against the stats."""
+    """Fallback: ask Claude (via CLI) to evaluate a hypothesis against the stats."""
     s = stats["summary"]
     e = stats["entropy"]
     z = stats["zipf"]
@@ -343,18 +344,26 @@ Respond with EXACTLY this JSON, nothing else:
 JSON only."""
 
     try:
-        body = json.dumps({
-            "model": MODEL, "prompt": prompt, "stream": False,
-            "options": {"temperature": 0.1, "num_predict": 256},
-        }).encode("utf-8")
-        req = urllib.request.Request(
-            OLLAMA_URL, data=body,
-            headers={"Content-Type": "application/json"}, method="POST",
+        import tempfile as _tf, os as _os
+        with _tf.NamedTemporaryFile(mode="w", suffix=".txt", delete=False, encoding="utf-8") as _f:
+            _f.write(prompt)
+            _pf = _f.name
+        result = subprocess.run(
+            [
+                CLAUDE_CLI, "-p",
+                f"Read the file {_pf} and follow its instructions exactly. Output only raw JSON, no markdown, no commentary.",
+                "--model", "haiku",
+                "--output-format", "text",
+                "--allowedTools", "Read",
+            ],
+            capture_output=True, text=True, timeout=60,
+            cwd=_os.path.expanduser("~"),
         )
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            raw = json.loads(resp.read().decode("utf-8")).get("response", "")
+        _os.unlink(_pf)
+        if result.returncode != 0:
+            raise RuntimeError(result.stderr.strip())
+        raw = result.stdout.strip()
 
-        raw = raw.strip()
         if raw.startswith("```"):
             raw = raw.split("\n", 1)[-1].rsplit("```", 1)[0]
         start = raw.find("{")
@@ -362,7 +371,7 @@ JSON only."""
         if start >= 0 and end > start:
             parsed = json.loads(raw[start:end])
             return {
-                "test_name": "llm_evaluation",
+                "test_name": "claude_evaluation",
                 "score": parsed.get("score", 0.5),
                 "details": parsed.get("details", ""),
                 "passed": parsed.get("passed"),
@@ -371,7 +380,7 @@ JSON only."""
         pass
 
     return {
-        "test_name": "llm_evaluation_failed",
+        "test_name": "claude_evaluation_failed",
         "score": 0.5,
         "details": f"Could not evaluate: {hypothesis.get('test', 'no test specified')}",
         "passed": None,

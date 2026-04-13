@@ -1,0 +1,80 @@
+{
+  "id": "H010",
+  "claim": "The manuscript's text structure reflects a single, coherent narrative.",
+  "type": "structural",
+  "confidence": 0.081,
+  "evidence_for": [
+    "Word entropy levels are consistent across sections",
+    "Zipf exponent is moderate, indicating possible narrative structure"
+  ],
+  "evidence_against": [
+    "Other sections do not show similar patterns"
+  ],
+  "test": "PageRank algorithm for topic modeling",
+  "test_metric": "Topic coherence score",
+  "test_threshold": ">0.5",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.0,
+      "passed": false,
+      "details": "The high Hapax ratio and low Zipf exponent suggest a non-narrative, possibly poetic or symbolic text structure.",
+      "confidence_change": "0.450 -> 0.315"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.0,
+      "passed": false,
+      "details": "The high Hapax ratio and low Zipf exponent indicate a non-narrative, possibly poetic or symbolic text structure, contradicting the hypothesis of a single coherent narrative.",
+      "confidence_change": "0.315 -> 0.220"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.0,
+      "passed": false,
+      "details": "The high Hapax ratio and low Zipf exponent indicate a non-narrative, possibly poetic or symbolic text structure, contradicting the hypothesis of a single coherent narrative.",
+      "confidence_change": "0.220 -> 0.154"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: PageRank algorithm for topic modeling",
+      "confidence_change": "0.154 -> 0.171"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.3,
+      "passed": false,
+      "details": "The 0.701 hapax ratio (70% unique words appearing only once) contradicts narrative coherence, as single narratives exhibit thematic repetition; despite Zipf-like distribution suggesting structure, the sparse vocabulary reuse indicates disparate topics rather than unified narrative.",
+      "confidence_change": "0.171 -> 0.135"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.25,
+      "passed": false,
+      "details": "High hapax ratio (0.701) and elevated glyph entropy (3.8627) contradict coherent narrative expectation; a single coherent structure would show lower lexical diversity and repeated thematic vocabulary.",
+      "confidence_change": "0.135 -> 0.105"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.25,
+      "passed": false,
+      "details": "The high hapax ratio of 0.701 indicates 70% of words appear only once, contradicting the vocabulary reuse expected in a coherent narrative; the low Zipf exponent further suggests non-standard linguistic structure lacking typical frequency distributions of unified discourse.",
+      "confidence_change": "0.105 -> 0.081"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "If the manuscript's text structure reflects a single, coherent narrative, we would expect to see significant correlations between word positions and topics."
+}

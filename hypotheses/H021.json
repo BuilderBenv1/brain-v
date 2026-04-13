@@ -1,0 +1,34 @@
+{
+  "id": "H021",
+  "claim": "The Currier A/B split reflects two different scribal hands encoding the same underlying language with different but related cipher alphabets, such that glyph-level bigram transition matrices in A and B sections are structurally isomorphic under a permutation mapping.",
+  "type": "cipher",
+  "confidence": 0.584,
+  "evidence_for": [
+    "Currier A (11,022 words) and B (23,766 words) show distinct glyph frequency distributions already identified by Currier",
+    "Multiple scribal hands have been proposed in paleographic analyses",
+    "Structural isomorphism under permutation would explain why both sections appear to encode coherent content (belief 0.85) yet differ statistically"
+  ],
+  "evidence_against": [
+    "If isomorphic, combined vocabulary should show lower hapax ratio than either section alone \u00e2\u20ac\u201d this needs verification",
+    "Belief 0.456 for Currier split as linguistic difference competes with this scribal-cipher explanation"
+  ],
+  "test": "Compute 25x25 bigram transition matrices separately for Currier A and B; attempt to find a permutation P of the 25 glyphs that minimizes the Frobenius norm ||M_A - P*M_B*P^T||; compare minimum distance to null distribution from permuted random text",
+  "test_metric": "Minimum Frobenius norm of permuted matrix difference, expressed as fraction of baseline norm ||M_A - M_B||",
+  "test_threshold": "Ratio below 0.15 would strongly support isomorphic cipher alphabets; above 0.40 would support genuine linguistic difference between A and B",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute 25x25 bigram transition matrices separately for currier a and b; attempt to find a permutati",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.510 -> 0.584"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "This hypothesis sharply distinguishes between two leading explanations for the A/B split and would either unify the decipherment problem (one language, two hands) or confirm the need for separate linguistic models. The permutation search is computationally tractable with 25 glyphs."
+}

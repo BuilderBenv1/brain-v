@@ -1,0 +1,112 @@
+{
+  "date": "2026-04-13",
+  "cycle": "predict",
+  "model": "llama3.1:8b",
+  "belief_count": 8,
+  "existing_hypothesis_count": 30,
+  "new_hypotheses": [
+    "H011",
+    "H012",
+    "H013",
+    "H014"
+  ],
+  "hypotheses": [
+    {
+      "id": "H011",
+      "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.",
+      "type": "structural",
+      "confidence": 0.53,
+      "evidence_for": [
+        "Herbal section has higher entropy levels compared to other sections"
+      ],
+      "evidence_against": [
+        "No clear evidence of rhyme or meter in other sections"
+      ],
+      "test": "Compute the average word length and frequency of consecutive words with identical first/last glyphs",
+      "test_metric": "Average word length",
+      "test_threshold": "> 5.2",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute the average word length and frequency of consecutive words with identical first/last glyphs"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, this would suggest a more complex text structure than previously thought"
+    },
+    {
+      "id": "H012",
+      "claim": "The manuscript uses a combination of substitution and transposition ciphers in the biological section.",
+      "type": "cipher",
+      "confidence": 0.62,
+      "evidence_for": [
+        "Biological section has higher entropy levels compared to other sections"
+      ],
+      "evidence_against": [
+        "No clear evidence of transposition patterns"
+      ],
+      "test": "Compute the frequency of consecutive words with identical glyphs in different positions",
+      "test_metric": "Frequency of consecutive word pairs with identical glyphs",
+      "test_threshold": "> 0.05",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute the frequency of consecutive words with identical glyphs in different positions"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, this would explain the higher entropy levels in the biological section"
+    },
+    {
+      "id": "H013",
+      "claim": "The text uses a simple substitution cipher on an unknown language.",
+      "type": "language",
+      "confidence": 0.38,
+      "evidence_for": [
+        "Glyph entropy is lower than expected for Latin or Italian"
+      ],
+      "evidence_against": [
+        "No clear evidence of an unknown language"
+      ],
+      "test": "Compute the frequency of word-final glyphs and compare to known languages",
+      "test_metric": "Frequency of word-final glyphs",
+      "test_threshold": "> 0.3",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute the frequency of word-final glyphs and compare to known languages"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, this would suggest a new language or dialect"
+    },
+    {
+      "id": "H014",
+      "claim": "The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dialects.",
+      "type": "language",
+      "confidence": 0.55,
+      "evidence_for": [
+        "Currier A/B split has significant differences in vocabulary and entropy levels"
+      ],
+      "evidence_against": [
+        "No clear evidence of language shift or dialectical variation"
+      ],
+      "test": "Compute the similarity between word lists for Currier A and B",
+      "test_metric": "Jaccard similarity coefficient",
+      "test_threshold": "< 0.7",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute the similarity between word lists for Currier A and B"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, this would suggest a genuine linguistic difference"
+    }
+  ],
+  "raw_response": "{\n  \"hypotheses\": [\n    {\n      \"claim\": \"The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.\",\n      \"type\": \"structural\",\n      \"confidence\": 0.53,\n      \"evidence_for\": [\"Herbal section has higher entropy levels compared to other sections\"],\n      \"evidence_against\": [\"No clear evidence of rhyme or meter in other sections\"],\n      \"test\": \"Compute the average word length and frequency of consecutive words with identical first/last glyphs\",\n      \"test_metric\": \"Average word length\",\n      \"test_threshold\": \"> 5.2\",\n      \"reasoning\": \"If confirmed, this would suggest a more complex text structure than previously thought\"\n    },\n    {\n      \"claim\": \"The manuscript uses a combination of substitution and transposition ciphers in the biological section.\",\n      \"type\": \"cipher\",\n      \"confidence\": 0.62,\n      \"evidence_for\": [\"Biological section has higher entropy levels compared to other sections\"],\n      \"evidence_against\": [\"No clear evidence of transposition patterns\"],\n      \"test\": \"Compute the frequency of consecutive words with identical glyphs in different positions\",\n      \"test_metric\": \"Frequency of consecutive word pairs with identical glyphs\",\n      \"test_threshold\": \"> 0.05\",\n      \"reasoning\": \"If confirmed, this would explain the higher entropy levels in the biological section\"\n    },\n    {\n      \"claim\": \"The text uses a simple substitution cipher on an unknown language.\",\n      \"type\": \"language\",\n      \"confidence\": 0.38,\n      \"evidence_for\": [\"Glyph entropy is lower than expected for Latin or Italian\"],\n      \"evidence_against\": [\"No clear evidence of an unknown language\"],\n      \"test\": \"Compute the frequency of word-final glyphs and compare to known languages\",\n      \"test_metric\": \"Frequency of word-final glyphs\",\n      \"test_threshold\": \"> 0.3\",\n      \"reasoning\": \"If confirmed, this would suggest a new language or dialect\"\n    },\n    {\n      \"claim\": \"The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dialects.\",\n      \"type\": \"language\",\n      \"confidence\": 0.55,\n      \"evidence_for\": [\"Currier A/B split has significant differences in vocabulary and entropy levels\"],\n      \"evidence_against\": [\"No clear evidence of language shift or dialectical variation\"],\n      \"test\": \"Compute the similarity between word lists for Currier A and B\",\n      \"test_metric\": \"Jaccard similarity coefficient\",\n      \"test_threshold\": \"< 0.7\",\n      \"reasoning\": \"If confirmed, this would suggest a genuine linguistic difference\"\n    }\n  ]\n}"
+}

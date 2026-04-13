@@ -1,0 +1,34 @@
+{
+  "id": "H022",
+  "claim": "The zodiac and astronomical sections use a systematically different word-order encoding than herbal and recipes sections, reflecting a positional transposition cipher layer applied on top of substitution, detectable as reduced local bigram predictability at section boundaries relative to within-section transitions.",
+  "type": "structural",
+  "confidence": 0.467,
+  "evidence_for": [
+    "Zodiac entropy (3.7149 bits) and astronomical entropy (3.7471 bits) are measurably lower than recipes (3.8586 bits) and text-only (3.9016 bits), suggesting different encoding density",
+    "Belief 0.7 that different sections use different encoding methods",
+    "Word counts per folio differ substantially across sections (zodiac: ~108 words/folio, biological: ~332 words/folio)"
+  ],
+  "evidence_against": [
+    "Lower entropy in zodiac/astronomical could reflect domain-specific vocabulary repetition (star names, month labels) rather than cipher difference",
+    "Small folio counts for zodiac (12) and astronomical (8) reduce statistical power"
+  ],
+  "test": "Compute per-section word-level bigram entropy H(w_i | w_{i-1}) and compare astronomical+zodiac group against herbal+recipes group using a permutation test on folio-level entropy estimates",
+  "test_metric": "Mean word bigram entropy per folio, two-sample permutation test p-value between low-entropy sections (zodiac, astronomical) and high-entropy sections (recipes, text-only)",
+  "test_threshold": "p-value below 0.05 with effect size (Cohen's d) above 0.5 would confirm structurally distinct encoding; p above 0.20 would suggest entropy differences are vocabulary-driven, not cipher-driven",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.380 -> 0.467"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "If transposition is applied only in visually-structured sections (where circular zodiac layouts or astronomical diagrams constrain text placement), this would explain both entropy differences and positional glyph constraints without requiring a completely different cipher per section."
+}

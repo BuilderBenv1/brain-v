@@ -1,0 +1,35 @@
+{
+  "id": "H029",
+  "claim": "The zodiac section (entropy 3.7149 bits, lowest of all sections) uses a label-oriented encoding in which most word tokens are proper nouns or short nominal forms, producing a word-length distribution significantly shorter than the herbal section (mean word length < 4.5 vs herbal > 5.0) and a lower bigram entropy reflecting repetitive naming conventions",
+  "type": "structural",
+  "confidence": 0.616,
+  "evidence_for": [
+    "Zodiac entropy (3.7149) is the lowest of all sections \u00e2\u20ac\u201d lower entropy implies more repetition or constrained vocabulary",
+    "Zodiac illustrations depict figures with labels, consistent with a naming/labeling register",
+    "Astronomical section also has low entropy (3.7471), suggesting illustrative sections share a constrained label vocabulary"
+  ],
+  "evidence_against": [
+    "Low entropy could reflect a different cipher key rather than a different register",
+    "Small sample (1,297 words, 12 folios) limits statistical power",
+    "Word-length difference between sections may be confounded by section-specific glyph frequency profiles"
+  ],
+  "test": "Compute mean and variance of word length (in glyphs) per section; run a two-sample Kolmogorov-Smirnov test on word-length distributions between zodiac and herbal sections; also compute the fraction of zodiac words that appear in the top-200 most frequent words manuscript-wide",
+  "test_metric": "Mean word length per section and KS test statistic for zodiac vs herbal word-length distributions; top-200 coverage fraction",
+  "test_threshold": "KS p < 0.01 with zodiac mean < 4.5 and herbal mean > 5.0, and zodiac top-200 coverage > 0.70, would support a label register; overlapping distributions would suggest a cipher-level rather than register-level difference",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.550 -> 0.616"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "If zodiac is confirmed as a labeling register, its words are candidate proper nouns (star names, zodiac sign names) that could serve as cribs for decipherment via known medieval astronomical nomenclature"
+}

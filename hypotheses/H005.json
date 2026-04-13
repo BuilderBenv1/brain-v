@@ -2,7 +2,7 @@
   "id": "H005",
   "claim": "The text is encoded using a simple substitution cipher on a language other than Latin or Italian.",
   "type": "cipher",
-  "confidence": 0.228,
+  "confidence": 0.111,
   "evidence_for": [
     "Glyph entropy is lower than expected for Latin and Italian (~4.0 bits)"
   ],
@@ -20,6 +20,54 @@
       "passed": false,
       "details": "The hypothesis is contradicted by the high glyph entropy (3.8627 bits), which suggests a complex encoding scheme, and the Zipf exponent (0.8946) is close to 1, indicating a language with a simple word frequency distribution, both of which are more consistent with Latin or Italian languages than a simple substitution cipher on an unknown language.",
       "confidence_change": "0.300 -> 0.228"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "The hypothesis is contradicted by the high glyph entropy (3.8627 bits), which suggests a complex encoding scheme, and the Zipf exponent (0.8946) is close to 1, indicating a language with a simple vocabulary distribution, both of which are inconsistent with a simple substitution cipher on an unknown language.",
+      "confidence_change": "0.228 -> 0.173"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "The hypothesis is contradicted by the high glyph entropy (3.8627 bits), which suggests a complex encoding scheme rather than a simple substitution cipher, and the Zipf exponent (0.8946) is within the expected range for Latin/Italian languages.",
+      "confidence_change": "0.173 -> 0.131"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.5,
+      "passed": null,
+      "details": "The hypothesis is neither strongly supported nor contradicted, as the glyph entropy of 3.8627 bits is within a typical range for languages with Latin alphabets (2-4 bits), but the Zipf exponent and hapax ratio suggest a language with a more complex structure than expected for a simple substitution cipher.",
+      "confidence_change": "0.131 -> 0.149"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Compare glyph and word entropies to the expected values for non-Latin/Italian languages using a chi-squared test",
+      "confidence_change": "0.149 -> 0.167"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.42,
+      "passed": false,
+      "details": "Zipf exponent of 0.8946 supports natural language structure, but the unusually high hapax ratio of 0.701 contradicts typical language patterns expected from a simple substitution cipher.",
+      "confidence_change": "0.167 -> 0.138"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "The very high hapax ratio (0.701) contradicts simple substitution cipher expectation, which should preserve natural language word frequency distributions; flattened Zipf exponent (0.894) and anomalous entropy patterns further suggest the text either employs a non-simple cipher or lacks natural language structure.",
+      "confidence_change": "0.138 -> 0.111"
     }
   ],
   "tests_remaining": [],

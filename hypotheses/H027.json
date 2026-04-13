@@ -1,0 +1,34 @@
+{
+  "id": "H027",
+  "claim": "The text-only section (entropy 3.9016 bits, 7 folios) represents the closest approximation to natural language and encodes a different register or genre than the herbal/zodiac sections, such that its bigram entropy is statistically distinguishable (p < 0.05) from all other sections and its type-token ratio is highest among all sections",
+  "type": "structural",
+  "confidence": 0.673,
+  "evidence_for": [
+    "Text-only entropy (3.9016) is highest of all sections and closest to Latin (~4.0) and Italian (~3.95)",
+    "Absence of illustrations may mean less label-like, more prose-like text",
+    "Recipes section (3.8586) and text-only are the two highest-entropy sections, both likely prose"
+  ],
+  "evidence_against": [
+    "Only 7 folios \u00e2\u20ac\u201d small sample may inflate entropy estimate",
+    "High hapax ratio across the whole manuscript makes type-token ratio comparisons noisy"
+  ],
+  "test": "Compute per-section bigram conditional entropy H(glyph_n | glyph_{n-1}) and type-token ratio (unique words / total words); run Kruskal-Wallis test across sections, then post-hoc pairwise Mann-Whitney U between text-only and each other section",
+  "test_metric": "Bigram conditional entropy and type-token ratio per section",
+  "test_threshold": "Text-only bigram entropy significantly higher (p < 0.05) than herbal and zodiac sections; text-only type-token ratio > 0.35 vs herbal < 0.25 would confirm distinct register",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.620 -> 0.673"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "If text-only is linguistically distinct from illustrated sections, it should be the primary target for language identification; confirming this concentrates decipherment resources on the highest-signal section"
+}

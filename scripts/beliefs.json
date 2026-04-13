@@ -1,10 +1,11 @@
 [
   {
     "belief": "The manuscript contains meaningful content, not random glyphs",
-    "confidence": 0.85,
+    "confidence": 0.522,
     "source": "seeded",
     "date": "2026-04-13",
-    "evidence": "Statistical structure too regular for gibberish \u2014 Zipf fit, entropy in natural language range"
+    "evidence": "Statistical structure too regular for gibberish \u2014 Zipf fit, entropy in natural language range",
+    "last_scored": "2026-04-13"
   },
   {
     "belief": "The underlying language is most likely Latin or Italian",
@@ -22,7 +23,7 @@
   },
   {
     "belief": "The cipher is performable by hand with period tools",
-    "confidence": 0.637,
+    "confidence": 0.125,
     "source": "seeded",
     "date": "2026-04-13",
     "evidence": "No evidence of mechanical aids, Naibbe cipher demonstrates feasibility",
@@ -30,7 +31,7 @@
   },
   {
     "belief": "Positional glyph constraints reflect cipher structure not grammar",
-    "confidence": 0.425,
+    "confidence": 0.05,
     "source": "seeded",
     "date": "2026-04-13",
     "evidence": "Slot grammar could be either cipher artifact or linguistic feature",
@@ -38,7 +39,7 @@
   },
   {
     "belief": "The herbal section is the best starting point for decipherment",
-    "confidence": 0.552,
+    "confidence": 0.109,
     "source": "seeded",
     "date": "2026-04-13",
     "evidence": "Illustrations provide potential plaintext anchors for plant names",
@@ -46,9 +47,49 @@
   },
   {
     "belief": "Evidence supports: The manuscript's herbal section uses a combination of substitution and transposition ciphers, which ",
-    "confidence": 0.61,
+    "confidence": 0.05,
     "source": "hypothesis-H001-2026-04-13",
     "date": "2026-04-13",
     "last_scored": "2026-04-13"
+  },
+  {
+    "belief": "Evidence supports: The manuscript's text structure reflects a mix of prose and verse, with the herbal section being pri",
+    "confidence": 0.147,
+    "source": "hypothesis-H003-2026-04-13",
+    "date": "2026-04-13",
+    "last_scored": "2026-04-13"
+  },
+  {
+    "belief": "Evidence supports: The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dia",
+    "confidence": 0.281,
+    "source": "hypothesis-H004-2026-04-13",
+    "date": "2026-04-13",
+    "last_scored": "2026-04-13"
+  },
+  {
+    "belief": "Evidence supports: The text uses a combination of substitution and transposition ciphers in the biological section.",
+    "confidence": 0.167,
+    "source": "hypothesis-H007-2026-04-13",
+    "date": "2026-04-13",
+    "last_scored": "2026-04-13"
+  },
+  {
+    "belief": "Evidence supports: The manuscript uses a combination of substitution and transposition ciphers in the biological sectio",
+    "confidence": 0.106,
+    "source": "hypothesis-H012-2026-04-13",
+    "date": "2026-04-13",
+    "last_scored": "2026-04-13"
+  },
+  {
+    "belief": "Evidence supports: The text-only section (entropy 3.9016 bits, 7 folios) represents the closest approximation to natura",
+    "confidence": 0.673,
+    "source": "hypothesis-H027-2026-04-13",
+    "date": "2026-04-13"
+  },
+  {
+    "belief": "Evidence supports: The zodiac section (entropy 3.7149 bits, lowest of all sections) uses a label-oriented encoding in w",
+    "confidence": 0.616,
+    "source": "hypothesis-H029-2026-04-13",
+    "date": "2026-04-13"
   }
 ]
