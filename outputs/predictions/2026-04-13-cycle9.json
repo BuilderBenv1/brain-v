@@ -1,0 +1,162 @@
+{
+  "date": "2026-04-13",
+  "cycle": "predict",
+  "model": "claude-code-cli",
+  "belief_count": 17,
+  "existing_hypothesis_count": 49,
+  "new_hypotheses": [
+    "H030",
+    "H031",
+    "H032",
+    "H033",
+    "H034"
+  ],
+  "hypotheses": [
+    {
+      "id": "H030",
+      "claim": "The high hapax ratio (70.1%) is primarily an artifact of systematic scribal abbreviation, where common root words are truncated with consistent suffixes, making truncated forms appear unique when they share stems with high-frequency words.",
+      "type": "structural",
+      "confidence": 0.42,
+      "evidence_for": [
+        "Hapax ratio of 70.1% is anomalously high compared to natural languages (~40-50%)",
+        "Top frequent words like 'daiin', 'aiin', 'chedy', 'shedy' suggest suffix-sharing morphology",
+        "Average word length of 5.03 is short, consistent with abbreviation practices",
+        "The moderate Zipf exponent (0.8946) diverges from natural language ~1.0, consistent with vocabulary inflation from abbreviation artifacts"
+      ],
+      "evidence_against": [
+        "If abbreviation caused hapax inflation, stemming should recover a lower effective vocabulary \u00e2\u20ac\u201d no such reduction has been confirmed",
+        "Glyph entropy (3.8627) is close to natural language values, not what pure abbreviation noise would produce",
+        "The Currier A/B split shows systematic regional differences inconsistent with purely scribal abbreviation"
+      ],
+      "test": "Cluster all 8,261 unique words by shared n-grams (n=2,3 suffix/prefix), then measure what fraction of hapax words share a suffix of length \u00e2\u2030\u00a52 with a high-frequency word (top 500). Compare resulting stem-collapsed vocabulary size to expected hapax ratio for natural language.",
+      "test_metric": "Post-stemming hapax ratio and stem-cluster coverage of hapax words",
+      "test_threshold": "If >60% of hapax words cluster within 1-2 glyph edits of a high-frequency word, abbreviation hypothesis is supported; if post-stemming hapax ratio drops below 45%, strongly supported",
+      "tests_run": [],
+      "tests_remaining": [
+        "Cluster all 8,261 unique words by shared n-grams (n=2,3 suffix/prefix), then measure what fraction of hapax words share a suffix of length \u00e2\u2030\u00a52 with a high-frequency word (top 500). Compare resulting stem-collapsed vocabulary size to expected hapax ratio for natural language."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "Distinguishing genuine vocabulary diversity from scribal abbreviation artifact is critical: if the hapax inflation is artifactual, the effective vocabulary is much smaller, dramatically narrowing candidate cipher and language hypotheses"
+    },
+    {
+      "id": "H031",
+      "claim": "The zodiac section (entropy 3.7149 bits, lowest of all sections) uses a label-only encoding scheme where each word is a proper name or fixed label rather than running prose, producing a vocabulary distribution that deviates significantly from Zipf's law relative to other sections.",
+      "type": "structural",
+      "confidence": 0.61,
+      "evidence_for": [
+        "Zodiac entropy (3.7149) is the lowest of all sections, consistent with a closed label vocabulary",
+        "Zodiac has only 1,297 words across 12 folios \u00e2\u20ac\u201d very sparse, consistent with repeated labels",
+        "Label-dominant text would show a flatter frequency distribution (fewer ultra-high-frequency function words)",
+        "Astronomical context strongly implies positional labels (month names, star names, zodiac sign names)"
+      ],
+      "evidence_against": [
+        "If purely labels, word diversity should be very low, but the section still contributes to the overall 8,261-word unique vocabulary",
+        "Currier A/B analysis covers the full manuscript; zodiac section's dialect assignment is unclear",
+        "Other label-heavy sections like pharmaceutical also show lower entropy (3.7772), but not as extreme as zodiac"
+      ],
+      "test": "Compute per-section Zipf exponent fits independently. Compare zodiac section's Zipf exponent and R-squared to the herbal and text-only sections. Additionally compute type-token ratio (TTR) per section normalized by folio count.",
+      "test_metric": "Per-section Zipf exponent, R-squared of Zipf fit, and normalized TTR",
+      "test_threshold": "If zodiac Zipf exponent deviates >0.15 from herbal section and zodiac TTR is >1.5x the herbal TTR per folio, label-encoding hypothesis is supported",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute per-section Zipf exponent fits independently. Compare zodiac section's Zipf exponent and R-squared to the herbal and text-only sections. Additionally compute type-token ratio (TTR) per section normalized by folio count."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If zodiac encodes a fixed label vocabulary, it can potentially be solved independently of the rest of the manuscript by matching label counts to known zodiac systems, making it a high-value starting point for partial decipherment"
+    },
+    {
+      "id": "H032",
+      "claim": "The Currier A/B dialect split reflects two scribal hands encoding the same underlying language using different homophonic substitution tables, where Currier A substitutes fewer glyphs per phoneme than Currier B, explaining B's larger word count (23,766 vs 11,022) via greater glyph variety per syllable.",
+      "type": "cipher",
+      "confidence": 0.38,
+      "evidence_for": [
+        "Currier B has more than twice the word count of A, suggesting richer or more verbose encoding",
+        "Homophonic ciphers are period-appropriate hand-performable techniques consistent with the manuscript's era (~1400-1438)",
+        "The overall Zipf exponent (0.8946) is slightly below natural language, consistent with homophonic expansion inflating rare word forms",
+        "Different sections show different entropies, consistent with different homophonic table densities"
+      ],
+      "evidence_against": [
+        "Glyph entropy (3.8627) is below what a dense homophonic cipher would typically produce (homophones increase entropy toward the theoretical maximum)",
+        "The hypothesis of two languages (H004, H008) is currently rated more highly (0.774, 0.866); homophonic same-language encoding is competing with that",
+        "Only 25 unique glyphs constrains the homophonic table size significantly"
+      ],
+      "test": "Compute bigram transition entropy separately for Currier A and B corpora. If homophonic tables differ, A and B should show statistically different bigram distributions (KL divergence > threshold) but similar unigram entropy if encoding the same language.",
+      "test_metric": "KL divergence between Currier A and B bigram transition matrices; per-corpus unigram glyph entropy",
+      "test_threshold": "KL divergence > 0.3 nats between A and B bigram matrices with unigram entropy difference < 0.1 bits would support same-language different-cipher-table hypothesis; reverse pattern supports different-language hypothesis",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute bigram transition entropy separately for Currier A and B corpora. If homophonic tables differ, A and B should show statistically different bigram distributions (KL divergence > threshold) but similar unigram entropy if encoding the same language."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "Distinguishing same-language-different-cipher from different-language is critical to whether A and B corpora should be deciphered jointly or separately, substantially affecting the search space"
+    },
+    {
+      "id": "H033",
+      "claim": "The text-only section (entropy 3.9016 bits, highest of all sections) represents unenciphered or lightly enciphered text in the underlying language, and its word frequency distribution should most closely match expected distributions for medieval Latin or northern Italian compared to all other sections.",
+      "type": "language",
+      "confidence": 0.62,
+      "evidence_for": [
+        "Text-only section has highest entropy (3.9016), closest to Latin (~4.0) and Italian (~3.95) among all sections",
+        "Text-only section has no illustrations to constrain vocabulary to domain-specific terms, allowing fuller natural language expression",
+        "If other sections use additional encipherment layers, text-only would show the 'base' language signal most clearly",
+        "7 folios with 2,349 words provides a statistically meaningful sample for frequency analysis"
+      ],
+      "evidence_against": [
+        "Even 3.9016 bits remains below Latin/Italian reference values, so some encoding may still be present",
+        "The text-only section may represent a different genre (recipes, prayers) with its own vocabulary distribution rather than the base language",
+        "Selecting the section with highest entropy as 'least enciphered' assumes uniform cipher complexity, which may not hold"
+      ],
+      "test": "Extract the 200 most frequent words in the text-only section. Compute their normalized frequency rank distribution and compare via Kolmogorov-Smirnov test against frequency distributions of the 200 most common medieval Latin words and common northern Italian words (13th-15th century). Separately, compute the bigram entropy of text-only vs all other sections.",
+      "test_metric": "KS statistic comparing text-only word-rank distribution to Latin and Italian reference corpora; bigram entropy per section",
+      "test_threshold": "KS statistic < 0.15 against Latin or Italian reference would indicate strong distributional match; text-only bigram entropy significantly higher than other sections (>0.05 bits) would confirm it as structurally distinct",
+      "tests_run": [],
+      "tests_remaining": [
+        "Extract the 200 most frequent words in the text-only section. Compute their normalized frequency rank distribution and compare via Kolmogorov-Smirnov test against frequency distributions of the 200 most common medieval Latin words and common northern Italian words (13th-15th century). Separately, compute the bigram entropy of text-only vs all other sections."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, the text-only section becomes the primary attack surface for language identification, allowing targeted cryptanalysis against a specific candidate language rather than the full manuscript"
+    },
+    {
+      "id": "H034",
+      "claim": "Glyph positional constraints (specific glyphs appearing predominantly word-initially vs word-finally) reflect a syllabic or consonant-vowel encoding structure rather than grammatical affixes, where initial glyphs encode consonant onsets and final glyphs encode vowel codas of a CV or CVC syllable scheme.",
+      "type": "cipher",
+      "confidence": 0.33,
+      "evidence_for": [
+        "Word-initial glyphs ['o','c','q','s','d'] and word-final glyphs ['y','n','l','r','o'] are highly distinct sets with minimal overlap",
+        "Average word length of 5.03 glyphs is consistent with 1-2 syllable encodings in a CVC scheme (2-3 glyphs per syllable)",
+        "Syllabic scripts typically show strong positional glyph constraints, matching observed behavior",
+        "The frequent words 'daiin', 'aiin', 'chedy', 'shedy' show consistent internal glyph sequencing suggestive of syllable templates"
+      ],
+      "evidence_against": [
+        "Only 25 unique glyphs is low for a full syllabary (typical syllabaries have 40-100 symbols), though it could represent a partial or consonantal syllabary",
+        "Glyph entropy (3.8627) is consistent with alphabetic encoding; syllabic scripts typically show lower per-symbol entropy due to larger symbol sets",
+        "The positional constraints could equally reflect grammatical morphology (prefixes/suffixes) in an alphabetic cipher"
+      ],
+      "test": "Compute mutual information between glyph identity and word position (initial, medial, final) for each of the 25 glyphs. Compare the resulting positional specificity profile against simulated profiles from known syllabic scripts (e.g., Linear B transliterated to glyph frequency data) vs alphabetic scripts with strong morphology (medieval Latin).",
+      "test_metric": "Per-glyph positional mutual information score; bimodality index of glyph position distributions",
+      "test_threshold": "If >15 of 25 glyphs show positional mutual information > 0.3 bits and the bimodality of position distributions matches syllabic script profiles more than alphabetic profiles (measured by KL divergence to reference), syllabic encoding is supported",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute mutual information between glyph identity and word position (initial, medial, final) for each of the 25 glyphs. Compare the resulting positional specificity profile against simulated profiles from known syllabic scripts (e.g., Linear B transliterated to glyph frequency data) vs alphabetic scripts with strong morphology (medieval Latin)."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "A syllabic encoding hypothesis, if confirmed, would drastically constrain the decipherment approach and could explain why alphabetic substitution attempts have consistently failed"
+    }
+  ],
+  "raw_response": "{\"hypotheses\":[{\"claim\":\"The high hapax ratio (70.1%) is primarily an artifact of systematic scribal abbreviation, where common root words are truncated with consistent suffixes, making truncated forms appear unique when they share stems with high-frequency words.\",\"type\":\"structural\",\"confidence\":0.42,\"evidence_for\":[\"Hapax ratio of 70.1% is anomalously high compared to natural languages (~40-50%)\",\"Top frequent words like 'daiin', 'aiin', 'chedy', 'shedy' suggest suffix-sharing morphology\",\"Average word length of 5.03 is short, consistent with abbreviation practices\",\"The moderate Zipf exponent (0.8946) diverges from natural language ~1.0, consistent with vocabulary inflation from abbreviation artifacts\"],\"evidence_against\":[\"If abbreviation caused hapax inflation, stemming should recover a lower effective vocabulary \u00e2\u20ac\u201d no such reduction has been confirmed\",\"Glyph entropy (3.8627) is close to natural language values, not what pure abbreviation noise would produce\",\"The Currier A/B split shows systematic regional differences inconsistent with purely scribal abbreviation\"],\"test\":\"Cluster all 8,261 unique words by shared n-grams (n=2,3 suffix/prefix), then measure what fraction of hapax words share a suffix of length \u00e2\u2030\u00a52 with a high-frequency word (top 500). Compare resulting stem-collapsed vocabulary size to expected hapax ratio for natural language.\",\"test_metric\":\"Post-stemming hapax ratio and stem-cluster coverage of hapax words\",\"test_threshold\":\"If >60% of hapax words cluster within 1-2 glyph edits of a high-frequency word, abbreviation hypothesis is supported; if post-stemming hapax ratio drops below 45%, strongly supported\",\"reasoning\":\"Distinguishing genuine vocabulary diversity from scribal abbreviation artifact is critical: if the hapax inflation is artifactual, the effective vocabulary is much smaller, dramatically narrowing candidate cipher and language hypotheses\"},{\"claim\":\"The zodiac section (entropy 3.7149 bits, lowest of all sections) uses a label-only encoding scheme where each word is a proper name or fixed label rather than running prose, producing a vocabulary distribution that deviates significantly from Zipf's law relative to other sections.\",\"type\":\"structural\",\"confidence\":0.61,\"evidence_for\":[\"Zodiac entropy (3.7149) is the lowest of all sections, consistent with a closed label vocabulary\",\"Zodiac has only 1,297 words across 12 folios \u00e2\u20ac\u201d very sparse, consistent with repeated labels\",\"Label-dominant text would show a flatter frequency distribution (fewer ultra-high-frequency function words)\",\"Astronomical context strongly implies positional labels (month names, star names, zodiac sign names)\"],\"evidence_against\":[\"If purely labels, word diversity should be very low, but the section still contributes to the overall 8,261-word unique vocabulary\",\"Currier A/B analysis covers the full manuscript; zodiac section's dialect assignment is unclear\",\"Other label-heavy sections like pharmaceutical also show lower entropy (3.7772), but not as extreme as zodiac\"],\"test\":\"Compute per-section Zipf exponent fits independently. Compare zodiac section's Zipf exponent and R-squared to the herbal and text-only sections. Additionally compute type-token ratio (TTR) per section normalized by folio count.\",\"test_metric\":\"Per-section Zipf exponent, R-squared of Zipf fit, and normalized TTR\",\"test_threshold\":\"If zodiac Zipf exponent deviates >0.15 from herbal section and zodiac TTR is >1.5x the herbal TTR per folio, label-encoding hypothesis is supported\",\"reasoning\":\"If zodiac encodes a fixed label vocabulary, it can potentially be solved independently of the rest of the manuscript by matching label counts to known zodiac systems, making it a high-value starting point for partial decipherment\"},{\"claim\":\"The Currier A/B dialect split reflects two scribal hands encoding the same underlying language using different homophonic substitution tables, where Currier A substitutes fewer glyphs per phoneme than Currier B, explaining B's larger word count (23,766 vs 11,022) via greater glyph variety per syllable.\",\"type\":\"cipher\",\"confidence\":0.38,\"evidence_for\":[\"Currier B has more than twice the word count of A, suggesting richer or more verbose encoding\",\"Homophonic ciphers are period-appropriate hand-performable techniques consistent with the manuscript's era (~1400-1438)\",\"The overall Zipf exponent (0.8946) is slightly below natural language, consistent with homophonic expansion inflating rare word forms\",\"Different sections show different entropies, consistent with different homophonic table densities\"],\"evidence_against\":[\"Glyph entropy (3.8627) is below what a dense homophonic cipher would typically produce (homophones increase entropy toward the theoretical maximum)\",\"The hypothesis of two languages (H004, H008) is currently rated more highly (0.774, 0.866); homophonic same-language encoding is competing with that\",\"Only 25 unique glyphs constrains the homophonic table size significantly\"],\"test\":\"Compute bigram transition entropy separately for Currier A and B corpora. If homophonic tables differ, A and B should show statistically different bigram distributions (KL divergence > threshold) but similar unigram entropy if encoding the same language.\",\"test_metric\":\"KL divergence between Currier A and B bigram transition matrices; per-corpus unigram glyph entropy\",\"test_threshold\":\"KL divergence > 0.3 nats between A and B bigram matrices with unigram entropy difference < 0.1 bits would support same-language different-cipher-table hypothesis; reverse pattern supports different-language hypothesis\",\"reasoning\":\"Distinguishing same-language-different-cipher from different-language is critical to whether A and B corpora should be deciphered jointly or separately, substantially affecting the search space\"},{\"claim\":\"The text-only section (entropy 3.9016 bits, highest of all sections) represents unenciphered or lightly enciphered text in the underlying language, and its word frequency distribution should most closely match expected distributions for medieval Latin or northern Italian compared to all other sections.\",\"type\":\"language\",\"confidence\":0.62,\"evidence_for\":[\"Text-only section has highest entropy (3.9016), closest to Latin (~4.0) and Italian (~3.95) among all sections\",\"Text-only section has no illustrations to constrain vocabulary to domain-specific terms, allowing fuller natural language expression\",\"If other sections use additional encipherment layers, text-only would show the 'base' language signal most clearly\",\"7 folios with 2,349 words provides a statistically meaningful sample for frequency analysis\"],\"evidence_against\":[\"Even 3.9016 bits remains below Latin/Italian reference values, so some encoding may still be present\",\"The text-only section may represent a different genre (recipes, prayers) with its own vocabulary distribution rather than the base language\",\"Selecting the section with highest entropy as 'least enciphered' assumes uniform cipher complexity, which may not hold\"],\"test\":\"Extract the 200 most frequent words in the text-only section. Compute their normalized frequency rank distribution and compare via Kolmogorov-Smirnov test against frequency distributions of the 200 most common medieval Latin words and common northern Italian words (13th-15th century). Separately, compute the bigram entropy of text-only vs all other sections.\",\"test_metric\":\"KS statistic comparing text-only word-rank distribution to Latin and Italian reference corpora; bigram entropy per section\",\"test_threshold\":\"KS statistic < 0.15 against Latin or Italian reference would indicate strong distributional match; text-only bigram entropy significantly higher than other sections (>0.05 bits) would confirm it as structurally distinct\",\"reasoning\":\"If confirmed, the text-only section becomes the primary attack surface for language identification, allowing targeted cryptanalysis against a specific candidate language rather than the full manuscript\"},{\"claim\":\"Glyph positional constraints (specific glyphs appearing predominantly word-initially vs word-finally) reflect a syllabic or consonant-vowel encoding structure rather than grammatical affixes, where initial glyphs encode consonant onsets and final glyphs encode vowel codas of a CV or CVC syllable scheme.\",\"type\":\"cipher\",\"confidence\":0.33,\"evidence_for\":[\"Word-initial glyphs ['o','c','q','s','d'] and word-final glyphs ['y','n','l','r','o'] are highly distinct sets with minimal overlap\",\"Average word length of 5.03 glyphs is consistent with 1-2 syllable encodings in a CVC scheme (2-3 glyphs per syllable)\",\"Syllabic scripts typically show strong positional glyph constraints, matching observed behavior\",\"The frequent words 'daiin', 'aiin', 'chedy', 'shedy' show consistent internal glyph sequencing suggestive of syllable templates\"],\"evidence_against\":[\"Only 25 unique glyphs is low for a full syllabary (typical syllabaries have 40-100 symbols), though it could represent a partial or consonantal syllabary\",\"Glyph entropy (3.8627) is consistent with alphabetic encoding; syllabic scripts typically show lower per-symbol entropy due to larger symbol sets\",\"The positional constraints could equally reflect grammatical morphology (prefixes/suffixes) in an alphabetic cipher\"],\"test\":\"Compute mutual information between glyph identity and word position (initial, medial, final) for each of the 25 glyphs. Compare the resulting positional specificity profile against simulated profiles from known syllabic scripts (e.g., Linear B transliterated to glyph frequency data) vs alphabetic scripts with strong morphology (medieval Latin).\",\"test_metric\":\"Per-glyph positional mutual information score; bimodality index of glyph position distributions\",\"test_threshold\":\"If >15 of 25 glyphs show positional mutual information > 0.3 bits and the bimodality of position distributions matches syllabic script profiles more than alphabetic profiles (measured by KL divergence to reference), syllabic encoding is supported\",\"reasoning\":\"A syllabic encoding hypothesis, if confirmed, would drastically constrain the decipherment approach and could explain why alphabetic substitution attempts have consistently failed\"}]}"
+}

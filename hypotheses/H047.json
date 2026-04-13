@@ -1,0 +1,42 @@
+{
+  "id": "H047",
+  "claim": "The Currier A/B scribal split represents two different scribes encoding the same underlying language using two distinct but related glyph substitution tables (i.e., a two-key polyalphabetic or two-alphabet substitution), such that the same plaintext phoneme maps to different glyphs in A vs. B \u00e2\u20ac\u201d testable by checking whether word-length distributions and initial/final glyph frequencies in A and B are statistically compatible with a common underlying vocabulary after glyph remapping.",
+  "type": "cipher",
+  "confidence": 0.725,
+  "evidence_for": [
+    "Currier A (11,022 words) and B (23,766 words) differ in glyph frequencies but share structural constraints",
+    "The Zipf exponent (0.8946) across the full corpus suggests a unified underlying lexical distribution",
+    "Belief [0.668] already rates this hypothesis highly based on prior evidence"
+  ],
+  "evidence_against": [
+    "A/B split could reflect two different dialects or languages rather than two cipher keys on one language",
+    "If two scribes used different keys, overlapping sections should show frequency discontinuities at folio boundaries \u00e2\u20ac\u201d not yet confirmed"
+  ],
+  "test": "Extract the top-50 most frequent words in Currier A and top-50 in Currier B; compute Jaccard similarity of these sets and compare to the expected overlap if A and B are random draws from the same vocabulary. Separately, test whether the word-length frequency distribution of A and B are drawn from the same distribution (Kolmogorov-Smirnov test).",
+  "test_metric": "Jaccard similarity of top-50 word sets (A vs. B); KS statistic on word-length distributions",
+  "test_threshold": "Jaccard >0.3 and KS p-value >0.05 (fail to reject same distribution) supports shared vocabulary; Jaccard <0.15 or KS p<0.01 supports two distinct languages",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "extract the top-50 most frequent words in currier a and top-50 in currier b; compute jaccard similar",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.620 -> 0.677"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "extract the top-50 most frequent words in currier a and top-50 in currier b; compute jaccard similar",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.677 -> 0.725"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "Distinguishing 'same language, two keys' from 'two languages' is critical: the former allows cross-dialect frequency alignment to bootstrap decipherment, the latter requires independent attacks on each section"
+}

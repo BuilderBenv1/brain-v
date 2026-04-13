@@ -2,7 +2,7 @@
   "id": "H010",
   "claim": "The manuscript's text structure reflects a single, coherent narrative.",
   "type": "structural",
-  "confidence": 0.081,
+  "confidence": 0.083,
   "evidence_for": [
     "Word entropy levels are consistent across sections",
     "Zipf exponent is moderate, indicating possible narrative structure"
@@ -49,26 +49,26 @@
     {
       "date": "2026-04-13",
       "test": "claude_evaluation",
-      "score": 0.3,
+      "score": 0.25,
       "passed": false,
-      "details": "The 0.701 hapax ratio (70% unique words appearing only once) contradicts narrative coherence, as single narratives exhibit thematic repetition; despite Zipf-like distribution suggesting structure, the sparse vocabulary reuse indicates disparate topics rather than unified narrative.",
-      "confidence_change": "0.171 -> 0.135"
+      "details": "The hapax ratio of 0.701 contradicts a single coherent narrative; coherent texts show repeated thematic elements, concepts, and characters, not 70% unique-once words.",
+      "confidence_change": "0.171 -> 0.133"
     },
     {
       "date": "2026-04-13",
       "test": "claude_evaluation",
-      "score": 0.25,
+      "score": 0.4,
       "passed": false,
-      "details": "High hapax ratio (0.701) and elevated glyph entropy (3.8627) contradict coherent narrative expectation; a single coherent structure would show lower lexical diversity and repeated thematic vocabulary.",
-      "confidence_change": "0.135 -> 0.105"
+      "details": "Strong Zipfian distribution (R\u00c2\u00b2=0.9084) indicates organizational structure, but hapax ratio of 0.701 is inconsistent with single coherent narrative, which would show topic-driven vocabulary repetition rather than 70% unique words appearing once.",
+      "confidence_change": "0.133 -> 0.109"
     },
     {
       "date": "2026-04-13",
       "test": "claude_evaluation",
-      "score": 0.25,
+      "score": 0.2,
       "passed": false,
-      "details": "The high hapax ratio of 0.701 indicates 70% of words appear only once, contradicting the vocabulary reuse expected in a coherent narrative; the low Zipf exponent further suggests non-standard linguistic structure lacking typical frequency distributions of unified discourse.",
-      "confidence_change": "0.105 -> 0.081"
+      "details": "The 70.1% hapax ratio and low Zipf exponent (0.8946) indicate highly dispersed vocabulary distribution inconsistent with a single coherent narrative, which would show concentrated word reuse and hierarchical frequency patterns.",
+      "confidence_change": "0.109 -> 0.083"
     }
   ],
   "tests_remaining": [],

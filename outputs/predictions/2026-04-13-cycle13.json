@@ -1,0 +1,159 @@
+{
+  "date": "2026-04-13",
+  "cycle": "predict",
+  "model": "claude-code-cli",
+  "belief_count": 26,
+  "existing_hypothesis_count": 69,
+  "new_hypotheses": [
+    "H050",
+    "H051",
+    "H052",
+    "H053",
+    "H054"
+  ],
+  "hypotheses": [
+    {
+      "id": "H050",
+      "claim": "The extremely high hapax ratio (70.1%) is produced by a systematic null-suffix appended to a smaller core vocabulary: each base word receives one of a small set of suffixes (e.g., -y, -in, -ain, -dy, -edy) to produce surface tokens, meaning the effective vocabulary after stripping common suffixes would shrink to roughly 2,000\u00e2\u20ac\u201c2,500 unique roots with a Zipf exponent closer to 1.0.",
+      "type": "cipher",
+      "confidence": 0.58,
+      "evidence_for": [
+        "Top words 'daiin', 'aiin', 'chedy', 'shedy', 'chol', 'chey' share recurring suffix clusters (-ain, -edy, -ol, -ey)",
+        "Word-final glyph distribution strongly concentrated on y, n, l, r, o \u00e2\u20ac\u201d consistent with a small suffix inventory",
+        "Zipf exponent 0.8946 is flatter than natural language (~1.0), consistent with vocabulary inflation by suffix variation",
+        "High hapax ratio is more naturally explained by combinatorial suffix attachment than by rich natural-language vocabulary"
+      ],
+      "evidence_against": [
+        "If suffixes were purely null/decorative, word-internal glyph entropy should drop after stripping \u00e2\u20ac\u201d not yet verified",
+        "Currier A/B split may reflect suffix-set differences, complicating a uniform stripping rule",
+        "Some hapax forms may be genuine rare words rather than suffix variants"
+      ],
+      "test": "Enumerate candidate suffix families by clustering word-final bigrams and trigrams; strip the top 10 suffix patterns from all tokens; recompute vocabulary size, hapax ratio, and Zipf exponent on the stemmed corpus.",
+      "test_metric": "Post-stripping hapax ratio and Zipf exponent",
+      "test_threshold": "Confirm if post-stripping hapax ratio falls below 40% and Zipf exponent rises above 0.95; deny if hapax ratio remains above 60% or Zipf exponent does not change significantly.",
+      "tests_run": [],
+      "tests_remaining": [
+        "Enumerate candidate suffix families by clustering word-final bigrams and trigrams; strip the top 10 suffix patterns from all tokens; recompute vocabulary size, hapax ratio, and Zipf exponent on the stemmed corpus."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If a handful of suffixes account for the vocabulary explosion, stripping them would reveal a compact core vocabulary compatible with a known medieval language, dramatically narrowing the decipherment search space."
+    },
+    {
+      "id": "H051",
+      "claim": "The Currier A/B scribal split encodes the same underlying language but with two distinct homophonic substitution tables of different sizes: Currier A uses a smaller homophone set (lower token count, 11,022 words) with higher per-glyph entropy, while Currier B uses a larger homophone set producing lower per-glyph entropy, such that the weighted average glyph entropy of A-folios exceeds that of B-folios by at least 0.05 bits.",
+      "type": "cipher",
+      "confidence": 0.61,
+      "evidence_for": [
+        "Currier B is more than twice as large as A (23,766 vs 11,022 words), consistent with a richer encoding alphabet",
+        "Overall glyph entropy 3.8627 bits is a blend; section-level entropy variation (3.71\u00e2\u20ac\u201c3.90) is consistent with variable homophone table sizes",
+        "High-probability belief [0.677] already supports same underlying language for A and B"
+      ],
+      "evidence_against": [
+        "Entropy difference between sections may reflect content type (label-heavy zodiac vs. prose recipes) rather than table size",
+        "A larger homophone set in B would predict lower hapax ratio in B-sections if homophones map to fewer roots \u00e2\u20ac\u201d needs verification",
+        "No direct folio-level entropy breakdown for A vs B has been provided"
+      ],
+      "test": "Partition the corpus into Currier-A and Currier-B folios; compute per-folio glyph entropy for each partition; run a two-sample t-test on the per-folio entropy distributions of A vs. B.",
+      "test_metric": "Mean glyph entropy of Currier-A folios minus mean glyph entropy of Currier-B folios",
+      "test_threshold": "Confirm if A-entropy exceeds B-entropy by \u00e2\u2030\u00a50.05 bits with p<0.05; deny if difference is <0.02 bits or B-entropy is higher.",
+      "tests_run": [],
+      "tests_remaining": [
+        "Partition the corpus into Currier-A and Currier-B folios; compute per-folio glyph entropy for each partition; run a two-sample t-test on the per-folio entropy distributions of A vs. B."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "Detecting a systematic entropy asymmetry between scribal hands would constrain whether the A/B split is a language boundary or a cipher-table boundary, eliminating one of the two leading explanations."
+    },
+    {
+      "id": "H052",
+      "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) is caused by a label-encoding convention in which each label token is drawn from a closed vocabulary of fewer than 150 distinct words, and the type-token ratio for zodiac-section words is significantly lower than for any prose section (herbal, recipes, text-only).",
+      "type": "structural",
+      "confidence": 0.67,
+      "evidence_for": [
+        "Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d consistent with repetitive labeling",
+        "Low entropy is most parsimoniously explained by a small, frequently recycled label set",
+        "Astronomical section (872 words, entropy 3.7471) shows a similar pattern, suggesting label-driven encoding across diagram sections",
+        "High-probability beliefs [0.645, 0.478] already support label-oriented encoding in zodiac"
+      ],
+      "evidence_against": [
+        "Low entropy could also result from a polyalphabetic cipher that cycles with short period in label contexts",
+        "If labels were drawn from a truly closed vocabulary, unique word count for zodiac should be well under 150 \u00e2\u20ac\u201d this can be falsified directly",
+        "The zodiac section could simply contain shorter words, which mechanically lowers entropy"
+      ],
+      "test": "Count distinct word types in the zodiac section; compute type-token ratio (TTR) for zodiac vs. herbal and recipes sections; compare average word length distributions across sections using a KS test.",
+      "test_metric": "Zodiac TTR, zodiac unique word count, and KS statistic comparing zodiac vs. herbal word-length distributions",
+      "test_threshold": "Confirm if zodiac unique word count <150 and zodiac TTR is at least 0.15 lower than herbal TTR; deny if zodiac unique word count >250 or TTR difference <0.05.",
+      "tests_run": [],
+      "tests_remaining": [
+        "Count distinct word types in the zodiac section; compute type-token ratio (TTR) for zodiac vs. herbal and recipes sections; compare average word length distributions across sections using a KS test."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "A confirmed label-vocabulary ceiling would let researchers treat zodiac tokens as a constrained ciphertext with known plaintext candidates (month names, star names, nymph labels), creating a potential crib for the broader cipher."
+    },
+    {
+      "id": "H053",
+      "claim": "The text-only section's elevated entropy (3.9016 bits, highest of all sections) reflects unenciphered or lightly enciphered natural-language prose, and its word bigram entropy is significantly higher than that of the zodiac and astronomical sections, consistent with natural syntactic variation rather than label repetition.",
+      "type": "language",
+      "confidence": 0.65,
+      "evidence_for": [
+        "Text-only entropy 3.9016 bits approaches Latin (~4.0) and Italian (~3.95) glyph entropy, consistent with minimal or no transposition",
+        "High-probability belief [0.677] already supports text-only section as closest to natural language",
+        "7 folios of continuous prose with no illustrations would naturally have richer syntactic context than diagram labels"
+      ],
+      "evidence_against": [
+        "Higher entropy could reflect a more complex cipher layer rather than less encoding",
+        "Small section size (7 folios, 2,349 words) limits statistical power for bigram entropy estimation",
+        "If the text-only section uses a different cipher key, elevated entropy could be artifactual"
+      ],
+      "test": "Compute word-level bigram entropy H(w2|w1) for text-only, zodiac, astronomical, and herbal sections; compare section-level bigram entropies using bootstrap confidence intervals; additionally compute the ratio of word bigram entropy to unigram entropy as a syntactic regularity index.",
+      "test_metric": "Word bigram entropy per section and bigram/unigram entropy ratio",
+      "test_threshold": "Confirm if text-only bigram entropy exceeds zodiac bigram entropy by \u00e2\u2030\u00a50.3 bits and the bigram/unigram ratio for text-only is closest to values observed in naturally occurring medieval Latin or Italian; deny if text-only bigram entropy is not the highest among all sections.",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute word-level bigram entropy H(w2|w1) for text-only, zodiac, astronomical, and herbal sections; compare section-level bigram entropies using bootstrap confidence intervals; additionally compute the ratio of word bigram entropy to unigram entropy as a syntactic regularity index."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If bigram entropy in text-only exceeds that of label-heavy sections by a measurable margin, it would suggest the section carries genuine syntactic structure, making it the highest-priority target for plaintext attack and potential crib identification."
+    },
+    {
+      "id": "H054",
+      "claim": "Word-initial glyph constraints (o, c, q, s, d dominating) and word-final glyph constraints (y, n, l, r, o dominating) are not merely phonotactic but reflect a codebook structure in which word-initial glyphs encode semantic category (e.g., plant part, action, quantity) and word-final glyphs encode grammatical role (e.g., noun, verb, adjective), such that co-occurrence of specific initial+final glyph pairs is non-uniform and significantly exceeds chance across all sections.",
+      "type": "cipher",
+      "confidence": 0.52,
+      "evidence_for": [
+        "Positional glyph constraints are well-established and too strong to be purely phonotactic in a 25-glyph alphabet",
+        "Top words cluster around specific initial-final pairs: daiin (d\u00e2\u20ac\u00a6n), chedy (c\u00e2\u20ac\u00a6y), shedy (s\u00e2\u20ac\u00a6y), chol (c\u00e2\u20ac\u00a6l), chey (c\u00e2\u20ac\u00a6y) \u00e2\u20ac\u201d suggesting paradigmatic substitution",
+        "If initial glyphs encode semantic class, section-specific vocabulary (herbal vs. zodiac) should show different initial-glyph frequency profiles"
+      ],
+      "evidence_against": [
+        "A simpler explanation is that initial/final constraints are cipher artifacts (e.g., nulls or padding) with no semantic content",
+        "The low glyph alphabet size (25) limits the number of distinct categories encodable at word boundaries",
+        "Cross-section initial-glyph frequency data is not yet available to confirm section-specific profiles"
+      ],
+      "test": "Build a contingency table of word-initial \u00c3\u2014 word-final glyph pairs across all tokens; compute chi-squared statistic for independence; then stratify by section and compute per-section initial-glyph frequency profiles, testing whether section membership predicts initial-glyph distribution using a multinomial logistic regression or permutation test.",
+      "test_metric": "Chi-squared statistic for initial\u00c3\u2014final glyph independence and between-section initial-glyph KL divergence",
+      "test_threshold": "Confirm if chi-squared p<0.001 for non-independence of initial\u00c3\u2014final pairs AND KL divergence between herbal and zodiac initial-glyph distributions exceeds 0.10 nats; deny if chi-squared p>0.05 or KL divergence <0.03 nats.",
+      "tests_run": [],
+      "tests_remaining": [
+        "Build a contingency table of word-initial \u00c3\u2014 word-final glyph pairs across all tokens; compute chi-squared statistic for independence; then stratify by section and compute per-section initial-glyph frequency profiles, testing whether section membership predicts initial-glyph distribution using a multinomial logistic regression or permutation test."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "Non-random co-occurrence of boundary glyphs combined with section-specific initial profiles would provide strong evidence for a structured codebook rather than a simple substitution cipher, fundamentally changing the decipherment strategy required."
+    }
+  ],
+  "raw_response": "{\"hypotheses\":[{\"claim\":\"The extremely high hapax ratio (70.1%) is produced by a systematic null-suffix appended to a smaller core vocabulary: each base word receives one of a small set of suffixes (e.g., -y, -in, -ain, -dy, -edy) to produce surface tokens, meaning the effective vocabulary after stripping common suffixes would shrink to roughly 2,000\u00e2\u20ac\u201c2,500 unique roots with a Zipf exponent closer to 1.0.\",\"type\":\"cipher\",\"confidence\":0.58,\"evidence_for\":[\"Top words 'daiin', 'aiin', 'chedy', 'shedy', 'chol', 'chey' share recurring suffix clusters (-ain, -edy, -ol, -ey)\",\"Word-final glyph distribution strongly concentrated on y, n, l, r, o \u00e2\u20ac\u201d consistent with a small suffix inventory\",\"Zipf exponent 0.8946 is flatter than natural language (~1.0), consistent with vocabulary inflation by suffix variation\",\"High hapax ratio is more naturally explained by combinatorial suffix attachment than by rich natural-language vocabulary\"],\"evidence_against\":[\"If suffixes were purely null/decorative, word-internal glyph entropy should drop after stripping \u00e2\u20ac\u201d not yet verified\",\"Currier A/B split may reflect suffix-set differences, complicating a uniform stripping rule\",\"Some hapax forms may be genuine rare words rather than suffix variants\"],\"test\":\"Enumerate candidate suffix families by clustering word-final bigrams and trigrams; strip the top 10 suffix patterns from all tokens; recompute vocabulary size, hapax ratio, and Zipf exponent on the stemmed corpus.\",\"test_metric\":\"Post-stripping hapax ratio and Zipf exponent\",\"test_threshold\":\"Confirm if post-stripping hapax ratio falls below 40% and Zipf exponent rises above 0.95; deny if hapax ratio remains above 60% or Zipf exponent does not change significantly.\",\"reasoning\":\"If a handful of suffixes account for the vocabulary explosion, stripping them would reveal a compact core vocabulary compatible with a known medieval language, dramatically narrowing the decipherment search space.\"},{\"claim\":\"The Currier A/B scribal split encodes the same underlying language but with two distinct homophonic substitution tables of different sizes: Currier A uses a smaller homophone set (lower token count, 11,022 words) with higher per-glyph entropy, while Currier B uses a larger homophone set producing lower per-glyph entropy, such that the weighted average glyph entropy of A-folios exceeds that of B-folios by at least 0.05 bits.\",\"type\":\"cipher\",\"confidence\":0.61,\"evidence_for\":[\"Currier B is more than twice as large as A (23,766 vs 11,022 words), consistent with a richer encoding alphabet\",\"Overall glyph entropy 3.8627 bits is a blend; section-level entropy variation (3.71\u00e2\u20ac\u201c3.90) is consistent with variable homophone table sizes\",\"High-probability belief [0.677] already supports same underlying language for A and B\"],\"evidence_against\":[\"Entropy difference between sections may reflect content type (label-heavy zodiac vs. prose recipes) rather than table size\",\"A larger homophone set in B would predict lower hapax ratio in B-sections if homophones map to fewer roots \u00e2\u20ac\u201d needs verification\",\"No direct folio-level entropy breakdown for A vs B has been provided\"],\"test\":\"Partition the corpus into Currier-A and Currier-B folios; compute per-folio glyph entropy for each partition; run a two-sample t-test on the per-folio entropy distributions of A vs. B.\",\"test_metric\":\"Mean glyph entropy of Currier-A folios minus mean glyph entropy of Currier-B folios\",\"test_threshold\":\"Confirm if A-entropy exceeds B-entropy by \u00e2\u2030\u00a50.05 bits with p<0.05; deny if difference is <0.02 bits or B-entropy is higher.\",\"reasoning\":\"Detecting a systematic entropy asymmetry between scribal hands would constrain whether the A/B split is a language boundary or a cipher-table boundary, eliminating one of the two leading explanations.\"},{\"claim\":\"The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) is caused by a label-encoding convention in which each label token is drawn from a closed vocabulary of fewer than 150 distinct words, and the type-token ratio for zodiac-section words is significantly lower than for any prose section (herbal, recipes, text-only).\",\"type\":\"structural\",\"confidence\":0.67,\"evidence_for\":[\"Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d consistent with repetitive labeling\",\"Low entropy is most parsimoniously explained by a small, frequently recycled label set\",\"Astronomical section (872 words, entropy 3.7471) shows a similar pattern, suggesting label-driven encoding across diagram sections\",\"High-probability beliefs [0.645, 0.478] already support label-oriented encoding in zodiac\"],\"evidence_against\":[\"Low entropy could also result from a polyalphabetic cipher that cycles with short period in label contexts\",\"If labels were drawn from a truly closed vocabulary, unique word count for zodiac should be well under 150 \u00e2\u20ac\u201d this can be falsified directly\",\"The zodiac section could simply contain shorter words, which mechanically lowers entropy\"],\"test\":\"Count distinct word types in the zodiac section; compute type-token ratio (TTR) for zodiac vs. herbal and recipes sections; compare average word length distributions across sections using a KS test.\",\"test_metric\":\"Zodiac TTR, zodiac unique word count, and KS statistic comparing zodiac vs. herbal word-length distributions\",\"test_threshold\":\"Confirm if zodiac unique word count <150 and zodiac TTR is at least 0.15 lower than herbal TTR; deny if zodiac unique word count >250 or TTR difference <0.05.\",\"reasoning\":\"A confirmed label-vocabulary ceiling would let researchers treat zodiac tokens as a constrained ciphertext with known plaintext candidates (month names, star names, nymph labels), creating a potential crib for the broader cipher.\"},{\"claim\":\"The text-only section's elevated entropy (3.9016 bits, highest of all sections) reflects unenciphered or lightly enciphered natural-language prose, and its word bigram entropy is significantly higher than that of the zodiac and astronomical sections, consistent with natural syntactic variation rather than label repetition.\",\"type\":\"language\",\"confidence\":0.65,\"evidence_for\":[\"Text-only entropy 3.9016 bits approaches Latin (~4.0) and Italian (~3.95) glyph entropy, consistent with minimal or no transposition\",\"High-probability belief [0.677] already supports text-only section as closest to natural language\",\"7 folios of continuous prose with no illustrations would naturally have richer syntactic context than diagram labels\"],\"evidence_against\":[\"Higher entropy could reflect a more complex cipher layer rather than less encoding\",\"Small section size (7 folios, 2,349 words) limits statistical power for bigram entropy estimation\",\"If the text-only section uses a different cipher key, elevated entropy could be artifactual\"],\"test\":\"Compute word-level bigram entropy H(w2|w1) for text-only, zodiac, astronomical, and herbal sections; compare section-level bigram entropies using bootstrap confidence intervals; additionally compute the ratio of word bigram entropy to unigram entropy as a syntactic regularity index.\",\"test_metric\":\"Word bigram entropy per section and bigram/unigram entropy ratio\",\"test_threshold\":\"Confirm if text-only bigram entropy exceeds zodiac bigram entropy by \u00e2\u2030\u00a50.3 bits and the bigram/unigram ratio for text-only is closest to values observed in naturally occurring medieval Latin or Italian; deny if text-only bigram entropy is not the highest among all sections.\",\"reasoning\":\"If bigram entropy in text-only exceeds that of label-heavy sections by a measurable margin, it would suggest the section carries genuine syntactic structure, making it the highest-priority target for plaintext attack and potential crib identification.\"},{\"claim\":\"Word-initial glyph constraints (o, c, q, s, d dominating) and word-final glyph constraints (y, n, l, r, o dominating) are not merely phonotactic but reflect a codebook structure in which word-initial glyphs encode semantic category (e.g., plant part, action, quantity) and word-final glyphs encode grammatical role (e.g., noun, verb, adjective), such that co-occurrence of specific initial+final glyph pairs is non-uniform and significantly exceeds chance across all sections.\",\"type\":\"cipher\",\"confidence\":0.52,\"evidence_for\":[\"Positional glyph constraints are well-established and too strong to be purely phonotactic in a 25-glyph alphabet\",\"Top words cluster around specific initial-final pairs: daiin (d\u00e2\u20ac\u00a6n), chedy (c\u00e2\u20ac\u00a6y), shedy (s\u00e2\u20ac\u00a6y), chol (c\u00e2\u20ac\u00a6l), chey (c\u00e2\u20ac\u00a6y) \u00e2\u20ac\u201d suggesting paradigmatic substitution\",\"If initial glyphs encode semantic class, section-specific vocabulary (herbal vs. zodiac) should show different initial-glyph frequency profiles\"],\"evidence_against\":[\"A simpler explanation is that initial/final constraints are cipher artifacts (e.g., nulls or padding) with no semantic content\",\"The low glyph alphabet size (25) limits the number of distinct categories encodable at word boundaries\",\"Cross-section initial-glyph frequency data is not yet available to confirm section-specific profiles\"],\"test\":\"Build a contingency table of word-initial \u00c3\u2014 word-final glyph pairs across all tokens; compute chi-squared statistic for independence; then stratify by section and compute per-section initial-glyph frequency profiles, testing whether section membership predicts initial-glyph distribution using a multinomial logistic regression or permutation test.\",\"test_metric\":\"Chi-squared statistic for initial\u00c3\u2014final glyph independence and between-section initial-glyph KL divergence\",\"test_threshold\":\"Confirm if chi-squared p<0.001 for non-independence of initial\u00c3\u2014final pairs AND KL divergence between herbal and zodiac initial-glyph distributions exceeds 0.10 nats; deny if chi-squared p>0.05 or KL divergence <0.03 nats.\",\"reasoning\":\"Non-random co-occurrence of boundary glyphs combined with section-specific initial profiles would provide strong evidence for a structured codebook rather than a simple substitution cipher, fundamentally changing the decipherment strategy required.\"}]}"
+}

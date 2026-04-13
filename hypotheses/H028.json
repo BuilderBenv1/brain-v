@@ -2,7 +2,7 @@
   "id": "H028",
   "claim": "The high hapax rate (70.1%) is produced by a systematic nulls-insertion or verbose encoding scheme \u00e2\u20ac\u201d specifically, that hapax words are morphologically related to non-hapax words by addition or substitution of a single terminal glyph, such that > 50% of hapax words have a Levenshtein distance of 1 from a high-frequency word",
   "type": "cipher",
-  "confidence": 0.336,
+  "confidence": 0.047,
   "evidence_for": [
     "70.1% hapax rate is anomalously high for any natural language or simple substitution of a natural language",
     "Word-final glyphs ['y','n','l','r','o'] are highly constrained, suggesting terminal glyph variation is systematic",
@@ -24,10 +24,90 @@
       "passed": false,
       "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
       "confidence_change": "0.410 -> 0.336"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "for each hapax word, compute the minimum levenshtein distance to any word with frequency > 10; repor",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.336 -> 0.275"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "for each hapax word, compute the minimum levenshtein distance to any word with frequency > 10; repor",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.275 -> 0.225"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "for each hapax word, compute the minimum levenshtein distance to any word with frequency > 10; repor",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.225 -> 0.184"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "for each hapax word, compute the minimum levenshtein distance to any word with frequency > 10; repor",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.184 -> 0.151"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "for each hapax word, compute the minimum levenshtein distance to any word with frequency > 10; repor",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.151 -> 0.124"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "for each hapax word, compute the minimum levenshtein distance to any word with frequency > 10; repor",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.124 -> 0.102"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "for each hapax word, compute the minimum levenshtein distance to any word with frequency > 10; repor",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.102 -> 0.084"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "for each hapax word, compute the minimum levenshtein distance to any word with frequency > 10; repor",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.084 -> 0.069"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "for each hapax word, compute the minimum levenshtein distance to any word with frequency > 10; repor",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.069 -> 0.057"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "for each hapax word, compute the minimum levenshtein distance to any word with frequency > 10; repor",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.057 -> 0.047"
     }
   ],
   "tests_remaining": [],
-  "status": "active",
+  "status": "eliminated",
   "parent": null,
   "created": "2026-04-13",
   "last_tested": "2026-04-13",

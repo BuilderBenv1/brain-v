@@ -15,7 +15,9 @@
       "Bash(ls C:/Projects/brain-v/hypotheses/FA*.json)",
       "Bash(python:*)",
       "Bash(claude:*)",
-      "Bash(echo \"EXIT: $?\")"
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(ls C:/Projects/brain-v/hypotheses/H*.json)",
+      "Bash(tasklist)"
     ]
   }
 }

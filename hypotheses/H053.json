@@ -1,0 +1,35 @@
+{
+  "id": "H053",
+  "claim": "The text-only section's elevated entropy (3.9016 bits, highest of all sections) reflects unenciphered or lightly enciphered natural-language prose, and its word bigram entropy is significantly higher than that of the zodiac and astronomical sections, consistent with natural syntactic variation rather than label repetition.",
+  "type": "language",
+  "confidence": 0.699,
+  "evidence_for": [
+    "Text-only entropy 3.9016 bits approaches Latin (~4.0) and Italian (~3.95) glyph entropy, consistent with minimal or no transposition",
+    "High-probability belief [0.677] already supports text-only section as closest to natural language",
+    "7 folios of continuous prose with no illustrations would naturally have richer syntactic context than diagram labels"
+  ],
+  "evidence_against": [
+    "Higher entropy could reflect a more complex cipher layer rather than less encoding",
+    "Small section size (7 folios, 2,349 words) limits statistical power for bigram entropy estimation",
+    "If the text-only section uses a different cipher key, elevated entropy could be artifactual"
+  ],
+  "test": "Compute word-level bigram entropy H(w2|w1) for text-only, zodiac, astronomical, and herbal sections; compare section-level bigram entropies using bootstrap confidence intervals; additionally compute the ratio of word bigram entropy to unigram entropy as a syntactic regularity index.",
+  "test_metric": "Word bigram entropy per section and bigram/unigram entropy ratio",
+  "test_threshold": "Confirm if text-only bigram entropy exceeds zodiac bigram entropy by \u00e2\u2030\u00a50.3 bits and the bigram/unigram ratio for text-only is closest to values observed in naturally occurring medieval Latin or Italian; deny if text-only bigram entropy is not the highest among all sections.",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute word-level bigram entropy h(w2|w1) for text-only, zodiac, astronomical, and herbal sections;",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.650 -> 0.699"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "If bigram entropy in text-only exceeds that of label-heavy sections by a measurable margin, it would suggest the section carries genuine syntactic structure, making it the highest-priority target for plaintext attack and potential crib identification."
+}

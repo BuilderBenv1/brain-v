@@ -2,7 +2,7 @@
   "id": "H018",
   "claim": "The text is encoded using a simple substitution cipher on an unknown language.",
   "type": "language",
-  "confidence": 0.355,
+  "confidence": 0.184,
   "evidence_for": [
     "The glyph entropy levels are lower than expected for Latin or Italian",
     "The word-final glyph distribution shows no clear pattern matching known languages"
@@ -27,22 +27,6 @@
       "passed": null,
       "details": "Could not evaluate: Run a language identification test on the text using machine learning algorithms",
       "confidence_change": "0.167 -> 0.184"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.78,
-      "passed": true,
-      "details": "Zipf exponent of 0.8946 (R\u00c2\u00b2=0.9084) indicates strong compliance with natural language statistical patterns, and non-uniform glyph entropy (3.86 bits for 25 glyphs) suggests substitution-encoded text rather than random data.",
-      "confidence_change": "0.184 -> 0.279"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.7,
-      "passed": true,
-      "details": "Strong Zipfian distribution (R\u00c2\u00b2=0.9084, exponent 0.8946) closely matches natural language frequency patterns preserved by substitution ciphers; however, hapax ratio of 0.701 is elevated for a natural language text of this size, introducing some uncertainty.",
-      "confidence_change": "0.279 -> 0.355"
     }
   ],
   "tests_remaining": [],

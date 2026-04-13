@@ -2,7 +2,7 @@
   "id": "H022",
   "claim": "The zodiac and astronomical sections use a systematically different word-order encoding than herbal and recipes sections, reflecting a positional transposition cipher layer applied on top of substitution, detectable as reduced local bigram predictability at section boundaries relative to within-section transitions.",
   "type": "structural",
-  "confidence": 0.467,
+  "confidence": 0.985,
   "evidence_for": [
     "Zodiac entropy (3.7149 bits) and astronomical entropy (3.7471 bits) are measurably lower than recipes (3.8586 bits) and text-only (3.9016 bits), suggesting different encoding density",
     "Belief 0.7 that different sections use different encoding methods",
@@ -23,6 +23,198 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.380 -> 0.467"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.467 -> 0.541"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.541 -> 0.605"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.605 -> 0.660"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.660 -> 0.707"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.707 -> 0.748"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.748 -> 0.783"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.783 -> 0.813"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.813 -> 0.839"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.839 -> 0.861"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.861 -> 0.880"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.880 -> 0.897"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.897 -> 0.911"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.911 -> 0.923"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.923 -> 0.934"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.934 -> 0.943"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.943 -> 0.951"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.951 -> 0.958"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.958 -> 0.964"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.964 -> 0.969"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.969 -> 0.973"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.973 -> 0.977"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.977 -> 0.980"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.980 -> 0.983"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.983 -> 0.985"
     }
   ],
   "tests_remaining": [],

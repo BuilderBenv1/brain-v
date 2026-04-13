@@ -2,7 +2,7 @@
   "id": "H009",
   "claim": "The text is encoded using a simple substitution cipher on an unknown language.",
   "type": "cipher",
-  "confidence": 0.184,
+  "confidence": 0.305,
   "evidence_for": [
     "Glyph entropy levels are lower than expected for Latin or Italian",
     "Word-final glyph distribution does not match Latin or Italian word endings"
@@ -45,6 +45,38 @@
       "passed": null,
       "details": "Could not evaluate: Chi-squared test for independence between word-final glyphs and language model predictions",
       "confidence_change": "0.167 -> 0.184"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.48,
+      "passed": null,
+      "details": "Zipfian distribution (0.89 exponent, R\u00c2\u00b2=0.9084) supports cipher hypothesis, but unusually high glyph entropy (83% of max) and elevated hapax ratio (0.701) contradict typical substitution cipher statistics where character frequencies should remain non-uniform; evidence is mixed and inconclusive.",
+      "confidence_change": "0.184 -> 0.199"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.75,
+      "passed": true,
+      "details": "Zipf exponent (0.8946) closely matches natural language patterns, word length and entropy are consistent with substitution-ciphered text rather than random gibberish, and type-token ratio suggests preserved linguistic structure.",
+      "confidence_change": "0.199 -> 0.289"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.25,
+      "passed": false,
+      "details": "The Zipfian exponent (0.8946) supports natural language structure, but the 70.1% hapax ratio is anomalously high\u00e2\u20ac\u201dnatural languages typically show 40-50% hapax rates, and simple substitution preserves word frequency distributions, making this statistic inconsistent with the hypothesis.",
+      "confidence_change": "0.289 -> 0.224"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.7,
+      "passed": true,
+      "details": "Zipfian exponent (0.8946) and entropy are consistent with natural language preserved through substitution, but elevated hapax ratio (0.701) suggests unusual vocabulary distribution creating moderate support rather than strong evidence.",
+      "confidence_change": "0.224 -> 0.305"
     }
   ],
   "tests_remaining": [],

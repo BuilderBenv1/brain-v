@@ -2,7 +2,7 @@
   "id": "H005",
   "claim": "The text is encoded using a simple substitution cipher on a language other than Latin or Italian.",
   "type": "cipher",
-  "confidence": 0.111,
+  "confidence": 0.17,
   "evidence_for": [
     "Glyph entropy is lower than expected for Latin and Italian (~4.0 bits)"
   ],
@@ -56,18 +56,58 @@
     {
       "date": "2026-04-13",
       "test": "claude_evaluation",
-      "score": 0.42,
+      "score": 0.35,
       "passed": false,
-      "details": "Zipf exponent of 0.8946 supports natural language structure, but the unusually high hapax ratio of 0.701 contradicts typical language patterns expected from a simple substitution cipher.",
-      "confidence_change": "0.167 -> 0.138"
+      "details": "The high hapax ratio (70.1%) contradicts typical language statistics and suggests word frequencies are more random than expected from a simple substitution cipher on natural language, despite the reasonable Zipf exponent indicating some linguistic structure.",
+      "confidence_change": "0.167 -> 0.134"
     },
     {
       "date": "2026-04-13",
       "test": "claude_evaluation",
       "score": 0.35,
       "passed": false,
-      "details": "The very high hapax ratio (0.701) contradicts simple substitution cipher expectation, which should preserve natural language word frequency distributions; flattened Zipf exponent (0.894) and anomalous entropy patterns further suggest the text either employs a non-simple cipher or lacks natural language structure.",
-      "confidence_change": "0.138 -> 0.111"
+      "details": "The Zipf exponent (0.8946) and glyph entropy pattern support natural language characteristics, but the hapax ratio of 0.701 is anomalously high compared to typical natural languages (usually 0.40-0.55), suggesting the text is not a simple substitution cipher on a standard language.",
+      "confidence_change": "0.134 -> 0.108"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.25,
+      "passed": false,
+      "details": "The low Zipf exponent (0.8946) and unusually high Hapax ratio (0.701) contradict expectations for simple substitution on natural language, which typically shows steeper Zipfian distributions and lower hapax frequencies.",
+      "confidence_change": "0.108 -> 0.084"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.62,
+      "passed": true,
+      "details": "Strong Zipf exponent (0.8946) and reasonable glyph entropy support the substitution cipher hypothesis, but elevated hapax ratio (0.701) suggests either an atypical language or non-simple encoding scheme, making the evidence mixed rather than conclusive.",
+      "confidence_change": "0.084 -> 0.169"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.75,
+      "passed": true,
+      "details": "The near-perfect Zipf exponent (0.8946, R\u00c2\u00b2=0.9084) strongly indicates an underlying natural language structure preserved through substitution, which is exactly what this hypothesis predicts. However, the elevated hapax ratio (0.701) is atypical for natural languages, introducing moderate uncertainty.",
+      "confidence_change": "0.169 -> 0.262"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "Zipf exponent of 0.8946 and word length of 5.03 suggest natural language structure, but hapax ratio of 0.701 is anomalously high for typical languages (expected 0.40-0.50), indicating encoding is not simple substitution or plaintext is highly specialized/artificial.",
+      "confidence_change": "0.262 -> 0.211"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "Zipf exponent (0.8946) and word length (5.03) match natural language, but hapax ratio (0.701) is anomalously high\u00e2\u20ac\u201d70% unique words appear once, far exceeding the 30-50% typical of natural language, contradicting simple substitution cipher expectations.",
+      "confidence_change": "0.211 -> 0.170"
     }
   ],
   "tests_remaining": [],

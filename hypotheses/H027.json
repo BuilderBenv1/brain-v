@@ -2,7 +2,7 @@
   "id": "H027",
   "claim": "The text-only section (entropy 3.9016 bits, 7 folios) represents the closest approximation to natural language and encodes a different register or genre than the herbal/zodiac sections, such that its bigram entropy is statistically distinguishable (p < 0.05) from all other sections and its type-token ratio is highest among all sections",
   "type": "structural",
-  "confidence": 0.673,
+  "confidence": 0.99,
   "evidence_for": [
     "Text-only entropy (3.9016) is highest of all sections and closest to Latin (~4.0) and Italian (~3.95)",
     "Absence of illustrations may mean less label-like, more prose-like text",
@@ -23,6 +23,190 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.620 -> 0.673"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.673 -> 0.719"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.719 -> 0.758"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.758 -> 0.792"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.792 -> 0.821"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.821 -> 0.846"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.846 -> 0.868"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.868 -> 0.886"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.886 -> 0.902"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.902 -> 0.916"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.916 -> 0.928"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.928 -> 0.938"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.938 -> 0.947"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.947 -> 0.954"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.954 -> 0.960"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.960 -> 0.966"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.966 -> 0.971"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.971 -> 0.975"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.975 -> 0.978"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.978 -> 0.981"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.981 -> 0.984"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.984 -> 0.986"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.986 -> 0.988"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.988 -> 0.990"
     }
   ],
   "tests_remaining": [],

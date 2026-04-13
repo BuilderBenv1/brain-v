@@ -1,0 +1,59 @@
+{
+  "id": "H037",
+  "claim": "The zodiac and label-heavy sections (zodiac entropy 3.7149 bits, astronomical 3.7471 bits) use a homophonic substitution scheme in which common plaintext letters map to multiple glyphs, suppressing entropy relative to the herbal and text-only sections, while the text-only section (entropy 3.9016 bits) uses a simpler monoalphabetic or unenciphered encoding.",
+  "type": "cipher",
+  "confidence": 0.738,
+  "evidence_for": [
+    "Zodiac section has lowest entropy (3.7149) and consists primarily of short labels, the classic context for homophones to suppress frequency peaks",
+    "Text-only section has highest entropy (3.9016 bits), closest to natural Latin/Italian entropy, consistent with less aggressive homophonic expansion",
+    "Top-10 word list is dominated by short tokens (ol, ar, or, y) typical of label vocabularies with limited semantic variety"
+  ],
+  "evidence_against": [
+    "Homophonic substitution should push entropy toward the maximum for the glyph set; lower entropy in label sections is more consistent with reduced vocabulary, not homophones",
+    "Only 25 unique glyphs are recorded; a true homophonic cipher on Latin (23-letter alphabet) would require more symbols unless many-to-one mapping is very coarse",
+    "Word entropy 10.4508 bits is very high, inconsistent with the vocabulary compression expected from homophones"
+  ],
+  "test": "For each section, compute the index of coincidence (IC) at the glyph level and compare to expected IC for monoalphabetic substitution (~0.065 for Latin) vs. homophonic/polyalphabetic (~0.038). Also compute type-token ratio by section.",
+  "test_metric": "Per-section index of coincidence; type-token ratio; Pearson correlation between section entropy and section IC.",
+  "test_threshold": "Confirmation of homophonic in zodiac/astronomical: IC < 0.050 for those sections while text-only IC > 0.055. Denial: IC values are statistically uniform across all sections (ANOVA p > 0.05).",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "for each section, compute the index of coincidence (ic) at the glyph level and compare to expected i",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.520 -> 0.587"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "for each section, compute the index of coincidence (ic) at the glyph level and compare to expected i",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.587 -> 0.645"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "for each section, compute the index of coincidence (ic) at the glyph level and compare to expected i",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.645 -> 0.695"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "for each section, compute the index of coincidence (ic) at the glyph level and compare to expected i",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.695 -> 0.738"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "Establishing that low-entropy sections use homophones while text-only does not would create a ranked decipherment order starting with the text-only section, providing the clearest signal."
+}

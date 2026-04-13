@@ -1,0 +1,152 @@
+{
+  "date": "2026-04-13",
+  "cycle": "predict",
+  "model": "claude-code-cli",
+  "belief_count": 21,
+  "existing_hypothesis_count": 64,
+  "new_hypotheses": [
+    "H045",
+    "H046",
+    "H047",
+    "H048",
+    "H049"
+  ],
+  "hypotheses": [
+    {
+      "id": "H045",
+      "claim": "The high hapax ratio (70.1%) arises from a systematic abbreviation or suffix-stripping convention rather than from a large vocabulary, such that each Voynich 'word' represents a root plus a dropped inflectional ending \u00e2\u20ac\u201d testable by checking whether hapax forms cluster around specific glyph-final patterns that would correspond to stripped suffixes.",
+      "type": "cipher",
+      "confidence": 0.52,
+      "evidence_for": [
+        "70.1% hapax ratio far exceeds natural languages (Latin ~40\u00e2\u20ac\u201c50%, Italian ~45\u00e2\u20ac\u201c55%)",
+        "Short average word length (5.03) is consistent with abbreviated forms",
+        "Word-final glyphs dominated by y/n/l/r/o could represent a small set of suffix surrogates"
+      ],
+      "evidence_against": [
+        "If suffixes were stripped uniformly, word entropy (10.45 bits) would likely be lower than observed",
+        "Currier A/B split implies different scribal conventions, complicating a single abbreviation rule"
+      ],
+      "test": "Cluster all 8,261 unique words by their final 1\u00e2\u20ac\u201c2 glyphs; compute the type-token ratio within each final-glyph cluster and compare to the overall hapax rate. If abbreviation is the driver, hapax density should be uniform across final-glyph clusters rather than concentrated in rare final-glyph groups.",
+      "test_metric": "Per-cluster hapax ratio vs. overall hapax ratio (70.1%); chi-square test of homogeneity across clusters",
+      "test_threshold": "If no cluster deviates more than \u00c2\u00b110 percentage points from 70.1%, the abbreviation hypothesis gains support; deviation >20 pp in specific clusters would falsify it",
+      "tests_run": [],
+      "tests_remaining": [
+        "Cluster all 8,261 unique words by their final 1\u00e2\u20ac\u201c2 glyphs; compute the type-token ratio within each final-glyph cluster and compare to the overall hapax rate. If abbreviation is the driver, hapax density should be uniform across final-glyph clusters rather than concentrated in rare final-glyph groups."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "Identifying whether hapax inflation is structural (suffix-stripping) or lexical (genuine large vocabulary) directly constrains whether the cipher encodes a morphologically rich language and whether root-extraction preprocessing is needed before decipherment"
+    },
+    {
+      "id": "H046",
+      "claim": "The zodiac section's anomalously low entropy (3.7149 bits) and label-heavy structure indicate it uses a homophonic cipher with a reduced symbol set (fewer active glyphs per label), while the text-only section's high entropy (3.9016 bits) reflects unenciphered or lightly enciphered natural language prose \u00e2\u20ac\u201d meaning these two sections require different decipherment strategies.",
+      "type": "cipher",
+      "confidence": 0.64,
+      "evidence_for": [
+        "Zodiac entropy (3.7149) is lowest of all sections; text-only entropy (3.9016) is highest",
+        "Label registers in zodiac are typically short, repetitive, and positionally constrained",
+        "Text-only section entropy approaches Latin (~4.0) and Italian (~3.95) natural language levels"
+      ],
+      "evidence_against": [
+        "Section entropy differences are modest (~0.19 bits range), possibly explained by topic-specific vocabulary alone",
+        "A single cipher applied uniformly could still yield entropy variation through vocabulary domain effects"
+      ],
+      "test": "Compute bigram and trigram conditional entropy separately for zodiac vs. text-only sections; test whether zodiac shows significantly lower conditional entropy (indicating more repetitive/constrained sequences) and whether text-only conditional entropy matches that of a simple substitution cipher applied to Latin or Italian.",
+      "test_metric": "Conditional bigram entropy H(g_n | g_{n-1}) per section; compare to expected values for Latin substitution cipher (~3.6\u00e2\u20ac\u201c3.8 bits) and natural Latin prose (~3.5\u00e2\u20ac\u201c3.7 bits)",
+      "test_threshold": "If text-only conditional bigram entropy falls within 0.1 bits of Latin substitution cipher baseline and zodiac conditional entropy is >0.15 bits lower than text-only, the two-strategy hypothesis is supported",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute bigram and trigram conditional entropy separately for zodiac vs. text-only sections; test whether zodiac shows significantly lower conditional entropy (indicating more repetitive/constrained sequences) and whether text-only conditional entropy matches that of a simple substitution cipher applied to Latin or Italian."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, this would allow researchers to focus natural-language statistical attacks on the text-only section and label-matching attacks on the zodiac section independently, substantially narrowing the search space"
+    },
+    {
+      "id": "H047",
+      "claim": "The Currier A/B scribal split represents two different scribes encoding the same underlying language using two distinct but related glyph substitution tables (i.e., a two-key polyalphabetic or two-alphabet substitution), such that the same plaintext phoneme maps to different glyphs in A vs. B \u00e2\u20ac\u201d testable by checking whether word-length distributions and initial/final glyph frequencies in A and B are statistically compatible with a common underlying vocabulary after glyph remapping.",
+      "type": "cipher",
+      "confidence": 0.62,
+      "evidence_for": [
+        "Currier A (11,022 words) and B (23,766 words) differ in glyph frequencies but share structural constraints",
+        "The Zipf exponent (0.8946) across the full corpus suggests a unified underlying lexical distribution",
+        "Belief [0.668] already rates this hypothesis highly based on prior evidence"
+      ],
+      "evidence_against": [
+        "A/B split could reflect two different dialects or languages rather than two cipher keys on one language",
+        "If two scribes used different keys, overlapping sections should show frequency discontinuities at folio boundaries \u00e2\u20ac\u201d not yet confirmed"
+      ],
+      "test": "Extract the top-50 most frequent words in Currier A and top-50 in Currier B; compute Jaccard similarity of these sets and compare to the expected overlap if A and B are random draws from the same vocabulary. Separately, test whether the word-length frequency distribution of A and B are drawn from the same distribution (Kolmogorov-Smirnov test).",
+      "test_metric": "Jaccard similarity of top-50 word sets (A vs. B); KS statistic on word-length distributions",
+      "test_threshold": "Jaccard >0.3 and KS p-value >0.05 (fail to reject same distribution) supports shared vocabulary; Jaccard <0.15 or KS p<0.01 supports two distinct languages",
+      "tests_run": [],
+      "tests_remaining": [
+        "Extract the top-50 most frequent words in Currier A and top-50 in Currier B; compute Jaccard similarity of these sets and compare to the expected overlap if A and B are random draws from the same vocabulary. Separately, test whether the word-length frequency distribution of A and B are drawn from the same distribution (Kolmogorov-Smirnov test)."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "Distinguishing 'same language, two keys' from 'two languages' is critical: the former allows cross-dialect frequency alignment to bootstrap decipherment, the latter requires independent attacks on each section"
+    },
+    {
+      "id": "H048",
+      "claim": "The dominant word-initial glyph constraint (o, c, q, s, d account for most word starts) reflects a cipher rule in which a fixed 'onset marker' glyph class must precede the root \u00e2\u20ac\u201d analogous to a mandatory null prefix \u00e2\u20ac\u201d rather than reflecting the initial phoneme distribution of the underlying language, which would produce a flatter initial-glyph distribution matching Latin or Italian onset frequencies.",
+      "type": "cipher",
+      "confidence": 0.47,
+      "evidence_for": [
+        "Five glyphs dominating word-initial positions is unusually concentrated compared to Latin (where any of ~15 consonants can be word-initial)",
+        "Glyph 'q' appears word-initially but rarely or never word-finally \u00e2\u20ac\u201d a positional constraint inconsistent with natural phoneme distribution",
+        "Such onset constraints are consistent with a cipher rule (e.g., 'always begin encoded words with a class-marker glyph')"
+      ],
+      "evidence_against": [
+        "Some natural languages do have strong onset preferences; the underlying language could simply have restricted onset phonotactics",
+        "Italian word-initial vowel frequency could explain 'o' dominance if 'o' encodes a vowel class"
+      ],
+      "test": "Compute the entropy of the word-initial glyph distribution and compare it to the entropy of the word-internal and word-final glyph distributions. Then compare the word-initial glyph distribution to the expected initial-phoneme distribution of medieval Latin and Italian (using a reference corpus).",
+      "test_metric": "Shannon entropy of positional glyph distributions (initial vs. internal vs. final); KL divergence between Voynich initial-glyph distribution and Latin/Italian initial-phoneme distributions",
+      "test_threshold": "If initial-glyph entropy is >0.5 bits lower than internal-glyph entropy, onset marking is likely a cipher artifact; KL divergence >1.0 bit from both Latin and Italian would rule out direct phonemic mapping at word onset",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute the entropy of the word-initial glyph distribution and compare it to the entropy of the word-internal and word-final glyph distributions. Then compare the word-initial glyph distribution to the expected initial-phoneme distribution of medieval Latin and Italian (using a reference corpus)."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If onset glyphs are cipher artifacts (null prefixes or class markers), stripping them before frequency analysis could significantly improve character-frequency matching to candidate languages"
+    },
+    {
+      "id": "H049",
+      "claim": "The recipes section (25 folios, 11,611 words, entropy 3.8586 bits \u00e2\u20ac\u201d second highest and largest word count) encodes a list-structured text in which recurring syntactic templates produce predictable word-position bigrams, such that positional word-order entropy (entropy of word_n given word_{n-1} within a folio) is significantly lower in recipes than in the herbal or text-only sections.",
+      "type": "structural",
+      "confidence": 0.55,
+      "evidence_for": [
+        "Recipe and pharmaceutical texts in medieval Latin follow rigid syntactic templates (ingredient, quantity, preparation, application)",
+        "The recipes section has the highest word count (11,611), suggesting repetitive list structure",
+        "Entropy of 3.8586 is moderate \u00e2\u20ac\u201d consistent with structured but not purely label-based text"
+      ],
+      "evidence_against": [
+        "Without knowing the cipher, word-level positional entropy is confounded by vocabulary domain effects",
+        "The herbal section (10,872 words) has similar entropy (3.8478), suggesting domain alone may explain the similarity"
+      ],
+      "test": "Compute word-level bigram conditional entropy H(w_n | w_{n-1}) for the recipes section vs. the herbal and text-only sections. Additionally, test whether the recipes section shows higher within-folio word repetition rates (fraction of words on a folio that appear more than once on that same folio).",
+      "test_metric": "Word bigram conditional entropy per section; within-folio word repetition rate (fraction of repeated words per folio, averaged across folios in each section)",
+      "test_threshold": "If recipes section word bigram conditional entropy is >0.3 bits lower than text-only section, template-driven structure is supported; if within-folio repetition rate in recipes exceeds herbal by >5 percentage points, list structure is confirmed",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute word-level bigram conditional entropy H(w_n | w_{n-1}) for the recipes section vs. the herbal and text-only sections. Additionally, test whether the recipes section shows higher within-folio word repetition rates (fraction of words on a folio that appear more than once on that same folio)."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "Confirming list/template structure in the recipes section would allow researchers to use positional slot analysis (slot 1 = ingredient name, slot 2 = quantity, etc.) as a structural scaffold for decipherment, independently of knowing the cipher"
+    }
+  ],
+  "raw_response": "{\"hypotheses\":[{\"claim\":\"The high hapax ratio (70.1%) arises from a systematic abbreviation or suffix-stripping convention rather than from a large vocabulary, such that each Voynich 'word' represents a root plus a dropped inflectional ending \u00e2\u20ac\u201d testable by checking whether hapax forms cluster around specific glyph-final patterns that would correspond to stripped suffixes.\",\"type\":\"cipher\",\"confidence\":0.52,\"evidence_for\":[\"70.1% hapax ratio far exceeds natural languages (Latin ~40\u00e2\u20ac\u201c50%, Italian ~45\u00e2\u20ac\u201c55%)\",\"Short average word length (5.03) is consistent with abbreviated forms\",\"Word-final glyphs dominated by y/n/l/r/o could represent a small set of suffix surrogates\"],\"evidence_against\":[\"If suffixes were stripped uniformly, word entropy (10.45 bits) would likely be lower than observed\",\"Currier A/B split implies different scribal conventions, complicating a single abbreviation rule\"],\"test\":\"Cluster all 8,261 unique words by their final 1\u00e2\u20ac\u201c2 glyphs; compute the type-token ratio within each final-glyph cluster and compare to the overall hapax rate. If abbreviation is the driver, hapax density should be uniform across final-glyph clusters rather than concentrated in rare final-glyph groups.\",\"test_metric\":\"Per-cluster hapax ratio vs. overall hapax ratio (70.1%); chi-square test of homogeneity across clusters\",\"test_threshold\":\"If no cluster deviates more than \u00c2\u00b110 percentage points from 70.1%, the abbreviation hypothesis gains support; deviation >20 pp in specific clusters would falsify it\",\"reasoning\":\"Identifying whether hapax inflation is structural (suffix-stripping) or lexical (genuine large vocabulary) directly constrains whether the cipher encodes a morphologically rich language and whether root-extraction preprocessing is needed before decipherment\"},{\"claim\":\"The zodiac section's anomalously low entropy (3.7149 bits) and label-heavy structure indicate it uses a homophonic cipher with a reduced symbol set (fewer active glyphs per label), while the text-only section's high entropy (3.9016 bits) reflects unenciphered or lightly enciphered natural language prose \u00e2\u20ac\u201d meaning these two sections require different decipherment strategies.\",\"type\":\"cipher\",\"confidence\":0.64,\"evidence_for\":[\"Zodiac entropy (3.7149) is lowest of all sections; text-only entropy (3.9016) is highest\",\"Label registers in zodiac are typically short, repetitive, and positionally constrained\",\"Text-only section entropy approaches Latin (~4.0) and Italian (~3.95) natural language levels\"],\"evidence_against\":[\"Section entropy differences are modest (~0.19 bits range), possibly explained by topic-specific vocabulary alone\",\"A single cipher applied uniformly could still yield entropy variation through vocabulary domain effects\"],\"test\":\"Compute bigram and trigram conditional entropy separately for zodiac vs. text-only sections; test whether zodiac shows significantly lower conditional entropy (indicating more repetitive/constrained sequences) and whether text-only conditional entropy matches that of a simple substitution cipher applied to Latin or Italian.\",\"test_metric\":\"Conditional bigram entropy H(g_n | g_{n-1}) per section; compare to expected values for Latin substitution cipher (~3.6\u00e2\u20ac\u201c3.8 bits) and natural Latin prose (~3.5\u00e2\u20ac\u201c3.7 bits)\",\"test_threshold\":\"If text-only conditional bigram entropy falls within 0.1 bits of Latin substitution cipher baseline and zodiac conditional entropy is >0.15 bits lower than text-only, the two-strategy hypothesis is supported\",\"reasoning\":\"If confirmed, this would allow researchers to focus natural-language statistical attacks on the text-only section and label-matching attacks on the zodiac section independently, substantially narrowing the search space\"},{\"claim\":\"The Currier A/B scribal split represents two different scribes encoding the same underlying language using two distinct but related glyph substitution tables (i.e., a two-key polyalphabetic or two-alphabet substitution), such that the same plaintext phoneme maps to different glyphs in A vs. B \u00e2\u20ac\u201d testable by checking whether word-length distributions and initial/final glyph frequencies in A and B are statistically compatible with a common underlying vocabulary after glyph remapping.\",\"type\":\"cipher\",\"confidence\":0.62,\"evidence_for\":[\"Currier A (11,022 words) and B (23,766 words) differ in glyph frequencies but share structural constraints\",\"The Zipf exponent (0.8946) across the full corpus suggests a unified underlying lexical distribution\",\"Belief [0.668] already rates this hypothesis highly based on prior evidence\"],\"evidence_against\":[\"A/B split could reflect two different dialects or languages rather than two cipher keys on one language\",\"If two scribes used different keys, overlapping sections should show frequency discontinuities at folio boundaries \u00e2\u20ac\u201d not yet confirmed\"],\"test\":\"Extract the top-50 most frequent words in Currier A and top-50 in Currier B; compute Jaccard similarity of these sets and compare to the expected overlap if A and B are random draws from the same vocabulary. Separately, test whether the word-length frequency distribution of A and B are drawn from the same distribution (Kolmogorov-Smirnov test).\",\"test_metric\":\"Jaccard similarity of top-50 word sets (A vs. B); KS statistic on word-length distributions\",\"test_threshold\":\"Jaccard >0.3 and KS p-value >0.05 (fail to reject same distribution) supports shared vocabulary; Jaccard <0.15 or KS p<0.01 supports two distinct languages\",\"reasoning\":\"Distinguishing 'same language, two keys' from 'two languages' is critical: the former allows cross-dialect frequency alignment to bootstrap decipherment, the latter requires independent attacks on each section\"},{\"claim\":\"The dominant word-initial glyph constraint (o, c, q, s, d account for most word starts) reflects a cipher rule in which a fixed 'onset marker' glyph class must precede the root \u00e2\u20ac\u201d analogous to a mandatory null prefix \u00e2\u20ac\u201d rather than reflecting the initial phoneme distribution of the underlying language, which would produce a flatter initial-glyph distribution matching Latin or Italian onset frequencies.\",\"type\":\"cipher\",\"confidence\":0.47,\"evidence_for\":[\"Five glyphs dominating word-initial positions is unusually concentrated compared to Latin (where any of ~15 consonants can be word-initial)\",\"Glyph 'q' appears word-initially but rarely or never word-finally \u00e2\u20ac\u201d a positional constraint inconsistent with natural phoneme distribution\",\"Such onset constraints are consistent with a cipher rule (e.g., 'always begin encoded words with a class-marker glyph')\"],\"evidence_against\":[\"Some natural languages do have strong onset preferences; the underlying language could simply have restricted onset phonotactics\",\"Italian word-initial vowel frequency could explain 'o' dominance if 'o' encodes a vowel class\"],\"test\":\"Compute the entropy of the word-initial glyph distribution and compare it to the entropy of the word-internal and word-final glyph distributions. Then compare the word-initial glyph distribution to the expected initial-phoneme distribution of medieval Latin and Italian (using a reference corpus).\",\"test_metric\":\"Shannon entropy of positional glyph distributions (initial vs. internal vs. final); KL divergence between Voynich initial-glyph distribution and Latin/Italian initial-phoneme distributions\",\"test_threshold\":\"If initial-glyph entropy is >0.5 bits lower than internal-glyph entropy, onset marking is likely a cipher artifact; KL divergence >1.0 bit from both Latin and Italian would rule out direct phonemic mapping at word onset\",\"reasoning\":\"If onset glyphs are cipher artifacts (null prefixes or class markers), stripping them before frequency analysis could significantly improve character-frequency matching to candidate languages\"},{\"claim\":\"The recipes section (25 folios, 11,611 words, entropy 3.8586 bits \u00e2\u20ac\u201d second highest and largest word count) encodes a list-structured text in which recurring syntactic templates produce predictable word-position bigrams, such that positional word-order entropy (entropy of word_n given word_{n-1} within a folio) is significantly lower in recipes than in the herbal or text-only sections.\",\"type\":\"structural\",\"confidence\":0.55,\"evidence_for\":[\"Recipe and pharmaceutical texts in medieval Latin follow rigid syntactic templates (ingredient, quantity, preparation, application)\",\"The recipes section has the highest word count (11,611), suggesting repetitive list structure\",\"Entropy of 3.8586 is moderate \u00e2\u20ac\u201d consistent with structured but not purely label-based text\"],\"evidence_against\":[\"Without knowing the cipher, word-level positional entropy is confounded by vocabulary domain effects\",\"The herbal section (10,872 words) has similar entropy (3.8478), suggesting domain alone may explain the similarity\"],\"test\":\"Compute word-level bigram conditional entropy H(w_n | w_{n-1}) for the recipes section vs. the herbal and text-only sections. Additionally, test whether the recipes section shows higher within-folio word repetition rates (fraction of words on a folio that appear more than once on that same folio).\",\"test_metric\":\"Word bigram conditional entropy per section; within-folio word repetition rate (fraction of repeated words per folio, averaged across folios in each section)\",\"test_threshold\":\"If recipes section word bigram conditional entropy is >0.3 bits lower than text-only section, template-driven structure is supported; if within-folio repetition rate in recipes exceeds herbal by >5 percentage points, list structure is confirmed\",\"reasoning\":\"Confirming list/template structure in the recipes section would allow researchers to use positional slot analysis (slot 1 = ingredient name, slot 2 = quantity, etc.) as a structural scaffold for decipherment, independently of knowing the cipher\"}]}"
+}

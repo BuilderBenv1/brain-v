@@ -1,0 +1,42 @@
+{
+  "id": "H046",
+  "claim": "The zodiac section's anomalously low entropy (3.7149 bits) and label-heavy structure indicate it uses a homophonic cipher with a reduced symbol set (fewer active glyphs per label), while the text-only section's high entropy (3.9016 bits) reflects unenciphered or lightly enciphered natural language prose \u00e2\u20ac\u201d meaning these two sections require different decipherment strategies.",
+  "type": "cipher",
+  "confidence": 0.733,
+  "evidence_for": [
+    "Zodiac entropy (3.7149) is lowest of all sections; text-only entropy (3.9016) is highest",
+    "Label registers in zodiac are typically short, repetitive, and positionally constrained",
+    "Text-only section entropy approaches Latin (~4.0) and Italian (~3.95) natural language levels"
+  ],
+  "evidence_against": [
+    "Section entropy differences are modest (~0.19 bits range), possibly explained by topic-specific vocabulary alone",
+    "A single cipher applied uniformly could still yield entropy variation through vocabulary domain effects"
+  ],
+  "test": "Compute bigram and trigram conditional entropy separately for zodiac vs. text-only sections; test whether zodiac shows significantly lower conditional entropy (indicating more repetitive/constrained sequences) and whether text-only conditional entropy matches that of a simple substitution cipher applied to Latin or Italian.",
+  "test_metric": "Conditional bigram entropy H(g_n | g_{n-1}) per section; compare to expected values for Latin substitution cipher (~3.6\u00e2\u20ac\u201c3.8 bits) and natural Latin prose (~3.5\u00e2\u20ac\u201c3.7 bits)",
+  "test_threshold": "If text-only conditional bigram entropy falls within 0.1 bits of Latin substitution cipher baseline and zodiac conditional entropy is >0.15 bits lower than text-only, the two-strategy hypothesis is supported",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute bigram and trigram conditional entropy separately for zodiac vs. text-only sections; test wh",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.640 -> 0.690"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute bigram and trigram conditional entropy separately for zodiac vs. text-only sections; test wh",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.690 -> 0.733"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "If confirmed, this would allow researchers to focus natural-language statistical attacks on the text-only section and label-matching attacks on the zodiac section independently, substantially narrowing the search space"
+}

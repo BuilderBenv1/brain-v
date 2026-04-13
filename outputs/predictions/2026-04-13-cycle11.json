@@ -1,0 +1,154 @@
+{
+  "date": "2026-04-13",
+  "cycle": "predict",
+  "model": "claude-code-cli",
+  "belief_count": 17,
+  "existing_hypothesis_count": 59,
+  "new_hypotheses": [
+    "H040",
+    "H041",
+    "H042",
+    "H043",
+    "H044"
+  ],
+  "hypotheses": [
+    {
+      "id": "H040",
+      "claim": "The Currier A/B split corresponds to two different scribal hands applying the same underlying cipher to the same language but with different glyph allograph preferences, predictable via bigram transition matrix divergence between A and B corpora exceeding random variation.",
+      "type": "cipher",
+      "confidence": 0.61,
+      "evidence_for": [
+        "Currier B is ~2.15x larger (23,766 vs 11,022 words), consistent with a dominant scribe and a secondary contributor",
+        "Both A and B share top vocabulary items (daiin, ol, chedy), suggesting shared cipher not separate languages",
+        "Glyph entropy difference between sections is small (< 0.15 bits), arguing against radically different encoding schemes"
+      ],
+      "evidence_against": [
+        "H004/H008 at 0.88 confidence argue genuine linguistic difference",
+        "Some folios show mixed A/B features, complicating a clean two-scribe split"
+      ],
+      "test": "Compute bigram transition probability matrices P_A and P_B for Currier A and B corpora separately, then measure Jensen-Shannon divergence JS(P_A || P_B). Compare to JS divergence computed between random same-size splits of the combined corpus (bootstrap n=1000).",
+      "test_metric": "Jensen-Shannon divergence of bigram matrices between A and B vs. null distribution from random splits",
+      "test_threshold": "If JS(A,B) < 95th percentile of null distribution, scribal allograph variation explains split; if JS(A,B) > 99th percentile, genuine encoding or language difference is indicated",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute bigram transition probability matrices P_A and P_B for Currier A and B corpora separately, then measure Jensen-Shannon divergence JS(P_A || P_B). Compare to JS divergence computed between random same-size splits of the combined corpus (bootstrap n=1000)."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If allograph variation alone explains A/B, the solution space collapses to a single language+cipher; if not, we must model two encoding streams, doubling complexity. This test directly arbitrates between the two highest-confidence competing hypotheses."
+    },
+    {
+      "id": "H041",
+      "claim": "The extremely high hapax ratio (70.1%) is produced by a systematic suffix-stripping or abbreviation convention in which a small set of word-final glyph sequences (e.g., -aiin, -dy, -ol) are optionally dropped, making many hapax legomena morphological variants of ~30% of the vocabulary rather than distinct words.",
+      "type": "structural",
+      "confidence": 0.52,
+      "evidence_for": [
+        "Word-final glyphs y, n, l, r, o account for most endings; -aiin and -dy endings on top words suggest paradigmatic variation",
+        "Zipf exponent 0.895 is lower than typical natural languages (~1.0-1.1), consistent with vocabulary inflation from morphological variants being counted as separate types",
+        "If hapaxes were collapsed by stripping the top-5 word-final sequences, estimated unique vocabulary would drop to ~2,500-3,000, consistent with a medieval technical vocabulary"
+      ],
+      "evidence_against": [
+        "High hapax ratio could reflect homophones or null cipher rather than morphology",
+        "If the manuscript is meaningless, hapax inflation needs no structural explanation"
+      ],
+      "test": "Cluster the 8,261 unique word types by longest common prefix (LCP >= 3 glyphs). Compute the fraction of hapax legomena that share a prefix with a high-frequency word (frequency >= 10). Compare to expected fraction under random vocabulary of the same size and Zipf exponent.",
+      "test_metric": "Fraction of hapaxes with LCP >= 3 to any word with frequency >= 10, versus bootstrap expectation",
+      "test_threshold": "If observed fraction exceeds expected fraction by > 2 standard deviations, systematic morphological derivation is supported; otherwise hapax inflation is incidental",
+      "tests_run": [],
+      "tests_remaining": [
+        "Cluster the 8,261 unique word types by longest common prefix (LCP >= 3 glyphs). Compute the fraction of hapax legomena that share a prefix with a high-frequency word (frequency >= 10). Compare to expected fraction under random vocabulary of the same size and Zipf exponent."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "Confirming morphological structure would reduce effective vocabulary size by ~60%, sharply constraining the cipher and language family; denial would support a null or homophonic cipher model."
+    },
+    {
+      "id": "H042",
+      "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-only encoding where Voynich words are one-to-one mappings to a closed set of astrological or calendrical terms (month names, zodiac signs, star names), rather than running prose, making it the most tractable section for frequency-matching decipherment.",
+      "type": "language",
+      "confidence": 0.62,
+      "evidence_for": [
+        "Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d approximately 108 words/folio vs 84 for herbal \u00e2\u20ac\u201d consistent with sparse labeling",
+        "Low entropy (3.7149 bits) is consistent with a constrained closed-class vocabulary",
+        "Prior belief [0.616] already partially supports this interpretation",
+        "12 folios mapping to 12 zodiac signs gives ~108 words each, plausibly 12-15 unique labels per sign repeated across nymphs or divisions"
+      ],
+      "evidence_against": [
+        "Label-only encoding would predict even lower type-token ratio than observed",
+        "If labels are in an unknown language or use homophones, frequency matching to known astrological term sets will fail"
+      ],
+      "test": "Compute the type-token ratio (TTR) and rank-frequency slope for zodiac section words. Compare TTR and slope to: (a) a synthetic label corpus constructed from Latin zodiac/calendar terminology repeated with nymph-count weighting, and (b) the herbal section as a prose baseline.",
+      "test_metric": "TTR and Zipf slope for zodiac vs. synthetic label corpus vs. herbal prose corpus",
+      "test_threshold": "If zodiac TTR falls within 1 SD of the synthetic label corpus TTR (expected ~0.25-0.40 for 1,297 tokens) and differs from herbal by > 2 SD, label-encoding hypothesis is supported",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute the type-token ratio (TTR) and rank-frequency slope for zodiac section words. Compare TTR and slope to: (a) a synthetic label corpus constructed from Latin zodiac/calendar terminology repeated with nymph-count weighting, and (b) the herbal section as a prose baseline."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "A confirmed label structure in zodiac would provide a constrained 12-24 word partial plaintext, enabling frequency-attack bootstrapping for the rest of the manuscript \u00e2\u20ac\u201d the highest leverage single finding available."
+    },
+    {
+      "id": "H043",
+      "claim": "The text-only section (entropy 3.9016 bits, highest of all sections) contains unenciphered or minimally enciphered natural language prose, distinguishable from other sections by significantly higher conditional entropy H(glyph | preceding glyph) that approaches values for unenciphered medieval Latin or Italian.",
+      "type": "cipher",
+      "confidence": 0.67,
+      "evidence_for": [
+        "Entropy 3.9016 bits is closest to Latin (~4.0) and Italian (~3.95) of all sections per current beliefs",
+        "Prior belief [0.622]/[0.673] already supports this at moderate confidence",
+        "Text-only section has 7 folios with no illustrations, suggesting different compositional intent \u00e2\u20ac\u201d possibly a key, index, or plaintext introduction"
+      ],
+      "evidence_against": [
+        "Small sample (2,349 words / 7 folios) limits statistical power",
+        "Entropy difference from other sections is only ~0.14 bits, within range of cipher-induced variation"
+      ],
+      "test": "Compute second-order conditional entropy H2 = H(g_i | g_{i-1}) for text-only section and compare to all other sections. Additionally compute mutual information MI(g_i; g_{i+2}) to detect skip-bigram structure. Benchmark against MI values computed from enciphered Latin (simple substitution applied to a medieval Latin corpus) and plaintext Latin.",
+      "test_metric": "Second-order conditional glyph entropy H2 and skip-bigram mutual information MI(g_i; g_{i+2}) for text-only vs. all other sections vs. enciphered/plaintext Latin benchmarks",
+      "test_threshold": "If text-only H2 is > 1.5 bits and within 0.1 bits of plaintext Latin H2, and significantly higher than other Voynich sections, minimal-encipherment hypothesis is supported",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute second-order conditional entropy H2 = H(g_i | g_{i-1}) for text-only section and compare to all other sections. Additionally compute mutual information MI(g_i; g_{i+2}) to detect skip-bigram structure. Benchmark against MI values computed from enciphered Latin (simple substitution applied to a medieval Latin corpus) and plaintext Latin."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, the text-only section becomes the primary decipherment target; the differential H2 signature between sections would also reveal which sections share the same encoding method, partitioning the problem."
+    },
+    {
+      "id": "H044",
+      "claim": "The dominance of word-initial glyphs o, c, q, s, d and word-final glyphs y, n, l, r, o reflects a Vigenere-style polyalphabetic cipher in which cipher-alphabet assignment is positionally determined within the word (position 1, position-final), producing artificial initial/final glyph constraints that do not reflect underlying language phonotactics.",
+      "type": "cipher",
+      "confidence": 0.38,
+      "evidence_for": [
+        "Strict positional constraints on glyphs (e.g., 'q' almost always followed by 'o', certain glyphs never word-final) are more consistent with cipher rules than natural phonotactics",
+        "A Vigenere cipher keyed by word-position would produce exactly this pattern: fixed alphabets for position 1 and position-N inflate specific glyphs at those slots",
+        "Word length distribution peaking at 5.03 characters is consistent with a fixed-width encoding block"
+      ],
+      "evidence_against": [
+        "Vigenere ciphers typically produce entropy closer to the key-alphabet entropy; observed 3.86 bits is lower than expected for a strong polyalphabetic cipher",
+        "Natural languages also show strong positional phonotactic constraints (Latin: -us, -a, -um endings), so positional bias alone does not confirm polyalphabetic cipher",
+        "Prior belief [0.05] assigns very low probability to positional constraints reflecting cipher structure"
+      ],
+      "test": "For each word-position p (1, 2, 3, 4, 5, final), compute the conditional entropy H(glyph | position=p). Under a Vigenere cipher, H(glyph | position) should be uniform across positions and equal to the single-alphabet entropy. Under natural language, H(glyph | position) should decrease at terminal positions due to morphological endings. Compare the positional entropy profile to profiles from: (a) Vigenere-enciphered medieval Latin, (b) plaintext medieval Latin, (c) a random glyph sequence with matching unigram distribution.",
+      "test_metric": "Per-position conditional glyph entropy H(g | pos) for positions 1-5 and final, compared to Vigenere-enciphered Latin and plaintext Latin benchmarks",
+      "test_threshold": "If H(g | pos) is approximately uniform across positions (variance < 0.05 bits\u00c2\u00b2) and matches Vigenere-enciphered Latin profile within 0.1 bits per position, polyalphabetic positional cipher is supported; if terminal positions show significantly lower H, natural morphological constraints are indicated",
+      "tests_run": [],
+      "tests_remaining": [
+        "For each word-position p (1, 2, 3, 4, 5, final), compute the conditional entropy H(glyph | position=p). Under a Vigenere cipher, H(glyph | position) should be uniform across positions and equal to the single-alphabet entropy. Under natural language, H(glyph | position) should decrease at terminal positions due to morphological endings. Compare the positional entropy profile to profiles from: (a) Vigenere-enciphered medieval Latin, (b) plaintext medieval Latin, (c) a random glyph sequence with matching unigram distribution."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "This test directly distinguishes cipher-imposed positional constraints from language-phonotactic positional constraints, which is necessary to determine whether the glyph positional rules should be modeled as cipher structure or grammatical structure in any decipherment attempt."
+    }
+  ],
+  "raw_response": "{\"hypotheses\":[{\"claim\":\"The Currier A/B split corresponds to two different scribal hands applying the same underlying cipher to the same language but with different glyph allograph preferences, predictable via bigram transition matrix divergence between A and B corpora exceeding random variation.\",\"type\":\"cipher\",\"confidence\":0.61,\"evidence_for\":[\"Currier B is ~2.15x larger (23,766 vs 11,022 words), consistent with a dominant scribe and a secondary contributor\",\"Both A and B share top vocabulary items (daiin, ol, chedy), suggesting shared cipher not separate languages\",\"Glyph entropy difference between sections is small (< 0.15 bits), arguing against radically different encoding schemes\"],\"evidence_against\":[\"H004/H008 at 0.88 confidence argue genuine linguistic difference\",\"Some folios show mixed A/B features, complicating a clean two-scribe split\"],\"test\":\"Compute bigram transition probability matrices P_A and P_B for Currier A and B corpora separately, then measure Jensen-Shannon divergence JS(P_A || P_B). Compare to JS divergence computed between random same-size splits of the combined corpus (bootstrap n=1000).\",\"test_metric\":\"Jensen-Shannon divergence of bigram matrices between A and B vs. null distribution from random splits\",\"test_threshold\":\"If JS(A,B) < 95th percentile of null distribution, scribal allograph variation explains split; if JS(A,B) > 99th percentile, genuine encoding or language difference is indicated\",\"reasoning\":\"If allograph variation alone explains A/B, the solution space collapses to a single language+cipher; if not, we must model two encoding streams, doubling complexity. This test directly arbitrates between the two highest-confidence competing hypotheses.\"},{\"claim\":\"The extremely high hapax ratio (70.1%) is produced by a systematic suffix-stripping or abbreviation convention in which a small set of word-final glyph sequences (e.g., -aiin, -dy, -ol) are optionally dropped, making many hapax legomena morphological variants of ~30% of the vocabulary rather than distinct words.\",\"type\":\"structural\",\"confidence\":0.52,\"evidence_for\":[\"Word-final glyphs y, n, l, r, o account for most endings; -aiin and -dy endings on top words suggest paradigmatic variation\",\"Zipf exponent 0.895 is lower than typical natural languages (~1.0-1.1), consistent with vocabulary inflation from morphological variants being counted as separate types\",\"If hapaxes were collapsed by stripping the top-5 word-final sequences, estimated unique vocabulary would drop to ~2,500-3,000, consistent with a medieval technical vocabulary\"],\"evidence_against\":[\"High hapax ratio could reflect homophones or null cipher rather than morphology\",\"If the manuscript is meaningless, hapax inflation needs no structural explanation\"],\"test\":\"Cluster the 8,261 unique word types by longest common prefix (LCP >= 3 glyphs). Compute the fraction of hapax legomena that share a prefix with a high-frequency word (frequency >= 10). Compare to expected fraction under random vocabulary of the same size and Zipf exponent.\",\"test_metric\":\"Fraction of hapaxes with LCP >= 3 to any word with frequency >= 10, versus bootstrap expectation\",\"test_threshold\":\"If observed fraction exceeds expected fraction by > 2 standard deviations, systematic morphological derivation is supported; otherwise hapax inflation is incidental\",\"reasoning\":\"Confirming morphological structure would reduce effective vocabulary size by ~60%, sharply constraining the cipher and language family; denial would support a null or homophonic cipher model.\"},{\"claim\":\"The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-only encoding where Voynich words are one-to-one mappings to a closed set of astrological or calendrical terms (month names, zodiac signs, star names), rather than running prose, making it the most tractable section for frequency-matching decipherment.\",\"type\":\"language\",\"confidence\":0.62,\"evidence_for\":[\"Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d approximately 108 words/folio vs 84 for herbal \u00e2\u20ac\u201d consistent with sparse labeling\",\"Low entropy (3.7149 bits) is consistent with a constrained closed-class vocabulary\",\"Prior belief [0.616] already partially supports this interpretation\",\"12 folios mapping to 12 zodiac signs gives ~108 words each, plausibly 12-15 unique labels per sign repeated across nymphs or divisions\"],\"evidence_against\":[\"Label-only encoding would predict even lower type-token ratio than observed\",\"If labels are in an unknown language or use homophones, frequency matching to known astrological term sets will fail\"],\"test\":\"Compute the type-token ratio (TTR) and rank-frequency slope for zodiac section words. Compare TTR and slope to: (a) a synthetic label corpus constructed from Latin zodiac/calendar terminology repeated with nymph-count weighting, and (b) the herbal section as a prose baseline.\",\"test_metric\":\"TTR and Zipf slope for zodiac vs. synthetic label corpus vs. herbal prose corpus\",\"test_threshold\":\"If zodiac TTR falls within 1 SD of the synthetic label corpus TTR (expected ~0.25-0.40 for 1,297 tokens) and differs from herbal by > 2 SD, label-encoding hypothesis is supported\",\"reasoning\":\"A confirmed label structure in zodiac would provide a constrained 12-24 word partial plaintext, enabling frequency-attack bootstrapping for the rest of the manuscript \u00e2\u20ac\u201d the highest leverage single finding available.\"},{\"claim\":\"The text-only section (entropy 3.9016 bits, highest of all sections) contains unenciphered or minimally enciphered natural language prose, distinguishable from other sections by significantly higher conditional entropy H(glyph | preceding glyph) that approaches values for unenciphered medieval Latin or Italian.\",\"type\":\"cipher\",\"confidence\":0.67,\"evidence_for\":[\"Entropy 3.9016 bits is closest to Latin (~4.0) and Italian (~3.95) of all sections per current beliefs\",\"Prior belief [0.622]/[0.673] already supports this at moderate confidence\",\"Text-only section has 7 folios with no illustrations, suggesting different compositional intent \u00e2\u20ac\u201d possibly a key, index, or plaintext introduction\"],\"evidence_against\":[\"Small sample (2,349 words / 7 folios) limits statistical power\",\"Entropy difference from other sections is only ~0.14 bits, within range of cipher-induced variation\"],\"test\":\"Compute second-order conditional entropy H2 = H(g_i | g_{i-1}) for text-only section and compare to all other sections. Additionally compute mutual information MI(g_i; g_{i+2}) to detect skip-bigram structure. Benchmark against MI values computed from enciphered Latin (simple substitution applied to a medieval Latin corpus) and plaintext Latin.\",\"test_metric\":\"Second-order conditional glyph entropy H2 and skip-bigram mutual information MI(g_i; g_{i+2}) for text-only vs. all other sections vs. enciphered/plaintext Latin benchmarks\",\"test_threshold\":\"If text-only H2 is > 1.5 bits and within 0.1 bits of plaintext Latin H2, and significantly higher than other Voynich sections, minimal-encipherment hypothesis is supported\",\"reasoning\":\"If confirmed, the text-only section becomes the primary decipherment target; the differential H2 signature between sections would also reveal which sections share the same encoding method, partitioning the problem.\"},{\"claim\":\"The dominance of word-initial glyphs o, c, q, s, d and word-final glyphs y, n, l, r, o reflects a Vigenere-style polyalphabetic cipher in which cipher-alphabet assignment is positionally determined within the word (position 1, position-final), producing artificial initial/final glyph constraints that do not reflect underlying language phonotactics.\",\"type\":\"cipher\",\"confidence\":0.38,\"evidence_for\":[\"Strict positional constraints on glyphs (e.g., 'q' almost always followed by 'o', certain glyphs never word-final) are more consistent with cipher rules than natural phonotactics\",\"A Vigenere cipher keyed by word-position would produce exactly this pattern: fixed alphabets for position 1 and position-N inflate specific glyphs at those slots\",\"Word length distribution peaking at 5.03 characters is consistent with a fixed-width encoding block\"],\"evidence_against\":[\"Vigenere ciphers typically produce entropy closer to the key-alphabet entropy; observed 3.86 bits is lower than expected for a strong polyalphabetic cipher\",\"Natural languages also show strong positional phonotactic constraints (Latin: -us, -a, -um endings), so positional bias alone does not confirm polyalphabetic cipher\",\"Prior belief [0.05] assigns very low probability to positional constraints reflecting cipher structure\"],\"test\":\"For each word-position p (1, 2, 3, 4, 5, final), compute the conditional entropy H(glyph | position=p). Under a Vigenere cipher, H(glyph | position) should be uniform across positions and equal to the single-alphabet entropy. Under natural language, H(glyph | position) should decrease at terminal positions due to morphological endings. Compare the positional entropy profile to profiles from: (a) Vigenere-enciphered medieval Latin, (b) plaintext medieval Latin, (c) a random glyph sequence with matching unigram distribution.\",\"test_metric\":\"Per-position conditional glyph entropy H(g | pos) for positions 1-5 and final, compared to Vigenere-enciphered Latin and plaintext Latin benchmarks\",\"test_threshold\":\"If H(g | pos) is approximately uniform across positions (variance < 0.05 bits\u00c2\u00b2) and matches Vigenere-enciphered Latin profile within 0.1 bits per position, polyalphabetic positional cipher is supported; if terminal positions show significantly lower H, natural morphological constraints are indicated\",\"reasoning\":\"This test directly distinguishes cipher-imposed positional constraints from language-phonotactic positional constraints, which is necessary to determine whether the glyph positional rules should be modeled as cipher structure or grammatical structure in any decipherment attempt.\"}]}"
+}

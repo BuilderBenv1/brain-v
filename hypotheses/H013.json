@@ -42,7 +42,7 @@
       "test": "claude_evaluation",
       "score": 0.35,
       "passed": false,
-      "details": "The high hapax ratio (0.701) strongly contradicts simple substitution hypothesis\u00e2\u20ac\u201dnatural language texts show 40-60% hapax, not 70%, suggesting either artificial or more complex encrypted text.",
+      "details": "The extremely high hapax ratio (0.701) contradicts a simple substitution cipher on natural language; real languages typically show 30-50% hapax in corpora this size, suggesting the Voynich text has artificial or heavily obscured statistical properties inconsistent with straightforward linguistic encoding.",
       "confidence_change": "0.202 -> 0.163"
     },
     {

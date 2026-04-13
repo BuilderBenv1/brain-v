@@ -1,0 +1,35 @@
+{
+  "id": "H054",
+  "claim": "Word-initial glyph constraints (o, c, q, s, d dominating) and word-final glyph constraints (y, n, l, r, o dominating) are not merely phonotactic but reflect a codebook structure in which word-initial glyphs encode semantic category (e.g., plant part, action, quantity) and word-final glyphs encode grammatical role (e.g., noun, verb, adjective), such that co-occurrence of specific initial+final glyph pairs is non-uniform and significantly exceeds chance across all sections.",
+  "type": "cipher",
+  "confidence": 0.549,
+  "evidence_for": [
+    "Positional glyph constraints are well-established and too strong to be purely phonotactic in a 25-glyph alphabet",
+    "Top words cluster around specific initial-final pairs: daiin (d\u00e2\u20ac\u00a6n), chedy (c\u00e2\u20ac\u00a6y), shedy (s\u00e2\u20ac\u00a6y), chol (c\u00e2\u20ac\u00a6l), chey (c\u00e2\u20ac\u00a6y) \u00e2\u20ac\u201d suggesting paradigmatic substitution",
+    "If initial glyphs encode semantic class, section-specific vocabulary (herbal vs. zodiac) should show different initial-glyph frequency profiles"
+  ],
+  "evidence_against": [
+    "A simpler explanation is that initial/final constraints are cipher artifacts (e.g., nulls or padding) with no semantic content",
+    "The low glyph alphabet size (25) limits the number of distinct categories encodable at word boundaries",
+    "Cross-section initial-glyph frequency data is not yet available to confirm section-specific profiles"
+  ],
+  "test": "Build a contingency table of word-initial \u00c3\u2014 word-final glyph pairs across all tokens; compute chi-squared statistic for independence; then stratify by section and compute per-section initial-glyph frequency profiles, testing whether section membership predicts initial-glyph distribution using a multinomial logistic regression or permutation test.",
+  "test_metric": "Chi-squared statistic for initial\u00c3\u2014final glyph independence and between-section initial-glyph KL divergence",
+  "test_threshold": "Confirm if chi-squared p<0.001 for non-independence of initial\u00c3\u2014final pairs AND KL divergence between herbal and zodiac initial-glyph distributions exceeds 0.10 nats; deny if chi-squared p>0.05 or KL divergence <0.03 nats.",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "build a contingency table of word-initial \u00e3\u2014 word-final glyph pairs across all tokens; compute chi-s",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.520 -> 0.549"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "Non-random co-occurrence of boundary glyphs combined with section-specific initial profiles would provide strong evidence for a structured codebook rather than a simple substitution cipher, fundamentally changing the decipherment strategy required."
+}

@@ -1,0 +1,76 @@
+{
+  "id": "H030",
+  "claim": "The high hapax ratio (70.1%) is primarily an artifact of systematic scribal abbreviation, where common root words are truncated with consistent suffixes, making truncated forms appear unique when they share stems with high-frequency words.",
+  "type": "structural",
+  "confidence": 0.127,
+  "evidence_for": [
+    "Hapax ratio of 70.1% is anomalously high compared to natural languages (~40-50%)",
+    "Top frequent words like 'daiin', 'aiin', 'chedy', 'shedy' suggest suffix-sharing morphology",
+    "Average word length of 5.03 is short, consistent with abbreviation practices",
+    "The moderate Zipf exponent (0.8946) diverges from natural language ~1.0, consistent with vocabulary inflation from abbreviation artifacts"
+  ],
+  "evidence_against": [
+    "If abbreviation caused hapax inflation, stemming should recover a lower effective vocabulary \u00e2\u20ac\u201d no such reduction has been confirmed",
+    "Glyph entropy (3.8627) is close to natural language values, not what pure abbreviation noise would produce",
+    "The Currier A/B split shows systematic regional differences inconsistent with purely scribal abbreviation"
+  ],
+  "test": "Cluster all 8,261 unique words by shared n-grams (n=2,3 suffix/prefix), then measure what fraction of hapax words share a suffix of length \u00e2\u2030\u00a52 with a high-frequency word (top 500). Compare resulting stem-collapsed vocabulary size to expected hapax ratio for natural language.",
+  "test_metric": "Post-stemming hapax ratio and stem-cluster coverage of hapax words",
+  "test_threshold": "If >60% of hapax words cluster within 1-2 glyph edits of a high-frequency word, abbreviation hypothesis is supported; if post-stemming hapax ratio drops below 45%, strongly supported",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "cluster all 8,261 unique words by shared n-grams (n=2,3 suffix/prefix), then measure what fraction o",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.420 -> 0.344"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "cluster all 8,261 unique words by shared n-grams (n=2,3 suffix/prefix), then measure what fraction o",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.344 -> 0.282"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "cluster all 8,261 unique words by shared n-grams (n=2,3 suffix/prefix), then measure what fraction o",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.282 -> 0.231"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "cluster all 8,261 unique words by shared n-grams (n=2,3 suffix/prefix), then measure what fraction o",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.231 -> 0.189"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "cluster all 8,261 unique words by shared n-grams (n=2,3 suffix/prefix), then measure what fraction o",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.189 -> 0.155"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "cluster all 8,261 unique words by shared n-grams (n=2,3 suffix/prefix), then measure what fraction o",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.155 -> 0.127"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "Distinguishing genuine vocabulary diversity from scribal abbreviation artifact is critical: if the hapax inflation is artifactual, the effective vocabulary is much smaller, dramatically narrowing candidate cipher and language hypotheses"
+}

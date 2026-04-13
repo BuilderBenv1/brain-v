@@ -2,7 +2,7 @@
   "id": "H002",
   "claim": "The text uses a simple substitution cipher on medieval Latin, which would produce glyph entropy ~4.0 bits and word-final glyph distribution matching Latin word endings.",
   "type": "cipher",
-  "confidence": 0.054,
+  "confidence": 0.162,
   "evidence_for": [
     "Glyph entropy is close to the expected value for Latin (~4.0 bits)",
     "Word-final glyphs match common Latin word endings"
@@ -53,46 +53,6 @@
       "passed": null,
       "details": "Could not evaluate: Compare glyph and word entropies to the expected values for medieval Latin using a chi-squared test",
       "confidence_change": "0.144 -> 0.162"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.45,
-      "passed": false,
-      "details": "Glyph entropy of 3.8627 bits is noticeably lower than the expected ~4.0 bits for a simple substitution cipher of medieval Latin, suggesting either a different source language or a more complex transformation than simple substitution.",
-      "confidence_change": "0.162 -> 0.135"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.45,
-      "passed": false,
-      "details": "Glyph entropy (3.8627) closely matches the predicted 4.0 bits for a substitution cipher, but the Zipf exponent (0.8946) and hapax ratio (0.701) contradict expectations for natural Latin text, indicating the manuscript is not a straightforward substitution cipher on medieval Latin.",
-      "confidence_change": "0.135 -> 0.113"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.25,
-      "passed": false,
-      "details": "Zipf exponent (0.8946) supports natural language structure, but hapax ratio of 70.1% is incompatible with medieval Latin, which typically exhibits 40-50% hapax ratios.",
-      "confidence_change": "0.113 -> 0.088"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.25,
-      "passed": false,
-      "details": "Glyph entropy (3.8627) approaches the expected 4.0, but the Zipf exponent (0.8946) and hapax ratio (0.701) significantly contradict the hypothesis\u00e2\u20ac\u201dnatural language shows Zipf ~1.0-1.5 and hapax ~0.3-0.5, suggesting the text either lacks linguistic structure or is not a simple substitution cipher of medieval Latin.",
-      "confidence_change": "0.088 -> 0.068"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.3,
-      "passed": false,
-      "details": "Glyph entropy (3.86 bits) is close to expected (4.0 bits), but the extremely high hapax ratio (0.701 vs ~0.3-0.4 for natural language) contradicts simple substitution cipher of Latin.",
-      "confidence_change": "0.068 -> 0.054"
     }
   ],
   "tests_remaining": [],

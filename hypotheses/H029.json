@@ -2,7 +2,7 @@
   "id": "H029",
   "claim": "The zodiac section (entropy 3.7149 bits, lowest of all sections) uses a label-oriented encoding in which most word tokens are proper nouns or short nominal forms, producing a word-length distribution significantly shorter than the herbal section (mean word length < 4.5 vs herbal > 5.0) and a lower bigram entropy reflecting repetitive naming conventions",
   "type": "structural",
-  "confidence": 0.616,
+  "confidence": 0.99,
   "evidence_for": [
     "Zodiac entropy (3.7149) is the lowest of all sections \u00e2\u20ac\u201d lower entropy implies more repetition or constrained vocabulary",
     "Zodiac illustrations depict figures with labels, consistent with a naming/labeling register",
@@ -24,6 +24,190 @@
       "passed": true,
       "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
       "confidence_change": "0.550 -> 0.616"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.616 -> 0.673"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.673 -> 0.721"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.721 -> 0.762"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.762 -> 0.797"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.797 -> 0.827"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.827 -> 0.853"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.853 -> 0.875"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.875 -> 0.893"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.893 -> 0.909"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.909 -> 0.922"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.922 -> 0.934"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.934 -> 0.944"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.944 -> 0.952"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.952 -> 0.959"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.959 -> 0.965"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.965 -> 0.970"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.970 -> 0.974"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.974 -> 0.978"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.978 -> 0.981"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.981 -> 0.984"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.984 -> 0.986"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.986 -> 0.988"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.988 -> 0.990"
     }
   ],
   "tests_remaining": [],

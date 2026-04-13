@@ -2,7 +2,7 @@
   "id": "H003",
   "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.",
   "type": "structural",
-  "confidence": 0.899,
+  "confidence": 0.776,
   "evidence_for": [
     "Higher hapax legomena ratio in the herbal section (70.1%) compared to other sections",
     "Glyph positional constraints may reflect poetic structure rather than prose"
@@ -53,46 +53,6 @@
       "passed": true,
       "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
       "confidence_change": "0.737 -> 0.776"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "compare word length distributions between the herbal and other sections using a two-sample k-s test",
-      "score": 0.9849999999999999,
-      "passed": true,
-      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
-      "confidence_change": "0.776 -> 0.809"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "compare word length distributions between the herbal and other sections using a two-sample k-s test",
-      "score": 0.9849999999999999,
-      "passed": true,
-      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
-      "confidence_change": "0.809 -> 0.837"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "compare word length distributions between the herbal and other sections using a two-sample k-s test",
-      "score": 0.9849999999999999,
-      "passed": true,
-      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
-      "confidence_change": "0.837 -> 0.861"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "compare word length distributions between the herbal and other sections using a two-sample k-s test",
-      "score": 0.9849999999999999,
-      "passed": true,
-      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
-      "confidence_change": "0.861 -> 0.882"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "compare word length distributions between the herbal and other sections using a two-sample k-s test",
-      "score": 0.9849999999999999,
-      "passed": true,
-      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
-      "confidence_change": "0.882 -> 0.899"
     }
   ],
   "tests_remaining": [],

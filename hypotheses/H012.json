@@ -34,7 +34,7 @@
       "test": "compute the frequency of consecutive words with identical glyphs in different positions",
       "score": 0.25,
       "passed": true,
-      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'a', 'l', 'd', 'o'}. Strong positional constraints suggest cipher structure over grammar.",
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'r', 'n'}. Universal glyphs: {'a', 'o', 'd', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
       "confidence_change": "0.648 -> 0.661"
     },
     {
@@ -42,7 +42,7 @@
       "test": "compute the frequency of consecutive words with identical glyphs in different positions",
       "score": 0.25,
       "passed": true,
-      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'm', 'n'}. Universal glyphs: {'a', 'l', 'd', 'o'}. Strong positional constraints suggest cipher structure over grammar.",
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'm', 'r'}. Universal glyphs: {'o', 'a', 'd', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
       "confidence_change": "0.661 -> 0.674"
     },
     {
@@ -50,7 +50,7 @@
       "test": "compute the frequency of consecutive words with identical glyphs in different positions",
       "score": 0.25,
       "passed": true,
-      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'n', 'r'}. Universal glyphs: {'l', 'a', 'd', 'o'}. Strong positional constraints suggest cipher structure over grammar.",
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'n', 'r'}. Universal glyphs: {'d', 'o', 'a', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
       "confidence_change": "0.674 -> 0.686"
     },
     {
@@ -58,7 +58,7 @@
       "test": "compute the frequency of consecutive words with identical glyphs in different positions",
       "score": 0.25,
       "passed": true,
-      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'm', 'n'}. Universal glyphs: {'a', 'o', 'l', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'm', 'n'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
       "confidence_change": "0.686 -> 0.698"
     }
   ],
