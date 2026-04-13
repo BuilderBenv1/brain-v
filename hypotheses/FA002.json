@@ -1,0 +1,32 @@
+{
+  "id": "FA002",
+  "claim": "The manuscript uses a simple substitution cipher encoding abbreviated medieval Latin",
+  "type": "cipher",
+  "confidence": 0.0,
+  "evidence_for": [],
+  "evidence_against": [
+    "Decipherments produced largely unintelligible text. Other researchers could not reproduce meaningful readings using his key. Statistical properties of Voynich text do not match abbreviated Latin."
+  ],
+  "test": "Historical: Joseph Martin Feely (1943)",
+  "test_metric": "literature_review",
+  "test_threshold": "peer review and independent verification",
+  "tests_run": [
+    {
+      "date": "1943",
+      "test": "Attempted by Joseph Martin Feely",
+      "score": 0.0,
+      "passed": false,
+      "details": "Decipherments produced largely unintelligible text. Other researchers could not reproduce meaningful readings using his key. Statistical properties of Voynich text do not match abbreviated Latin.",
+      "confidence_change": "N/A -> 0.0"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "eliminated",
+  "parent": null,
+  "created": "1943-01-01",
+  "last_tested": "1943-01-01",
+  "reasoning": "Historical attempt by Joseph Martin Feely (1943). Cipher type: simple substitution. Proposed language: abbreviated Latin.",
+  "source": "Feely, J.M. 'Roger Bacon's Cipher: The Right Key Found' (1943); D'Imperio (1978)",
+  "researcher": "Joseph Martin Feely",
+  "year": 1943
+}

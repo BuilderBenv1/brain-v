@@ -1,0 +1,32 @@
+{
+  "id": "H002",
+  "claim": "The text uses a simple substitution cipher on medieval Latin, which would produce glyph entropy ~4.0 bits and word-final glyph distribution matching Latin word endings.",
+  "type": "cipher",
+  "confidence": 0.42,
+  "evidence_for": [
+    "Glyph entropy is close to the expected value for Latin (~4.0 bits)",
+    "Word-final glyphs match common Latin word endings"
+  ],
+  "evidence_against": [
+    "Zipf exponent (0.8946) is lower than expected for a language with high morphological complexity like Latin"
+  ],
+  "test": "Compare glyph and word entropies to the expected values for medieval Latin using a chi-squared test",
+  "test_metric": "p-value",
+  "test_threshold": "<0.1 would confirm this hypothesis",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.0,
+      "passed": false,
+      "details": "The observed glyph entropy of 3.8627 bits is lower than the expected ~4.0 bits for a simple substitution cipher on medieval Latin, contradicting the hypothesis.",
+      "confidence_change": "0.600 -> 0.420"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "If confirmed, this would suggest that the underlying language is indeed Latin, which would be a significant breakthrough"
+}

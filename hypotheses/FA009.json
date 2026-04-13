@@ -1,0 +1,32 @@
+{
+  "id": "FA009",
+  "claim": "The text could encode a Malay or Southeast Asian language, based on word structure similarities to Austronesian languages with prefixing and suffixing morphology",
+  "type": "language",
+  "confidence": 0.1,
+  "evidence_for": [],
+  "evidence_against": [
+    "Never developed into a full decipherment. Some structural parallels noted but insufficient for proof. Guy himself treated it as speculative."
+  ],
+  "test": "Historical: Jacques Guy (1995)",
+  "test_metric": "literature_review",
+  "test_threshold": "peer review and independent verification",
+  "tests_run": [
+    {
+      "date": "1995",
+      "test": "Attempted by Jacques Guy",
+      "score": 0.2,
+      "passed": null,
+      "details": "Never developed into a full decipherment. Some structural parallels noted but insufficient for proof. Guy himself treated it as speculative.",
+      "confidence_change": "N/A -> 0.0"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "parked",
+  "parent": null,
+  "created": "1995-01-01",
+  "last_tested": "1995-01-01",
+  "reasoning": "Historical attempt by Jacques Guy (1995). Cipher type: phonetic encoding. Proposed language: Malay/Austronesian.",
+  "source": "Guy's posts to the Voynich mailing list (1990s); Kennedy & Churchill (2004)",
+  "researcher": "Jacques Guy",
+  "year": 1995
+}

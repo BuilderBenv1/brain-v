@@ -1,0 +1,15 @@
+{
+  "language": "Medieval Latin",
+  "period": "13th-15th century",
+  "source": "Published linguistic studies (approximate values)",
+  "glyph_entropy": 4.0,
+  "avg_word_length": 5.5,
+  "zipf_exponent": 1.0,
+  "hapax_ratio": 0.50,
+  "vowel_ratio": 0.45,
+  "alphabet_size": 23,
+  "common_endings": ["us", "um", "is", "em", "ae", "am", "os", "as", "es", "et", "ibus", "orum"],
+  "common_initials": ["a", "c", "d", "e", "i", "p", "q", "s"],
+  "common_words": ["et", "in", "est", "non", "ad", "de", "qui", "ut", "cum", "sed"],
+  "notes": "Medieval Latin has higher morphological complexity than modern Romance languages, leading to longer words and higher hapax ratio."
+}

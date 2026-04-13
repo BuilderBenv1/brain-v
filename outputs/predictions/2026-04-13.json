@@ -1,0 +1,138 @@
+{
+  "date": "2026-04-13",
+  "cycle": "predict",
+  "model": "llama3.1:8b",
+  "belief_count": 6,
+  "existing_hypothesis_count": 0,
+  "new_hypotheses": [
+    "H001",
+    "H002",
+    "H003",
+    "H004",
+    "H005"
+  ],
+  "hypotheses": [
+    {
+      "id": "H001",
+      "claim": "The manuscript's herbal section uses a combination of substitution and transposition ciphers, which would explain the higher entropy levels compared to other sections.",
+      "type": "cipher",
+      "confidence": 0.7,
+      "evidence_for": [
+        "Higher entropy in the herbal section (3.8478 bits) compared to other sections",
+        "Glyph positional constraints may reflect cipher structure rather than grammar"
+      ],
+      "evidence_against": [],
+      "test": "Compare word and glyph entropies between the herbal and other sections using a two-sample Kolmogorov-Smirnov test",
+      "test_metric": "p-value",
+      "test_threshold": "<0.05 would confirm this hypothesis",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compare word and glyph entropies between the herbal and other sections using a two-sample Kolmogorov-Smirnov test"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, this would suggest that the cipher is more complex in the herbal section, narrowing the solution space"
+    },
+    {
+      "id": "H002",
+      "claim": "The text uses a simple substitution cipher on medieval Latin, which would produce glyph entropy ~4.0 bits and word-final glyph distribution matching Latin word endings.",
+      "type": "cipher",
+      "confidence": 0.6,
+      "evidence_for": [
+        "Glyph entropy is close to the expected value for Latin (~4.0 bits)",
+        "Word-final glyphs match common Latin word endings"
+      ],
+      "evidence_against": [
+        "Zipf exponent (0.8946) is lower than expected for a language with high morphological complexity like Latin"
+      ],
+      "test": "Compare glyph and word entropies to the expected values for medieval Latin using a chi-squared test",
+      "test_metric": "p-value",
+      "test_threshold": "<0.1 would confirm this hypothesis",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compare glyph and word entropies to the expected values for medieval Latin using a chi-squared test"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, this would suggest that the underlying language is indeed Latin, which would be a significant breakthrough"
+    },
+    {
+      "id": "H003",
+      "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.",
+      "type": "structural",
+      "confidence": 0.5,
+      "evidence_for": [
+        "Higher hapax legomena ratio in the herbal section (70.1%) compared to other sections",
+        "Glyph positional constraints may reflect poetic structure rather than prose"
+      ],
+      "evidence_against": [
+        "Word length distribution is similar across all sections"
+      ],
+      "test": "Compare word length distributions between the herbal and other sections using a two-sample K-S test",
+      "test_metric": "p-value",
+      "test_threshold": "<0.05 would confirm this hypothesis",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compare word length distributions between the herbal and other sections using a two-sample K-S test"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, this would suggest that the text structure is more complex than initially thought, which could provide clues about the underlying language and cipher"
+    },
+    {
+      "id": "H004",
+      "claim": "The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dialects.",
+      "type": "language",
+      "confidence": 0.4,
+      "evidence_for": [
+        "Currier A/B split is significant (R-squared=0.9084) and moderate Zipf fit"
+      ],
+      "evidence_against": [
+        "Glyph positional constraints do not differ significantly between the two languages"
+      ],
+      "test": "Compare word and glyph distributions between Currier A and B using a chi-squared test",
+      "test_metric": "p-value",
+      "test_threshold": "<0.01 would confirm this hypothesis",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compare word and glyph distributions between Currier A and B using a chi-squared test"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, this would suggest that the manuscript contains multiple languages or dialects, which would greatly complicate decipherment"
+    },
+    {
+      "id": "H005",
+      "claim": "The text is encoded using a simple substitution cipher on a language other than Latin or Italian.",
+      "type": "cipher",
+      "confidence": 0.3,
+      "evidence_for": [
+        "Glyph entropy is lower than expected for Latin and Italian (~4.0 bits)"
+      ],
+      "evidence_against": [
+        "Word-final glyphs do not match common word endings in languages other than Latin or Italian"
+      ],
+      "test": "Compare glyph and word entropies to the expected values for non-Latin/Italian languages using a chi-squared test",
+      "test_metric": "p-value",
+      "test_threshold": "<0.1 would confirm this hypothesis",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compare glyph and word entropies to the expected values for non-Latin/Italian languages using a chi-squared test"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If confirmed, this would suggest that the underlying language is not Latin or Italian, which would be a significant departure from current beliefs"
+    }
+  ],
+  "raw_response": "{\n  \"hypotheses\": [\n    {\n      \"claim\": \"The manuscript's herbal section uses a combination of substitution and transposition ciphers, which would explain the higher entropy levels compared to other sections.\",\n      \"type\": \"cipher\",\n      \"confidence\": 0.7,\n      \"evidence_for\": [\"Higher entropy in the herbal section (3.8478 bits) compared to other sections\", \"Glyph positional constraints may reflect cipher structure rather than grammar\"],\n      \"evidence_against\": [],\n      \"test\": \"Compare word and glyph entropies between the herbal and other sections using a two-sample Kolmogorov-Smirnov test\",\n      \"test_metric\": \"p-value\",\n      \"test_threshold\": \"<0.05 would confirm this hypothesis\",\n      \"reasoning\": \"If confirmed, this would suggest that the cipher is more complex in the herbal section, narrowing the solution space\"\n    },\n    {\n      \"claim\": \"The text uses a simple substitution cipher on medieval Latin, which would produce glyph entropy ~4.0 bits and word-final glyph distribution matching Latin word endings.\",\n      \"type\": \"cipher\",\n      \"confidence\": 0.6,\n      \"evidence_for\": [\"Glyph entropy is close to the expected value for Latin (~4.0 bits)\", \"Word-final glyphs match common Latin word endings\"],\n      \"evidence_against\": [\"Zipf exponent (0.8946) is lower than expected for a language with high morphological complexity like Latin\"],\n      \"test\": \"Compare glyph and word entropies to the expected values for medieval Latin using a chi-squared test\",\n      \"test_metric\": \"p-value\",\n      \"test_threshold\": \"<0.1 would confirm this hypothesis\",\n      \"reasoning\": \"If confirmed, this would suggest that the underlying language is indeed Latin, which would be a significant breakthrough\"\n    },\n    {\n      \"claim\": \"The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.\",\n      \"type\": \"structural\",\n      \"confidence\": 0.5,\n      \"evidence_for\": [\"Higher hapax legomena ratio in the herbal section (70.1%) compared to other sections\", \"Glyph positional constraints may reflect poetic structure rather than prose\"],\n      \"evidence_against\": [\"Word length distribution is similar across all sections\"],\n      \"test\": \"Compare word length distributions between the herbal and other sections using a two-sample K-S test\",\n      \"test_metric\": \"p-value\",\n      \"test_threshold\": \"<0.05 would confirm this hypothesis\",\n      \"reasoning\": \"If confirmed, this would suggest that the text structure is more complex than initially thought, which could provide clues about the underlying language and cipher\"\n    },\n    {\n      \"claim\": \"The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dialects.\",\n      \"type\": \"language\",\n      \"confidence\": 0.4,\n      \"evidence_for\": [\"Currier A/B split is significant (R-squared=0.9084) and moderate Zipf fit\"],\n      \"evidence_against\": [\"Glyph positional constraints do not differ significantly between the two languages\"],\n      \"test\": \"Compare word and glyph distributions between Currier A and B using a chi-squared test\",\n      \"test_metric\": \"p-value\",\n      \"test_threshold\": \"<0.01 would confirm this hypothesis\",\n      \"reasoning\": \"If confirmed, this would suggest that the manuscript contains multiple languages or dialects, which would greatly complicate decipherment\"\n    },\n    {\n      \"claim\": \"The text is encoded using a simple substitution cipher on a language other than Latin or Italian.\",\n      \"type\": \"cipher\",\n      \"confidence\": 0.3,\n      \"evidence_for\": [\"Glyph entropy is lower than expected for Latin and Italian (~4.0 bits)\"],\n      \"evidence_against\": [\"Word-final glyphs do not match common word endings in languages other than Latin or Italian\"],\n      \"test\": \"Compare glyph and word entropies to the expected values for non-Latin/Italian languages using a chi-squared test\",\n      \"test_metric\": \"p-value\",\n      \"test_threshold\": \"<0.1 would confirm this hypothesis\",\n      \"reasoning\": \"If confirmed, this would suggest that the underlying language is not Latin or Italian, which would be a significant departure from current beliefs\"\n    }\n  ]\n}"
+}

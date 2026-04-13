@@ -1,0 +1,15 @@
+{
+  "language": "15th-century Italian (Tuscan/Venetian)",
+  "period": "1400-1450",
+  "source": "Published linguistic studies (approximate values)",
+  "glyph_entropy": 3.95,
+  "avg_word_length": 4.8,
+  "zipf_exponent": 1.05,
+  "hapax_ratio": 0.45,
+  "vowel_ratio": 0.48,
+  "alphabet_size": 21,
+  "common_endings": ["a", "e", "i", "o", "re", "to", "te", "no", "le", "ne", "zione"],
+  "common_initials": ["a", "c", "d", "e", "i", "l", "p", "s"],
+  "common_words": ["e", "di", "il", "la", "che", "in", "per", "con", "non", "una"],
+  "notes": "15th century Italian had not yet standardized. Regional variation between Tuscan and Venetian dialects significant. Voynich provenance suggests Northern Italian context."
+}

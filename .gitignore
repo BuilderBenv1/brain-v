@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+dashboard/node_modules/
+dashboard/.next/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Perception cache (regenerated from corpus)
+raw/perception/.corpus-hash
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/

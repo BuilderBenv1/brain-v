@@ -1,0 +1,386 @@
+{
+  "computed_at": "2026-04-13T17:58:56.847951+00:00",
+  "source": "ZL3b-n.txt",
+  "summary": {
+    "total_folios": 226,
+    "total_words": 38053,
+    "unique_words": 8261,
+    "total_glyphs": 191562,
+    "unique_glyphs": 25,
+    "avg_word_length": 5.03,
+    "hapax_legomena": 5794,
+    "dis_legomena": 892,
+    "hapax_ratio": 0.701
+  },
+  "entropy": {
+    "glyph_entropy_overall": 3.8627,
+    "word_entropy_overall": 10.4508,
+    "by_section": {
+      "text-only": {
+        "glyph_entropy": 3.9016,
+        "word_entropy": 8.9622,
+        "word_count": 2349,
+        "unique_words": 979
+      },
+      "herbal": {
+        "glyph_entropy": 3.8478,
+        "word_entropy": 10.0025,
+        "word_count": 10872,
+        "unique_words": 3524
+      },
+      "cosmological": {
+        "glyph_entropy": 3.8515,
+        "word_entropy": 9.231,
+        "word_count": 2199,
+        "unique_words": 1087
+      },
+      "recipes": {
+        "glyph_entropy": 3.8586,
+        "word_entropy": 9.8552,
+        "word_count": 11611,
+        "unique_words": 3258
+      },
+      "astronomical": {
+        "glyph_entropy": 3.7471,
+        "word_entropy": 8.8881,
+        "word_count": 872,
+        "unique_words": 610
+      },
+      "zodiac": {
+        "glyph_entropy": 3.7149,
+        "word_entropy": 8.9477,
+        "word_count": 1297,
+        "unique_words": 753
+      },
+      "biological": {
+        "glyph_entropy": 3.7977,
+        "word_entropy": 8.5625,
+        "word_count": 6315,
+        "unique_words": 1467
+      },
+      "pharmaceutical": {
+        "glyph_entropy": 3.7772,
+        "word_entropy": 9.0301,
+        "word_count": 2538,
+        "unique_words": 1111
+      }
+    },
+    "by_language": {
+      "A": {
+        "glyph_entropy": 3.8321,
+        "word_entropy": 9.9392,
+        "word_count": 11022,
+        "unique_words": 3513
+      },
+      "B": {
+        "glyph_entropy": 3.8611,
+        "word_entropy": 9.895,
+        "word_count": 23766,
+        "unique_words": 5089
+      },
+      "?": {
+        "glyph_entropy": 3.7682,
+        "word_entropy": 9.6723,
+        "word_count": 3265,
+        "unique_words": 1580
+      }
+    }
+  },
+  "zipf": {
+    "exponent": 0.8946,
+    "r_squared": 0.9084,
+    "interpretation": "moderate Zipf fit"
+  },
+  "word_frequency": {
+    "top_50": {
+      "daiin": 799,
+      "ol": 553,
+      "aiin": 506,
+      "chedy": 501,
+      "shedy": 431,
+      "ar": 402,
+      "chol": 380,
+      "or": 378,
+      "chey": 349,
+      "y": 329,
+      "qokeey": 307,
+      "s": 305,
+      "qokeedy": 302,
+      "dar": 299,
+      "qokain": 276,
+      "qokedy": 270,
+      "shey": 269,
+      "qokaiin": 265,
+      "al": 261,
+      "dy": 233,
+      "dal": 232,
+      "okaiin": 212,
+      "o": 200,
+      "chor": 199,
+      "l": 192,
+      "qokal": 191,
+      "dain": 190,
+      "cheey": 184,
+      "okeey": 179,
+      "shol": 173,
+      "r": 170,
+      "cheol": 167,
+      "chy": 165,
+      "otedy": 161,
+      "okal": 152,
+      "qokar": 152,
+      "otaiin": 150,
+      "sheey": 146,
+      "otar": 146,
+      "chdy": 140,
+      "qoky": 139,
+      "oteey": 138,
+      "qol": 138,
+      "okain": 136,
+      "chckhy": 133,
+      "okar": 133,
+      "otal": 129,
+      "sho": 118,
+      "saiin": 118,
+      "okedy": 116
+    },
+    "length_distribution": {
+      "1": 1394,
+      "2": 2480,
+      "3": 3496,
+      "4": 6767,
+      "5": 9230,
+      "6": 7256,
+      "7": 4276,
+      "8": 1796,
+      "9": 747,
+      "10": 276,
+      "11": 125,
+      "12": 89,
+      "13": 51,
+      "14": 27,
+      "15": 18,
+      "16": 14,
+      "17": 4,
+      "18": 1,
+      "19": 4,
+      "21": 1,
+      "22": 1
+    }
+  },
+  "glyph_frequency": {
+    "overall": {
+      "o": 25373,
+      "e": 20239,
+      "y": 17779,
+      "h": 17494,
+      "a": 14672,
+      "d": 13150,
+      "c": 12987,
+      "i": 11779,
+      "k": 10924,
+      "l": 10621,
+      "r": 7496,
+      "s": 7220,
+      "t": 6872,
+      "n": 6147,
+      "q": 5416,
+      "p": 1637,
+      "m": 1055,
+      "f": 479,
+      "g": 127,
+      "x": 41,
+      "v": 14,
+      "b": 13,
+      "j": 10,
+      "z": 9,
+      "u": 8
+    },
+    "positional": {
+      "first": {
+        "o": 8693,
+        "c": 6777,
+        "q": 5359,
+        "s": 4435,
+        "d": 3526,
+        "a": 2151,
+        "y": 1890,
+        "l": 1462,
+        "k": 1288,
+        "t": 1028,
+        "p": 546,
+        "r": 522,
+        "e": 180,
+        "f": 120,
+        "x": 21
+      },
+      "middle": {
+        "e": 19937,
+        "h": 17402,
+        "o": 15528,
+        "a": 12385,
+        "i": 11740,
+        "k": 9550,
+        "d": 9063,
+        "c": 6209,
+        "t": 5777,
+        "l": 3464,
+        "s": 1764,
+        "r": 1397,
+        "p": 1061,
+        "y": 910,
+        "f": 340
+      },
+      "last": {
+        "y": 14979,
+        "n": 5964,
+        "l": 5695,
+        "r": 5577,
+        "o": 1152,
+        "s": 1021,
+        "m": 988,
+        "d": 561,
+        "a": 136,
+        "e": 122,
+        "g": 106,
+        "h": 92,
+        "k": 86,
+        "t": 67,
+        "p": 30
+      }
+    }
+  },
+  "ngrams": {
+    "top_30_bigrams": {
+      "ch": 10968,
+      "he": 8172,
+      "dy": 6944,
+      "ai": 6704,
+      "ok": 6147,
+      "in": 6015,
+      "ol": 5588,
+      "qo": 5289,
+      "ee": 5256,
+      "ed": 5103,
+      "ii": 4731,
+      "sh": 4514,
+      "da": 4175,
+      "ey": 4095,
+      "ke": 3990,
+      "ho": 3986,
+      "ot": 3926,
+      "ar": 3414,
+      "eo": 3399,
+      "al": 3185,
+      "ka": 3073,
+      "or": 2664,
+      "od": 2334,
+      "hy": 2176,
+      "te": 1862,
+      "ta": 1589,
+      "hd": 1097,
+      "lk": 1059,
+      "kc": 1044,
+      "tc": 968
+    },
+    "top_30_trigrams": {
+      "che": 5046,
+      "iin": 4298,
+      "aii": 4278,
+      "edy": 4215,
+      "qok": 3119,
+      "cho": 2629,
+      "she": 2607,
+      "oke": 2555,
+      "hed": 2457,
+      "dai": 2198,
+      "kee": 2198,
+      "oka": 2014,
+      "eey": 1933,
+      "ain": 1685,
+      "heo": 1650,
+      "hey": 1616,
+      "kai": 1614,
+      "eed": 1468,
+      "hee": 1327,
+      "ote": 1326,
+      "hol": 1230,
+      "ody": 1177,
+      "ota": 1142,
+      "qot": 1124,
+      "kch": 1043,
+      "chy": 1008,
+      "sho": 976,
+      "eol": 968,
+      "tch": 967,
+      "eod": 935
+    }
+  },
+  "sections": {
+    "text-only": {
+      "folio_count": 7,
+      "word_count": 2349,
+      "unique_words": 979,
+      "avg_word_length": 4.83
+    },
+    "herbal": {
+      "folio_count": 129,
+      "word_count": 10872,
+      "unique_words": 3524,
+      "avg_word_length": 4.98
+    },
+    "cosmological": {
+      "folio_count": 10,
+      "word_count": 2199,
+      "unique_words": 1087,
+      "avg_word_length": 4.64
+    },
+    "recipes": {
+      "folio_count": 25,
+      "word_count": 11611,
+      "unique_words": 3258,
+      "avg_word_length": 5.18
+    },
+    "astronomical": {
+      "folio_count": 8,
+      "word_count": 872,
+      "unique_words": 610,
+      "avg_word_length": 5.17
+    },
+    "zodiac": {
+      "folio_count": 12,
+      "word_count": 1297,
+      "unique_words": 753,
+      "avg_word_length": 5.23
+    },
+    "biological": {
+      "folio_count": 19,
+      "word_count": 6315,
+      "unique_words": 1467,
+      "avg_word_length": 5.02
+    },
+    "pharmaceutical": {
+      "folio_count": 16,
+      "word_count": 2538,
+      "unique_words": 1111,
+      "avg_word_length": 5.01
+    }
+  },
+  "languages": {
+    "A": {
+      "folio_count": 114,
+      "word_count": 11022,
+      "unique_words": 3513
+    },
+    "B": {
+      "folio_count": 82,
+      "word_count": 23766,
+      "unique_words": 5089
+    },
+    "?": {
+      "folio_count": 30,
+      "word_count": 3265,
+      "unique_words": 1580
+    }
+  }
+}

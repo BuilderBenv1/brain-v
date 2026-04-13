@@ -1,0 +1,32 @@
+{
+  "id": "FA006",
+  "claim": "The manuscript used multiple simple substitution ciphers (different keys on different pages) encoding Latin and/or early Italian. Claimed to have partially decoded plant names.",
+  "type": "cipher",
+  "confidence": 0.0,
+  "evidence_for": [],
+  "evidence_against": [
+    "Proposed substitution tables were inconsistent even within pages he claimed to have solved. Different researchers applying his own keys got different results. D'Imperio and others showed his keys did not produce consistent results across the manuscript."
+  ],
+  "test": "Historical: Robert S. Brumbaugh (1975)",
+  "test_metric": "literature_review",
+  "test_threshold": "peer review and independent verification",
+  "tests_run": [
+    {
+      "date": "1975",
+      "test": "Attempted by Robert S. Brumbaugh",
+      "score": 0.0,
+      "passed": false,
+      "details": "Proposed substitution tables were inconsistent even within pages he claimed to have solved. Different researchers applying his own keys got different results. D'Imperio and others showed his keys did not produce consistent results across the manuscript.",
+      "confidence_change": "N/A -> 0.0"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "eliminated",
+  "parent": null,
+  "created": "1975-01-01",
+  "last_tested": "1975-01-01",
+  "reasoning": "Historical attempt by Robert S. Brumbaugh (1975). Cipher type: multiple simple substitution. Proposed language: Latin/Italian.",
+  "source": "Brumbaugh, R.S. 'The Most Mysterious Manuscript' (1978); D'Imperio (1978)",
+  "researcher": "Robert S. Brumbaugh",
+  "year": 1975
+}

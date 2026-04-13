@@ -1,0 +1,32 @@
+{
+  "id": "FA019",
+  "claim": "The text encodes Hebrew using a substitution system",
+  "type": "cipher",
+  "confidence": 0.0,
+  "evidence_for": [],
+  "evidence_against": [
+    "Proposed substitution produced incoherent text. Could not be applied consistently across the manuscript. Word structure of Voynichese does not match Hebrew morphology."
+  ],
+  "test": "Historical: Stephen Hales (2003)",
+  "test_metric": "literature_review",
+  "test_threshold": "peer review and independent verification",
+  "tests_run": [
+    {
+      "date": "2003",
+      "test": "Attempted by Stephen Hales",
+      "score": 0.0,
+      "passed": false,
+      "details": "Proposed substitution produced incoherent text. Could not be applied consistently across the manuscript. Word structure of Voynichese does not match Hebrew morphology.",
+      "confidence_change": "N/A -> 0.0"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "eliminated",
+  "parent": null,
+  "created": "2003-01-01",
+  "last_tested": "2003-01-01",
+  "reasoning": "Historical attempt by Stephen Hales (2003). Cipher type: simple substitution. Proposed language: Hebrew.",
+  "source": "Discussed on Voynich mailing list; Kennedy & Churchill (2004)",
+  "researcher": "Stephen Hales",
+  "year": 2003
+}

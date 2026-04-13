@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python scripts/perceive.py)",
+      "Bash(python scripts/loop.py score)",
+      "Bash(schtasks /query /v /fo LIST)",
+      "Bash(schtasks /query /fo LIST)",
+      "Bash(schtasks /query /fo CSV)",
+      "Bash(schtasks.exe //query //fo CSV)",
+      "Bash(schtasks.exe:*)",
+      "WebSearch"
+    ]
+  }
+}
