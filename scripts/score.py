@@ -260,25 +260,52 @@ def run_statistical_test(hypothesis: dict, stats: dict, corpus: dict) -> dict:
             result["details"] = "No section data available."
             result["score"] = 0.5
 
-    # --- Substitution cipher test (generic) ---
+    # --- Substitution cipher test (with actual decryption attempt) ---
     elif "substitution" in test or "cipher" in test_metric:
-        # A simple substitution cipher preserves entropy and letter frequencies
-        # but maps 1:1. Check if glyph count matches a plausible alphabet size.
         n_glyphs = s["unique_glyphs"]
-        entropy = e["glyph_entropy_overall"]
-
-        # Latin alphabet: 23 letters (medieval), Italian: ~21-25
+        ent = e["glyph_entropy_overall"]
         plausible = 20 <= n_glyphs <= 30
-        entropy_match = 3.5 < entropy < 4.5
+        entropy_match = 3.5 < ent < 4.5
 
-        result["score"] = (0.5 if plausible else 0.0) + (0.5 if entropy_match else 0.0)
+        # Try actual decryption via decrypt.py
+        decrypt_score = 0.0
+        decrypt_details = ""
+        try:
+            from decrypt import run_all_attacks, load_corpus
+            import json as _json
+            stats_data = _json.loads(
+                (PROJECT_ROOT / "raw" / "perception" / "voynich-stats.json").read_text()
+            )
+            corpus_data = load_corpus()
+            attacks = run_all_attacks(corpus_data, stats_data, section="herbal")
+            if attacks:
+                best = attacks[0]
+                decrypt_score = best.get("score", {}).get("best_score", 0)
+                best_lang = best.get("score", {}).get("best_language", "?")
+                freq_corr = best.get("score", {}).get(
+                    f"{best_lang}_freq_correlation",
+                    best.get("score", {}).get("latin_freq_correlation", 0)
+                )
+                decrypt_details = (
+                    f"Best attack: {best.get('method', '?')} "
+                    f"(score={decrypt_score:.4f}, lang={best_lang}, "
+                    f"freq_corr={freq_corr:.3f}). "
+                )
+        except Exception as ex:
+            decrypt_details = f"Decrypt attempt failed: {ex}. "
+
+        # Combined score: structural compatibility + actual decryption result
+        struct_score = (0.3 if plausible else 0.0) + (0.3 if entropy_match else 0.0)
+        combined = struct_score + decrypt_score * 0.4
+
+        result["score"] = min(1.0, combined)
         result["details"] = (
-            f"Unique glyphs: {n_glyphs} (Latin alphabet ~23, medieval). "
-            f"Glyph entropy: {entropy:.4f} bits. "
-            f"Alphabet size {'compatible' if plausible else 'incompatible'} with simple substitution. "
-            f"Entropy {'matches' if entropy_match else 'does not match'} natural language range."
+            f"Unique glyphs: {n_glyphs} (Latin ~23). "
+            f"Entropy: {ent:.4f} bits. "
+            f"Alphabet {'compatible' if plausible else 'incompatible'}. "
+            f"{decrypt_details}"
         )
-        result["passed"] = plausible and entropy_match
+        result["passed"] = combined > 0.5
 
     # --- Fallback: use LLM to evaluate ---
     else:

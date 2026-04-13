@@ -154,11 +154,43 @@ def cmd_score():
     return True
 
 
+def cmd_decrypt():
+    """Run decryption attacks on sections with high-confidence cipher hypotheses."""
+    # Check if any cipher hypothesis is above threshold
+    if not HYPOTHESES_DIR.exists():
+        return False
+
+    cipher_hyps = []
+    for path in sorted(HYPOTHESES_DIR.glob("H*.json")):
+        try:
+            h = json.loads(path.read_text(encoding="utf-8"))
+            if h.get("status") == "active" and h.get("type") == "cipher" and h.get("confidence", 0) > 0.4:
+                cipher_hyps.append(h)
+        except json.JSONDecodeError:
+            continue
+
+    if not cipher_hyps:
+        print("[loop] No cipher hypotheses above 0.4 confidence. Skipping decrypt.")
+        return True
+
+    print(f"[loop] {len(cipher_hyps)} cipher hypotheses above threshold. Running decryption...")
+    # Run decrypt on herbal section (best starting point — illustrations provide anchors)
+    if not run_script("decrypt.py", ["--section", "herbal"]):
+        print("[loop] Decrypt failed on herbal section.")
+        return False
+
+    return True
+
+
 def cmd_full():
-    """Run a full perceive → predict → score cycle."""
+    """Run a full perceive → predict → score → decrypt cycle."""
     if not cmd_perceive_predict():
         return False
-    return cmd_score()
+    if not cmd_score():
+        return False
+    # Attempt decryption after scoring
+    cmd_decrypt()
+    return True
 
 
 def cmd_auto(cycles: int):
@@ -261,7 +293,7 @@ def cmd_status():
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python scripts/loop.py [perceive-predict|score|full|auto|status]")
+        print("Usage: python scripts/loop.py [perceive-predict|score|decrypt|full|auto|status]")
         print("  auto: python scripts/loop.py auto --cycles 10")
         sys.exit(1)
 
@@ -271,6 +303,8 @@ def main():
             cmd_perceive_predict()
         elif cmd == "score":
             cmd_score()
+        elif cmd == "decrypt":
+            cmd_decrypt()
         elif cmd == "full":
             cmd_full()
         elif cmd == "auto":
