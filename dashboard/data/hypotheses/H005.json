@@ -1,0 +1,31 @@
+{
+  "id": "H005",
+  "claim": "The text is encoded using a simple substitution cipher on a language other than Latin or Italian.",
+  "type": "cipher",
+  "confidence": 0.228,
+  "evidence_for": [
+    "Glyph entropy is lower than expected for Latin and Italian (~4.0 bits)"
+  ],
+  "evidence_against": [
+    "Word-final glyphs do not match common word endings in languages other than Latin or Italian"
+  ],
+  "test": "Compare glyph and word entropies to the expected values for non-Latin/Italian languages using a chi-squared test",
+  "test_metric": "p-value",
+  "test_threshold": "<0.1 would confirm this hypothesis",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "The hypothesis is contradicted by the high glyph entropy (3.8627 bits), which suggests a complex encoding scheme, and the Zipf exponent (0.8946) is close to 1, indicating a language with a simple word frequency distribution, both of which are more consistent with Latin or Italian languages than a simple substitution cipher on an unknown language.",
+      "confidence_change": "0.300 -> 0.228"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "If confirmed, this would suggest that the underlying language is not Latin or Italian, which would be a significant departure from current beliefs"
+}

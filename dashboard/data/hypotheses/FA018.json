@@ -1,0 +1,32 @@
+{
+  "id": "FA018",
+  "claim": "The manuscript was created in early 15th-century northern Italy, possibly by Antonio Averlino (Filarete), using a verbose/compressed cipher technique",
+  "type": "cipher",
+  "confidence": 0.1,
+  "evidence_for": [],
+  "evidence_against": [
+    "Historical analysis partially supported by radiocarbon dating (early 15th century confirmed). However, the proposed cipher mechanism has not been validated and no decipherment was produced."
+  ],
+  "test": "Historical: Nick Pelling (2006)",
+  "test_metric": "literature_review",
+  "test_threshold": "peer review and independent verification",
+  "tests_run": [
+    {
+      "date": "2006",
+      "test": "Attempted by Nick Pelling",
+      "score": 0.2,
+      "passed": null,
+      "details": "Historical analysis partially supported by radiocarbon dating (early 15th century confirmed). However, the proposed cipher mechanism has not been validated and no decipherment was produced.",
+      "confidence_change": "N/A -> 0.0"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "parked",
+  "parent": null,
+  "created": "2006-01-01",
+  "last_tested": "2006-01-01",
+  "reasoning": "Historical attempt by Nick Pelling (2006). Cipher type: verbose/compressed cipher. Proposed language: Italian.",
+  "source": "Pelling, N. 'The Curse of the Voynich' (2006); ciphermysteries.com",
+  "researcher": "Nick Pelling",
+  "year": 2006
+}

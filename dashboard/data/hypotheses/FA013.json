@@ -1,0 +1,32 @@
+{
+  "id": "FA013",
+  "claim": "The plants depict New World (Mesoamerican) species and the text is written in Nahuatl (Aztec language). Claimed to identify 37 plants as species from Mexico.",
+  "type": "language",
+  "confidence": 0.0,
+  "evidence_for": [],
+  "evidence_against": [
+    "Botanical experts disputed most plant identifications. Radiocarbon dating and provenance chain place the manuscript in Europe. No credible Nahuatl text readings produced. Would require a 15th-century European manuscript to encode a pre-Columbian American language with no historical support."
+  ],
+  "test": "Historical: Tucker and Talbert (2013)",
+  "test_metric": "literature_review",
+  "test_threshold": "peer review and independent verification",
+  "tests_run": [
+    {
+      "date": "2013",
+      "test": "Attempted by Tucker and Talbert",
+      "score": 0.0,
+      "passed": false,
+      "details": "Botanical experts disputed most plant identifications. Radiocarbon dating and provenance chain place the manuscript in Europe. No credible Nahuatl text readings produced. Would require a 15th-century European manuscript to encode a pre-Columbian American language with no historical support.",
+      "confidence_change": "N/A -> 0.0"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "eliminated",
+  "parent": null,
+  "created": "2013-01-01",
+  "last_tested": "2013-01-01",
+  "reasoning": "Historical attempt by Tucker and Talbert (2013). Cipher type: natural language (no cipher). Proposed language: Nahuatl.",
+  "source": "Tucker & Talbert, 'Preliminary Analysis of the Botany...' (HerbalGram, 2013)",
+  "researcher": "Tucker and Talbert",
+  "year": 2013
+}

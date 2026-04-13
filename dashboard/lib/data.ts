@@ -1,7 +1,34 @@
 import fs from "fs";
 import path from "path";
 
-const BRAIN_ROOT = path.resolve(process.cwd(), "..");
+// data/ is synced from the parent brain-v directory before each build.
+// In dev: run `node scripts/sync-data.js` first, or it falls back to parent dir.
+const DATA_DIR = path.resolve(process.cwd(), "data");
+const PARENT_DIR = path.resolve(process.cwd(), "..");
+const ROOT = fs.existsSync(path.join(DATA_DIR, "beliefs.json"))
+  ? DATA_DIR
+  : PARENT_DIR;
+
+// Path mappings: data/ has a flat structure, parent dir has nested paths
+const HYPOTHESES_DIR = fs.existsSync(path.join(DATA_DIR, "hypotheses"))
+  ? path.join(DATA_DIR, "hypotheses")
+  : path.join(PARENT_DIR, "hypotheses");
+
+const BELIEFS_PATH = fs.existsSync(path.join(DATA_DIR, "beliefs.json"))
+  ? path.join(DATA_DIR, "beliefs.json")
+  : path.join(PARENT_DIR, "scripts/beliefs.json");
+
+const STATS_PATH = fs.existsSync(path.join(DATA_DIR, "voynich-stats.json"))
+  ? path.join(DATA_DIR, "voynich-stats.json")
+  : path.join(PARENT_DIR, "raw/perception/voynich-stats.json");
+
+const SCORES_DIR = fs.existsSync(path.join(DATA_DIR, "scores"))
+  ? path.join(DATA_DIR, "scores")
+  : path.join(PARENT_DIR, "outputs/scores");
+
+const FAILED_PATH = fs.existsSync(path.join(DATA_DIR, "failed-approaches.json"))
+  ? path.join(DATA_DIR, "failed-approaches.json")
+  : path.join(PARENT_DIR, "raw/corpus/failed-approaches.json");
 
 export interface Hypothesis {
   id: string;
@@ -106,51 +133,49 @@ export interface Stats {
 }
 
 function readJson<T>(filePath: string): T | null {
-  const full = path.join(BRAIN_ROOT, filePath);
-  if (!fs.existsSync(full)) return null;
-  return JSON.parse(fs.readFileSync(full, "utf-8")) as T;
+  if (!fs.existsSync(filePath)) return null;
+  return JSON.parse(fs.readFileSync(filePath, "utf-8")) as T;
 }
 
 function readJsonDir<T>(dirPath: string): T[] {
-  const full = path.join(BRAIN_ROOT, dirPath);
-  if (!fs.existsSync(full)) return [];
+  if (!fs.existsSync(dirPath)) return [];
   return fs
-    .readdirSync(full)
+    .readdirSync(dirPath)
     .filter((f) => f.endsWith(".json"))
     .sort()
-    .map((f) => JSON.parse(fs.readFileSync(path.join(full, f), "utf-8")) as T);
+    .map((f) => JSON.parse(fs.readFileSync(path.join(dirPath, f), "utf-8")) as T);
 }
 
 export function getHypotheses(): Hypothesis[] {
-  return readJsonDir<Hypothesis>("hypotheses");
+  return readJsonDir<Hypothesis>(HYPOTHESES_DIR);
 }
 
 export function getBeliefs(): Belief[] {
-  return readJson<Belief[]>("scripts/beliefs.json") ?? [];
+  return readJson<Belief[]>(BELIEFS_PATH) ?? [];
 }
 
 export function getScores(): ScoreRecord[] {
-  return readJsonDir<ScoreRecord>("outputs/scores");
+  return readJsonDir<ScoreRecord>(SCORES_DIR);
 }
 
 export function getStats(): Stats | null {
-  return readJson<Stats>("raw/perception/voynich-stats.json");
+  return readJson<Stats>(STATS_PATH);
 }
 
 export function getFailedApproaches(): Hypothesis[] {
-  return readJsonDir<Hypothesis>("hypotheses").filter(
+  return readJsonDir<Hypothesis>(HYPOTHESES_DIR).filter(
     (h) => h.status === "eliminated"
   );
 }
 
 export function getActiveHypotheses(): Hypothesis[] {
-  return readJsonDir<Hypothesis>("hypotheses")
+  return readJsonDir<Hypothesis>(HYPOTHESES_DIR)
     .filter((h) => h.status === "active")
     .sort((a, b) => b.confidence - a.confidence);
 }
 
 export function getLogContent(): string {
-  const full = path.join(BRAIN_ROOT, "wiki/LOG.md");
-  if (!fs.existsSync(full)) return "";
-  return fs.readFileSync(full, "utf-8");
+  const logPath = path.join(PARENT_DIR, "wiki/LOG.md");
+  if (!fs.existsSync(logPath)) return "";
+  return fs.readFileSync(logPath, "utf-8");
 }

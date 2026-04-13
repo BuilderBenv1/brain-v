@@ -1,0 +1,32 @@
+{
+  "id": "FA004",
+  "claim": "Attempted systematic cryptanalysis with the most sophisticated military techniques of the era. Friedman hypothesized the text was a constructed/synthetic universal language, not a cipher of a natural language.",
+  "type": "cipher",
+  "confidence": 0.1,
+  "evidence_for": [],
+  "evidence_against": [
+    "The team of expert military cryptanalysts (who broke PURPLE) could not crack it. No consistent substitution patterns, polyalphabetic structures, or transposition schemes were identified. Friedman's synthetic language hypothesis remains unproven but not fully disproven. Sealed NSA deposit (opened 1970) simply restated the hypothesis."
+  ],
+  "test": "Historical: William F. Friedman / NSA First Study Group (1945)",
+  "test_metric": "literature_review",
+  "test_threshold": "peer review and independent verification",
+  "tests_run": [
+    {
+      "date": "1945",
+      "test": "Attempted by William F. Friedman / NSA First Study Group",
+      "score": 0.2,
+      "passed": null,
+      "details": "The team of expert military cryptanalysts (who broke PURPLE) could not crack it. No consistent substitution patterns, polyalphabetic structures, or transposition schemes were identified. Friedman's synthetic language hypothesis remains unproven but not fully disproven. Sealed NSA deposit (opened 1970) simply restated the hypothesis.",
+      "confidence_change": "N/A -> 0.0"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "parked",
+  "parent": null,
+  "created": "1945-01-01",
+  "last_tested": "1945-01-01",
+  "reasoning": "Historical attempt by William F. Friedman / NSA First Study Group (1945). Cipher type: systematic cryptanalysis (all standard approaches). Proposed language: constructed/synthetic language.",
+  "source": "Friedman papers at George C. Marshall Foundation; D'Imperio (1978); NSA declassified documents (2014)",
+  "researcher": "William F. Friedman / NSA First Study Group",
+  "year": 1945
+}

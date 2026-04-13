@@ -1,0 +1,32 @@
+{
+  "id": "FA014",
+  "claim": "Using botanical anchoring (identifying plants, then mapping their names to glyph sequences), identified approximately 14 characters and two words. Proposed a natural language encoding.",
+  "type": "cipher",
+  "confidence": 0.1,
+  "evidence_for": [],
+  "evidence_against": [
+    "Proposed character values not confirmed by others. No one has extended his readings into a full decipherment. Plant identifications remain speculative. Bax died in 2017 before completing his work."
+  ],
+  "test": "Historical: Stephen Bax (2014)",
+  "test_metric": "literature_review",
+  "test_threshold": "peer review and independent verification",
+  "tests_run": [
+    {
+      "date": "2014",
+      "test": "Attempted by Stephen Bax",
+      "score": 0.2,
+      "passed": null,
+      "details": "Proposed character values not confirmed by others. No one has extended his readings into a full decipherment. Plant identifications remain speculative. Bax died in 2017 before completing his work.",
+      "confidence_change": "N/A -> 0.0"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "parked",
+  "parent": null,
+  "created": "2014-01-01",
+  "last_tested": "2014-01-01",
+  "reasoning": "Historical attempt by Stephen Bax (2014). Cipher type: partial phonetic decipherment via botanical anchoring. Proposed language: unknown natural language (possibly Semitic or Asian).",
+  "source": "Bax, S. 'A Proposed Partial Decoding of the Voynich Script' (2014)",
+  "researcher": "Stephen Bax",
+  "year": 2014
+}

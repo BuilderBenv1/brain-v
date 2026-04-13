@@ -1,0 +1,32 @@
+{
+  "id": "FA016",
+  "claim": "The manuscript is written in 'proto-Romance' \u2014 a proposed now-extinct spoken precursor to modern Romance languages. No cipher involved. Content is a reference compendium for a Dominican nun about women's health.",
+  "type": "language",
+  "confidence": 0.0,
+  "evidence_for": [],
+  "evidence_against": [
+    "Overwhelmingly rejected by medieval linguists and Romance philologists. 'Proto-Romance' as described never existed \u2014 historical linguistics documents the Romance language family tree with no such common late-medieval spoken form. Translations are linguistically incoherent, mixing vocabulary and grammar from different languages across centuries. Used circular reasoning. The journal Romance Studies distanced itself from the article. Lisa Fagin Davis and numerous scholars publicly debunked it."
+  ],
+  "test": "Historical: Gerard Cheshire (2019)",
+  "test_metric": "literature_review",
+  "test_threshold": "peer review and independent verification",
+  "tests_run": [
+    {
+      "date": "2019",
+      "test": "Attempted by Gerard Cheshire",
+      "score": 0.0,
+      "passed": false,
+      "details": "Overwhelmingly rejected by medieval linguists and Romance philologists. 'Proto-Romance' as described never existed \u2014 historical linguistics documents the Romance language family tree with no such common late-medieval spoken form. Translations are linguistically incoherent, mixing vocabulary and grammar from different languages across centuries. Used circular reasoning. The journal Romance Studies distanced itself from the article. Lisa Fagin Davis and numerous scholars publicly debunked it.",
+      "confidence_change": "N/A -> 0.0"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "eliminated",
+  "parent": null,
+  "created": "2019-01-01",
+  "last_tested": "2019-01-01",
+  "reasoning": "Historical attempt by Gerard Cheshire (2019). Cipher type: natural language (no cipher). Proposed language: proto-Romance (claimed).",
+  "source": "Cheshire, G. (Romance Studies, 2019); debunking by Lisa Fagin Davis et al.",
+  "researcher": "Gerard Cheshire",
+  "year": 2019
+}

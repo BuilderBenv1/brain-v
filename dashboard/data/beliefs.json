@@ -1,0 +1,54 @@
+[
+  {
+    "belief": "The manuscript contains meaningful content, not random glyphs",
+    "confidence": 0.85,
+    "source": "seeded",
+    "date": "2026-04-13",
+    "evidence": "Statistical structure too regular for gibberish \u2014 Zipf fit, entropy in natural language range"
+  },
+  {
+    "belief": "The underlying language is most likely Latin or Italian",
+    "confidence": 0.6,
+    "source": "seeded",
+    "date": "2026-04-13",
+    "evidence": "15th century Italian provenance, Naibbe cipher compatibility, glyph entropy ~3.86 close to both"
+  },
+  {
+    "belief": "Different sections may use different encoding methods",
+    "confidence": 0.7,
+    "source": "seeded",
+    "date": "2026-04-13",
+    "evidence": "Currier A/B language split shows measurable statistical differences"
+  },
+  {
+    "belief": "The cipher is performable by hand with period tools",
+    "confidence": 0.637,
+    "source": "seeded",
+    "date": "2026-04-13",
+    "evidence": "No evidence of mechanical aids, Naibbe cipher demonstrates feasibility",
+    "last_scored": "2026-04-13"
+  },
+  {
+    "belief": "Positional glyph constraints reflect cipher structure not grammar",
+    "confidence": 0.425,
+    "source": "seeded",
+    "date": "2026-04-13",
+    "evidence": "Slot grammar could be either cipher artifact or linguistic feature",
+    "last_scored": "2026-04-13"
+  },
+  {
+    "belief": "The herbal section is the best starting point for decipherment",
+    "confidence": 0.552,
+    "source": "seeded",
+    "date": "2026-04-13",
+    "evidence": "Illustrations provide potential plaintext anchors for plant names",
+    "last_scored": "2026-04-13"
+  },
+  {
+    "belief": "Evidence supports: The manuscript's herbal section uses a combination of substitution and transposition ciphers, which ",
+    "confidence": 0.61,
+    "source": "hypothesis-H001-2026-04-13",
+    "date": "2026-04-13",
+    "last_scored": "2026-04-13"
+  }
+]

@@ -15,11 +15,11 @@ interface FailedApproach {
 }
 
 function getFailedApproaches(): FailedApproach[] {
-  const filePath = path.resolve(
-    process.cwd(),
-    "..",
-    "raw/corpus/failed-approaches.json"
-  );
+  const dataDir = path.resolve(process.cwd(), "data");
+  const parentDir = path.resolve(process.cwd(), "..");
+  const filePath = fs.existsSync(path.join(dataDir, "failed-approaches.json"))
+    ? path.join(dataDir, "failed-approaches.json")
+    : path.join(parentDir, "raw/corpus/failed-approaches.json");
   if (!fs.existsSync(filePath)) return [];
   return JSON.parse(fs.readFileSync(filePath, "utf-8"));
 }

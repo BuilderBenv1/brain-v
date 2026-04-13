@@ -1,0 +1,32 @@
+{
+  "id": "FA007",
+  "claim": "The manuscript was written in Ukrainian without vowels, containing letters about the fall of a Ukrainian kingdom",
+  "type": "language",
+  "confidence": 0.0,
+  "evidence_for": [],
+  "evidence_against": [
+    "Translations were vague and inconsistent. Linguistic experts found no credible connection to Ukrainian. The vowel-removal mapping was arbitrary. Resulting readings were incoherent with no historical corroboration."
+  ],
+  "test": "Historical: John Stojko (1978)",
+  "test_metric": "literature_review",
+  "test_threshold": "peer review and independent verification",
+  "tests_run": [
+    {
+      "date": "1978",
+      "test": "Attempted by John Stojko",
+      "score": 0.0,
+      "passed": false,
+      "details": "Translations were vague and inconsistent. Linguistic experts found no credible connection to Ukrainian. The vowel-removal mapping was arbitrary. Resulting readings were incoherent with no historical corroboration.",
+      "confidence_change": "N/A -> 0.0"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "eliminated",
+  "parent": null,
+  "created": "1978-01-01",
+  "last_tested": "1978-01-01",
+  "reasoning": "Historical attempt by John Stojko (1978). Cipher type: vowelless encoding. Proposed language: Ukrainian.",
+  "source": "Stojko, J. 'Letters to God's Eye' (1978); Kennedy & Churchill (2004)",
+  "researcher": "John Stojko",
+  "year": 1978
+}

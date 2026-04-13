@@ -1,0 +1,32 @@
+{
+  "id": "FA010",
+  "claim": "The manuscript is a hoax. Text with Voynich-like statistical properties could be generated using a Cardan grille over a table of syllables. Proposed Edward Kelley as the hoaxer.",
+  "type": "null",
+  "confidence": 0.0,
+  "evidence_for": [],
+  "evidence_against": [
+    "Showed text COULD be generated mechanically but not that it WAS. Generated text does not match all known statistical properties. Montemurro & Zanette (2013) found long-range correlations inconsistent with simple grille generation. The method can generate text resembling many things."
+  ],
+  "test": "Historical: Gordon Rugg (2004)",
+  "test_metric": "literature_review",
+  "test_threshold": "peer review and independent verification",
+  "tests_run": [
+    {
+      "date": "2004",
+      "test": "Attempted by Gordon Rugg",
+      "score": 0.0,
+      "passed": false,
+      "details": "Showed text COULD be generated mechanically but not that it WAS. Generated text does not match all known statistical properties. Montemurro & Zanette (2013) found long-range correlations inconsistent with simple grille generation. The method can generate text resembling many things.",
+      "confidence_change": "N/A -> 0.0"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "eliminated",
+  "parent": null,
+  "created": "2004-01-01",
+  "last_tested": "2004-01-01",
+  "reasoning": "Historical attempt by Gordon Rugg (2004). Cipher type: Cardan grille generation (hoax). Proposed language: none (meaningless).",
+  "source": "Rugg, G. 'An Elegant Hoax?' (Cryptologia, 2004); Scientific American (July 2004)",
+  "researcher": "Gordon Rugg",
+  "year": 2004
+}
