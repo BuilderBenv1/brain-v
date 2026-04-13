@@ -2,7 +2,7 @@
   "id": "H004",
   "claim": "The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dialects.",
   "type": "language",
-  "confidence": 0.734,
+  "confidence": 0.808,
   "evidence_for": [
     "Currier A/B split is significant (R-squared=0.9084) and moderate Zipf fit"
   ],
@@ -52,6 +52,22 @@
       "passed": true,
       "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
       "confidence_change": "0.687 -> 0.734"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compare word and glyph distributions between currier a and b using a chi-squared test",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.734 -> 0.774"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compare word and glyph distributions between currier a and b using a chi-squared test",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.774 -> 0.808"
     }
   ],
   "tests_remaining": [],

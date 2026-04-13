@@ -2,7 +2,7 @@
   "id": "H046",
   "claim": "The zodiac section's anomalously low entropy (3.7149 bits) and label-heavy structure indicate it uses a homophonic cipher with a reduced symbol set (fewer active glyphs per label), while the text-only section's high entropy (3.9016 bits) reflects unenciphered or lightly enciphered natural language prose \u00e2\u20ac\u201d meaning these two sections require different decipherment strategies.",
   "type": "cipher",
-  "confidence": 0.733,
+  "confidence": 0.77,
   "evidence_for": [
     "Zodiac entropy (3.7149) is lowest of all sections; text-only entropy (3.9016) is highest",
     "Label registers in zodiac are typically short, repetitive, and positionally constrained",
@@ -31,6 +31,14 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.690 -> 0.733"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute bigram and trigram conditional entropy separately for zodiac vs. text-only sections; test wh",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.733 -> 0.770"
     }
   ],
   "tests_remaining": [],

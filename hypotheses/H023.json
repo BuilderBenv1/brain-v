@@ -2,7 +2,7 @@
   "id": "H023",
   "claim": "The high hapax ratio (70.1%) is partially artifactual, caused by consistent scribal abbreviation or word-compounding conventions where morphological suffixes are concatenated inconsistently, such that word-final glyph sequences 'y', 'n', 'l', 'r' function as detachable morphological markers \u00e2\u20ac\u201d splitting words on these terminals would reduce unique vocabulary by at least 25%.",
   "type": "language",
-  "confidence": 0.968,
+  "confidence": 0.971,
   "evidence_for": [
     "Word-final glyph distribution is dominated by 'y' (most common), 'n', 'l', 'r', 'o' \u00e2\u20ac\u201d highly skewed toward a small set",
     "Average word length 5.03 is consistent with stem+suffix structure in Latin or Italian morphology",
@@ -216,6 +216,14 @@
       "passed": true,
       "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
       "confidence_change": "0.964 -> 0.968"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.968 -> 0.971"
     }
   ],
   "tests_remaining": [],

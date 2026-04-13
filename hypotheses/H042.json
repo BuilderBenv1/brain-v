@@ -2,7 +2,7 @@
   "id": "H042",
   "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-only encoding where Voynich words are one-to-one mappings to a closed set of astrological or calendrical terms (month names, zodiac signs, star names), rather than running prose, making it the most tractable section for frequency-matching decipherment.",
   "type": "language",
-  "confidence": 0.73,
+  "confidence": 0.759,
   "evidence_for": [
     "Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d approximately 108 words/folio vs 84 for herbal \u00e2\u20ac\u201d consistent with sparse labeling",
     "Low entropy (3.7149 bits) is consistent with a constrained closed-class vocabulary",
@@ -40,6 +40,14 @@
       "passed": true,
       "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
       "confidence_change": "0.697 -> 0.730"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the type-token ratio (ttr) and rank-frequency slope for zodiac section words. compare ttr an",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.730 -> 0.759"
     }
   ],
   "tests_remaining": [],

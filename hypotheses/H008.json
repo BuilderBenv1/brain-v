@@ -2,7 +2,7 @@
   "id": "H008",
   "claim": "The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dialects.",
   "type": "language",
-  "confidence": 0.903,
+  "confidence": 0.742,
   "evidence_for": [
     "Currier A has higher hapax ratio compared to Currier B",
     "Word-final glyph distribution in Currier A is more consistent with Latin word endings"
@@ -53,54 +53,6 @@
       "passed": true,
       "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
       "confidence_change": "0.697 -> 0.742"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "kullback-leibler divergence between word-final glyph distributions of currier a and b",
-      "score": 1.0,
-      "passed": true,
-      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
-      "confidence_change": "0.742 -> 0.781"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "kullback-leibler divergence between word-final glyph distributions of currier a and b",
-      "score": 1.0,
-      "passed": true,
-      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
-      "confidence_change": "0.781 -> 0.814"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "kullback-leibler divergence between word-final glyph distributions of currier a and b",
-      "score": 1.0,
-      "passed": true,
-      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
-      "confidence_change": "0.814 -> 0.842"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "kullback-leibler divergence between word-final glyph distributions of currier a and b",
-      "score": 1.0,
-      "passed": true,
-      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
-      "confidence_change": "0.842 -> 0.866"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "kullback-leibler divergence between word-final glyph distributions of currier a and b",
-      "score": 1.0,
-      "passed": true,
-      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
-      "confidence_change": "0.866 -> 0.886"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "kullback-leibler divergence between word-final glyph distributions of currier a and b",
-      "score": 1.0,
-      "passed": true,
-      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
-      "confidence_change": "0.886 -> 0.903"
     }
   ],
   "tests_remaining": [],

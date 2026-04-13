@@ -2,7 +2,7 @@
   "id": "H038",
   "claim": "Word-initial glyph constraints (o, c, q, s, d) and word-final glyph constraints (y, n, l, r, o) are not phonological but structural tokens marking word boundaries or grammatical roles (e.g., prefixes and suffixes encoding case or tense), analogous to a morpheme-boundary cipher layered on top of a root encoding.",
   "type": "structural",
-  "confidence": 0.677,
+  "confidence": 0.722,
   "evidence_for": [
     "The top word-initial and word-final glyph sets are small and highly skewed, inconsistent with random sampling from a 25-glyph alphabet",
     "Dominant word 'daiin' (799 occurrences) and 'aiin' (506 occurrences) share the suffix 'aiin', suggesting a recurring morpheme",
@@ -48,6 +48,14 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.624 -> 0.677"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "strip the most frequent word-initial glyphs (o, c, q, s, d) and word-final glyphs (y, n, l, r, o) fr",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.677 -> 0.722"
     }
   ],
   "tests_remaining": [],

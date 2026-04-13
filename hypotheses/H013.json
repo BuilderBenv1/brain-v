@@ -2,7 +2,7 @@
   "id": "H013",
   "claim": "The text uses a simple substitution cipher on an unknown language.",
   "type": "language",
-  "confidence": 0.18,
+  "confidence": 0.139,
   "evidence_for": [
     "Glyph entropy is lower than expected for Latin or Italian"
   ],
@@ -52,6 +52,14 @@
       "passed": null,
       "details": "Could not evaluate: Compute the frequency of word-final glyphs and compare to known languages",
       "confidence_change": "0.163 -> 0.180"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation",
+      "score": 0.25,
+      "passed": false,
+      "details": "The extremely high hapax ratio (0.701) strongly contradicts the simple substitution cipher hypothesis, as natural language substitution ciphers retain original word frequency distributions with far lower hapax ratios (typically 30-50%).",
+      "confidence_change": "0.180 -> 0.139"
     }
   ],
   "tests_remaining": [],

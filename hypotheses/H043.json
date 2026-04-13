@@ -2,7 +2,7 @@
   "id": "H043",
   "claim": "The text-only section (entropy 3.9016 bits, highest of all sections) contains unenciphered or minimally enciphered natural language prose, distinguishable from other sections by significantly higher conditional entropy H(glyph | preceding glyph) that approaches values for unenciphered medieval Latin or Italian.",
   "type": "cipher",
-  "confidence": 0.79,
+  "confidence": 0.819,
   "evidence_for": [
     "Entropy 3.9016 bits is closest to Latin (~4.0) and Italian (~3.95) of all sections per current beliefs",
     "Prior belief [0.622]/[0.673] already supports this at moderate confidence",
@@ -39,6 +39,14 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.756 -> 0.790"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute second-order conditional entropy h2 = h(g_i | g_{i-1}) for text-only section and compare to ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.790 -> 0.819"
     }
   ],
   "tests_remaining": [],

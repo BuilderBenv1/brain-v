@@ -2,7 +2,7 @@
   "id": "H012",
   "claim": "The manuscript uses a combination of substitution and transposition ciphers in the biological section.",
   "type": "cipher",
-  "confidence": 0.698,
+  "confidence": 0.72,
   "evidence_for": [
     "Biological section has higher entropy levels compared to other sections"
   ],
@@ -60,6 +60,22 @@
       "passed": true,
       "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'm', 'n'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
       "confidence_change": "0.686 -> 0.698"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the frequency of consecutive words with identical glyphs in different positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'r', 'n'}. Universal glyphs: {'d', 'a', 'l', 'o'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.698 -> 0.709"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the frequency of consecutive words with identical glyphs in different positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'm', 'n'}. Universal glyphs: {'l', 'd', 'o', 'a'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.709 -> 0.720"
     }
   ],
   "tests_remaining": [],

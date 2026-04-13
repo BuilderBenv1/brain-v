@@ -1479,6 +1479,376 @@ def attack_entropy_layers(corpus: dict) -> dict:
 
 
 # =====================================================================
+#  HYPOTHESIS-DRIVEN TARGETED ATTACKS
+#  Based on high-confidence findings from Brain-V's cognitive loop
+# =====================================================================
+
+def attack_morphological_strip(words: list[str]) -> list[dict]:
+    """
+    H023 (0.97): Word-final glyphs y, n, l, r function as detachable
+    morphological markers. Strip them and re-analyze the resulting stems.
+    If hapax ratio drops significantly, the suffixes are real morphology.
+    """
+    SUFFIXES = {"y", "n", "l", "r"}
+    # Also try common multi-char suffixes seen in EVA
+    MULTI_SUFFIXES = ["dy", "ey", "in", "ol", "ar", "or", "al", "an"]
+
+    results = []
+
+    # Single-char suffix strip
+    stripped_1 = []
+    for w in words:
+        if len(w) > 2 and w[-1] in SUFFIXES:
+            stripped_1.append(w[:-1])
+        else:
+            stripped_1.append(w)
+
+    orig_unique = len(set(words))
+    strip1_unique = len(set(stripped_1))
+    reduction_1 = 1.0 - (strip1_unique / orig_unique) if orig_unique else 0
+
+    strip1_glyphs = extract_glyph_stream(stripped_1)
+    score_1 = score_plaintext(strip1_glyphs, stripped_1)
+
+    results.append({
+        "method": "morpho_strip_single_suffix",
+        "suffixes_stripped": sorted(SUFFIXES),
+        "original_unique": orig_unique,
+        "stripped_unique": strip1_unique,
+        "vocabulary_reduction": round(reduction_1, 4),
+        "hapax_before": round(sum(1 for w, c in Counter(words).items() if c == 1) / orig_unique, 4),
+        "hapax_after": round(sum(1 for w, c in Counter(stripped_1).items() if c == 1) / strip1_unique, 4) if strip1_unique else 0,
+        "sample_words": stripped_1[:50],
+        "score": score_1,
+    })
+
+    # Multi-char suffix strip
+    stripped_m = []
+    for w in words:
+        done = False
+        for suf in sorted(MULTI_SUFFIXES, key=len, reverse=True):
+            if len(w) > len(suf) + 1 and w.endswith(suf):
+                stripped_m.append(w[:-len(suf)])
+                done = True
+                break
+        if not done:
+            stripped_m.append(w)
+
+    stripm_unique = len(set(stripped_m))
+    reduction_m = 1.0 - (stripm_unique / orig_unique) if orig_unique else 0
+
+    stripm_glyphs = extract_glyph_stream(stripped_m)
+    score_m = score_plaintext(stripm_glyphs, stripped_m)
+
+    results.append({
+        "method": "morpho_strip_multi_suffix",
+        "suffixes_stripped": MULTI_SUFFIXES,
+        "original_unique": orig_unique,
+        "stripped_unique": stripm_unique,
+        "vocabulary_reduction": round(reduction_m, 4),
+        "hapax_before": round(sum(1 for w, c in Counter(words).items() if c == 1) / orig_unique, 4),
+        "hapax_after": round(sum(1 for w, c in Counter(stripped_m).items() if c == 1) / stripm_unique, 4) if stripm_unique else 0,
+        "sample_words": stripped_m[:50],
+        "score": score_m,
+    })
+
+    # Substitution AFTER suffix strip (H001 + H023 combo)
+    for target_freq, language in [(ITALIAN_FREQ, "italian"), (LATIN_FREQ, "latin")]:
+        glyph_freq = Counter(strip1_glyphs)
+        sorted_glyphs = [g for g, _ in glyph_freq.most_common()]
+        sorted_target = sorted(target_freq.keys(), key=lambda k: -target_freq[k])
+        mapping = {g: sorted_target[i] if i < len(sorted_target) else "?"
+                   for i, g in enumerate(sorted_glyphs)}
+
+        dec_stream = "".join(mapping.get(g, "?") for g in strip1_glyphs)
+        dec_words = reconstruct_words(dec_stream, stripped_1)
+        score = score_plaintext(dec_stream, dec_words)
+
+        results.append({
+            "method": f"morpho_strip_then_sub_{language}",
+            "vocab_reduction": round(reduction_1, 4),
+            "sample_output": " ".join(dec_words[:30]),
+            "sample_words": dec_words[:50],
+            "score": score,
+        })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results
+
+
+def attack_homophonic_reduction(glyphs: str, words: list[str]) -> list[dict]:
+    """
+    H020 (0.99): Multiple Voynich glyphs map to the same plaintext letter.
+    Identify glyph clusters that behave similarly (same positional distribution)
+    and merge them before attempting substitution.
+    """
+    # Compute positional profiles for each glyph
+    glyph_profiles = {}
+    for w in words:
+        for i, g in enumerate(w):
+            if g not in glyph_profiles:
+                glyph_profiles[g] = {"first": 0, "middle": 0, "last": 0, "total": 0}
+            glyph_profiles[g]["total"] += 1
+            if i == 0:
+                glyph_profiles[g]["first"] += 1
+            elif i == len(w) - 1:
+                glyph_profiles[g]["last"] += 1
+            else:
+                glyph_profiles[g]["middle"] += 1
+
+    # Normalize profiles
+    for g in glyph_profiles:
+        t = glyph_profiles[g]["total"] or 1
+        for pos in ["first", "middle", "last"]:
+            glyph_profiles[g][pos] /= t
+
+    # Cluster glyphs by positional similarity (cosine-like distance)
+    all_g = sorted(glyph_profiles.keys())
+    def profile_dist(a, b):
+        pa, pb = glyph_profiles[a], glyph_profiles[b]
+        return sum((pa[k] - pb[k]) ** 2 for k in ["first", "middle", "last"]) ** 0.5
+
+    # Greedy clustering: merge pairs within distance threshold
+    results = []
+    for threshold in [0.15, 0.25, 0.35]:
+        merged = {}  # glyph -> representative
+        reps = list(all_g)
+        for i, g1 in enumerate(all_g):
+            if g1 in merged:
+                continue
+            for g2 in all_g[i+1:]:
+                if g2 in merged:
+                    continue
+                if profile_dist(g1, g2) < threshold:
+                    merged[g2] = g1
+
+        # Build reduced alphabet
+        def reduce(g):
+            return merged.get(g, g)
+
+        reduced_glyphs = "".join(reduce(g) for g in glyphs)
+        reduced_words = ["".join(reduce(g) for g in w) for w in words]
+        n_clusters = len(set(reduce(g) for g in all_g))
+
+        # Now do frequency substitution on reduced alphabet
+        rf = Counter(reduced_glyphs)
+        sorted_rg = [g for g, _ in rf.most_common()]
+        sorted_it = sorted(ITALIAN_FREQ.keys(), key=lambda k: -ITALIAN_FREQ[k])
+        mapping = {g: sorted_it[i] if i < len(sorted_it) else "?"
+                   for i, g in enumerate(sorted_rg)}
+
+        dec_stream = "".join(mapping.get(g, "?") for g in reduced_glyphs)
+        dec_words = reconstruct_words(dec_stream, reduced_words)
+        score = score_plaintext(dec_stream, dec_words)
+
+        results.append({
+            "method": f"homophonic_reduce_t{threshold}_sub_italian",
+            "threshold": threshold,
+            "original_alphabet": len(all_g),
+            "reduced_alphabet": n_clusters,
+            "merges": {v: k for k, v in merged.items()},
+            "sample_output": " ".join(dec_words[:30]),
+            "score": score,
+        })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results
+
+
+def attack_section_comparative(corpus: dict, stats: dict) -> list[dict]:
+    """
+    H027 (0.99) + H029 (0.99): Text-only section is closest to natural language.
+    Compare frequency substitution results across all sections to find which
+    section produces the most language-like output.
+    """
+    sections = ["text-only", "herbal", "recipes", "biological",
+                "pharmaceutical", "cosmological", "zodiac", "astronomical"]
+
+    results = []
+    for section in sections:
+        sec_words = extract_words(corpus, section=section)
+        if len(sec_words) < 50:
+            continue
+        sec_glyphs = extract_glyph_stream(sec_words)
+
+        # Run freq sub against Italian
+        gf = Counter(sec_glyphs)
+        sorted_g = [g for g, _ in gf.most_common()]
+        sorted_it = sorted(ITALIAN_FREQ.keys(), key=lambda k: -ITALIAN_FREQ[k])
+        mapping = {g: sorted_it[i] if i < len(sorted_it) else "?"
+                   for i, g in enumerate(sorted_g)}
+
+        dec_stream = "".join(mapping.get(g, "?") for g in sec_glyphs)
+        dec_words = reconstruct_words(dec_stream, sec_words)
+        score = score_plaintext(dec_stream, dec_words)
+
+        # Section-specific stats
+        sec_ic = index_of_coincidence(sec_glyphs)
+        sec_ent = entropy(sec_glyphs)
+        sec_hapax = sum(1 for w, c in Counter(sec_words).items() if c == 1) / len(set(sec_words))
+
+        results.append({
+            "method": f"section_compare_{section}",
+            "section": section,
+            "word_count": len(sec_words),
+            "unique_words": len(set(sec_words)),
+            "ic": round(sec_ic, 6),
+            "entropy": round(sec_ent, 4),
+            "hapax_ratio": round(sec_hapax, 4),
+            "sample_output": " ".join(dec_words[:20]),
+            "score": score,
+        })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results
+
+
+def attack_currier_parallel(corpus: dict) -> list[dict]:
+    """
+    H021/H025 (0.99): Currier A and B use different cipher alphabets for
+    the same language. Solve them independently and compare.
+    """
+    a_words = []
+    b_words = []
+    for f in corpus["folios"]:
+        lang = f.get("language", "?")
+        for line in f["lines"]:
+            if lang == "A":
+                a_words.extend(line["words"])
+            elif lang == "B":
+                b_words.extend(line["words"])
+
+    results = []
+    for label, w_list in [("A", a_words), ("B", b_words)]:
+        if len(w_list) < 50:
+            continue
+        glyphs = extract_glyph_stream(w_list)
+
+        for target_freq, lang_name in [(ITALIAN_FREQ, "italian"), (LATIN_FREQ, "latin")]:
+            gf = Counter(glyphs)
+            sorted_g = [g for g, _ in gf.most_common()]
+            sorted_t = sorted(target_freq.keys(), key=lambda k: -target_freq[k])
+            mapping = {g: sorted_t[i] if i < len(sorted_t) else "?"
+                       for i, g in enumerate(sorted_g)}
+
+            dec_stream = "".join(mapping.get(g, "?") for g in glyphs)
+            dec_words = reconstruct_words(dec_stream, w_list)
+            score = score_plaintext(dec_stream, dec_words)
+
+            results.append({
+                "method": f"currier_{label}_sub_{lang_name}",
+                "currier_language": label,
+                "target_language": lang_name,
+                "word_count": len(w_list),
+                "mapping": mapping,
+                "sample_output": " ".join(dec_words[:25]),
+                "sample_words": dec_words[:50],
+                "score": score,
+            })
+
+    # Check if A and B mappings converge (same glyph -> same letter)
+    a_maps = {r["mapping"] for r in results if "currier_A" in r["method"] and "italian" in r["method"]}
+    b_maps = {r["mapping"] for r in results if "currier_B" in r["method"] and "italian" in r["method"]}
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results
+
+
+def attack_text_only_rosetta(corpus: dict, stats: dict) -> list[dict]:
+    """
+    H027 (0.99): Text-only section is the Rosetta stone.
+    Build a mapping from text-only section, then apply it to herbal.
+    If text-only is less enciphered, its mapping should transfer better.
+    """
+    textonly_words = extract_words(corpus, section="text-only")
+    herbal_words = extract_words(corpus, section="herbal")
+
+    if not textonly_words or not herbal_words:
+        return []
+
+    results = []
+
+    for target_freq, lang_name in [(ITALIAN_FREQ, "italian"), (LATIN_FREQ, "latin")]:
+        # Build mapping from text-only
+        to_glyphs = extract_glyph_stream(textonly_words)
+        gf = Counter(to_glyphs)
+        sorted_g = [g for g, _ in gf.most_common()]
+        sorted_t = sorted(target_freq.keys(), key=lambda k: -target_freq[k])
+        mapping = {g: sorted_t[i] if i < len(sorted_t) else "?"
+                   for i, g in enumerate(sorted_g)}
+
+        # Score on text-only itself
+        dec_to = "".join(mapping.get(g, "?") for g in to_glyphs)
+        dec_to_words = reconstruct_words(dec_to, textonly_words)
+        score_to = score_plaintext(dec_to, dec_to_words)
+
+        results.append({
+            "method": f"rosetta_textonly_self_{lang_name}",
+            "source_section": "text-only",
+            "target_section": "text-only",
+            "target_language": lang_name,
+            "mapping": mapping,
+            "sample_output": " ".join(dec_to_words[:25]),
+            "score": score_to,
+        })
+
+        # Apply text-only mapping to herbal section
+        h_glyphs = extract_glyph_stream(herbal_words)
+        dec_h = "".join(mapping.get(g, "?") for g in h_glyphs)
+        dec_h_words = reconstruct_words(dec_h, herbal_words)
+        score_h = score_plaintext(dec_h, dec_h_words)
+
+        results.append({
+            "method": f"rosetta_textonly_to_herbal_{lang_name}",
+            "source_section": "text-only",
+            "target_section": "herbal",
+            "target_language": lang_name,
+            "mapping": mapping,
+            "sample_output": " ".join(dec_h_words[:25]),
+            "score": score_h,
+        })
+
+        # Apply text-only mapping to recipes
+        rec_words = extract_words(corpus, section="recipes")
+        if rec_words:
+            r_glyphs = extract_glyph_stream(rec_words)
+            dec_r = "".join(mapping.get(g, "?") for g in r_glyphs)
+            dec_r_words = reconstruct_words(dec_r, rec_words)
+            score_r = score_plaintext(dec_r, dec_r_words)
+
+            results.append({
+                "method": f"rosetta_textonly_to_recipes_{lang_name}",
+                "source_section": "text-only",
+                "target_section": "recipes",
+                "target_language": lang_name,
+                "sample_output": " ".join(dec_r_words[:25]),
+                "score": score_r,
+            })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results
+
+
+def attack_morpho_then_vigenere(glyphs: str, words: list[str]) -> list[dict]:
+    """
+    Combine H023 (suffix stripping) with H001 (layered cipher).
+    Strip suffixes, then try Vigenere on the stems.
+    """
+    SUFFIXES = {"y", "n", "l", "r"}
+    stripped = []
+    for w in words:
+        if len(w) > 2 and w[-1] in SUFFIXES:
+            stripped.append(w[:-1])
+        else:
+            stripped.append(w)
+
+    strip_glyphs = extract_glyph_stream(stripped)
+
+    # Run Vigenere on stripped text
+    return attack_vigenere(strip_glyphs, stripped)
+
+
+# =====================================================================
 #  RUN ALL ATTACKS
 # =====================================================================
 
@@ -1578,6 +1948,25 @@ def run_all_attacks(corpus: dict, stats: dict,
     print("[decrypt] [+3] Multi-scale entropy layers...")
     results.append(attack_entropy_layers(corpus))
 
+    # === HYPOTHESIS-DRIVEN TARGETED ATTACKS ===
+    print("[decrypt] [H023] Morphological suffix stripping...")
+    results.extend(attack_morphological_strip(words))
+
+    print("[decrypt] [H020] Homophonic glyph reduction...")
+    results.extend(attack_homophonic_reduction(glyphs, words))
+
+    print("[decrypt] [H027] Section-comparative substitution...")
+    results.extend(attack_section_comparative(corpus, stats))
+
+    print("[decrypt] [H021] Currier A/B parallel attack...")
+    results.extend(attack_currier_parallel(corpus))
+
+    print("[decrypt] [H027] Text-only Rosetta stone transfer...")
+    results.extend(attack_text_only_rosetta(corpus, stats))
+
+    print("[decrypt] [H023+H001] Morpho-strip then Vigenere...")
+    results.extend(attack_morpho_then_vigenere(glyphs, words))
+
     # Sort by best score
     results.sort(key=lambda r: -r.get("score", {}).get("best_score", 0))
 
@@ -1586,8 +1975,8 @@ def run_all_attacks(corpus: dict, stats: dict,
 
 def main():
     parser = argparse.ArgumentParser(description="Brain-V decryption engine")
-    parser.add_argument("--section", type=str, default="herbal",
-                        help="Section to target (herbal/astronomical/biological/etc)")
+    parser.add_argument("--section", type=str, default="text-only",
+                        help="Section to target (text-only/herbal/astronomical/biological/etc)")
     parser.add_argument("--folio", type=str, default=None,
                         help="Specific folio to target (e.g. f1r)")
     parser.add_argument("--cipher", type=str, default=None,
@@ -1602,9 +1991,9 @@ def main():
     stats = json.loads(STATS_PATH.read_text(encoding="utf-8"))
 
     target = args.folio or args.section or "herbal"
-    print(f"[decrypt] === Brain-V Decryption Engine v2 ===")
+    print(f"[decrypt] === Brain-V Decryption Engine v3 ===")
     print(f"[decrypt] Target: {target}")
-    print(f"[decrypt] Attack suite: 22 cipher types + 3 analytical\n")
+    print(f"[decrypt] Attack suite: 22 cipher + 3 analytical + 6 hypothesis-driven\n")
 
     results = run_all_attacks(
         corpus, stats,
@@ -1642,7 +2031,7 @@ def main():
         "target": target,
         "section": args.section,
         "folio": args.folio,
-        "engine_version": 2,
+        "engine_version": 3,
         "attacks": len(results),
         "best_method": results[0].get("method", "none") if results else "none",
         "best_score": results[0].get("score", {}).get("best_score", 0) if results else 0,

@@ -2,7 +2,7 @@
   "id": "H015",
   "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.",
   "type": "structural",
-  "confidence": 0.766,
+  "confidence": 0.78,
   "evidence_for": [
     "The herbal section has higher entropy levels compared to other sections",
     "The word-final glyph distribution in the herbal section shows a higher frequency of 'y' and 'n', which are common in rhyming couplets"
@@ -43,6 +43,14 @@
       "passed": true,
       "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
       "confidence_change": "0.751 -> 0.766"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "run a chi-squared test on the word-final glyph distribution in the herbal section compared to other ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.766 -> 0.780"
     }
   ],
   "tests_remaining": [],

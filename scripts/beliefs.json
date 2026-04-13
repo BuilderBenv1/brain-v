@@ -120,7 +120,7 @@
   },
   {
     "belief": "Evidence supports: The Currier A/B dialect split reflects two scribal hands encoding the same underlying language using",
-    "confidence": 0.165,
+    "confidence": 0.119,
     "source": "hypothesis-H032-2026-04-13",
     "date": "2026-04-13",
     "last_scored": "2026-04-13"
@@ -133,14 +133,14 @@
   },
   {
     "belief": "Evidence supports: The Currier A/B split corresponds to two different scribal hands applying the same underlying cipher",
-    "confidence": 0.411,
+    "confidence": 0.349,
     "source": "hypothesis-H040-2026-04-13",
     "date": "2026-04-13",
     "last_scored": "2026-04-13"
   },
   {
     "belief": "Evidence supports: The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-",
-    "confidence": 0.406,
+    "confidence": 0.345,
     "source": "hypothesis-H042-2026-04-13",
     "date": "2026-04-13",
     "last_scored": "2026-04-13"
@@ -159,7 +159,7 @@
   },
   {
     "belief": "Evidence supports: The extremely high hapax ratio (70.1%) is produced by a systematic suffix-stripping or abbreviation ",
-    "confidence": 0.322,
+    "confidence": 0.198,
     "source": "hypothesis-H041-2026-04-13",
     "date": "2026-04-13",
     "last_scored": "2026-04-13"
@@ -178,20 +178,23 @@
   },
   {
     "belief": "Evidence supports: The dominance of word-initial glyphs o, c, q, s, d and word-final glyphs y, n, l, r, o reflects a Vi",
-    "confidence": 0.605,
+    "confidence": 0.514,
     "source": "hypothesis-H044-2026-04-13",
-    "date": "2026-04-13"
+    "date": "2026-04-13",
+    "last_scored": "2026-04-13"
   },
   {
     "belief": "Evidence supports: The dominant word-initial glyph constraint (o, c, q, s, d account for most word starts) reflects a c",
-    "confidence": 0.608,
+    "confidence": 0.517,
     "source": "hypothesis-H048-2026-04-13",
-    "date": "2026-04-13"
+    "date": "2026-04-13",
+    "last_scored": "2026-04-13"
   },
   {
     "belief": "Evidence supports: The text-only section's elevated entropy (3.9016 bits, highest of all sections) reflects unenciphere",
-    "confidence": 0.699,
+    "confidence": 0.505,
     "source": "hypothesis-H053-2026-04-13",
-    "date": "2026-04-13"
+    "date": "2026-04-13",
+    "last_scored": "2026-04-13"
   }
 ]

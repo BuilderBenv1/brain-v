@@ -174,8 +174,8 @@ def cmd_decrypt():
         return True
 
     print(f"[loop] {len(cipher_hyps)} cipher hypotheses above threshold. Running decryption...")
-    # Run decrypt on herbal section (best starting point — illustrations provide anchors)
-    if not run_script("decrypt.py", ["--section", "herbal"]):
+    # Run decrypt on text-only section (H027: closest to natural language — Rosetta stone)
+    if not run_script("decrypt.py", ["--section", "text-only"]):
         print("[loop] Decrypt failed on herbal section.")
         return False
 

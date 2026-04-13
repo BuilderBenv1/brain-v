@@ -2,7 +2,7 @@
   "id": "H034",
   "claim": "Glyph positional constraints (specific glyphs appearing predominantly word-initially vs word-finally) reflect a syllabic or consonant-vowel encoding structure rather than grammatical affixes, where initial glyphs encode consonant onsets and final glyphs encode vowel codas of a CV or CVC syllable scheme.",
   "type": "cipher",
-  "confidence": 0.467,
+  "confidence": 0.487,
   "evidence_for": [
     "Word-initial glyphs ['o','c','q','s','d'] and word-final glyphs ['y','n','l','r','o'] are highly distinct sets with minimal overlap",
     "Average word length of 5.03 glyphs is consistent with 1-2 syllable encodings in a CVC scheme (2-3 glyphs per syllable)",
@@ -65,6 +65,14 @@
       "passed": true,
       "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'm', 'n'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
       "confidence_change": "0.446 -> 0.467"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mutual information between glyph identity and word position (initial, medial, final) for eac",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'r', 'n'}. Universal glyphs: {'d', 'a', 'l', 'o'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.467 -> 0.487"
     }
   ],
   "tests_remaining": [],

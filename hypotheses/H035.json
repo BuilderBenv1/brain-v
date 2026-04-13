@@ -2,7 +2,7 @@
   "id": "H035",
   "claim": "The high hapax ratio (70.1%) is largely an artifact of a systematic abbreviation or truncation cipher, where scribes consistently dropped word-final syllables or morphemes, causing each abbreviated form to appear unique even though the underlying vocabulary is much smaller.",
   "type": "cipher",
-  "confidence": 0.171,
+  "confidence": 0.14,
   "evidence_for": [
     "Hapax ratio of 70.1% far exceeds natural language norms (typically 40-55% for medieval Latin manuscripts of comparable size)",
     "Average word length of 5.03 glyphs is shorter than expected for unabbreviated Latin or Italian",
@@ -48,6 +48,14 @@
       "passed": false,
       "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
       "confidence_change": "0.209 -> 0.171"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the hapax word-length distribution and compare to non-hapax word-length distribution. if abb",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.171 -> 0.140"
     }
   ],
   "tests_remaining": [],

@@ -215,6 +215,14 @@
       "passed": true,
       "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
       "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
     }
   ],
   "tests_remaining": [],
