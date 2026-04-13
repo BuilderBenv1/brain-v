@@ -1,17 +1,45 @@
 """
 decrypt.py — Brain-V's decryption engine
 
-Attempts actual decipherment of Voynich text using various cipher techniques.
+Attempts actual decipherment of Voynich text using every viable cipher technique.
 When a cipher-type hypothesis scores high enough, this module applies the
 proposed cipher to sample sections and measures whether the output resembles
 a known natural language.
 
-Supported cipher attacks:
-  1. Simple substitution (frequency analysis)
-  2. Caesar/shift cipher (brute force all shifts)
-  3. Polyalphabetic / Vigenere (Kasiski + frequency)
-  4. Transposition (columnar, reverse, rail fence)
-  5. Combined substitution + transposition
+Supported cipher attacks (22 total):
+  === Substitution family ===
+  1.  Simple substitution (frequency analysis, Latin + Italian)
+  2.  Caesar/shift cipher (brute force all 26 shifts)
+  3.  Bigram substitution (digraph cipher)
+  4.  Homophonic substitution (many-to-one glyph mapping)
+  5.  Affine cipher (ax+b mod 26)
+
+  === Polyalphabetic family ===
+  6.  Vigenere / polyalphabetic (Kasiski + IC key-length detection)
+  7.  Beaufort cipher (reverse Vigenere)
+  8.  Autokey cipher (plaintext-seeded key)
+
+  === Transposition family ===
+  9.  Columnar transposition (multiple key lengths)
+  10. Reverse transposition (word-level reversal)
+  11. Rail fence cipher (zigzag read)
+  12. Scytale / strip cipher (cylinder wrap)
+  13. Route cipher (spiral/diagonal read through grid)
+
+  === Combined / layered ===
+  14. Substitution + transposition combined
+  15. Substitution + reverse (sub then flip words)
+
+  === Structural / encoding ===
+  16. Null cipher extraction (every Nth glyph)
+  17. Steganographic extraction (first/last glyph of each word)
+  18. Syllabic encoding (glyph pairs/triples as syllables)
+  19. Verbose cipher (multiple glyphs per plaintext letter)
+  20. Word-level codebook (each Voynich word = code entry)
+
+  === Analytical ===
+  21. Index of Coincidence analysis (mono vs poly determination)
+  22. Vowel/consonant pattern analysis (positional inference)
 
 Each attack produces candidate plaintext, which is scored against
 Latin and Italian reference profiles.
@@ -28,6 +56,7 @@ import json
 import math
 from collections import Counter
 from datetime import datetime, timezone
+from itertools import combinations
 from pathlib import Path
 
 # --- Config ---
@@ -65,6 +94,10 @@ LATIN_WORDS = {
     "inter", "super", "sub", "pro", "contra", "sine", "apud",
     "ergo", "igitur", "nam", "quia", "quam", "atque", "neque",
     "vel", "sive", "seu", "dum", "donec", "ubi", "unde", "quo",
+    "aqua", "herba", "terra", "ignis", "aer", "lux", "nox",
+    "radix", "flos", "folium", "semen", "cortex", "succus",
+    "medicina", "morbus", "febris", "dolor", "corpus", "sanguis",
+    "caput", "manus", "oculus", "luna", "sol", "stella", "caelum",
 }
 
 ITALIAN_WORDS = {
@@ -75,7 +108,21 @@ ITALIAN_WORDS = {
     "tutto", "loro", "quando", "molto", "dopo", "prima", "sempre",
     "ogni", "dove", "qui", "ora", "poi", "tra", "fra", "solo",
     "cosa", "tempo", "mano", "parte", "acqua", "terra", "fuoco",
+    "erba", "radice", "fiore", "foglia", "seme", "corteccia",
+    "medicina", "malattia", "febbre", "dolore", "corpo", "sangue",
+    "testa", "occhio", "luna", "sole", "stella", "cielo",
 }
+
+# Latin bigrams for bigram frequency comparison
+LATIN_COMMON_BIGRAMS = [
+    "is", "us", "um", "er", "in", "es", "et", "en", "ti", "re",
+    "an", "nt", "at", "it", "te", "on", "or", "tu", "am", "ar",
+]
+
+ITALIAN_COMMON_BIGRAMS = [
+    "re", "er", "on", "di", "in", "an", "en", "to", "la", "co",
+    "no", "al", "ti", "le", "ne", "io", "ra", "el", "ta", "te",
+]
 
 
 def load_corpus() -> dict:
@@ -101,6 +148,18 @@ def extract_glyph_stream(words: list[str]) -> str:
     return "".join(words)
 
 
+def reconstruct_words(stream: str, words: list[str]) -> list[str]:
+    """Split a decrypted stream back into words using original word lengths."""
+    result = []
+    pos = 0
+    for w in words:
+        end = pos + len(w)
+        if end <= len(stream):
+            result.append(stream[pos:end])
+        pos = end
+    return result
+
+
 # --- Scoring functions ---
 
 def frequency_correlation(observed: Counter, reference: dict) -> float:
@@ -108,9 +167,7 @@ def frequency_correlation(observed: Counter, reference: dict) -> float:
     total = sum(observed.values()) or 1
     obs_pct = {ch: (count / total) * 100 for ch, count in observed.items()}
 
-    # Get all letters from both sets
     all_letters = set(list(reference.keys()) + list(obs_pct.keys()))
-
     obs_vals = [obs_pct.get(ch, 0) for ch in sorted(all_letters)]
     ref_vals = [reference.get(ch, 0) for ch in sorted(all_letters)]
 
@@ -145,6 +202,26 @@ def entropy(text: str) -> float:
     return -sum((c / total) * math.log2(c / total) for c in freq.values() if c > 0)
 
 
+def index_of_coincidence(text: str) -> float:
+    """Index of Coincidence — measures how far from random the text is."""
+    freq = Counter(text)
+    n = len(text)
+    if n < 2:
+        return 0.0
+    return sum(f * (f - 1) for f in freq.values()) / (n * (n - 1))
+
+
+def bigram_frequency_correlation(text: str, reference_bigrams: list[str]) -> float:
+    """Score how well the top bigrams in text match a reference language's top bigrams."""
+    if len(text) < 4:
+        return 0.0
+    bigrams = [text[i:i+2] for i in range(len(text) - 1)]
+    bg_freq = Counter(bigrams)
+    top_observed = [b for b, _ in bg_freq.most_common(20)]
+    hits = sum(1 for b in top_observed if b in reference_bigrams)
+    return hits / 20
+
+
 def score_plaintext(text: str, words: list[str]) -> dict:
     """Score a candidate plaintext against Latin and Italian profiles."""
     if not text:
@@ -153,6 +230,7 @@ def score_plaintext(text: str, words: list[str]) -> dict:
 
     char_freq = Counter(text.lower())
     text_entropy = entropy(text.lower())
+    text_ic = index_of_coincidence(text.lower())
 
     # Frequency correlation
     latin_corr = frequency_correlation(char_freq, LATIN_FREQ)
@@ -166,16 +244,28 @@ def score_plaintext(text: str, words: list[str]) -> dict:
     latin_ent_score = max(0, 1.0 - abs(text_entropy - 4.0) / 2.0)
     italian_ent_score = max(0, 1.0 - abs(text_entropy - 3.95) / 2.0)
 
+    # IC comparison (English ~0.065, Latin ~0.07, Italian ~0.075, random ~0.038)
+    latin_ic_score = max(0, 1.0 - abs(text_ic - 0.07) / 0.03)
+    italian_ic_score = max(0, 1.0 - abs(text_ic - 0.075) / 0.03)
+
+    # Bigram match
+    latin_bg = bigram_frequency_correlation(text.lower(), LATIN_COMMON_BIGRAMS)
+    italian_bg = bigram_frequency_correlation(text.lower(), ITALIAN_COMMON_BIGRAMS)
+
     # Combined scores (weighted)
     latin_score = (
-        latin_corr * 0.4 +          # frequency match
-        latin_dict * 0.4 +           # dictionary hits
-        latin_ent_score * 0.2        # entropy match
+        latin_corr * 0.30 +          # frequency match
+        latin_dict * 0.30 +           # dictionary hits
+        latin_ent_score * 0.15 +      # entropy match
+        latin_ic_score * 0.10 +       # IC match
+        latin_bg * 0.15              # bigram match
     )
     italian_score = (
-        italian_corr * 0.4 +
-        italian_dict * 0.4 +
-        italian_ent_score * 0.2
+        italian_corr * 0.30 +
+        italian_dict * 0.30 +
+        italian_ent_score * 0.15 +
+        italian_ic_score * 0.10 +
+        italian_bg * 0.15
     )
 
     best = "latin" if latin_score > italian_score else "italian"
@@ -191,27 +281,31 @@ def score_plaintext(text: str, words: list[str]) -> dict:
         "latin_dict_hits": round(latin_dict, 4),
         "italian_dict_hits": round(italian_dict, 4),
         "entropy": round(text_entropy, 4),
+        "ic": round(text_ic, 6),
+        "latin_bigram_match": round(latin_bg, 4),
+        "italian_bigram_match": round(italian_bg, 4),
         "details": (
             f"Freq corr: Latin={latin_corr:.3f}, Italian={italian_corr:.3f}. "
             f"Dict hits: Latin={latin_dict:.3f}, Italian={italian_dict:.3f}. "
-            f"Entropy: {text_entropy:.3f} bits."
+            f"Entropy: {text_entropy:.3f} bits. IC: {text_ic:.5f}."
         ),
     }
 
 
-# --- Cipher attacks ---
+# =====================================================================
+#  SUBSTITUTION FAMILY
+# =====================================================================
 
 def attack_frequency_substitution(glyphs: str, words: list[str],
                                   target_freq: dict, language: str) -> dict:
     """
     Simple substitution via frequency analysis.
-    Map the most frequent Voynich glyph to the most frequent target letter, etc.
+    Map most frequent Voynich glyph to most frequent target letter, etc.
     """
     glyph_freq = Counter(glyphs)
     sorted_glyphs = [g for g, _ in glyph_freq.most_common()]
     sorted_target = sorted(target_freq.keys(), key=lambda k: -target_freq[k])
 
-    # Build mapping
     mapping = {}
     for i, g in enumerate(sorted_glyphs):
         if i < len(sorted_target):
@@ -219,17 +313,8 @@ def attack_frequency_substitution(glyphs: str, words: list[str],
         else:
             mapping[g] = "?"
 
-    # Apply mapping
     decrypted_stream = "".join(mapping.get(g, "?") for g in glyphs)
-
-    # Reconstruct words using word boundaries from original
-    decrypted_words = []
-    pos = 0
-    for w in words:
-        end = pos + len(w)
-        decrypted_words.append(decrypted_stream[pos:end])
-        pos = end
-
+    decrypted_words = reconstruct_words(decrypted_stream, words)
     plaintext = " ".join(decrypted_words)
     score = score_plaintext(decrypted_stream, decrypted_words)
 
@@ -245,10 +330,7 @@ def attack_frequency_substitution(glyphs: str, words: list[str],
 
 def attack_caesar_shift(glyphs: str, words: list[str],
                         alphabet: str = "abcdefghijklmnopqrstuvwxyz") -> list[dict]:
-    """
-    Try all possible shift values on the glyph stream.
-    Treats each unique glyph as an index into an ordered alphabet.
-    """
+    """Try all possible shift values on the glyph stream."""
     unique_glyphs = sorted(set(glyphs))
     n = len(unique_glyphs)
     glyph_to_idx = {g: i for i, g in enumerate(unique_glyphs)}
@@ -264,89 +346,12 @@ def attack_caesar_shift(glyphs: str, words: list[str],
                 decrypted.append("?")
 
         decrypted_stream = "".join(decrypted)
-
-        # Reconstruct words
-        dec_words = []
-        pos = 0
-        for w in words:
-            end = pos + len(w)
-            dec_words.append(decrypted_stream[pos:end])
-            pos = end
-
+        dec_words = reconstruct_words(decrypted_stream, words)
         score = score_plaintext(decrypted_stream, dec_words)
         results.append({
             "method": f"caesar_shift_{shift}",
             "shift": shift,
             "sample_output": " ".join(dec_words[:20]),
-            "score": score,
-        })
-
-    # Return best 3
-    results.sort(key=lambda r: -r["score"]["best_score"])
-    return results[:3]
-
-
-def attack_reverse_transposition(words: list[str]) -> dict:
-    """
-    Test if reversing the glyph order within each word produces
-    better language scores. Some historical ciphers used this.
-    """
-    reversed_words = [w[::-1] for w in words]
-    reversed_stream = "".join(reversed_words)
-    plaintext = " ".join(reversed_words)
-    score = score_plaintext(reversed_stream, reversed_words)
-
-    return {
-        "method": "reverse_transposition",
-        "sample_output": plaintext[:500],
-        "sample_words": reversed_words[:50],
-        "score": score,
-    }
-
-
-def attack_columnar_transposition(words: list[str],
-                                  key_lengths: list[int] | None = None) -> list[dict]:
-    """
-    Try columnar transposition with various key lengths.
-    Read the text in columns instead of rows.
-    """
-    if key_lengths is None:
-        key_lengths = [2, 3, 4, 5, 6, 7, 8]
-
-    stream = "".join(words)
-    results = []
-
-    for klen in key_lengths:
-        if klen >= len(stream):
-            continue
-
-        # Arrange into rows of klen, read by columns
-        rows = [stream[i:i + klen] for i in range(0, len(stream), klen)]
-        # Pad last row
-        if rows and len(rows[-1]) < klen:
-            rows[-1] = rows[-1] + "?" * (klen - len(rows[-1]))
-
-        # Read columns
-        cols_text = ""
-        for col in range(klen):
-            for row in rows:
-                if col < len(row):
-                    cols_text += row[col]
-
-        # Split back into "words" using original word lengths
-        col_words = []
-        pos = 0
-        for w in words:
-            end = pos + len(w)
-            if end <= len(cols_text):
-                col_words.append(cols_text[pos:end])
-            pos = end
-
-        score = score_plaintext(cols_text[:len(stream)], col_words)
-        results.append({
-            "method": f"columnar_transposition_k{klen}",
-            "key_length": klen,
-            "sample_output": " ".join(col_words[:20]),
             "score": score,
         })
 
@@ -359,11 +364,9 @@ def attack_bigram_substitution(glyphs: str, words: list[str]) -> dict:
     Treat common Voynich bigrams as single units (digraph cipher).
     The 25 glyphs might actually represent ~50+ values if read as pairs.
     """
-    # Find most common bigrams in the glyph stream
     bigrams = [glyphs[i:i+2] for i in range(0, len(glyphs) - 1, 2)]
     bigram_freq = Counter(bigrams)
 
-    # Map top bigrams to Latin letters by frequency
     sorted_bigrams = [b for b, _ in bigram_freq.most_common()]
     sorted_latin = sorted(LATIN_FREQ.keys(), key=lambda k: -LATIN_FREQ[k])
 
@@ -374,13 +377,9 @@ def attack_bigram_substitution(glyphs: str, words: list[str]) -> dict:
         else:
             mapping[bg] = "?"
 
-    # Decrypt
-    decrypted = []
-    for bg in bigrams:
-        decrypted.append(mapping.get(bg, "?"))
-
+    decrypted = [mapping.get(bg, "?") for bg in bigrams]
     dec_stream = "".join(decrypted)
-    # Approximate word reconstruction (every 2 glyphs = 1 char, so word lengths halve)
+
     dec_words = []
     pos = 0
     for w in words:
@@ -400,30 +399,842 @@ def attack_bigram_substitution(glyphs: str, words: list[str]) -> dict:
     }
 
 
+def attack_homophonic_substitution(glyphs: str, words: list[str]) -> dict:
+    """
+    Homophonic substitution: multiple Voynich glyphs map to the same plaintext letter.
+    In the Voynich, common glyphs like o/a/e/y might all encode the same few vowels.
+    Try clustering the 25 glyphs into ~15 groups based on positional similarity,
+    then map groups to letters.
+    """
+    # Group glyphs by positional behavior
+    # Use a simple approach: cluster by frequency rank
+    glyph_freq = Counter(glyphs)
+    ranked = [g for g, _ in glyph_freq.most_common()]
+
+    # Target: Italian has 21 letters effectively. Map 25 glyphs to 21.
+    # The top 4 extra glyphs get merged with their nearest frequency neighbor.
+    target_letters = sorted(ITALIAN_FREQ.keys(), key=lambda k: -ITALIAN_FREQ[k])
+
+    # Build mapping: first 21 glyphs map 1:1, remaining get merged
+    mapping = {}
+    for i, g in enumerate(ranked):
+        if i < len(target_letters):
+            mapping[g] = target_letters[i]
+        else:
+            # Map to the letter at position i mod len(target)
+            mapping[g] = target_letters[i % len(target_letters)]
+
+    dec_stream = "".join(mapping.get(g, "?") for g in glyphs)
+    dec_words = reconstruct_words(dec_stream, words)
+    score = score_plaintext(dec_stream, dec_words)
+
+    return {
+        "method": "homophonic_substitution_italian",
+        "mapping": mapping,
+        "sample_output": " ".join(dec_words[:40]),
+        "sample_words": dec_words[:50],
+        "score": score,
+    }
+
+
+def attack_affine_cipher(glyphs: str, words: list[str]) -> list[dict]:
+    """
+    Affine cipher: E(x) = (ax + b) mod 26.
+    Try all valid 'a' values (coprime with 26) and all 'b' shifts.
+    """
+    unique_glyphs = sorted(set(glyphs))
+    glyph_to_idx = {g: i for i, g in enumerate(unique_glyphs)}
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+    # Values of 'a' coprime with 26: 1,3,5,7,9,11,15,17,19,21,23,25
+    valid_a = [a for a in range(1, 26) if math.gcd(a, 26) == 1]
+
+    results = []
+    for a in valid_a:
+        for b in range(0, 26, 2):  # Sample b values to keep runtime sane
+            decrypted = []
+            for g in glyphs:
+                idx = glyph_to_idx.get(g, 0)
+                mapped = (a * idx + b) % 26
+                decrypted.append(alphabet[mapped])
+
+            dec_stream = "".join(decrypted)
+            dec_words = reconstruct_words(dec_stream, words)
+            score = score_plaintext(dec_stream, dec_words)
+            results.append({
+                "method": f"affine_a{a}_b{b}",
+                "a": a, "b": b,
+                "sample_output": " ".join(dec_words[:20]),
+                "score": score,
+            })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results[:3]
+
+
+# =====================================================================
+#  POLYALPHABETIC FAMILY
+# =====================================================================
+
+def kasiski_examination(glyphs: str, min_len: int = 3, max_len: int = 6) -> list[int]:
+    """
+    Kasiski examination: find repeated sequences in the ciphertext and
+    compute GCDs of distances between repetitions to estimate key length.
+    """
+    distances = []
+    for seq_len in range(min_len, max_len + 1):
+        seen = {}
+        for i in range(len(glyphs) - seq_len + 1):
+            seq = glyphs[i:i + seq_len]
+            if seq in seen:
+                dist = i - seen[seq]
+                if dist > 0:
+                    distances.append(dist)
+            seen[seq] = i
+
+    if not distances:
+        return [3, 4, 5, 6, 7]
+
+    # Find most common factors (2-20)
+    factor_counts = Counter()
+    for d in distances:
+        for f in range(2, min(21, d + 1)):
+            if d % f == 0:
+                factor_counts[f] += 1
+
+    return [f for f, _ in factor_counts.most_common(5)]
+
+
+def ic_key_length_detection(glyphs: str, max_key: int = 15) -> list[int]:
+    """
+    Use Index of Coincidence to estimate Vigenere key length.
+    Split text into 'k' interleaved streams; the correct key length
+    will show IC close to natural language (~0.065-0.075).
+    """
+    target_ic = 0.068  # midpoint of Latin/Italian
+    results = []
+
+    for k in range(2, max_key + 1):
+        streams = [[] for _ in range(k)]
+        for i, g in enumerate(glyphs):
+            streams[i % k].append(g)
+
+        ics = []
+        for stream in streams:
+            if len(stream) > 1:
+                ic_val = index_of_coincidence("".join(stream))
+                ics.append(ic_val)
+
+        if ics:
+            avg_ic = sum(ics) / len(ics)
+            results.append((k, avg_ic, abs(avg_ic - target_ic)))
+
+    results.sort(key=lambda x: x[2])
+    return [k for k, _, _ in results[:5]]
+
+
+def attack_vigenere(glyphs: str, words: list[str]) -> list[dict]:
+    """
+    Vigenere/polyalphabetic cipher attack.
+    1. Use Kasiski + IC to determine likely key lengths
+    2. For each key length, solve each column as a simple substitution
+    3. Score the combined output
+    """
+    unique_glyphs = sorted(set(glyphs))
+    n_glyphs = len(unique_glyphs)
+    glyph_to_idx = {g: i for i, g in enumerate(unique_glyphs)}
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+    # Determine likely key lengths
+    kasiski_keys = kasiski_examination(glyphs)
+    ic_keys = ic_key_length_detection(glyphs)
+    # Merge, preferring keys that appear in both
+    all_keys = list(dict.fromkeys(kasiski_keys + ic_keys))[:8]
+
+    # Target frequency (use Italian as primary, it scored higher)
+    target = sorted(ITALIAN_FREQ.keys(), key=lambda k: -ITALIAN_FREQ[k])
+
+    results = []
+    for key_len in all_keys:
+        # Split into columns
+        columns = [[] for _ in range(key_len)]
+        for i, g in enumerate(glyphs):
+            columns[i % key_len].append(g)
+
+        # Solve each column by frequency analysis
+        key = []
+        for col in columns:
+            col_freq = Counter(col)
+            if not col_freq:
+                key.append(0)
+                continue
+            most_common_glyph = col_freq.most_common(1)[0][0]
+            # Assume most common maps to 'e' (most common in Italian/Latin)
+            mc_idx = glyph_to_idx.get(most_common_glyph, 0)
+            e_idx = 4  # 'e' is index 4 in alphabet
+            shift = (mc_idx - e_idx) % min(n_glyphs, 26)
+            key.append(shift)
+
+        # Decrypt
+        decrypted = []
+        for i, g in enumerate(glyphs):
+            idx = glyph_to_idx.get(g, 0)
+            shift = key[i % key_len]
+            plain_idx = (idx - shift) % 26
+            decrypted.append(alphabet[plain_idx])
+
+        dec_stream = "".join(decrypted)
+        dec_words = reconstruct_words(dec_stream, words)
+        score = score_plaintext(dec_stream, dec_words)
+
+        results.append({
+            "method": f"vigenere_k{key_len}",
+            "key_length": key_len,
+            "key_shifts": key,
+            "kasiski_detected": key_len in kasiski_keys,
+            "ic_detected": key_len in ic_keys,
+            "sample_output": " ".join(dec_words[:25]),
+            "sample_words": dec_words[:50],
+            "score": score,
+        })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results[:3]
+
+
+def attack_beaufort(glyphs: str, words: list[str]) -> list[dict]:
+    """
+    Beaufort cipher: D(c) = (key - c) mod 26, instead of Vigenere's (c - key).
+    Historically plausible for 15th century. Uses same key detection as Vigenere.
+    """
+    unique_glyphs = sorted(set(glyphs))
+    n_glyphs = len(unique_glyphs)
+    glyph_to_idx = {g: i for i, g in enumerate(unique_glyphs)}
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+    key_lengths = ic_key_length_detection(glyphs)[:4]
+
+    results = []
+    for key_len in key_lengths:
+        columns = [[] for _ in range(key_len)]
+        for i, g in enumerate(glyphs):
+            columns[i % key_len].append(g)
+
+        key = []
+        for col in columns:
+            col_freq = Counter(col)
+            if not col_freq:
+                key.append(0)
+                continue
+            mc = col_freq.most_common(1)[0][0]
+            mc_idx = glyph_to_idx.get(mc, 0)
+            key.append((4 + mc_idx) % min(n_glyphs, 26))  # key = e + cipher
+
+        decrypted = []
+        for i, g in enumerate(glyphs):
+            idx = glyph_to_idx.get(g, 0)
+            k = key[i % key_len]
+            plain_idx = (k - idx) % 26  # Beaufort: key - cipher
+            decrypted.append(alphabet[plain_idx])
+
+        dec_stream = "".join(decrypted)
+        dec_words = reconstruct_words(dec_stream, words)
+        score = score_plaintext(dec_stream, dec_words)
+
+        results.append({
+            "method": f"beaufort_k{key_len}",
+            "key_length": key_len,
+            "sample_output": " ".join(dec_words[:25]),
+            "score": score,
+        })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results[:2]
+
+
+def attack_autokey(glyphs: str, words: list[str]) -> list[dict]:
+    """
+    Autokey cipher: key = primer + plaintext. Each decrypted char becomes
+    the next key character. Try multiple primer values.
+    """
+    unique_glyphs = sorted(set(glyphs))
+    glyph_to_idx = {g: i for i, g in enumerate(unique_glyphs)}
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+    results = []
+    # Try primers based on common starting letters
+    for primer_idx in range(min(len(unique_glyphs), 26)):
+        decrypted = []
+        key_val = primer_idx
+
+        for g in glyphs[:5000]:  # Limit for speed
+            idx = glyph_to_idx.get(g, 0)
+            plain_idx = (idx - key_val) % 26
+            decrypted.append(alphabet[plain_idx])
+            key_val = plain_idx  # Next key = this plaintext char
+
+        dec_stream = "".join(decrypted)
+        dec_words = reconstruct_words(dec_stream, words)
+        score = score_plaintext(dec_stream, dec_words)
+
+        results.append({
+            "method": f"autokey_primer{primer_idx}",
+            "primer": primer_idx,
+            "sample_output": " ".join(dec_words[:20]),
+            "score": score,
+        })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results[:3]
+
+
+# =====================================================================
+#  TRANSPOSITION FAMILY
+# =====================================================================
+
+def attack_reverse_transposition(words: list[str]) -> dict:
+    """Reverse the glyph order within each word."""
+    reversed_words = [w[::-1] for w in words]
+    reversed_stream = "".join(reversed_words)
+    plaintext = " ".join(reversed_words)
+    score = score_plaintext(reversed_stream, reversed_words)
+
+    return {
+        "method": "reverse_transposition",
+        "sample_output": plaintext[:500],
+        "sample_words": reversed_words[:50],
+        "score": score,
+    }
+
+
+def attack_columnar_transposition(words: list[str],
+                                  key_lengths: list[int] | None = None) -> list[dict]:
+    """Columnar transposition with various key lengths."""
+    if key_lengths is None:
+        key_lengths = [2, 3, 4, 5, 6, 7, 8]
+
+    stream = "".join(words)
+    results = []
+
+    for klen in key_lengths:
+        if klen >= len(stream):
+            continue
+
+        rows = [stream[i:i + klen] for i in range(0, len(stream), klen)]
+        if rows and len(rows[-1]) < klen:
+            rows[-1] = rows[-1] + "?" * (klen - len(rows[-1]))
+
+        cols_text = ""
+        for col in range(klen):
+            for row in rows:
+                if col < len(row):
+                    cols_text += row[col]
+
+        col_words = reconstruct_words(cols_text, words)
+        score = score_plaintext(cols_text[:len(stream)], col_words)
+        results.append({
+            "method": f"columnar_transposition_k{klen}",
+            "key_length": klen,
+            "sample_output": " ".join(col_words[:20]),
+            "score": score,
+        })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results[:3]
+
+
+def attack_rail_fence(glyphs: str, words: list[str]) -> list[dict]:
+    """
+    Rail fence cipher: write text in zigzag across N rails, read off rows.
+    Try decryption by reversing the process.
+    """
+    results = []
+    for n_rails in range(2, 8):
+        if n_rails >= len(glyphs):
+            continue
+
+        # Calculate the length of each rail
+        cycle = 2 * (n_rails - 1) or 1
+        rail_lens = [0] * n_rails
+        for i in range(len(glyphs)):
+            pos_in_cycle = i % cycle
+            rail = pos_in_cycle if pos_in_cycle < n_rails else cycle - pos_in_cycle
+            rail_lens[rail] += 1
+
+        # Split ciphertext into rails
+        rails = []
+        pos = 0
+        for rlen in rail_lens:
+            rails.append(list(glyphs[pos:pos + rlen]))
+            pos += rlen
+
+        # Read off in zigzag order
+        rail_indices = [0] * n_rails
+        decrypted = []
+        for i in range(len(glyphs)):
+            pos_in_cycle = i % cycle
+            rail = pos_in_cycle if pos_in_cycle < n_rails else cycle - pos_in_cycle
+            if rail_indices[rail] < len(rails[rail]):
+                decrypted.append(rails[rail][rail_indices[rail]])
+                rail_indices[rail] += 1
+            else:
+                decrypted.append("?")
+
+        dec_stream = "".join(decrypted)
+        dec_words = reconstruct_words(dec_stream, words)
+        score = score_plaintext(dec_stream, dec_words)
+
+        results.append({
+            "method": f"rail_fence_{n_rails}rails",
+            "rails": n_rails,
+            "sample_output": " ".join(dec_words[:20]),
+            "score": score,
+        })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results[:2]
+
+
+def attack_scytale(glyphs: str, words: list[str]) -> list[dict]:
+    """
+    Scytale/strip cipher: text written in a spiral around a cylinder.
+    Equivalent to columnar transposition where the key is just column width.
+    Try unwrapping with various circumferences.
+    """
+    results = []
+    for circ in range(3, 20):
+        n_rows = math.ceil(len(glyphs) / circ)
+        # Pad
+        padded = glyphs + "?" * (n_rows * circ - len(glyphs))
+
+        # Read column by column (unwrap the cylinder)
+        decrypted = []
+        for col in range(circ):
+            for row in range(n_rows):
+                idx = row * circ + col
+                if idx < len(padded):
+                    decrypted.append(padded[idx])
+
+        dec_stream = "".join(decrypted)[:len(glyphs)]
+        dec_words = reconstruct_words(dec_stream, words)
+        score = score_plaintext(dec_stream, dec_words)
+
+        results.append({
+            "method": f"scytale_circ{circ}",
+            "circumference": circ,
+            "sample_output": " ".join(dec_words[:20]),
+            "score": score,
+        })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results[:2]
+
+
+def attack_route_cipher(glyphs: str, words: list[str]) -> list[dict]:
+    """
+    Route cipher: text arranged in a grid, read in a spiral or diagonal pattern.
+    Try spiral read-out on various grid dimensions.
+    """
+    results = []
+
+    for n_cols in [5, 6, 7, 8, 9, 10, 12, 15]:
+        n_rows = math.ceil(len(glyphs) / n_cols)
+        padded = glyphs + "?" * (n_rows * n_cols - len(glyphs))
+
+        # Build grid
+        grid = []
+        for r in range(n_rows):
+            grid.append(list(padded[r * n_cols:(r + 1) * n_cols]))
+
+        # Spiral read
+        decrypted = []
+        top, bottom, left, right = 0, n_rows - 1, 0, n_cols - 1
+        while top <= bottom and left <= right:
+            for c in range(left, right + 1):
+                if top < len(grid) and c < len(grid[top]):
+                    decrypted.append(grid[top][c])
+            top += 1
+            for r in range(top, bottom + 1):
+                if r < len(grid) and right < len(grid[r]):
+                    decrypted.append(grid[r][right])
+            right -= 1
+            if top <= bottom:
+                for c in range(right, left - 1, -1):
+                    if bottom < len(grid) and c < len(grid[bottom]):
+                        decrypted.append(grid[bottom][c])
+                bottom -= 1
+            if left <= right:
+                for r in range(bottom, top - 1, -1):
+                    if r < len(grid) and left < len(grid[r]):
+                        decrypted.append(grid[r][left])
+                left += 1
+
+        dec_stream = "".join(decrypted)[:len(glyphs)]
+        dec_words = reconstruct_words(dec_stream, words)
+        score = score_plaintext(dec_stream, dec_words)
+
+        results.append({
+            "method": f"route_spiral_{n_cols}cols",
+            "columns": n_cols,
+            "sample_output": " ".join(dec_words[:20]),
+            "score": score,
+        })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results[:2]
+
+
+# =====================================================================
+#  COMBINED / LAYERED ATTACKS
+# =====================================================================
+
+def attack_sub_then_transpose(glyphs: str, words: list[str]) -> list[dict]:
+    """
+    Apply frequency substitution first, then try transposition on the result.
+    This tests the H001 hypothesis (combination cipher) directly.
+    """
+    results = []
+
+    for target_freq, language in [(ITALIAN_FREQ, "italian"), (LATIN_FREQ, "latin")]:
+        # Step 1: frequency substitution
+        glyph_freq = Counter(glyphs)
+        sorted_glyphs = [g for g, _ in glyph_freq.most_common()]
+        sorted_target = sorted(target_freq.keys(), key=lambda k: -target_freq[k])
+        mapping = {}
+        for i, g in enumerate(sorted_glyphs):
+            mapping[g] = sorted_target[i] if i < len(sorted_target) else "?"
+
+        sub_stream = "".join(mapping.get(g, "?") for g in glyphs)
+
+        # Step 2: try columnar transposition on the substituted text
+        for klen in [3, 4, 5, 6, 7]:
+            rows = [sub_stream[i:i + klen] for i in range(0, len(sub_stream), klen)]
+            if rows and len(rows[-1]) < klen:
+                rows[-1] = rows[-1] + "?" * (klen - len(rows[-1]))
+            cols_text = ""
+            for col in range(klen):
+                for row in rows:
+                    if col < len(row):
+                        cols_text += row[col]
+
+            dec_words = reconstruct_words(cols_text[:len(glyphs)], words)
+            score = score_plaintext(cols_text[:len(glyphs)], dec_words)
+
+            results.append({
+                "method": f"sub_{language}_then_columnar_k{klen}",
+                "substitution": language,
+                "transposition_key": klen,
+                "sample_output": " ".join(dec_words[:25]),
+                "score": score,
+            })
+
+        # Step 2b: try reverse within words after substitution
+        sub_words = reconstruct_words(sub_stream, words)
+        rev_words = [w[::-1] for w in sub_words]
+        rev_stream = "".join(rev_words)
+        score = score_plaintext(rev_stream, rev_words)
+
+        results.append({
+            "method": f"sub_{language}_then_reverse",
+            "substitution": language,
+            "sample_output": " ".join(rev_words[:30]),
+            "score": score,
+        })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results[:3]
+
+
+# =====================================================================
+#  STRUCTURAL / ENCODING ATTACKS
+# =====================================================================
+
+def attack_null_cipher(glyphs: str, words: list[str]) -> list[dict]:
+    """
+    Null cipher: only every Nth glyph carries the real message.
+    The rest is padding/noise.
+    """
+    results = []
+    for n in [2, 3, 4, 5]:
+        # Extract every Nth glyph
+        extracted = glyphs[::n]
+        if len(extracted) < 10:
+            continue
+
+        # Try to split into ~5-char "words"
+        avg_len = 5
+        ext_words = [extracted[i:i+avg_len] for i in range(0, len(extracted), avg_len)]
+        score = score_plaintext(extracted, ext_words)
+
+        results.append({
+            "method": f"null_cipher_every{n}th",
+            "interval": n,
+            "extracted_length": len(extracted),
+            "sample_output": " ".join(ext_words[:20]),
+            "score": score,
+        })
+
+    # Also try: first glyph after space (word-initial)
+    initials = "".join(w[0] for w in words if w)
+    init_words = [initials[i:i+5] for i in range(0, len(initials), 5)]
+    score = score_plaintext(initials, init_words)
+    results.append({
+        "method": "null_cipher_word_initials",
+        "extracted_length": len(initials),
+        "sample_output": " ".join(init_words[:20]),
+        "score": score,
+    })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results[:3]
+
+
+def attack_steganographic(words: list[str]) -> list[dict]:
+    """
+    Steganographic extraction: the real message is hidden in specific positions.
+    Try: first letter, last letter, first+last, middle letter of each word.
+    """
+    results = []
+
+    extractions = {
+        "first_letter": "".join(w[0] for w in words if w),
+        "last_letter": "".join(w[-1] for w in words if w),
+        "first_last": "".join(w[0] + w[-1] for w in words if len(w) >= 2),
+        "middle_letter": "".join(w[len(w)//2] for w in words if w),
+        "second_letter": "".join(w[1] for w in words if len(w) >= 2),
+    }
+
+    for name, extracted in extractions.items():
+        if len(extracted) < 10:
+            continue
+        ext_words = [extracted[i:i+5] for i in range(0, len(extracted), 5)]
+        score = score_plaintext(extracted, ext_words)
+
+        results.append({
+            "method": f"stego_{name}",
+            "extracted_length": len(extracted),
+            "sample_output": " ".join(ext_words[:20]),
+            "score": score,
+        })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results[:3]
+
+
+def attack_syllabic_encoding(glyphs: str, words: list[str]) -> dict:
+    """
+    Syllabic encoding: groups of 2-3 Voynich glyphs represent single syllables.
+    Common in East Asian scripts and some historical codes.
+    Map the most common trigrams to common Latin/Italian syllables.
+    """
+    # Find most common trigrams
+    trigrams = [glyphs[i:i+3] for i in range(0, len(glyphs) - 2, 3)]
+    tri_freq = Counter(trigrams)
+
+    # Common Latin syllables (medical/herbal context)
+    latin_syllables = [
+        "us", "um", "is", "em", "ae", "am", "er", "en",
+        "in", "es", "et", "re", "ti", "an", "at", "or",
+        "al", "ar", "on", "it", "te", "ta", "ra", "de",
+        "la", "co", "si", "na", "ma", "me", "mi", "no",
+    ]
+
+    mapping = {}
+    for i, (tri, _) in enumerate(tri_freq.most_common(len(latin_syllables))):
+        if i < len(latin_syllables):
+            mapping[tri] = latin_syllables[i]
+
+    decrypted = [mapping.get(t, "??") for t in trigrams]
+    dec_stream = "".join(decrypted)
+
+    # Split into word-sized chunks (~5 chars)
+    dec_words = [dec_stream[i:i+6] for i in range(0, len(dec_stream), 6)]
+
+    score = score_plaintext(dec_stream, dec_words)
+
+    return {
+        "method": "syllabic_trigram_latin",
+        "mapping_sample": dict(list(mapping.items())[:10]),
+        "sample_output": " ".join(dec_words[:20]),
+        "score": score,
+    }
+
+
+def attack_verbose_cipher(glyphs: str, words: list[str]) -> list[dict]:
+    """
+    Verbose cipher: 2+ Voynich glyphs encode each plaintext letter.
+    This would explain the Voynich's unusually long words.
+    Test by mapping fixed-length glyph groups to letters.
+    """
+    results = []
+
+    for group_size in [2, 3]:
+        groups = [glyphs[i:i+group_size] for i in range(0, len(glyphs) - group_size + 1, group_size)]
+        group_freq = Counter(groups)
+
+        # Map by frequency to Italian letters
+        sorted_groups = [g for g, _ in group_freq.most_common()]
+        sorted_italian = sorted(ITALIAN_FREQ.keys(), key=lambda k: -ITALIAN_FREQ[k])
+
+        mapping = {}
+        for i, grp in enumerate(sorted_groups):
+            mapping[grp] = sorted_italian[i] if i < len(sorted_italian) else "?"
+
+        dec_stream = "".join(mapping.get(g, "?") for g in groups)
+
+        # Reconstruct approximate words (original words shrink by group_size)
+        dec_words = []
+        pos = 0
+        for w in words:
+            n_chars = len(w) // group_size
+            end = pos + n_chars
+            if end <= len(dec_stream):
+                dec_words.append(dec_stream[pos:end])
+            pos = end
+
+        score = score_plaintext(dec_stream, dec_words)
+
+        results.append({
+            "method": f"verbose_cipher_{group_size}to1",
+            "group_size": group_size,
+            "unique_groups": len(set(groups)),
+            "sample_output": " ".join(dec_words[:30]),
+            "score": score,
+        })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results[:2]
+
+
+def attack_word_codebook(words: list[str]) -> dict:
+    """
+    Word-level codebook: each Voynich word maps to a plaintext word.
+    If this is a nomenclator, the most common Voynich words would map to
+    common Latin/Italian words.
+    """
+    word_freq = Counter(words)
+    sorted_voynich = [w for w, _ in word_freq.most_common()]
+
+    # Map to common Latin words by frequency rank
+    latin_common = [
+        "et", "in", "est", "non", "ad", "de", "qui", "ut", "cum", "sed",
+        "quod", "per", "ab", "ex", "si", "aut", "nec", "enim", "autem",
+        "hic", "ille", "esse", "sunt", "fuit", "quae", "quid", "omnis",
+        "iam", "nunc", "tamen", "herba", "aqua", "radix", "flos", "folium",
+        "semen", "terra", "ignis", "medicina", "morbus", "febris", "dolor",
+        "sanguis", "corpus", "caput", "manus", "luna", "sol", "stella",
+    ]
+
+    mapping = {}
+    for i, vw in enumerate(sorted_voynich):
+        if i < len(latin_common):
+            mapping[vw] = latin_common[i]
+        else:
+            mapping[vw] = f"[{vw}]"
+
+    dec_words = [mapping.get(w, f"[{w}]") for w in words]
+    dec_stream = " ".join(dec_words)
+
+    # Score only on mapped words
+    mapped_words = [w for w in dec_words if not w.startswith("[")]
+    score = score_plaintext("".join(mapped_words), mapped_words)
+
+    return {
+        "method": "word_codebook_latin",
+        "mapping_sample": dict(list(mapping.items())[:20]),
+        "sample_output": " ".join(dec_words[:30]),
+        "mapped_ratio": len(mapped_words) / len(dec_words) if dec_words else 0,
+        "score": score,
+    }
+
+
+# =====================================================================
+#  ANALYTICAL ATTACKS
+# =====================================================================
+
+def attack_ic_analysis(glyphs: str, words: list[str], stats: dict) -> dict:
+    """
+    Index of Coincidence analysis — determine whether the cipher is
+    monoalphabetic or polyalphabetic, and estimate key length.
+    """
+    overall_ic = index_of_coincidence(glyphs)
+
+    # Expected IC values
+    # Random: 1/N where N=alphabet size. For 25 glyphs: 0.04
+    # Natural language: ~0.065-0.075
+    # Voynich with 25 glyphs random: 1/25 = 0.04
+
+    # IC by section
+    section_ics = {}
+    for section_name, section_data in stats["entropy"]["by_section"].items():
+        sec_words = extract_words(
+            json.loads(CORPUS_PATH.read_text(encoding="utf-8")),
+            section=section_name
+        )
+        sec_glyphs = extract_glyph_stream(sec_words)
+        if len(sec_glyphs) > 100:
+            section_ics[section_name] = round(index_of_coincidence(sec_glyphs), 6)
+
+    # IC per key length (Vigenere detection)
+    key_length_ics = {}
+    for k in range(1, 16):
+        streams = [[] for _ in range(k)]
+        for i, g in enumerate(glyphs):
+            streams[i % k].append(g)
+        ics = [index_of_coincidence("".join(s)) for s in streams if len(s) > 10]
+        if ics:
+            key_length_ics[k] = round(sum(ics) / len(ics), 6)
+
+    # Find the key length where IC is highest (closest to natural language)
+    best_key = max(key_length_ics.items(), key=lambda x: x[1]) if key_length_ics else (1, 0)
+
+    # Determine cipher type
+    if overall_ic > 0.060:
+        cipher_type = "monoalphabetic (IC consistent with single alphabet)"
+    elif overall_ic > 0.045:
+        cipher_type = "possibly polyalphabetic or structured encoding"
+    else:
+        cipher_type = "polyalphabetic or random (IC near chance level)"
+
+    return {
+        "method": "ic_analysis",
+        "overall_ic": round(overall_ic, 6),
+        "expected_random_25": round(1/25, 6),
+        "expected_natural_language": "0.065-0.075",
+        "cipher_type_estimate": cipher_type,
+        "best_key_length": best_key[0],
+        "best_key_ic": best_key[1],
+        "key_length_ics": key_length_ics,
+        "section_ics": section_ics,
+        "score": {
+            "best_score": round(overall_ic * 10, 4),  # Normalize to 0-1 range
+            "best_language": "analytical",
+            "details": (
+                f"Overall IC: {overall_ic:.5f}. "
+                f"Random (25 glyphs): {1/25:.5f}. "
+                f"Best key length: {best_key[0]} (IC={best_key[1]:.5f}). "
+                f"{cipher_type}."
+            ),
+        },
+    }
+
+
 def attack_vowel_consonant_pattern(words: list[str], stats: dict) -> dict:
-    """
-    Analyze the vowel/consonant pattern of the decryption output.
-    Use positional glyph data to identify likely vowels vs consonants.
-    """
-    # In the Voynich, word-final glyphs are likely vowels (as in Latin/Italian)
+    """Analyze vowel/consonant patterns using positional glyph data."""
     pos = stats["glyph_frequency"]["positional"]
     last_glyphs = list(pos.get("last", {}).keys())[:5]
-    first_glyphs = list(pos.get("first", {}).keys())[:5]
 
-    # Hypothesize: word-final glyphs = vowels
-    likely_vowels = set(last_glyphs[:4])  # top 4 word-final glyphs
+    likely_vowels = set(last_glyphs[:4])
     all_glyphs_set = set()
     for w in words:
         all_glyphs_set.update(list(w))
 
     likely_consonants = all_glyphs_set - likely_vowels
 
-    # Compute vowel ratio
     total = sum(len(w) for w in words)
     vowel_count = sum(1 for w in words for g in w if g in likely_vowels)
     vowel_ratio = vowel_count / total if total else 0
 
-    # Latin vowel ratio ~0.45, Italian ~0.48
     latin_match = 1.0 - abs(vowel_ratio - 0.45) * 5
     italian_match = 1.0 - abs(vowel_ratio - 0.48) * 5
 
@@ -447,53 +1258,325 @@ def attack_vowel_consonant_pattern(words: list[str], stats: dict) -> dict:
     }
 
 
+def attack_currier_split(corpus: dict, stats: dict) -> dict:
+    """
+    Analyze Currier A vs B as potentially different cipher systems.
+    Run frequency analysis on each separately and compare.
+    """
+    a_words = []
+    b_words = []
+    for f in corpus["folios"]:
+        for line in f["lines"]:
+            lang = f.get("language", "?")
+            if lang == "A":
+                a_words.extend(line["words"])
+            elif lang == "B":
+                b_words.extend(line["words"])
+
+    results = {}
+    for label, w_list in [("A", a_words), ("B", b_words)]:
+        if not w_list:
+            continue
+        glyphs = extract_glyph_stream(w_list)
+        ic = index_of_coincidence(glyphs)
+        ent = entropy(glyphs)
+        freq = Counter(glyphs)
+        total = sum(freq.values())
+        top5 = [(g, round(c/total*100, 2)) for g, c in freq.most_common(5)]
+        avg_wl = sum(len(w) for w in w_list) / len(w_list)
+        hapax = sum(1 for w, c in Counter(w_list).items() if c == 1) / len(set(w_list))
+
+        results[label] = {
+            "word_count": len(w_list),
+            "unique_words": len(set(w_list)),
+            "ic": round(ic, 6),
+            "entropy": round(ent, 4),
+            "top5_glyphs": top5,
+            "avg_word_length": round(avg_wl, 2),
+            "hapax_ratio": round(hapax, 3),
+        }
+
+    # Compare
+    if "A" in results and "B" in results:
+        ic_diff = abs(results["A"]["ic"] - results["B"]["ic"])
+        ent_diff = abs(results["A"]["entropy"] - results["B"]["entropy"])
+        wl_diff = abs(results["A"]["avg_word_length"] - results["B"]["avg_word_length"])
+
+        divergence = ic_diff * 100 + ent_diff + wl_diff * 0.2
+        interpretation = (
+            "two_ciphers" if divergence > 0.5 else
+            "two_scribes_same_cipher" if divergence > 0.1 else
+            "single_system"
+        )
+    else:
+        divergence = 0
+        interpretation = "insufficient_data"
+
+    return {
+        "method": "currier_split_analysis",
+        "language_a": results.get("A", {}),
+        "language_b": results.get("B", {}),
+        "divergence_score": round(divergence, 4),
+        "interpretation": interpretation,
+        "score": {
+            "best_score": round(min(1.0, divergence), 4),
+            "best_language": "analytical",
+            "details": (
+                f"A/B divergence: {divergence:.4f}. "
+                f"IC diff: {ic_diff:.5f}. "
+                f"Entropy diff: {ent_diff:.4f}. "
+                f"Interpretation: {interpretation}."
+            ) if "A" in results and "B" in results else "Insufficient data",
+        },
+    }
+
+
+def attack_word_grammar(words: list[str], stats: dict) -> dict:
+    """
+    Test for word-internal grammar / slot structure (Stolfi's glyph position constraints).
+    If the Voynich has strict positional rules, it suggests a structured encoding
+    rather than a natural language cipher.
+    """
+    pos_data = stats["glyph_frequency"]["positional"]
+    first = set(pos_data.get("first", {}).keys())
+    middle = set(pos_data.get("middle", {}).keys())
+    last = set(pos_data.get("last", {}).keys())
+
+    # Compute transition matrix for bigrams within words
+    transitions = Counter()
+    for w in words:
+        for i in range(len(w) - 1):
+            transitions[(w[i], w[i+1])] += 1
+
+    total_trans = sum(transitions.values())
+    unique_trans = len(transitions)
+    all_glyphs = first | middle | last
+    possible_trans = len(all_glyphs) ** 2
+
+    # Transition density: what fraction of possible bigrams actually occur
+    density = unique_trans / possible_trans if possible_trans else 0
+
+    # Positional exclusivity
+    first_only = first - middle - last
+    last_only = last - middle - first
+    middle_only = middle - first - last
+
+    # Check for forbidden transitions (common in structured encodings)
+    forbidden_count = possible_trans - unique_trans
+    forbidden_ratio = forbidden_count / possible_trans if possible_trans else 0
+
+    # Natural languages have ~60-70% density, structured encodings much lower
+    structure_score = 1.0 - density  # Higher = more structured
+    if density < 0.3:
+        interpretation = "highly_structured (strong slot grammar, suggests encoding)"
+    elif density < 0.5:
+        interpretation = "moderately_structured (some positional constraints)"
+    else:
+        interpretation = "loosely_structured (consistent with natural language)"
+
+    return {
+        "method": "word_grammar_analysis",
+        "transition_density": round(density, 4),
+        "unique_transitions": unique_trans,
+        "possible_transitions": possible_trans,
+        "forbidden_ratio": round(forbidden_ratio, 4),
+        "first_only_glyphs": sorted(first_only),
+        "last_only_glyphs": sorted(last_only),
+        "middle_only_glyphs": sorted(middle_only),
+        "interpretation": interpretation,
+        "score": {
+            "best_score": round(structure_score, 4),
+            "best_language": "analytical",
+            "details": (
+                f"Transition density: {density:.3f} ({unique_trans}/{possible_trans}). "
+                f"Forbidden: {forbidden_ratio:.1%}. "
+                f"First-only: {sorted(first_only)}. Last-only: {sorted(last_only)}. "
+                f"{interpretation}."
+            ),
+        },
+    }
+
+
+def attack_entropy_layers(corpus: dict) -> dict:
+    """
+    Multi-scale entropy analysis: character, word, line, page level.
+    Compare entropy profile against known languages and known hoaxes.
+    """
+    all_words = []
+    lines_per_page = []
+    for f in corpus["folios"]:
+        page_lines = []
+        for line in f["lines"]:
+            all_words.extend(line["words"])
+            page_lines.append(" ".join(line["words"]))
+        if page_lines:
+            lines_per_page.append(page_lines)
+
+    glyphs = extract_glyph_stream(all_words)
+
+    # Character-level entropy
+    char_ent = entropy(glyphs)
+
+    # Word-level entropy
+    word_ent = entropy(" ".join(all_words))
+
+    # IC at character level
+    char_ic = index_of_coincidence(glyphs)
+
+    # Conditional entropy: H(char | previous char)
+    bigrams = Counter()
+    unigrams = Counter()
+    for i in range(len(glyphs) - 1):
+        bigrams[(glyphs[i], glyphs[i+1])] += 1
+        unigrams[glyphs[i]] += 1
+    unigrams[glyphs[-1]] = unigrams.get(glyphs[-1], 0) + 1
+
+    cond_ent = 0
+    total_bi = sum(bigrams.values())
+    for (g1, g2), count in bigrams.items():
+        p_bi = count / total_bi
+        p_uni = unigrams[g1] / sum(unigrams.values())
+        if p_bi > 0 and p_uni > 0:
+            cond_ent -= p_bi * math.log2(p_bi / p_uni)
+
+    # Second-order entropy (how predictable is the next character?)
+    predictability = 1.0 - (cond_ent / char_ent) if char_ent > 0 else 0
+
+    # Compare with known values
+    # Latin: char_ent ~4.0, cond_ent ~3.2, predictability ~0.20
+    # Random: char_ent ~4.6 (25 chars), cond_ent ~4.6, predictability ~0.0
+    # Hoax (Rugg): char_ent ~3.5, cond_ent ~2.0, predictability ~0.43
+
+    if predictability > 0.35:
+        profile = "high_predictability (consistent with table/grille generation — cf. Rugg)"
+    elif predictability > 0.15:
+        profile = "moderate_predictability (consistent with natural language)"
+    else:
+        profile = "low_predictability (consistent with strong cipher or random)"
+
+    return {
+        "method": "entropy_layers_analysis",
+        "char_entropy": round(char_ent, 4),
+        "conditional_entropy": round(cond_ent, 4),
+        "predictability": round(predictability, 4),
+        "char_ic": round(char_ic, 6),
+        "profile": profile,
+        "reference": {
+            "latin": {"char_ent": 4.0, "predictability": 0.20},
+            "random_25": {"char_ent": 4.64, "predictability": 0.0},
+            "hoax_rugg": {"char_ent": 3.5, "predictability": 0.43},
+        },
+        "score": {
+            "best_score": round(max(0, 1.0 - abs(predictability - 0.20) * 3), 4),
+            "best_language": "analytical",
+            "details": (
+                f"Char entropy: {char_ent:.3f}. Cond entropy: {cond_ent:.3f}. "
+                f"Predictability: {predictability:.3f}. IC: {char_ic:.5f}. "
+                f"{profile}."
+            ),
+        },
+    }
+
+
+# =====================================================================
+#  RUN ALL ATTACKS
+# =====================================================================
+
 def run_all_attacks(corpus: dict, stats: dict,
                     section: str | None = None,
                     folio: str | None = None) -> list[dict]:
-    """Run all cipher attacks and return ranked results."""
+    """Run all 22 cipher attacks and return ranked results."""
     words = extract_words(corpus, section=section, folio=folio)
     if not words:
         return [{"error": f"No words found for section={section}, folio={folio}"}]
 
     glyphs = extract_glyph_stream(words)
     print(f"[decrypt] Working with {len(words)} words, {len(glyphs)} glyphs")
+    print(f"[decrypt] Unique glyphs: {len(set(glyphs))}")
 
     results = []
 
-    # 1. Frequency-based substitution (Latin)
-    print("[decrypt] Trying frequency substitution (Latin)...")
-    r = attack_frequency_substitution(glyphs, words, LATIN_FREQ, "latin")
-    results.append(r)
+    # === SUBSTITUTION FAMILY ===
+    print("[decrypt] [1/22] Frequency substitution (Latin)...")
+    results.append(attack_frequency_substitution(glyphs, words, LATIN_FREQ, "latin"))
 
-    # 2. Frequency-based substitution (Italian)
-    print("[decrypt] Trying frequency substitution (Italian)...")
-    r = attack_frequency_substitution(glyphs, words, ITALIAN_FREQ, "italian")
-    results.append(r)
+    print("[decrypt] [2/22] Frequency substitution (Italian)...")
+    results.append(attack_frequency_substitution(glyphs, words, ITALIAN_FREQ, "italian"))
 
-    # 3. Caesar shifts
-    print("[decrypt] Trying Caesar shifts...")
-    for r in attack_caesar_shift(glyphs, words):
-        results.append(r)
+    print("[decrypt] [3/22] Caesar shifts...")
+    results.extend(attack_caesar_shift(glyphs, words))
 
-    # 4. Reverse transposition
-    print("[decrypt] Trying reverse transposition...")
-    r = attack_reverse_transposition(words)
-    results.append(r)
+    print("[decrypt] [4/22] Bigram substitution...")
+    results.append(attack_bigram_substitution(glyphs, words))
 
-    # 5. Columnar transposition
-    print("[decrypt] Trying columnar transposition...")
-    for r in attack_columnar_transposition(words):
-        results.append(r)
+    print("[decrypt] [5/22] Homophonic substitution...")
+    results.append(attack_homophonic_substitution(glyphs, words))
 
-    # 6. Bigram substitution
-    print("[decrypt] Trying bigram substitution...")
-    r = attack_bigram_substitution(glyphs, words)
-    results.append(r)
+    print("[decrypt] [6/22] Affine cipher...")
+    results.extend(attack_affine_cipher(glyphs, words))
 
-    # 7. Vowel/consonant pattern analysis
-    print("[decrypt] Analyzing vowel/consonant patterns...")
-    r = attack_vowel_consonant_pattern(words, stats)
-    results.append(r)
+    # === POLYALPHABETIC FAMILY ===
+    print("[decrypt] [7/22] Vigenere (Kasiski + IC detection)...")
+    results.extend(attack_vigenere(glyphs, words))
+
+    print("[decrypt] [8/22] Beaufort cipher...")
+    results.extend(attack_beaufort(glyphs, words))
+
+    print("[decrypt] [9/22] Autokey cipher...")
+    results.extend(attack_autokey(glyphs, words))
+
+    # === TRANSPOSITION FAMILY ===
+    print("[decrypt] [10/22] Reverse transposition...")
+    results.append(attack_reverse_transposition(words))
+
+    print("[decrypt] [11/22] Columnar transposition...")
+    results.extend(attack_columnar_transposition(words))
+
+    print("[decrypt] [12/22] Rail fence cipher...")
+    results.extend(attack_rail_fence(glyphs, words))
+
+    print("[decrypt] [13/22] Scytale / strip cipher...")
+    results.extend(attack_scytale(glyphs, words))
+
+    print("[decrypt] [14/22] Route cipher (spiral)...")
+    results.extend(attack_route_cipher(glyphs, words))
+
+    # === COMBINED / LAYERED ===
+    print("[decrypt] [15/22] Substitution + transposition combined...")
+    results.extend(attack_sub_then_transpose(glyphs, words))
+
+    # === STRUCTURAL / ENCODING ===
+    print("[decrypt] [16/22] Null cipher extraction...")
+    results.extend(attack_null_cipher(glyphs, words))
+
+    print("[decrypt] [17/22] Steganographic extraction...")
+    results.extend(attack_steganographic(words))
+
+    print("[decrypt] [18/22] Syllabic encoding...")
+    results.append(attack_syllabic_encoding(glyphs, words))
+
+    print("[decrypt] [19/22] Verbose cipher (multi-glyph per letter)...")
+    results.extend(attack_verbose_cipher(glyphs, words))
+
+    print("[decrypt] [20/22] Word-level codebook...")
+    results.append(attack_word_codebook(words))
+
+    # === ANALYTICAL ===
+    print("[decrypt] [21/22] Index of Coincidence analysis...")
+    results.append(attack_ic_analysis(glyphs, words, stats))
+
+    print("[decrypt] [22/22] Vowel/consonant pattern analysis...")
+    results.append(attack_vowel_consonant_pattern(words, stats))
+
+    # === BONUS ANALYTICAL (full corpus) ===
+    print("[decrypt] [+1] Currier A/B split analysis...")
+    results.append(attack_currier_split(corpus, stats))
+
+    print("[decrypt] [+2] Word grammar / slot structure analysis...")
+    results.append(attack_word_grammar(words, stats))
+
+    print("[decrypt] [+3] Multi-scale entropy layers...")
+    results.append(attack_entropy_layers(corpus))
 
     # Sort by best score
     results.sort(key=lambda r: -r.get("score", {}).get("best_score", 0))
@@ -519,9 +1602,9 @@ def main():
     stats = json.loads(STATS_PATH.read_text(encoding="utf-8"))
 
     target = args.folio or args.section or "herbal"
-    print(f"[decrypt] === Brain-V Decryption Engine ===")
+    print(f"[decrypt] === Brain-V Decryption Engine v2 ===")
     print(f"[decrypt] Target: {target}")
-    print(f"[decrypt] Running all attacks...\n")
+    print(f"[decrypt] Attack suite: 22 cipher types + 3 analytical\n")
 
     results = run_all_attacks(
         corpus, stats,
@@ -531,7 +1614,7 @@ def main():
 
     # Print results
     print(f"\n{'='*60}")
-    print(f"  DECRYPTION RESULTS — ranked by score")
+    print(f"  DECRYPTION RESULTS — ranked by score ({len(results)} attacks)")
     print(f"{'='*60}\n")
 
     for i, r in enumerate(results, 1):
@@ -541,14 +1624,14 @@ def main():
         lang = score.get("best_language", "?")
         details = score.get("details", "")
 
-        color = "***" if best > 0.3 else ""
-        print(f"  {i}. {color}{method}{color}")
-        print(f"     Score: {best:.4f} ({lang})")
-        print(f"     {details[:120]}")
+        marker = "***" if best > 0.5 else "**" if best > 0.3 else ""
+        print(f"  {i:2d}. {marker}{method}{marker}")
+        print(f"      Score: {best:.4f} ({lang})")
+        print(f"      {details[:140]}")
 
         sample = r.get("sample_output", "")
         if sample:
-            print(f"     Sample: {sample[:100]}")
+            print(f"      Sample: {sample[:100]}")
         print()
 
     # Save results
@@ -559,6 +1642,7 @@ def main():
         "target": target,
         "section": args.section,
         "folio": args.folio,
+        "engine_version": 2,
         "attacks": len(results),
         "best_method": results[0].get("method", "none") if results else "none",
         "best_score": results[0].get("score", {}).get("best_score", 0) if results else 0,
@@ -570,18 +1654,22 @@ def main():
     print(f"[decrypt] Results saved to {out_path}")
 
     # Summary
+    top3 = results[:3]
+    print(f"\n[decrypt] === TOP 3 ===")
+    for i, r in enumerate(top3, 1):
+        s = r.get("score", {})
+        print(f"  {i}. {r.get('method', '?')}: {s.get('best_score', 0):.4f} ({s.get('best_language', '?')})")
+
     best = results[0] if results else None
     if best:
         bs = best.get("score", {}).get("best_score", 0)
-        if bs > 0.5:
-            print(f"\n[decrypt] *** PROMISING: {best['method']} scored {bs:.4f} ***")
-            print(f"[decrypt] This warrants deeper investigation.")
-        elif bs > 0.3:
-            print(f"\n[decrypt] Moderate signal from {best['method']} ({bs:.4f})")
-            print(f"[decrypt] Worth refining but not conclusive.")
+        if bs > 0.6:
+            print(f"\n[decrypt] *** STRONG SIGNAL: {best['method']} scored {bs:.4f} ***")
+            print(f"[decrypt] This warrants focused investigation and refinement.")
+        elif bs > 0.4:
+            print(f"\n[decrypt] ** MODERATE SIGNAL from {best['method']} ({bs:.4f})")
         else:
             print(f"\n[decrypt] No strong signals. Best: {best['method']} ({bs:.4f})")
-            print(f"[decrypt] These cipher types likely don't apply to this section.")
 
     return results
 
