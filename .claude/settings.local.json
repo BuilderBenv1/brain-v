@@ -19,7 +19,14 @@
       "Bash(ls C:/Projects/brain-v/hypotheses/H*.json)",
       "Bash(tasklist)",
       "Bash(npx vercel:*)",
-      "Bash(node scripts/sync-data.js)"
+      "Bash(node scripts/sync-data.js)",
+      "WebFetch(domain:zenodo.org)",
+      "Bash(mkdir -p raw/research)",
+      "Bash(curl -sL \"https://zenodo.org/records/18478526/files/Voynich_Cryptologia_Paper.pdf\" -o raw/research/kpagel-paper.pdf)",
+      "Bash(curl -sL \"https://zenodo.org/records/18478526/files/Voynich_Paper_Supplementary_Material.pdf\" -o raw/research/kpagel-supplementary.pdf)",
+      "Bash(curl -sL \"https://zenodo.org/records/18478526/files/VOYNICH_KARSTEN_PAGEL.docx\" -o raw/research/kpagel-full.docx)",
+      "Bash(ls -la raw/research/kpagel-*)",
+      "Bash(pip install:*)"
     ]
   }
 }

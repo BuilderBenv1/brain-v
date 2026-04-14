@@ -2,7 +2,7 @@
   "id": "H106",
   "claim": "The Voynich Manuscript is a trilingual pharmaceutical compendium encoding plant-based medicine in a mixed Latin/Greek/Arabic scribal system, with a 168-term dictionary covering ~80% of the text.",
   "type": "language",
-  "confidence": 0.35,
+  "confidence": 0.2,
   "evidence_for": [
     "Pagel (2025): 168-term dictionary on Zenodo (DOI 10.5281/zenodo.18478526)",
     "Claims 80% text coverage \u2014 far exceeds Brain-V best codebook (50.8%)",
@@ -18,7 +18,16 @@
   "test": "Verify 80% coverage: count tokens matching 168-term dictionary across corpus",
   "test_metric": "dictionary_coverage",
   "test_threshold": ">70% tokens: strong support. <50%: overclaimed.",
-  "tests_run": [],
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "Dictionary coverage verification against EVA corpus",
+      "score": 0.238,
+      "passed": false,
+      "details": "Claims 96% coverage, actual 23.8%. Occurrence counts systematically inflated (dam: 558 claimed vs 80 actual). daiin-sar collocation: 1 occurrence vs PMI=2.9 claimed. Hapax 43.2% claimed vs 70.1% actual.",
+      "confidence_change": "0.35 -> 0.20"
+    }
+  ],
   "tests_remaining": [
     "dictionary_coverage_verification",
     "section_uniformity"
@@ -26,7 +35,7 @@
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": null,
+  "last_tested": "2026-04-14",
   "reasoning": "Most concrete decipherment claim received \u2014 168 specific mappings with DOI. If 80% coverage verifies, major lead.",
   "source": "Pagel, K. (2025) Zenodo DOI 10.5281/zenodo.18478526; voynich.net",
   "researcher": "kpagel"
