@@ -1,0 +1,110 @@
+{
+  "id": "H015",
+  "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.",
+  "type": "structural",
+  "confidence": 0.849,
+  "evidence_for": [
+    "The herbal section has higher entropy levels compared to other sections",
+    "The word-final glyph distribution in the herbal section shows a higher frequency of 'y' and 'n', which are common in rhyming couplets"
+  ],
+  "evidence_against": [],
+  "test": "Run a chi-squared test on the word-final glyph distribution in the herbal section compared to other sections",
+  "test_metric": "Chi-squared statistic",
+  "test_threshold": "> 10.0 (p-value < 0.05)",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "run a chi-squared test on the word-final glyph distribution in the herbal section compared to other ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.700 -> 0.718"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "run a chi-squared test on the word-final glyph distribution in the herbal section compared to other ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.718 -> 0.735"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "run a chi-squared test on the word-final glyph distribution in the herbal section compared to other ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.735 -> 0.751"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a chi-squared test on the word-final glyph distribution in the herbal section compared to other ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.751 -> 0.766"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a chi-squared test on the word-final glyph distribution in the herbal section compared to other ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.766 -> 0.780"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a chi-squared test on the word-final glyph distribution in the herbal section compared to other ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.780 -> 0.793"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a chi-squared test on the word-final glyph distribution in the herbal section compared to other ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.793 -> 0.806"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a chi-squared test on the word-final glyph distribution in the herbal section compared to other ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.806 -> 0.818"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a chi-squared test on the word-final glyph distribution in the herbal section compared to other ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.818 -> 0.829"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a chi-squared test on the word-final glyph distribution in the herbal section compared to other ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.829 -> 0.839"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a chi-squared test on the word-final glyph distribution in the herbal section compared to other ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.839 -> 0.849"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "If confirmed, this would explain the unique characteristics of the herbal section and provide insight into the manuscript's text structure"
+}

@@ -1,0 +1,110 @@
+{
+  "id": "H017",
+  "claim": "The text uses a combination of substitution and transposition ciphers in the biological section.",
+  "type": "cipher",
+  "confidence": 0.76,
+  "evidence_for": [
+    "The biological section has higher entropy levels compared to other sections",
+    "The word-final glyph distribution in the biological section shows a higher frequency of 'l' and 'r', which are common in transposition ciphers"
+  ],
+  "evidence_against": [],
+  "test": "Run a mutual information test on the relationship between glyphs in the biological section",
+  "test_metric": "Mutual information statistic",
+  "test_threshold": "> 0.2 (p-value < 0.05)",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "run a mutual information test on the relationship between glyphs in the biological section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.519 -> 0.548"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "run a mutual information test on the relationship between glyphs in the biological section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.548 -> 0.576"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "run a mutual information test on the relationship between glyphs in the biological section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.576 -> 0.602"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a mutual information test on the relationship between glyphs in the biological section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.602 -> 0.626"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a mutual information test on the relationship between glyphs in the biological section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.626 -> 0.649"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a mutual information test on the relationship between glyphs in the biological section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.649 -> 0.670"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a mutual information test on the relationship between glyphs in the biological section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.670 -> 0.690"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a mutual information test on the relationship between glyphs in the biological section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.690 -> 0.709"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a mutual information test on the relationship between glyphs in the biological section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.709 -> 0.727"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a mutual information test on the relationship between glyphs in the biological section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.727 -> 0.744"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a mutual information test on the relationship between glyphs in the biological section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.744 -> 0.760"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "If confirmed, this would provide insight into the cipher structure used in the manuscript"
+}

@@ -1,0 +1,172 @@
+{
+  "id": "H033",
+  "claim": "The text-only section (entropy 3.9016 bits, highest of all sections) represents unenciphered or lightly enciphered text in the underlying language, and its word frequency distribution should most closely match expected distributions for medieval Latin or northern Italian compared to all other sections.",
+  "type": "language",
+  "confidence": 0.975,
+  "evidence_for": [
+    "Text-only section has highest entropy (3.9016), closest to Latin (~4.0) and Italian (~3.95) among all sections",
+    "Text-only section has no illustrations to constrain vocabulary to domain-specific terms, allowing fuller natural language expression",
+    "If other sections use additional encipherment layers, text-only would show the 'base' language signal most clearly",
+    "7 folios with 2,349 words provides a statistically meaningful sample for frequency analysis"
+  ],
+  "evidence_against": [
+    "Even 3.9016 bits remains below Latin/Italian reference values, so some encoding may still be present",
+    "The text-only section may represent a different genre (recipes, prayers) with its own vocabulary distribution rather than the base language",
+    "Selecting the section with highest entropy as 'least enciphered' assumes uniform cipher complexity, which may not hold"
+  ],
+  "test": "Extract the 200 most frequent words in the text-only section. Compute their normalized frequency rank distribution and compare via Kolmogorov-Smirnov test against frequency distributions of the 200 most common medieval Latin words and common northern Italian words (13th-15th century). Separately, compute the bigram entropy of text-only vs all other sections.",
+  "test_metric": "KS statistic comparing text-only word-rank distribution to Latin and Italian reference corpora; bigram entropy per section",
+  "test_threshold": "KS statistic < 0.15 against Latin or Italian reference would indicate strong distributional match; text-only bigram entropy significantly higher than other sections (>0.05 bits) would confirm it as structurally distinct",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.620 -> 0.673"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.673 -> 0.719"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.719 -> 0.758"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.758 -> 0.792"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.792 -> 0.821"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.821 -> 0.846"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.846 -> 0.868"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.868 -> 0.886"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.886 -> 0.902"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.902 -> 0.916"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.916 -> 0.928"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.928 -> 0.938"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.938 -> 0.947"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.947 -> 0.954"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.954 -> 0.960"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.960 -> 0.966"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.966 -> 0.971"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract the 200 most frequent words in the text-only section. compute their normalized frequency ran",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.971 -> 0.975"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "If confirmed, the text-only section becomes the primary attack surface for language identification, allowing targeted cryptanalysis against a specific candidate language rather than the full manuscript"
+}

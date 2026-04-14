@@ -2,7 +2,7 @@
   "id": "H005",
   "claim": "The text is encoded using a simple substitution cipher on a language other than Latin or Italian.",
   "type": "cipher",
-  "confidence": 0.228,
+  "confidence": 0.093,
   "evidence_for": [
     "Glyph entropy is lower than expected for Latin and Italian (~4.0 bits)"
   ],
@@ -20,12 +20,116 @@
       "passed": false,
       "details": "The hypothesis is contradicted by the high glyph entropy (3.8627 bits), which suggests a complex encoding scheme, and the Zipf exponent (0.8946) is close to 1, indicating a language with a simple word frequency distribution, both of which are more consistent with Latin or Italian languages than a simple substitution cipher on an unknown language.",
       "confidence_change": "0.300 -> 0.228"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "The hypothesis is contradicted by the high glyph entropy (3.8627 bits), which suggests a complex encoding scheme, and the Zipf exponent (0.8946) is close to 1, indicating a language with a simple vocabulary distribution, both of which are inconsistent with a simple substitution cipher on an unknown language.",
+      "confidence_change": "0.228 -> 0.173"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "The hypothesis is contradicted by the high glyph entropy (3.8627 bits), which suggests a complex encoding scheme rather than a simple substitution cipher, and the Zipf exponent (0.8946) is within the expected range for Latin/Italian languages.",
+      "confidence_change": "0.173 -> 0.131"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.5,
+      "passed": null,
+      "details": "The hypothesis is neither strongly supported nor contradicted, as the glyph entropy of 3.8627 bits is within a typical range for languages with Latin alphabets (2-4 bits), but the Zipf exponent and hapax ratio suggest a language with a more complex structure than expected for a simple substitution cipher.",
+      "confidence_change": "0.131 -> 0.149"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Compare glyph and word entropies to the expected values for non-Latin/Italian languages using a chi-squared test",
+      "confidence_change": "0.149 -> 0.167"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Compare glyph and word entropies to the expected values for non-Latin/Italian languages using a chi-squared test",
+      "confidence_change": "0.167 -> 0.184"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "Zipf exponent (0.8946) suggests natural language structure, but hapax ratio (0.701) is anomalously high\u00e2\u20ac\u201dnatural languages typically show 40-60%. Simple substitution ciphers should preserve their underlying language's statistical signature, including hapax ratio, so this discrepancy contradicts the hypothesis.",
+      "confidence_change": "0.184 -> 0.148"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.5,
+      "passed": null,
+      "details": "Statistics are consistent with substitution cipher properties (preserved Zipf exponent near 1.0, reasonable entropy and word distributions), but equally consistent with genuine unknown-language text; inconclusive evidence.",
+      "confidence_change": "0.148 -> 0.166"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.3,
+      "passed": false,
+      "details": "The hapax ratio of 0.701 is unusually high for any natural language and contradicts simple substitution cipher expectations; substitution preserves word frequency distributions, but no known language shows 70% hapax frequency.",
+      "confidence_change": "0.166 -> 0.131"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.15,
+      "passed": false,
+      "details": "The extremely high hapax ratio (70.1%) and unusually flat Zipf exponent (0.8946) contradict expected statistical properties of any natural language, which would be preserved under substitution cipher.",
+      "confidence_change": "0.131 -> 0.098"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Compare glyph and word entropies to the expected values for non-Latin/Italian languages using a chi-squared test",
+      "confidence_change": "0.098 -> 0.118"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "Zipfian distribution (0.8946) supports natural language structure, but 70.1% hapax ratio is exceptionally high for natural languages and suggests artificial construction rather than straightforward enciphered text.",
+      "confidence_change": "0.118 -> 0.095"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Compare glyph and word entropies to the expected values for non-Latin/Italian languages using a chi-squared test",
+      "confidence_change": "0.095 -> 0.115"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "The Zipfian exponent (0.8946) supports natural language structure, but the exceptionally high hapax ratio (0.701) contradicts substitution cipher hypothesis\u00e2\u20ac\u201dnatural languages typically show 30-50% hapax ratios, not 70%, suggesting artificial or heavily obfuscated encoding.",
+      "confidence_change": "0.115 -> 0.093"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-13",
+  "last_tested": "2026-04-14",
   "reasoning": "If confirmed, this would suggest that the underlying language is not Latin or Italian, which would be a significant departure from current beliefs"
 }

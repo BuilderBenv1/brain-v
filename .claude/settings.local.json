@@ -17,7 +17,9 @@
       "Bash(claude:*)",
       "Bash(echo \"EXIT: $?\")",
       "Bash(ls C:/Projects/brain-v/hypotheses/H*.json)",
-      "Bash(tasklist)"
+      "Bash(tasklist)",
+      "Bash(npx vercel:*)",
+      "Bash(node scripts/sync-data.js)"
     ]
   }
 }

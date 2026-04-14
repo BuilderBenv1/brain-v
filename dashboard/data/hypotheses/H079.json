@@ -1,0 +1,68 @@
+{
+  "id": "H079",
+  "claim": "The Voynich text uses a homophonic substitution cipher on medieval Latin where 2-3 Voynich glyphs map to each Latin letter, which would reduce observed glyph entropy below true Latin entropy (~4.0 bits) by approximately log2(avg_homophones) bits while preserving Zipf scaling.",
+  "type": "cipher",
+  "confidence": 0.13,
+  "evidence_for": [
+    "Observed glyph entropy 3.8627 bits is ~0.14 bits below Latin (~4.0), consistent with modest homophonic expansion of ~1.1 glyphs/letter",
+    "Word-initial glyph constraint set {o,c,q,s,d} could represent homophones for high-frequency Latin word-initial letters such as 'c', 's', 'd'",
+    "Zipf exponent 0.8946 is close to natural language values, consistent with underlying natural language rather than noise",
+    "High confidence existing belief [0.407] already partially supports homophonic substitution on Latin/Italian"
+  ],
+  "evidence_against": [
+    "Glyph entropy gap (0.14 bits) is smaller than expected for a 2-3 homophone scheme, which should reduce entropy by ~0.58-1.0 bits",
+    "70.1% hapax ratio is far higher than expected for a homophonic cipher on Latin, where hapax ratios are typically 40-55%",
+    "Only 25 unique glyphs makes a rich homophonic scheme less plausible \u00e2\u20ac\u201d standard Latin has 23 letters, leaving little room for multiple homophones per letter"
+  ],
+  "test": "For each of the 25 glyphs, compute conditional probability distributions of neighboring glyphs (bigram context). If homophones exist, glyphs that encode the same underlying letter should have statistically similar bigram distributions. Apply hierarchical clustering to glyph bigram vectors and test whether clusters of size 2-3 emerge with intra-cluster cosine similarity > 0.85.",
+  "test_metric": "Silhouette score of k-means clustering (k=12-15) on glyph bigram probability vectors; also chi-squared test of bigram similarity within proposed homophone groups vs. across groups",
+  "test_threshold": "Silhouette score > 0.45 and within-cluster mean cosine similarity > 0.80 would support homophonic grouping; p < 0.01 on chi-squared test for bigram distributional equivalence within clusters",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "Glyph entropy reduction (0.14 bits observed vs. ~1.32 bits predicted for 2-3 homophones per letter) is ~90% smaller than expected; Zipf scaling preserved but magnitude of entropy discrepancy strongly contradicts the homophonic hypothesis.",
+      "confidence_change": "0.410 -> 0.330"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.4,
+      "passed": false,
+      "details": "Hypothesis shows partial support: Zipf scaling is excellently preserved (R\u00c2\u00b2=0.9084) and glyph entropy (3.8627 bits) is below Latin ~4.0 bits, consistent with substitution reduction. However, entropy reduction (~0.14 bits) is far smaller than predicted (~1.32 bits for 2-3 homophones), and having 25 glyphs contradicts the expected 8-13 clusters for a 2-3:1 homophone mapping to 26 Latin letters. The high hapax ratio (0.701) and glyph count alignment problems weaken the hypothesis despite Zipfian scaling support.",
+      "confidence_change": "0.330 -> 0.271"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.15,
+      "passed": false,
+      "details": "The hypothesis predicts 2-3 Voynich glyphs per Latin letter (~52-78 total glyphs), but only 25 glyphs exist in the corpus, making the homophonic substitution mapping numerically impossible. Glyph entropy reduction (4.0\u00e2\u2020\u20193.86 bits) is minimal, insufficient for the hypothesized level of redundancy. No clustering into 2-3-sized groups would emerge from text unable to support 2-3 homophones per letter.",
+      "confidence_change": "0.271 -> 0.202"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "The hypothesis predicts ~1-1.3 bits entropy reduction from 2-3 homophones per letter, but observed entropy (3.8627) shows minimal reduction from true Latin (~4.0), contradicting the core prediction; Zipf scaling preservation supports the hypothesis, but the anomalously high hapax ratio (0.701) is inconsistent with clean homophonic structure.",
+      "confidence_change": "0.202 -> 0.163"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.32,
+      "passed": false,
+      "details": "Entropy reduction of 0.14 bits is an order of magnitude smaller than predicted (expected ~1.32 bits for 2-3 homophones), strongly contradicting the cipher hypothesis; Zipf scaling is preserved (supporting), but without clustering evidence confirming homophonic groupings and with atypically high hapax ratio (0.701), the evidence contradicts the hypothesis overall.",
+      "confidence_change": "0.163 -> 0.130"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "Homophonic substitution is the most computationally tractable cipher consistent with the entropy deficit and Zipf fit. Confirming or denying glyph clustering into homophone groups would sharply narrow the cipher hypothesis space, and is directly computable from the corpus bigram statistics."
+}

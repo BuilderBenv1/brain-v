@@ -1,0 +1,68 @@
+{
+  "id": "H082",
+  "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-registry encoding where each word is drawn from a small closed vocabulary of astrological terms (< 50 unique words), producing a highly non-uniform unigram distribution unlike the rest of the manuscript.",
+  "type": "structural",
+  "confidence": 0.706,
+  "evidence_for": [
+    "Zodiac section entropy 3.7149 bits is 0.185 bits below the overall corpus entropy (3.8627 bits), a large and consistent gap",
+    "Zodiac section has only 1,297 words across 12 folios, consistent with a label-heavy format where the same short labels repeat near illustrations",
+    "Existing belief [0.396] (confidence 0.396) and [0.111] (confidence 0.111) already associate zodiac low entropy with label-oriented encoding",
+    "In standard astrological manuscripts, zodiac sections use repetitive labels for months, constellations, and degree markers \u00e2\u20ac\u201d a small closed vocabulary is expected"
+  ],
+  "evidence_against": [
+    "If the zodiac section used only ~50 unique words, its type-token ratio would be ~0.039, far lower than the corpus average; this extreme would likely have been noted in prior analyses",
+    "Low entropy alone does not distinguish label repetition from a simpler (less homophonic) cipher variant used in this section",
+    "The zodiac section's Zipf behavior has not been independently confirmed to deviate from the rest of the corpus"
+  ],
+  "test": "Compute the type-token ratio (TTR) and vocabulary size for the zodiac section alone. Compare the unigram frequency distribution of the zodiac section against the full corpus using Jensen-Shannon divergence. Fit a Zipf curve to the zodiac section word frequencies and compare the exponent to the full-corpus exponent (0.8946). Test whether the top-20 most frequent words in the zodiac section account for > 60% of all zodiac tokens.",
+  "test_metric": "Jensen-Shannon divergence between zodiac and full-corpus unigram distributions; Zipf exponent for zodiac section; percentage of zodiac tokens covered by top-20 words; TTR for zodiac section",
+  "test_threshold": "JS divergence > 0.15 vs. full corpus, Zipf exponent < 0.70 (steeper than corpus), top-20 words covering > 60% of tokens, and TTR < 0.08 would jointly confirm label-registry encoding; failure on two or more metrics would reject this hypothesis",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute the type-token ratio (ttr) and vocabulary size for the zodiac section alone. compare the uni",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.480 -> 0.536"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the type-token ratio (ttr) and vocabulary size for the zodiac section alone. compare the uni",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.536 -> 0.586"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the type-token ratio (ttr) and vocabulary size for the zodiac section alone. compare the uni",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.586 -> 0.631"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the type-token ratio (ttr) and vocabulary size for the zodiac section alone. compare the uni",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.631 -> 0.671"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the type-token ratio (ttr) and vocabulary size for the zodiac section alone. compare the uni",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.671 -> 0.706"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "If confirmed, the zodiac section can be treated as a Rosetta-stone-like resource: a short, repetitive label set is the easiest entry point for cipher-breaking, and confirming its closed-vocabulary structure would make it the highest-priority decipherment target rather than the herbal section."
+}

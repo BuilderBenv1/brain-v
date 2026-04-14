@@ -1,0 +1,128 @@
+{
+  "id": "H009",
+  "claim": "The text is encoded using a simple substitution cipher on an unknown language.",
+  "type": "cipher",
+  "confidence": 0.424,
+  "evidence_for": [
+    "Glyph entropy levels are lower than expected for Latin or Italian",
+    "Word-final glyph distribution does not match Latin or Italian word endings"
+  ],
+  "evidence_against": [
+    "Other sections do not show similar patterns"
+  ],
+  "test": "Chi-squared test for independence between word-final glyphs and language model predictions",
+  "test_metric": "p-value",
+  "test_threshold": "<0.05",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "The high hapax ratio and low Zipf exponent suggest a language with a large number of unique words, which is inconsistent with the expectation that a simple substitution cipher would produce a more regular distribution of word frequencies.",
+      "confidence_change": "0.380 -> 0.289"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "The high hapax ratio and low Zipf exponent suggest a language with a large number of unique words, which is inconsistent with the idea that the text is encoded using a simple substitution cipher on an unknown language.",
+      "confidence_change": "0.289 -> 0.220"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "llm_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "The high hapax ratio and low Zipf exponent suggest a language with a large number of unique words, which is inconsistent with the expectation that a simple substitution cipher would produce a more regular distribution of word frequencies.",
+      "confidence_change": "0.220 -> 0.167"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Chi-squared test for independence between word-final glyphs and language model predictions",
+      "confidence_change": "0.167 -> 0.184"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Chi-squared test for independence between word-final glyphs and language model predictions",
+      "confidence_change": "0.184 -> 0.200"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.72,
+      "passed": true,
+      "details": "The strong Zipfian distribution (0.8946) and hapax ratio closely match natural language patterns, supporting the hypothesis that this is meaningful text in a real language encoded via substitution cipher rather than random gibberish.",
+      "confidence_change": "0.200 -> 0.286"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.25,
+      "passed": false,
+      "details": "The hapax ratio of 0.701 is far too high for natural language (typically 0.40-0.50); a simple substitution cipher would preserve the word frequency distribution and thus maintain similar low hapax ratios, contradicting the hypothesis.",
+      "confidence_change": "0.286 -> 0.222"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.72,
+      "passed": true,
+      "details": "The strong Zipfian distribution (exponent 0.8946 with R\u00c2\u00b2=0.9084) and natural-language-like hapax ratio (0.701) support the substitution cipher hypothesis, as these statistics are preserved under simple substitution; however, the inability to verify linguistic patterns of the unknown language prevents higher confidence.",
+      "confidence_change": "0.222 -> 0.306"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.62,
+      "passed": true,
+      "details": "Zipf distribution with R\u00c2\u00b2=0.9084 and linguistic properties are consistent with substitution cipher on natural language, though low exponent and high hapax ratio suggest possible complications.",
+      "confidence_change": "0.306 -> 0.371"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.55,
+      "passed": null,
+      "details": "Zipfian exponent (0.8946) and glyph entropy support substitution cipher hypothesis, but hapax ratio (0.701) is unusually high and centuries of failed decryption despite corpus size suggest underlying complexity beyond simple substitution.",
+      "confidence_change": "0.371 -> 0.380"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.65,
+      "passed": true,
+      "details": "Strong Zipf adherence (0.8946) indicates natural language structure preserved through simple substitution, but elevated hapax ratio (0.701) deviates from typical natural languages, suggesting either an unusual language or potential encoding artifacts.",
+      "confidence_change": "0.380 -> 0.440"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "Zipfian distribution (0.8946 exponent) supports language structure preservation, but hapax ratio of 0.701 is impossibly high for natural language (typical range 0.4-0.6), strongly contradicting the substitution cipher hypothesis.",
+      "confidence_change": "0.440 -> 0.354"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.72,
+      "passed": true,
+      "details": "Substitution ciphers preserve Zipfian frequency distributions (0.8946 \u00e2\u2030\u02c6 1.0 is consistent with natural language), hapax ratio, and word length statistics, making the hypothesis well-supported by the corpus profile.",
+      "confidence_change": "0.354 -> 0.424"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "If the text is encoded using a simple substitution cipher on an unknown language, we would expect to see significant correlations between word-final glyphs and language model predictions."
+}

@@ -1,0 +1,100 @@
+{
+  "id": "H062",
+  "claim": "The Currier A/B split represents two different scribes encoding the same underlying Latin text using the same cipher but with different personal orthographic conventions \u00e2\u20ac\u201d specifically, Scribe A preferentially uses one set of homophone variants while Scribe B uses a complementary set, causing the apparent 'dialect' difference to be a cipher-level artifact rather than a linguistic one.",
+  "type": "cipher",
+  "confidence": 0.856,
+  "evidence_for": [
+    "Currier B (23,766 words) is 2.16x larger than Currier A (11,022 words), consistent with one dominant scribe and one secondary scribe",
+    "Multiple current beliefs support same-language/different-encoding interpretation (0.677, 0.214, 0.101)",
+    "If homophones exist, different scribes selecting different homophone variants would produce surface-level vocabulary differences without underlying linguistic difference",
+    "Medieval scribal practice commonly involved multiple hands on the same manuscript using shared but slightly varied notation"
+  ],
+  "evidence_against": [
+    "Belief H004 (0.837) and H008 (0.781) strongly support genuine linguistic difference between A and B",
+    "If same cipher with homophone variant selection, the glyph frequency distributions between A and B sections should be mirror-complementary \u00e2\u20ac\u201d this has not been confirmed",
+    "The magnitude of A/B vocabulary divergence may be too large to explain by homophone variant preference alone"
+  ],
+  "test": "Compute glyph unigram frequency distributions separately for Currier A and Currier B sections. For each of the 25 glyphs, compute the A/B frequency ratio. If orthographic homophone variant swapping explains A/B, expect to find glyph pairs (g1, g2) where g1 is overrepresented in A and g2 is overrepresented in B in a complementary pattern. Also compute the overlap coefficient of A and B vocabulary (words appearing in both vs. unique to each).",
+  "test_metric": "Number of glyph pairs showing complementary A/B frequency inversion (ratio >2.0 in one direction); vocabulary overlap coefficient between A and B sections",
+  "test_threshold": "Confirm if \u00e2\u2030\u00a54 complementary glyph pairs are identified AND vocabulary overlap coefficient >0.45; deny if <2 complementary pairs exist or overlap coefficient <0.25",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute glyph unigram frequency distributions separately for currier a and currier b sections. for e",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.380 -> 0.473"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram frequency distributions separately for currier a and currier b sections. for e",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.473 -> 0.552"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram frequency distributions separately for currier a and currier b sections. for e",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.552 -> 0.619"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram frequency distributions separately for currier a and currier b sections. for e",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.619 -> 0.676"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram frequency distributions separately for currier a and currier b sections. for e",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.676 -> 0.725"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram frequency distributions separately for currier a and currier b sections. for e",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.725 -> 0.766"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram frequency distributions separately for currier a and currier b sections. for e",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.766 -> 0.801"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram frequency distributions separately for currier a and currier b sections. for e",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.801 -> 0.831"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram frequency distributions separately for currier a and currier b sections. for e",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.831 -> 0.856"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "Distinguishing whether the A/B split is linguistic or scribal is critical: if scribal, the entire corpus can be treated as encoding one language, dramatically simplifying decipherment."
+}

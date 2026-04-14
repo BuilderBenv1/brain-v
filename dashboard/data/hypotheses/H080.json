@@ -1,0 +1,68 @@
+{
+  "id": "H080",
+  "claim": "The extreme hapax ratio (70.1%) is produced by a systematic word-boundary segmentation error in the transcription, where a small set of suffix or prefix tokens are being attached to base words inconsistently, artificially inflating vocabulary size by 30-45%.",
+  "type": "structural",
+  "confidence": 0.121,
+  "evidence_for": [
+    "70.1% hapax ratio far exceeds natural language texts (typically 40-55% for comparable corpus sizes), suggesting a systematic artifact",
+    "Top 10 words include short tokens like 'ol', 'ar', 'or', 'y' which resemble prefixes/suffixes rather than independent words",
+    "Average word length 5.03 glyphs is short; if frequent 1-2 glyph tokens are actually bound morphemes, true word length would increase to ~6-7 glyphs, more consistent with Latin",
+    "Existing beliefs [0.05] and [0.05] already suggest suffix-stripping or abbreviation as a cause of high hapax ratio"
+  ],
+  "evidence_against": [
+    "Transcription protocols (EVA, Currier) have been validated across multiple independent researchers, reducing likelihood of systematic segmentation error",
+    "Word-final glyph constraints {y,n,l,r,o} are highly consistent, suggesting word boundaries are real linguistic boundaries not transcription artifacts",
+    "The same hapax ratio appears consistently across Currier A and B sub-corpora, arguing against a single-scribe transcription error"
+  ],
+  "test": "Identify all words appearing fewer than 3 times (hapax + dis legomena). Compute the frequency distribution of their word-final and word-initial glyphs. Compare against the full corpus distribution using a chi-squared test. If rare words disproportionately share final glyphs with the top-10 most frequent short tokens (ol, ar, or, y), this supports the suffix-attachment hypothesis. Additionally, test whether concatenating the top-5 short tokens onto adjacent rare words reduces vocabulary size by 30-45%.",
+  "test_metric": "Percentage reduction in unique vocabulary when top-5 short tokens are merged with adjacent words; chi-squared statistic comparing glyph-final distribution of hapax words vs. full corpus",
+  "test_threshold": "Vocabulary reduction > 30% upon suffix merging would support the artifact hypothesis; chi-squared p < 0.01 for distributional difference between hapax word endings and full corpus word endings would support genuine morphological diversity",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "identify all words appearing fewer than 3 times (hapax + dis legomena). compute the frequency distri",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.330 -> 0.270"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "identify all words appearing fewer than 3 times (hapax + dis legomena). compute the frequency distri",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.270 -> 0.221"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "identify all words appearing fewer than 3 times (hapax + dis legomena). compute the frequency distri",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.221 -> 0.181"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "identify all words appearing fewer than 3 times (hapax + dis legomena). compute the frequency distri",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.181 -> 0.148"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "identify all words appearing fewer than 3 times (hapax + dis legomena). compute the frequency distri",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.148 -> 0.121"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "If the hapax ratio is partially artifactual, the true vocabulary size is much smaller, which would dramatically alter entropy estimates and make the cipher more tractable. This hypothesis can be tested purely statistically and would either validate or dismiss a major confound in all other analyses."
+}

@@ -1,0 +1,74 @@
+{
+  "id": "H077",
+  "claim": "The glyph positional constraints (word-initial {o,c,q,s,d}, word-final {y,n,l,r,o}) are not cipher artifacts but reflect systematic morphological prefixes and suffixes of the underlying plaintext language. Specifically, the initial constraint distribution should match the expected frequency of Latin or Italian morphological prefixes (ob-, con-, sub-, de-, ad-) better than a random cipher assignment would predict.",
+  "type": "language",
+  "confidence": 0.547,
+  "evidence_for": [
+    "Word-initial glyph constraint is highly skewed toward exactly 5 glyphs, mirroring the number of high-frequency Latin prefixes",
+    "High-confidence evidence (0.624) supports that positional constraints reflect cipher or grammatical structure",
+    "Latin and Italian both have strong initial-position morpheme constraints that would survive substitution cipher encoding"
+  ],
+  "evidence_against": [
+    "Many cipher systems (Vigenere, homophonic) independently impose positional glyph constraints unrelated to the underlying language morphology",
+    "The observed initial glyphs {o,c,q,s,d} do not map obviously to Latin prefix initials without a specific cipher key assumption"
+  ],
+  "test": "Compute mutual information I(glyph; word_position) for each glyph at positions 1, 2, 3, final-1, final. Compare the observed initial-glyph distribution against (1) the expected distribution under a random cipher on medieval Latin prefix frequencies, and (2) the expected distribution under a random cipher on Italian prefix frequencies. Use chi-squared goodness-of-fit test against each null model.",
+  "test_metric": "Chi-squared statistic comparing observed word-initial glyph distribution against Latin-prefix-derived null and Italian-prefix-derived null; mutual information I(glyph; position)",
+  "test_threshold": "If chi-squared p > 0.05 for the Latin-prefix null (i.e., observed is consistent with Latin morphology under a fixed substitution), Latin morphological origin is supported. If p < 0.001 for both nulls, positional constraints are cipher-structural rather than linguistic.",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information i(glyph; word_position) for each glyph at positions 1, 2, 3, final-1, fin",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'r', 'n'}. Universal glyphs: {'a', 'd', 'o', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.430 -> 0.451"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information i(glyph; word_position) for each glyph at positions 1, 2, 3, final-1, fin",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'n', 'm'}. Universal glyphs: {'l', 'd', 'o', 'a'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.451 -> 0.472"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information i(glyph; word_position) for each glyph at positions 1, 2, 3, final-1, fin",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.472 -> 0.492"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information i(glyph; word_position) for each glyph at positions 1, 2, 3, final-1, fin",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'d', 'a', 'l', 'o'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.492 -> 0.511"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information i(glyph; word_position) for each glyph at positions 1, 2, 3, final-1, fin",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'n', 'm'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.511 -> 0.529"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information i(glyph; word_position) for each glyph at positions 1, 2, 3, final-1, fin",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.529 -> 0.547"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "Distinguishing morphological from cipher-structural positional constraints is critical: if morphological, it validates Latin/Italian as candidate languages and constrains the cipher to simple substitution; if cipher-structural, it implicates cipher systems that impose independent positional rules (e.g., Vigenere, homophones with positional variants)."
+}

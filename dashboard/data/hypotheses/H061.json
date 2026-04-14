@@ -1,0 +1,100 @@
+{
+  "id": "H061",
+  "claim": "The high hapax ratio (70.1%) is produced by a systematic scribal abbreviation scheme in which word-final suffixes are consistently dropped or truncated, such that what appear as unique words are abbreviated forms of a smaller set of ~2,400 base words \u00e2\u20ac\u201d consistent with the observed vocabulary size being roughly 3.4x larger than expected for a natural language corpus of 38,053 words.",
+  "type": "structural",
+  "confidence": 0.07,
+  "evidence_for": [
+    "Hapax ratio of 70.1% (5,794/8,261) is anomalously high \u00e2\u20ac\u201d natural language corpora of similar size typically show 40-55% hapax rates",
+    "Word-final glyph constraints (y, n, l, r, o dominate) suggest a limited set of endings that could be abbreviation markers rather than full suffixes",
+    "Short average word length (5.03 glyphs) is consistent with abbreviated rather than full-form words",
+    "Medieval scribal abbreviation was standard practice in Latin and Italian manuscripts of the period"
+  ],
+  "evidence_against": [
+    "If hapax words are abbreviations, expanding them should reduce vocabulary dramatically \u00e2\u20ac\u201d but no consistent expansion rule has been identified",
+    "The recipes section has the largest word count (11,611) and second-highest entropy, where abbreviation pressure would be highest but is not evidenced by lower hapax rates",
+    "Word-initial glyph constraints (o, c, q, s, d) also show strong positional bias, which abbreviation alone does not explain"
+  ],
+  "test": "Cluster all 8,261 unique vocabulary items by edit distance \u00e2\u2030\u00a42 (Levenshtein). Count the number of clusters and compare to the expected vocabulary size for a 38,053-word natural language corpus (typically ~2,200-3,500 unique words). If hapax words are abbreviations, the majority should cluster within distance 2 of non-hapax words.",
+  "test_metric": "Percentage of hapax legomena that fall within Levenshtein distance \u00e2\u2030\u00a42 of a word appearing \u00e2\u2030\u00a55 times in the corpus",
+  "test_threshold": "Confirm if >60% of hapax words cluster near high-frequency words; deny if <30% cluster, suggesting hapax words are genuinely distinct rather than abbreviated forms",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "cluster all 8,261 unique vocabulary items by edit distance \u00e2\u2030\u00a42 (levenshtein). count the number of c",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.420 -> 0.344"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster all 8,261 unique vocabulary items by edit distance \u00e2\u2030\u00a42 (levenshtein). count the number of c",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.344 -> 0.282"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster all 8,261 unique vocabulary items by edit distance \u00e2\u2030\u00a42 (levenshtein). count the number of c",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.282 -> 0.231"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster all 8,261 unique vocabulary items by edit distance \u00e2\u2030\u00a42 (levenshtein). count the number of c",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.231 -> 0.189"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster all 8,261 unique vocabulary items by edit distance \u00e2\u2030\u00a42 (levenshtein). count the number of c",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.189 -> 0.155"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster all 8,261 unique vocabulary items by edit distance \u00e2\u2030\u00a42 (levenshtein). count the number of c",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.155 -> 0.127"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster all 8,261 unique vocabulary items by edit distance \u00e2\u2030\u00a42 (levenshtein). count the number of c",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.127 -> 0.104"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster all 8,261 unique vocabulary items by edit distance \u00e2\u2030\u00a42 (levenshtein). count the number of c",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.104 -> 0.085"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster all 8,261 unique vocabulary items by edit distance \u00e2\u2030\u00a42 (levenshtein). count the number of c",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.085 -> 0.070"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "The hapax ratio is the single most anomalous statistical feature of the manuscript. If it can be explained as an artifact of abbreviation, the effective vocabulary shrinks dramatically and the text becomes far more consistent with natural language, making decipherment more tractable."
+}

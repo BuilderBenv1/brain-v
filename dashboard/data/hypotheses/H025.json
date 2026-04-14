@@ -1,0 +1,322 @@
+{
+  "id": "H025",
+  "claim": "The Currier A/B split reflects two distinct scribal hands encoding the same language using different glyph-frequency profiles, such that the top-10 word overlap between A and B sections is less than 40%, and the word-initial glyph distributions of A and B differ by Jensen-Shannon divergence > 0.15",
+  "type": "cipher",
+  "confidence": 0.99,
+  "evidence_for": [
+    "Currier A contains 11,022 words vs B's 23,766 \u00e2\u20ac\u201d a substantial split suggesting systematic difference",
+    "Current belief [0.456] supports a genuine linguistic or dialectal difference",
+    "High hapax ratio (70.1%) could reflect two vocabularies being conflated"
+  ],
+  "evidence_against": [
+    "If the same cipher is used with different keys, vocabulary overlap could still be low without reflecting language difference",
+    "A/B distinction may be purely codicological (different sections, not different scribes)"
+  ],
+  "test": "Compute Jensen-Shannon divergence between word-initial and word-final glyph frequency distributions of Currier A folios vs Currier B folios; also compute vocabulary overlap (shared word types / union of word types)",
+  "test_metric": "JS divergence of glyph distributions and Jaccard similarity of vocabularies",
+  "test_threshold": "JS divergence > 0.15 and Jaccard < 0.40 would support distinct encoding keys or languages; JS < 0.05 and Jaccard > 0.60 would support a single cipher",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.580 -> 0.643"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.643 -> 0.697"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.697 -> 0.742"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.742 -> 0.781"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.781 -> 0.814"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.814 -> 0.842"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.842 -> 0.866"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.866 -> 0.886"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.886 -> 0.903"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.903 -> 0.918"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.918 -> 0.930"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.930 -> 0.941"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.941 -> 0.950"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.950 -> 0.958"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.958 -> 0.964"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.964 -> 0.969"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.969 -> 0.974"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.974 -> 0.978"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.978 -> 0.981"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.981 -> 0.984"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.984 -> 0.986"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.986 -> 0.988"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.988 -> 0.990"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "Distinguishing whether A/B is a cipher-key difference or a language difference is a high-leverage split: if JS is large but vocabulary overlap is moderate, a polyalphabetic key change is implicated; if both diverge strongly, distinct languages are implicated"
+}

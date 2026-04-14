@@ -1,0 +1,59 @@
+{
+  "id": "H085",
+  "claim": "The Currier A and B sub-corpora use two distinct cipher alphabets encoding the same underlying Latin plaintext, such that glyph-frequency distributions are statistically different between A and B but word-length distributions and entropy levels are statistically indistinguishable.",
+  "type": "cipher",
+  "confidence": 0.754,
+  "evidence_for": [
+    "Currier A (11,022 words) and B (23,766 words) show documented glyph-level differences attributable to different cipher keys",
+    "High-confidence belief [0.677] that Currier A/B represents two scribes encoding the same language",
+    "If same plaintext language, word-length distributions should converge even when glyph distributions diverge"
+  ],
+  "evidence_against": [
+    "Belief [0.339] at moderate confidence that A/B encodes two different plaintext languages (e.g., Latin vs. Italian)",
+    "Different entropy levels between sections straddling the A/B split could indicate different underlying languages rather than different keys",
+    "Hapax ratio stability across A and B is unknown and could reveal divergent vocabularies"
+  ],
+  "test": "Compute word-length frequency distributions and per-section Shannon entropy separately for all Currier-A folios and all Currier-B folios. Run a two-sample Kolmogorov-Smirnov test on the word-length distributions and compare entropy difference with a bootstrap confidence interval.",
+  "test_metric": "KS statistic D for word-length distributions A vs B; |H_A - H_B| in bits",
+  "test_threshold": "KS p-value > 0.05 (distributions indistinguishable) AND |H_A - H_B| < 0.05 bits would support same-language-different-key; p-value < 0.01 OR |H_A - H_B| > 0.1 bits would support different plaintext languages",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute word-length frequency distributions and per-section shannon entropy separately for all curri",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.550 -> 0.613"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-length frequency distributions and per-section shannon entropy separately for all curri",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.613 -> 0.667"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-length frequency distributions and per-section shannon entropy separately for all curri",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.667 -> 0.714"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-length frequency distributions and per-section shannon entropy separately for all curri",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.714 -> 0.754"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "This hypothesis is highly discriminating: it directly separates the two highest-weight competing explanations for the A/B split and requires only corpus statistics already partially computed"
+}

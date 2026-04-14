@@ -1,0 +1,432 @@
+{
+  "date": "2026-04-13",
+  "hypotheses_scored": 29,
+  "progress": {
+    "total_hypotheses": 49,
+    "active": 29,
+    "eliminated": 13,
+    "high_confidence": 7,
+    "high_confidence_ids": [
+      "H001",
+      "H003",
+      "H006",
+      "H008",
+      "H011",
+      "H025",
+      "H027"
+    ],
+    "eliminated_this_cycle": 0,
+    "surprise": 0.0295,
+    "progress_summary": "13 eliminated, 29 active, 7 above 0.8 confidence"
+  },
+  "scored_hypotheses": [
+    {
+      "id": "H001",
+      "claim": "The manuscript's herbal section uses a combination of substitution and transposition ciphers, which ",
+      "confidence": 0.93,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "compare word and glyph entropies between the herbal and other sections using a two-sample kolmogorov",
+        "score": 0.4073624632205617,
+        "passed": true,
+        "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+        "confidence_change": "0.925 -> 0.930"
+      }
+    },
+    {
+      "id": "H002",
+      "claim": "The text uses a simple substitution cipher on medieval Latin, which would produce glyph entropy ~4.0",
+      "confidence": 0.13,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "claude_evaluation",
+        "score": 0.35,
+        "passed": false,
+        "details": "Glyph entropy (3.86 bits) matches expected value (~4.0 bits), supporting cipher hypothesis. However, hapax ratio of 0.701 is far too high for a simple substitution of natural Latin text (~0.3-0.5 expected), indicating the text either lacks natural language properties or employs more complex encryption, contradicting the simple substitution hypothesis.",
+        "confidence_change": "0.162 -> 0.130"
+      }
+    },
+    {
+      "id": "H003",
+      "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being pri",
+      "confidence": 0.809,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "compare word length distributions between the herbal and other sections using a two-sample k-s test",
+        "score": 0.9849999999999999,
+        "passed": true,
+        "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+        "confidence_change": "0.776 -> 0.809"
+      }
+    },
+    {
+      "id": "H004",
+      "claim": "The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dia",
+      "confidence": 0.774,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "compare word and glyph distributions between currier a and b using a chi-squared test",
+        "score": 1.0,
+        "passed": true,
+        "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+        "confidence_change": "0.734 -> 0.774"
+      }
+    },
+    {
+      "id": "H005",
+      "claim": "The text is encoded using a simple substitution cipher on a language other than Latin or Italian.",
+      "confidence": 0.423,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "claude_evaluation",
+        "score": 0.7,
+        "passed": true,
+        "details": "The strong Zipfian distribution (R\u00c2\u00b2=0.9084) and preserved statistical properties (word length, hapax ratio) are consistent with a simple substitution cipher on a real language, where underlying linguistic structure is preserved under character-level transformation.",
+        "confidence_change": "0.355 -> 0.423"
+      }
+    },
+    {
+      "id": "H006",
+      "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being pri",
+      "confidence": 0.826,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "chi-squared test for independence between word-final glyphs and section type",
+        "score": 0.4073624632205617,
+        "passed": true,
+        "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+        "confidence_change": "0.815 -> 0.826"
+      }
+    },
+    {
+      "id": "H007",
+      "claim": "The text uses a combination of substitution and transposition ciphers in the biological section.",
+      "confidence": 0.725,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "mutual information analysis between word-final glyphs and word positions",
+        "score": 0.25,
+        "passed": true,
+        "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'n', 'm'}. Universal glyphs: {'o', 'd', 'l', 'a'}. Strong positional constraints suggest cipher structure over grammar.",
+        "confidence_change": "0.714 -> 0.725"
+      }
+    },
+    {
+      "id": "H008",
+      "claim": "The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dia",
+      "confidence": 0.903,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "kullback-leibler divergence between word-final glyph distributions of currier a and b",
+        "score": 1.0,
+        "passed": true,
+        "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+        "confidence_change": "0.886 -> 0.903"
+      }
+    },
+    {
+      "id": "H009",
+      "claim": "The text is encoded using a simple substitution cipher on an unknown language.",
+      "confidence": 0.363,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "claude_evaluation",
+        "score": 0.42,
+        "passed": null,
+        "details": "The Zipfian distribution (R\u00c2\u00b2=0.9084) and natural language metrics suggest an unknown language could be encoded, but the Voynich's documented resistance to substitution analysis and atypical linguistic properties (high hapax ratio, unusual glyph patterns) contradict the simple cipher hypothesis.",
+        "confidence_change": "0.360 -> 0.363"
+      }
+    },
+    {
+      "id": "H010",
+      "claim": "The manuscript's text structure reflects a single, coherent narrative.",
+      "confidence": 0.081,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "claude_evaluation",
+        "score": 0.28,
+        "passed": false,
+        "details": "The Zipf exponent (0.8946) suggests natural language-like properties, but the hapax ratio of 0.701 strongly contradicts narrative coherence\u00e2\u20ac\u201dcoherent narratives typically have 30-40% hapax ratios, while 70% indicates sparse vocabulary without thematic repetition consistent with encryption or randomization rather than unified narrative.",
+        "confidence_change": "0.103 -> 0.081"
+      }
+    },
+    {
+      "id": "H011",
+      "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being pri",
+      "confidence": 0.82,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "compute the average word length and frequency of consecutive words with identical first/last glyphs",
+        "score": 0.9849999999999999,
+        "passed": true,
+        "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+        "confidence_change": "0.789 -> 0.820"
+      }
+    },
+    {
+      "id": "H012",
+      "claim": "The manuscript uses a combination of substitution and transposition ciphers in the biological sectio",
+      "confidence": 0.698,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "compute the frequency of consecutive words with identical glyphs in different positions",
+        "score": 0.25,
+        "passed": true,
+        "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'n', 'm'}. Universal glyphs: {'o', 'd', 'l', 'a'}. Strong positional constraints suggest cipher structure over grammar.",
+        "confidence_change": "0.686 -> 0.698"
+      }
+    },
+    {
+      "id": "H013",
+      "claim": "The text uses a simple substitution cipher on an unknown language.",
+      "confidence": 0.225,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "claude_evaluation",
+        "score": 0.35,
+        "passed": false,
+        "details": "The hapax ratio of 0.701 is exceptionally high compared to natural language expectations (typically 0.3-0.5), contradicting the simple substitution cipher hypothesis which should preserve frequency distributions of the underlying language.",
+        "confidence_change": "0.280 -> 0.225"
+      }
+    },
+    {
+      "id": "H014",
+      "claim": "The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dia",
+      "confidence": 0.8,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "compute the similarity between word lists for currier a and b",
+        "score": 1.0,
+        "passed": true,
+        "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+        "confidence_change": "0.765 -> 0.800"
+      }
+    },
+    {
+      "id": "H015",
+      "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being pri",
+      "confidence": 0.766,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "run a chi-squared test on the word-final glyph distribution in the herbal section compared to other ",
+        "score": 0.4073624632205617,
+        "passed": true,
+        "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+        "confidence_change": "0.751 -> 0.766"
+      }
+    },
+    {
+      "id": "H016",
+      "claim": "The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dia",
+      "confidence": 0.758,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "run a kullback-leibler divergence test on the language models of currier language a and b",
+        "score": 1.0,
+        "passed": true,
+        "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+        "confidence_change": "0.715 -> 0.758"
+      }
+    },
+    {
+      "id": "H017",
+      "claim": "The text uses a combination of substitution and transposition ciphers in the biological section.",
+      "confidence": 0.626,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "run a mutual information test on the relationship between glyphs in the biological section",
+        "score": 0.4073624632205617,
+        "passed": true,
+        "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+        "confidence_change": "0.602 -> 0.626"
+      }
+    },
+    {
+      "id": "H018",
+      "claim": "The text is encoded using a simple substitution cipher on an unknown language.",
+      "confidence": 0.143,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "claude_evaluation",
+        "score": 0.25,
+        "passed": false,
+        "details": "High hapax ratio (70.1%) and low Zipf exponent (0.89) contradict natural language frequency characteristics; simple substitution ciphers preserve the statistical signature of underlying languages.",
+        "confidence_change": "0.184 -> 0.143"
+      }
+    },
+    {
+      "id": "H019",
+      "claim": "The text uses a combination of substitution and transposition ciphers in the herbal section.",
+      "confidence": 0.751,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "run a mutual information test on the relationship between glyphs in the herbal section",
+        "score": 0.4073624632205617,
+        "passed": true,
+        "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+        "confidence_change": "0.735 -> 0.751"
+      }
+    },
+    {
+      "id": "H020",
+      "claim": "The Voynich text encodes a natural language using a null-cipher or homophones, where multiple glyphs",
+      "confidence": 0.727,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "compute conditional glyph entropy h(g_i | g_{i-1}) across the full corpus and compare to expected co",
+        "score": 0.9313499999999999,
+        "passed": true,
+        "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+        "confidence_change": "0.683 -> 0.727"
+      }
+    },
+    {
+      "id": "H021",
+      "claim": "The Currier A/B split reflects two different scribal hands encoding the same underlying language wit",
+      "confidence": 0.782,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "compute 25x25 bigram transition matrices separately for currier a and b; attempt to find a permutati",
+        "score": 1.0,
+        "passed": true,
+        "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+        "confidence_change": "0.744 -> 0.782"
+      }
+    },
+    {
+      "id": "H022",
+      "claim": "The zodiac and astronomical sections use a systematically different word-order encoding than herbal ",
+      "confidence": 0.707,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+        "score": 0.9313499999999999,
+        "passed": true,
+        "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+        "confidence_change": "0.660 -> 0.707"
+      }
+    },
+    {
+      "id": "H023",
+      "claim": "The high hapax ratio (70.1%) is partially artifactual, caused by consistent scribal abbreviation or ",
+      "confidence": 0.689,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+        "score": 0.7169092799999999,
+        "passed": true,
+        "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+        "confidence_change": "0.651 -> 0.689"
+      }
+    },
+    {
+      "id": "H024",
+      "claim": "The text-only section (7 folios, entropy 3.9016 bits \u00e2\u20ac\u201d highest of all sections) represents unencip",
+      "confidence": 0.511,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "compute the kullback-leibler divergence d_kl(text-only glyph distribution || section_x glyph distrib",
+        "score": 0.4073624632205617,
+        "passed": true,
+        "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+        "confidence_change": "0.479 -> 0.511"
+      }
+    },
+    {
+      "id": "H025",
+      "claim": "The Currier A/B split reflects two distinct scribal hands encoding the same language using different",
+      "confidence": 0.814,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "compute jensen-shannon divergence between word-initial and word-final glyph frequency distributions ",
+        "score": 1.0,
+        "passed": true,
+        "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+        "confidence_change": "0.781 -> 0.814"
+      }
+    },
+    {
+      "id": "H026",
+      "claim": "The manuscript uses a null-derived word-construction rule (e.g., a gallows-glyph prefix system) such",
+      "confidence": 0.206,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "claude_evaluation",
+        "score": 0.45,
+        "passed": null,
+        "details": "Hypothesis is theoretically plausible as a null-derived prefix system could produce the observed Zipf exponent via combinatorial generation, but the relatively flat exponent of 0.89 and high hapax ratio lack strong support without explicit verification that the top-5 initials account for >60% of tokens and that prefix-stem combinations generate the observed vocabulary structure.",
+        "confidence_change": "0.193 -> 0.206"
+      }
+    },
+    {
+      "id": "H027",
+      "claim": "The text-only section (entropy 3.9016 bits, 7 folios) represents the closest approximation to natura",
+      "confidence": 0.821,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "compute per-section bigram conditional entropy h(glyph_n | glyph_{n-1}) and type-token ratio (unique",
+        "score": 0.9313499999999999,
+        "passed": true,
+        "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+        "confidence_change": "0.792 -> 0.821"
+      }
+    },
+    {
+      "id": "H028",
+      "claim": "The high hapax rate (70.1%) is produced by a systematic nulls-insertion or verbose encoding scheme \u00e2",
+      "confidence": 0.151,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "for each hapax word, compute the minimum levenshtein distance to any word with frequency > 10; repor",
+        "score": 0.39700000000000013,
+        "passed": false,
+        "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+        "confidence_change": "0.184 -> 0.151"
+      }
+    },
+    {
+      "id": "H029",
+      "claim": "The zodiac section (entropy 3.7149 bits, lowest of all sections) uses a label-oriented encoding in w",
+      "confidence": 0.797,
+      "status": "active",
+      "test_result": {
+        "date": "2026-04-13",
+        "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+        "score": 0.9849999999999999,
+        "passed": true,
+        "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+        "confidence_change": "0.762 -> 0.797"
+      }
+    }
+  ],
+  "belief_count_before": 16,
+  "belief_count_after": 16
+}

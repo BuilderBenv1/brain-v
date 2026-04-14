@@ -1,0 +1,128 @@
+{
+  "id": "H007",
+  "claim": "The text uses a combination of substitution and transposition ciphers in the biological section.",
+  "type": "cipher",
+  "confidence": 0.745,
+  "evidence_for": [
+    "Biological section has higher entropy levels compared to other sections",
+    "Word-final glyph distribution in biological section shows possible patterns consistent with transposition"
+  ],
+  "evidence_against": [
+    "Other sections do not show similar patterns"
+  ],
+  "test": "Mutual information analysis between word-final glyphs and word positions",
+  "test_metric": "Average mutual information",
+  "test_threshold": ">0.5",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "mutual information analysis between word-final glyphs and word positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'n', 'm'}. Universal glyphs: {'d', 'o', 'a', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.580 -> 0.596"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "mutual information analysis between word-final glyphs and word positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'm', 'n'}. Universal glyphs: {'a', 'd', 'l', 'o'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.596 -> 0.611"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "mutual information analysis between word-final glyphs and word positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'm', 'n'}. Universal glyphs: {'l', 'o', 'd', 'a'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.611 -> 0.626"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "mutual information analysis between word-final glyphs and word positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'d', 'a', 'l', 'o'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.626 -> 0.640"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "mutual information analysis between word-final glyphs and word positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'n', 'r'}. Universal glyphs: {'o', 'a', 'l', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.640 -> 0.653"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "mutual information analysis between word-final glyphs and word positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'n', 'r'}. Universal glyphs: {'a', 'l', 'o', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.653 -> 0.666"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "mutual information analysis between word-final glyphs and word positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'n', 'm'}. Universal glyphs: {'d', 'o', 'a', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.666 -> 0.679"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "mutual information analysis between word-final glyphs and word positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'r', 'n'}. Universal glyphs: {'a', 'd', 'o', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.679 -> 0.691"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "mutual information analysis between word-final glyphs and word positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'n', 'm'}. Universal glyphs: {'l', 'd', 'o', 'a'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.691 -> 0.703"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "mutual information analysis between word-final glyphs and word positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.703 -> 0.714"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "mutual information analysis between word-final glyphs and word positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'d', 'a', 'l', 'o'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.714 -> 0.725"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "mutual information analysis between word-final glyphs and word positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'n', 'm'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.725 -> 0.735"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "mutual information analysis between word-final glyphs and word positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.735 -> 0.745"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "If the biological section uses a combination of substitution and transposition ciphers, we would expect to see significant correlations between word-final glyphs and word positions."
+}

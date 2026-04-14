@@ -1,0 +1,155 @@
+{
+  "id": "H036",
+  "claim": "The Currier A/B split encodes two different plaintext languages (e.g., Latin in sections assigned to A, Italian or an Italian dialect in sections assigned to B), detectable by different glyph-level entropy and different word-initial/final bigram profiles between A and B corpora.",
+  "type": "language",
+  "confidence": 0.951,
+  "evidence_for": [
+    "Currier B corpus (23,766 words) is more than twice the size of A (11,022 words), consistent with a dominant vs. supplementary language split",
+    "Prior hypothesis H004/H008 both carry elevated confidence (0.808, 0.697) for genuine linguistic difference",
+    "Latin glyph entropy ~4.0 bits and Italian ~3.95 bits bracket the observed 3.8627 bits, suggesting a blend or dialect"
+  ],
+  "evidence_against": [
+    "Overall glyph entropy 3.8627 sits below both Latin and Italian benchmarks, making a clean two-language split harder to reconcile without invoking encoding overhead",
+    "If two languages were used, section-level entropy should show bimodal distribution, but the range (3.71-3.90) is unimodal and narrow",
+    "High shared vocabulary between A and B would be unlikely if languages differ substantially"
+  ],
+  "test": "Partition the corpus into Currier-A and Currier-B tokens. Compute per-character (glyph) entropy, word-initial bigram frequency table, and word-final bigram frequency table separately for each partition. Run chi-squared test on the bigram distributions.",
+  "test_metric": "Glyph entropy difference between A and B; chi-squared statistic on word-initial and word-final bigram tables; Jensen-Shannon divergence of unigram glyph distributions.",
+  "test_threshold": "Confirmation: entropy difference > 0.05 bits AND chi-squared p < 0.01 on bigram tables AND JS divergence > 0.05 nats. Denial: all three metrics fall below thresholds simultaneously.",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.450 -> 0.527"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.527 -> 0.593"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.593 -> 0.650"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.650 -> 0.699"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.699 -> 0.741"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.741 -> 0.777"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.777 -> 0.808"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.808 -> 0.835"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.835 -> 0.858"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.858 -> 0.878"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.878 -> 0.895"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.895 -> 0.910"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.910 -> 0.923"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.923 -> 0.934"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.934 -> 0.943"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.943 -> 0.951"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "Confirming a genuine language split would allow separate decipherment tracks for A and B, halving effective search space; denial would redirect effort toward scribal or stylistic explanations."
+}

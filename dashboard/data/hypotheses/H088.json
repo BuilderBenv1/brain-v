@@ -1,0 +1,60 @@
+{
+  "id": "H088",
+  "claim": "The text-only section (7 folios, entropy 3.9016 bits \u00e2\u20ac\u201d highest of all sections) represents either unenciphered text or a significantly weaker cipher than the illustrated sections, such that its inter-word mutual information is statistically higher than in the herbal or biological sections, betraying more plaintext syntactic structure.",
+  "type": "cipher",
+  "confidence": 0.596,
+  "evidence_for": [
+    "Entropy 3.9016 bits is closest to natural Latin/Italian entropy (~3.95-4.0 bits) of any section",
+    "Text-only folios lack illustrations that might anchor vocabulary to a domain, suggesting free-running prose closer to original plaintext",
+    "Higher entropy is consistent with less homophonic expansion or less cipher obfuscation in this section",
+    "Beliefs [0.673] and [0.324] at high confidence both point to text-only section as anomalous"
+  ],
+  "evidence_against": [
+    "Higher entropy could simply reflect more varied vocabulary in a prose section rather than weaker encipherment",
+    "7 folios (2,349 words) is a small sample; entropy estimates may have high variance",
+    "If the same scribe applied the same cipher throughout, no section should show weaker encipherment"
+  ],
+  "test": "Compute pointwise mutual information (PMI) for all adjacent word-pairs within the text-only section and compare the mean PMI distribution against matched random samples of equal size from the herbal section. Additionally compare bigram coverage (fraction of word bigrams that appear more than once) across sections.",
+  "test_metric": "Mean PMI of word bigrams per section; bigram type repetition rate (bigrams appearing \u00e2\u2030\u00a52 times / total bigram types)",
+  "test_threshold": "Text-only mean PMI > herbal mean PMI by more than 0.15 bits AND text-only bigram repetition rate > 0.10 would suggest stronger syntactic structure (weaker or absent cipher); no significant difference (< 0.05 bits) would suggest uniform cipher strength across sections",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute pointwise mutual information (pmi) for all adjacent word-pairs within the text-only section ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.480 -> 0.512"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute pointwise mutual information (pmi) for all adjacent word-pairs within the text-only section ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.512 -> 0.542"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute pointwise mutual information (pmi) for all adjacent word-pairs within the text-only section ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.542 -> 0.570"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute pointwise mutual information (pmi) for all adjacent word-pairs within the text-only section ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.570 -> 0.596"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "If the text-only section preserves more syntactic co-occurrence signal than illustrated sections, it becomes the highest-value target for frequency-based decipherment attacks and narrows the cipher type to one that was applied inconsistently across the manuscript"
+}

@@ -1,0 +1,90 @@
+{
+  "id": "H066",
+  "claim": "The Currier A/B split encodes two different scribal dialects of the same underlying language (not two different languages), where Scribe A uses a slightly different homophonic key than Scribe B, producing measurable differences in glyph bigram entropy between the two sub-corpora rather than differences in underlying vocabulary.",
+  "type": "cipher",
+  "confidence": 0.843,
+  "evidence_for": [
+    "Currier A (11,022 words) and B (23,766 words) show known distributional differences in glyph usage",
+    "Two scribes sharing a cipher but using different key variants would produce sub-corpus entropy differences without requiring two distinct languages",
+    "Current belief [0.677] already favors two scribes encoding same language"
+  ],
+  "evidence_against": [
+    "Current belief [0.65] also supports two different plaintext languages \u00e2\u20ac\u201d the evidence is genuinely ambiguous",
+    "If only key variants differ, lexical overlap between A and B sections should be high; reported overlap may not support this"
+  ],
+  "test": "Compute glyph unigram and bigram entropy separately for Currier A and B sub-corpora. Then compute the Jensen-Shannon divergence between the glyph bigram distributions of A and B, and separately compute the word-type overlap (Jaccard similarity of vocabularies). Compare JS divergence of A vs B to JS divergence between two random equal-sized splits of the full corpus.",
+  "test_metric": "Jensen-Shannon divergence of glyph bigram distributions (A vs B); Jaccard vocabulary overlap between A and B word sets",
+  "test_threshold": "JS divergence A-vs-B significantly greater than random-split JS divergence (p < 0.05) AND Jaccard overlap < 0.15 would support two-language hypothesis; JS divergence near random-split baseline AND Jaccard overlap > 0.30 would support same-language different-key hypothesis",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram and bigram entropy separately for currier a and b sub-corpora. then compute th",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.480 -> 0.553"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram and bigram entropy separately for currier a and b sub-corpora. then compute th",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.553 -> 0.615"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram and bigram entropy separately for currier a and b sub-corpora. then compute th",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.615 -> 0.669"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram and bigram entropy separately for currier a and b sub-corpora. then compute th",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.669 -> 0.715"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram and bigram entropy separately for currier a and b sub-corpora. then compute th",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.715 -> 0.755"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram and bigram entropy separately for currier a and b sub-corpora. then compute th",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.755 -> 0.789"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram and bigram entropy separately for currier a and b sub-corpora. then compute th",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.789 -> 0.818"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram and bigram entropy separately for currier a and b sub-corpora. then compute th",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.818 -> 0.843"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "Disambiguating whether A/B reflects a language split or a key-variant split is critical: the former requires finding two plaintext languages, the latter requires finding one language with two cipher variants. This test directly separates those cases."
+}

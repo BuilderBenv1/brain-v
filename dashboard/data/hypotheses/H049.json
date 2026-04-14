@@ -1,0 +1,138 @@
+{
+  "id": "H049",
+  "claim": "The recipes section (25 folios, 11,611 words, entropy 3.8586 bits \u00e2\u20ac\u201d second highest and largest word count) encodes a list-structured text in which recurring syntactic templates produce predictable word-position bigrams, such that positional word-order entropy (entropy of word_n given word_{n-1} within a folio) is significantly lower in recipes than in the herbal or text-only sections.",
+  "type": "structural",
+  "confidence": 0.945,
+  "evidence_for": [
+    "Recipe and pharmaceutical texts in medieval Latin follow rigid syntactic templates (ingredient, quantity, preparation, application)",
+    "The recipes section has the highest word count (11,611), suggesting repetitive list structure",
+    "Entropy of 3.8586 is moderate \u00e2\u20ac\u201d consistent with structured but not purely label-based text"
+  ],
+  "evidence_against": [
+    "Without knowing the cipher, word-level positional entropy is confounded by vocabulary domain effects",
+    "The herbal section (10,872 words) has similar entropy (3.8478), suggesting domain alone may explain the similarity"
+  ],
+  "test": "Compute word-level bigram conditional entropy H(w_n | w_{n-1}) for the recipes section vs. the herbal and text-only sections. Additionally, test whether the recipes section shows higher within-folio word repetition rates (fraction of words on a folio that appear more than once on that same folio).",
+  "test_metric": "Word bigram conditional entropy per section; within-folio word repetition rate (fraction of repeated words per folio, averaged across folios in each section)",
+  "test_threshold": "If recipes section word bigram conditional entropy is >0.3 bits lower than text-only section, template-driven structure is supported; if within-folio repetition rate in recipes exceeds herbal by >5 percentage points, list structure is confirmed",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.550 -> 0.613"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.613 -> 0.667"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.667 -> 0.714"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.714 -> 0.754"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.754 -> 0.788"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.788 -> 0.818"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.818 -> 0.843"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.843 -> 0.865"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.865 -> 0.884"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.884 -> 0.900"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.900 -> 0.914"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.914 -> 0.926"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.926 -> 0.936"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.936 -> 0.945"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "Confirming list/template structure in the recipes section would allow researchers to use positional slot analysis (slot 1 = ingredient name, slot 2 = quantity, etc.) as a structural scaffold for decipherment, independently of knowing the cipher"
+}

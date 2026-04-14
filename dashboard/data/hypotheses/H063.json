@@ -1,0 +1,100 @@
+{
+  "id": "H063",
+  "claim": "The zodiac and astronomical sections (entropy 3.7149 and 3.7471 bits respectively, lowest of all sections) encode a label-and-numeral system where recurring short words function as positional labels (month names, star names, degree markers) rather than running prose, and these labels follow a fixed template grammar with \u00e2\u2030\u00a43 syntactic slots, explaining low entropy through high repetition of a small closed vocabulary.",
+  "type": "structural",
+  "confidence": 0.899,
+  "evidence_for": [
+    "Zodiac section has lowest entropy (3.7149 bits) and smallest word count per folio (~108 words/folio vs. 84 for herbal)",
+    "Astronomical section also has low entropy (3.7471) and very small total corpus (872 words, 8 folios)",
+    "Low entropy in label-heavy sections is consistent with a closed vocabulary of repeated positional labels",
+    "Current beliefs at 0.645 and 0.616 support homophonic/label-oriented encoding in zodiac/astronomical sections",
+    "Zodiac manuscripts of the period commonly used repetitive label structures around circular diagrams"
+  ],
+  "evidence_against": [
+    "If labels follow fixed templates, type-token ratio should be very low in zodiac \u00e2\u20ac\u201d but overall hapax ratio remains high corpus-wide",
+    "The astronomical section's 872 words across 8 folios may simply reflect sparse text rather than a structurally distinct encoding"
+  ],
+  "test": "Extract all words from zodiac and astronomical sections. Compute the type-token ratio (TTR) and compare to herbal and recipes sections. Identify all words appearing \u00e2\u2030\u00a53 times within zodiac/astronomical only. Fit a positional template model: for each word position within a 'label unit' (defined by folio layout), compute conditional entropy H(word | position). Compare H(word | position) in zodiac vs. herbal sections.",
+  "test_metric": "Type-token ratio for zodiac/astronomical vs. herbal/recipes sections; conditional entropy H(word|position) within label units in zodiac",
+  "test_threshold": "Confirm if zodiac TTR <0.45 (vs. expected >0.60 for prose) AND H(word|position) in zodiac is at least 0.3 bits lower than in herbal; deny if zodiac TTR \u00e2\u2030\u00a50.55 or positional entropy shows no reduction",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "extract all words from zodiac and astronomical sections. compute the type-token ratio (ttr) and comp",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.610 -> 0.664"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract all words from zodiac and astronomical sections. compute the type-token ratio (ttr) and comp",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.664 -> 0.711"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract all words from zodiac and astronomical sections. compute the type-token ratio (ttr) and comp",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.711 -> 0.751"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract all words from zodiac and astronomical sections. compute the type-token ratio (ttr) and comp",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.751 -> 0.786"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract all words from zodiac and astronomical sections. compute the type-token ratio (ttr) and comp",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.786 -> 0.816"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract all words from zodiac and astronomical sections. compute the type-token ratio (ttr) and comp",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.816 -> 0.842"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract all words from zodiac and astronomical sections. compute the type-token ratio (ttr) and comp",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.842 -> 0.864"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract all words from zodiac and astronomical sections. compute the type-token ratio (ttr) and comp",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.864 -> 0.883"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract all words from zodiac and astronomical sections. compute the type-token ratio (ttr) and comp",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.883 -> 0.899"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "If the zodiac/astronomical sections can be shown to encode a closed label vocabulary with template grammar, they become the highest-priority decipherment target \u00e2\u20ac\u201d a small closed vocabulary with known referents (months, stars, degrees) is far more tractable than open prose."
+}

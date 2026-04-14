@@ -1,0 +1,172 @@
+{
+  "id": "H032",
+  "claim": "The Currier A/B dialect split reflects two scribal hands encoding the same underlying language using different homophonic substitution tables, where Currier A substitutes fewer glyphs per phoneme than Currier B, explaining B's larger word count (23,766 vs 11,022) via greater glyph variety per syllable.",
+  "type": "cipher",
+  "confidence": 0.958,
+  "evidence_for": [
+    "Currier B has more than twice the word count of A, suggesting richer or more verbose encoding",
+    "Homophonic ciphers are period-appropriate hand-performable techniques consistent with the manuscript's era (~1400-1438)",
+    "The overall Zipf exponent (0.8946) is slightly below natural language, consistent with homophonic expansion inflating rare word forms",
+    "Different sections show different entropies, consistent with different homophonic table densities"
+  ],
+  "evidence_against": [
+    "Glyph entropy (3.8627) is below what a dense homophonic cipher would typically produce (homophones increase entropy toward the theoretical maximum)",
+    "The hypothesis of two languages (H004, H008) is currently rated more highly (0.774, 0.866); homophonic same-language encoding is competing with that",
+    "Only 25 unique glyphs constrains the homophonic table size significantly"
+  ],
+  "test": "Compute bigram transition entropy separately for Currier A and B corpora. If homophonic tables differ, A and B should show statistically different bigram distributions (KL divergence > threshold) but similar unigram entropy if encoding the same language.",
+  "test_metric": "KL divergence between Currier A and B bigram transition matrices; per-corpus unigram glyph entropy",
+  "test_threshold": "KL divergence > 0.3 nats between A and B bigram matrices with unigram entropy difference < 0.1 bits would support same-language different-cipher-table hypothesis; reverse pattern supports different-language hypothesis",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.380 -> 0.467"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.467 -> 0.541"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.541 -> 0.605"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.605 -> 0.660"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.660 -> 0.707"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.707 -> 0.748"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.748 -> 0.783"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.783 -> 0.813"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.813 -> 0.839"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.839 -> 0.861"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.861 -> 0.880"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.880 -> 0.897"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.897 -> 0.911"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.911 -> 0.923"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.923 -> 0.934"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.934 -> 0.943"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.943 -> 0.951"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute bigram transition entropy separately for currier a and b corpora. if homophonic tables diffe",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.951 -> 0.958"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "Distinguishing same-language-different-cipher from different-language is critical to whether A and B corpora should be deciphered jointly or separately, substantially affecting the search space"
+}

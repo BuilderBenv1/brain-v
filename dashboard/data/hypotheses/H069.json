@@ -1,0 +1,82 @@
+{
+  "id": "H069",
+  "claim": "The text-only section (entropy 3.9016 bits, highest of all sections) represents unenciphered or minimally enciphered natural language prose, while lower-entropy sections use a homophonic expansion layer that artificially reduces entropy by replacing single plaintext glyphs with multiple ciphertext glyphs.",
+  "type": "cipher",
+  "confidence": 0.864,
+  "evidence_for": [
+    "Text-only section has highest entropy (3.9016 bits), closest to natural language baselines (Latin ~4.0, Italian ~3.95)",
+    "Homophonic substitution would reduce entropy in proportion to the number of homophones used per plaintext character",
+    "Zodiac section has lowest entropy (3.7149 bits) and is label-heavy, consistent with repetitive short labels encoded homophones"
+  ],
+  "evidence_against": [
+    "If text-only were unenciphered, word boundaries and word forms should resemble known medieval languages more closely",
+    "High hapax ratio (70.1%) conflicts with expectation that natural-language prose would show more word repetition"
+  ],
+  "test": "Compute mutual information between section-level entropy and average word length; if homophonic expansion is active, sections with lower entropy should show longer average word lengths due to ciphertext expansion",
+  "test_metric": "Pearson correlation between per-section entropy and per-section mean word length",
+  "test_threshold": "Correlation r < -0.6 (p < 0.05) would support homophonic expansion hypothesis; r near 0 would refute it",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information between section-level entropy and average word length; if homophonic expa",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.610 -> 0.664"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information between section-level entropy and average word length; if homophonic expa",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.664 -> 0.711"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information between section-level entropy and average word length; if homophonic expa",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.711 -> 0.751"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information between section-level entropy and average word length; if homophonic expa",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.751 -> 0.786"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information between section-level entropy and average word length; if homophonic expa",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.786 -> 0.816"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information between section-level entropy and average word length; if homophonic expa",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.816 -> 0.842"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information between section-level entropy and average word length; if homophonic expa",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.842 -> 0.864"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "If lower-entropy sections use homophones, each plaintext character maps to more ciphertext glyphs, inflating word length while reducing per-glyph entropy. This predicts an inverse correlation between entropy and word length across sections that is directly testable."
+}

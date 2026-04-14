@@ -1,0 +1,119 @@
+{
+  "id": "H014",
+  "claim": "The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dialects.",
+  "type": "language",
+  "confidence": 0.935,
+  "evidence_for": [
+    "Currier A/B split has significant differences in vocabulary and entropy levels"
+  ],
+  "evidence_against": [
+    "No clear evidence of language shift or dialectical variation"
+  ],
+  "test": "Compute the similarity between word lists for Currier A and B",
+  "test_metric": "Jaccard similarity coefficient",
+  "test_threshold": "< 0.7",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute the similarity between word lists for currier a and b",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.550 -> 0.618"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the similarity between word lists for currier a and b",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.618 -> 0.675"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the similarity between word lists for currier a and b",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.675 -> 0.724"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the similarity between word lists for currier a and b",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.724 -> 0.765"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the similarity between word lists for currier a and b",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.765 -> 0.800"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the similarity between word lists for currier a and b",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.800 -> 0.830"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the similarity between word lists for currier a and b",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.830 -> 0.855"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the similarity between word lists for currier a and b",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.855 -> 0.877"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the similarity between word lists for currier a and b",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.877 -> 0.895"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the similarity between word lists for currier a and b",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.895 -> 0.911"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the similarity between word lists for currier a and b",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.911 -> 0.924"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the similarity between word lists for currier a and b",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.924 -> 0.935"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "If confirmed, this would suggest a genuine linguistic difference"
+}

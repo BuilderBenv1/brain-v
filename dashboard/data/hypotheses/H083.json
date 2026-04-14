@@ -1,0 +1,68 @@
+{
+  "id": "H083",
+  "claim": "The strong word-initial and word-final glyph positional constraints ({o,c,q,s,d} and {y,n,l,r,o}) reflect a syllabic or consonant-vowel template in the underlying language (e.g., CV or CVC structure), not a cipher artifact, and can be modeled as a Markov chain of order 2 that predicts glyph position within a word with accuracy > 80%.",
+  "type": "language",
+  "confidence": 0.707,
+  "evidence_for": [
+    "Word-initial glyphs {o,c,q,s,d} and word-final glyphs {y,n,l,r,o} are highly consistent across the entire corpus, suggesting a grammatical or phonological rule rather than a cipher convention",
+    "Existing belief [0.624] (confidence 0.624) and [0.616] (confidence 0.616) support positional constraints as artifacts of the underlying language structure or CV template",
+    "A 2nd-order Markov model on glyph sequences within words is testable and would quantify whether positional constraints are rule-governed",
+    "Medieval Latin and Italian both have strong CV templates that constrain consonant-vowel ordering at word boundaries"
+  ],
+  "evidence_against": [
+    "Existing belief [0.268] (confidence 0.268) attributes the positional constraints to a Vigenere-type cipher rather than linguistic structure \u00e2\u20ac\u201d cipher explanations are competitive",
+    "If positional constraints are cipher-imposed (e.g., only certain glyphs are valid in certain cipher positions), the same pattern would emerge without any underlying syllabic structure",
+    "A 2nd-order Markov model may overfit to the 25-glyph alphabet given only 38,053 words, producing spuriously high accuracy"
+  ],
+  "test": "Train a 2nd-order Markov chain on within-word glyph sequences using 80% of words, reserving 20% for testing. Compute the model's accuracy in predicting the glyph at each position within a word (position 1, 2, 3, ..., n). Separately test whether the initial and final glyph constraint sets {o,c,q,s,d} and {y,n,l,r,o} account for > 85% of observed word-initial and word-final tokens respectively. Compare the positional entropy profiles (entropy at position k within a word) against profiles computed from scrambled (random-order) words.",
+  "test_metric": "Markov model per-position prediction accuracy; percentage of word-initial and word-final tokens covered by the constraint sets; positional entropy at each within-word position compared to scrambled baseline",
+  "test_threshold": "Markov accuracy > 80% at positions 1 and final, constraint sets covering > 85% of word-boundary tokens, and positional entropy at boundaries at least 0.5 bits lower than scrambled baseline would confirm strong positional constraints consistent with a CV or syllabic template",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "train a 2nd-order markov chain on within-word glyph sequences using 80% of words, reserving 20% for ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.380 -> 0.467"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "train a 2nd-order markov chain on within-word glyph sequences using 80% of words, reserving 20% for ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.467 -> 0.541"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "train a 2nd-order markov chain on within-word glyph sequences using 80% of words, reserving 20% for ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.541 -> 0.605"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "train a 2nd-order markov chain on within-word glyph sequences using 80% of words, reserving 20% for ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.605 -> 0.660"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "train a 2nd-order markov chain on within-word glyph sequences using 80% of words, reserving 20% for ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.660 -> 0.707"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "Distinguishing cipher-imposed from language-imposed positional constraints is critical: if the constraints are linguistic, they provide direct evidence about the underlying language's phonology and narrow the candidate language set; if cipher-imposed, they constrain the cipher's structure. A Markov accuracy test is a clean, reproducible statistical method that directly tests the rule-governed nature of glyph positioning."
+}

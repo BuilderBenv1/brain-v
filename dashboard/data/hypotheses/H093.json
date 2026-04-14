@@ -1,0 +1,52 @@
+{
+  "id": "H093",
+  "claim": "The recipes section (25 folios, 11,611 words, entropy 3.8586 bits) encodes running prose rather than labels or lists, as evidenced by a word bigram conditional entropy significantly higher than label-heavy sections (zodiac: 3.7149, astronomical: 3.7471), and a type-token ratio and sentence-length distribution consistent with connected discourse rather than enumerated items.",
+  "type": "structural",
+  "confidence": 0.714,
+  "evidence_for": [
+    "Recipes section has second-highest entropy (3.8586) after text-only (3.9016), consistent with running prose carrying more information per glyph than label registers",
+    "Recipes section is the largest by word count (11,611), which is unusual for a label-only register",
+    "Belief [0.613] with high confidence supports recipes as a high-entropy, large-vocabulary section",
+    "Medieval recipe manuscripts are known to use formulaic but connected prose (e.g., 'take X, add Y, boil until...')"
+  ],
+  "evidence_against": [
+    "Pharmaceutical section has lower entropy (3.7772) and might represent the actual prose recipes while recipes section encodes something else",
+    "Without decipherment, distinguishing prose from enumerated lists via entropy alone is ambiguous",
+    "The recipes section's high word count might reflect repetitive list structure rather than connected discourse"
+  ],
+  "test": "Compute word bigram conditional entropy H(w_t | w_{t-1}) separately for the recipes, zodiac, and text-only sections. Also compute the distribution of inter-punctuation-marker span lengths (treating rare glyphs as potential sentence delimiters) and fit a geometric distribution \u00e2\u20ac\u201d prose should show longer, more variable spans than label lists.",
+  "test_metric": "Bigram conditional entropy per section; coefficient of variation of span lengths between delimiter markers",
+  "test_threshold": "If recipes bigram conditional entropy exceeds zodiac bigram entropy by > 0.3 bits AND coefficient of variation of span lengths > 0.8 (high variability), prose register is supported; if bigram entropy difference < 0.1 bits, refute",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute word bigram conditional entropy h(w_t | w_{t-1}) separately for the recipes, zodiac, and tex",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.550 -> 0.613"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word bigram conditional entropy h(w_t | w_{t-1}) separately for the recipes, zodiac, and tex",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.613 -> 0.667"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word bigram conditional entropy h(w_t | w_{t-1}) separately for the recipes, zodiac, and tex",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.667 -> 0.714"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "Distinguishing prose from enumerated label registers is critical because prose provides richer syntactic structure for cryptanalysis, including word-order patterns that could reveal the underlying language family even without full decipherment."
+}

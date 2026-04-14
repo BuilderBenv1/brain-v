@@ -1,0 +1,52 @@
+{
+  "id": "H092",
+  "claim": "Currier A and Currier B use two structurally distinct cipher tables (not merely two scribal hands) encoding the same underlying language: the rank-order frequency distribution of glyphs in Currier A and Currier B should show high Spearman rank correlation (> 0.85) if encoding the same language, but the specific high-frequency glyphs in each sub-corpus should differ, indicating a key rotation between the two tables.",
+  "type": "cipher",
+  "confidence": 0.779,
+  "evidence_for": [
+    "Belief [0.677] with high confidence already supports same underlying language with different encoding methods",
+    "Currier B is more than twice as large as A (23,766 vs 11,022 words), consistent with a single primary scribal tradition with a variant key for a secondary corpus",
+    "If two tables encode the same language, frequency ranks should correlate highly even though absolute frequencies differ",
+    "Word-initial and word-final glyph constraint beliefs [0.624, 0.608] suggest structural cipher features that could manifest differently under two key tables"
+  ],
+  "evidence_against": [
+    "Belief [0.288] supports two different plaintext languages as an alternative explanation for the A/B split",
+    "If the two sub-corpora encode different content domains (not just different keys), glyph frequency ranks might differ for content reasons rather than cipher reasons",
+    "Currier A and B may simply represent two scribal styles with idiosyncratic spelling conventions rather than distinct cipher tables"
+  ],
+  "test": "Compute the full unigram glyph frequency distribution for Currier A and Currier B separately. Calculate Spearman's rank correlation coefficient between the two frequency-rank vectors. Then compute Jensen-Shannon divergence between the two distributions. Finally, identify the top-5 glyphs by frequency in each sub-corpus and test for overlap.",
+  "test_metric": "Spearman rho between Currier A and B glyph frequency ranks; JS divergence between A and B glyph distributions; overlap count of top-5 glyphs",
+  "test_threshold": "If Spearman rho > 0.85 AND JS divergence > 0.08 bits AND top-5 overlap <= 2 glyphs, two-table same-language hypothesis is supported; if rho < 0.70 OR JS divergence < 0.04, refute in favor of different-language hypothesis",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute the full unigram glyph frequency distribution for currier a and currier b separately. calcul",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.640 -> 0.694"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the full unigram glyph frequency distribution for currier a and currier b separately. calcul",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.694 -> 0.740"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the full unigram glyph frequency distribution for currier a and currier b separately. calcul",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.740 -> 0.779"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "This test directly discriminates between the two highest-probability competing explanations for the Currier split (same language/different keys vs different languages) using a straightforward rank correlation test, making it one of the highest-value experiments to run first."
+}

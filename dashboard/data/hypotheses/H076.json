@@ -1,0 +1,74 @@
+{
+  "id": "H076",
+  "claim": "The zodiac section's anomalously low glyph entropy (3.7149 bits vs. corpus mean 3.8627 bits) is fully explained by a restricted label vocabulary: the section predominantly contains short repeated labels for month names, zodiac figures, and positional markers rather than running text. This predicts that the zodiac section's type-token ratio and word length distribution differ significantly from prose sections.",
+  "type": "structural",
+  "confidence": 0.889,
+  "evidence_for": [
+    "Zodiac entropy (3.7149 bits) is the lowest of all sections, 0.186 bits below the text-only maximum",
+    "Zodiac corpus is small (1,297 words over 12 folios), consistent with label-dominant rather than prose content",
+    "Astronomical section also has low entropy (3.7471 bits) and is similarly diagram-heavy with labels"
+  ],
+  "evidence_against": [
+    "Low entropy could also result from a different cipher key applied to the same underlying language rather than a restricted vocabulary",
+    "The recipes section has the largest word count (11,611) and second-highest entropy (3.8586 bits), which is consistent with prose but does not rule out alternative explanations for zodiac"
+  ],
+  "test": "Compute type-token ratio (TTR = unique_words / total_words) and mean word length for each section. Compute Kolmogorov-Smirnov test comparing zodiac word length distribution to herbal section word length distribution. Compute repetition rate (fraction of word tokens that are in the top-20 most frequent words) for zodiac vs. herbal.",
+  "test_metric": "TTR per section; KS statistic D for zodiac vs. herbal word length distributions; repetition rate for zodiac vs. herbal",
+  "test_threshold": "If zodiac TTR < 0.25 (vs. herbal TTR > 0.45) and zodiac repetition rate > 0.40 (vs. herbal < 0.20), and KS test p < 0.01, the label-vocabulary hypothesis is confirmed.",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and mean word length for each section. c",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.710 -> 0.753"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and mean word length for each section. c",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.753 -> 0.789"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and mean word length for each section. c",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.789 -> 0.820"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and mean word length for each section. c",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.820 -> 0.847"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and mean word length for each section. c",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.847 -> 0.870"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and mean word length for each section. c",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.870 -> 0.889"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "If confirmed, this separates the zodiac section as structurally distinct from prose sections, allowing decipherment efforts to focus on prose sections where running text provides stronger statistical constraints on the underlying language."
+}

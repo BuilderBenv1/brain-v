@@ -1,0 +1,128 @@
+{
+  "id": "H006",
+  "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.",
+  "type": "structural",
+  "confidence": 0.847,
+  "evidence_for": [
+    "Herbal section has higher entropy levels compared to other sections",
+    "Word-final glyph distribution in herbal section shows a possible rhyme scheme"
+  ],
+  "evidence_against": [
+    "Other sections do not show similar patterns"
+  ],
+  "test": "Chi-squared test for independence between word-final glyphs and section type",
+  "test_metric": "p-value",
+  "test_threshold": "<0.05",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.650 -> 0.671"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.671 -> 0.691"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.691 -> 0.710"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.710 -> 0.728"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.728 -> 0.745"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.745 -> 0.761"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.761 -> 0.776"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.776 -> 0.790"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.790 -> 0.803"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.803 -> 0.815"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.815 -> 0.826"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.826 -> 0.837"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.837 -> 0.847"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "If the herbal section is primarily composed of short, rhyming couplets, we would expect to see a significant correlation between word-final glyphs and section type."
+}

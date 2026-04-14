@@ -1,0 +1,323 @@
+{
+  "id": "H023",
+  "claim": "The high hapax ratio (70.1%) is partially artifactual, caused by consistent scribal abbreviation or word-compounding conventions where morphological suffixes are concatenated inconsistently, such that word-final glyph sequences 'y', 'n', 'l', 'r' function as detachable morphological markers \u00e2\u20ac\u201d splitting words on these terminals would reduce unique vocabulary by at least 25%.",
+  "type": "language",
+  "confidence": 0.99,
+  "evidence_for": [
+    "Word-final glyph distribution is dominated by 'y' (most common), 'n', 'l', 'r', 'o' \u00e2\u20ac\u201d highly skewed toward a small set",
+    "Average word length 5.03 is consistent with stem+suffix structure in Latin or Italian morphology",
+    "Top words 'daiin', 'aiin', 'chedy', 'shedy', 'chol' share terminal sequences suggesting productive morphological patterns",
+    "Word entropy 10.45 bits would decrease substantially if vocabulary is inflated by morphological variation"
+  ],
+  "evidence_against": [
+    "Simple positional rules already noted (belief 0.116) may already account for terminal glyph skew",
+    "If suffixes were detachable, word-medial forms of the same stems should appear \u00e2\u20ac\u201d their frequency distribution would need to match expected stem frequencies"
+  ],
+  "test": "Segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate suffixes; compute vocabulary size reduction ratio and test whether resulting stem vocabulary fits a Zipf distribution better (higher R-squared) than original word vocabulary",
+  "test_metric": "Zipf R-squared for stem vocabulary vs. original word vocabulary; percentage reduction in hapax count after suffix stripping",
+  "test_threshold": "R-squared improvement above 0.03 and hapax reduction above 25% would support morphological suffix hypothesis; improvement below 0.01 would argue against",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.450 -> 0.509"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.509 -> 0.562"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.562 -> 0.609"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.609 -> 0.651"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.651 -> 0.689"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.689 -> 0.722"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.722 -> 0.752"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.752 -> 0.779"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.779 -> 0.803"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.803 -> 0.824"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.824 -> 0.843"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.843 -> 0.860"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.860 -> 0.875"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.875 -> 0.888"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.888 -> 0.900"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.900 -> 0.911"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.911 -> 0.921"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.921 -> 0.929"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.929 -> 0.937"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.937 -> 0.944"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.944 -> 0.950"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.950 -> 0.955"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.955 -> 0.960"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.960 -> 0.964"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.964 -> 0.968"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.968 -> 0.971"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.971 -> 0.974"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.974 -> 0.977"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.977 -> 0.979"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.979 -> 0.981"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.981 -> 0.983"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.983 -> 0.985"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.985 -> 0.987"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.987 -> 0.988"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.988 -> 0.989"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.989 -> 0.990"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "segment all words by stripping the most frequent word-final glyphs ('y','n','l','r') as candidate su",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.990 -> 0.990"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "If the hapax inflation is morphological rather than cipher-induced, this substantially changes decipherment strategy toward morphological analysis rather than pure substitution-cipher approaches, making it a high-value discriminating test."
+}

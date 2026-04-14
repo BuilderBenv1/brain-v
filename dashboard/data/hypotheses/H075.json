@@ -1,0 +1,74 @@
+{
+  "id": "H075",
+  "claim": "The Currier A and B sub-corpora encode the same underlying plaintext language using two different but structurally related substitution alphabets (i.e., same cipher family, different keys). This would produce similar Zipf exponents and bigram entropy profiles within each sub-corpus but systematically divergent glyph-level frequency distributions between them.",
+  "type": "cipher",
+  "confidence": 0.829,
+  "evidence_for": [
+    "Currier A (11,022 words) and B (23,766 words) are large enough sub-corpora to compute reliable frequency statistics",
+    "Existing high-confidence evidence (0.677) already supports two scribes encoding the same underlying language",
+    "If the same cipher family is used with different keys, bigram conditional entropy H(glyph_n | glyph_{n-1}) should be similar across A and B even if marginal glyph frequencies differ"
+  ],
+  "evidence_against": [
+    "The Currier A/B split could alternatively reflect two different source languages rather than two keys on the same language",
+    "Some evidence (0.469) supports the hypothesis that A and B encode different plaintext languages, which would predict divergent bigram entropy profiles"
+  ],
+  "test": "Compute (1) Zipf exponent separately for Currier A and B word frequency distributions; (2) unigram glyph frequency Jensen-Shannon divergence between A and B; (3) bigram conditional glyph entropy H(g2|g1) for A and B separately. Run permutation test (n=10,000 random A/B splits of equal size) to establish null distribution.",
+  "test_metric": "Jensen-Shannon divergence of glyph unigrams between A and B; difference in Zipf exponents delta_alpha; difference in bigram conditional entropies delta_H",
+  "test_threshold": "If JSD(unigrams) > 0.05 but |delta_H(bigrams)| < 0.05, the two-key same-cipher hypothesis is supported (different surface distributions, similar structural constraints). If both JSD and delta_H are large, two-language hypothesis is favored.",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute (1) zipf exponent separately for currier a and b word frequency distributions; (2) unigram g",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.580 -> 0.639"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute (1) zipf exponent separately for currier a and b word frequency distributions; (2) unigram g",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.639 -> 0.689"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute (1) zipf exponent separately for currier a and b word frequency distributions; (2) unigram g",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.689 -> 0.732"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute (1) zipf exponent separately for currier a and b word frequency distributions; (2) unigram g",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.732 -> 0.769"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute (1) zipf exponent separately for currier a and b word frequency distributions; (2) unigram g",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.769 -> 0.801"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute (1) zipf exponent separately for currier a and b word frequency distributions; (2) unigram g",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.801 -> 0.829"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "Distinguishing two-key-same-cipher from two-different-languages would dramatically narrow the solution space. The bigram conditional entropy test is particularly discriminating because cipher-key differences affect marginal distributions but leave conditional structure intact, while language differences affect both."
+}

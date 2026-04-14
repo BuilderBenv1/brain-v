@@ -1,0 +1,115 @@
+{
+  "id": "H035",
+  "claim": "The high hapax ratio (70.1%) is largely an artifact of a systematic abbreviation or truncation cipher, where scribes consistently dropped word-final syllables or morphemes, causing each abbreviated form to appear unique even though the underlying vocabulary is much smaller.",
+  "type": "cipher",
+  "confidence": 0.043,
+  "evidence_for": [
+    "Hapax ratio of 70.1% far exceeds natural language norms (typically 40-55% for medieval Latin manuscripts of comparable size)",
+    "Average word length of 5.03 glyphs is shorter than expected for unabbreviated Latin or Italian",
+    "Word-final glyph distribution is highly constrained (y, n, l, r, o dominate), consistent with a small set of suffix substitutes"
+  ],
+  "evidence_against": [
+    "Zipf exponent 0.8946 with R-squared 0.9084 indicates moderate but not strong natural-language Zipf fit, which genuine abbreviation should push closer to 1.0",
+    "If abbreviation were systematic, hapax forms should cluster near specific word lengths, but avg length 5.03 suggests moderate spread",
+    "Text-only section entropy 3.9016 bits is highest, inconsistent with heavy abbreviation flattening variance"
+  ],
+  "test": "Compute the hapax word-length distribution and compare to non-hapax word-length distribution. If abbreviation drives hapax inflation, hapax words should be systematically shorter than recurring words.",
+  "test_metric": "Mean word length of hapax legomena vs. mean word length of words appearing 2+ times; also compute KL divergence between the two length distributions.",
+  "test_threshold": "Confirmation: hapax mean length < recurring mean length by >0.5 glyphs and KL divergence > 0.15 nats. Denial: lengths are statistically indistinguishable (p > 0.05 by Mann-Whitney U).",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute the hapax word-length distribution and compare to non-hapax word-length distribution. if abb",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.380 -> 0.311"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the hapax word-length distribution and compare to non-hapax word-length distribution. if abb",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.311 -> 0.255"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the hapax word-length distribution and compare to non-hapax word-length distribution. if abb",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.255 -> 0.209"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the hapax word-length distribution and compare to non-hapax word-length distribution. if abb",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.209 -> 0.171"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the hapax word-length distribution and compare to non-hapax word-length distribution. if abb",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.171 -> 0.140"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the hapax word-length distribution and compare to non-hapax word-length distribution. if abb",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.140 -> 0.115"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the hapax word-length distribution and compare to non-hapax word-length distribution. if abb",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.115 -> 0.094"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the hapax word-length distribution and compare to non-hapax word-length distribution. if abb",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.094 -> 0.077"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the hapax word-length distribution and compare to non-hapax word-length distribution. if abb",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.077 -> 0.063"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the hapax word-length distribution and compare to non-hapax word-length distribution. if abb",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.063 -> 0.052"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the hapax word-length distribution and compare to non-hapax word-length distribution. if abb",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.052 -> 0.043"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "eliminated",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "If abbreviation drives hapax inflation, decipherment can focus on reconstructing root forms rather than treating each hapax as a distinct lexical item, dramatically narrowing the solution space."
+}

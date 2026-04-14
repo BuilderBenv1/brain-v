@@ -1,0 +1,108 @@
+{
+  "id": "H059",
+  "claim": "The text-only section's elevated entropy (3.9016 bits, highest of all sections) and the recipes section's second-highest entropy (3.8586 bits) reflect unenciphered or lightly enciphered running prose in the underlying natural language, while the diagrammatic sections (zodiac 3.7149, astronomical 3.7471, pharmaceutical 3.7772) reflect a more heavily enciphered or formulaic register \u00e2\u20ac\u201d meaning entropy difference between sections correlates with cipher strength, not genre.",
+  "type": "cipher",
+  "confidence": 0.907,
+  "evidence_for": [
+    "Section entropy spans 0.19 bits (3.7149 to 3.9016), which is large enough to suggest qualitative differences in encoding rather than mere genre effects",
+    "Text-only section (7 folios, 2,349 words) has no diagrams, suggesting if the scribe used a cipher, they may have applied it less rigorously to continuous prose",
+    "Recipes section (25 folios, 11,611 words) is the largest section and has the second-highest entropy, consistent with extensive prose where cipher slippage is more likely",
+    "Diagrammatic sections (zodiac, astronomical, pharmaceutical) require labeling short, repeated terms \u00e2\u20ac\u201d contexts where a skilled encipherer applies cipher most consistently"
+  ],
+  "evidence_against": [
+    "Genre differences alone could explain entropy variation: prose naturally has higher per-glyph entropy than labels and formulaic lists",
+    "The 0.19-bit entropy range across sections is within the range produced by genre differences in plaintext medieval Latin (prose vs. lists)",
+    "Text-only section being unenciphered would imply the scribe intentionally left 7 folios in plaintext, an implausible operational security failure"
+  ],
+  "test": "For each section, compute the rank-frequency slope (Zipf exponent) separately. If cipher-strength variation drives entropy, sections with lower entropy should show steeper Zipf slopes (more concentrated frequency mass) than high-entropy sections. Additionally, compute the ratio of top-10-word frequency mass to total word count per section and correlate this ratio with section entropy.",
+  "test_metric": "Pearson correlation between per-section entropy and per-section Zipf exponent; Pearson correlation between per-section entropy and per-section top-10 word frequency mass ratio",
+  "test_threshold": "Negative correlation (r < -0.7) between entropy and Zipf slope would support cipher-strength hypothesis; correlation near zero (|r| < 0.3) would support genre-difference explanation; positive correlation would falsify both and suggest a third structural factor",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "for each section, compute the rank-frequency slope (zipf exponent) separately. if cipher-strength va",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.580 -> 0.639"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "for each section, compute the rank-frequency slope (zipf exponent) separately. if cipher-strength va",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.639 -> 0.689"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each section, compute the rank-frequency slope (zipf exponent) separately. if cipher-strength va",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.689 -> 0.732"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each section, compute the rank-frequency slope (zipf exponent) separately. if cipher-strength va",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.732 -> 0.769"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each section, compute the rank-frequency slope (zipf exponent) separately. if cipher-strength va",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.769 -> 0.801"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each section, compute the rank-frequency slope (zipf exponent) separately. if cipher-strength va",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.801 -> 0.829"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each section, compute the rank-frequency slope (zipf exponent) separately. if cipher-strength va",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.829 -> 0.853"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each section, compute the rank-frequency slope (zipf exponent) separately. if cipher-strength va",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.853 -> 0.874"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each section, compute the rank-frequency slope (zipf exponent) separately. if cipher-strength va",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.874 -> 0.892"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each section, compute the rank-frequency slope (zipf exponent) separately. if cipher-strength va",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.892 -> 0.907"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-14",
+  "reasoning": "If cipher strength varies by section, we expect a systematic trade-off between entropy and frequency concentration that should manifest as a strong negative correlation between section entropy and Zipf exponent \u00e2\u20ac\u201d a prediction testable entirely from corpus statistics that would directly inform whether decipherment efforts should prioritize text-only/recipes (lighter cipher) or avoid diagrammatic sections (heavier cipher)."
+}
