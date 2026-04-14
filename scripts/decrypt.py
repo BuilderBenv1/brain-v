@@ -1109,13 +1109,11 @@ def attack_verbose_cipher(glyphs: str, words: list[str]) -> list[dict]:
 def attack_word_codebook(words: list[str]) -> dict:
     """
     Word-level codebook: each Voynich word maps to a plaintext word.
-    If this is a nomenclator, the most common Voynich words would map to
-    common Latin/Italian words.
+    HONEST SCORING: score includes unmapped words as failures, not excluded.
     """
     word_freq = Counter(words)
     sorted_voynich = [w for w, _ in word_freq.most_common()]
 
-    # Map to common Latin words by frequency rank
     latin_common = [
         "et", "in", "est", "non", "ad", "de", "qui", "ut", "cum", "sed",
         "quod", "per", "ab", "ex", "si", "aut", "nec", "enim", "autem",
@@ -1133,17 +1131,166 @@ def attack_word_codebook(words: list[str]) -> dict:
             mapping[vw] = f"[{vw}]"
 
     dec_words = [mapping.get(w, f"[{w}]") for w in words]
-    dec_stream = " ".join(dec_words)
 
-    # Score only on mapped words
-    mapped_words = [w for w in dec_words if not w.startswith("[")]
-    score = score_plaintext("".join(mapped_words), mapped_words)
+    # HONEST scoring: unmapped words count as misses
+    mapped_count = sum(1 for w in dec_words if not w.startswith("["))
+    mapped_ratio = mapped_count / len(dec_words) if dec_words else 0
+
+    # Score on ALL words — unmapped ones treated as gibberish
+    all_plain = []
+    for w in dec_words:
+        all_plain.append(w.strip("[]"))
+    full_stream = "".join(all_plain)
+    score = score_plaintext(full_stream, all_plain)
+
+    # Override dict hits with honest numbers
+    score["latin_dict_hits_honest"] = round(
+        sum(1 for w in all_plain if w.lower() in LATIN_WORDS) / len(all_plain), 4
+    )
+    score["italian_dict_hits_honest"] = round(
+        sum(1 for w in all_plain if w.lower() in ITALIAN_WORDS) / len(all_plain), 4
+    )
+    score["coverage"] = round(mapped_ratio, 4)
+    # Penalize score by unmapped fraction
+    score["best_score"] = round(score["best_score"] * mapped_ratio, 4)
+    score["details"] = (
+        f"Coverage: {mapped_ratio:.1%} tokens mapped. "
+        f"Honest dict hits: Latin={score['latin_dict_hits_honest']}, "
+        f"Italian={score['italian_dict_hits_honest']}. "
+        f"{score['details']}"
+    )
 
     return {
         "method": "word_codebook_latin",
         "mapping_sample": dict(list(mapping.items())[:20]),
         "sample_output": " ".join(dec_words[:30]),
-        "mapped_ratio": len(mapped_words) / len(dec_words) if dec_words else 0,
+        "mapped_ratio": round(mapped_ratio, 4),
+        "mapped_tokens": mapped_count,
+        "total_tokens": len(dec_words),
+        "unmapped_top20": [w for w in sorted_voynich[len(latin_common):len(latin_common)+20]],
+        "score": score,
+    }
+
+
+def attack_medical_codebook(words: list[str]) -> dict:
+    """
+    Refined word codebook using medieval medical Latin vocabulary.
+    Based on H027 (text-only = least enciphered) and the pharmaceutical context
+    suggested by the manuscript's illustrations.
+
+    Strategy:
+    1. Map top-49 words by frequency (same as basic codebook)
+    2. Extend mapping for next ~100 words using medical Latin vocabulary
+    3. Use word-length and positional glyph hints to constrain mapping
+    4. Score honestly against full text
+    """
+    word_freq = Counter(words)
+    sorted_voynich = [w for w, _ in word_freq.most_common()]
+
+    # Tier 1: Function words (most frequent Latin words, matched by rank)
+    tier1 = [
+        "et", "in", "est", "non", "ad", "de", "qui", "ut", "cum", "sed",
+        "quod", "per", "ab", "ex", "si", "aut", "nec", "enim", "autem",
+        "hic", "ille", "esse", "sunt", "fuit", "quae", "quid", "omnis",
+        "iam", "nunc", "tamen", "vel", "tam", "sic", "ita", "ergo",
+    ]
+
+    # Tier 2: Medical/herbal vocabulary (matched by word length to Voynich words)
+    medical_vocab_by_length = {
+        2: ["os", "re", "vi"],
+        3: ["sal", "mel", "lac", "ius", "vis", "ova", "cor", "vas", "pus"],
+        4: ["aqua", "dico", "vero", "fiat", "cera", "rosa", "dose", "olim",
+            "aloe", "item", "idem", "modo", "inde", "sola", "nota", "alia"],
+        5: ["herba", "radix", "folii", "succi", "morbi", "folia", "semen",
+            "calor", "dolor", "febri", "ignis", "album", "nigra", "piper",
+            "ungue", "misce", "ponit", "facit", "curat", "sanat", "terra"],
+        6: ["recipe", "pulvis", "florem", "herbam", "potius", "calida",
+            "frigid", "humida", "siccum", "contra", "medica", "corpus",
+            "capiti", "sangui", "vulnus", "morbus"],
+        7: ["ungento", "medicus", "virtute", "potione", "herbari", "materia",
+            "calculi", "infirmi", "stomaco", "venenum"],
+        8: ["medicina", "ungentum", "cataplas", "electuar", "decoctio",
+            "emplasta", "infirmis"],
+    }
+
+    # Build mapping
+    mapping = {}
+    # Tier 1: top words by frequency -> function words
+    for i, vw in enumerate(sorted_voynich):
+        if i < len(tier1):
+            mapping[vw] = tier1[i]
+        else:
+            break
+
+    # Tier 2: next words matched by word length to medical vocab
+    used_medical = set()
+    for vw in sorted_voynich[len(tier1):]:
+        vlen = len(vw)
+        candidates = medical_vocab_by_length.get(vlen, [])
+        for candidate in candidates:
+            if candidate not in used_medical:
+                mapping[vw] = candidate
+                used_medical.add(candidate)
+                break
+
+    # Apply mapping
+    dec_words = []
+    for w in words:
+        if w in mapping:
+            dec_words.append(mapping[w])
+        else:
+            dec_words.append(f"[{w}]")
+
+    # Honest scoring
+    mapped_count = sum(1 for w in dec_words if not w.startswith("["))
+    mapped_ratio = mapped_count / len(dec_words) if dec_words else 0
+
+    all_plain = [w.strip("[]") for w in dec_words]
+    full_stream = "".join(all_plain)
+    score = score_plaintext(full_stream, all_plain)
+
+    # Honest dict hits
+    all_dict = LATIN_WORDS | set(tier1) | used_medical
+    score["dict_hits_honest"] = round(
+        sum(1 for w in all_plain if w.lower() in all_dict) / len(all_plain), 4
+    )
+    score["coverage"] = round(mapped_ratio, 4)
+    score["best_score"] = round(score["best_score"] * mapped_ratio, 4)
+    score["details"] = (
+        f"Medical codebook: {len(mapping)} mappings, {mapped_ratio:.1%} coverage. "
+        f"Dict hits (honest): {score['dict_hits_honest']}. "
+        f"{score['details']}"
+    )
+
+    # Analyze unmapped words for patterns
+    unmapped = [w for w in sorted_voynich if w not in mapping]
+    unmapped_freq = [(w, word_freq[w]) for w in unmapped[:30]]
+
+    # Check if unmapped words share stems with mapped words
+    stem_matches = {}
+    for uw in unmapped[:50]:
+        for mw, lw in mapping.items():
+            # Check if unmapped word is a suffix variant of a mapped word
+            if len(uw) > len(mw) and uw.startswith(mw):
+                suffix = uw[len(mw):]
+                stem_matches[uw] = {"stem": mw, "maps_to": lw, "suffix": suffix}
+                break
+            if len(uw) > 2 and len(mw) > 2 and uw[:3] == mw[:3]:
+                stem_matches[uw] = {"shared_prefix": mw, "maps_to": lw}
+                break
+
+    return {
+        "method": "medical_codebook_latin",
+        "tier1_count": len(tier1),
+        "tier2_medical_count": len(used_medical),
+        "total_mappings": len(mapping),
+        "mapped_ratio": round(mapped_ratio, 4),
+        "mapped_tokens": mapped_count,
+        "total_tokens": len(dec_words),
+        "unmapped_top30": unmapped_freq,
+        "stem_matches": dict(list(stem_matches.items())[:15]),
+        "mapping_sample": dict(list(mapping.items())[:30]),
+        "sample_output": " ".join(dec_words[:40]),
         "score": score,
     }
 
@@ -1928,8 +2075,11 @@ def run_all_attacks(corpus: dict, stats: dict,
     print("[decrypt] [19/22] Verbose cipher (multi-glyph per letter)...")
     results.extend(attack_verbose_cipher(glyphs, words))
 
-    print("[decrypt] [20/22] Word-level codebook...")
+    print("[decrypt] [20/22] Word-level codebook (honest scoring)...")
     results.append(attack_word_codebook(words))
+
+    print("[decrypt] [20b/22] Medical Latin codebook...")
+    results.append(attack_medical_codebook(words))
 
     # === ANALYTICAL ===
     print("[decrypt] [21/22] Index of Coincidence analysis...")
