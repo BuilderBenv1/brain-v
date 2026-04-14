@@ -437,19 +437,35 @@ def update_beliefs(beliefs: list[dict], scored_hypotheses: list[dict], date_str:
 
         # Promote beliefs related to confirmed hypotheses
         if latest_test.get("passed") is True and h["confidence"] > 0.6:
-            # Check if a related belief already exists
             claim = h.get("claim", "")
-            already_exists = any(
-                claim[:30].lower() in b.get("belief", "").lower()
-                for b in updated
-            )
-            if not already_exists:
-                updated.append({
-                    "belief": f"Evidence supports: {claim[:100]}",
-                    "confidence": h["confidence"],
-                    "source": f"hypothesis-{h['id']}-{date_str}",
-                    "date": date_str,
-                })
+
+            # First: try to promote an existing belief that matches
+            promoted_existing = False
+            claim_words = [w for w in claim.lower().split() if len(w) >= 5]
+            for b in updated:
+                belief_text = b.get("belief", "").lower()
+                if any(w in belief_text for w in claim_words[:3]):
+                    old_conf = b.get("confidence", 0.5)
+                    if isinstance(old_conf, (int, float)) and h["confidence"] > old_conf:
+                        # Nudge existing belief toward hypothesis confidence
+                        new_conf = old_conf + (h["confidence"] - old_conf) * 0.15
+                        b["confidence"] = round(min(0.99, new_conf), 3)
+                        b["last_scored"] = date_str
+                        promoted_existing = True
+
+            # If no existing belief matched, create a new one
+            if not promoted_existing:
+                already_exists = any(
+                    claim[:30].lower() in b.get("belief", "").lower()
+                    for b in updated
+                )
+                if not already_exists:
+                    updated.append({
+                        "belief": f"Evidence supports: {claim[:100]}",
+                        "confidence": h["confidence"],
+                        "source": f"hypothesis-{h['id']}-{date_str}",
+                        "date": date_str,
+                    })
 
         # Demote beliefs contradicted by failed hypotheses
         if latest_test.get("passed") is False:
