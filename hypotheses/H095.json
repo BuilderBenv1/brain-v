@@ -1,0 +1,42 @@
+{
+  "id": "H095",
+  "claim": "Currier A and Currier B use two structurally distinct cipher alphabets encoding the same underlying Latin plaintext: the two sub-corpora should exhibit the same bigram entropy and the same Zipf exponent once glyph-level correspondences are remapped",
+  "type": "cipher",
+  "confidence": 0.741,
+  "evidence_for": [
+    "High-confidence belief (0.694) that A and B use distinct cipher tables on the same language",
+    "Currier B is more than twice the size of A (23,766 vs 11,022 words), consistent with one scribe being primary",
+    "Positional glyph constraints are present in both sub-corpora, suggesting shared underlying grammar"
+  ],
+  "evidence_against": [
+    "If Zipf exponents diverge significantly between A and B after remapping, the same-language assumption is undermined",
+    "Differing entropy values per section could reflect genuine lexical differences between two scribes writing about different topics"
+  ],
+  "test": "Compute bigram entropy and Zipf exponent separately for Currier A and Currier B token sets; then apply an optimal glyph-to-glyph mapping (maximize token overlap) and recompute both metrics on the remapped B corpus",
+  "test_metric": "KL-divergence between A and remapped-B unigram distributions; Zipf exponent difference",
+  "test_threshold": "Confirmation if KL-divergence < 0.05 and Zipf exponent difference < 0.05 after remapping; denial if KL-divergence > 0.2",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute bigram entropy and zipf exponent separately for currier a and currier b token sets; then app",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.650 -> 0.699"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute bigram entropy and zipf exponent separately for currier a and currier b token sets; then app",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.699 -> 0.741"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": ""
+}

@@ -2,7 +2,7 @@
   "id": "H079",
   "claim": "The Voynich text uses a homophonic substitution cipher on medieval Latin where 2-3 Voynich glyphs map to each Latin letter, which would reduce observed glyph entropy below true Latin entropy (~4.0 bits) by approximately log2(avg_homophones) bits while preserving Zipf scaling.",
   "type": "cipher",
-  "confidence": 0.271,
+  "confidence": 0.13,
   "evidence_for": [
     "Observed glyph entropy 3.8627 bits is ~0.14 bits below Latin (~4.0), consistent with modest homophonic expansion of ~1.1 glyphs/letter",
     "Word-initial glyph constraint set {o,c,q,s,d} could represent homophones for high-frequency Latin word-initial letters such as 'c', 's', 'd'",
@@ -33,6 +33,30 @@
       "passed": false,
       "details": "Hypothesis shows partial support: Zipf scaling is excellently preserved (R\u00c2\u00b2=0.9084) and glyph entropy (3.8627 bits) is below Latin ~4.0 bits, consistent with substitution reduction. However, entropy reduction (~0.14 bits) is far smaller than predicted (~1.32 bits for 2-3 homophones), and having 25 glyphs contradicts the expected 8-13 clusters for a 2-3:1 homophone mapping to 26 Latin letters. The high hapax ratio (0.701) and glyph count alignment problems weaken the hypothesis despite Zipfian scaling support.",
       "confidence_change": "0.330 -> 0.271"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.15,
+      "passed": false,
+      "details": "The hypothesis predicts 2-3 Voynich glyphs per Latin letter (~52-78 total glyphs), but only 25 glyphs exist in the corpus, making the homophonic substitution mapping numerically impossible. Glyph entropy reduction (4.0\u00e2\u2020\u20193.86 bits) is minimal, insufficient for the hypothesized level of redundancy. No clustering into 2-3-sized groups would emerge from text unable to support 2-3 homophones per letter.",
+      "confidence_change": "0.271 -> 0.202"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "The hypothesis predicts ~1-1.3 bits entropy reduction from 2-3 homophones per letter, but observed entropy (3.8627) shows minimal reduction from true Latin (~4.0), contradicting the core prediction; Zipf scaling preservation supports the hypothesis, but the anomalously high hapax ratio (0.701) is inconsistent with clean homophonic structure.",
+      "confidence_change": "0.202 -> 0.163"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.32,
+      "passed": false,
+      "details": "Entropy reduction of 0.14 bits is an order of magnitude smaller than predicted (expected ~1.32 bits for 2-3 homophones), strongly contradicting the cipher hypothesis; Zipf scaling is preserved (supporting), but without clustering evidence confirming homophonic groupings and with atypically high hapax ratio (0.701), the evidence contradicts the hypothesis overall.",
+      "confidence_change": "0.163 -> 0.130"
     }
   ],
   "tests_remaining": [],

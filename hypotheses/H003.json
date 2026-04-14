@@ -2,7 +2,7 @@
   "id": "H003",
   "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.",
   "type": "structural",
-  "confidence": 0.914,
+  "confidence": 0.947,
   "evidence_for": [
     "Higher hapax legomena ratio in the herbal section (70.1%) compared to other sections",
     "Glyph positional constraints may reflect poetic structure rather than prose"
@@ -101,6 +101,30 @@
       "passed": true,
       "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
       "confidence_change": "0.899 -> 0.914"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compare word length distributions between the herbal and other sections using a two-sample k-s test",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.914 -> 0.927"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compare word length distributions between the herbal and other sections using a two-sample k-s test",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.927 -> 0.938"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compare word length distributions between the herbal and other sections using a two-sample k-s test",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.938 -> 0.947"
     }
   ],
   "tests_remaining": [],

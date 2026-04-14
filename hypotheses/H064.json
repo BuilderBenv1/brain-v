@@ -2,7 +2,7 @@
   "id": "H064",
   "claim": "The text-only section (7 folios, entropy 3.9016 bits \u00e2\u20ac\u201d highest of all sections) represents unenciphered or minimally enciphered running text in a natural language, while all other sections apply an additional layer of encoding (transposition, null insertion, or homophone expansion) that suppresses entropy, meaning the text-only section should serve as the primary decipherment anchor.",
   "type": "cipher",
-  "confidence": 0.858,
+  "confidence": 0.91,
   "evidence_for": [
     "Text-only section entropy (3.9016) is closest to natural language entropy for Latin (~4.0) and Italian (~3.95) of any section",
     "A section without illustrations would have no need for label-encoding or diagram-specific cipher conventions",
@@ -65,6 +65,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.835 -> 0.858"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute bigram and trigram conditional entropy for the text-only section and compare to all other se",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.858 -> 0.878"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute bigram and trigram conditional entropy for the text-only section and compare to all other se",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.878 -> 0.895"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute bigram and trigram conditional entropy for the text-only section and compare to all other se",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.895 -> 0.910"
     }
   ],
   "tests_remaining": [],

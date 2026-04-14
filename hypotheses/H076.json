@@ -2,7 +2,7 @@
   "id": "H076",
   "claim": "The zodiac section's anomalously low glyph entropy (3.7149 bits vs. corpus mean 3.8627 bits) is fully explained by a restricted label vocabulary: the section predominantly contains short repeated labels for month names, zodiac figures, and positional markers rather than running text. This predicts that the zodiac section's type-token ratio and word length distribution differ significantly from prose sections.",
   "type": "structural",
-  "confidence": 0.82,
+  "confidence": 0.889,
   "evidence_for": [
     "Zodiac entropy (3.7149 bits) is the lowest of all sections, 0.186 bits below the text-only maximum",
     "Zodiac corpus is small (1,297 words over 12 folios), consistent with label-dominant rather than prose content",
@@ -39,6 +39,30 @@
       "passed": true,
       "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
       "confidence_change": "0.789 -> 0.820"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and mean word length for each section. c",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.820 -> 0.847"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and mean word length for each section. c",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.847 -> 0.870"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and mean word length for each section. c",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.870 -> 0.889"
     }
   ],
   "tests_remaining": [],

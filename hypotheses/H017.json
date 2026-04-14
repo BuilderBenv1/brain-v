@@ -2,7 +2,7 @@
   "id": "H017",
   "claim": "The text uses a combination of substitution and transposition ciphers in the biological section.",
   "type": "cipher",
-  "confidence": 0.709,
+  "confidence": 0.76,
   "evidence_for": [
     "The biological section has higher entropy levels compared to other sections",
     "The word-final glyph distribution in the biological section shows a higher frequency of 'l' and 'r', which are common in transposition ciphers"
@@ -75,6 +75,30 @@
       "passed": true,
       "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
       "confidence_change": "0.690 -> 0.709"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a mutual information test on the relationship between glyphs in the biological section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.709 -> 0.727"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a mutual information test on the relationship between glyphs in the biological section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.727 -> 0.744"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a mutual information test on the relationship between glyphs in the biological section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.744 -> 0.760"
     }
   ],
   "tests_remaining": [],

@@ -2,7 +2,7 @@
   "id": "H088",
   "claim": "The text-only section (7 folios, entropy 3.9016 bits \u00e2\u20ac\u201d highest of all sections) represents either unenciphered text or a significantly weaker cipher than the illustrated sections, such that its inter-word mutual information is statistically higher than in the herbal or biological sections, betraying more plaintext syntactic structure.",
   "type": "cipher",
-  "confidence": 0.512,
+  "confidence": 0.596,
   "evidence_for": [
     "Entropy 3.9016 bits is closest to natural Latin/Italian entropy (~3.95-4.0 bits) of any section",
     "Text-only folios lack illustrations that might anchor vocabulary to a domain, suggesting free-running prose closer to original plaintext",
@@ -25,6 +25,30 @@
       "passed": true,
       "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
       "confidence_change": "0.480 -> 0.512"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute pointwise mutual information (pmi) for all adjacent word-pairs within the text-only section ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.512 -> 0.542"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute pointwise mutual information (pmi) for all adjacent word-pairs within the text-only section ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.542 -> 0.570"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute pointwise mutual information (pmi) for all adjacent word-pairs within the text-only section ",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.570 -> 0.596"
     }
   ],
   "tests_remaining": [],

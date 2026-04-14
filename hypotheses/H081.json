@@ -2,7 +2,7 @@
   "id": "H081",
   "claim": "The Currier A and B sub-corpora encode the same underlying plaintext language using two different but systematically related cipher alphabets (a digraphic or keyed-variant cipher), such that glyph bigram transition probabilities in A and B are permutations of each other rather than independent distributions.",
   "type": "cipher",
-  "confidence": 0.653,
+  "confidence": 0.787,
   "evidence_for": [
     "Currier A (11,022 words) and B (23,766 words) show consistent structural differences in glyph usage patterns, suggesting rule-governed variation rather than random noise",
     "High-confidence existing belief [0.677] supports two scribes encoding the same underlying language",
@@ -33,6 +33,30 @@
       "passed": true,
       "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
       "confidence_change": "0.592 -> 0.653"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute 25x25 glyph bigram transition matrices for currier a and b separately. apply the hungarian a",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.653 -> 0.705"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute 25x25 glyph bigram transition matrices for currier a and b separately. apply the hungarian a",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.705 -> 0.749"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute 25x25 glyph bigram transition matrices for currier a and b separately. apply the hungarian a",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.749 -> 0.787"
     }
   ],
   "tests_remaining": [],

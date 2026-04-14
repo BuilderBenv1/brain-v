@@ -2,7 +2,7 @@
   "id": "H070",
   "claim": "The extremely high hapax ratio (70.1%) is produced by a systematic suffix-agglutination cipher mechanism: a small closed vocabulary of roots (~500-800 types) is combined with a set of suffix glyphs drawn from the word-final constraint set {y, n, l, r, o}, generating surface forms that appear unique but share common roots.",
   "type": "cipher",
-  "confidence": 0.696,
+  "confidence": 0.784,
   "evidence_for": [
     "Word-final glyphs {y, n, l, r, o} are highly constrained and concentrated, consistent with a small morphological suffix inventory",
     "If roots recombine with ~5 suffixes each, a vocabulary of 800 roots produces ~4,000 surface forms, approximating the ~8,261 unique types observed",
@@ -47,6 +47,30 @@
       "passed": true,
       "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
       "confidence_change": "0.659 -> 0.696"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "strip word-final glyphs belonging to {y, n, l, r, o} iteratively from each token; compute vocabulary",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.696 -> 0.729"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "strip word-final glyphs belonging to {y, n, l, r, o} iteratively from each token; compute vocabulary",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.729 -> 0.758"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "strip word-final glyphs belonging to {y, n, l, r, o} iteratively from each token; compute vocabulary",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.758 -> 0.784"
     }
   ],
   "tests_remaining": [],

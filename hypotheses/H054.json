@@ -2,7 +2,7 @@
   "id": "H054",
   "claim": "Word-initial glyph constraints (o, c, q, s, d dominating) and word-final glyph constraints (y, n, l, r, o dominating) are not merely phonotactic but reflect a codebook structure in which word-initial glyphs encode semantic category (e.g., plant part, action, quantity) and word-final glyphs encode grammatical role (e.g., noun, verb, adjective), such that co-occurrence of specific initial+final glyph pairs is non-uniform and significantly exceeds chance across all sections.",
   "type": "cipher",
-  "confidence": 0.745,
+  "confidence": 0.79,
   "evidence_for": [
     "Positional glyph constraints are well-established and too strong to be purely phonotactic in a 25-glyph alphabet",
     "Top words cluster around specific initial-final pairs: daiin (d\u00e2\u20ac\u00a6n), chedy (c\u00e2\u20ac\u00a6y), shedy (s\u00e2\u20ac\u00a6y), chol (c\u00e2\u20ac\u00a6l), chey (c\u00e2\u20ac\u00a6y) \u00e2\u20ac\u201d suggesting paradigmatic substitution",
@@ -96,6 +96,30 @@
       "passed": true,
       "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
       "confidence_change": "0.728 -> 0.745"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "build a contingency table of word-initial \u00e3\u2014 word-final glyph pairs across all tokens; compute chi-s",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.745 -> 0.761"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "build a contingency table of word-initial \u00e3\u2014 word-final glyph pairs across all tokens; compute chi-s",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.761 -> 0.776"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "build a contingency table of word-initial \u00e3\u2014 word-final glyph pairs across all tokens; compute chi-s",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.776 -> 0.790"
     }
   ],
   "tests_remaining": [],

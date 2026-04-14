@@ -2,7 +2,7 @@
   "id": "H005",
   "claim": "The text is encoded using a simple substitution cipher on a language other than Latin or Italian.",
   "type": "cipher",
-  "confidence": 0.118,
+  "confidence": 0.093,
   "evidence_for": [
     "Glyph entropy is lower than expected for Latin and Italian (~4.0 bits)"
   ],
@@ -100,6 +100,30 @@
       "passed": null,
       "details": "Could not evaluate: Compare glyph and word entropies to the expected values for non-Latin/Italian languages using a chi-squared test",
       "confidence_change": "0.098 -> 0.118"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "Zipfian distribution (0.8946) supports natural language structure, but 70.1% hapax ratio is exceptionally high for natural languages and suggests artificial construction rather than straightforward enciphered text.",
+      "confidence_change": "0.118 -> 0.095"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Compare glyph and word entropies to the expected values for non-Latin/Italian languages using a chi-squared test",
+      "confidence_change": "0.095 -> 0.115"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "The Zipfian exponent (0.8946) supports natural language structure, but the exceptionally high hapax ratio (0.701) contradicts substitution cipher hypothesis\u00e2\u20ac\u201dnatural languages typically show 30-50% hapax ratios, not 70%, suggesting artificial or heavily obfuscated encoding.",
+      "confidence_change": "0.115 -> 0.093"
     }
   ],
   "tests_remaining": [],

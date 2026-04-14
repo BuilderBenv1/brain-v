@@ -1,0 +1,162 @@
+{
+  "date": "2026-04-14",
+  "cycle": "predict",
+  "model": "claude-code-cli",
+  "belief_count": 34,
+  "existing_hypothesis_count": 108,
+  "new_hypotheses": [
+    "H089",
+    "H090",
+    "H091",
+    "H092",
+    "H093"
+  ],
+  "hypotheses": [
+    {
+      "id": "H089",
+      "claim": "The Voynich text uses a homophonic substitution cipher on medieval Latin or Italian, where 2-4 glyphs map to each high-frequency plaintext letter, reducing glyph entropy below what a simple substitution would produce (~4.0 bits) and inflating the hapax ratio by producing artificial variant spellings of the same underlying word.",
+      "type": "cipher",
+      "confidence": 0.52,
+      "evidence_for": [
+        "Glyph entropy 3.8627 bits is below Latin baseline (~4.0) and Italian baseline (~3.95), consistent with homophone pooling reducing per-symbol information",
+        "Hapax ratio 70.1% is far above natural language norms (~40-50%), consistent with multiple cipher-surface forms mapping to the same plaintext word",
+        "Zipf exponent 0.8946 is slightly shallow compared to natural language (~1.0), consistent with artificial vocabulary inflation via homophones",
+        "High-confidence belief [0.286] already supports homophonic encoding in zodiac/label sections"
+      ],
+      "evidence_against": [
+        "Only 25 unique glyphs is a small alphabet for a homophonic system, which typically requires 50+ symbols for adequate coverage of Latin",
+        "Word entropy 10.4508 bits is high, suggesting a large effective vocabulary rather than a compressed homophonic map",
+        "If homophones were abundant, frequency distribution of glyphs should show clustering into groups \u00e2\u20ac\u201d this has not been definitively demonstrated"
+      ],
+      "test": "For each pair of glyphs, compute their positional co-occurrence profiles (probability distribution over word position 1..N). Cluster glyphs by Jensen-Shannon divergence of their positional profiles. If homophones exist, clusters of 2-4 glyphs with near-identical positional profiles should emerge, each cluster representing one plaintext letter.",
+      "test_metric": "Number of glyph clusters with intra-cluster Jensen-Shannon divergence < 0.05 bits and inter-cluster divergence > 0.3 bits",
+      "test_threshold": "If 6 or more such clusters are found covering at least 15 of the 25 glyphs, homophonic substitution is supported; if fewer than 3 clusters, refute",
+      "tests_run": [],
+      "tests_remaining": [
+        "For each pair of glyphs, compute their positional co-occurrence profiles (probability distribution over word position 1..N). Cluster glyphs by Jensen-Shannon divergence of their positional profiles. If homophones exist, clusters of 2-4 glyphs with near-identical positional profiles should emerge, each cluster representing one plaintext letter."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "Homophonic ciphers were well-known in 15th-century Europe and are performable by hand. This hypothesis simultaneously explains below-baseline glyph entropy, anomalously high hapax ratio, and the moderate Zipf fit, making it one of the highest-leverage hypotheses to confirm or deny."
+    },
+    {
+      "id": "H090",
+      "claim": "The 70.1% hapax ratio is substantially artifactual: stripping word-final glyphs drawn from the set {y, n, l, r, o} normalizes words to a stem form, reducing the unique vocabulary to roughly 30-40% of current count and the hapax ratio to below 45%, consistent with a systematic suffixation or abbreviation cipher.",
+      "type": "cipher",
+      "confidence": 0.61,
+      "evidence_for": [
+        "Word-final glyph constraints are already believed [0.624] to reflect cipher structure rather than grammar",
+        "Top-frequency words daiin, aiin differ only in a leading glyph, suggesting a stem 'ain' with prefixation/suffixation",
+        "If final {y,n,l,r,o} are suffix markers, removing them should collapse many near-duplicate surface forms",
+        "High hapax ratio is a known artifact of morphologically rich languages or systematic affixation patterns"
+      ],
+      "evidence_against": [
+        "Some word-final variation may encode genuine semantic distinctions rather than inflectional endings",
+        "Normalizing by stripping only word-final glyphs may be too coarse \u00e2\u20ac\u201d cipher suffixes could be multi-glyph",
+        "The recipes section has the largest word count (11,611) and second-highest entropy (3.8586), which could reflect genuine lexical richness rather than suffix inflation"
+      ],
+      "test": "Strip all word-final glyphs in {y, n, l, r, o} from the full corpus to produce a stemmed vocabulary. Compute: (1) new unique word count, (2) new hapax count and ratio, (3) new glyph entropy on stemmed forms. Repeat for each section separately.",
+      "test_metric": "Hapax ratio of stemmed corpus vs original (70.1%), and unique word count ratio stemmed/original",
+      "test_threshold": "If stemmed hapax ratio drops below 45% and unique word count drops by more than 35%, systematic suffixation is confirmed; if hapax ratio remains above 60% after stemming, suffix-stripping is not the primary driver",
+      "tests_run": [],
+      "tests_remaining": [
+        "Strip all word-final glyphs in {y, n, l, r, o} from the full corpus to produce a stemmed vocabulary. Compute: (1) new unique word count, (2) new hapax count and ratio, (3) new glyph entropy on stemmed forms. Repeat for each section separately."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "This test is cheap to run, directly targets the most statistically anomalous feature of the corpus (the hapax ratio), and would immediately narrow the solution space by confirming or denying whether the surface vocabulary is inflated by a mechanical suffix rule."
+    },
+    {
+      "id": "H091",
+      "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-only register drawn from a vocabulary of fewer than 200 distinct word types \u00e2\u20ac\u201d a much smaller effective vocabulary than other sections \u00e2\u20ac\u201d producing a Zipf exponent significantly above the corpus-wide value of 0.8946.",
+      "type": "structural",
+      "confidence": 0.58,
+      "evidence_for": [
+        "Zodiac section has only 1,297 words across 12 folios, consistent with repeated short labels around circular diagrams",
+        "Entropy 3.7149 is 0.19 bits below the text-only section and 0.15 bits below the herbal section, a large difference for a corpus with otherwise similar per-section entropies",
+        "Label registers in historical manuscripts (e.g., calendars, zodiac wheels) reuse a small set of names, month terms, and cardinal directions extensively",
+        "High-confidence belief [0.273] and [0.058] already partially support label-oriented low-entropy encoding in zodiac"
+      ],
+      "evidence_against": [
+        "Low entropy could alternatively reflect a different cipher key applied to zodiac text rather than a different register",
+        "12 folios is a small sample; low entropy might be a sampling artifact",
+        "If zodiac labels encode personal names (e.g., names around the naked-figure rings), name distributions are hard to predict statistically"
+      ],
+      "test": "Compute the Zipf exponent (log-log linear regression of rank vs frequency) separately for the zodiac section corpus and compare to the manuscript-wide exponent (0.8946). Also compute type-token ratio (unique words / total words) for zodiac vs all other sections.",
+      "test_metric": "Zodiac-section Zipf exponent and type-token ratio versus corpus-wide values",
+      "test_threshold": "If zodiac Zipf exponent > 1.15 (versus corpus 0.8946) and zodiac type-token ratio < 0.25 (indicating heavy repetition), label-register encoding is confirmed; if exponent < 1.0 or type-token ratio > 0.40, refute",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute the Zipf exponent (log-log linear regression of rank vs frequency) separately for the zodiac section corpus and compare to the manuscript-wide exponent (0.8946). Also compute type-token ratio (unique words / total words) for zodiac vs all other sections."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "A label register would produce distinctively different Zipf statistics from running prose or cipher text. Confirming this would justify treating the zodiac section as a separate decipherment target with a restricted vocabulary, potentially providing a crib for the broader cipher."
+    },
+    {
+      "id": "H092",
+      "claim": "Currier A and Currier B use two structurally distinct cipher tables (not merely two scribal hands) encoding the same underlying language: the rank-order frequency distribution of glyphs in Currier A and Currier B should show high Spearman rank correlation (> 0.85) if encoding the same language, but the specific high-frequency glyphs in each sub-corpus should differ, indicating a key rotation between the two tables.",
+      "type": "cipher",
+      "confidence": 0.64,
+      "evidence_for": [
+        "Belief [0.677] with high confidence already supports same underlying language with different encoding methods",
+        "Currier B is more than twice as large as A (23,766 vs 11,022 words), consistent with a single primary scribal tradition with a variant key for a secondary corpus",
+        "If two tables encode the same language, frequency ranks should correlate highly even though absolute frequencies differ",
+        "Word-initial and word-final glyph constraint beliefs [0.624, 0.608] suggest structural cipher features that could manifest differently under two key tables"
+      ],
+      "evidence_against": [
+        "Belief [0.288] supports two different plaintext languages as an alternative explanation for the A/B split",
+        "If the two sub-corpora encode different content domains (not just different keys), glyph frequency ranks might differ for content reasons rather than cipher reasons",
+        "Currier A and B may simply represent two scribal styles with idiosyncratic spelling conventions rather than distinct cipher tables"
+      ],
+      "test": "Compute the full unigram glyph frequency distribution for Currier A and Currier B separately. Calculate Spearman's rank correlation coefficient between the two frequency-rank vectors. Then compute Jensen-Shannon divergence between the two distributions. Finally, identify the top-5 glyphs by frequency in each sub-corpus and test for overlap.",
+      "test_metric": "Spearman rho between Currier A and B glyph frequency ranks; JS divergence between A and B glyph distributions; overlap count of top-5 glyphs",
+      "test_threshold": "If Spearman rho > 0.85 AND JS divergence > 0.08 bits AND top-5 overlap <= 2 glyphs, two-table same-language hypothesis is supported; if rho < 0.70 OR JS divergence < 0.04, refute in favor of different-language hypothesis",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute the full unigram glyph frequency distribution for Currier A and Currier B separately. Calculate Spearman's rank correlation coefficient between the two frequency-rank vectors. Then compute Jensen-Shannon divergence between the two distributions. Finally, identify the top-5 glyphs by frequency in each sub-corpus and test for overlap."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "This test directly discriminates between the two highest-probability competing explanations for the Currier split (same language/different keys vs different languages) using a straightforward rank correlation test, making it one of the highest-value experiments to run first."
+    },
+    {
+      "id": "H093",
+      "claim": "The recipes section (25 folios, 11,611 words, entropy 3.8586 bits) encodes running prose rather than labels or lists, as evidenced by a word bigram conditional entropy significantly higher than label-heavy sections (zodiac: 3.7149, astronomical: 3.7471), and a type-token ratio and sentence-length distribution consistent with connected discourse rather than enumerated items.",
+      "type": "structural",
+      "confidence": 0.55,
+      "evidence_for": [
+        "Recipes section has second-highest entropy (3.8586) after text-only (3.9016), consistent with running prose carrying more information per glyph than label registers",
+        "Recipes section is the largest by word count (11,611), which is unusual for a label-only register",
+        "Belief [0.613] with high confidence supports recipes as a high-entropy, large-vocabulary section",
+        "Medieval recipe manuscripts are known to use formulaic but connected prose (e.g., 'take X, add Y, boil until...')"
+      ],
+      "evidence_against": [
+        "Pharmaceutical section has lower entropy (3.7772) and might represent the actual prose recipes while recipes section encodes something else",
+        "Without decipherment, distinguishing prose from enumerated lists via entropy alone is ambiguous",
+        "The recipes section's high word count might reflect repetitive list structure rather than connected discourse"
+      ],
+      "test": "Compute word bigram conditional entropy H(w_t | w_{t-1}) separately for the recipes, zodiac, and text-only sections. Also compute the distribution of inter-punctuation-marker span lengths (treating rare glyphs as potential sentence delimiters) and fit a geometric distribution \u00e2\u20ac\u201d prose should show longer, more variable spans than label lists.",
+      "test_metric": "Bigram conditional entropy per section; coefficient of variation of span lengths between delimiter markers",
+      "test_threshold": "If recipes bigram conditional entropy exceeds zodiac bigram entropy by > 0.3 bits AND coefficient of variation of span lengths > 0.8 (high variability), prose register is supported; if bigram entropy difference < 0.1 bits, refute",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute word bigram conditional entropy H(w_t | w_{t-1}) separately for the recipes, zodiac, and text-only sections. Also compute the distribution of inter-punctuation-marker span lengths (treating rare glyphs as potential sentence delimiters) and fit a geometric distribution \u00e2\u20ac\u201d prose should show longer, more variable spans than label lists."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "Distinguishing prose from enumerated label registers is critical because prose provides richer syntactic structure for cryptanalysis, including word-order patterns that could reveal the underlying language family even without full decipherment."
+    }
+  ],
+  "raw_response": "{\"hypotheses\":[{\"claim\":\"The Voynich text uses a homophonic substitution cipher on medieval Latin or Italian, where 2-4 glyphs map to each high-frequency plaintext letter, reducing glyph entropy below what a simple substitution would produce (~4.0 bits) and inflating the hapax ratio by producing artificial variant spellings of the same underlying word.\",\"type\":\"cipher\",\"confidence\":0.52,\"evidence_for\":[\"Glyph entropy 3.8627 bits is below Latin baseline (~4.0) and Italian baseline (~3.95), consistent with homophone pooling reducing per-symbol information\",\"Hapax ratio 70.1% is far above natural language norms (~40-50%), consistent with multiple cipher-surface forms mapping to the same plaintext word\",\"Zipf exponent 0.8946 is slightly shallow compared to natural language (~1.0), consistent with artificial vocabulary inflation via homophones\",\"High-confidence belief [0.286] already supports homophonic encoding in zodiac/label sections\"],\"evidence_against\":[\"Only 25 unique glyphs is a small alphabet for a homophonic system, which typically requires 50+ symbols for adequate coverage of Latin\",\"Word entropy 10.4508 bits is high, suggesting a large effective vocabulary rather than a compressed homophonic map\",\"If homophones were abundant, frequency distribution of glyphs should show clustering into groups \u00e2\u20ac\u201d this has not been definitively demonstrated\"],\"test\":\"For each pair of glyphs, compute their positional co-occurrence profiles (probability distribution over word position 1..N). Cluster glyphs by Jensen-Shannon divergence of their positional profiles. If homophones exist, clusters of 2-4 glyphs with near-identical positional profiles should emerge, each cluster representing one plaintext letter.\",\"test_metric\":\"Number of glyph clusters with intra-cluster Jensen-Shannon divergence < 0.05 bits and inter-cluster divergence > 0.3 bits\",\"test_threshold\":\"If 6 or more such clusters are found covering at least 15 of the 25 glyphs, homophonic substitution is supported; if fewer than 3 clusters, refute\",\"reasoning\":\"Homophonic ciphers were well-known in 15th-century Europe and are performable by hand. This hypothesis simultaneously explains below-baseline glyph entropy, anomalously high hapax ratio, and the moderate Zipf fit, making it one of the highest-leverage hypotheses to confirm or deny.\"},{\"claim\":\"The 70.1% hapax ratio is substantially artifactual: stripping word-final glyphs drawn from the set {y, n, l, r, o} normalizes words to a stem form, reducing the unique vocabulary to roughly 30-40% of current count and the hapax ratio to below 45%, consistent with a systematic suffixation or abbreviation cipher.\",\"type\":\"cipher\",\"confidence\":0.61,\"evidence_for\":[\"Word-final glyph constraints are already believed [0.624] to reflect cipher structure rather than grammar\",\"Top-frequency words daiin, aiin differ only in a leading glyph, suggesting a stem 'ain' with prefixation/suffixation\",\"If final {y,n,l,r,o} are suffix markers, removing them should collapse many near-duplicate surface forms\",\"High hapax ratio is a known artifact of morphologically rich languages or systematic affixation patterns\"],\"evidence_against\":[\"Some word-final variation may encode genuine semantic distinctions rather than inflectional endings\",\"Normalizing by stripping only word-final glyphs may be too coarse \u00e2\u20ac\u201d cipher suffixes could be multi-glyph\",\"The recipes section has the largest word count (11,611) and second-highest entropy (3.8586), which could reflect genuine lexical richness rather than suffix inflation\"],\"test\":\"Strip all word-final glyphs in {y, n, l, r, o} from the full corpus to produce a stemmed vocabulary. Compute: (1) new unique word count, (2) new hapax count and ratio, (3) new glyph entropy on stemmed forms. Repeat for each section separately.\",\"test_metric\":\"Hapax ratio of stemmed corpus vs original (70.1%), and unique word count ratio stemmed/original\",\"test_threshold\":\"If stemmed hapax ratio drops below 45% and unique word count drops by more than 35%, systematic suffixation is confirmed; if hapax ratio remains above 60% after stemming, suffix-stripping is not the primary driver\",\"reasoning\":\"This test is cheap to run, directly targets the most statistically anomalous feature of the corpus (the hapax ratio), and would immediately narrow the solution space by confirming or denying whether the surface vocabulary is inflated by a mechanical suffix rule.\"},{\"claim\":\"The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-only register drawn from a vocabulary of fewer than 200 distinct word types \u00e2\u20ac\u201d a much smaller effective vocabulary than other sections \u00e2\u20ac\u201d producing a Zipf exponent significantly above the corpus-wide value of 0.8946.\",\"type\":\"structural\",\"confidence\":0.58,\"evidence_for\":[\"Zodiac section has only 1,297 words across 12 folios, consistent with repeated short labels around circular diagrams\",\"Entropy 3.7149 is 0.19 bits below the text-only section and 0.15 bits below the herbal section, a large difference for a corpus with otherwise similar per-section entropies\",\"Label registers in historical manuscripts (e.g., calendars, zodiac wheels) reuse a small set of names, month terms, and cardinal directions extensively\",\"High-confidence belief [0.273] and [0.058] already partially support label-oriented low-entropy encoding in zodiac\"],\"evidence_against\":[\"Low entropy could alternatively reflect a different cipher key applied to zodiac text rather than a different register\",\"12 folios is a small sample; low entropy might be a sampling artifact\",\"If zodiac labels encode personal names (e.g., names around the naked-figure rings), name distributions are hard to predict statistically\"],\"test\":\"Compute the Zipf exponent (log-log linear regression of rank vs frequency) separately for the zodiac section corpus and compare to the manuscript-wide exponent (0.8946). Also compute type-token ratio (unique words / total words) for zodiac vs all other sections.\",\"test_metric\":\"Zodiac-section Zipf exponent and type-token ratio versus corpus-wide values\",\"test_threshold\":\"If zodiac Zipf exponent > 1.15 (versus corpus 0.8946) and zodiac type-token ratio < 0.25 (indicating heavy repetition), label-register encoding is confirmed; if exponent < 1.0 or type-token ratio > 0.40, refute\",\"reasoning\":\"A label register would produce distinctively different Zipf statistics from running prose or cipher text. Confirming this would justify treating the zodiac section as a separate decipherment target with a restricted vocabulary, potentially providing a crib for the broader cipher.\"},{\"claim\":\"Currier A and Currier B use two structurally distinct cipher tables (not merely two scribal hands) encoding the same underlying language: the rank-order frequency distribution of glyphs in Currier A and Currier B should show high Spearman rank correlation (> 0.85) if encoding the same language, but the specific high-frequency glyphs in each sub-corpus should differ, indicating a key rotation between the two tables.\",\"type\":\"cipher\",\"confidence\":0.64,\"evidence_for\":[\"Belief [0.677] with high confidence already supports same underlying language with different encoding methods\",\"Currier B is more than twice as large as A (23,766 vs 11,022 words), consistent with a single primary scribal tradition with a variant key for a secondary corpus\",\"If two tables encode the same language, frequency ranks should correlate highly even though absolute frequencies differ\",\"Word-initial and word-final glyph constraint beliefs [0.624, 0.608] suggest structural cipher features that could manifest differently under two key tables\"],\"evidence_against\":[\"Belief [0.288] supports two different plaintext languages as an alternative explanation for the A/B split\",\"If the two sub-corpora encode different content domains (not just different keys), glyph frequency ranks might differ for content reasons rather than cipher reasons\",\"Currier A and B may simply represent two scribal styles with idiosyncratic spelling conventions rather than distinct cipher tables\"],\"test\":\"Compute the full unigram glyph frequency distribution for Currier A and Currier B separately. Calculate Spearman's rank correlation coefficient between the two frequency-rank vectors. Then compute Jensen-Shannon divergence between the two distributions. Finally, identify the top-5 glyphs by frequency in each sub-corpus and test for overlap.\",\"test_metric\":\"Spearman rho between Currier A and B glyph frequency ranks; JS divergence between A and B glyph distributions; overlap count of top-5 glyphs\",\"test_threshold\":\"If Spearman rho > 0.85 AND JS divergence > 0.08 bits AND top-5 overlap <= 2 glyphs, two-table same-language hypothesis is supported; if rho < 0.70 OR JS divergence < 0.04, refute in favor of different-language hypothesis\",\"reasoning\":\"This test directly discriminates between the two highest-probability competing explanations for the Currier split (same language/different keys vs different languages) using a straightforward rank correlation test, making it one of the highest-value experiments to run first.\"},{\"claim\":\"The recipes section (25 folios, 11,611 words, entropy 3.8586 bits) encodes running prose rather than labels or lists, as evidenced by a word bigram conditional entropy significantly higher than label-heavy sections (zodiac: 3.7149, astronomical: 3.7471), and a type-token ratio and sentence-length distribution consistent with connected discourse rather than enumerated items.\",\"type\":\"structural\",\"confidence\":0.55,\"evidence_for\":[\"Recipes section has second-highest entropy (3.8586) after text-only (3.9016), consistent with running prose carrying more information per glyph than label registers\",\"Recipes section is the largest by word count (11,611), which is unusual for a label-only register\",\"Belief [0.613] with high confidence supports recipes as a high-entropy, large-vocabulary section\",\"Medieval recipe manuscripts are known to use formulaic but connected prose (e.g., 'take X, add Y, boil until...')\"],\"evidence_against\":[\"Pharmaceutical section has lower entropy (3.7772) and might represent the actual prose recipes while recipes section encodes something else\",\"Without decipherment, distinguishing prose from enumerated lists via entropy alone is ambiguous\",\"The recipes section's high word count might reflect repetitive list structure rather than connected discourse\"],\"test\":\"Compute word bigram conditional entropy H(w_t | w_{t-1}) separately for the recipes, zodiac, and text-only sections. Also compute the distribution of inter-punctuation-marker span lengths (treating rare glyphs as potential sentence delimiters) and fit a geometric distribution \u00e2\u20ac\u201d prose should show longer, more variable spans than label lists.\",\"test_metric\":\"Bigram conditional entropy per section; coefficient of variation of span lengths between delimiter markers\",\"test_threshold\":\"If recipes bigram conditional entropy exceeds zodiac bigram entropy by > 0.3 bits AND coefficient of variation of span lengths > 0.8 (high variability), prose register is supported; if bigram entropy difference < 0.1 bits, refute\",\"reasoning\":\"Distinguishing prose from enumerated label registers is critical because prose provides richer syntactic structure for cryptanalysis, including word-order patterns that could reveal the underlying language family even without full decipherment.\"}]}"
+}

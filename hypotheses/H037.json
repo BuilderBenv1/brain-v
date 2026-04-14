@@ -2,7 +2,7 @@
   "id": "H037",
   "claim": "The zodiac and label-heavy sections (zodiac entropy 3.7149 bits, astronomical 3.7471 bits) use a homophonic substitution scheme in which common plaintext letters map to multiple glyphs, suppressing entropy relative to the herbal and text-only sections, while the text-only section (entropy 3.9016 bits) uses a simpler monoalphabetic or unenciphered encoding.",
   "type": "cipher",
-  "confidence": 0.932,
+  "confidence": 0.956,
   "evidence_for": [
     "Zodiac section has lowest entropy (3.7149) and consists primarily of short labels, the classic context for homophones to suppress frequency peaks",
     "Text-only section has highest entropy (3.9016 bits), closest to natural Latin/Italian entropy, consistent with less aggressive homophonic expansion",
@@ -120,6 +120,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.921 -> 0.932"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each section, compute the index of coincidence (ic) at the glyph level and compare to expected i",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.932 -> 0.941"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each section, compute the index of coincidence (ic) at the glyph level and compare to expected i",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.941 -> 0.949"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each section, compute the index of coincidence (ic) at the glyph level and compare to expected i",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.949 -> 0.956"
     }
   ],
   "tests_remaining": [],

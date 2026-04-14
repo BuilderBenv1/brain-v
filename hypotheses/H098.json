@@ -1,0 +1,43 @@
+{
+  "id": "H098",
+  "claim": "The text-only section (entropy 3.9016 bits, 7 folios) represents unenciphered or minimally enciphered running text in medieval Latin or Northern Italian, and its word-frequency distribution should match a Zipf exponent significantly closer to 1.0 than the manuscript-wide exponent of 0.8946",
+  "type": "language",
+  "confidence": 0.697,
+  "evidence_for": [
+    "Text-only section has the highest entropy of all sections (3.9016 bits), closest to natural Latin/Italian (~4.0/~3.95)",
+    "High-confidence belief (0.677) that text-only section approximates natural language most closely",
+    "7 folios is a small but statistically tractable sub-corpus for frequency analysis",
+    "Absence of illustrations in text-only folios removes the label/caption effect that depresses entropy elsewhere"
+  ],
+  "evidence_against": [
+    "Small sample (2,349 words) limits statistical power for reliable Zipf fitting",
+    "Elevated entropy could reflect a different cipher mode rather than absence of cipher"
+  ],
+  "test": "Compute Zipf exponent and R-squared for the text-only section in isolation; compute KL-divergence between text-only unigram distribution and a reference medieval Latin corpus unigram distribution",
+  "test_metric": "Text-only Zipf exponent; KL-divergence against Latin reference",
+  "test_threshold": "Confirmation if text-only Zipf exponent \u00e2\u2030\u00a5 0.95 and KL-divergence < 0.15; denial if Zipf exponent < 0.85 or KL-divergence > 0.30",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute zipf exponent and r-squared for the text-only section in isolation; compute kl-divergence be",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.620 -> 0.661"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute zipf exponent and r-squared for the text-only section in isolation; compute kl-divergence be",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.661 -> 0.697"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "If the text-only section statistically resembles natural Latin more than any cipher section, it becomes the highest-priority target for direct frequency-matching decipherment attempts"
+}

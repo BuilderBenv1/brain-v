@@ -2,7 +2,7 @@
   "id": "H080",
   "claim": "The extreme hapax ratio (70.1%) is produced by a systematic word-boundary segmentation error in the transcription, where a small set of suffix or prefix tokens are being attached to base words inconsistently, artificially inflating vocabulary size by 30-45%.",
   "type": "structural",
-  "confidence": 0.221,
+  "confidence": 0.121,
   "evidence_for": [
     "70.1% hapax ratio far exceeds natural language texts (typically 40-55% for comparable corpus sizes), suggesting a systematic artifact",
     "Top 10 words include short tokens like 'ol', 'ar', 'or', 'y' which resemble prefixes/suffixes rather than independent words",
@@ -33,6 +33,30 @@
       "passed": false,
       "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
       "confidence_change": "0.270 -> 0.221"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "identify all words appearing fewer than 3 times (hapax + dis legomena). compute the frequency distri",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.221 -> 0.181"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "identify all words appearing fewer than 3 times (hapax + dis legomena). compute the frequency distri",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.181 -> 0.148"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "identify all words appearing fewer than 3 times (hapax + dis legomena). compute the frequency distri",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.148 -> 0.121"
     }
   ],
   "tests_remaining": [],

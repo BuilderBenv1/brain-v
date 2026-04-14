@@ -2,7 +2,7 @@
   "id": "H058",
   "claim": "The word-initial glyph constraints {o,c,q,s,d} and word-final glyph constraints {y,n,l,r,o} are artifacts of a cipher that maps plaintext syllable-onset and syllable-coda phonemes to distinct glyph classes, not morphological or grammatical constraints, meaning that these positional biases are cipher-structural rather than language-structural.",
   "type": "cipher",
-  "confidence": 0.853,
+  "confidence": 0.909,
   "evidence_for": [
     "Average word length 5.03 with 25 glyphs is more consistent with a syllabic or consonantal encoding than a full alphabet, where 25 letters would produce shorter words",
     "Glyph positional constraints are unusually rigid: if they reflected grammar, we'd expect more positional diversity across 226 folios of varied content",
@@ -73,6 +73,30 @@
       "passed": true,
       "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
       "confidence_change": "0.827 -> 0.853"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute pointwise mutual information (pmi) between all adjacent glyph pairs within words across the ",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.853 -> 0.875"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute pointwise mutual information (pmi) between all adjacent glyph pairs within words across the ",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.875 -> 0.893"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute pointwise mutual information (pmi) between all adjacent glyph pairs within words across the ",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.893 -> 0.909"
     }
   ],
   "tests_remaining": [],

@@ -2,7 +2,7 @@
   "id": "H078",
   "claim": "The text-only section's elevated entropy (3.9016 bits, highest of all sections) combined with its small size (7 folios, 2,349 words) reflects less-compressed or less-enciphered natural prose \u00e2\u20ac\u201d possibly a section where the scribe applied fewer homophones or abbreviations. This predicts that the text-only section's word frequency distribution follows a Zipf law more closely (R-squared closer to 1.0) than the cipher-heavy sections.",
   "type": "cipher",
-  "confidence": 0.695,
+  "confidence": 0.806,
   "evidence_for": [
     "Text-only entropy (3.9016 bits) is closest to natural Latin (~4.0 bits) and Italian (~3.95 bits) among all sections",
     "Sections with heavier cipher transformations (zodiac 3.7149, astronomical 3.7471) show the lowest entropy, consistent with homophonic or label-based compression",
@@ -39,6 +39,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.645 -> 0.695"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "fit a zipf power law to word frequency distributions separately for each section. compute r-squared ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.695 -> 0.738"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "fit a zipf power law to word frequency distributions separately for each section. compute r-squared ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.738 -> 0.775"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "fit a zipf power law to word frequency distributions separately for each section. compute r-squared ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.775 -> 0.806"
     }
   ],
   "tests_remaining": [],

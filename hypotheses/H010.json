@@ -2,7 +2,7 @@
   "id": "H010",
   "claim": "The manuscript's text structure reflects a single, coherent narrative.",
   "type": "structural",
-  "confidence": 0.059,
+  "confidence": 0.048,
   "evidence_for": [
     "Word entropy levels are consistent across sections",
     "Zipf exponent is moderate, indicating possible narrative structure"
@@ -93,10 +93,18 @@
       "passed": false,
       "details": "The hapax ratio of 0.701 is exceptionally high, indicating minimal word reuse and contradicting a coherent narrative; though the Zipf exponent (0.8946) suggests underlying structure, the extreme vocabulary uniqueness (70% one-time words) indicates fragmented rather than unified narrative.",
       "confidence_change": "0.073 -> 0.059"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.4,
+      "passed": false,
+      "details": "While Zipf exponent (0.89) suggests narrative-like structure, the extremely high hapax ratio (0.701) contradicts coherence\u00e2\u20ac\u201dsustained narratives show more repetition of thematic elements, not 70% of unique words appearing once.",
+      "confidence_change": "0.059 -> 0.048"
     }
   ],
   "tests_remaining": [],
-  "status": "active",
+  "status": "eliminated",
   "parent": null,
   "created": "2026-04-13",
   "last_tested": "2026-04-14",

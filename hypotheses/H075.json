@@ -2,7 +2,7 @@
   "id": "H075",
   "claim": "The Currier A and B sub-corpora encode the same underlying plaintext language using two different but structurally related substitution alphabets (i.e., same cipher family, different keys). This would produce similar Zipf exponents and bigram entropy profiles within each sub-corpus but systematically divergent glyph-level frequency distributions between them.",
   "type": "cipher",
-  "confidence": 0.732,
+  "confidence": 0.829,
   "evidence_for": [
     "Currier A (11,022 words) and B (23,766 words) are large enough sub-corpora to compute reliable frequency statistics",
     "Existing high-confidence evidence (0.677) already supports two scribes encoding the same underlying language",
@@ -39,6 +39,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.689 -> 0.732"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute (1) zipf exponent separately for currier a and b word frequency distributions; (2) unigram g",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.732 -> 0.769"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute (1) zipf exponent separately for currier a and b word frequency distributions; (2) unigram g",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.769 -> 0.801"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute (1) zipf exponent separately for currier a and b word frequency distributions; (2) unigram g",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.801 -> 0.829"
     }
   ],
   "tests_remaining": [],

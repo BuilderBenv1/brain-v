@@ -2,7 +2,7 @@
   "id": "H002",
   "claim": "The text uses a simple substitution cipher on medieval Latin, which would produce glyph entropy ~4.0 bits and word-final glyph distribution matching Latin word endings.",
   "type": "cipher",
-  "confidence": 0.115,
+  "confidence": 0.098,
   "evidence_for": [
     "Glyph entropy is close to the expected value for Latin (~4.0 bits)",
     "Word-final glyphs match common Latin word endings"
@@ -101,6 +101,30 @@
       "passed": false,
       "details": "Glyph entropy (3.86 bits) closely matches expected 4.0 bits and Zipfian distribution (R\u00c2\u00b2=0.9084) supports cipher structure, but hapax ratio of 0.701 is far too high for medieval Latin, indicating vocabulary variation inconsistent with simple substitution on natural language.",
       "confidence_change": "0.143 -> 0.115"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.25,
+      "passed": false,
+      "details": "Glyph entropy (3.8627) marginally approaches expected 4.0, but the exceptionally high hapax ratio (0.701) and depressed Zipf exponent (0.8946) contradict preservation of Latin word-frequency structure required for simple substitution.",
+      "confidence_change": "0.115 -> 0.089"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.25,
+      "passed": false,
+      "details": "The extremely high hapax ratio (0.701) contradicts expected Latin word frequency distribution; even ciphered Latin would retain the underlying language's frequency patterns.",
+      "confidence_change": "0.089 -> 0.069"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.65,
+      "passed": null,
+      "details": "Glyph entropy of 3.86 bits closely matches the predicted ~4.0 bits, and the strong Zipfian distribution (0.8946) suggests underlying linguistic structure consistent with substitution ciphering. However, without explicit word-final glyph distribution data to verify Latin ending patterns, the hypothesis remains inconclusive despite partial support.",
+      "confidence_change": "0.069 -> 0.098"
     }
   ],
   "tests_remaining": [],

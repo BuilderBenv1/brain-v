@@ -2,7 +2,7 @@
   "id": "H016",
   "claim": "The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dialects.",
   "type": "language",
-  "confidence": 0.873,
+  "confidence": 0.922,
   "evidence_for": [
     "The Currier Language A and B splits show significant differences in vocabulary and syntax"
   ],
@@ -74,6 +74,30 @@
       "passed": true,
       "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
       "confidence_change": "0.851 -> 0.873"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a kullback-leibler divergence test on the language models of currier language a and b",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.873 -> 0.892"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a kullback-leibler divergence test on the language models of currier language a and b",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.892 -> 0.908"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "run a kullback-leibler divergence test on the language models of currier language a and b",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.908 -> 0.922"
     }
   ],
   "tests_remaining": [],

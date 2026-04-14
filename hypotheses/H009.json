@@ -2,7 +2,7 @@
   "id": "H009",
   "claim": "The text is encoded using a simple substitution cipher on an unknown language.",
   "type": "cipher",
-  "confidence": 0.38,
+  "confidence": 0.424,
   "evidence_for": [
     "Glyph entropy levels are lower than expected for Latin or Italian",
     "Word-final glyph distribution does not match Latin or Italian word endings"
@@ -93,6 +93,30 @@
       "passed": null,
       "details": "Zipfian exponent (0.8946) and glyph entropy support substitution cipher hypothesis, but hapax ratio (0.701) is unusually high and centuries of failed decryption despite corpus size suggest underlying complexity beyond simple substitution.",
       "confidence_change": "0.371 -> 0.380"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.65,
+      "passed": true,
+      "details": "Strong Zipf adherence (0.8946) indicates natural language structure preserved through simple substitution, but elevated hapax ratio (0.701) deviates from typical natural languages, suggesting either an unusual language or potential encoding artifacts.",
+      "confidence_change": "0.380 -> 0.440"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "Zipfian distribution (0.8946 exponent) supports language structure preservation, but hapax ratio of 0.701 is impossibly high for natural language (typical range 0.4-0.6), strongly contradicting the substitution cipher hypothesis.",
+      "confidence_change": "0.440 -> 0.354"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.72,
+      "passed": true,
+      "details": "Substitution ciphers preserve Zipfian frequency distributions (0.8946 \u00e2\u2030\u02c6 1.0 is consistent with natural language), hapax ratio, and word length statistics, making the hypothesis well-supported by the corpus profile.",
+      "confidence_change": "0.354 -> 0.424"
     }
   ],
   "tests_remaining": [],

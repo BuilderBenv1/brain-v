@@ -2,7 +2,7 @@
   "id": "H013",
   "claim": "The text uses a simple substitution cipher on an unknown language.",
   "type": "language",
-  "confidence": 0.51,
+  "confidence": 0.371,
   "evidence_for": [
     "Glyph entropy is lower than expected for Latin or Italian"
   ],
@@ -84,6 +84,30 @@
       "passed": true,
       "details": "Strong Zipfian distribution (0.8946, R\u00c2\u00b2=0.9084) is characteristic of natural language and strongly supports a substitution cipher hypothesis; reasonable word length and type-token ratio align with expectations, but elevated hapax ratio (0.701) is anomalous for natural language of this corpus size.",
       "confidence_change": "0.451 -> 0.510"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.72,
+      "passed": true,
+      "details": "Zipf exponent (0.8946) and entropy (3.8627 bits) align with natural language distributions; vocabulary ratios and word-length statistics are consistent with a substitution cipher applied to a real language rather than random gibberish or constructed system.",
+      "confidence_change": "0.510 -> 0.563"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "Zipf exponent strongly supports substitution cipher hypothesis, but exceptionally high hapax ratio (0.701) contradicts natural language baseline\u00e2\u20ac\u201dtypical languages show 0.4-0.5, suggesting the text is either artificially constructed or not a simple substitution.",
+      "confidence_change": "0.563 -> 0.453"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.4,
+      "passed": false,
+      "details": "Strong Zipfian distribution (R\u00c2\u00b2=0.9084) supports natural language properties, but 70.1% hapax ratio dramatically exceeds typical languages (30-40%), indicating artificial construction or highly anomalous linguistic structure incompatible with simple substitution on known language families.",
+      "confidence_change": "0.453 -> 0.371"
     }
   ],
   "tests_remaining": [],

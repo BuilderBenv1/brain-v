@@ -2,7 +2,7 @@
   "id": "H012",
   "claim": "The manuscript uses a combination of substitution and transposition ciphers in the biological section.",
   "type": "cipher",
-  "confidence": 0.73,
+  "confidence": 0.759,
   "evidence_for": [
     "Biological section has higher entropy levels compared to other sections"
   ],
@@ -84,6 +84,30 @@
       "passed": true,
       "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
       "confidence_change": "0.720 -> 0.730"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the frequency of consecutive words with identical glyphs in different positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'d', 'a', 'l', 'o'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.730 -> 0.740"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the frequency of consecutive words with identical glyphs in different positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'n', 'm'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.740 -> 0.750"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the frequency of consecutive words with identical glyphs in different positions",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.750 -> 0.759"
     }
   ],
   "tests_remaining": [],

@@ -1,0 +1,43 @@
+{
+  "id": "H094",
+  "claim": "The 70.1% hapax ratio is substantially artifactual: stripping word-final glyphs from the set {y,n,l,r,o} reduces unique word types by at least 40%, revealing a core vocabulary consistent with a homophonic substitution cipher on medieval Latin or Italian",
+  "type": "cipher",
+  "confidence": 0.456,
+  "evidence_for": [
+    "Hapax ratio 70.1% is anomalously high relative to natural language corpora of similar size",
+    "Word-final glyph set {y,n,l,r,o} accounts for a disproportionate share of word-type diversity",
+    "High-confidence belief (0.664) that stripping final glyphs collapses hapax count significantly",
+    "Recipes section has largest word count and second-highest entropy \u00e2\u20ac\u201d consistent with suffix-heavy encoding"
+  ],
+  "evidence_against": [
+    "If suffix stripping still leaves high hapax ratio, the hypothesis fails",
+    "Truly synthetic suffixes would produce more uniform final-glyph distributions than observed"
+  ],
+  "test": "Strip all word-final glyphs belonging to {y,n,l,r,o} from every token, recompute vocabulary size and hapax ratio on the resulting stem corpus",
+  "test_metric": "Post-stripping hapax ratio and unique stem count vs. original 8,261 unique words",
+  "test_threshold": "Confirmation if post-stripping hapax ratio drops below 40%; denial if it remains above 60%",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "strip all word-final glyphs belonging to {y,n,l,r,o} from every token, recompute vocabulary size and",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.680 -> 0.557"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "strip all word-final glyphs belonging to {y,n,l,r,o} from every token, recompute vocabulary size and",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.557 -> 0.456"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "If a large fraction of apparent vocabulary diversity is produced by mechanical suffix attachment, the underlying cipher table is much smaller than raw statistics suggest, dramatically narrowing the decipherment search space"
+}

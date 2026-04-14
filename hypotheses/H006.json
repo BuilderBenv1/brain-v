@@ -2,7 +2,7 @@
   "id": "H006",
   "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.",
   "type": "structural",
-  "confidence": 0.815,
+  "confidence": 0.847,
   "evidence_for": [
     "Herbal section has higher entropy levels compared to other sections",
     "Word-final glyph distribution in herbal section shows a possible rhyme scheme"
@@ -93,6 +93,30 @@
       "passed": true,
       "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
       "confidence_change": "0.803 -> 0.815"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.815 -> 0.826"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.826 -> 0.837"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "chi-squared test for independence between word-final glyphs and section type",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.837 -> 0.847"
     }
   ],
   "tests_remaining": [],

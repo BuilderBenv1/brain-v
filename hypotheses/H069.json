@@ -2,7 +2,7 @@
   "id": "H069",
   "claim": "The text-only section (entropy 3.9016 bits, highest of all sections) represents unenciphered or minimally enciphered natural language prose, while lower-entropy sections use a homophonic expansion layer that artificially reduces entropy by replacing single plaintext glyphs with multiple ciphertext glyphs.",
   "type": "cipher",
-  "confidence": 0.786,
+  "confidence": 0.864,
   "evidence_for": [
     "Text-only section has highest entropy (3.9016 bits), closest to natural language baselines (Latin ~4.0, Italian ~3.95)",
     "Homophonic substitution would reduce entropy in proportion to the number of homophones used per plaintext character",
@@ -47,6 +47,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.751 -> 0.786"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information between section-level entropy and average word length; if homophonic expa",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.786 -> 0.816"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information between section-level entropy and average word length; if homophonic expa",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.816 -> 0.842"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute mutual information between section-level entropy and average word length; if homophonic expa",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.842 -> 0.864"
     }
   ],
   "tests_remaining": [],

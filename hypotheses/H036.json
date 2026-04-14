@@ -2,7 +2,7 @@
   "id": "H036",
   "claim": "The Currier A/B split encodes two different plaintext languages (e.g., Latin in sections assigned to A, Italian or an Italian dialect in sections assigned to B), detectable by different glyph-level entropy and different word-initial/final bigram profiles between A and B corpora.",
   "type": "language",
-  "confidence": 0.923,
+  "confidence": 0.951,
   "evidence_for": [
     "Currier B corpus (23,766 words) is more than twice the size of A (11,022 words), consistent with a dominant vs. supplementary language split",
     "Prior hypothesis H004/H008 both carry elevated confidence (0.808, 0.697) for genuine linguistic difference",
@@ -120,6 +120,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.910 -> 0.923"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.923 -> 0.934"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.934 -> 0.943"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.943 -> 0.951"
     }
   ],
   "tests_remaining": [],

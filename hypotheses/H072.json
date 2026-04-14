@@ -2,7 +2,7 @@
   "id": "H072",
   "claim": "The zodiac section's anomalously low entropy (3.7149 bits) and label-heavy structure reflect a fixed-vocabulary encoding in which each label token is drawn from a closed set of fewer than 50 distinct label templates, with high within-label glyph redundancy serving as a positional marker rather than encoding phonemic content.",
   "type": "structural",
-  "confidence": 0.635,
+  "confidence": 0.698,
   "evidence_for": [
     "Zodiac section has fewest folios (12) and words (1,297) relative to other sections, consistent with a label-only register",
     "Lowest section entropy (3.7149 bits) suggests reduced glyph diversity, compatible with a closed label vocabulary",
@@ -47,6 +47,30 @@
       "passed": true,
       "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
       "confidence_change": "0.611 -> 0.635"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (unique words / total words) for each section; test whether zodiac and astr",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.635 -> 0.657"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (unique words / total words) for each section; test whether zodiac and astr",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.657 -> 0.678"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (unique words / total words) for each section; test whether zodiac and astr",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.678 -> 0.698"
     }
   ],
   "tests_remaining": [],

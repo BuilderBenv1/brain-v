@@ -2,7 +2,7 @@
   "id": "H018",
   "claim": "The text is encoded using a simple substitution cipher on an unknown language.",
   "type": "language",
-  "confidence": 0.549,
+  "confidence": 0.682,
   "evidence_for": [
     "The glyph entropy levels are lower than expected for Latin or Italian",
     "The word-final glyph distribution shows no clear pattern matching known languages"
@@ -75,6 +75,30 @@
       "passed": true,
       "details": "The statistical profile strongly aligns with substitution-ciphered natural language: the Zipfian exponent of 0.8946 matches typical language distribution patterns (preserved under substitution), word length averages are reasonable, and entropy characteristics are consistent with language rather than random text.",
       "confidence_change": "0.494 -> 0.549"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.78,
+      "passed": true,
+      "details": "The strong Zipf fit (0.8946, R\u00c2\u00b2=0.9084) and moderate glyph entropy (3.86 bits) are characteristic of natural language texts and would be preserved under simple substitution ciphers, supporting the hypothesis that the manuscript encodes a coherent language rather than random gibberish.",
+      "confidence_change": "0.549 -> 0.602"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.68,
+      "passed": true,
+      "details": "The excellent Zipf fit (R\u00c2\u00b2=0.9084) strongly indicates natural language structure preserved by substitution cipher, and entropy below maximum supports non-uniform glyph distribution typical of encoded language. However, the exceptionally high hapax ratio (0.701) is atypical for natural language and introduces uncertainty about whether this is truly encoded language or an artificial construct.",
+      "confidence_change": "0.602 -> 0.643"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.72,
+      "passed": true,
+      "details": "The Zipf exponent of 0.8946 with R\u00c2\u00b2=0.9084 is classic natural language signature; simple substitution preserves this property. High hapax ratio (0.701) is elevated but consistent with power-law distribution and plausible for diverse vocabulary. Glyph entropy and word length are reasonable for unknown language.",
+      "confidence_change": "0.643 -> 0.682"
     }
   ],
   "tests_remaining": [],

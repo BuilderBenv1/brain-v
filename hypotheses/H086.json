@@ -2,7 +2,7 @@
   "id": "H086",
   "claim": "The zodiac and astronomical sections use a label-register encoding \u00e2\u20ac\u201d short fixed-length labels drawn from a closed vocabulary \u00e2\u20ac\u201d rather than running prose, which would produce anomalously low entropy (observed: zodiac 3.7149 bits, astronomical 3.7471 bits) and a high type-token ratio relative to sections with running text.",
   "type": "structural",
-  "confidence": 0.634,
+  "confidence": 0.697,
   "evidence_for": [
     "Zodiac section has lowest entropy of all sections (3.7149 bits) consistent with a repetitive label vocabulary",
     "Astronomical section second-lowest entropy (3.7471 bits)",
@@ -25,6 +25,30 @@
       "passed": true,
       "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
       "confidence_change": "0.610 -> 0.634"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and vocabulary coverage at top-50 most f",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.634 -> 0.656"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and vocabulary coverage at top-50 most f",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.656 -> 0.677"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and vocabulary coverage at top-50 most f",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.677 -> 0.697"
     }
   ],
   "tests_remaining": [],

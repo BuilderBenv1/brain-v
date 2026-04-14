@@ -2,7 +2,7 @@
   "id": "H055",
   "claim": "The Voynich text uses a homophonic substitution cipher on medieval Latin or Italian, where multiple distinct glyphs encode the same plaintext letter, which would artificially inflate the unique-word count and produce the observed hapax ratio of 70.1%.",
   "type": "cipher",
-  "confidence": 0.864,
+  "confidence": 0.913,
   "evidence_for": [
     "Glyph entropy 3.8627 bits is below Latin (~4.0) and Italian (~3.95), consistent with redundancy introduced by homophones reducing per-glyph information",
     "Hapax ratio of 70.1% far exceeds natural language norms (typically 40-55%), consistent with phoneme-splitting expanding the word-type space",
@@ -73,6 +73,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.842 -> 0.864"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "group glyphs by positional equivalence classes (glyphs that appear in identical positional contexts)",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.864 -> 0.883"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "group glyphs by positional equivalence classes (glyphs that appear in identical positional contexts)",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.883 -> 0.899"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "group glyphs by positional equivalence classes (glyphs that appear in identical positional contexts)",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.899 -> 0.913"
     }
   ],
   "tests_remaining": [],

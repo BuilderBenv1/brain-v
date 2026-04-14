@@ -2,7 +2,7 @@
   "id": "H063",
   "claim": "The zodiac and astronomical sections (entropy 3.7149 and 3.7471 bits respectively, lowest of all sections) encode a label-and-numeral system where recurring short words function as positional labels (month names, star names, degree markers) rather than running prose, and these labels follow a fixed template grammar with \u00e2\u2030\u00a43 syntactic slots, explaining low entropy through high repetition of a small closed vocabulary.",
   "type": "structural",
-  "confidence": 0.842,
+  "confidence": 0.899,
   "evidence_for": [
     "Zodiac section has lowest entropy (3.7149 bits) and smallest word count per folio (~108 words/folio vs. 84 for herbal)",
     "Astronomical section also has low entropy (3.7471) and very small total corpus (872 words, 8 folios)",
@@ -65,6 +65,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.816 -> 0.842"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract all words from zodiac and astronomical sections. compute the type-token ratio (ttr) and comp",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.842 -> 0.864"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract all words from zodiac and astronomical sections. compute the type-token ratio (ttr) and comp",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.864 -> 0.883"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "extract all words from zodiac and astronomical sections. compute the type-token ratio (ttr) and comp",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.883 -> 0.899"
     }
   ],
   "tests_remaining": [],

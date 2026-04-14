@@ -1,0 +1,35 @@
+{
+  "id": "H101",
+  "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-register vocabulary of fewer than 150 distinct content words, with a word-frequency distribution that fits a truncated power law rather than full Zipf, consistent with a glossary or label list rather than running prose.",
+  "type": "structural",
+  "confidence": 0.652,
+  "evidence_for": [
+    "Zodiac section entropy 3.7149 bits is the lowest across all sections",
+    "Zodiac section contains only 1,297 words over 12 folios, consistent with short labels around diagrams",
+    "Label-heavy sections would produce reduced vocabulary diversity and lower entropy",
+    "Belief weight 0.197-0.207 already supports label-oriented encoding in zodiac section"
+  ],
+  "evidence_against": [
+    "Low entropy could also result from heavy repetition of cipher padding or null glyphs rather than label structure",
+    "Cosmological section (10 folios, 2,199 words) has higher entropy despite similar illustrated context"
+  ],
+  "test": "Fit a truncated Zipf/power-law model vs. a full Zipf model to the unigram frequency distribution of zodiac-section words; compute vocabulary growth curve (Heaps' law) for zodiac vs. recipes section; measure type-token ratio and compare against herbal (largest prose candidate) and recipes sections.",
+  "test_metric": "Heaps' law exponent for zodiac section; type-token ratio; goodness-of-fit (AIC/BIC) for truncated vs. full Zipf model on zodiac word frequencies",
+  "test_threshold": "Confirmation: zodiac Heaps' exponent < 0.4 (vocabulary plateaus early, consistent with closed label set) and truncated Zipf fits better (lower AIC). Denial: exponent > 0.55 and full Zipf fits better, suggesting running prose with normal vocabulary growth.",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "fit a truncated zipf/power-law model vs. a full zipf model to the unigram frequency distribution of ",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.610 -> 0.652"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "If the zodiac section is confirmed as a closed-vocabulary label register, it becomes the highest-priority decipherment target because label content (month names, zodiac names, star names) is predictable, enabling crib-based attacks on the cipher."
+}

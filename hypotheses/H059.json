@@ -2,7 +2,7 @@
   "id": "H059",
   "claim": "The text-only section's elevated entropy (3.9016 bits, highest of all sections) and the recipes section's second-highest entropy (3.8586 bits) reflect unenciphered or lightly enciphered running prose in the underlying natural language, while the diagrammatic sections (zodiac 3.7149, astronomical 3.7471, pharmaceutical 3.7772) reflect a more heavily enciphered or formulaic register \u00e2\u20ac\u201d meaning entropy difference between sections correlates with cipher strength, not genre.",
   "type": "cipher",
-  "confidence": 0.853,
+  "confidence": 0.907,
   "evidence_for": [
     "Section entropy spans 0.19 bits (3.7149 to 3.9016), which is large enough to suggest qualitative differences in encoding rather than mere genre effects",
     "Text-only section (7 folios, 2,349 words) has no diagrams, suggesting if the scribe used a cipher, they may have applied it less rigorously to continuous prose",
@@ -73,6 +73,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.829 -> 0.853"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each section, compute the rank-frequency slope (zipf exponent) separately. if cipher-strength va",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.853 -> 0.874"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each section, compute the rank-frequency slope (zipf exponent) separately. if cipher-strength va",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.874 -> 0.892"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each section, compute the rank-frequency slope (zipf exponent) separately. if cipher-strength va",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.892 -> 0.907"
     }
   ],
   "tests_remaining": [],

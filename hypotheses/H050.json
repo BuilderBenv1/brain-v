@@ -2,7 +2,7 @@
   "id": "H050",
   "claim": "The extremely high hapax ratio (70.1%) is produced by a systematic null-suffix appended to a smaller core vocabulary: each base word receives one of a small set of suffixes (e.g., -y, -in, -ain, -dy, -edy) to produce surface tokens, meaning the effective vocabulary after stripping common suffixes would shrink to roughly 2,000\u00e2\u20ac\u201c2,500 unique roots with a Zipf exponent closer to 1.0.",
   "type": "cipher",
-  "confidence": 0.865,
+  "confidence": 0.905,
   "evidence_for": [
     "Top words 'daiin', 'aiin', 'chedy', 'shedy', 'chol', 'chey' share recurring suffix clusters (-ain, -edy, -ol, -ey)",
     "Word-final glyph distribution strongly concentrated on y, n, l, r, o \u00e2\u20ac\u201d consistent with a small suffix inventory",
@@ -97,6 +97,30 @@
       "passed": true,
       "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
       "confidence_change": "0.849 -> 0.865"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "enumerate candidate suffix families by clustering word-final bigrams and trigrams; strip the top 10 ",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.865 -> 0.880"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "enumerate candidate suffix families by clustering word-final bigrams and trigrams; strip the top 10 ",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.880 -> 0.893"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "enumerate candidate suffix families by clustering word-final bigrams and trigrams; strip the top 10 ",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.893 -> 0.905"
     }
   ],
   "tests_remaining": [],

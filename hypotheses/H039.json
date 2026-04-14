@@ -2,7 +2,7 @@
   "id": "H039",
   "claim": "The recipes section (25 folios, 11,611 words, entropy 3.8586 bits) and the herbal section (129 folios, 10,872 words, entropy 3.8478 bits) share a common cipher and possibly the same underlying language, while the biological section (19 folios, 6,315 words, entropy 3.7977 bits) uses a distinct encoding, as evidenced by its lower entropy and different word-length distribution.",
   "type": "cipher",
-  "confidence": 0.718,
+  "confidence": 0.766,
   "evidence_for": [
     "Recipes and herbal sections have nearly identical entropy (3.8586 vs. 3.8478 bits), suggesting the same encoding regime",
     "Biological section entropy (3.7977) is detectably lower and its folio count is small enough that vocabulary overlap can be tested",
@@ -120,6 +120,30 @@
       "passed": true,
       "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
       "confidence_change": "0.700 -> 0.718"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute pairwise cosine similarity of section-level glyph unigram and bigram frequency vectors for a",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.718 -> 0.735"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute pairwise cosine similarity of section-level glyph unigram and bigram frequency vectors for a",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.735 -> 0.751"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute pairwise cosine similarity of section-level glyph unigram and bigram frequency vectors for a",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.751 -> 0.766"
     }
   ],
   "tests_remaining": [],

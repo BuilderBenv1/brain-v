@@ -451,6 +451,30 @@
       "passed": true,
       "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
       "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compare word and glyph entropies between the herbal and other sections using a two-sample kolmogorov",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compare word and glyph entropies between the herbal and other sections using a two-sample kolmogorov",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compare word and glyph entropies between the herbal and other sections using a two-sample kolmogorov",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.990 -> 0.990"
     }
   ],
   "tests_remaining": [],

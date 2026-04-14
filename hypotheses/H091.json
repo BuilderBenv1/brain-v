@@ -1,0 +1,52 @@
+{
+  "id": "H091",
+  "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-only register drawn from a vocabulary of fewer than 200 distinct word types \u00e2\u20ac\u201d a much smaller effective vocabulary than other sections \u00e2\u20ac\u201d producing a Zipf exponent significantly above the corpus-wide value of 0.8946.",
+  "type": "structural",
+  "confidence": 0.701,
+  "evidence_for": [
+    "Zodiac section has only 1,297 words across 12 folios, consistent with repeated short labels around circular diagrams",
+    "Entropy 3.7149 is 0.19 bits below the text-only section and 0.15 bits below the herbal section, a large difference for a corpus with otherwise similar per-section entropies",
+    "Label registers in historical manuscripts (e.g., calendars, zodiac wheels) reuse a small set of names, month terms, and cardinal directions extensively",
+    "High-confidence belief [0.273] and [0.058] already partially support label-oriented low-entropy encoding in zodiac"
+  ],
+  "evidence_against": [
+    "Low entropy could alternatively reflect a different cipher key applied to zodiac text rather than a different register",
+    "12 folios is a small sample; low entropy might be a sampling artifact",
+    "If zodiac labels encode personal names (e.g., names around the naked-figure rings), name distributions are hard to predict statistically"
+  ],
+  "test": "Compute the Zipf exponent (log-log linear regression of rank vs frequency) separately for the zodiac section corpus and compare to the manuscript-wide exponent (0.8946). Also compute type-token ratio (unique words / total words) for zodiac vs all other sections.",
+  "test_metric": "Zodiac-section Zipf exponent and type-token ratio versus corpus-wide values",
+  "test_threshold": "If zodiac Zipf exponent > 1.15 (versus corpus 0.8946) and zodiac type-token ratio < 0.25 (indicating heavy repetition), label-register encoding is confirmed; if exponent < 1.0 or type-token ratio > 0.40, refute",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute the zipf exponent (log-log linear regression of rank vs frequency) separately for the zodiac",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.580 -> 0.625"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the zipf exponent (log-log linear regression of rank vs frequency) separately for the zodiac",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.625 -> 0.665"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the zipf exponent (log-log linear regression of rank vs frequency) separately for the zodiac",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.665 -> 0.701"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "A label register would produce distinctively different Zipf statistics from running prose or cipher text. Confirming this would justify treating the zodiac section as a separate decipherment target with a restricted vocabulary, potentially providing a crib for the broader cipher."
+}

@@ -2,7 +2,7 @@
   "id": "H026",
   "claim": "The manuscript uses a null-derived word-construction rule (e.g., a gallows-glyph prefix system) such that a small set of ~5 prefix glyphs accounts for > 60% of all word tokens, producing the observed Zipf exponent of ~0.89 via combinatorial explosion of a limited stem vocabulary",
   "type": "cipher",
-  "confidence": 0.207,
+  "confidence": 0.217,
   "evidence_for": [
     "Word-initial glyphs are highly skewed: ['o','c','q','s','d'] dominate",
     "Low Zipf exponent (0.8946) compared to natural language (~1.0\u00e2\u20ac\u201c1.2) suggests constrained word formation",
@@ -280,6 +280,30 @@
       "passed": true,
       "details": "The extremely low Zipf exponent (0.89) and high hapax ratio (0.701) are both consistent with a productive prefix-stem combinatorial system that would generate diverse vocabulary from limited morpheme inventory, though the specified test comparing prefix concentration against vocabulary generation is needed for certainty.",
       "confidence_change": "0.114 -> 0.207"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.32,
+      "passed": false,
+      "details": "The 70.1% hapax ratio contradicts the prediction that 5 prefixes + 50 stems would generate abundant high-frequency word combinations; additionally, glyph entropy of 3.8627 bits indicates relatively uniform positional distribution rather than concentration in 5 dominant initials.",
+      "confidence_change": "0.207 -> 0.165"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.25,
+      "passed": false,
+      "details": "The hypothesis is contradicted by the high hapax ratio (0.701), which indicates 70% of unique words appear only once\u00e2\u20ac\u201dinconsistent with a simple prefix-stem combinatorial model (5 \u00c3\u2014 50 = 250 types) that would show much higher repetition. The relatively flat Zipf exponent (0.89) also conflicts with prefix-dominance, which would produce steeper frequency concentration.",
+      "confidence_change": "0.165 -> 0.128"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.68,
+      "passed": true,
+      "details": "Observed Zipf exponent (0.8946) closely matches the hypothesis prediction (~0.89), and the very high hapax ratio (0.701) is consistent with combinatorial prefix-stem combinations of limited elements, though direct measurement of the top-5 initial glyphs accounting for >60% of tokens was not performed.",
+      "confidence_change": "0.128 -> 0.217"
     }
   ],
   "tests_remaining": [],

@@ -2,7 +2,7 @@
   "id": "H067",
   "claim": "The zodiac and astronomical sections use a label-encoding scheme where words are proper nouns or fixed labels (star names, month names, zodiac terms) rather than running prose, which explains their anomalously low entropy (3.7149 and 3.7471 bits) as a reduced effective vocabulary with high repetition of a small label lexicon.",
   "type": "structural",
-  "confidence": 0.262,
+  "confidence": 0.144,
   "evidence_for": [
     "Zodiac entropy 3.7149 bits is the lowest of all sections \u00e2\u20ac\u201d consistent with a small fixed vocabulary of labels",
     "Astronomical entropy 3.7471 bits is second-lowest, consistent with the same label-encoding pattern",
@@ -56,6 +56,30 @@
       "passed": false,
       "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
       "confidence_change": "0.320 -> 0.262"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute average word length, type-token ratio (ttr), and hapax ratio separately for zodiac and astro",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.262 -> 0.215"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute average word length, type-token ratio (ttr), and hapax ratio separately for zodiac and astro",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.215 -> 0.176"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute average word length, type-token ratio (ttr), and hapax ratio separately for zodiac and astro",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.176 -> 0.144"
     }
   ],
   "tests_remaining": [],

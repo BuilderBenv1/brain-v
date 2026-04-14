@@ -287,6 +287,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute conditional glyph entropy h(g_i | g_{i-1}) across the full corpus and compare to expected co",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute conditional glyph entropy h(g_i | g_{i-1}) across the full corpus and compare to expected co",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute conditional glyph entropy h(g_i | g_{i-1}) across the full corpus and compare to expected co",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.990 -> 0.990"
     }
   ],
   "tests_remaining": [],

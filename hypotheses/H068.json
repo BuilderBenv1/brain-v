@@ -2,7 +2,7 @@
   "id": "H068",
   "claim": "The extremely high hapax ratio (70.1%) is partially produced by a systematic scribal abbreviation convention where a base word form appears fully in first use and is abbreviated (via suffix truncation or initial-letter substitution) in subsequent uses within the same folio or page, making most 'unique' word types artifactual variants of a smaller true vocabulary.",
   "type": "structural",
-  "confidence": 0.14,
+  "confidence": 0.077,
   "evidence_for": [
     "70.1% hapax rate is far above natural language baselines (typically 40-55% for corpora of this size)",
     "Medieval scribal abbreviation is well-documented in Latin manuscripts of the same period",
@@ -56,6 +56,30 @@
       "passed": false,
       "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
       "confidence_change": "0.171 -> 0.140"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "measure the within-folio hapax rate vs. the cross-folio hapax rate: for each word type that appears ",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.140 -> 0.115"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "measure the within-folio hapax rate vs. the cross-folio hapax rate: for each word type that appears ",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.115 -> 0.094"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "measure the within-folio hapax rate vs. the cross-folio hapax rate: for each word type that appears ",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.094 -> 0.077"
     }
   ],
   "tests_remaining": [],

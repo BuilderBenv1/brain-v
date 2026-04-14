@@ -2,7 +2,7 @@
   "id": "H073",
   "claim": "The dominant word-initial glyph constraints {o, c, q, s, d} are artifacts of a cipher mechanism that encodes plaintext vowels (a, e, i, o, u) as these five glyphs in word-initial position, with each cipher glyph mapping to a single plaintext vowel, producing a detectable co-occurrence pattern between word-initial cipher glyphs and word-final glyphs that mirrors vowel-consonant harmony in Latin or Italian.",
   "type": "cipher",
-  "confidence": 0.519,
+  "confidence": 0.571,
   "evidence_for": [
     "Word-initial glyph constraints are strongly concentrated in just 5 glyphs, consistent with a small vowel inventory (Latin has 5 vowels, Italian 7)",
     "If initial glyphs encode vowels, words beginning with each initial glyph should share statistical properties (length, following bigram) traceable to the underlying vowel's phonological context",
@@ -48,6 +48,30 @@
       "passed": true,
       "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
       "confidence_change": "0.500 -> 0.519"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each of the 5 dominant word-initial glyphs, compute the distribution of immediately following gl",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'d', 'a', 'l', 'o'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.519 -> 0.537"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each of the 5 dominant word-initial glyphs, compute the distribution of immediately following gl",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'n', 'm'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.537 -> 0.554"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each of the 5 dominant word-initial glyphs, compute the distribution of immediately following gl",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.554 -> 0.571"
     }
   ],
   "tests_remaining": [],

@@ -1,0 +1,34 @@
+{
+  "id": "H099",
+  "claim": "The high hapax ratio (70.1%) is substantially artifactual: word-final glyphs drawn from {y,n,l,r,o} function as inflectional suffixes, and stripping them reduces unique word types by at least 40%, collapsing the effective vocabulary toward the ~2,500-3,500 unique stems expected in a medieval herbal or recipe corpus.",
+  "type": "cipher",
+  "confidence": 0.426,
+  "evidence_for": [
+    "Word-final glyph set {y,n,l,r,o} shows strong positional constraint consistent with suffix morphology",
+    "Hapax ratio of 70.1% is anomalously high relative to natural-language corpora of similar size",
+    "Recipes section (11,611 words) and herbal section (10,872 words) are large enough that genuine vocabulary should stabilize under Heaps' law, yet hapax rate remains high"
+  ],
+  "evidence_against": [
+    "If suffixes encode cipher variation rather than morphology, stripping them destroys plaintext signal",
+    "Some positional constraints may reflect cipher mechanics (e.g., gallows-glyph rules) rather than grammar"
+  ],
+  "test": "Strip word-final glyphs in {y,n,l,r,o} from all tokens; recompute vocabulary size, hapax ratio, and type-token ratio on stemmed corpus; compare against unstemmed baseline and against expected Heaps' law curve for a 38,000-word medieval Latin/Italian corpus.",
+  "test_metric": "Hapax ratio after suffix stripping; percentage reduction in unique word types; new Heaps' law exponent on stemmed corpus",
+  "test_threshold": "Confirmation: hapax ratio drops below 45% and stemmed vocabulary falls to 2,500-4,000 unique types. Denial: hapax ratio remains above 60% after stripping, indicating positional constraints are cipher-structural not morphological.",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "strip word-final glyphs in {y,n,l,r,o} from all tokens; recompute vocabulary size, hapax ratio, and ",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.520 -> 0.426"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "If suffix stripping dramatically reduces hapax rate, it reveals an inflectional morphology layer and narrows the underlying language to one with regular suffixal inflection (Latin, Italian, Hebrew), which directly constraints the cipher search space."
+}

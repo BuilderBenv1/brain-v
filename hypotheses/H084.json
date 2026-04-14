@@ -2,7 +2,7 @@
   "id": "H084",
   "claim": "The Voynich text uses a homophonic substitution cipher on medieval Latin where 2-3 Voynich glyphs map to each Latin letter, which would reduce measured entropy below natural Latin (~4.0 bits) toward the observed 3.8627 bits while preserving Zipf-like word frequency distribution.",
   "type": "cipher",
-  "confidence": 0.501,
+  "confidence": 0.683,
   "evidence_for": [
     "Glyph entropy 3.8627 bits is below Latin (~4.0 bits) but above random noise, consistent with homophonic expansion",
     "Zipf exponent 0.8946 with R\u00c2\u00b2=0.9084 indicates natural-language-like frequency distribution",
@@ -25,6 +25,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.420 -> 0.501"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the conditional entropy h(glyph_n | glyph_{n-1}) for all bigrams. under homophonic substitut",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.501 -> 0.571"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the conditional entropy h(glyph_n | glyph_{n-1}) for all bigrams. under homophonic substitut",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.571 -> 0.631"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the conditional entropy h(glyph_n | glyph_{n-1}) for all bigrams. under homophonic substitut",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.631 -> 0.683"
     }
   ],
   "tests_remaining": [],

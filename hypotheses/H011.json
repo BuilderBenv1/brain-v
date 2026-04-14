@@ -2,7 +2,7 @@
   "id": "H011",
   "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.",
   "type": "structural",
-  "confidence": 0.889,
+  "confidence": 0.931,
   "evidence_for": [
     "Herbal section has higher entropy levels compared to other sections"
   ],
@@ -84,6 +84,30 @@
       "passed": true,
       "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
       "confidence_change": "0.870 -> 0.889"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the average word length and frequency of consecutive words with identical first/last glyphs",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.889 -> 0.905"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the average word length and frequency of consecutive words with identical first/last glyphs",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.905 -> 0.919"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the average word length and frequency of consecutive words with identical first/last glyphs",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.919 -> 0.931"
     }
   ],
   "tests_remaining": [],

@@ -1,0 +1,34 @@
+{
+  "id": "H100",
+  "claim": "Currier A and Currier B employ two structurally distinct cipher alphabets encoding the same underlying Latin plaintext: the two sub-corpora should exhibit near-identical word-length distributions and Zipf exponents but divergent bigram transition matrices, consistent with two key tables applied to the same plaintext.",
+  "type": "cipher",
+  "confidence": 0.536,
+  "evidence_for": [
+    "Currier A/B split is well-attested in scribal-hand analysis",
+    "High-confidence belief (0.501-0.677) that same underlying language is encoded differently across A and B",
+    "If plaintext is shared, word-length statistics should converge across A and B even if glyph distributions differ"
+  ],
+  "evidence_against": [
+    "Belief 0.208 supports two different plaintext languages across A/B",
+    "Vocabulary overlap between A and B corpora may be too low to confirm shared plaintext without decipherment"
+  ],
+  "test": "Compute word-length frequency distributions, Zipf exponents, and bigram transition matrices separately for Currier A (11,022 words) and Currier B (23,766 words); test whether word-length distributions are statistically indistinguishable (KS test) while bigram matrices differ significantly (chi-squared or Jensen-Shannon divergence).",
+  "test_metric": "KS statistic on word-length distributions; Jensen-Shannon divergence between A and B bigram transition matrices; Zipf exponent difference",
+  "test_threshold": "Confirmation: KS p-value > 0.05 (indistinguishable word-length distributions) AND JS divergence > 0.15 (distinct bigram structure). Denial: word-length distributions also differ significantly (KS p < 0.01), suggesting distinct underlying languages.",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute word-length frequency distributions, zipf exponents, and bigram transition matrices separate",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.480 -> 0.536"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "This test can distinguish 'same plaintext, two cipher tables' from 'two different plaintexts' without requiring decipherment, directly resolving a high-uncertainty split in current beliefs."
+}

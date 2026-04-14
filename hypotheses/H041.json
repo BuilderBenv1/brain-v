@@ -2,7 +2,7 @@
   "id": "H041",
   "claim": "The extremely high hapax ratio (70.1%) is produced by a systematic suffix-stripping or abbreviation convention in which a small set of word-final glyph sequences (e.g., -aiin, -dy, -ol) are optionally dropped, making many hapax legomena morphological variants of ~30% of the vocabulary rather than distinct words.",
   "type": "structural",
-  "confidence": 0.878,
+  "confidence": 0.913,
   "evidence_for": [
     "Word-final glyphs y, n, l, r, o account for most endings; -aiin and -dy endings on top words suggest paradigmatic variation",
     "Zipf exponent 0.895 is lower than typical natural languages (~1.0-1.1), consistent with vocabulary inflation from morphological variants being counted as separate types",
@@ -111,6 +111,30 @@
       "passed": true,
       "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
       "confidence_change": "0.863 -> 0.878"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster the 8,261 unique word types by longest common prefix (lcp >= 3 glyphs). compute the fraction",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.878 -> 0.891"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster the 8,261 unique word types by longest common prefix (lcp >= 3 glyphs). compute the fraction",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.891 -> 0.903"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster the 8,261 unique word types by longest common prefix (lcp >= 3 glyphs). compute the fraction",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.903 -> 0.913"
     }
   ],
   "tests_remaining": [],

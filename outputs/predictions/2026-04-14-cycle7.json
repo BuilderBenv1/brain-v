@@ -1,0 +1,155 @@
+{
+  "date": "2026-04-14",
+  "cycle": "predict",
+  "model": "claude-code-cli",
+  "belief_count": 38,
+  "existing_hypothesis_count": 113,
+  "new_hypotheses": [
+    "H094",
+    "H095",
+    "H096",
+    "H097",
+    "H098"
+  ],
+  "hypotheses": [
+    {
+      "id": "H094",
+      "claim": "The 70.1% hapax ratio is substantially artifactual: stripping word-final glyphs from the set {y,n,l,r,o} reduces unique word types by at least 40%, revealing a core vocabulary consistent with a homophonic substitution cipher on medieval Latin or Italian",
+      "type": "cipher",
+      "confidence": 0.68,
+      "evidence_for": [
+        "Hapax ratio 70.1% is anomalously high relative to natural language corpora of similar size",
+        "Word-final glyph set {y,n,l,r,o} accounts for a disproportionate share of word-type diversity",
+        "High-confidence belief (0.664) that stripping final glyphs collapses hapax count significantly",
+        "Recipes section has largest word count and second-highest entropy \u00e2\u20ac\u201d consistent with suffix-heavy encoding"
+      ],
+      "evidence_against": [
+        "If suffix stripping still leaves high hapax ratio, the hypothesis fails",
+        "Truly synthetic suffixes would produce more uniform final-glyph distributions than observed"
+      ],
+      "test": "Strip all word-final glyphs belonging to {y,n,l,r,o} from every token, recompute vocabulary size and hapax ratio on the resulting stem corpus",
+      "test_metric": "Post-stripping hapax ratio and unique stem count vs. original 8,261 unique words",
+      "test_threshold": "Confirmation if post-stripping hapax ratio drops below 40%; denial if it remains above 60%",
+      "tests_run": [],
+      "tests_remaining": [
+        "Strip all word-final glyphs belonging to {y,n,l,r,o} from every token, recompute vocabulary size and hapax ratio on the resulting stem corpus"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "If a large fraction of apparent vocabulary diversity is produced by mechanical suffix attachment, the underlying cipher table is much smaller than raw statistics suggest, dramatically narrowing the decipherment search space"
+    },
+    {
+      "id": "H095",
+      "claim": "Currier A and Currier B use two structurally distinct cipher alphabets encoding the same underlying Latin plaintext: the two sub-corpora should exhibit the same bigram entropy and the same Zipf exponent once glyph-level correspondences are remapped",
+      "type": "cipher",
+      "confidence": 0.65,
+      "evidence_for": [
+        "High-confidence belief (0.694) that A and B use distinct cipher tables on the same language",
+        "Currier B is more than twice the size of A (23,766 vs 11,022 words), consistent with one scribe being primary",
+        "Positional glyph constraints are present in both sub-corpora, suggesting shared underlying grammar"
+      ],
+      "evidence_against": [
+        "If Zipf exponents diverge significantly between A and B after remapping, the same-language assumption is undermined",
+        "Differing entropy values per section could reflect genuine lexical differences between two scribes writing about different topics"
+      ],
+      "test": "Compute bigram entropy and Zipf exponent separately for Currier A and Currier B token sets; then apply an optimal glyph-to-glyph mapping (maximize token overlap) and recompute both metrics on the remapped B corpus",
+      "test_metric": "KL-divergence between A and remapped-B unigram distributions; Zipf exponent difference",
+      "test_threshold": "Confirmation if KL-divergence < 0.05 and Zipf exponent difference < 0.05 after remapping; denial if KL-divergence > 0.2",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute bigram entropy and Zipf exponent separately for Currier A and Currier B token sets; then apply an optimal glyph-to-glyph mapping (maximize token overlap) and recompute both metrics on the remapped B corpus"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": ""
+    },
+    {
+      "id": "H096",
+      "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) is produced by a label-only encoding where each token is drawn from a small closed vocabulary of fewer than 50 distinct labels, rather than running prose",
+      "type": "structural",
+      "confidence": 0.71,
+      "evidence_for": [
+        "Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d far lower word density than herbal (84 words/folio) or recipes (464 words/folio)",
+        "Entropy 3.7149 bits is 0.19 bits below the next-lowest section (astronomical), consistent with a smaller effective alphabet",
+        "High-confidence belief (0.243) that zodiac uses homophonic label encoding",
+        "Short repeated tokens like 'ol', 'ar', 'or' dominate top-10 word list, plausibly functioning as ordinal or directional labels"
+      ],
+      "evidence_against": [
+        "If the zodiac vocabulary size is not demonstrably smaller than other sections, the structural explanation loses force",
+        "Low entropy could alternatively reflect heavy repetition of a small set of cipher words rather than a label structure"
+      ],
+      "test": "Extract the zodiac sub-corpus; compute its unique word count, type-token ratio, and frequency distribution; compare vocabulary coverage curves (what fraction of tokens are covered by the top-N types) against herbal and recipes sections",
+      "test_metric": "Vocabulary size of zodiac vs. other sections; percentage of zodiac tokens covered by top 20 word types",
+      "test_threshold": "Confirmation if top 20 word types cover \u00e2\u2030\u00a5 70% of zodiac tokens and unique zodiac vocabulary \u00e2\u2030\u00a4 60 types; denial if vocabulary size exceeds 150 or top-20 coverage is below 50%",
+      "tests_run": [],
+      "tests_remaining": [
+        "Extract the zodiac sub-corpus; compute its unique word count, type-token ratio, and frequency distribution; compare vocabulary coverage curves (what fraction of tokens are covered by the top-N types) against herbal and recipes sections"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "Identifying the zodiac as a closed-label section would isolate it as a potential Rosetta-style entry point where glyph-to-label mappings could be tested against known zodiac names"
+    },
+    {
+      "id": "H097",
+      "claim": "The strong positional constraints on word-initial glyphs {o,c,q,s,d} and word-final glyphs {y,n,l,r,o} are artifacts of a structured nulls-and-affixes system rather than natural phonotactics: removing these positional glyphs as null markers should produce a residual corpus whose glyph entropy approaches Latin's ~4.0 bits",
+      "type": "cipher",
+      "confidence": 0.58,
+      "evidence_for": [
+        "Glyph entropy 3.8627 bits is measurably below Latin (~4.0) and Italian (~3.95), consistent with entropy suppression from null/affix glyphs",
+        "Positional constraints are among the highest-confidence beliefs in the system (0.624, 0.608, 0.605)",
+        "Zipf exponent 0.8946 is sub-Zipfian, which can result from systematic morphological prefixing/suffixing that splits natural-language word types"
+      ],
+      "evidence_against": [
+        "Natural Semitic or agglutinative languages also exhibit strong positional constraints without nulls",
+        "If residual entropy after stripping still falls below 3.9 bits, a pure nulls explanation is insufficient"
+      ],
+      "test": "Remove all word-initial tokens from {o,c,q,s,d} and all word-final tokens from {y,n,l,r,o} at the glyph level; recompute glyph-level Shannon entropy and Zipf exponent on the residual glyph sequence",
+      "test_metric": "Residual glyph entropy (bits) and Zipf exponent R-squared after stripping positional glyphs",
+      "test_threshold": "Confirmation if residual glyph entropy rises to \u00e2\u2030\u00a5 3.95 bits (within 0.05 of Italian); denial if residual entropy remains \u00e2\u2030\u00a4 3.87 bits or R-squared drops below 0.85",
+      "tests_run": [],
+      "tests_remaining": [
+        "Remove all word-initial tokens from {o,c,q,s,d} and all word-final tokens from {y,n,l,r,o} at the glyph level; recompute glyph-level Shannon entropy and Zipf exponent on the residual glyph sequence"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": ""
+    },
+    {
+      "id": "H098",
+      "claim": "The text-only section (entropy 3.9016 bits, 7 folios) represents unenciphered or minimally enciphered running text in medieval Latin or Northern Italian, and its word-frequency distribution should match a Zipf exponent significantly closer to 1.0 than the manuscript-wide exponent of 0.8946",
+      "type": "language",
+      "confidence": 0.62,
+      "evidence_for": [
+        "Text-only section has the highest entropy of all sections (3.9016 bits), closest to natural Latin/Italian (~4.0/~3.95)",
+        "High-confidence belief (0.677) that text-only section approximates natural language most closely",
+        "7 folios is a small but statistically tractable sub-corpus for frequency analysis",
+        "Absence of illustrations in text-only folios removes the label/caption effect that depresses entropy elsewhere"
+      ],
+      "evidence_against": [
+        "Small sample (2,349 words) limits statistical power for reliable Zipf fitting",
+        "Elevated entropy could reflect a different cipher mode rather than absence of cipher"
+      ],
+      "test": "Compute Zipf exponent and R-squared for the text-only section in isolation; compute KL-divergence between text-only unigram distribution and a reference medieval Latin corpus unigram distribution",
+      "test_metric": "Text-only Zipf exponent; KL-divergence against Latin reference",
+      "test_threshold": "Confirmation if text-only Zipf exponent \u00e2\u2030\u00a5 0.95 and KL-divergence < 0.15; denial if Zipf exponent < 0.85 or KL-divergence > 0.30",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute Zipf exponent and R-squared for the text-only section in isolation; compute KL-divergence between text-only unigram distribution and a reference medieval Latin corpus unigram distribution"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "If the text-only section statistically resembles natural Latin more than any cipher section, it becomes the highest-priority target for direct frequency-matching decipherment attempts"
+    }
+  ],
+  "raw_response": "{\"hypotheses\":[{\"claim\":\"The 70.1% hapax ratio is substantially artifactual: stripping word-final glyphs from the set {y,n,l,r,o} reduces unique word types by at least 40%, revealing a core vocabulary consistent with a homophonic substitution cipher on medieval Latin or Italian\",\"type\":\"cipher\",\"confidence\":0.68,\"evidence_for\":[\"Hapax ratio 70.1% is anomalously high relative to natural language corpora of similar size\",\"Word-final glyph set {y,n,l,r,o} accounts for a disproportionate share of word-type diversity\",\"High-confidence belief (0.664) that stripping final glyphs collapses hapax count significantly\",\"Recipes section has largest word count and second-highest entropy \u00e2\u20ac\u201d consistent with suffix-heavy encoding\"],\"evidence_against\":[\"If suffix stripping still leaves high hapax ratio, the hypothesis fails\",\"Truly synthetic suffixes would produce more uniform final-glyph distributions than observed\"],\"test\":\"Strip all word-final glyphs belonging to {y,n,l,r,o} from every token, recompute vocabulary size and hapax ratio on the resulting stem corpus\",\"test_metric\":\"Post-stripping hapax ratio and unique stem count vs. original 8,261 unique words\",\"test_threshold\":\"Confirmation if post-stripping hapax ratio drops below 40%; denial if it remains above 60%\",\"reasoning\":\"If a large fraction of apparent vocabulary diversity is produced by mechanical suffix attachment, the underlying cipher table is much smaller than raw statistics suggest, dramatically narrowing the decipherment search space\"},{\"claim\":\"Currier A and Currier B use two structurally distinct cipher alphabets encoding the same underlying Latin plaintext: the two sub-corpora should exhibit the same bigram entropy and the same Zipf exponent once glyph-level correspondences are remapped\",\"type\":\"cipher\",\"confidence\":0.65,\"evidence_for\":[\"High-confidence belief (0.694) that A and B use distinct cipher tables on the same language\",\"Currier B is more than twice the size of A (23,766 vs 11,022 words), consistent with one scribe being primary\",\"Positional glyph constraints are present in both sub-corpora, suggesting shared underlying grammar\"],\"evidence_against\":[\"If Zipf exponents diverge significantly between A and B after remapping, the same-language assumption is undermined\",\"Differing entropy values per section could reflect genuine lexical differences between two scribes writing about different topics\"],\"test\":\"Compute bigram entropy and Zipf exponent separately for Currier A and Currier B token sets; then apply an optimal glyph-to-glyph mapping (maximize token overlap) and recompute both metrics on the remapped B corpus\",\"test_metric\":\"KL-divergence between A and remapped-B unigram distributions; Zipf exponent difference\",\"test_threshold\":\"Confirmation if KL-divergence < 0.05 and Zipf exponent difference < 0.05 after remapping; denial if KL-divergence > 0.2\"},{\"claim\":\"The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) is produced by a label-only encoding where each token is drawn from a small closed vocabulary of fewer than 50 distinct labels, rather than running prose\",\"type\":\"structural\",\"confidence\":0.71,\"evidence_for\":[\"Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d far lower word density than herbal (84 words/folio) or recipes (464 words/folio)\",\"Entropy 3.7149 bits is 0.19 bits below the next-lowest section (astronomical), consistent with a smaller effective alphabet\",\"High-confidence belief (0.243) that zodiac uses homophonic label encoding\",\"Short repeated tokens like 'ol', 'ar', 'or' dominate top-10 word list, plausibly functioning as ordinal or directional labels\"],\"evidence_against\":[\"If the zodiac vocabulary size is not demonstrably smaller than other sections, the structural explanation loses force\",\"Low entropy could alternatively reflect heavy repetition of a small set of cipher words rather than a label structure\"],\"test\":\"Extract the zodiac sub-corpus; compute its unique word count, type-token ratio, and frequency distribution; compare vocabulary coverage curves (what fraction of tokens are covered by the top-N types) against herbal and recipes sections\",\"test_metric\":\"Vocabulary size of zodiac vs. other sections; percentage of zodiac tokens covered by top 20 word types\",\"test_threshold\":\"Confirmation if top 20 word types cover \u00e2\u2030\u00a5 70% of zodiac tokens and unique zodiac vocabulary \u00e2\u2030\u00a4 60 types; denial if vocabulary size exceeds 150 or top-20 coverage is below 50%\",\"reasoning\":\"Identifying the zodiac as a closed-label section would isolate it as a potential Rosetta-style entry point where glyph-to-label mappings could be tested against known zodiac names\"},{\"claim\":\"The strong positional constraints on word-initial glyphs {o,c,q,s,d} and word-final glyphs {y,n,l,r,o} are artifacts of a structured nulls-and-affixes system rather than natural phonotactics: removing these positional glyphs as null markers should produce a residual corpus whose glyph entropy approaches Latin's ~4.0 bits\",\"type\":\"cipher\",\"confidence\":0.58,\"evidence_for\":[\"Glyph entropy 3.8627 bits is measurably below Latin (~4.0) and Italian (~3.95), consistent with entropy suppression from null/affix glyphs\",\"Positional constraints are among the highest-confidence beliefs in the system (0.624, 0.608, 0.605)\",\"Zipf exponent 0.8946 is sub-Zipfian, which can result from systematic morphological prefixing/suffixing that splits natural-language word types\"],\"evidence_against\":[\"Natural Semitic or agglutinative languages also exhibit strong positional constraints without nulls\",\"If residual entropy after stripping still falls below 3.9 bits, a pure nulls explanation is insufficient\"],\"test\":\"Remove all word-initial tokens from {o,c,q,s,d} and all word-final tokens from {y,n,l,r,o} at the glyph level; recompute glyph-level Shannon entropy and Zipf exponent on the residual glyph sequence\",\"test_metric\":\"Residual glyph entropy (bits) and Zipf exponent R-squared after stripping positional glyphs\",\"test_threshold\":\"Confirmation if residual glyph entropy rises to \u00e2\u2030\u00a5 3.95 bits (within 0.05 of Italian); denial if residual entropy remains \u00e2\u2030\u00a4 3.87 bits or R-squared drops below 0.85\"},{\"claim\":\"The text-only section (entropy 3.9016 bits, 7 folios) represents unenciphered or minimally enciphered running text in medieval Latin or Northern Italian, and its word-frequency distribution should match a Zipf exponent significantly closer to 1.0 than the manuscript-wide exponent of 0.8946\",\"type\":\"language\",\"confidence\":0.62,\"evidence_for\":[\"Text-only section has the highest entropy of all sections (3.9016 bits), closest to natural Latin/Italian (~4.0/~3.95)\",\"High-confidence belief (0.677) that text-only section approximates natural language most closely\",\"7 folios is a small but statistically tractable sub-corpus for frequency analysis\",\"Absence of illustrations in text-only folios removes the label/caption effect that depresses entropy elsewhere\"],\"evidence_against\":[\"Small sample (2,349 words) limits statistical power for reliable Zipf fitting\",\"Elevated entropy could reflect a different cipher mode rather than absence of cipher\"],\"test\":\"Compute Zipf exponent and R-squared for the text-only section in isolation; compute KL-divergence between text-only unigram distribution and a reference medieval Latin corpus unigram distribution\",\"test_metric\":\"Text-only Zipf exponent; KL-divergence against Latin reference\",\"test_threshold\":\"Confirmation if text-only Zipf exponent \u00e2\u2030\u00a5 0.95 and KL-divergence < 0.15; denial if Zipf exponent < 0.85 or KL-divergence > 0.30\",\"reasoning\":\"If the text-only section statistically resembles natural Latin more than any cipher section, it becomes the highest-priority target for direct frequency-matching decipherment attempts\"}]}"
+}

@@ -2,7 +2,7 @@
   "id": "H083",
   "claim": "The strong word-initial and word-final glyph positional constraints ({o,c,q,s,d} and {y,n,l,r,o}) reflect a syllabic or consonant-vowel template in the underlying language (e.g., CV or CVC structure), not a cipher artifact, and can be modeled as a Markov chain of order 2 that predicts glyph position within a word with accuracy > 80%.",
   "type": "language",
-  "confidence": 0.541,
+  "confidence": 0.707,
   "evidence_for": [
     "Word-initial glyphs {o,c,q,s,d} and word-final glyphs {y,n,l,r,o} are highly consistent across the entire corpus, suggesting a grammatical or phonological rule rather than a cipher convention",
     "Existing belief [0.624] (confidence 0.624) and [0.616] (confidence 0.616) support positional constraints as artifacts of the underlying language structure or CV template",
@@ -33,6 +33,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.467 -> 0.541"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "train a 2nd-order markov chain on within-word glyph sequences using 80% of words, reserving 20% for ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.541 -> 0.605"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "train a 2nd-order markov chain on within-word glyph sequences using 80% of words, reserving 20% for ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.605 -> 0.660"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "train a 2nd-order markov chain on within-word glyph sequences using 80% of words, reserving 20% for ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.660 -> 0.707"
     }
   ],
   "tests_remaining": [],

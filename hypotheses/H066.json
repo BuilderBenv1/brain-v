@@ -2,7 +2,7 @@
   "id": "H066",
   "claim": "The Currier A/B split encodes two different scribal dialects of the same underlying language (not two different languages), where Scribe A uses a slightly different homophonic key than Scribe B, producing measurable differences in glyph bigram entropy between the two sub-corpora rather than differences in underlying vocabulary.",
   "type": "cipher",
-  "confidence": 0.755,
+  "confidence": 0.843,
   "evidence_for": [
     "Currier A (11,022 words) and B (23,766 words) show known distributional differences in glyph usage",
     "Two scribes sharing a cipher but using different key variants would produce sub-corpus entropy differences without requiring two distinct languages",
@@ -55,6 +55,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.715 -> 0.755"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram and bigram entropy separately for currier a and b sub-corpora. then compute th",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.755 -> 0.789"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram and bigram entropy separately for currier a and b sub-corpora. then compute th",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.789 -> 0.818"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute glyph unigram and bigram entropy separately for currier a and b sub-corpora. then compute th",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.818 -> 0.843"
     }
   ],
   "tests_remaining": [],
