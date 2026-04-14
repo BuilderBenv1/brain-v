@@ -1,0 +1,49 @@
+{
+  "id": "H104",
+  "claim": "The Voynich Manuscript encodes a late medieval Moravian (Old Czech/Slavic) dialect using a constructed cipher alphabet derived from Latin, Glagolitic, and Cyrillic characters. Folio 14v (Acanthus mollis) yields medicinal instructions consistent with period phytotherapy when decoded as Moravian, and the final row contains the Gujarati/Gojri plant name Adulsa Vasa.",
+  "type": "language",
+  "confidence": 0.25,
+  "evidence_for": [
+    "Stoilova (2025): f116v decoded as Moravian antisyphilitic salve recipe",
+    "Stoilova (2026): f14v decoded as Acanthus mollis medicinal instructions in Moravian",
+    "Decoded text matches known phytotherapeutic uses of Acanthus mollis (wounds, burns, sprains, fractures, diarrhea, gum disease)",
+    "Mixed-script hypothesis (Latin + Glagolitic + Cyrillic) is historically plausible for 15th-century Moravia",
+    "Proposed alphabet maps specific Voynich glyphs to known Slavic characters",
+    "Internal consistency: f116v and f14v translations use same linguistic model",
+    "Plant identification (Acanthus mollis) matches botanical illustration on f14v"
+  ],
+  "evidence_against": [
+    "Brain-V's frequency analysis shows 0.98 correlation to Latin/Italian, not Slavic languages",
+    "Glyph entropy (3.86 bits) is closer to Latin (4.0) than Czech (~4.2)",
+    "Word length distribution (avg 5.03) matches Latin (5.5) better than Czech (4.8)",
+    "No independent verification of the Moravian readings by other researchers",
+    "The Gujarati plant name in a Moravian text requires complex historical justification",
+    "Brain-V's universal cipher table transfer test assumes one substitution \u2014 a mixed-script system would show section-level variation",
+    "Hapax ratio (70.1%) would need to be explained under this model"
+  ],
+  "test": "Test Moravian hypothesis: (1) Compare Voynich glyph frequencies to Old Czech/Moravian letter frequencies. (2) Check if proposed alphabet mapping produces consistent readings on OTHER folios beyond f14v and f116v. (3) Test if Voynich word-length distribution matches Moravian dialect texts. (4) Check if Voynich IC is consistent with a Slavic language.",
+  "test_metric": "frequency_correlation_slavic",
+  "test_threshold": "Frequency correlation to Old Czech/Moravian > 0.90 would support; < 0.80 would contradict",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "Statistical profile comparison: Czech vs Latin vs Italian",
+      "score": 0.25,
+      "passed": false,
+      "details": "Czech freq corr=0.6057, IC=0.07711 (Latin range), entropy=3.8627 (Latin range). Composite 0.25/1.00.",
+      "confidence_change": "0.30 -> 0.250"
+    }
+  ],
+  "tests_remaining": [
+    "word_length_distribution_czech",
+    "ic_comparison_slavic",
+    "cross_folio_consistency"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "Community submission based on Vessela Stoilova's published research (Academia.edu, 2025-2026). Proposes Moravian dialect with mixed Latin/Glagolitic/Cyrillic script. The pharmaceutical reading of f14v is internally consistent and matches known uses of Acanthus mollis. Needs statistical testing against Brain-V's corpus analysis to check compatibility with observed glyph distributions.",
+  "source": "Stoilova, V. (2025) 'Foil 116v of Voynich Manuscript: A Moravian Antisyphilitic Salve' (Academia.edu); Stoilova, V. (2026) f14v Moravian interpretation",
+  "researcher": "Vessela Stoilova"
+}
