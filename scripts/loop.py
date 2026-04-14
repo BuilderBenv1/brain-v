@@ -174,8 +174,9 @@ def cmd_decrypt():
         return True
 
     print(f"[loop] {len(cipher_hyps)} cipher hypotheses above threshold. Running decryption...")
-    # Run decrypt on text-only section (H027: closest to natural language — Rosetta stone)
-    if not run_script("decrypt.py", ["--section", "text-only"]):
+    # Run decrypt on biological section (340x Latin dict improvement after stem strip,
+    # highest IC at 0.100, 6.81% dict hits — thinnest cipher layer)
+    if not run_script("decrypt.py", ["--section", "biological"]):
         print("[loop] Decrypt failed on herbal section.")
         return False
 

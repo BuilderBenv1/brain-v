@@ -1995,6 +1995,176 @@ def attack_morpho_then_vigenere(glyphs: str, words: list[str]) -> list[dict]:
     return attack_vigenere(strip_glyphs, stripped)
 
 
+def _strip_to_stems(words: list[str]) -> list[str]:
+    """Aggressive morphological suffix strip."""
+    SUFFIXES_1 = {"y", "n", "l", "r"}
+    SUFFIXES_M = ["aiin", "ain", "air", "dy", "ey", "in", "ol", "ar", "or", "al", "an"]
+    stems = []
+    for w in words:
+        s = w
+        for suf in sorted(SUFFIXES_M, key=len, reverse=True):
+            if len(s) > len(suf) + 1 and s.endswith(suf):
+                s = s[:-len(suf)]
+                break
+        if len(s) > 2 and s[-1] in SUFFIXES_1:
+            s = s[:-1]
+        stems.append(s)
+    return stems
+
+
+def attack_stem_crack(corpus: dict, section: str = "biological") -> list[dict]:
+    """
+    Core stem-cracking attack. Builds a substitution table from stripped stems
+    in one section, then tests whether it generalises to other sections.
+
+    The biological section has IC=0.100 after stripping (above natural language),
+    suggesting a simple monoalphabetic substitution on stems. Crack it there,
+    then validate on text-only and herbal.
+    """
+    source_words = extract_words(corpus, section=section)
+    if not source_words:
+        return []
+
+    source_stems = _strip_to_stems(source_words)
+    source_glyphs = extract_glyph_stream(source_stems)
+
+    results = []
+
+    for target_freq, lang in [(LATIN_FREQ, "latin"), (ITALIAN_FREQ, "italian")]:
+        # Build mapping from source section stems
+        gf = Counter(source_glyphs)
+        sorted_g = [g for g, _ in gf.most_common()]
+        sorted_t = sorted(target_freq.keys(), key=lambda k: -target_freq[k])
+        mapping = {g: sorted_t[i] if i < len(sorted_t) else "?"
+                   for i, g in enumerate(sorted_g)}
+
+        # Score on source section
+        dec_stream = "".join(mapping.get(g, "?") for g in source_glyphs)
+        dec_words = reconstruct_words(dec_stream, source_stems)
+        source_score = score_plaintext(dec_stream, dec_words)
+
+        results.append({
+            "method": f"stem_crack_{section}_self_{lang}",
+            "source": section,
+            "target": section,
+            "mapping": mapping,
+            "sample_output": " ".join(dec_words[:30]),
+            "sample_words": dec_words[:50],
+            "score": source_score,
+        })
+
+        # Test generalisation to other sections
+        for test_section in ["text-only", "herbal", "recipes", "pharmaceutical"]:
+            if test_section == section:
+                continue
+            test_words = extract_words(corpus, section=test_section)
+            if not test_words:
+                continue
+
+            test_stems = _strip_to_stems(test_words)
+            test_glyphs = extract_glyph_stream(test_stems)
+
+            # Apply SAME mapping from source section
+            dec_test = "".join(mapping.get(g, "?") for g in test_glyphs)
+            dec_test_words = reconstruct_words(dec_test, test_stems)
+            test_score = score_plaintext(dec_test, dec_test_words)
+
+            # Also build a LOCAL mapping for comparison
+            local_gf = Counter(test_glyphs)
+            local_sorted = [g for g, _ in local_gf.most_common()]
+            local_mapping = {g: sorted_t[i] if i < len(sorted_t) else "?"
+                            for i, g in enumerate(local_sorted)}
+            dec_local = "".join(local_mapping.get(g, "?") for g in test_glyphs)
+            dec_local_words = reconstruct_words(dec_local, test_stems)
+            local_score = score_plaintext(dec_local, dec_local_words)
+
+            # How much does the transferred mapping lose vs local?
+            transfer_loss = local_score["best_score"] - test_score["best_score"]
+
+            results.append({
+                "method": f"stem_crack_{section}_to_{test_section}_{lang}",
+                "source": section,
+                "target": test_section,
+                "transfer_score": test_score["best_score"],
+                "local_score": local_score["best_score"],
+                "transfer_loss": round(transfer_loss, 4),
+                "generalises": transfer_loss < 0.05,
+                "sample_output": " ".join(dec_test_words[:25]),
+                "score": test_score,
+            })
+
+    results.sort(key=lambda r: -r["score"]["best_score"])
+    return results
+
+
+def attack_stem_bigram_chain(corpus: dict, section: str = "biological") -> dict:
+    """
+    Analyse bigram transition probabilities in stripped stems.
+    High IC after stripping suggests ordered structure in stems.
+    Map the most probable stem bigrams to Latin's most common bigrams.
+    """
+    words = extract_words(corpus, section=section)
+    if not words:
+        return {"method": "stem_bigram_chain", "score": {"best_score": 0}}
+
+    stems = _strip_to_stems(words)
+    stem_glyphs = extract_glyph_stream(stems)
+
+    # Build bigram frequency table
+    bigrams = Counter()
+    for i in range(len(stem_glyphs) - 1):
+        bigrams[(stem_glyphs[i], stem_glyphs[i+1])] += 1
+
+    total_bi = sum(bigrams.values())
+    top_bi = bigrams.most_common(30)
+
+    # Compare with Latin bigrams
+    latin_top_bi = [
+        ("e", "t"), ("i", "n"), ("u", "s"), ("e", "s"), ("i", "s"),
+        ("u", "m"), ("e", "r"), ("a", "t"), ("e", "n"), ("t", "i"),
+        ("r", "e"), ("a", "n"), ("n", "t"), ("o", "r"), ("t", "e"),
+        ("i", "t"), ("a", "r"), ("e", "m"), ("o", "n"), ("a", "m"),
+    ]
+
+    # Build mapping from top Voynich stem bigrams to Latin bigrams
+    bi_mapping = {}
+    char_votes = {}  # Track which Latin chars each glyph votes for
+    for i, ((g1, g2), count) in enumerate(top_bi):
+        if i < len(latin_top_bi):
+            l1, l2 = latin_top_bi[i]
+            # Vote for glyph->letter mappings
+            for glyph, letter in [(g1, l1), (g2, l2)]:
+                if glyph not in char_votes:
+                    char_votes[glyph] = Counter()
+                char_votes[glyph][letter] += count
+
+    # Resolve votes: each glyph maps to its most-voted letter
+    bigram_derived_mapping = {}
+    used_letters = set()
+    for glyph in sorted(char_votes.keys(), key=lambda g: -sum(char_votes[g].values())):
+        for letter, votes in char_votes[glyph].most_common():
+            if letter not in used_letters:
+                bigram_derived_mapping[glyph] = letter
+                used_letters.add(letter)
+                break
+
+    # Apply bigram-derived mapping
+    dec_stream = "".join(bigram_derived_mapping.get(g, "?") for g in stem_glyphs)
+    dec_words = reconstruct_words(dec_stream, stems)
+    score = score_plaintext(dec_stream, dec_words)
+
+    return {
+        "method": f"stem_bigram_chain_{section}",
+        "section": section,
+        "mapping": bigram_derived_mapping,
+        "top_voynich_bigrams": [(f"{g1}{g2}", count) for (g1, g2), count in top_bi[:15]],
+        "latin_bigram_targets": ["".join(b) for b in latin_top_bi[:15]],
+        "sample_output": " ".join(dec_words[:30]),
+        "sample_words": dec_words[:50],
+        "score": score,
+    }
+
+
 # =====================================================================
 #  RUN ALL ATTACKS
 # =====================================================================
@@ -2117,6 +2287,17 @@ def run_all_attacks(corpus: dict, stats: dict,
     print("[decrypt] [H023+H001] Morpho-strip then Vigenere...")
     results.extend(attack_morpho_then_vigenere(glyphs, words))
 
+    # === STEM CRACK (biological section focus) ===
+    print("[decrypt] [STEM] Stem-crack: biological -> generalise...")
+    results.extend(attack_stem_crack(corpus, section="biological"))
+
+    print("[decrypt] [STEM] Stem bigram chain analysis...")
+    results.append(attack_stem_bigram_chain(corpus, section="biological"))
+
+    # Also crack from text-only for comparison
+    print("[decrypt] [STEM] Stem-crack: text-only -> generalise...")
+    results.extend(attack_stem_crack(corpus, section="text-only"))
+
     # Sort by best score
     results.sort(key=lambda r: -r.get("score", {}).get("best_score", 0))
 
@@ -2125,8 +2306,8 @@ def run_all_attacks(corpus: dict, stats: dict,
 
 def main():
     parser = argparse.ArgumentParser(description="Brain-V decryption engine")
-    parser.add_argument("--section", type=str, default="text-only",
-                        help="Section to target (text-only/herbal/astronomical/biological/etc)")
+    parser.add_argument("--section", type=str, default="biological",
+                        help="Section to target (biological/text-only/herbal/astronomical/etc)")
     parser.add_argument("--folio", type=str, default=None,
                         help="Specific folio to target (e.g. f1r)")
     parser.add_argument("--cipher", type=str, default=None,
