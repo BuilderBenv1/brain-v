@@ -1,0 +1,59 @@
+{
+  "id": "H073",
+  "claim": "The dominant word-initial glyph constraints {o, c, q, s, d} are artifacts of a cipher mechanism that encodes plaintext vowels (a, e, i, o, u) as these five glyphs in word-initial position, with each cipher glyph mapping to a single plaintext vowel, producing a detectable co-occurrence pattern between word-initial cipher glyphs and word-final glyphs that mirrors vowel-consonant harmony in Latin or Italian.",
+  "type": "cipher",
+  "confidence": 0.519,
+  "evidence_for": [
+    "Word-initial glyph constraints are strongly concentrated in just 5 glyphs, consistent with a small vowel inventory (Latin has 5 vowels, Italian 7)",
+    "If initial glyphs encode vowels, words beginning with each initial glyph should share statistical properties (length, following bigram) traceable to the underlying vowel's phonological context",
+    "Current belief [0.624] supports positional glyph constraints reflecting cipher structure"
+  ],
+  "evidence_against": [
+    "Latin and Italian words do not begin with vowels at the frequency implied by the dominance of these 5 initial glyphs",
+    "The cipher could instead encode consonant classes or null prefixes rather than vowels",
+    "q is almost exclusively followed by o in the Voynich text, suggesting a digraph rather than an independent vowel encoding"
+  ],
+  "test": "For each of the 5 dominant word-initial glyphs, compute the distribution of immediately following glyphs (second-position bigrams); test whether these second-position distributions are mutually exclusive or overlapping using a chi-squared test of independence across the 5 initial-glyph classes",
+  "test_metric": "Chi-squared statistic and Cram\u00c3\u00a9r's V for association between word-initial glyph identity and second-position glyph identity",
+  "test_threshold": "Cram\u00c3\u00a9r's V > 0.4 with p < 0.001 would confirm that initial glyphs partition into distinct phonological classes (consistent with vowel encoding); V < 0.2 would suggest initial glyphs are positional markers without phonemic specificity",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "for each of the 5 dominant word-initial glyphs, compute the distribution of immediately following gl",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'n', 'm'}. Universal glyphs: {'d', 'o', 'a', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.440 -> 0.461"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each of the 5 dominant word-initial glyphs, compute the distribution of immediately following gl",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'r', 'n'}. Universal glyphs: {'a', 'd', 'o', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.461 -> 0.481"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each of the 5 dominant word-initial glyphs, compute the distribution of immediately following gl",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'n', 'm'}. Universal glyphs: {'l', 'd', 'o', 'a'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.481 -> 0.500"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "for each of the 5 dominant word-initial glyphs, compute the distribution of immediately following gl",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.500 -> 0.519"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "If initial glyphs encode specific vowels, each should consistently co-occur with a predictable set of following consonant glyphs reflecting the phonotactics of the underlying language. This test can distinguish phonemically meaningful initial constraints from purely positional cipher artifacts."
+}

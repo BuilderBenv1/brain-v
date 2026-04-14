@@ -1,0 +1,162 @@
+{
+  "date": "2026-04-14",
+  "cycle": "predict",
+  "model": "claude-code-cli",
+  "belief_count": 33,
+  "existing_hypothesis_count": 98,
+  "new_hypotheses": [
+    "H079",
+    "H080",
+    "H081",
+    "H082",
+    "H083"
+  ],
+  "hypotheses": [
+    {
+      "id": "H079",
+      "claim": "The Voynich text uses a homophonic substitution cipher on medieval Latin where 2-3 Voynich glyphs map to each Latin letter, which would reduce observed glyph entropy below true Latin entropy (~4.0 bits) by approximately log2(avg_homophones) bits while preserving Zipf scaling.",
+      "type": "cipher",
+      "confidence": 0.41,
+      "evidence_for": [
+        "Observed glyph entropy 3.8627 bits is ~0.14 bits below Latin (~4.0), consistent with modest homophonic expansion of ~1.1 glyphs/letter",
+        "Word-initial glyph constraint set {o,c,q,s,d} could represent homophones for high-frequency Latin word-initial letters such as 'c', 's', 'd'",
+        "Zipf exponent 0.8946 is close to natural language values, consistent with underlying natural language rather than noise",
+        "High confidence existing belief [0.407] already partially supports homophonic substitution on Latin/Italian"
+      ],
+      "evidence_against": [
+        "Glyph entropy gap (0.14 bits) is smaller than expected for a 2-3 homophone scheme, which should reduce entropy by ~0.58-1.0 bits",
+        "70.1% hapax ratio is far higher than expected for a homophonic cipher on Latin, where hapax ratios are typically 40-55%",
+        "Only 25 unique glyphs makes a rich homophonic scheme less plausible \u00e2\u20ac\u201d standard Latin has 23 letters, leaving little room for multiple homophones per letter"
+      ],
+      "test": "For each of the 25 glyphs, compute conditional probability distributions of neighboring glyphs (bigram context). If homophones exist, glyphs that encode the same underlying letter should have statistically similar bigram distributions. Apply hierarchical clustering to glyph bigram vectors and test whether clusters of size 2-3 emerge with intra-cluster cosine similarity > 0.85.",
+      "test_metric": "Silhouette score of k-means clustering (k=12-15) on glyph bigram probability vectors; also chi-squared test of bigram similarity within proposed homophone groups vs. across groups",
+      "test_threshold": "Silhouette score > 0.45 and within-cluster mean cosine similarity > 0.80 would support homophonic grouping; p < 0.01 on chi-squared test for bigram distributional equivalence within clusters",
+      "tests_run": [],
+      "tests_remaining": [
+        "For each of the 25 glyphs, compute conditional probability distributions of neighboring glyphs (bigram context). If homophones exist, glyphs that encode the same underlying letter should have statistically similar bigram distributions. Apply hierarchical clustering to glyph bigram vectors and test whether clusters of size 2-3 emerge with intra-cluster cosine similarity > 0.85."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "Homophonic substitution is the most computationally tractable cipher consistent with the entropy deficit and Zipf fit. Confirming or denying glyph clustering into homophone groups would sharply narrow the cipher hypothesis space, and is directly computable from the corpus bigram statistics."
+    },
+    {
+      "id": "H080",
+      "claim": "The extreme hapax ratio (70.1%) is produced by a systematic word-boundary segmentation error in the transcription, where a small set of suffix or prefix tokens are being attached to base words inconsistently, artificially inflating vocabulary size by 30-45%.",
+      "type": "structural",
+      "confidence": 0.33,
+      "evidence_for": [
+        "70.1% hapax ratio far exceeds natural language texts (typically 40-55% for comparable corpus sizes), suggesting a systematic artifact",
+        "Top 10 words include short tokens like 'ol', 'ar', 'or', 'y' which resemble prefixes/suffixes rather than independent words",
+        "Average word length 5.03 glyphs is short; if frequent 1-2 glyph tokens are actually bound morphemes, true word length would increase to ~6-7 glyphs, more consistent with Latin",
+        "Existing beliefs [0.05] and [0.05] already suggest suffix-stripping or abbreviation as a cause of high hapax ratio"
+      ],
+      "evidence_against": [
+        "Transcription protocols (EVA, Currier) have been validated across multiple independent researchers, reducing likelihood of systematic segmentation error",
+        "Word-final glyph constraints {y,n,l,r,o} are highly consistent, suggesting word boundaries are real linguistic boundaries not transcription artifacts",
+        "The same hapax ratio appears consistently across Currier A and B sub-corpora, arguing against a single-scribe transcription error"
+      ],
+      "test": "Identify all words appearing fewer than 3 times (hapax + dis legomena). Compute the frequency distribution of their word-final and word-initial glyphs. Compare against the full corpus distribution using a chi-squared test. If rare words disproportionately share final glyphs with the top-10 most frequent short tokens (ol, ar, or, y), this supports the suffix-attachment hypothesis. Additionally, test whether concatenating the top-5 short tokens onto adjacent rare words reduces vocabulary size by 30-45%.",
+      "test_metric": "Percentage reduction in unique vocabulary when top-5 short tokens are merged with adjacent words; chi-squared statistic comparing glyph-final distribution of hapax words vs. full corpus",
+      "test_threshold": "Vocabulary reduction > 30% upon suffix merging would support the artifact hypothesis; chi-squared p < 0.01 for distributional difference between hapax word endings and full corpus word endings would support genuine morphological diversity",
+      "tests_run": [],
+      "tests_remaining": [
+        "Identify all words appearing fewer than 3 times (hapax + dis legomena). Compute the frequency distribution of their word-final and word-initial glyphs. Compare against the full corpus distribution using a chi-squared test. If rare words disproportionately share final glyphs with the top-10 most frequent short tokens (ol, ar, or, y), this supports the suffix-attachment hypothesis. Additionally, test whether concatenating the top-5 short tokens onto adjacent rare words reduces vocabulary size by 30-45%."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "If the hapax ratio is partially artifactual, the true vocabulary size is much smaller, which would dramatically alter entropy estimates and make the cipher more tractable. This hypothesis can be tested purely statistically and would either validate or dismiss a major confound in all other analyses."
+    },
+    {
+      "id": "H081",
+      "claim": "The Currier A and B sub-corpora encode the same underlying plaintext language using two different but systematically related cipher alphabets (a digraphic or keyed-variant cipher), such that glyph bigram transition probabilities in A and B are permutations of each other rather than independent distributions.",
+      "type": "cipher",
+      "confidence": 0.52,
+      "evidence_for": [
+        "Currier A (11,022 words) and B (23,766 words) show consistent structural differences in glyph usage patterns, suggesting rule-governed variation rather than random noise",
+        "High-confidence existing belief [0.677] supports two scribes encoding the same underlying language",
+        "Belief [0.639] (confidence 0.639) supports same plaintext language with two different cipher variants",
+        "If two cipher variants encode the same Latin/Italian text, permutation-testing bigram matrices would reveal the mapping"
+      ],
+      "evidence_against": [
+        "Currier A and B show vocabulary differences that go beyond simple glyph substitution, with distinct word forms appearing preferentially in each sub-corpus",
+        "Belief [0.399] (confidence 0.399) supports the alternative that A and B encode two different plaintext languages",
+        "The volume difference (A: 11,022 vs B: 23,766 words) makes it difficult to test permutation hypotheses with equal statistical power across both sub-corpora"
+      ],
+      "test": "Compute 25x25 glyph bigram transition matrices for Currier A and B separately. Apply the Hungarian algorithm to find the permutation matrix P that minimizes the Frobenius norm ||M_A - P * M_B * P^T||. Test whether the residual after optimal permutation is significantly smaller than the residual from 1,000 random permutations (permutation test). Also compute cosine similarity between row vectors of M_A and best-permuted M_B.",
+      "test_metric": "Frobenius norm of residual after optimal permutation vs. null distribution from random permutations; cosine similarity of bigram row vectors after permutation alignment",
+      "test_threshold": "Residual Frobenius norm in bottom 5th percentile of null distribution (p < 0.05) and mean cosine similarity > 0.75 after permutation would support the keyed-variant cipher hypothesis",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute 25x25 glyph bigram transition matrices for Currier A and B separately. Apply the Hungarian algorithm to find the permutation matrix P that minimizes the Frobenius norm ||M_A - P * M_B * P^T||. Test whether the residual after optimal permutation is significantly smaller than the residual from 1,000 random permutations (permutation test). Also compute cosine similarity between row vectors of M_A and best-permuted M_B."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "If A and B are permutation-related ciphers of the same language, this can be confirmed with a single matrix alignment test and would immediately provide a candidate mapping between the two cipher alphabets, halving the decipherment problem. Rejection would strongly support the two-language hypothesis instead."
+    },
+    {
+      "id": "H082",
+      "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-registry encoding where each word is drawn from a small closed vocabulary of astrological terms (< 50 unique words), producing a highly non-uniform unigram distribution unlike the rest of the manuscript.",
+      "type": "structural",
+      "confidence": 0.48,
+      "evidence_for": [
+        "Zodiac section entropy 3.7149 bits is 0.185 bits below the overall corpus entropy (3.8627 bits), a large and consistent gap",
+        "Zodiac section has only 1,297 words across 12 folios, consistent with a label-heavy format where the same short labels repeat near illustrations",
+        "Existing belief [0.396] (confidence 0.396) and [0.111] (confidence 0.111) already associate zodiac low entropy with label-oriented encoding",
+        "In standard astrological manuscripts, zodiac sections use repetitive labels for months, constellations, and degree markers \u00e2\u20ac\u201d a small closed vocabulary is expected"
+      ],
+      "evidence_against": [
+        "If the zodiac section used only ~50 unique words, its type-token ratio would be ~0.039, far lower than the corpus average; this extreme would likely have been noted in prior analyses",
+        "Low entropy alone does not distinguish label repetition from a simpler (less homophonic) cipher variant used in this section",
+        "The zodiac section's Zipf behavior has not been independently confirmed to deviate from the rest of the corpus"
+      ],
+      "test": "Compute the type-token ratio (TTR) and vocabulary size for the zodiac section alone. Compare the unigram frequency distribution of the zodiac section against the full corpus using Jensen-Shannon divergence. Fit a Zipf curve to the zodiac section word frequencies and compare the exponent to the full-corpus exponent (0.8946). Test whether the top-20 most frequent words in the zodiac section account for > 60% of all zodiac tokens.",
+      "test_metric": "Jensen-Shannon divergence between zodiac and full-corpus unigram distributions; Zipf exponent for zodiac section; percentage of zodiac tokens covered by top-20 words; TTR for zodiac section",
+      "test_threshold": "JS divergence > 0.15 vs. full corpus, Zipf exponent < 0.70 (steeper than corpus), top-20 words covering > 60% of tokens, and TTR < 0.08 would jointly confirm label-registry encoding; failure on two or more metrics would reject this hypothesis",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute the type-token ratio (TTR) and vocabulary size for the zodiac section alone. Compare the unigram frequency distribution of the zodiac section against the full corpus using Jensen-Shannon divergence. Fit a Zipf curve to the zodiac section word frequencies and compare the exponent to the full-corpus exponent (0.8946). Test whether the top-20 most frequent words in the zodiac section account for > 60% of all zodiac tokens."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "If confirmed, the zodiac section can be treated as a Rosetta-stone-like resource: a short, repetitive label set is the easiest entry point for cipher-breaking, and confirming its closed-vocabulary structure would make it the highest-priority decipherment target rather than the herbal section."
+    },
+    {
+      "id": "H083",
+      "claim": "The strong word-initial and word-final glyph positional constraints ({o,c,q,s,d} and {y,n,l,r,o}) reflect a syllabic or consonant-vowel template in the underlying language (e.g., CV or CVC structure), not a cipher artifact, and can be modeled as a Markov chain of order 2 that predicts glyph position within a word with accuracy > 80%.",
+      "type": "language",
+      "confidence": 0.38,
+      "evidence_for": [
+        "Word-initial glyphs {o,c,q,s,d} and word-final glyphs {y,n,l,r,o} are highly consistent across the entire corpus, suggesting a grammatical or phonological rule rather than a cipher convention",
+        "Existing belief [0.624] (confidence 0.624) and [0.616] (confidence 0.616) support positional constraints as artifacts of the underlying language structure or CV template",
+        "A 2nd-order Markov model on glyph sequences within words is testable and would quantify whether positional constraints are rule-governed",
+        "Medieval Latin and Italian both have strong CV templates that constrain consonant-vowel ordering at word boundaries"
+      ],
+      "evidence_against": [
+        "Existing belief [0.268] (confidence 0.268) attributes the positional constraints to a Vigenere-type cipher rather than linguistic structure \u00e2\u20ac\u201d cipher explanations are competitive",
+        "If positional constraints are cipher-imposed (e.g., only certain glyphs are valid in certain cipher positions), the same pattern would emerge without any underlying syllabic structure",
+        "A 2nd-order Markov model may overfit to the 25-glyph alphabet given only 38,053 words, producing spuriously high accuracy"
+      ],
+      "test": "Train a 2nd-order Markov chain on within-word glyph sequences using 80% of words, reserving 20% for testing. Compute the model's accuracy in predicting the glyph at each position within a word (position 1, 2, 3, ..., n). Separately test whether the initial and final glyph constraint sets {o,c,q,s,d} and {y,n,l,r,o} account for > 85% of observed word-initial and word-final tokens respectively. Compare the positional entropy profiles (entropy at position k within a word) against profiles computed from scrambled (random-order) words.",
+      "test_metric": "Markov model per-position prediction accuracy; percentage of word-initial and word-final tokens covered by the constraint sets; positional entropy at each within-word position compared to scrambled baseline",
+      "test_threshold": "Markov accuracy > 80% at positions 1 and final, constraint sets covering > 85% of word-boundary tokens, and positional entropy at boundaries at least 0.5 bits lower than scrambled baseline would confirm strong positional constraints consistent with a CV or syllabic template",
+      "tests_run": [],
+      "tests_remaining": [
+        "Train a 2nd-order Markov chain on within-word glyph sequences using 80% of words, reserving 20% for testing. Compute the model's accuracy in predicting the glyph at each position within a word (position 1, 2, 3, ..., n). Separately test whether the initial and final glyph constraint sets {o,c,q,s,d} and {y,n,l,r,o} account for > 85% of observed word-initial and word-final tokens respectively. Compare the positional entropy profiles (entropy at position k within a word) against profiles computed from scrambled (random-order) words."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "Distinguishing cipher-imposed from language-imposed positional constraints is critical: if the constraints are linguistic, they provide direct evidence about the underlying language's phonology and narrow the candidate language set; if cipher-imposed, they constrain the cipher's structure. A Markov accuracy test is a clean, reproducible statistical method that directly tests the rule-governed nature of glyph positioning."
+    }
+  ],
+  "raw_response": "{\"hypotheses\": [{\"claim\": \"The Voynich text uses a homophonic substitution cipher on medieval Latin where 2-3 Voynich glyphs map to each Latin letter, which would reduce observed glyph entropy below true Latin entropy (~4.0 bits) by approximately log2(avg_homophones) bits while preserving Zipf scaling.\", \"type\": \"cipher\", \"confidence\": 0.41, \"evidence_for\": [\"Observed glyph entropy 3.8627 bits is ~0.14 bits below Latin (~4.0), consistent with modest homophonic expansion of ~1.1 glyphs/letter\", \"Word-initial glyph constraint set {o,c,q,s,d} could represent homophones for high-frequency Latin word-initial letters such as 'c', 's', 'd'\", \"Zipf exponent 0.8946 is close to natural language values, consistent with underlying natural language rather than noise\", \"High confidence existing belief [0.407] already partially supports homophonic substitution on Latin/Italian\"], \"evidence_against\": [\"Glyph entropy gap (0.14 bits) is smaller than expected for a 2-3 homophone scheme, which should reduce entropy by ~0.58-1.0 bits\", \"70.1% hapax ratio is far higher than expected for a homophonic cipher on Latin, where hapax ratios are typically 40-55%\", \"Only 25 unique glyphs makes a rich homophonic scheme less plausible \u00e2\u20ac\u201d standard Latin has 23 letters, leaving little room for multiple homophones per letter\"], \"test\": \"For each of the 25 glyphs, compute conditional probability distributions of neighboring glyphs (bigram context). If homophones exist, glyphs that encode the same underlying letter should have statistically similar bigram distributions. Apply hierarchical clustering to glyph bigram vectors and test whether clusters of size 2-3 emerge with intra-cluster cosine similarity > 0.85.\", \"test_metric\": \"Silhouette score of k-means clustering (k=12-15) on glyph bigram probability vectors; also chi-squared test of bigram similarity within proposed homophone groups vs. across groups\", \"test_threshold\": \"Silhouette score > 0.45 and within-cluster mean cosine similarity > 0.80 would support homophonic grouping; p < 0.01 on chi-squared test for bigram distributional equivalence within clusters\", \"reasoning\": \"Homophonic substitution is the most computationally tractable cipher consistent with the entropy deficit and Zipf fit. Confirming or denying glyph clustering into homophone groups would sharply narrow the cipher hypothesis space, and is directly computable from the corpus bigram statistics.\"}, {\"claim\": \"The extreme hapax ratio (70.1%) is produced by a systematic word-boundary segmentation error in the transcription, where a small set of suffix or prefix tokens are being attached to base words inconsistently, artificially inflating vocabulary size by 30-45%.\", \"type\": \"structural\", \"confidence\": 0.33, \"evidence_for\": [\"70.1% hapax ratio far exceeds natural language texts (typically 40-55% for comparable corpus sizes), suggesting a systematic artifact\", \"Top 10 words include short tokens like 'ol', 'ar', 'or', 'y' which resemble prefixes/suffixes rather than independent words\", \"Average word length 5.03 glyphs is short; if frequent 1-2 glyph tokens are actually bound morphemes, true word length would increase to ~6-7 glyphs, more consistent with Latin\", \"Existing beliefs [0.05] and [0.05] already suggest suffix-stripping or abbreviation as a cause of high hapax ratio\"], \"evidence_against\": [\"Transcription protocols (EVA, Currier) have been validated across multiple independent researchers, reducing likelihood of systematic segmentation error\", \"Word-final glyph constraints {y,n,l,r,o} are highly consistent, suggesting word boundaries are real linguistic boundaries not transcription artifacts\", \"The same hapax ratio appears consistently across Currier A and B sub-corpora, arguing against a single-scribe transcription error\"], \"test\": \"Identify all words appearing fewer than 3 times (hapax + dis legomena). Compute the frequency distribution of their word-final and word-initial glyphs. Compare against the full corpus distribution using a chi-squared test. If rare words disproportionately share final glyphs with the top-10 most frequent short tokens (ol, ar, or, y), this supports the suffix-attachment hypothesis. Additionally, test whether concatenating the top-5 short tokens onto adjacent rare words reduces vocabulary size by 30-45%.\", \"test_metric\": \"Percentage reduction in unique vocabulary when top-5 short tokens are merged with adjacent words; chi-squared statistic comparing glyph-final distribution of hapax words vs. full corpus\", \"test_threshold\": \"Vocabulary reduction > 30% upon suffix merging would support the artifact hypothesis; chi-squared p < 0.01 for distributional difference between hapax word endings and full corpus word endings would support genuine morphological diversity\", \"reasoning\": \"If the hapax ratio is partially artifactual, the true vocabulary size is much smaller, which would dramatically alter entropy estimates and make the cipher more tractable. This hypothesis can be tested purely statistically and would either validate or dismiss a major confound in all other analyses.\"}, {\"claim\": \"The Currier A and B sub-corpora encode the same underlying plaintext language using two different but systematically related cipher alphabets (a digraphic or keyed-variant cipher), such that glyph bigram transition probabilities in A and B are permutations of each other rather than independent distributions.\", \"type\": \"cipher\", \"confidence\": 0.52, \"evidence_for\": [\"Currier A (11,022 words) and B (23,766 words) show consistent structural differences in glyph usage patterns, suggesting rule-governed variation rather than random noise\", \"High-confidence existing belief [0.677] supports two scribes encoding the same underlying language\", \"Belief [0.639] (confidence 0.639) supports same plaintext language with two different cipher variants\", \"If two cipher variants encode the same Latin/Italian text, permutation-testing bigram matrices would reveal the mapping\"], \"evidence_against\": [\"Currier A and B show vocabulary differences that go beyond simple glyph substitution, with distinct word forms appearing preferentially in each sub-corpus\", \"Belief [0.399] (confidence 0.399) supports the alternative that A and B encode two different plaintext languages\", \"The volume difference (A: 11,022 vs B: 23,766 words) makes it difficult to test permutation hypotheses with equal statistical power across both sub-corpora\"], \"test\": \"Compute 25x25 glyph bigram transition matrices for Currier A and B separately. Apply the Hungarian algorithm to find the permutation matrix P that minimizes the Frobenius norm ||M_A - P * M_B * P^T||. Test whether the residual after optimal permutation is significantly smaller than the residual from 1,000 random permutations (permutation test). Also compute cosine similarity between row vectors of M_A and best-permuted M_B.\", \"test_metric\": \"Frobenius norm of residual after optimal permutation vs. null distribution from random permutations; cosine similarity of bigram row vectors after permutation alignment\", \"test_threshold\": \"Residual Frobenius norm in bottom 5th percentile of null distribution (p < 0.05) and mean cosine similarity > 0.75 after permutation would support the keyed-variant cipher hypothesis\", \"reasoning\": \"If A and B are permutation-related ciphers of the same language, this can be confirmed with a single matrix alignment test and would immediately provide a candidate mapping between the two cipher alphabets, halving the decipherment problem. Rejection would strongly support the two-language hypothesis instead.\"}, {\"claim\": \"The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-registry encoding where each word is drawn from a small closed vocabulary of astrological terms (< 50 unique words), producing a highly non-uniform unigram distribution unlike the rest of the manuscript.\", \"type\": \"structural\", \"confidence\": 0.48, \"evidence_for\": [\"Zodiac section entropy 3.7149 bits is 0.185 bits below the overall corpus entropy (3.8627 bits), a large and consistent gap\", \"Zodiac section has only 1,297 words across 12 folios, consistent with a label-heavy format where the same short labels repeat near illustrations\", \"Existing belief [0.396] (confidence 0.396) and [0.111] (confidence 0.111) already associate zodiac low entropy with label-oriented encoding\", \"In standard astrological manuscripts, zodiac sections use repetitive labels for months, constellations, and degree markers \u00e2\u20ac\u201d a small closed vocabulary is expected\"], \"evidence_against\": [\"If the zodiac section used only ~50 unique words, its type-token ratio would be ~0.039, far lower than the corpus average; this extreme would likely have been noted in prior analyses\", \"Low entropy alone does not distinguish label repetition from a simpler (less homophonic) cipher variant used in this section\", \"The zodiac section's Zipf behavior has not been independently confirmed to deviate from the rest of the corpus\"], \"test\": \"Compute the type-token ratio (TTR) and vocabulary size for the zodiac section alone. Compare the unigram frequency distribution of the zodiac section against the full corpus using Jensen-Shannon divergence. Fit a Zipf curve to the zodiac section word frequencies and compare the exponent to the full-corpus exponent (0.8946). Test whether the top-20 most frequent words in the zodiac section account for > 60% of all zodiac tokens.\", \"test_metric\": \"Jensen-Shannon divergence between zodiac and full-corpus unigram distributions; Zipf exponent for zodiac section; percentage of zodiac tokens covered by top-20 words; TTR for zodiac section\", \"test_threshold\": \"JS divergence > 0.15 vs. full corpus, Zipf exponent < 0.70 (steeper than corpus), top-20 words covering > 60% of tokens, and TTR < 0.08 would jointly confirm label-registry encoding; failure on two or more metrics would reject this hypothesis\", \"reasoning\": \"If confirmed, the zodiac section can be treated as a Rosetta-stone-like resource: a short, repetitive label set is the easiest entry point for cipher-breaking, and confirming its closed-vocabulary structure would make it the highest-priority decipherment target rather than the herbal section.\"}, {\"claim\": \"The strong word-initial and word-final glyph positional constraints ({o,c,q,s,d} and {y,n,l,r,o}) reflect a syllabic or consonant-vowel template in the underlying language (e.g., CV or CVC structure), not a cipher artifact, and can be modeled as a Markov chain of order 2 that predicts glyph position within a word with accuracy > 80%.\", \"type\": \"language\", \"confidence\": 0.38, \"evidence_for\": [\"Word-initial glyphs {o,c,q,s,d} and word-final glyphs {y,n,l,r,o} are highly consistent across the entire corpus, suggesting a grammatical or phonological rule rather than a cipher convention\", \"Existing belief [0.624] (confidence 0.624) and [0.616] (confidence 0.616) support positional constraints as artifacts of the underlying language structure or CV template\", \"A 2nd-order Markov model on glyph sequences within words is testable and would quantify whether positional constraints are rule-governed\", \"Medieval Latin and Italian both have strong CV templates that constrain consonant-vowel ordering at word boundaries\"], \"evidence_against\": [\"Existing belief [0.268] (confidence 0.268) attributes the positional constraints to a Vigenere-type cipher rather than linguistic structure \u00e2\u20ac\u201d cipher explanations are competitive\", \"If positional constraints are cipher-imposed (e.g., only certain glyphs are valid in certain cipher positions), the same pattern would emerge without any underlying syllabic structure\", \"A 2nd-order Markov model may overfit to the 25-glyph alphabet given only 38,053 words, producing spuriously high accuracy\"], \"test\": \"Train a 2nd-order Markov chain on within-word glyph sequences using 80% of words, reserving 20% for testing. Compute the model's accuracy in predicting the glyph at each position within a word (position 1, 2, 3, ..., n). Separately test whether the initial and final glyph constraint sets {o,c,q,s,d} and {y,n,l,r,o} account for > 85% of observed word-initial and word-final tokens respectively. Compare the positional entropy profiles (entropy at position k within a word) against profiles computed from scrambled (random-order) words.\", \"test_metric\": \"Markov model per-position prediction accuracy; percentage of word-initial and word-final tokens covered by the constraint sets; positional entropy at each within-word position compared to scrambled baseline\", \"test_threshold\": \"Markov accuracy > 80% at positions 1 and final, constraint sets covering > 85% of word-boundary tokens, and positional entropy at boundaries at least 0.5 bits lower than scrambled baseline would confirm strong positional constraints consistent with a CV or syllabic template\", \"reasoning\": \"Distinguishing cipher-imposed from language-imposed positional constraints is critical: if the constraints are linguistic, they provide direct evidence about the underlying language's phonology and narrow the candidate language set; if cipher-imposed, they constrain the cipher's structure. A Markov accuracy test is a clean, reproducible statistical method that directly tests the rule-governed nature of glyph positioning.\"}]}"
+}

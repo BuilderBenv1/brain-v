@@ -2,7 +2,7 @@
   "id": "H013",
   "claim": "The text uses a simple substitution cipher on an unknown language.",
   "type": "language",
-  "confidence": 0.217,
+  "confidence": 0.51,
   "evidence_for": [
     "Glyph entropy is lower than expected for Latin or Italian"
   ],
@@ -44,12 +44,52 @@
       "passed": null,
       "details": "Could not evaluate: Compute the frequency of word-final glyphs and compare to known languages",
       "confidence_change": "0.202 -> 0.217"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.7,
+      "passed": true,
+      "details": "Zipfian distribution (0.8946, R\u00c2\u00b2=0.9084) strongly supports natural language structure consistent with substitution cipher; glyph entropy (3.8627 bits) and hapax ratio (0.701) are reasonable though high; statistics do not contradict hypothesis but lack direct word-final glyph comparison for definitive confirmation.",
+      "confidence_change": "0.217 -> 0.299"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Compute the frequency of word-final glyphs and compare to known languages",
+      "confidence_change": "0.299 -> 0.309"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.72,
+      "passed": true,
+      "details": "Zipf exponent of 0.8946 (close to natural language's ~1.0) strongly supports substitution cipher hypothesis, as ciphers preserve linguistic statistics; however, hapax ratio of 0.701 is higher than typical natural language, creating mild uncertainty.",
+      "confidence_change": "0.309 -> 0.384"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.72,
+      "passed": true,
+      "details": "Strong Zipfian distribution (R\u00c2\u00b2=0.9084) and reasonable entropy/word length support natural language structure consistent with substitution cipher. However, hapax ratio of 0.701 is elevated versus typical natural languages (40-50%), introducing minor uncertainty.",
+      "confidence_change": "0.384 -> 0.451"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.72,
+      "passed": true,
+      "details": "Strong Zipfian distribution (0.8946, R\u00c2\u00b2=0.9084) is characteristic of natural language and strongly supports a substitution cipher hypothesis; reasonable word length and type-token ratio align with expectations, but elevated hapax ratio (0.701) is anomalous for natural language of this corpus size.",
+      "confidence_change": "0.451 -> 0.510"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-13",
+  "last_tested": "2026-04-14",
   "reasoning": "If confirmed, this would suggest a new language or dialect"
 }

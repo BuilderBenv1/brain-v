@@ -2,7 +2,7 @@
   "id": "H036",
   "claim": "The Currier A/B split encodes two different plaintext languages (e.g., Latin in sections assigned to A, Italian or an Italian dialect in sections assigned to B), detectable by different glyph-level entropy and different word-initial/final bigram profiles between A and B corpora.",
   "type": "language",
-  "confidence": 0.835,
+  "confidence": 0.923,
   "evidence_for": [
     "Currier B corpus (23,766 words) is more than twice the size of A (11,022 words), consistent with a dominant vs. supplementary language split",
     "Prior hypothesis H004/H008 both carry elevated confidence (0.808, 0.697) for genuine linguistic difference",
@@ -80,12 +80,52 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.808 -> 0.835"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.835 -> 0.858"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.858 -> 0.878"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.878 -> 0.895"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.895 -> 0.910"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b tokens. compute per-character (glyph) entropy, wor",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.910 -> 0.923"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-13",
+  "last_tested": "2026-04-14",
   "reasoning": "Confirming a genuine language split would allow separate decipherment tracks for A and B, halving effective search space; denial would redirect effort toward scribal or stylistic explanations."
 }

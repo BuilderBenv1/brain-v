@@ -1,0 +1,68 @@
+{
+  "id": "H065",
+  "claim": "The Voynich text uses a homophonic substitution cipher on medieval Latin where 2-3 Voynich glyphs map to each Latin letter, accounting for the observed entropy gap (3.8627 bits actual vs ~4.0 bits expected for Latin) and the anomalously high hapax ratio (70.1%) caused by variant glyph combinations encoding the same Latin word.",
+  "type": "cipher",
+  "confidence": 0.377,
+  "evidence_for": [
+    "Glyph entropy 3.8627 bits is close to but below Latin ~4.0 bits, consistent with homophones compressing entropy",
+    "High hapax ratio 70.1% explainable if multiple glyph-sequences encode same underlying word",
+    "25 unique glyphs is large enough to support homophonic mapping onto ~22-letter medieval Latin alphabet",
+    "Word-initial and word-final glyph constraints (o,c,q,s,d and y,n,l,r,o) could reflect Latin morphological patterns filtered through a homophonic key"
+  ],
+  "evidence_against": [
+    "Word entropy 10.4508 bits is very high for a simple homophonic cipher on Latin",
+    "Zipf exponent 0.8946 is lower than typical natural language (~1.0), suggesting additional structural transformation",
+    "If hapaxes were cipher artifacts, we would expect more near-duplicate word forms differing by one glyph \u00e2\u20ac\u201d not confirmed"
+  ],
+  "test": "Construct a candidate homophonic mapping (2-3 Voynich glyphs per Latin letter) by frequency-matching: rank Voynich glyphs by frequency, rank medieval Latin letters by frequency, assign top-N glyphs to most frequent letters. Decode a 500-word sample and measure bigram frequency correlation between decoded output and a Latin reference corpus.",
+  "test_metric": "Pearson correlation between decoded bigram frequencies and Latin bigram frequencies; also measure type-token ratio of decoded text vs. raw Latin",
+  "test_threshold": "Pearson r > 0.7 on bigram frequencies AND decoded hapax ratio drops below 30% would confirm; r < 0.3 or hapax ratio remains above 60% would deny",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.25,
+      "passed": false,
+      "details": "The hypothesis is undermined by insufficient glyphs (25) for a 2-3:1 homophonic mapping to 26 Latin letters, lower entropy than expected from redundant encoding, and a hapax ratio inconsistent with repeated plaintext words encoded variantly.",
+      "confidence_change": "0.640 -> 0.496"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.25,
+      "passed": false,
+      "details": "A 2-3 glyph per letter homophonic scheme requires 52-78 glyphs for Latin, but only 25 exist; entropy is too low for such ciphers despite Zipfian flattening being consistent with encipherment.",
+      "confidence_change": "0.496 -> 0.384"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.72,
+      "passed": true,
+      "details": "High hapax ratio (70.1%) is strongly consistent with glyph variants encoding identical Latin words; Zipf exponent (0.8946) is plausible for homophonic redundancy; entropy (3.8627 bits) matches expected compression from variant substitution, though the full hypothesis remains inconclusive pending bigram correlation testing against Latin corpus.",
+      "confidence_change": "0.384 -> 0.451"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.42,
+      "passed": false,
+      "details": "Homophonic ciphers typically increase entropy by expanding the symbol set; the observed lower entropy (3.8627 vs ~4.0) contradicts this mechanism, and the 70.1% hapax ratio is implausibly high for medieval Latin even with variant encodings.",
+      "confidence_change": "0.451 -> 0.373"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.45,
+      "passed": null,
+      "details": "High hapax ratio (70.1%) and modest entropy gap support homophonic encoding, but only 25 glyphs cannot support consistent 2-3 mappings for all 20+ Latin letters, making the scheme incomplete or fundamentally different; Zipf exponent unchanged (0.8946), which is neutral; actual decoding test not yet performed.",
+      "confidence_change": "0.373 -> 0.377"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "Homophonic substitution is the simplest mechanism that simultaneously explains the entropy gap from Latin, the high hapax ratio, and the glyph positional constraints. Confirming or denying it would strongly narrow the cipher-type search space."
+}

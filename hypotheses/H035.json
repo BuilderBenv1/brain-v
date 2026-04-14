@@ -2,7 +2,7 @@
   "id": "H035",
   "claim": "The high hapax ratio (70.1%) is largely an artifact of a systematic abbreviation or truncation cipher, where scribes consistently dropped word-final syllables or morphemes, causing each abbreviated form to appear unique even though the underlying vocabulary is much smaller.",
   "type": "cipher",
-  "confidence": 0.077,
+  "confidence": 0.043,
   "evidence_for": [
     "Hapax ratio of 70.1% far exceeds natural language norms (typically 40-55% for medieval Latin manuscripts of comparable size)",
     "Average word length of 5.03 glyphs is shorter than expected for unabbreviated Latin or Italian",
@@ -80,12 +80,36 @@
       "passed": false,
       "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
       "confidence_change": "0.094 -> 0.077"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the hapax word-length distribution and compare to non-hapax word-length distribution. if abb",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.077 -> 0.063"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the hapax word-length distribution and compare to non-hapax word-length distribution. if abb",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.063 -> 0.052"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute the hapax word-length distribution and compare to non-hapax word-length distribution. if abb",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.052 -> 0.043"
     }
   ],
   "tests_remaining": [],
-  "status": "active",
+  "status": "eliminated",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-13",
+  "last_tested": "2026-04-14",
   "reasoning": "If abbreviation drives hapax inflation, decipherment can focus on reconstructing root forms rather than treating each hapax as a distinct lexical item, dramatically narrowing the solution space."
 }

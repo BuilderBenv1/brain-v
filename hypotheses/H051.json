@@ -2,7 +2,7 @@
   "id": "H051",
   "claim": "The Currier A/B scribal split encodes the same underlying language but with two distinct homophonic substitution tables of different sizes: Currier A uses a smaller homophone set (lower token count, 11,022 words) with higher per-glyph entropy, while Currier B uses a larger homophone set producing lower per-glyph entropy, such that the weighted average glyph entropy of A-folios exceeds that of B-folios by at least 0.05 bits.",
   "type": "cipher",
-  "confidence": 0.816,
+  "confidence": 0.913,
   "evidence_for": [
     "Currier B is more than twice as large as A (23,766 vs 11,022 words), consistent with a richer encoding alphabet",
     "Overall glyph entropy 3.8627 bits is a blend; section-level entropy variation (3.71\u00e2\u20ac\u201c3.90) is consistent with variable homophone table sizes",
@@ -56,12 +56,52 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.786 -> 0.816"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b folios; compute per-folio glyph entropy for each p",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.816 -> 0.842"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b folios; compute per-folio glyph entropy for each p",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.842 -> 0.864"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b folios; compute per-folio glyph entropy for each p",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.864 -> 0.883"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b folios; compute per-folio glyph entropy for each p",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.883 -> 0.899"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "partition the corpus into currier-a and currier-b folios; compute per-folio glyph entropy for each p",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.899 -> 0.913"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-13",
+  "last_tested": "2026-04-14",
   "reasoning": "Detecting a systematic entropy asymmetry between scribal hands would constrain whether the A/B split is a language boundary or a cipher-table boundary, eliminating one of the two leading explanations."
 }

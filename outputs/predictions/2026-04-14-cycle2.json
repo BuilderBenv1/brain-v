@@ -1,0 +1,153 @@
+{
+  "date": "2026-04-14",
+  "cycle": "predict",
+  "model": "claude-code-cli",
+  "belief_count": 31,
+  "existing_hypothesis_count": 88,
+  "new_hypotheses": [
+    "H069",
+    "H070",
+    "H071",
+    "H072",
+    "H073"
+  ],
+  "hypotheses": [
+    {
+      "id": "H069",
+      "claim": "The text-only section (entropy 3.9016 bits, highest of all sections) represents unenciphered or minimally enciphered natural language prose, while lower-entropy sections use a homophonic expansion layer that artificially reduces entropy by replacing single plaintext glyphs with multiple ciphertext glyphs.",
+      "type": "cipher",
+      "confidence": 0.61,
+      "evidence_for": [
+        "Text-only section has highest entropy (3.9016 bits), closest to natural language baselines (Latin ~4.0, Italian ~3.95)",
+        "Homophonic substitution would reduce entropy in proportion to the number of homophones used per plaintext character",
+        "Zodiac section has lowest entropy (3.7149 bits) and is label-heavy, consistent with repetitive short labels encoded homophones"
+      ],
+      "evidence_against": [
+        "If text-only were unenciphered, word boundaries and word forms should resemble known medieval languages more closely",
+        "High hapax ratio (70.1%) conflicts with expectation that natural-language prose would show more word repetition"
+      ],
+      "test": "Compute mutual information between section-level entropy and average word length; if homophonic expansion is active, sections with lower entropy should show longer average word lengths due to ciphertext expansion",
+      "test_metric": "Pearson correlation between per-section entropy and per-section mean word length",
+      "test_threshold": "Correlation r < -0.6 (p < 0.05) would support homophonic expansion hypothesis; r near 0 would refute it",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute mutual information between section-level entropy and average word length; if homophonic expansion is active, sections with lower entropy should show longer average word lengths due to ciphertext expansion"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "If lower-entropy sections use homophones, each plaintext character maps to more ciphertext glyphs, inflating word length while reducing per-glyph entropy. This predicts an inverse correlation between entropy and word length across sections that is directly testable."
+    },
+    {
+      "id": "H070",
+      "claim": "The extremely high hapax ratio (70.1%) is produced by a systematic suffix-agglutination cipher mechanism: a small closed vocabulary of roots (~500-800 types) is combined with a set of suffix glyphs drawn from the word-final constraint set {y, n, l, r, o}, generating surface forms that appear unique but share common roots.",
+      "type": "cipher",
+      "confidence": 0.52,
+      "evidence_for": [
+        "Word-final glyphs {y, n, l, r, o} are highly constrained and concentrated, consistent with a small morphological suffix inventory",
+        "If roots recombine with ~5 suffixes each, a vocabulary of 800 roots produces ~4,000 surface forms, approximating the ~8,261 unique types observed",
+        "Zipf exponent 0.8946 (below 1.0) is consistent with a generative vocabulary with moderate root reuse"
+      ],
+      "evidence_against": [
+        "True suffix agglutination in natural languages typically produces lower hapax ratios than 70.1%",
+        "If suffixes are purely cipher artifacts, stripping them should reveal a Zipfian root distribution with exponent closer to 1.0; this has not been confirmed"
+      ],
+      "test": "Strip word-final glyphs belonging to {y, n, l, r, o} iteratively from each token; compute vocabulary size and hapax ratio of the resulting root corpus; compare Zipf exponent of root distribution to full-text Zipf exponent",
+      "test_metric": "Hapax ratio of root corpus after suffix stripping; Zipf exponent of root frequency distribution",
+      "test_threshold": "Root hapax ratio < 40% and Zipf exponent > 1.0 after stripping would strongly support systematic suffix agglutination; no significant change would refute it",
+      "tests_run": [],
+      "tests_remaining": [
+        "Strip word-final glyphs belonging to {y, n, l, r, o} iteratively from each token; compute vocabulary size and hapax ratio of the resulting root corpus; compare Zipf exponent of root distribution to full-text Zipf exponent"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "If the hapax explosion is suffix-driven, removing the suffix layer should dramatically collapse vocabulary size and reveal a more naturalistic frequency distribution, directly narrowing whether the cipher operates at the morpheme or word level."
+    },
+    {
+      "id": "H071",
+      "claim": "The Currier A/B split encodes two different plaintext languages (e.g., Latin in Currier A sections, early Italian or Occitan in Currier B sections), with each language using the same substitution cipher key but differing in phonological inventory, producing measurable differences in bigram transition probabilities between the two corpora.",
+      "type": "language",
+      "confidence": 0.55,
+      "evidence_for": [
+        "Currier A (11,022 words) and B (23,766 words) show consistent scribal and distributional differences across folios",
+        "Different underlying phonologies would produce different glyph bigram frequencies even under the same cipher key",
+        "Current belief [0.552] supports two different plaintext languages for A/B split"
+      ],
+      "evidence_against": [
+        "Same cipher key assumption is not established; A/B differences could reflect two different keys on one language",
+        "Currier A/B split correlates with scribal hand differences, so observed statistical differences may be stylistic rather than linguistic"
+      ],
+      "test": "Compute glyph bigram transition matrices separately for Currier A and Currier B corpora; calculate Jensen-Shannon divergence between the two matrices; compare to JSD between randomly sampled equal-size subcorpora of each Currier class",
+      "test_metric": "Jensen-Shannon divergence between Currier A and B bigram transition matrices",
+      "test_threshold": "JSD > 0.05 bits (and significantly exceeding within-class JSD from bootstrap resampling at p < 0.01) would support distinct underlying phonologies; JSD near within-class variance would refute it",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute glyph bigram transition matrices separately for Currier A and Currier B corpora; calculate Jensen-Shannon divergence between the two matrices; compare to JSD between randomly sampled equal-size subcorpora of each Currier class"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "Two different source languages under the same cipher key would produce detectably different bigram statistics reflecting their phonological differences. This test distinguishes linguistic divergence from mere scribal style variation."
+    },
+    {
+      "id": "H072",
+      "claim": "The zodiac section's anomalously low entropy (3.7149 bits) and label-heavy structure reflect a fixed-vocabulary encoding in which each label token is drawn from a closed set of fewer than 50 distinct label templates, with high within-label glyph redundancy serving as a positional marker rather than encoding phonemic content.",
+      "type": "structural",
+      "confidence": 0.53,
+      "evidence_for": [
+        "Zodiac section has fewest folios (12) and words (1,297) relative to other sections, consistent with a label-only register",
+        "Lowest section entropy (3.7149 bits) suggests reduced glyph diversity, compatible with a closed label vocabulary",
+        "Astronomical section also has low entropy (3.7471 bits) and is similarly diagram-heavy, supporting a diagram-label encoding regime"
+      ],
+      "evidence_against": [
+        "If labels use a closed template set, type-token ratio for the zodiac section should be markedly lower than other sections; this is testable but not yet confirmed",
+        "Low entropy could alternatively reflect a denser homophonic encoding rather than a restricted vocabulary"
+      ],
+      "test": "Compute type-token ratio (unique words / total words) for each section; test whether zodiac and astronomical sections have significantly lower TTR than herbal, recipes, and text-only sections using a one-sided permutation test",
+      "test_metric": "Type-token ratio per section; permutation test p-value comparing label-heavy vs. prose-heavy sections",
+      "test_threshold": "Zodiac TTR < 0.30 and permutation p < 0.05 relative to herbal/recipes/text-only sections would confirm closed-vocabulary label encoding; TTR comparable to other sections would refute it",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute type-token ratio (unique words / total words) for each section; test whether zodiac and astronomical sections have significantly lower TTR than herbal, recipes, and text-only sections using a one-sided permutation test"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "If zodiac labels are drawn from a closed template set, the section should show a markedly lower TTR than prose sections. Confirming this would establish a two-register model (label vs. prose) that constrains decipherment strategies differently for each section."
+    },
+    {
+      "id": "H073",
+      "claim": "The dominant word-initial glyph constraints {o, c, q, s, d} are artifacts of a cipher mechanism that encodes plaintext vowels (a, e, i, o, u) as these five glyphs in word-initial position, with each cipher glyph mapping to a single plaintext vowel, producing a detectable co-occurrence pattern between word-initial cipher glyphs and word-final glyphs that mirrors vowel-consonant harmony in Latin or Italian.",
+      "type": "cipher",
+      "confidence": 0.44,
+      "evidence_for": [
+        "Word-initial glyph constraints are strongly concentrated in just 5 glyphs, consistent with a small vowel inventory (Latin has 5 vowels, Italian 7)",
+        "If initial glyphs encode vowels, words beginning with each initial glyph should share statistical properties (length, following bigram) traceable to the underlying vowel's phonological context",
+        "Current belief [0.624] supports positional glyph constraints reflecting cipher structure"
+      ],
+      "evidence_against": [
+        "Latin and Italian words do not begin with vowels at the frequency implied by the dominance of these 5 initial glyphs",
+        "The cipher could instead encode consonant classes or null prefixes rather than vowels",
+        "q is almost exclusively followed by o in the Voynich text, suggesting a digraph rather than an independent vowel encoding"
+      ],
+      "test": "For each of the 5 dominant word-initial glyphs, compute the distribution of immediately following glyphs (second-position bigrams); test whether these second-position distributions are mutually exclusive or overlapping using a chi-squared test of independence across the 5 initial-glyph classes",
+      "test_metric": "Chi-squared statistic and Cram\u00c3\u00a9r's V for association between word-initial glyph identity and second-position glyph identity",
+      "test_threshold": "Cram\u00c3\u00a9r's V > 0.4 with p < 0.001 would confirm that initial glyphs partition into distinct phonological classes (consistent with vowel encoding); V < 0.2 would suggest initial glyphs are positional markers without phonemic specificity",
+      "tests_run": [],
+      "tests_remaining": [
+        "For each of the 5 dominant word-initial glyphs, compute the distribution of immediately following glyphs (second-position bigrams); test whether these second-position distributions are mutually exclusive or overlapping using a chi-squared test of independence across the 5 initial-glyph classes"
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "If initial glyphs encode specific vowels, each should consistently co-occur with a predictable set of following consonant glyphs reflecting the phonotactics of the underlying language. This test can distinguish phonemically meaningful initial constraints from purely positional cipher artifacts."
+    }
+  ],
+  "raw_response": "{\"hypotheses\":[{\"claim\":\"The text-only section (entropy 3.9016 bits, highest of all sections) represents unenciphered or minimally enciphered natural language prose, while lower-entropy sections use a homophonic expansion layer that artificially reduces entropy by replacing single plaintext glyphs with multiple ciphertext glyphs.\",\"type\":\"cipher\",\"confidence\":0.61,\"evidence_for\":[\"Text-only section has highest entropy (3.9016 bits), closest to natural language baselines (Latin ~4.0, Italian ~3.95)\",\"Homophonic substitution would reduce entropy in proportion to the number of homophones used per plaintext character\",\"Zodiac section has lowest entropy (3.7149 bits) and is label-heavy, consistent with repetitive short labels encoded homophones\"],\"evidence_against\":[\"If text-only were unenciphered, word boundaries and word forms should resemble known medieval languages more closely\",\"High hapax ratio (70.1%) conflicts with expectation that natural-language prose would show more word repetition\"],\"test\":\"Compute mutual information between section-level entropy and average word length; if homophonic expansion is active, sections with lower entropy should show longer average word lengths due to ciphertext expansion\",\"test_metric\":\"Pearson correlation between per-section entropy and per-section mean word length\",\"test_threshold\":\"Correlation r < -0.6 (p < 0.05) would support homophonic expansion hypothesis; r near 0 would refute it\",\"reasoning\":\"If lower-entropy sections use homophones, each plaintext character maps to more ciphertext glyphs, inflating word length while reducing per-glyph entropy. This predicts an inverse correlation between entropy and word length across sections that is directly testable.\"},{\"claim\":\"The extremely high hapax ratio (70.1%) is produced by a systematic suffix-agglutination cipher mechanism: a small closed vocabulary of roots (~500-800 types) is combined with a set of suffix glyphs drawn from the word-final constraint set {y, n, l, r, o}, generating surface forms that appear unique but share common roots.\",\"type\":\"cipher\",\"confidence\":0.52,\"evidence_for\":[\"Word-final glyphs {y, n, l, r, o} are highly constrained and concentrated, consistent with a small morphological suffix inventory\",\"If roots recombine with ~5 suffixes each, a vocabulary of 800 roots produces ~4,000 surface forms, approximating the ~8,261 unique types observed\",\"Zipf exponent 0.8946 (below 1.0) is consistent with a generative vocabulary with moderate root reuse\"],\"evidence_against\":[\"True suffix agglutination in natural languages typically produces lower hapax ratios than 70.1%\",\"If suffixes are purely cipher artifacts, stripping them should reveal a Zipfian root distribution with exponent closer to 1.0; this has not been confirmed\"],\"test\":\"Strip word-final glyphs belonging to {y, n, l, r, o} iteratively from each token; compute vocabulary size and hapax ratio of the resulting root corpus; compare Zipf exponent of root distribution to full-text Zipf exponent\",\"test_metric\":\"Hapax ratio of root corpus after suffix stripping; Zipf exponent of root frequency distribution\",\"test_threshold\":\"Root hapax ratio < 40% and Zipf exponent > 1.0 after stripping would strongly support systematic suffix agglutination; no significant change would refute it\",\"reasoning\":\"If the hapax explosion is suffix-driven, removing the suffix layer should dramatically collapse vocabulary size and reveal a more naturalistic frequency distribution, directly narrowing whether the cipher operates at the morpheme or word level.\"},{\"claim\":\"The Currier A/B split encodes two different plaintext languages (e.g., Latin in Currier A sections, early Italian or Occitan in Currier B sections), with each language using the same substitution cipher key but differing in phonological inventory, producing measurable differences in bigram transition probabilities between the two corpora.\",\"type\":\"language\",\"confidence\":0.55,\"evidence_for\":[\"Currier A (11,022 words) and B (23,766 words) show consistent scribal and distributional differences across folios\",\"Different underlying phonologies would produce different glyph bigram frequencies even under the same cipher key\",\"Current belief [0.552] supports two different plaintext languages for A/B split\"],\"evidence_against\":[\"Same cipher key assumption is not established; A/B differences could reflect two different keys on one language\",\"Currier A/B split correlates with scribal hand differences, so observed statistical differences may be stylistic rather than linguistic\"],\"test\":\"Compute glyph bigram transition matrices separately for Currier A and Currier B corpora; calculate Jensen-Shannon divergence between the two matrices; compare to JSD between randomly sampled equal-size subcorpora of each Currier class\",\"test_metric\":\"Jensen-Shannon divergence between Currier A and B bigram transition matrices\",\"test_threshold\":\"JSD > 0.05 bits (and significantly exceeding within-class JSD from bootstrap resampling at p < 0.01) would support distinct underlying phonologies; JSD near within-class variance would refute it\",\"reasoning\":\"Two different source languages under the same cipher key would produce detectably different bigram statistics reflecting their phonological differences. This test distinguishes linguistic divergence from mere scribal style variation.\"},{\"claim\":\"The zodiac section's anomalously low entropy (3.7149 bits) and label-heavy structure reflect a fixed-vocabulary encoding in which each label token is drawn from a closed set of fewer than 50 distinct label templates, with high within-label glyph redundancy serving as a positional marker rather than encoding phonemic content.\",\"type\":\"structural\",\"confidence\":0.53,\"evidence_for\":[\"Zodiac section has fewest folios (12) and words (1,297) relative to other sections, consistent with a label-only register\",\"Lowest section entropy (3.7149 bits) suggests reduced glyph diversity, compatible with a closed label vocabulary\",\"Astronomical section also has low entropy (3.7471 bits) and is similarly diagram-heavy, supporting a diagram-label encoding regime\"],\"evidence_against\":[\"If labels use a closed template set, type-token ratio for the zodiac section should be markedly lower than other sections; this is testable but not yet confirmed\",\"Low entropy could alternatively reflect a denser homophonic encoding rather than a restricted vocabulary\"],\"test\":\"Compute type-token ratio (unique words / total words) for each section; test whether zodiac and astronomical sections have significantly lower TTR than herbal, recipes, and text-only sections using a one-sided permutation test\",\"test_metric\":\"Type-token ratio per section; permutation test p-value comparing label-heavy vs. prose-heavy sections\",\"test_threshold\":\"Zodiac TTR < 0.30 and permutation p < 0.05 relative to herbal/recipes/text-only sections would confirm closed-vocabulary label encoding; TTR comparable to other sections would refute it\",\"reasoning\":\"If zodiac labels are drawn from a closed template set, the section should show a markedly lower TTR than prose sections. Confirming this would establish a two-register model (label vs. prose) that constrains decipherment strategies differently for each section.\"},{\"claim\":\"The dominant word-initial glyph constraints {o, c, q, s, d} are artifacts of a cipher mechanism that encodes plaintext vowels (a, e, i, o, u) as these five glyphs in word-initial position, with each cipher glyph mapping to a single plaintext vowel, producing a detectable co-occurrence pattern between word-initial cipher glyphs and word-final glyphs that mirrors vowel-consonant harmony in Latin or Italian.\",\"type\":\"cipher\",\"confidence\":0.44,\"evidence_for\":[\"Word-initial glyph constraints are strongly concentrated in just 5 glyphs, consistent with a small vowel inventory (Latin has 5 vowels, Italian 7)\",\"If initial glyphs encode vowels, words beginning with each initial glyph should share statistical properties (length, following bigram) traceable to the underlying vowel's phonological context\",\"Current belief [0.624] supports positional glyph constraints reflecting cipher structure\"],\"evidence_against\":[\"Latin and Italian words do not begin with vowels at the frequency implied by the dominance of these 5 initial glyphs\",\"The cipher could instead encode consonant classes or null prefixes rather than vowels\",\"q is almost exclusively followed by o in the Voynich text, suggesting a digraph rather than an independent vowel encoding\"],\"test\":\"For each of the 5 dominant word-initial glyphs, compute the distribution of immediately following glyphs (second-position bigrams); test whether these second-position distributions are mutually exclusive or overlapping using a chi-squared test of independence across the 5 initial-glyph classes\",\"test_metric\":\"Chi-squared statistic and Cram\u00c3\u00a9r's V for association between word-initial glyph identity and second-position glyph identity\",\"test_threshold\":\"Cram\u00c3\u00a9r's V > 0.4 with p < 0.001 would confirm that initial glyphs partition into distinct phonological classes (consistent with vowel encoding); V < 0.2 would suggest initial glyphs are positional markers without phonemic specificity\",\"reasoning\":\"If initial glyphs encode specific vowels, each should consistently co-occur with a predictable set of following consonant glyphs reflecting the phonotactics of the underlying language. This test can distinguish phonemically meaningful initial constraints from purely positional cipher artifacts.\"}]}"
+}

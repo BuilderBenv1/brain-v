@@ -2,7 +2,7 @@
   "id": "H045",
   "claim": "The high hapax ratio (70.1%) arises from a systematic abbreviation or suffix-stripping convention rather than from a large vocabulary, such that each Voynich 'word' represents a root plus a dropped inflectional ending \u00e2\u20ac\u201d testable by checking whether hapax forms cluster around specific glyph-final patterns that would correspond to stripped suffixes.",
   "type": "cipher",
-  "confidence": 0.157,
+  "confidence": 0.058,
   "evidence_for": [
     "70.1% hapax ratio far exceeds natural languages (Latin ~40\u00e2\u20ac\u201c50%, Italian ~45\u00e2\u20ac\u201c55%)",
     "Short average word length (5.03) is consistent with abbreviated forms",
@@ -63,12 +63,52 @@
       "passed": false,
       "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
       "confidence_change": "0.192 -> 0.157"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster all 8,261 unique words by their final 1\u00e2\u20ac\u201c2 glyphs; compute the type-token ratio within each",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.157 -> 0.129"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster all 8,261 unique words by their final 1\u00e2\u20ac\u201c2 glyphs; compute the type-token ratio within each",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.129 -> 0.106"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster all 8,261 unique words by their final 1\u00e2\u20ac\u201c2 glyphs; compute the type-token ratio within each",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.106 -> 0.087"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster all 8,261 unique words by their final 1\u00e2\u20ac\u201c2 glyphs; compute the type-token ratio within each",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.087 -> 0.071"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "cluster all 8,261 unique words by their final 1\u00e2\u20ac\u201c2 glyphs; compute the type-token ratio within each",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.071 -> 0.058"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-13",
+  "last_tested": "2026-04-14",
   "reasoning": "Identifying whether hapax inflation is structural (suffix-stripping) or lexical (genuine large vocabulary) directly constrains whether the cipher encodes a morphologically rich language and whether root-extraction preprocessing is needed before decipherment"
 }

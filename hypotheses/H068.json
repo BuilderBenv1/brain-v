@@ -1,0 +1,67 @@
+{
+  "id": "H068",
+  "claim": "The extremely high hapax ratio (70.1%) is partially produced by a systematic scribal abbreviation convention where a base word form appears fully in first use and is abbreviated (via suffix truncation or initial-letter substitution) in subsequent uses within the same folio or page, making most 'unique' word types artifactual variants of a smaller true vocabulary.",
+  "type": "structural",
+  "confidence": 0.14,
+  "evidence_for": [
+    "70.1% hapax rate is far above natural language baselines (typically 40-55% for corpora of this size)",
+    "Medieval scribal abbreviation is well-documented in Latin manuscripts of the same period",
+    "If abbreviation is page-local, hapaxes would cluster within folios rather than being uniformly distributed across the manuscript"
+  ],
+  "evidence_against": [
+    "Scribal abbreviation in Latin typically produces recognizable ligatures or suspension marks \u00e2\u20ac\u201d Voynich text shows no obvious such markers",
+    "If abbreviation were systematic, we would expect a bimodal word-length distribution (full forms vs. abbreviated forms) \u00e2\u20ac\u201d the average 5.03 length does not obviously suggest this",
+    "The word entropy of 10.4508 bits is very high, inconsistent with a reduced true vocabulary"
+  ],
+  "test": "Measure the within-folio hapax rate vs. the cross-folio hapax rate: for each word type that appears exactly once in the full corpus, determine whether it appears in a folio where a morphologically similar word (edit distance 1-2) also appears. Compare within-folio edit-distance-1 neighbor rate for hapaxes vs. non-hapaxes.",
+  "test_metric": "Fraction of hapax words that have an edit-distance-1 neighbor appearing in the same folio; compare to expected rate under null hypothesis of random word placement",
+  "test_threshold": "If hapaxes have edit-distance-1 neighbors in the same folio at rate > 3x the null expectation (p < 0.01), abbreviation hypothesis is supported. If rate is indistinguishable from null, abbreviation is unlikely to explain the hapax excess.",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "measure the within-folio hapax rate vs. the cross-folio hapax rate: for each word type that appears ",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.380 -> 0.311"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "measure the within-folio hapax rate vs. the cross-folio hapax rate: for each word type that appears ",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.311 -> 0.255"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "measure the within-folio hapax rate vs. the cross-folio hapax rate: for each word type that appears ",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.255 -> 0.209"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "measure the within-folio hapax rate vs. the cross-folio hapax rate: for each word type that appears ",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.209 -> 0.171"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "measure the within-folio hapax rate vs. the cross-folio hapax rate: for each word type that appears ",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.171 -> 0.140"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "The hapax ratio is one of the most anomalous statistics in the manuscript. If abbreviation explains even 30% of hapaxes, the true vocabulary size drops substantially, which would affect all downstream entropy and Zipf analyses. This test can be run purely on the existing word-list corpus."
+}

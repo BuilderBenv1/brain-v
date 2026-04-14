@@ -1,0 +1,128 @@
+{
+  "date": "2026-04-14",
+  "cycle": "predict",
+  "model": "claude-code-cli",
+  "belief_count": 31,
+  "existing_hypothesis_count": 84,
+  "new_hypotheses": [
+    "H065",
+    "H066",
+    "H067",
+    "H068"
+  ],
+  "hypotheses": [
+    {
+      "id": "H065",
+      "claim": "The Voynich text uses a homophonic substitution cipher on medieval Latin where 2-3 Voynich glyphs map to each Latin letter, accounting for the observed entropy gap (3.8627 bits actual vs ~4.0 bits expected for Latin) and the anomalously high hapax ratio (70.1%) caused by variant glyph combinations encoding the same Latin word.",
+      "type": "cipher",
+      "confidence": 0.64,
+      "evidence_for": [
+        "Glyph entropy 3.8627 bits is close to but below Latin ~4.0 bits, consistent with homophones compressing entropy",
+        "High hapax ratio 70.1% explainable if multiple glyph-sequences encode same underlying word",
+        "25 unique glyphs is large enough to support homophonic mapping onto ~22-letter medieval Latin alphabet",
+        "Word-initial and word-final glyph constraints (o,c,q,s,d and y,n,l,r,o) could reflect Latin morphological patterns filtered through a homophonic key"
+      ],
+      "evidence_against": [
+        "Word entropy 10.4508 bits is very high for a simple homophonic cipher on Latin",
+        "Zipf exponent 0.8946 is lower than typical natural language (~1.0), suggesting additional structural transformation",
+        "If hapaxes were cipher artifacts, we would expect more near-duplicate word forms differing by one glyph \u00e2\u20ac\u201d not confirmed"
+      ],
+      "test": "Construct a candidate homophonic mapping (2-3 Voynich glyphs per Latin letter) by frequency-matching: rank Voynich glyphs by frequency, rank medieval Latin letters by frequency, assign top-N glyphs to most frequent letters. Decode a 500-word sample and measure bigram frequency correlation between decoded output and a Latin reference corpus.",
+      "test_metric": "Pearson correlation between decoded bigram frequencies and Latin bigram frequencies; also measure type-token ratio of decoded text vs. raw Latin",
+      "test_threshold": "Pearson r > 0.7 on bigram frequencies AND decoded hapax ratio drops below 30% would confirm; r < 0.3 or hapax ratio remains above 60% would deny",
+      "tests_run": [],
+      "tests_remaining": [
+        "Construct a candidate homophonic mapping (2-3 Voynich glyphs per Latin letter) by frequency-matching: rank Voynich glyphs by frequency, rank medieval Latin letters by frequency, assign top-N glyphs to most frequent letters. Decode a 500-word sample and measure bigram frequency correlation between decoded output and a Latin reference corpus."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "Homophonic substitution is the simplest mechanism that simultaneously explains the entropy gap from Latin, the high hapax ratio, and the glyph positional constraints. Confirming or denying it would strongly narrow the cipher-type search space."
+    },
+    {
+      "id": "H066",
+      "claim": "The Currier A/B split encodes two different scribal dialects of the same underlying language (not two different languages), where Scribe A uses a slightly different homophonic key than Scribe B, producing measurable differences in glyph bigram entropy between the two sub-corpora rather than differences in underlying vocabulary.",
+      "type": "cipher",
+      "confidence": 0.48,
+      "evidence_for": [
+        "Currier A (11,022 words) and B (23,766 words) show known distributional differences in glyph usage",
+        "Two scribes sharing a cipher but using different key variants would produce sub-corpus entropy differences without requiring two distinct languages",
+        "Current belief [0.677] already favors two scribes encoding same language"
+      ],
+      "evidence_against": [
+        "Current belief [0.65] also supports two different plaintext languages \u00e2\u20ac\u201d the evidence is genuinely ambiguous",
+        "If only key variants differ, lexical overlap between A and B sections should be high; reported overlap may not support this"
+      ],
+      "test": "Compute glyph unigram and bigram entropy separately for Currier A and B sub-corpora. Then compute the Jensen-Shannon divergence between the glyph bigram distributions of A and B, and separately compute the word-type overlap (Jaccard similarity of vocabularies). Compare JS divergence of A vs B to JS divergence between two random equal-sized splits of the full corpus.",
+      "test_metric": "Jensen-Shannon divergence of glyph bigram distributions (A vs B); Jaccard vocabulary overlap between A and B word sets",
+      "test_threshold": "JS divergence A-vs-B significantly greater than random-split JS divergence (p < 0.05) AND Jaccard overlap < 0.15 would support two-language hypothesis; JS divergence near random-split baseline AND Jaccard overlap > 0.30 would support same-language different-key hypothesis",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute glyph unigram and bigram entropy separately for Currier A and B sub-corpora. Then compute the Jensen-Shannon divergence between the glyph bigram distributions of A and B, and separately compute the word-type overlap (Jaccard similarity of vocabularies). Compare JS divergence of A vs B to JS divergence between two random equal-sized splits of the full corpus."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "Disambiguating whether A/B reflects a language split or a key-variant split is critical: the former requires finding two plaintext languages, the latter requires finding one language with two cipher variants. This test directly separates those cases."
+    },
+    {
+      "id": "H067",
+      "claim": "The zodiac and astronomical sections use a label-encoding scheme where words are proper nouns or fixed labels (star names, month names, zodiac terms) rather than running prose, which explains their anomalously low entropy (3.7149 and 3.7471 bits) as a reduced effective vocabulary with high repetition of a small label lexicon.",
+      "type": "structural",
+      "confidence": 0.71,
+      "evidence_for": [
+        "Zodiac entropy 3.7149 bits is the lowest of all sections \u00e2\u20ac\u201d consistent with a small fixed vocabulary of labels",
+        "Astronomical entropy 3.7471 bits is second-lowest, consistent with the same label-encoding pattern",
+        "Medieval astronomical manuscripts routinely use repeated short labels for stars, months, and zodiac signs",
+        "These sections are visually dominated by figures with attached short word sequences, matching a label structure"
+      ],
+      "evidence_against": [
+        "If labels, the type-token ratio and average word length should be distinctly lower than in herbal/recipes sections \u00e2\u20ac\u201d this needs verification",
+        "Some zodiac folios contain longer text passages that may not be pure labels"
+      ],
+      "test": "Compute average word length, type-token ratio (TTR), and hapax ratio separately for zodiac and astronomical sections vs. herbal and recipes sections. Additionally, measure the frequency of the top-10 words within each section as a fraction of total section word count.",
+      "test_metric": "TTR per section; mean word length per section; top-10-word coverage fraction per section",
+      "test_threshold": "If zodiac/astronomical TTR < 0.20 AND top-10-word coverage > 25% of section tokens, label-encoding hypothesis is supported. If TTR > 0.35 or top-10 coverage < 10%, the label hypothesis is weakened.",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute average word length, type-token ratio (TTR), and hapax ratio separately for zodiac and astronomical sections vs. herbal and recipes sections. Additionally, measure the frequency of the top-10 words within each section as a fraction of total section word count."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "Label-encoding is the most parsimonious explanation for the entropy gradient across sections. Confirming it would allow the low-entropy sections to be analyzed separately as a constrained vocabulary problem, significantly simplifying the decipherment task for those sections."
+    },
+    {
+      "id": "H068",
+      "claim": "The extremely high hapax ratio (70.1%) is partially produced by a systematic scribal abbreviation convention where a base word form appears fully in first use and is abbreviated (via suffix truncation or initial-letter substitution) in subsequent uses within the same folio or page, making most 'unique' word types artifactual variants of a smaller true vocabulary.",
+      "type": "structural",
+      "confidence": 0.38,
+      "evidence_for": [
+        "70.1% hapax rate is far above natural language baselines (typically 40-55% for corpora of this size)",
+        "Medieval scribal abbreviation is well-documented in Latin manuscripts of the same period",
+        "If abbreviation is page-local, hapaxes would cluster within folios rather than being uniformly distributed across the manuscript"
+      ],
+      "evidence_against": [
+        "Scribal abbreviation in Latin typically produces recognizable ligatures or suspension marks \u00e2\u20ac\u201d Voynich text shows no obvious such markers",
+        "If abbreviation were systematic, we would expect a bimodal word-length distribution (full forms vs. abbreviated forms) \u00e2\u20ac\u201d the average 5.03 length does not obviously suggest this",
+        "The word entropy of 10.4508 bits is very high, inconsistent with a reduced true vocabulary"
+      ],
+      "test": "Measure the within-folio hapax rate vs. the cross-folio hapax rate: for each word type that appears exactly once in the full corpus, determine whether it appears in a folio where a morphologically similar word (edit distance 1-2) also appears. Compare within-folio edit-distance-1 neighbor rate for hapaxes vs. non-hapaxes.",
+      "test_metric": "Fraction of hapax words that have an edit-distance-1 neighbor appearing in the same folio; compare to expected rate under null hypothesis of random word placement",
+      "test_threshold": "If hapaxes have edit-distance-1 neighbors in the same folio at rate > 3x the null expectation (p < 0.01), abbreviation hypothesis is supported. If rate is indistinguishable from null, abbreviation is unlikely to explain the hapax excess.",
+      "tests_run": [],
+      "tests_remaining": [
+        "Measure the within-folio hapax rate vs. the cross-folio hapax rate: for each word type that appears exactly once in the full corpus, determine whether it appears in a folio where a morphologically similar word (edit distance 1-2) also appears. Compare within-folio edit-distance-1 neighbor rate for hapaxes vs. non-hapaxes."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-14",
+      "last_tested": null,
+      "reasoning": "The hapax ratio is one of the most anomalous statistics in the manuscript. If abbreviation explains even 30% of hapaxes, the true vocabulary size drops substantially, which would affect all downstream entropy and Zipf analyses. This test can be run purely on the existing word-list corpus."
+    }
+  ],
+  "raw_response": "{\"hypotheses\": [{\"claim\": \"The Voynich text uses a homophonic substitution cipher on medieval Latin where 2-3 Voynich glyphs map to each Latin letter, accounting for the observed entropy gap (3.8627 bits actual vs ~4.0 bits expected for Latin) and the anomalously high hapax ratio (70.1%) caused by variant glyph combinations encoding the same Latin word.\", \"type\": \"cipher\", \"confidence\": 0.64, \"evidence_for\": [\"Glyph entropy 3.8627 bits is close to but below Latin ~4.0 bits, consistent with homophones compressing entropy\", \"High hapax ratio 70.1% explainable if multiple glyph-sequences encode same underlying word\", \"25 unique glyphs is large enough to support homophonic mapping onto ~22-letter medieval Latin alphabet\", \"Word-initial and word-final glyph constraints (o,c,q,s,d and y,n,l,r,o) could reflect Latin morphological patterns filtered through a homophonic key\"], \"evidence_against\": [\"Word entropy 10.4508 bits is very high for a simple homophonic cipher on Latin\", \"Zipf exponent 0.8946 is lower than typical natural language (~1.0), suggesting additional structural transformation\", \"If hapaxes were cipher artifacts, we would expect more near-duplicate word forms differing by one glyph \u00e2\u20ac\u201d not confirmed\"], \"test\": \"Construct a candidate homophonic mapping (2-3 Voynich glyphs per Latin letter) by frequency-matching: rank Voynich glyphs by frequency, rank medieval Latin letters by frequency, assign top-N glyphs to most frequent letters. Decode a 500-word sample and measure bigram frequency correlation between decoded output and a Latin reference corpus.\", \"test_metric\": \"Pearson correlation between decoded bigram frequencies and Latin bigram frequencies; also measure type-token ratio of decoded text vs. raw Latin\", \"test_threshold\": \"Pearson r > 0.7 on bigram frequencies AND decoded hapax ratio drops below 30% would confirm; r < 0.3 or hapax ratio remains above 60% would deny\", \"reasoning\": \"Homophonic substitution is the simplest mechanism that simultaneously explains the entropy gap from Latin, the high hapax ratio, and the glyph positional constraints. Confirming or denying it would strongly narrow the cipher-type search space.\"}, {\"claim\": \"The Currier A/B split encodes two different scribal dialects of the same underlying language (not two different languages), where Scribe A uses a slightly different homophonic key than Scribe B, producing measurable differences in glyph bigram entropy between the two sub-corpora rather than differences in underlying vocabulary.\", \"type\": \"cipher\", \"confidence\": 0.48, \"evidence_for\": [\"Currier A (11,022 words) and B (23,766 words) show known distributional differences in glyph usage\", \"Two scribes sharing a cipher but using different key variants would produce sub-corpus entropy differences without requiring two distinct languages\", \"Current belief [0.677] already favors two scribes encoding same language\"], \"evidence_against\": [\"Current belief [0.65] also supports two different plaintext languages \u00e2\u20ac\u201d the evidence is genuinely ambiguous\", \"If only key variants differ, lexical overlap between A and B sections should be high; reported overlap may not support this\"], \"test\": \"Compute glyph unigram and bigram entropy separately for Currier A and B sub-corpora. Then compute the Jensen-Shannon divergence between the glyph bigram distributions of A and B, and separately compute the word-type overlap (Jaccard similarity of vocabularies). Compare JS divergence of A vs B to JS divergence between two random equal-sized splits of the full corpus.\", \"test_metric\": \"Jensen-Shannon divergence of glyph bigram distributions (A vs B); Jaccard vocabulary overlap between A and B word sets\", \"test_threshold\": \"JS divergence A-vs-B significantly greater than random-split JS divergence (p < 0.05) AND Jaccard overlap < 0.15 would support two-language hypothesis; JS divergence near random-split baseline AND Jaccard overlap > 0.30 would support same-language different-key hypothesis\", \"reasoning\": \"Disambiguating whether A/B reflects a language split or a key-variant split is critical: the former requires finding two plaintext languages, the latter requires finding one language with two cipher variants. This test directly separates those cases.\"}, {\"claim\": \"The zodiac and astronomical sections use a label-encoding scheme where words are proper nouns or fixed labels (star names, month names, zodiac terms) rather than running prose, which explains their anomalously low entropy (3.7149 and 3.7471 bits) as a reduced effective vocabulary with high repetition of a small label lexicon.\", \"type\": \"structural\", \"confidence\": 0.71, \"evidence_for\": [\"Zodiac entropy 3.7149 bits is the lowest of all sections \u00e2\u20ac\u201d consistent with a small fixed vocabulary of labels\", \"Astronomical entropy 3.7471 bits is second-lowest, consistent with the same label-encoding pattern\", \"Medieval astronomical manuscripts routinely use repeated short labels for stars, months, and zodiac signs\", \"These sections are visually dominated by figures with attached short word sequences, matching a label structure\"], \"evidence_against\": [\"If labels, the type-token ratio and average word length should be distinctly lower than in herbal/recipes sections \u00e2\u20ac\u201d this needs verification\", \"Some zodiac folios contain longer text passages that may not be pure labels\"], \"test\": \"Compute average word length, type-token ratio (TTR), and hapax ratio separately for zodiac and astronomical sections vs. herbal and recipes sections. Additionally, measure the frequency of the top-10 words within each section as a fraction of total section word count.\", \"test_metric\": \"TTR per section; mean word length per section; top-10-word coverage fraction per section\", \"test_threshold\": \"If zodiac/astronomical TTR < 0.20 AND top-10-word coverage > 25% of section tokens, label-encoding hypothesis is supported. If TTR > 0.35 or top-10 coverage < 10%, the label hypothesis is weakened.\", \"reasoning\": \"Label-encoding is the most parsimonious explanation for the entropy gradient across sections. Confirming it would allow the low-entropy sections to be analyzed separately as a constrained vocabulary problem, significantly simplifying the decipherment task for those sections.\"}, {\"claim\": \"The extremely high hapax ratio (70.1%) is partially produced by a systematic scribal abbreviation convention where a base word form appears fully in first use and is abbreviated (via suffix truncation or initial-letter substitution) in subsequent uses within the same folio or page, making most 'unique' word types artifactual variants of a smaller true vocabulary.\", \"type\": \"structural\", \"confidence\": 0.38, \"evidence_for\": [\"70.1% hapax rate is far above natural language baselines (typically 40-55% for corpora of this size)\", \"Medieval scribal abbreviation is well-documented in Latin manuscripts of the same period\", \"If abbreviation is page-local, hapaxes would cluster within folios rather than being uniformly distributed across the manuscript\"], \"evidence_against\": [\"Scribal abbreviation in Latin typically produces recognizable ligatures or suspension marks \u00e2\u20ac\u201d Voynich text shows no obvious such markers\", \"If abbreviation were systematic, we would expect a bimodal word-length distribution (full forms vs. abbreviated forms) \u00e2\u20ac\u201d the average 5.03 length does not obviously suggest this\", \"The word entropy of 10.4508 bits is very high, inconsistent with a reduced true vocabulary\"], \"test\": \"Measure the within-folio hapax rate vs. the cross-folio hapax rate: for each word type that appears exactly once in the full corpus, determine whether it appears in a folio where a morphologically similar word (edit distance 1-2) also appears. Compare within-folio edit-distance-1 neighbor rate for hapaxes vs. non-hapaxes.\", \"test_metric\": \"Fraction of hapax words that have an edit-distance-1 neighbor appearing in the same folio; compare to expected rate under null hypothesis of random word placement\", \"test_threshold\": \"If hapaxes have edit-distance-1 neighbors in the same folio at rate > 3x the null expectation (p < 0.01), abbreviation hypothesis is supported. If rate is indistinguishable from null, abbreviation is unlikely to explain the hapax excess.\", \"reasoning\": \"The hapax ratio is one of the most anomalous statistics in the manuscript. If abbreviation explains even 30% of hapaxes, the true vocabulary size drops substantially, which would affect all downstream entropy and Zipf analyses. This test can be run purely on the existing word-list corpus.\"}]}"
+}

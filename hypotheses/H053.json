@@ -2,7 +2,7 @@
   "id": "H053",
   "claim": "The text-only section's elevated entropy (3.9016 bits, highest of all sections) reflects unenciphered or lightly enciphered natural-language prose, and its word bigram entropy is significantly higher than that of the zodiac and astronomical sections, consistent with natural syntactic variation rather than label repetition.",
   "type": "language",
-  "confidence": 0.835,
+  "confidence": 0.923,
   "evidence_for": [
     "Text-only entropy 3.9016 bits approaches Latin (~4.0) and Italian (~3.95) glyph entropy, consistent with minimal or no transposition",
     "High-probability belief [0.677] already supports text-only section as closest to natural language",
@@ -56,12 +56,52 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.808 -> 0.835"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram entropy h(w2|w1) for text-only, zodiac, astronomical, and herbal sections;",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.835 -> 0.858"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram entropy h(w2|w1) for text-only, zodiac, astronomical, and herbal sections;",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.858 -> 0.878"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram entropy h(w2|w1) for text-only, zodiac, astronomical, and herbal sections;",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.878 -> 0.895"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram entropy h(w2|w1) for text-only, zodiac, astronomical, and herbal sections;",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.895 -> 0.910"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram entropy h(w2|w1) for text-only, zodiac, astronomical, and herbal sections;",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.910 -> 0.923"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-13",
+  "last_tested": "2026-04-14",
   "reasoning": "If bigram entropy in text-only exceeds that of label-heavy sections by a measurable margin, it would suggest the section carries genuine syntactic structure, making it the highest-priority target for plaintext attack and potential crib identification."
 }

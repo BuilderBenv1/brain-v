@@ -1,0 +1,36 @@
+{
+  "id": "H086",
+  "claim": "The zodiac and astronomical sections use a label-register encoding \u00e2\u20ac\u201d short fixed-length labels drawn from a closed vocabulary \u00e2\u20ac\u201d rather than running prose, which would produce anomalously low entropy (observed: zodiac 3.7149 bits, astronomical 3.7471 bits) and a high type-token ratio relative to sections with running text.",
+  "type": "structural",
+  "confidence": 0.634,
+  "evidence_for": [
+    "Zodiac section has lowest entropy of all sections (3.7149 bits) consistent with a repetitive label vocabulary",
+    "Astronomical section second-lowest entropy (3.7471 bits)",
+    "Label-heavy sections would reuse a small closed set of words (month names, star names, degree markers) inflating token repetition",
+    "Belief [0.337] at moderate confidence already supports this interpretation for zodiac/astronomical sections"
+  ],
+  "evidence_against": [
+    "Low entropy could also reflect heavier use of homophones in these sections rather than label structure",
+    "If labels, the type-token ratio should be distinctly lower than herbal/recipes sections \u00e2\u20ac\u201d this must be confirmed, not assumed",
+    "Pharmaceutical section also has low entropy (3.7772 bits) but is not obviously label-oriented"
+  ],
+  "test": "Compute type-token ratio (TTR = unique_words / total_words) and vocabulary coverage at top-50 most frequent words for each section. Compare zodiac and astronomical TTR against herbal, recipes, and text-only sections using a Fisher exact test on vocabulary overlap.",
+  "test_metric": "TTR per section; percentage of total tokens covered by top-50 word types per section",
+  "test_threshold": "Zodiac/astronomical TTR < 0.25 AND top-50 word coverage > 60% of tokens would confirm label-register structure; TTR > 0.40 or top-50 coverage < 40% would refute it",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and vocabulary coverage at top-50 most f",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.610 -> 0.634"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "Label registers and running prose have markedly different TTR profiles; this test requires no decipherment and directly confirms or eliminates the structural explanation for the entropy anomaly in the smallest sections"
+}

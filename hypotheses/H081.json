@@ -1,0 +1,44 @@
+{
+  "id": "H081",
+  "claim": "The Currier A and B sub-corpora encode the same underlying plaintext language using two different but systematically related cipher alphabets (a digraphic or keyed-variant cipher), such that glyph bigram transition probabilities in A and B are permutations of each other rather than independent distributions.",
+  "type": "cipher",
+  "confidence": 0.653,
+  "evidence_for": [
+    "Currier A (11,022 words) and B (23,766 words) show consistent structural differences in glyph usage patterns, suggesting rule-governed variation rather than random noise",
+    "High-confidence existing belief [0.677] supports two scribes encoding the same underlying language",
+    "Belief [0.639] (confidence 0.639) supports same plaintext language with two different cipher variants",
+    "If two cipher variants encode the same Latin/Italian text, permutation-testing bigram matrices would reveal the mapping"
+  ],
+  "evidence_against": [
+    "Currier A and B show vocabulary differences that go beyond simple glyph substitution, with distinct word forms appearing preferentially in each sub-corpus",
+    "Belief [0.399] (confidence 0.399) supports the alternative that A and B encode two different plaintext languages",
+    "The volume difference (A: 11,022 vs B: 23,766 words) makes it difficult to test permutation hypotheses with equal statistical power across both sub-corpora"
+  ],
+  "test": "Compute 25x25 glyph bigram transition matrices for Currier A and B separately. Apply the Hungarian algorithm to find the permutation matrix P that minimizes the Frobenius norm ||M_A - P * M_B * P^T||. Test whether the residual after optimal permutation is significantly smaller than the residual from 1,000 random permutations (permutation test). Also compute cosine similarity between row vectors of M_A and best-permuted M_B.",
+  "test_metric": "Frobenius norm of residual after optimal permutation vs. null distribution from random permutations; cosine similarity of bigram row vectors after permutation alignment",
+  "test_threshold": "Residual Frobenius norm in bottom 5th percentile of null distribution (p < 0.05) and mean cosine similarity > 0.75 after permutation would support the keyed-variant cipher hypothesis",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "compute 25x25 glyph bigram transition matrices for currier a and b separately. apply the hungarian a",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.520 -> 0.592"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute 25x25 glyph bigram transition matrices for currier a and b separately. apply the hungarian a",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.592 -> 0.653"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "If A and B are permutation-related ciphers of the same language, this can be confirmed with a single matrix alignment test and would immediately provide a candidate mapping between the two cipher alphabets, halving the decipherment problem. Rejection would strongly support the two-language hypothesis instead."
+}

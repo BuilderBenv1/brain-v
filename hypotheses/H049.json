@@ -2,7 +2,7 @@
   "id": "H049",
   "claim": "The recipes section (25 folios, 11,611 words, entropy 3.8586 bits \u00e2\u20ac\u201d second highest and largest word count) encodes a list-structured text in which recurring syntactic templates produce predictable word-position bigrams, such that positional word-order entropy (entropy of word_n given word_{n-1} within a folio) is significantly lower in recipes than in the herbal or text-only sections.",
   "type": "structural",
-  "confidence": 0.818,
+  "confidence": 0.914,
   "evidence_for": [
     "Recipe and pharmaceutical texts in medieval Latin follow rigid syntactic templates (ingredient, quantity, preparation, application)",
     "The recipes section has the highest word count (11,611), suggesting repetitive list structure",
@@ -63,12 +63,52 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.788 -> 0.818"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.818 -> 0.843"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.843 -> 0.865"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.865 -> 0.884"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.884 -> 0.900"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute word-level bigram conditional entropy h(w_n | w_{n-1}) for the recipes section vs. the herba",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.900 -> 0.914"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-13",
+  "last_tested": "2026-04-14",
   "reasoning": "Confirming list/template structure in the recipes section would allow researchers to use positional slot analysis (slot 1 = ingredient name, slot 2 = quantity, etc.) as a structural scaffold for decipherment, independently of knowing the cipher"
 }

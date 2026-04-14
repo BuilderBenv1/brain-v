@@ -2,7 +2,7 @@
   "id": "H031",
   "claim": "The zodiac section (entropy 3.7149 bits, lowest of all sections) uses a label-only encoding scheme where each word is a proper name or fixed label rather than running prose, producing a vocabulary distribution that deviates significantly from Zipf's law relative to other sections.",
   "type": "structural",
-  "confidence": 0.875,
+  "confidence": 0.929,
   "evidence_for": [
     "Zodiac entropy (3.7149) is the lowest of all sections, consistent with a closed label vocabulary",
     "Zodiac has only 1,297 words across 12 folios \u00e2\u20ac\u201d very sparse, consistent with repeated labels",
@@ -97,12 +97,52 @@
       "passed": true,
       "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
       "confidence_change": "0.860 -> 0.875"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute per-section zipf exponent fits independently. compare zodiac section's zipf exponent and r-s",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.875 -> 0.888"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute per-section zipf exponent fits independently. compare zodiac section's zipf exponent and r-s",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.888 -> 0.900"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute per-section zipf exponent fits independently. compare zodiac section's zipf exponent and r-s",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.900 -> 0.911"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute per-section zipf exponent fits independently. compare zodiac section's zipf exponent and r-s",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.911 -> 0.921"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "compute per-section zipf exponent fits independently. compare zodiac section's zipf exponent and r-s",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.921 -> 0.929"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-13",
+  "last_tested": "2026-04-14",
   "reasoning": "If zodiac encodes a fixed label vocabulary, it can potentially be solved independently of the rest of the manuscript by matching label counts to known zodiac systems, making it a high-value starting point for partial decipherment"
 }

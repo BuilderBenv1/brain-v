@@ -2,7 +2,7 @@
   "id": "H010",
   "claim": "The manuscript's text structure reflects a single, coherent narrative.",
   "type": "structural",
-  "confidence": 0.187,
+  "confidence": 0.059,
   "evidence_for": [
     "Word entropy levels are consistent across sections",
     "Zipf exponent is moderate, indicating possible narrative structure"
@@ -53,12 +53,52 @@
       "passed": null,
       "details": "Could not evaluate: PageRank algorithm for topic modeling",
       "confidence_change": "0.171 -> 0.187"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.25,
+      "passed": false,
+      "details": "The extremely high hapax ratio of 0.701 strongly contradicts single narrative coherence; natural coherent texts typically exhibit hapax ratios of 0.3-0.5, suggesting the Voynich text either covers disparate topics without thematic cohesion or contains substantial non-linguistic content.",
+      "confidence_change": "0.187 -> 0.145"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "The 70.1% hapax ratio strongly contradicts coherent narrative structure, as meaningful texts repeat thematic vocabulary; while Zipfian distribution suggests some organizational principle, the extreme word diversity indicates fragmented or cipher-like content rather than unified discourse.",
+      "confidence_change": "0.145 -> 0.117"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.25,
+      "passed": false,
+      "details": "The 70.1% hapax ratio indicates minimal term reuse across the text, contradicting the coherence expected in a single narrative, though the Zipfian distribution (0.8946) is reasonably consistent with natural language structure.",
+      "confidence_change": "0.117 -> 0.091"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "The high hapax ratio (0.701) contradicts a single coherent narrative; while the Zipfian distribution (0.8946) suggests some natural structure, excessive vocabulary diversity indicates multiple independent texts or artificial generation rather than unified narrative flow.",
+      "confidence_change": "0.091 -> 0.073"
+    },
+    {
+      "date": "2026-04-14",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "The hapax ratio of 0.701 is exceptionally high, indicating minimal word reuse and contradicting a coherent narrative; though the Zipf exponent (0.8946) suggests underlying structure, the extreme vocabulary uniqueness (70% one-time words) indicates fragmented rather than unified narrative.",
+      "confidence_change": "0.073 -> 0.059"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-13",
+  "last_tested": "2026-04-14",
   "reasoning": "If the manuscript's text structure reflects a single, coherent narrative, we would expect to see significant correlations between word positions and topics."
 }
