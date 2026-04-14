@@ -2,7 +2,7 @@
   "id": "H022",
   "claim": "The zodiac and astronomical sections use a systematically different word-order encoding than herbal and recipes sections, reflecting a positional transposition cipher layer applied on top of substitution, detectable as reduced local bigram predictability at section boundaries relative to within-section transitions.",
   "type": "structural",
-  "confidence": 0.987,
+  "confidence": 0.99,
   "evidence_for": [
     "Zodiac entropy (3.7149 bits) and astronomical entropy (3.7471 bits) are measurably lower than recipes (3.8586 bits) and text-only (3.9016 bits), suggesting different encoding density",
     "Belief 0.7 that different sections use different encoding methods",
@@ -223,6 +223,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.985 -> 0.987"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.987 -> 0.989"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.989 -> 0.990"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute per-section word-level bigram entropy h(w_i | w_{i-1}) and compare astronomical+zodiac group",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.990 -> 0.990"
     }
   ],
   "tests_remaining": [],

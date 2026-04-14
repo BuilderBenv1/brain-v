@@ -2,7 +2,7 @@
   "id": "H020",
   "claim": "The Voynich text encodes a natural language using a null-cipher or homophones, where multiple glyphs map to the same plaintext character, which would explain the high hapax ratio (70.1%) and lower glyph entropy (3.86 bits) relative to expected natural language entropy while preserving Zipf-like structure.",
   "type": "cipher",
-  "confidence": 0.988,
+  "confidence": 0.99,
   "evidence_for": [
     "Glyph entropy 3.86 bits is slightly below Latin (~4.0) and Italian (~3.95), consistent with homophonic substitution compressing entropy",
     "Zipf exponent 0.8946 with R-squared 0.9084 indicates moderate but real Zipf fit, consistent with encoded natural language",
@@ -223,6 +223,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.986 -> 0.988"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute conditional glyph entropy h(g_i | g_{i-1}) across the full corpus and compare to expected co",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.988 -> 0.990"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute conditional glyph entropy h(g_i | g_{i-1}) across the full corpus and compare to expected co",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute conditional glyph entropy h(g_i | g_{i-1}) across the full corpus and compare to expected co",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.990 -> 0.990"
     }
   ],
   "tests_remaining": [],

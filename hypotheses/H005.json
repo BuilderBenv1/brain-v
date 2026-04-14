@@ -2,7 +2,7 @@
   "id": "H005",
   "claim": "The text is encoded using a simple substitution cipher on a language other than Latin or Italian.",
   "type": "cipher",
-  "confidence": 0.181,
+  "confidence": 0.184,
   "evidence_for": [
     "Glyph entropy is lower than expected for Latin and Italian (~4.0 bits)"
   ],
@@ -55,11 +55,11 @@
     },
     {
       "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.45,
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
       "passed": null,
-      "details": "Strong Zipfian fit (0.8946, R\u00c2\u00b2=0.9084) supports natural language structure consistent with substitution cipher, but anomalously high hapax ratio (0.701 vs typical 0.3-0.6) suggests either non-simple encryption, unusual language, or additional obfuscation\u00e2\u20ac\u201dinconclusive.",
-      "confidence_change": "0.167 -> 0.181"
+      "details": "Could not evaluate: Compare glyph and word entropies to the expected values for non-Latin/Italian languages using a chi-squared test",
+      "confidence_change": "0.167 -> 0.184"
     }
   ],
   "tests_remaining": [],

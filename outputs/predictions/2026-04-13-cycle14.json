@@ -1,0 +1,161 @@
+{
+  "date": "2026-04-13",
+  "cycle": "predict",
+  "model": "claude-code-cli",
+  "belief_count": 29,
+  "existing_hypothesis_count": 74,
+  "new_hypotheses": [
+    "H055",
+    "H056",
+    "H057",
+    "H058",
+    "H059"
+  ],
+  "hypotheses": [
+    {
+      "id": "H055",
+      "claim": "The Voynich text uses a homophonic substitution cipher on medieval Latin or Italian, where multiple distinct glyphs encode the same plaintext letter, which would artificially inflate the unique-word count and produce the observed hapax ratio of 70.1%.",
+      "type": "cipher",
+      "confidence": 0.61,
+      "evidence_for": [
+        "Glyph entropy 3.8627 bits is below Latin (~4.0) and Italian (~3.95), consistent with redundancy introduced by homophones reducing per-glyph information",
+        "Hapax ratio of 70.1% far exceeds natural language norms (typically 40-55%), consistent with phoneme-splitting expanding the word-type space",
+        "Word-final glyph cluster {y, n, l, r, o} shows exactly the kind of terminal-position redundancy that homophonic systems produce for high-frequency plaintext endings",
+        "Top words daiin/aiin differ only by initial glyph, consistent with homophones of a single high-frequency word like Latin 'et' or 'in'"
+      ],
+      "evidence_against": [
+        "With only 25 unique glyphs, the homophone table would be very small, limiting cipher strength",
+        "Word entropy 10.4508 bits is high; if homophones reduced effective vocabulary, word entropy should be closer to 8-9 bits for Latin",
+        "Zipf exponent 0.8946 is lower than typical natural language (~1.0), suggesting less, not more, frequency concentration than expected"
+      ],
+      "test": "Group glyphs by positional equivalence classes (glyphs that appear in identical positional contexts), collapse each class to one symbol, recompute hapax ratio and word entropy on the collapsed corpus, then compare new Zipf exponent against natural language baseline.",
+      "test_metric": "Hapax ratio after glyph-class collapsing; Zipf exponent R-squared on collapsed vocabulary; KL-divergence of collapsed word-frequency distribution from Italian/Latin word-frequency distributions",
+      "test_threshold": "Collapse that reduces hapax ratio below 55% and raises Zipf R-squared above 0.95 would strongly support homophonic encoding; no collapse achieving this would falsify it",
+      "tests_run": [],
+      "tests_remaining": [
+        "Group glyphs by positional equivalence classes (glyphs that appear in identical positional contexts), collapse each class to one symbol, recompute hapax ratio and word entropy on the collapsed corpus, then compare new Zipf exponent against natural language baseline."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "Homophonic ciphers were well-known in 15th-century Europe (used by papal chancery by 1379), are performable by hand, and directly explain both the inflated hapax ratio and the below-natural-language glyph entropy \u00e2\u20ac\u201d two of the most anomalous statistics in the corpus simultaneously."
+    },
+    {
+      "id": "H056",
+      "claim": "The Currier A/B split reflects two scribes encoding the same underlying language using two different cipher keys or glyph assignments, not two different languages or dialects, such that word-position glyph statistics are structurally identical across A and B but the specific glyph inventories differ.",
+      "type": "cipher",
+      "confidence": 0.64,
+      "evidence_for": [
+        "Currier B (23,766 words) is roughly twice the size of A (11,022 words), consistent with one scribe copying from another's template rather than independent composition",
+        "Both A and B share the same word-initial glyph set {o,c,q,s,d} and word-final set {y,n,l,r,o}, suggesting the same positional grammar, which would be an improbable coincidence if two independent languages were used",
+        "Overall glyph entropy 3.8627 bits is uniform enough that two radically different encoding systems would likely produce measurable entropy divergence between sections"
+      ],
+      "evidence_against": [
+        "H004/H008 (confidence 0.808/0.742) favor genuine linguistic difference between A and B",
+        "If same key, transliteration between A and B word lists should reveal consistent glyph-to-glyph mappings, but no such mapping has been confirmed",
+        "Currier A and B show systematic differences in specific glyphs (e.g., 'a' rare in B), which is harder to explain by key-only variation"
+      ],
+      "test": "Extract bigram transition probability matrices P(g_j|g_i) separately for Currier A and Currier B. Compute chi-squared distance between the two matrices. Then generate 1000 random splits of the full corpus into same-sized A and B subsets and compute their chi-squared distances. Test whether observed A/B chi-squared distance falls within the 95th percentile of the random-split distribution.",
+      "test_metric": "Chi-squared distance between Currier A and B glyph bigram transition matrices; p-value against random-split null distribution",
+      "test_threshold": "p-value > 0.05 (A/B matrices not significantly different from random split) would support same-key hypothesis; p-value < 0.01 would support different language/cipher hypothesis",
+      "tests_run": [],
+      "tests_remaining": [
+        "Extract bigram transition probability matrices P(g_j|g_i) separately for Currier A and Currier B. Compute chi-squared distance between the two matrices. Then generate 1000 random splits of the full corpus into same-sized A and B subsets and compute their chi-squared distances. Test whether observed A/B chi-squared distance falls within the 95th percentile of the random-split distribution."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "This test directly discriminates between 'same cipher, different key' and 'different language/cipher' by asking whether the internal glyph transition structure is statistically identical \u00e2\u20ac\u201d a question answerable purely from corpus statistics without requiring decipherment."
+    },
+    {
+      "id": "H057",
+      "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) is caused by a label-repetition encoding scheme in which a small set of high-frequency label words are systematically repeated around circular diagrams, and the section's word-frequency distribution is therefore best fit by a truncated Zipf distribution rather than a full Zipf law.",
+      "type": "structural",
+      "confidence": 0.71,
+      "evidence_for": [
+        "Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d the smallest vocabulary-to-folio ratio, consistent with repetitive labeling",
+        "Entropy 3.7149 bits is 0.19 bits below the next-lowest section (astronomical 3.7471), a large gap suggesting a qualitatively different text mode",
+        "Label-based texts (e.g., calendar month names, zodiac sign labels) in medieval manuscripts characteristically repeat short high-frequency tokens around diagrams",
+        "Top-10 words globally are dominated by short tokens (ol=553, ar=402, or=378, y=329); these could be label words concentrated in zodiac section"
+      ],
+      "evidence_against": [
+        "Without section-level word-frequency breakdown it is not confirmed that top words are disproportionately concentrated in zodiac",
+        "Low entropy could also reflect a simpler or weaker cipher applied to normal prose",
+        "Cosmological section (10 folios, 2,199 words, 3.8515 bits) has similar folio count but much higher entropy, suggesting folio count alone doesn't drive entropy"
+      ],
+      "test": "Extract the word-frequency distribution for the zodiac section alone. Fit both a standard Zipf distribution and a truncated Zipf (with vocabulary cutoff V) to the zodiac word-frequency data using maximum likelihood. Compare AIC/BIC of both fits. Separately, compute the type-token ratio and hapax ratio for zodiac vs. all other sections.",
+      "test_metric": "AIC difference between truncated vs. standard Zipf fit on zodiac word frequencies; zodiac hapax ratio vs. mean hapax ratio of other sections; zodiac type-token ratio",
+      "test_threshold": "AIC improvement > 4 for truncated Zipf would favor label-encoding hypothesis; zodiac hapax ratio more than 1.5 standard deviations below the mean of other sections would independently support label repetition",
+      "tests_run": [],
+      "tests_remaining": [
+        "Extract the word-frequency distribution for the zodiac section alone. Fit both a standard Zipf distribution and a truncated Zipf (with vocabulary cutoff V) to the zodiac word-frequency data using maximum likelihood. Compare AIC/BIC of both fits. Separately, compute the type-token ratio and hapax ratio for zodiac vs. all other sections."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If the zodiac section is genuinely label-oriented, its word-frequency distribution should exhibit a sharper high-frequency peak and fewer hapax legomena than other sections \u00e2\u20ac\u201d a testable structural prediction that would confirm or deny the label-encoding explanation for its low entropy without requiring decipherment."
+    },
+    {
+      "id": "H058",
+      "claim": "The word-initial glyph constraints {o,c,q,s,d} and word-final glyph constraints {y,n,l,r,o} are artifacts of a cipher that maps plaintext syllable-onset and syllable-coda phonemes to distinct glyph classes, not morphological or grammatical constraints, meaning that these positional biases are cipher-structural rather than language-structural.",
+      "type": "cipher",
+      "confidence": 0.55,
+      "evidence_for": [
+        "Average word length 5.03 with 25 glyphs is more consistent with a syllabic or consonantal encoding than a full alphabet, where 25 letters would produce shorter words",
+        "Glyph positional constraints are unusually rigid: if they reflected grammar, we'd expect more positional diversity across 226 folios of varied content",
+        "In a syllabic cipher mapping CV or VC pairs to single glyphs, onset glyphs (C+V) would naturally cluster at word-start and coda glyphs (V+C or final consonants) at word-end",
+        "Mutual information between adjacent glyphs would be elevated compared to alphabetic text if glyphs encode syllable units rather than phonemes"
+      ],
+      "evidence_against": [
+        "Natural languages with alphabetic writing also show word-initial and word-final biases (e.g., Latin words rarely end in b, d, g)",
+        "With only 25 glyphs encoding syllables, the phoneme inventory would be implausibly small for Latin or Italian",
+        "H514/H517 (confidence 0.514/0.517) favor Vigenere or contact-based explanations for the same positional constraints"
+      ],
+      "test": "Compute pointwise mutual information (PMI) between all adjacent glyph pairs within words across the full corpus. Compare the mean and variance of within-word PMI to values computed from a shuffled corpus preserving word lengths and glyph frequencies. Then compare observed PMI distribution to PMI distributions computed from alphabetically-encoded Latin text and from syllabically-encoded Japanese (kana) text of similar length.",
+      "test_metric": "Mean within-word adjacent-glyph PMI vs. shuffled baseline; KL-divergence of Voynich PMI distribution from Latin-alphabetic and Japanese-kana PMI distributions",
+      "test_threshold": "If Voynich PMI distribution KL-divergence from kana is less than KL-divergence from Latin-alphabetic, this supports syllabic encoding; if mean PMI exceeds shuffled baseline by more than 2 standard deviations, positional constraints are cipher-structural rather than random",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute pointwise mutual information (PMI) between all adjacent glyph pairs within words across the full corpus. Compare the mean and variance of within-word PMI to values computed from a shuffled corpus preserving word lengths and glyph frequencies. Then compare observed PMI distribution to PMI distributions computed from alphabetically-encoded Latin text and from syllabically-encoded Japanese (kana) text of similar length."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "Syllabic ciphers were used in the medieval Mediterranean and would explain the small glyph inventory, the rigid positional constraints, and the moderate Zipf fit simultaneously; PMI analysis can distinguish syllabic from alphabetic encoding without requiring decipherment by measuring the degree of glyph co-occurrence structure within word boundaries."
+    },
+    {
+      "id": "H059",
+      "claim": "The text-only section's elevated entropy (3.9016 bits, highest of all sections) and the recipes section's second-highest entropy (3.8586 bits) reflect unenciphered or lightly enciphered running prose in the underlying natural language, while the diagrammatic sections (zodiac 3.7149, astronomical 3.7471, pharmaceutical 3.7772) reflect a more heavily enciphered or formulaic register \u00e2\u20ac\u201d meaning entropy difference between sections correlates with cipher strength, not genre.",
+      "type": "cipher",
+      "confidence": 0.58,
+      "evidence_for": [
+        "Section entropy spans 0.19 bits (3.7149 to 3.9016), which is large enough to suggest qualitative differences in encoding rather than mere genre effects",
+        "Text-only section (7 folios, 2,349 words) has no diagrams, suggesting if the scribe used a cipher, they may have applied it less rigorously to continuous prose",
+        "Recipes section (25 folios, 11,611 words) is the largest section and has the second-highest entropy, consistent with extensive prose where cipher slippage is more likely",
+        "Diagrammatic sections (zodiac, astronomical, pharmaceutical) require labeling short, repeated terms \u00e2\u20ac\u201d contexts where a skilled encipherer applies cipher most consistently"
+      ],
+      "evidence_against": [
+        "Genre differences alone could explain entropy variation: prose naturally has higher per-glyph entropy than labels and formulaic lists",
+        "The 0.19-bit entropy range across sections is within the range produced by genre differences in plaintext medieval Latin (prose vs. lists)",
+        "Text-only section being unenciphered would imply the scribe intentionally left 7 folios in plaintext, an implausible operational security failure"
+      ],
+      "test": "For each section, compute the rank-frequency slope (Zipf exponent) separately. If cipher-strength variation drives entropy, sections with lower entropy should show steeper Zipf slopes (more concentrated frequency mass) than high-entropy sections. Additionally, compute the ratio of top-10-word frequency mass to total word count per section and correlate this ratio with section entropy.",
+      "test_metric": "Pearson correlation between per-section entropy and per-section Zipf exponent; Pearson correlation between per-section entropy and per-section top-10 word frequency mass ratio",
+      "test_threshold": "Negative correlation (r < -0.7) between entropy and Zipf slope would support cipher-strength hypothesis; correlation near zero (|r| < 0.3) would support genre-difference explanation; positive correlation would falsify both and suggest a third structural factor",
+      "tests_run": [],
+      "tests_remaining": [
+        "For each section, compute the rank-frequency slope (Zipf exponent) separately. If cipher-strength variation drives entropy, sections with lower entropy should show steeper Zipf slopes (more concentrated frequency mass) than high-entropy sections. Additionally, compute the ratio of top-10-word frequency mass to total word count per section and correlate this ratio with section entropy."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-13",
+      "last_tested": null,
+      "reasoning": "If cipher strength varies by section, we expect a systematic trade-off between entropy and frequency concentration that should manifest as a strong negative correlation between section entropy and Zipf exponent \u00e2\u20ac\u201d a prediction testable entirely from corpus statistics that would directly inform whether decipherment efforts should prioritize text-only/recipes (lighter cipher) or avoid diagrammatic sections (heavier cipher)."
+    }
+  ],
+  "raw_response": "{\"hypotheses\":[{\"claim\":\"The Voynich text uses a homophonic substitution cipher on medieval Latin or Italian, where multiple distinct glyphs encode the same plaintext letter, which would artificially inflate the unique-word count and produce the observed hapax ratio of 70.1%.\",\"type\":\"cipher\",\"confidence\":0.61,\"evidence_for\":[\"Glyph entropy 3.8627 bits is below Latin (~4.0) and Italian (~3.95), consistent with redundancy introduced by homophones reducing per-glyph information\",\"Hapax ratio of 70.1% far exceeds natural language norms (typically 40-55%), consistent with phoneme-splitting expanding the word-type space\",\"Word-final glyph cluster {y, n, l, r, o} shows exactly the kind of terminal-position redundancy that homophonic systems produce for high-frequency plaintext endings\",\"Top words daiin/aiin differ only by initial glyph, consistent with homophones of a single high-frequency word like Latin 'et' or 'in'\"],\"evidence_against\":[\"With only 25 unique glyphs, the homophone table would be very small, limiting cipher strength\",\"Word entropy 10.4508 bits is high; if homophones reduced effective vocabulary, word entropy should be closer to 8-9 bits for Latin\",\"Zipf exponent 0.8946 is lower than typical natural language (~1.0), suggesting less, not more, frequency concentration than expected\"],\"test\":\"Group glyphs by positional equivalence classes (glyphs that appear in identical positional contexts), collapse each class to one symbol, recompute hapax ratio and word entropy on the collapsed corpus, then compare new Zipf exponent against natural language baseline.\",\"test_metric\":\"Hapax ratio after glyph-class collapsing; Zipf exponent R-squared on collapsed vocabulary; KL-divergence of collapsed word-frequency distribution from Italian/Latin word-frequency distributions\",\"test_threshold\":\"Collapse that reduces hapax ratio below 55% and raises Zipf R-squared above 0.95 would strongly support homophonic encoding; no collapse achieving this would falsify it\",\"reasoning\":\"Homophonic ciphers were well-known in 15th-century Europe (used by papal chancery by 1379), are performable by hand, and directly explain both the inflated hapax ratio and the below-natural-language glyph entropy \u00e2\u20ac\u201d two of the most anomalous statistics in the corpus simultaneously.\"},{\"claim\":\"The Currier A/B split reflects two scribes encoding the same underlying language using two different cipher keys or glyph assignments, not two different languages or dialects, such that word-position glyph statistics are structurally identical across A and B but the specific glyph inventories differ.\",\"type\":\"cipher\",\"confidence\":0.64,\"evidence_for\":[\"Currier B (23,766 words) is roughly twice the size of A (11,022 words), consistent with one scribe copying from another's template rather than independent composition\",\"Both A and B share the same word-initial glyph set {o,c,q,s,d} and word-final set {y,n,l,r,o}, suggesting the same positional grammar, which would be an improbable coincidence if two independent languages were used\",\"Overall glyph entropy 3.8627 bits is uniform enough that two radically different encoding systems would likely produce measurable entropy divergence between sections\"],\"evidence_against\":[\"H004/H008 (confidence 0.808/0.742) favor genuine linguistic difference between A and B\",\"If same key, transliteration between A and B word lists should reveal consistent glyph-to-glyph mappings, but no such mapping has been confirmed\",\"Currier A and B show systematic differences in specific glyphs (e.g., 'a' rare in B), which is harder to explain by key-only variation\"],\"test\":\"Extract bigram transition probability matrices P(g_j|g_i) separately for Currier A and Currier B. Compute chi-squared distance between the two matrices. Then generate 1000 random splits of the full corpus into same-sized A and B subsets and compute their chi-squared distances. Test whether observed A/B chi-squared distance falls within the 95th percentile of the random-split distribution.\",\"test_metric\":\"Chi-squared distance between Currier A and B glyph bigram transition matrices; p-value against random-split null distribution\",\"test_threshold\":\"p-value > 0.05 (A/B matrices not significantly different from random split) would support same-key hypothesis; p-value < 0.01 would support different language/cipher hypothesis\",\"reasoning\":\"This test directly discriminates between 'same cipher, different key' and 'different language/cipher' by asking whether the internal glyph transition structure is statistically identical \u00e2\u20ac\u201d a question answerable purely from corpus statistics without requiring decipherment.\"},{\"claim\":\"The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) is caused by a label-repetition encoding scheme in which a small set of high-frequency label words are systematically repeated around circular diagrams, and the section's word-frequency distribution is therefore best fit by a truncated Zipf distribution rather than a full Zipf law.\",\"type\":\"structural\",\"confidence\":0.71,\"evidence_for\":[\"Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d the smallest vocabulary-to-folio ratio, consistent with repetitive labeling\",\"Entropy 3.7149 bits is 0.19 bits below the next-lowest section (astronomical 3.7471), a large gap suggesting a qualitatively different text mode\",\"Label-based texts (e.g., calendar month names, zodiac sign labels) in medieval manuscripts characteristically repeat short high-frequency tokens around diagrams\",\"Top-10 words globally are dominated by short tokens (ol=553, ar=402, or=378, y=329); these could be label words concentrated in zodiac section\"],\"evidence_against\":[\"Without section-level word-frequency breakdown it is not confirmed that top words are disproportionately concentrated in zodiac\",\"Low entropy could also reflect a simpler or weaker cipher applied to normal prose\",\"Cosmological section (10 folios, 2,199 words, 3.8515 bits) has similar folio count but much higher entropy, suggesting folio count alone doesn't drive entropy\"],\"test\":\"Extract the word-frequency distribution for the zodiac section alone. Fit both a standard Zipf distribution and a truncated Zipf (with vocabulary cutoff V) to the zodiac word-frequency data using maximum likelihood. Compare AIC/BIC of both fits. Separately, compute the type-token ratio and hapax ratio for zodiac vs. all other sections.\",\"test_metric\":\"AIC difference between truncated vs. standard Zipf fit on zodiac word frequencies; zodiac hapax ratio vs. mean hapax ratio of other sections; zodiac type-token ratio\",\"test_threshold\":\"AIC improvement > 4 for truncated Zipf would favor label-encoding hypothesis; zodiac hapax ratio more than 1.5 standard deviations below the mean of other sections would independently support label repetition\",\"reasoning\":\"If the zodiac section is genuinely label-oriented, its word-frequency distribution should exhibit a sharper high-frequency peak and fewer hapax legomena than other sections \u00e2\u20ac\u201d a testable structural prediction that would confirm or deny the label-encoding explanation for its low entropy without requiring decipherment.\"},{\"claim\":\"The word-initial glyph constraints {o,c,q,s,d} and word-final glyph constraints {y,n,l,r,o} are artifacts of a cipher that maps plaintext syllable-onset and syllable-coda phonemes to distinct glyph classes, not morphological or grammatical constraints, meaning that these positional biases are cipher-structural rather than language-structural.\",\"type\":\"cipher\",\"confidence\":0.55,\"evidence_for\":[\"Average word length 5.03 with 25 glyphs is more consistent with a syllabic or consonantal encoding than a full alphabet, where 25 letters would produce shorter words\",\"Glyph positional constraints are unusually rigid: if they reflected grammar, we'd expect more positional diversity across 226 folios of varied content\",\"In a syllabic cipher mapping CV or VC pairs to single glyphs, onset glyphs (C+V) would naturally cluster at word-start and coda glyphs (V+C or final consonants) at word-end\",\"Mutual information between adjacent glyphs would be elevated compared to alphabetic text if glyphs encode syllable units rather than phonemes\"],\"evidence_against\":[\"Natural languages with alphabetic writing also show word-initial and word-final biases (e.g., Latin words rarely end in b, d, g)\",\"With only 25 glyphs encoding syllables, the phoneme inventory would be implausibly small for Latin or Italian\",\"H514/H517 (confidence 0.514/0.517) favor Vigenere or contact-based explanations for the same positional constraints\"],\"test\":\"Compute pointwise mutual information (PMI) between all adjacent glyph pairs within words across the full corpus. Compare the mean and variance of within-word PMI to values computed from a shuffled corpus preserving word lengths and glyph frequencies. Then compare observed PMI distribution to PMI distributions computed from alphabetically-encoded Latin text and from syllabically-encoded Japanese (kana) text of similar length.\",\"test_metric\":\"Mean within-word adjacent-glyph PMI vs. shuffled baseline; KL-divergence of Voynich PMI distribution from Latin-alphabetic and Japanese-kana PMI distributions\",\"test_threshold\":\"If Voynich PMI distribution KL-divergence from kana is less than KL-divergence from Latin-alphabetic, this supports syllabic encoding; if mean PMI exceeds shuffled baseline by more than 2 standard deviations, positional constraints are cipher-structural rather than random\",\"reasoning\":\"Syllabic ciphers were used in the medieval Mediterranean and would explain the small glyph inventory, the rigid positional constraints, and the moderate Zipf fit simultaneously; PMI analysis can distinguish syllabic from alphabetic encoding without requiring decipherment by measuring the degree of glyph co-occurrence structure within word boundaries.\"},{\"claim\":\"The text-only section's elevated entropy (3.9016 bits, highest of all sections) and the recipes section's second-highest entropy (3.8586 bits) reflect unenciphered or lightly enciphered running prose in the underlying natural language, while the diagrammatic sections (zodiac 3.7149, astronomical 3.7471, pharmaceutical 3.7772) reflect a more heavily enciphered or formulaic register \u00e2\u20ac\u201d meaning entropy difference between sections correlates with cipher strength, not genre.\",\"type\":\"cipher\",\"confidence\":0.58,\"evidence_for\":[\"Section entropy spans 0.19 bits (3.7149 to 3.9016), which is large enough to suggest qualitative differences in encoding rather than mere genre effects\",\"Text-only section (7 folios, 2,349 words) has no diagrams, suggesting if the scribe used a cipher, they may have applied it less rigorously to continuous prose\",\"Recipes section (25 folios, 11,611 words) is the largest section and has the second-highest entropy, consistent with extensive prose where cipher slippage is more likely\",\"Diagrammatic sections (zodiac, astronomical, pharmaceutical) require labeling short, repeated terms \u00e2\u20ac\u201d contexts where a skilled encipherer applies cipher most consistently\"],\"evidence_against\":[\"Genre differences alone could explain entropy variation: prose naturally has higher per-glyph entropy than labels and formulaic lists\",\"The 0.19-bit entropy range across sections is within the range produced by genre differences in plaintext medieval Latin (prose vs. lists)\",\"Text-only section being unenciphered would imply the scribe intentionally left 7 folios in plaintext, an implausible operational security failure\"],\"test\":\"For each section, compute the rank-frequency slope (Zipf exponent) separately. If cipher-strength variation drives entropy, sections with lower entropy should show steeper Zipf slopes (more concentrated frequency mass) than high-entropy sections. Additionally, compute the ratio of top-10-word frequency mass to total word count per section and correlate this ratio with section entropy.\",\"test_metric\":\"Pearson correlation between per-section entropy and per-section Zipf exponent; Pearson correlation between per-section entropy and per-section top-10 word frequency mass ratio\",\"test_threshold\":\"Negative correlation (r < -0.7) between entropy and Zipf slope would support cipher-strength hypothesis; correlation near zero (|r| < 0.3) would support genre-difference explanation; positive correlation would falsify both and suggest a third structural factor\",\"reasoning\":\"If cipher strength varies by section, we expect a systematic trade-off between entropy and frequency concentration that should manifest as a strong negative correlation between section entropy and Zipf exponent \u00e2\u20ac\u201d a prediction testable entirely from corpus statistics that would directly inform whether decipherment efforts should prioritize text-only/recipes (lighter cipher) or avoid diagrammatic sections (heavier cipher).\"}]}"
+}

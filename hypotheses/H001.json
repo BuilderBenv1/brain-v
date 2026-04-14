@@ -2,7 +2,7 @@
   "id": "H001",
   "claim": "The manuscript's herbal section uses a combination of substitution and transposition ciphers, which would explain the higher entropy levels compared to other sections.",
   "type": "cipher",
-  "confidence": 0.984,
+  "confidence": 0.987,
   "evidence_for": [
     "Higher entropy in the herbal section (3.8478 bits) compared to other sections",
     "Glyph positional constraints may reflect cipher structure rather than grammar"
@@ -387,6 +387,30 @@
       "passed": true,
       "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
       "confidence_change": "0.983 -> 0.984"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compare word and glyph entropies between the herbal and other sections using a two-sample kolmogorov",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.984 -> 0.985"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compare word and glyph entropies between the herbal and other sections using a two-sample kolmogorov",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.985 -> 0.986"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compare word and glyph entropies between the herbal and other sections using a two-sample kolmogorov",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.986 -> 0.987"
     }
   ],
   "tests_remaining": [],

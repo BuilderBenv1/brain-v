@@ -2,7 +2,7 @@
   "id": "H013",
   "claim": "The text uses a simple substitution cipher on an unknown language.",
   "type": "language",
-  "confidence": 0.139,
+  "confidence": 0.217,
   "evidence_for": [
     "Glyph entropy is lower than expected for Latin or Italian"
   ],
@@ -39,27 +39,11 @@
     },
     {
       "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.35,
-      "passed": false,
-      "details": "The extremely high hapax ratio (0.701) contradicts a simple substitution cipher on natural language; real languages typically show 30-50% hapax in corpora this size, suggesting the Voynich text has artificial or heavily obscured statistical properties inconsistent with straightforward linguistic encoding.",
-      "confidence_change": "0.202 -> 0.163"
-    },
-    {
-      "date": "2026-04-13",
       "test": "claude_evaluation_failed",
       "score": 0.5,
       "passed": null,
       "details": "Could not evaluate: Compute the frequency of word-final glyphs and compare to known languages",
-      "confidence_change": "0.163 -> 0.180"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.25,
-      "passed": false,
-      "details": "The extremely high hapax ratio (0.701) strongly contradicts the simple substitution cipher hypothesis, as natural language substitution ciphers retain original word frequency distributions with far lower hapax ratios (typically 30-50%).",
-      "confidence_change": "0.180 -> 0.139"
+      "confidence_change": "0.202 -> 0.217"
     }
   ],
   "tests_remaining": [],

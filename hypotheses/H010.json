@@ -2,7 +2,7 @@
   "id": "H010",
   "claim": "The manuscript's text structure reflects a single, coherent narrative.",
   "type": "structural",
-  "confidence": 0.049,
+  "confidence": 0.187,
   "evidence_for": [
     "Word entropy levels are consistent across sections",
     "Zipf exponent is moderate, indicating possible narrative structure"
@@ -48,47 +48,15 @@
     },
     {
       "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.25,
-      "passed": false,
-      "details": "The hapax ratio of 0.701 contradicts a single coherent narrative; coherent texts show repeated thematic elements, concepts, and characters, not 70% unique-once words.",
-      "confidence_change": "0.171 -> 0.133"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.4,
-      "passed": false,
-      "details": "Strong Zipfian distribution (R\u00c2\u00b2=0.9084) indicates organizational structure, but hapax ratio of 0.701 is inconsistent with single coherent narrative, which would show topic-driven vocabulary repetition rather than 70% unique words appearing once.",
-      "confidence_change": "0.133 -> 0.109"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.2,
-      "passed": false,
-      "details": "The 70.1% hapax ratio and low Zipf exponent (0.8946) indicate highly dispersed vocabulary distribution inconsistent with a single coherent narrative, which would show concentrated word reuse and hierarchical frequency patterns.",
-      "confidence_change": "0.109 -> 0.083"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.3,
-      "passed": false,
-      "details": "High hapax ratio (70.1%) contradicts coherent narrative hypothesis; although Zipf exponent (0.8946) shows natural language structure, the exceptionally high proportion of unique words appearing once suggests artificial construction, encoding, or fragmented rather than cohesive text.",
-      "confidence_change": "0.083 -> 0.066"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.15,
-      "passed": false,
-      "details": "Extremely high hapax ratio (70.1%) indicates most words appear only once, incompatible with a coherent narrative where themes and characters would naturally repeat; sub-1.0 Zipf exponent also atypical for natural language text.",
-      "confidence_change": "0.066 -> 0.049"
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: PageRank algorithm for topic modeling",
+      "confidence_change": "0.171 -> 0.187"
     }
   ],
   "tests_remaining": [],
-  "status": "eliminated",
+  "status": "active",
   "parent": null,
   "created": "2026-04-13",
   "last_tested": "2026-04-13",

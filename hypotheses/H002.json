@@ -2,7 +2,7 @@
   "id": "H002",
   "claim": "The text uses a simple substitution cipher on medieval Latin, which would produce glyph entropy ~4.0 bits and word-final glyph distribution matching Latin word endings.",
   "type": "cipher",
-  "confidence": 0.193,
+  "confidence": 0.179,
   "evidence_for": [
     "Glyph entropy is close to the expected value for Latin (~4.0 bits)",
     "Word-final glyphs match common Latin word endings"
@@ -56,19 +56,11 @@
     },
     {
       "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.65,
-      "passed": true,
-      "details": "Glyph entropy (3.8627) closely matches predicted 4.0 bits, and strong Zipf fit (R\u00c2\u00b2=0.9084) confirms natural language frequency distribution preservation expected of substitution ciphers; however, unusually high hapax ratio (0.701) suggests potential linguistic noise or anomaly inconsistent with typical medieval Latin.",
-      "confidence_change": "0.162 -> 0.244"
-    },
-    {
-      "date": "2026-04-13",
-      "test": "claude_evaluation",
-      "score": 0.3,
-      "passed": false,
-      "details": "While glyph entropy (3.86) approximates the expected 4.0, the exceptionally high hapax ratio (0.701) and low Zipf exponent (0.895) strongly contradict a simple substitution cipher on natural Latin, which would preserve word frequency distributions and show lower hapax ratios (~40-50%).",
-      "confidence_change": "0.244 -> 0.193"
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Compare glyph and word entropies to the expected values for medieval Latin using a chi-squared test",
+      "confidence_change": "0.162 -> 0.179"
     }
   ],
   "tests_remaining": [],

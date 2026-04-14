@@ -1,0 +1,36 @@
+{
+  "id": "H064",
+  "claim": "The text-only section (7 folios, entropy 3.9016 bits \u00e2\u20ac\u201d highest of all sections) represents unenciphered or minimally enciphered running text in a natural language, while all other sections apply an additional layer of encoding (transposition, null insertion, or homophone expansion) that suppresses entropy, meaning the text-only section should serve as the primary decipherment anchor.",
+  "type": "cipher",
+  "confidence": 0.699,
+  "evidence_for": [
+    "Text-only section entropy (3.9016) is closest to natural language entropy for Latin (~4.0) and Italian (~3.95) of any section",
+    "A section without illustrations would have no need for label-encoding or diagram-specific cipher conventions",
+    "Current belief at 0.677 supports text-only section as closest to natural language",
+    "The entropy gap between text-only (3.9016) and lowest section zodiac (3.7149) is 0.187 bits \u00e2\u20ac\u201d substantial enough to suggest a different encoding regime"
+  ],
+  "evidence_against": [
+    "Text-only section is only 7 folios (2,349 words) \u00e2\u20ac\u201d too small for robust statistical conclusions",
+    "Higher entropy could reflect a different topic domain rather than less encipherment",
+    "If text-only used a different (less redundant) cipher, entropy would also be higher without implying less encipherment"
+  ],
+  "test": "Compute bigram and trigram conditional entropy for the text-only section and compare to all other sections. Apply a Markov model trained on medieval Latin to score the text-only section vs. herbal section: compute the log-likelihood per word of each section under the Latin Markov model after optimal glyph-to-letter frequency mapping. Also test whether text-only word length distribution matches Latin word length distribution more closely than other sections (KL divergence).",
+  "test_metric": "Log-likelihood per word under frequency-mapped Latin Markov model for text-only vs. herbal; KL divergence between text-only word length distribution and medieval Latin word length distribution",
+  "test_threshold": "Confirm if text-only log-likelihood is >0.15 nats/word higher than herbal under the Latin model AND KL divergence to Latin word lengths is <0.08 bits; deny if text-only shows no statistical advantage over herbal under the Latin model",
+  "tests_run": [
+    {
+      "date": "2026-04-13",
+      "test": "compute bigram and trigram conditional entropy for the text-only section and compare to all other se",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.650 -> 0.699"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-13",
+  "last_tested": "2026-04-13",
+  "reasoning": "If text-only section is demonstrably closer to natural language than other sections, it becomes the highest-value decipherment entry point. Confirming this would concentrate computational effort on the 7 most tractable folios and potentially yield a partial key applicable to the rest of the manuscript."
+}

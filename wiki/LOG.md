@@ -4,6 +4,34 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-13 — FAILED: predict.py (22:38:34 UTC)
+
+**Step**: `predict.py`
+**Error**: Traceback (most recent call last):
+  File "C:\Projects\brain-v\scripts\predict.py", line 342, in <module>
+    main()
+    ~~~~^^
+  File "C:\Projects\brain-v\scripts\predict.py", line 302, in main
+    raw_response = call_claude(prompt)
+  File "C:\Projects\brain-v\scripts\predict.py", line 212, in call
+**Action**: Brain-V's loop broke. Check `outputs/failures.log` for details.
+
+## 2026-04-13 — Brain-V cognitive cycle (automated)
+
+**Hypotheses scored**: 5
+**Progress**: 0 eliminated, 5 active, 0 above 0.8 confidence
+**Surprise**: 0.0868
+**Beliefs**: 6 → 7
+**High confidence**: []
+
+## 2026-04-13 — Brain-V cognitive cycle (automated)
+
+**Hypotheses scored**: 5
+**Progress**: 0 eliminated, 5 active, 0 above 0.8 confidence
+**Surprise**: 0.0868
+**Beliefs**: 6 → 7
+**High confidence**: []
+
 ## 2026-04-13 — Brain-V cognitive cycle (automated)
 
 **Hypotheses scored**: 5

@@ -2,7 +2,7 @@
   "id": "H030",
   "claim": "The high hapax ratio (70.1%) is primarily an artifact of systematic scribal abbreviation, where common root words are truncated with consistent suffixes, making truncated forms appear unique when they share stems with high-frequency words.",
   "type": "structural",
-  "confidence": 0.104,
+  "confidence": 0.057,
   "evidence_for": [
     "Hapax ratio of 70.1% is anomalously high compared to natural languages (~40-50%)",
     "Top frequent words like 'daiin', 'aiin', 'chedy', 'shedy' suggest suffix-sharing morphology",
@@ -73,6 +73,30 @@
       "passed": false,
       "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
       "confidence_change": "0.127 -> 0.104"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "cluster all 8,261 unique words by shared n-grams (n=2,3 suffix/prefix), then measure what fraction o",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.104 -> 0.085"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "cluster all 8,261 unique words by shared n-grams (n=2,3 suffix/prefix), then measure what fraction o",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.085 -> 0.070"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "cluster all 8,261 unique words by shared n-grams (n=2,3 suffix/prefix), then measure what fraction o",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.070 -> 0.057"
     }
   ],
   "tests_remaining": [],

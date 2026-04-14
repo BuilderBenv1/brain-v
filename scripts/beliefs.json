@@ -120,7 +120,7 @@
   },
   {
     "belief": "Evidence supports: The Currier A/B dialect split reflects two scribal hands encoding the same underlying language using",
-    "confidence": 0.119,
+    "confidence": 0.101,
     "source": "hypothesis-H032-2026-04-13",
     "date": "2026-04-13",
     "last_scored": "2026-04-13"
@@ -133,14 +133,14 @@
   },
   {
     "belief": "Evidence supports: The Currier A/B split corresponds to two different scribal hands applying the same underlying cipher",
-    "confidence": 0.349,
+    "confidence": 0.214,
     "source": "hypothesis-H040-2026-04-13",
     "date": "2026-04-13",
     "last_scored": "2026-04-13"
   },
   {
     "belief": "Evidence supports: The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-",
-    "confidence": 0.345,
+    "confidence": 0.293,
     "source": "hypothesis-H042-2026-04-13",
     "date": "2026-04-13",
     "last_scored": "2026-04-13"
@@ -159,7 +159,7 @@
   },
   {
     "belief": "Evidence supports: The extremely high hapax ratio (70.1%) is produced by a systematic suffix-stripping or abbreviation ",
-    "confidence": 0.198,
+    "confidence": 0.05,
     "source": "hypothesis-H041-2026-04-13",
     "date": "2026-04-13",
     "last_scored": "2026-04-13"
@@ -178,23 +178,35 @@
   },
   {
     "belief": "Evidence supports: The dominance of word-initial glyphs o, c, q, s, d and word-final glyphs y, n, l, r, o reflects a Vi",
-    "confidence": 0.514,
+    "confidence": 0.437,
     "source": "hypothesis-H044-2026-04-13",
     "date": "2026-04-13",
     "last_scored": "2026-04-13"
   },
   {
     "belief": "Evidence supports: The dominant word-initial glyph constraint (o, c, q, s, d account for most word starts) reflects a c",
-    "confidence": 0.517,
+    "confidence": 0.439,
     "source": "hypothesis-H048-2026-04-13",
     "date": "2026-04-13",
     "last_scored": "2026-04-13"
   },
   {
     "belief": "Evidence supports: The text-only section's elevated entropy (3.9016 bits, highest of all sections) reflects unenciphere",
-    "confidence": 0.505,
+    "confidence": 0.264,
     "source": "hypothesis-H053-2026-04-13",
     "date": "2026-04-13",
     "last_scored": "2026-04-13"
+  },
+  {
+    "belief": "Evidence supports: The Voynich text uses a homophonic substitution cipher on medieval Latin or Italian, where multiple ",
+    "confidence": 0.664,
+    "source": "hypothesis-H055-2026-04-13",
+    "date": "2026-04-13"
+  },
+  {
+    "belief": "Evidence supports: The word-initial glyph constraints {o,c,q,s,d} and word-final glyph constraints {y,n,l,r,o} are arti",
+    "confidence": 0.616,
+    "source": "hypothesis-H058-2026-04-13",
+    "date": "2026-04-13"
   }
 ]

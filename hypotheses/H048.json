@@ -2,7 +2,7 @@
   "id": "H048",
   "claim": "The dominant word-initial glyph constraint (o, c, q, s, d account for most word starts) reflects a cipher rule in which a fixed 'onset marker' glyph class must precede the root \u00e2\u20ac\u201d analogous to a mandatory null prefix \u00e2\u20ac\u201d rather than reflecting the initial phoneme distribution of the underlying language, which would produce a flatter initial-glyph distribution matching Latin or Italian onset frequencies.",
   "type": "cipher",
-  "confidence": 0.663,
+  "confidence": 0.786,
   "evidence_for": [
     "Five glyphs dominating word-initial positions is unusually concentrated compared to Latin (where any of ~15 consonants can be word-initial)",
     "Glyph 'q' appears word-initially but rarely or never word-finally \u00e2\u20ac\u201d a positional constraint inconsistent with natural phoneme distribution",
@@ -39,6 +39,30 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.608 -> 0.663"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the entropy of the word-initial glyph distribution and compare it to the entropy of the word",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.663 -> 0.710"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the entropy of the word-initial glyph distribution and compare it to the entropy of the word",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.710 -> 0.751"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute the entropy of the word-initial glyph distribution and compare it to the entropy of the word",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.751 -> 0.786"
     }
   ],
   "tests_remaining": [],

@@ -216,6 +216,30 @@
       "passed": true,
       "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
       "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-13",
+      "test": "compute mean and variance of word length (in glyphs) per section; run a two-sample kolmogorov-smirno",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.990 -> 0.990"
     }
   ],
   "tests_remaining": [],
