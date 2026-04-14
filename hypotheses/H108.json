@@ -1,0 +1,42 @@
+{
+  "id": "H108",
+  "claim": "The word 'daiin' (799 occurrences, rank 1) decomposes as 'da' (give) + 'in' (in water), a pharmaceutical instruction appearing after plant-part descriptions. This morphological decomposition is systematic across the corpus.",
+  "type": "cipher",
+  "confidence": 0.45,
+  "evidence_for": [
+    "Pagel: daiin = da + in pharmaceutical instruction",
+    "daiin is most frequent word (799x) \u2014 frequent instruction expected",
+    "Brain-V found 'aiin'/'ain' as systematic suffixes \u2014 compatible",
+    "Brain-V found da-stem family (dal, dar, dain, daiin)",
+    "Latin 'da in aqua' is standard medieval pharmaceutical format"
+  ],
+  "evidence_against": [
+    "da+in decomposition is post-hoc \u2014 many decompositions possible",
+    "Brain-V suffix analysis treats 'aiin' as suffix, making stem 'd' not 'da'",
+    "If daiin = 'give in water', should cluster in pharma sections",
+    "'aiin' alone (506x, rank 3) needs separate explanation"
+  ],
+  "test": "Test daiin section distribution: is it more frequent in pharmaceutical/recipe vs zodiac?",
+  "test_metric": "positional_distribution",
+  "test_threshold": "daiin >2x more frequent in pharma vs zodiac supports",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "daiin section distribution analysis",
+      "score": 0.623,
+      "passed": true,
+      "details": "Pharma sections: 28.74/1000, non-pharma: 11.53/1000, ratio: 2.49x. Threshold >2x: PASS.",
+      "confidence_change": "0.30 -> 0.45"
+    }
+  ],
+  "tests_remaining": [
+    "daiin_positional_context"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "Most testable claim. daiin distribution across sections measurable immediately.",
+  "source": "Pagel, K. (2025) Zenodo DOI 10.5281/zenodo.18478526",
+  "researcher": "kpagel"
+}

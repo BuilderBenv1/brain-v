@@ -1,0 +1,46 @@
+{
+  "id": "H105",
+  "claim": "The Voynich script is a semi-syllabic system derived from Balkan scribal traditions, where complex glyphs are built from base characters plus modifiers (loops, triangles). The giant P glyph = N (known Balkan value), with loop = NO. The 4-shaped glyph = D, with triangle = DN, with loop = DNO. The g-shaped glyph = je/j/ja/ju. Combined glyphs produce Serbo-Croatian words (e.g., g + modified-P = jedan/jedno meaning 'one').",
+  "type": "cipher",
+  "confidence": 0.25,
+  "evidence_for": [
+    "AnnaLisetteMorris2: P-glyph = N matches known Balkan scribal system values",
+    "Glyph modifier logic (base + loop/triangle) is consistent with semi-syllabic encoding",
+    "Serbo-Croatian 'jedan/jedno' reading from combined glyphs",
+    "Balkan origin is historically plausible (15th century manuscript, possible Dalmatian/Bosnian provenance)",
+    "Semi-syllabic nature would explain Voynich word-length anomalies (words are shorter than expected for alphabetic cipher)",
+    "Compatible with Brain-V finding that glyph y is a grammatical marker not a letter"
+  ],
+  "evidence_against": [
+    "Brain-V IC of 0.077 is above Serbo-Croatian expected range (~0.060-0.065)",
+    "Brain-V frequency correlation favours Latin/Italian over Slavic languages",
+    "Entropy 3.863 bits closer to Latin (4.0) than South Slavic (~4.1-4.3)",
+    "No published systematic decipherment of multiple folios using this system",
+    "Semi-syllabic encoding would produce different word-length distribution than observed",
+    "Brain-V universal cipher transfer test shows one substitution table across all sections \u2014 a syllabic system would show more section variation"
+  ],
+  "test": "Test Balkan syllabic hypothesis: (1) Check if Voynich glyph combinatorics match semi-syllabic structure (base glyphs + modifier frequency). (2) Compare word-length distribution to Serbo-Croatian. (3) Test if proposed glyph values (P=N, 4=D, g=je) produce consistent readings across multiple folios. (4) Compare IC to Serbo-Croatian reference.",
+  "test_metric": "syllabic_structure_analysis",
+  "test_threshold": "Glyph modifier patterns producing consistent SC readings on >2 folios would support",
+  "tests_run": [
+    {
+      "date": "2026-04-14",
+      "test": "Frequency correlation and IC vs Serbo-Croatian",
+      "score": 0.4252,
+      "passed": false,
+      "details": "SC freq corr=0.4252, IC=0.07711 closer to Latin than SC."
+    }
+  ],
+  "tests_remaining": [
+    "syllabic_combinatorics_test",
+    "ic_comparison_south_slavic",
+    "glyph_modifier_pattern_analysis"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": "2026-04-14",
+  "reasoning": "Community submission from Reddit user AnnaLisetteMorris2. Proposes a Balkan semi-syllabic system where complex Voynich glyphs are composed of base characters plus modifiers (loops, triangles), producing South Slavic (Serbo-Croatian) readings. The modifier logic is an interesting structural claim that could be tested against glyph decomposition analysis. Related to H104 (Stoilova Moravian) in proposing a Slavic language but differs in the specific mechanism (syllabic vs alphabetic) and language family branch (South vs West Slavic).",
+  "source": "Reddit comment by u/AnnaLisetteMorris2, r/voynich",
+  "researcher": "AnnaLisetteMorris2"
+}

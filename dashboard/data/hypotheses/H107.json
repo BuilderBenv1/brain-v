@@ -1,0 +1,31 @@
+{
+  "id": "H107",
+  "claim": "74.4% of Voynich plant illustrations match Mediterranean species at >=80% confidence: 100% Mediterranean flora, 0% New World. Plant families: Lamiaceae 33%, Asteraceae 22%, Solanaceae 21%, consistent with Dioscorides pharmaceutical tradition.",
+  "type": "structural",
+  "confidence": 0.4,
+  "evidence_for": [
+    "Pagel: systematic botanical ID with confidence scores",
+    "100% Mediterranean eliminates New World hypotheses (FA013)",
+    "Lamiaceae/Asteraceae/Solanaceae dominate medieval Mediterranean herbals",
+    "Compatible with Brain-V dating (c.1404-1438) and European provenance"
+  ],
+  "evidence_against": [
+    "Plant ID from stylised medieval illustrations is inherently subjective",
+    "Previous IDs (Tucker & Talbert 2013) reached different conclusions",
+    "26% unidentified \u2014 large uncertainty margin"
+  ],
+  "test": "Cross-reference plant IDs with independent botanical analyses",
+  "test_metric": "botanical_cross_reference",
+  "test_threshold": ">60% agreement with independent analyses",
+  "tests_run": [],
+  "tests_remaining": [
+    "botanical_cross_reference"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": null,
+  "reasoning": "Botanical claim is partially independent of decipherment \u2014 verifiable visually. If confirmed, strongly constrains provenance.",
+  "source": "Pagel, K. (2025) Zenodo DOI 10.5281/zenodo.18478526",
+  "researcher": "kpagel"
+}

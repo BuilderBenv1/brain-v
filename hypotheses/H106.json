@@ -1,0 +1,33 @@
+{
+  "id": "H106",
+  "claim": "The Voynich Manuscript is a trilingual pharmaceutical compendium encoding plant-based medicine in a mixed Latin/Greek/Arabic scribal system, with a 168-term dictionary covering ~80% of the text.",
+  "type": "language",
+  "confidence": 0.35,
+  "evidence_for": [
+    "Pagel (2025): 168-term dictionary on Zenodo (DOI 10.5281/zenodo.18478526)",
+    "Claims 80% text coverage \u2014 far exceeds Brain-V best codebook (50.8%)",
+    "Pharmaceutical context aligns with Brain-V biological section findings",
+    "Brain-V independently identified medical context from statistics"
+  ],
+  "evidence_against": [
+    "80% coverage needs independent verification against EVA corpus",
+    "Brain-V universal cipher transfer shows ONE table \u2014 trilingual would show variation",
+    "IC 0.077 consistent with single-language monoalphabetic, not multilingual",
+    "168 terms covering 80% implies extremely repetitive text"
+  ],
+  "test": "Verify 80% coverage: count tokens matching 168-term dictionary across corpus",
+  "test_metric": "dictionary_coverage",
+  "test_threshold": ">70% tokens: strong support. <50%: overclaimed.",
+  "tests_run": [],
+  "tests_remaining": [
+    "dictionary_coverage_verification",
+    "section_uniformity"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": null,
+  "reasoning": "Most concrete decipherment claim received \u2014 168 specific mappings with DOI. If 80% coverage verifies, major lead.",
+  "source": "Pagel, K. (2025) Zenodo DOI 10.5281/zenodo.18478526; voynich.net",
+  "researcher": "kpagel"
+}

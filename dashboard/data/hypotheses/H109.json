@@ -1,0 +1,30 @@
+{
+  "id": "H109",
+  "claim": "Jaccard Index between Voynich vocabulary and proposed decipherment vocabulary is J~0.08, independently confirmed. Low but non-zero overlap indicates partial but real linguistic correspondence.",
+  "type": "structural",
+  "confidence": 0.3,
+  "evidence_for": [
+    "Pagel: J~0.08, independently confirmed",
+    "Non-zero Jaccard exceeds random expectation",
+    "J=0.08 is honest \u2014 not overclaiming"
+  ],
+  "evidence_against": [
+    "J=0.08 is very low (92% non-overlap)",
+    "Need random baseline comparison",
+    "Independent confirmation details unspecified"
+  ],
+  "test": "Compute Jaccard against Pagel dictionary and random baselines",
+  "test_metric": "jaccard_index",
+  "test_threshold": "J(Pagel) > 2x J(random) supports",
+  "tests_run": [],
+  "tests_remaining": [
+    "jaccard_verification"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-14",
+  "last_tested": null,
+  "reasoning": "Directly verifiable if 168-term dictionary is available.",
+  "source": "Pagel, K. (2025) Zenodo DOI 10.5281/zenodo.18478526",
+  "researcher": "kpagel"
+}
