@@ -175,7 +175,7 @@ Brain-V uses Claude Sonnet for hypothesis generation and Claude Haiku for scorin
 
 ## Architecture
 
-Brain-V is a fork of [Project Brain](https://github.com/BuilderBenv1/project-brain), a persistent cognitive architecture built by Ben Maybury. Project Brain runs a daily perceive-predict-score loop on arXiv cs.AI papers, with beliefs persisted on-chain via AgentOS. Brain-V duplicates that architecture and retargets it at the Voynich Manuscript.
+Brain-V is a fork of [Project Brain](https://github.com/BuilderBenv1/project-brain), a persistent cognitive architecture built by Ben Horne. Project Brain runs a daily perceive-predict-score loop on arXiv cs.AI papers, with beliefs persisted on-chain via AgentOS. Brain-V duplicates that architecture and retargets it at the Voynich Manuscript.
 
 Both systems run on [AgentProof](https://agentproof.sh) infrastructure — ERC-8004 compliant reputation and trust scoring for autonomous AI agents. Brain-V's agents are registered on SKALE (zero gas fees, enabling aggressive cycling). Every hypothesis, every cycle log, and every belief update is anchored to IPFS with on-chain timestamps.
 
@@ -209,7 +209,7 @@ Brain-V will add it to the hypothesis pool and test it in the next cycle batch. 
 
 ## Contact
 
-Built by Ben Maybury ([@AgentProof](https://x.com/AgentProof_sh)) using the Project Brain cognitive architecture.
+Built by Ben Horne ([@AgentProof](https://x.com/AgentProof_sh)) using the Project Brain cognitive architecture.
 
 Brain-V is part of the [AgentProof](https://agentproof.sh) ecosystem — trust scoring infrastructure for autonomous AI agents.
 
