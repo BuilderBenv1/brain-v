@@ -1,0 +1,28 @@
+{
+  "analysis": "stem-level substitution after morphological stripping",
+  "finding": "Stripping suffixes dramatically shifts glyph frequency distribution",
+  "sections": {
+    "text-only": {
+      "ic_raw": 0.0737,
+      "ic_stem": 0.087,
+      "ic_delta": "+0.0133",
+      "latin_dict_raw": 0.0017,
+      "latin_dict_stem": 0.0328,
+      "improvement": "19x",
+      "glyph_y_drop": "9.92% -> 2.67%",
+      "glyph_h_rise": "8.87% -> 13.32%"
+    },
+    "biological": {
+      "ic_raw": 0.0805,
+      "ic_stem": 0.1004,
+      "ic_delta": "+0.0199",
+      "latin_dict_raw": 0.0002,
+      "latin_dict_stem": 0.0681,
+      "improvement": "340x",
+      "glyph_y_drop": "11.26% -> 1.55%",
+      "glyph_h_rise": "8.31% -> 12.50%"
+    }
+  },
+  "key_pattern": "y drops 7-10% across all sections after stripping (it IS a suffix marker, not a letter)",
+  "ic_interpretation": "IC rising toward 0.10 suggests stems may be even more structured than raw text"
+}
