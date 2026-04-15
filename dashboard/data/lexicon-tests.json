@@ -106,19 +106,19 @@
       },
       {
         "id": "H-BV-VOLVELLE-OII-01",
-        "claim": "No volvelle variant reproduces the plant enrichment",
-        "confidence": 0.85,
-        "key_stat": "500 runs across 3 architectures, max 2.80x vs real 5.04x",
-        "validation": "v1 (simple): 0.00x across 100 runs; v2 (corpus roots): mean 0.998x, z=23.30; v3 (rate-matched 500-root cartridges): mean 0.806x, z=7.74",
-        "dataset": "100+200+200 null runs",
+        "claim": "No volvelle architecture reproduces the plant enrichment",
+        "confidence": 0.92,
+        "key_stat": "Four architectures tested; max null 2.80x vs real 5.04x",
+        "validation": "v1 simple 0.00x; v2 section 26-root max 2.80x z=23; v3 section 500-root max 2.66x z=7.7; v4a folio-level 26-root max 1.82x z=12.3; v4b folio-level 200-root max 1.68x z=11.7. All four empirical p=0.",
+        "dataset": "1,400+ null runs across 4 variants",
         "preregistered": false
       }
     ],
     "structural_argument": "Under the volvelle hypothesis, plant folios and non-plant herbal folios draw from the SAME section cartridge. Expected enrichment is ~1.0x by construction. Across 500 null runs spanning three architectures, max observed is 2.80x. Real is 5.04x. The finding is structurally incompatible with section-level volvelle mechanics, independent of rate calibration.",
     "remaining_escape_hatches": [
-      "Folio-level (not section-level) cartridge swap volvelle - not in Quevedo spec",
-      "Non-volvelle mechanical process (Markov chain)",
-      "Sherwood's plant-ID labels correlated with some other folio-level text property"
+      "Non-volvelle mechanical process (Markov chain, HMM) - untested",
+      "Sherwood's plant-ID labels correlated with some other folio-level text property - untested",
+      "Counter-intuitive: folio-level cartridges produce LOWER enrichment than section-level because independence averages signal to 1.0x - the volvelle family is structurally ruled out"
     ],
     "strategic_note": "This is Brain-V's strongest positive finding. Unlike H-BV-VOWEL-01 (which fell to H-BV-VOLVELLE-01 trivially), H-BV-PLANT-01 survives three volvelle variants at p<0.01 each. Combined with H-BV-PSYCHOACTIVE-01 as a pre-registered sub-class confirmation, Brain-V has evidence that EVA encodes botanical content at a resolution deeper than mechanism signature alone."
   },

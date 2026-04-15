@@ -1,0 +1,31 @@
+{
+  "generated": "2026-04-16",
+  "real_enrichment": 5.043,
+  "real_agg_rate": 0.00335,
+  "variants": [
+    {
+      "cart_size": 26,
+      "N": 500,
+      "agg_mean": 0.0005,
+      "null_mean": 0.5368,
+      "null_sd": 0.3655,
+      "null_min": 0.0,
+      "null_max": 1.8212,
+      "z": 12.328,
+      "p_emp": 0.0,
+      "n_valid": 221
+    },
+    {
+      "cart_size": 200,
+      "N": 200,
+      "agg_mean": 0.0007,
+      "null_mean": 0.7014,
+      "null_sd": 0.372,
+      "null_min": 0.1401,
+      "null_max": 1.6811,
+      "z": 11.6719,
+      "p_emp": 0.0,
+      "n_valid": 116
+    }
+  ]
+}
