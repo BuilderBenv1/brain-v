@@ -1,0 +1,35 @@
+{
+  "id": "H-BV-PSYCHOACTIVE-01",
+  "claim": "The _.oii vowel-pattern fire rate is elevated on Voynich folios depicting psychoactive / consciousness-altering plants compared to non-psychoactive plant folios. Motivated by the H-BV-TOXIC-01 bimodal result (p=0.060) and the H-BV-EXTERNAL-NULL-01 cross-check (p=0.494), which together revealed that three of six firing toxic plants are explicitly psychoactive: Paris quadrifolia (narcotic), Rhododendron (hallucinogenic), and Nymphaea caerulea (soporific).",
+  "type": "structural",
+  "confidence": 0.50,
+  "evidence_for": [
+    "Cross-check observation from H-BV-EXTERNAL-NULL-01: 3 of 6 firing toxic folios classified as psychoactive (Paris narcotic, Rhododendron hallucinogenic, Nymphaea caerulea soporific)",
+    "The two failed sub-hypotheses (toxic, external) leave psychoactive as the most-specific remaining discriminator consistent with the observed bimodality",
+    "H-BV-PLANT-01 established that _.oii is a real plant-folio marker (4.84x enrichment, z=3.88, 100% 5-fold stability); the question is what sub-class it discriminates"
+  ],
+  "evidence_against": [
+    "Hypothesis was identified post-hoc in the H-BV-EXTERNAL-NULL-01 cross-check; observational bias risk",
+    "Some traditionally psychoactive plants in the data fired at zero rate (e.g. Mandragora officinarum - mandrake is classically narcotic yet fires _.oii = 0 on f44r)",
+    "Psychoactive classification itself is ethnobotanically ambiguous: is Hyoscyamus psychoactive? Is Salvia officinalis (not divinorum) psychoactive? Category boundaries will materially affect results",
+    "Small sample expected: perhaps 8-15 psychoactive folios in the Sherwood set"
+  ],
+  "test": "Pre-registered one-tailed Welch's t-test: _.oii rate on psychoactive-classified plant folios > _.oii rate on non-psychoactive plant folios. Classification by keyword-matching Sherwood medicinal_use + notes for: narcotic, hallucinogenic, soporific, psychedelic, psychoactive, consciousness-altering, hypnotic, entheogen.",
+  "test_metric": "psychoactive_vs_non_one_tailed_welch_p",
+  "test_threshold": "p < 0.05 AND Cohen's d >= 0.4: confirmed psychoactive-marker interpretation. p >= 0.10: refuted. 0.05 <= p < 0.10: marginal, add to the running record of near-misses like H-BV-TOXIC-01.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Run the pre-registered test in a fresh cycle (NOT this session)",
+    "Before running, lock the classification keyword list and the folio assignments to prevent post-hoc tuning",
+    "Report Mann-Whitney U as non-parametric sanity check",
+    "Report bootstrap 95% CI on mean difference",
+    "If confirmed: test whether psychoactive-firing folios also enrich the other candidate patterns identified in v2 (o._.a at 4.57x, o.eo at 3.70x, _._._.o at 3.36x)"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-TOXIC-01",
+  "created": "2026-04-15",
+  "last_tested": null,
+  "reasoning": "Explicit pre-registration is discipline-enforcing. The hypothesis was identified by observation during another test's cross-check, so running it in the same session would be post-hoc fishing and would inflate the false-positive rate. By writing the specification down now - keyword list, test type, alpha, success/failure thresholds - before seeing any result, Brain-V commits to publishing whatever the test returns rather than adjusting criteria after the fact. If this hypothesis succeeds at p<0.05 in a clean future cycle, it is Brain-V's first pre-registered content-encoding finding. If it fails, it is published as a null like H-BV-EXTERNAL-NULL-01 and the field of candidate explanations narrows further.",
+  "source": "Brain-V pre-registration 2026-04-15 (post-hoc observation from H-BV-EXTERNAL-NULL-01 cross-check)",
+  "researcher": "brain-v"
+}
