@@ -1,22 +1,132 @@
-folio,latin_name,common_name,source,consensus,notes
+folio,latin_name,common_name,source,medicinal_use,notes
+f1v,Atropa belladonna,Deadly Nightshade,sherwood,eye dilation (atropine),identified by Petersen
+f2r,Centaurea diffusa,Diffuse Knapweed,sherwood,wound treatment,14thC ointment ingredient
+f2v,Nymphoides,Nymphoides,sherwood,,"aquatic plant; CONFLICT with Cohen: Nasturtium"
+f3r,Celosia argentea,Feathery Amaranth,sherwood,leafy vegetable,or Codiaeum variegatum (croton)
+f3v,Helleborus foetidus,Dungwort / Bears Foot,sherwood,poisonous,all parts poisonous
+f4r,Saxifraga cespitosa,Alpine Saxifrage,sherwood,bladder/gallstones,name means rock-breaker
+f4v,Campanula rapunculus,Rampion,sherwood,edible root/leaves,Rapunzel story connection
+f5r,Arnica montana,Wolfs Bane,sherwood,sprains/bruises/wounds,toxic internally
+f5v,Malva sylvestris,Mallow,sherwood,coughs/digestion,emollient properties
+f6r,Acanthus mollis,Bear Breeches,sherwood,,Corinthian column decoration
+f6v,Eryngium maritimum,Sea Holly,sherwood,indigestion/aphrodisiac,coastal Europe
+f7r,Trientalis europaea,Starflower,sherwood,wound treatment,endangered species
+f7v,Myrica gale,Bog Myrtle,sherwood,insect repellent,pre-hops beer flavoring
+f8r,Pisum sativum,Green Pea,sherwood,protein-rich food,Mendel genetics
+f8v,Symphytum officinale,Comfrey,sherwood,bronchial/bones/burns,steroidal saponins
+f9r,Ricinus communis,Casteroil,sherwood,purgative,very toxic seeds
+f9v,Viola,Viola,sherwood,vitamins A and C,identified by Dana Scott
+f10r,Cichorium pumilum,Chicory / Endive,sherwood,vegetable/coffee substitute,
+f10v,Linnaea borealis,Twinflower,sherwood,,Linnaeus favourite plant
+f11r,Rosmarinus officinalis,Rosemary,sherwood,memory improvement,Mediterranean native
+f11v,Curcuma longa,Turmeric,sherwood,anti-cancer,Indian Saffron in medieval Europe
+f13r,Musa,Banana,sherwood,,introduced to W Africa by Arab traders
+f13v,Lonicera periclymenum,Honeysuckle,sherwood,lung/spleen diseases,Dioscorides reference
+f14r,Scorzonera,Black Salsify,sherwood,tonic/snakebite cure,vipers grass
+f14v,Stachys monnieri,Wood Betony,sherwood,47 diseases per Antonius Musa,anti-sorcery
+f15r,Sonchus oleraceus,Sow Thistle,sherwood,lactation aid,milky latex
+f15v,Paris quadrifolia,Herb Paris,sherwood,narcotic/aphrodisiac,poisonous berry
+f16r,Cannabis,Cannabis,sherwood,fiber/narcotics/oil,Central Asian origin
+f16v,Chrysanthemum,Chrysanthemum,sherwood,,or possibly red yarrow
+f17r,Catananche caerulea,Cupids Dart,sherwood,love potion ingredient,ancient date-rape drug
+f17v,Dioscorea,Yam,sherwood,staple food,West African origin
+f18r,Aster alpinus,Aster,sherwood,,name means star in Greek
+f18v,Telfairia,Fluted Pumpkin,sherwood,vegetable (leaves/seeds),West African vine
+f19r,Polemonium coeruleum,Greek Valerian,sherwood,coughs/colds/lung,phlox family not valerian
+f19v,Draba nivalis,Nailwort,sherwood,fingernail inflammation,tiny spring plant
+f20r,Astragalus hypoglottis,Milk Vetch,sherwood,kidney/liver tonic,2000yr Chinese medicine
+f20v,Cynara cardunculus,Cardoon,sherwood,edible artichoke thistle,Mediterranean native
+f21r,Anagallis arvensis,Pimpernel,sherwood,eye disease/epilepsy,blue or red flowers
+f21v,Dictamnus albus,Burning Bush,sherwood,epilepsy/uterine,spontaneous ignition in heat
+f22r,Verbena officinalis,Common Vervain,sherwood,sacred herb,found on Mount Calvary legend
+f22v,Tulipa,Tulip,sherwood,,variegated varieties from viral infection
+f23r,Pulsatilla vulgaris,Pasque Flower,sherwood,eye disease/cataracts,very toxic ranunculaceae
+f23v,Borago officinalis,Borage,sherwood,anti-inflammatory,originated in Syria
+f24r,Cucumis sativus,Cucumber,sherwood,scorpion bites/eyesight,3000yr cultivation in W Asia
+f24v,Ficus religiosa,Sacred Fig / Bo-Tree,sherwood,,Buddhist sacred tree
+f25r,Thymus,Wild Thyme,sherwood,depression treatment,Mediterranean aromatic
+f25v,Isatis tinctoria,Woad,sherwood,blue dye source,Tuscany cultivation center
+f26r,Prunella vulgaris,Self-heal,sherwood,antiseptic/food poisoning,mint family
+f26v,Lens culinaris,Lentil,sherwood,protein supplement,or chickpea
+f27r,Spinacia oleracea,Spinach,sherwood,iron-rich,Moors introduced to Europe 15thC
+f27v,Dianthus superbus,Dianthus,sherwood,edible leaves,name means gods flower
+f28r,Aristolochia,Birthwort / Pipevine,sherwood,childbirth/wound healing,ancient Egyptian use
+f28v,Rhododendron,Rhododendron,sherwood,toxic/hallucinogenic,Xenophon honey poisoning
+f29r,Lactuca sativa longifolia,Romaine Lettuce,sherwood,sedative (lettuce opium),
+f29v,Nigella sativa,Roman Coriander,sherwood,Asian/Middle Eastern cooking,black cumin
+f30r,Prunella vulgaris,Healall,sherwood,wounds/ulcers/herpes,creeping stem propagation
+f30v,Cuscuta europaea,Dodder,sherwood,,leafless rootless parasite
+f31r,Erigeron acris,Fleabane,sherwood,flea repellent,aster family
+f31v,Valeriana,Valerian,sherwood,sedative,used since ancient Greece/Rome
+f32r,Veronica triphyllos,Speedwell,sherwood,wounds/skin diseases,
+f32v,Campanula rotundifolia,Harebell,sherwood,,related to Rampion f4v
+f33r,Silene vulgaris,Bladder Campion,sherwood,emollient/conjunctivitis,
+f33v,Tanacetum parthenium,Feverfew,sherwood,fever/headache/migraine,the VM sunflower candidate
+f34r,Anemone hortensis,Anemone,sherwood,headache/gout,Italian native
+f34v,Lunaria annua,Honesty / Money Plant,sherwood,,silvery seed pods
+f35r,Cichorium intybus,Radicchio,sherwood,blood purifier/insomnia,15thC Italian cultivation
+f35v,Ribes nigrum,Blackcurrant,sherwood,vitamin C rich,Cassis in French
+f36r,Delphinium staphisagria,Delphinium,sherwood,lice/parasite treatment,all parts poisonous
+f36v,Lamium amplexicaule,Henbit / Deadnettle,sherwood,green vegetable,resembles nettle without sting
+f37r,Mentha longifolia,Mint,sherwood,stomach/chest pains,propagates by rhizomes
+f37v,Emilia fosbergii,Tassel Flower,sherwood,edible leaves/seeds,Africa/Asia native
+f38v,Euphorbia myrsinites,Myrtle Spurge,sherwood,skin irritant,SE European native
+f40r,Erodium malacoides,Storks Bill,sherwood,mouthwash/throat,geranium family
+f40v,Crocus vernus,Crocus,sherwood,saffron source,Tuscany saffron production
+f41r,Origanum vulgare,Wild Marjoram,sherwood,antioxidant/antimicrobial poultice,Mediterranean herb
+f41v,Coriandrum sativum,Coriander / Cilantro,sherwood,medieval cuisine staple,seeds in Tutankhamun tomb
+f42v,Aquilegia vulgaris,Columbine,sherwood,sacred to Venus/poisonous,ranunculaceae
+f43r,Stellaria media,Chickweed,sherwood,inflammation/ulcer poultice,
+f43v,Elytrigia repens,Couch Grass,sherwood,bladder/urinary infections,dogs eat roots when sick
+f44r,Mandragora officinarum,Mandrake,sherwood,anesthetic/aphrodisiac,magical root tradition
+f44v,Apium graveolens,Celery,sherwood,diuretic/urinary stones,in Tutankhamun tomb
+f45r,Atriplex hortensis,Orach / Saltbush,sherwood,spinach substitute,mentioned in Job
+f45v,Lavandula angustifolia,Lavender,sherwood,plague ward (anti-flea),Roman bath perfume
+f46r,Leucanthemum vulgare,Oxeye Daisy,sherwood,wound/gout ointment,
+f46v,Inula conyza,Ploughmans Spikenard,sherwood,bruises/wounds/insecticide,
+f47r,Sempervivum tectorum,Houseleek,sherwood,fire/lightning protection,Charlemagne ordered on roofs
+f47v,Pulmonaria officinalis,Lungwort,sherwood,pulmonary infections,speckled leaves = diseased lung
+f48r,Adonis vernalis,False Hellebore,sherwood,heart stimulant,stronger than digitalis
+f48v,Ruta graveolens,Rue / Herb of Grace,sherwood,plague/witchcraft protection,Da Vinci ate for eyesight
+f49r,Nymphaea caerulea,Blue Nile Lotus,sherwood,psychedelic/soporific,sacred Egyptian flower
+f50r,Astrantia major,Masterwort,sherwood,colds/stomach diseases,hotter than pepper per Culpepper
+f50v,Gentiana frigida,Stiff Gentian,sherwood,antidote to poison/digestive,
+f51r,Cakile maritima,European Searocket,sherwood,swollen lymph nodes,coastal sand dune plant
+f51v,Salvia officinalis,Sage,sherwood,Alzheimers treatment,virtually every ailment
+f52r,Anemone coronaria,Poppy Anemone,sherwood,,Mediterranean tuberous
+f52v,,Fern (unidentified),sherwood,,fronds not unfolded
+f53r,Achillea ptarmica,Sneezewort,sherwood,wound treatment,named after Achilles
+f53v,Hieracium aurantiacum,Hawkweed,sherwood,vision improvement,hawks ate for eyesight per Pliny
+f54r,Cirsium oleraceum,Cabbage Thistle,sherwood,edible vegetable,Central European bogs
+f54v,Perovskia atriplicifolia,Russian Sage,sherwood,,honey bee favourite
+f55r,Fumaria officinalis,Fumitory,sherwood,acne/eczema/freckles,toxic annual herb
+f55v,Brassica oleracea,Cauliflower / Broccoli,sherwood,edible,Roman development
+f56r,Drosera,Sundew,sherwood,cough remedy,carnivorous plant; ID by Denis Barthel
+f56v,Cycas revoluta,Sago Palm,sherwood,,ancient plant; male with cone
+f57r,Sherardia arvensis,Blue Field Madder,sherwood,red dye source,similar to woodruff
+f65r,Alchemilla vulgaris,Ladies Mantle,sherwood,breast firming per Culpeper,
+f65v,Centaurea cyanus,Cornflower,sherwood,plague ward with wine,blue pigment with alum
+f66v,Satureja montana,Winter Savory,sherwood,Italian cuisine,Mediterranean aromatic
+f87r,Satureja hortensis,Summer Savory,sherwood,liver/lung remedy,
+f87v,Primula vulgaris,Primrose,sherwood,gout/rheumatism/paralysis,prima rosa
+f87v2,Pedicularis flammea,Lousewort,sherwood,,semi-parasitic
+f89v,Actaea spicata,Baneberry,sherwood,black dye with alum,very poisonous
+f90r,Conyza bonariensis,Fleabane,sherwood,flea repellent,aromatic odor
+f90v,Eruca vesicaria,Arugula / Rocket,sherwood,stimulant/aphrodisiac,cat-shaped roots = prank
+f93r,Cynara cardunculus,Artichoke,sherwood,medicine/condiment,or Elecampane (Inula helenium)
+f93v,Lupinus,Lupin,sherwood,food/fodder,nitrogen-fixing
+f94r,Botrychium lunaria,Moonwort,sherwood,raise dead/open locks legend,ID by Dana Scott; endangered
+f94v1,Agrostemma githago,Corncockle,sherwood,dropsy/jaundice,
+f94v2,Glycyrrhiza glabra,Liquorice,sherwood,candy/mouth freshener,
+f94v3,Plantago lanceolata,Ribwort / Plantain,sherwood,tisanes/beverages,kemps game
+f95r,Sambucus nigra,Elderberry,sherwood,jams/wine,pop-guns from branches
+f95v,Althaea rosea,Hollyhock,sherwood,dyes/skin moisturizer,imported from China
+f96r,Angelica archangelica,Garden Angelica,sherwood,plague cure legend,Root of the Holy Ghost
+f96v,Tamus communis,Black Bryony,sherwood,diuretic (with care),poisonous vine
 f2r,,Goldenrod,cohen,,
-f2v,Nymphaea,Waterlily,sherwood,CONFLICT,Sherwood:Waterlily vs Cohen:Nasturtium
-f2v,,Nasturtium,cohen,CONFLICT,See Sherwood entry
-f3r,,Beets,cohen,,
-f4r,Rhus coriaria,Sumac,sherwood,,
-f9v,Viola,Viola,sherwood,,Also attributed to Dana Scott
-f10v,,Twin flower,sherwood,,
-f13r,,Cannabis,cohen,,
-f14r,,Sorrel,sherwood,,
-f16r,,Sea Buckthorn,cohen,,
-f27v,,Clove tree,sherwood,,
-f32r,Thunbergia grandiflora,Sky flower,sherwood,,
-f33v,Eranthis hyemalis,Winter aconite,sherwood,,
-f37v,Sanguisorba minor,Pimpernel,sherwood,,anagram: corcoro
-f47v,Pulmonaria,Lungwort,sherwood,,anagram: bianco
-f53v,Hieracium,Hawkweed,sherwood,,
-f56r,Drosera,Sundew,sherwood,,
-f65r,Apium graveolens,Wild parsley,sherwood,,anagram: apio
-f68v2,,Black Hellebore,cohen,,
-f96v,,Bryony,sherwood,,
-f100v,,Sweet Chestnuts,cohen,,
+f3r,,Beets,cohen,,CONFLICT with Sherwood: Feathery Amaranth
+f13r,,Cannabis,cohen,,CONFLICT with Sherwood: Banana
+f16r,,Sea Buckthorn,cohen,,CONFLICT with Sherwood: Cannabis
+f68v2,,Black Hellebore,cohen,,astronomical section placement unusual
+f100v,,Sweet Chestnuts,cohen,,pharmaceutical section
+f2v,,Nasturtium,cohen,,CONFLICT with Sherwood: Nymphoides

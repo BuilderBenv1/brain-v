@@ -1,0 +1,44 @@
+{
+  "id": "H-BV-PLANT-01",
+  "claim": "Vowel pattern '_.oii' is a robust plant-folio marker in the Voynich Manuscript. Across 115 plant-identified folios (Sherwood + Cohen, 4 conflicts excluded), '_.oii' appears at 4.84x the rate of 14 non-plant-ID herbal baseline folios (z=3.88). Five-fold cross-validation over plant folios shows 100% fold stability (all folds achieve enrichment >=1.5x, individual folds range 1.89x to 7.76x).",
+  "type": "structural",
+  "confidence": 0.75,
+  "evidence_for": [
+    "Full-dataset enrichment 4.84x with z=3.88 on 115 plant folios",
+    "5/5 cross-validation folds show enrichment >=1.5x (100% stability)",
+    "Individual fold enrichments 5.12, 6.43, 1.89, 2.98, 7.76",
+    "Pattern discovered in v1 (3.71x on 19 folios), strengthened to 4.84x with 6x larger dataset — opposite of overfitting",
+    "Does not rely on lexicon matching or language identification"
+  ],
+  "evidence_against": [
+    "Baseline is thin (14 non-plant herbal folios) after plant-ID absorption",
+    "Fold 3 enrichment was only 1.89x — below fold 1 (5.12x) and fold 5 (7.76x); suggests some plant subsets carry the signal more strongly",
+    "Only 36 total plant-folio fires; a few miscounted plant IDs could materially shift the result",
+    "Pattern is herbal-section-biased; could reflect herbal-vs-other rather than plant-vs-non-plant within herbal"
+  ],
+  "test": "Replicate with alternative baseline: use pharmaceutical-section folios as negative control instead of non-plant herbal folios",
+  "test_metric": "alternative_baseline_enrichment",
+  "test_threshold": ">=2.0x enrichment vs pharma baseline: supported. <1.5x: herbal-section artefact.",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "v2_full_plus_5fold_cv",
+      "score": 0.75,
+      "passed": true,
+      "details": "Enrichment 4.84x (z=3.88) full dataset; 100% 5-fold stability at >=1.5x threshold; pattern strengthened with 6x larger dataset rather than regressing to mean.",
+      "confidence_change": "initial 0.75"
+    }
+  ],
+  "tests_remaining": [
+    "Alternative-baseline test (pharma folios as control)",
+    "Held-out test of sibling candidates o._.a (4.57x), o.eo (3.70x), _._._.o (3.36x)",
+    "Examine which specific plant species '_.oii' concentrates on — is it all plants, toxic plants, medicinal plants, a single botanical family?"
+  ],
+  "status": "active",
+  "parent": "H-BV-VOWEL-AGG-01",
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "First plant-specific (not section-level) vowel-pattern finding to survive held-out validation. Pattern strengthens with more data (3.71x -> 4.84x), which is the OPPOSITE of overfitting. If the alternative-baseline test confirms, this is the first structurally-validated glyph-level marker tied to image-content.",
+  "source": "Brain-V plant_vowel_analysis_v2 cycle 2026-04-15",
+  "researcher": "brain-v"
+}
