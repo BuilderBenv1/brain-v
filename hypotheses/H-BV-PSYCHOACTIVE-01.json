@@ -2,7 +2,7 @@
   "id": "H-BV-PSYCHOACTIVE-01",
   "claim": "The _.oii vowel-pattern fire rate is elevated on Voynich folios depicting psychoactive / consciousness-altering plants compared to non-psychoactive plant folios. Motivated by the H-BV-TOXIC-01 bimodal result (p=0.060) and the H-BV-EXTERNAL-NULL-01 cross-check (p=0.494), which together revealed that three of six firing toxic plants are explicitly psychoactive: Paris quadrifolia (narcotic), Rhododendron (hallucinogenic), and Nymphaea caerulea (soporific).",
   "type": "structural",
-  "confidence": 0.8,
+  "confidence": 0.65,
   "evidence_for": [
     "Cross-check observation from H-BV-EXTERNAL-NULL-01: 3 of 6 firing toxic folios classified as psychoactive (Paris narcotic, Rhododendron hallucinogenic, Nymphaea caerulea soporific)",
     "The two failed sub-hypotheses (toxic, external) leave psychoactive as the most-specific remaining discriminator consistent with the observed bimodality",
@@ -12,7 +12,9 @@
     "Hypothesis was identified post-hoc in the H-BV-EXTERNAL-NULL-01 cross-check; observational bias risk",
     "Some traditionally psychoactive plants in the data fired at zero rate (e.g. Mandragora officinarum - mandrake is classically narcotic yet fires _.oii = 0 on f44r)",
     "Psychoactive classification itself is ethnobotanically ambiguous: is Hyoscyamus psychoactive? Is Salvia officinalis (not divinorum) psychoactive? Category boundaries will materially affect results",
-    "Small sample expected: perhaps 8-15 psychoactive folios in the Sherwood set"
+    "Small sample expected: perhaps 8-15 psychoactive folios in the Sherwood set",
+    "All 4 psychoactive folios are Hand A - cannot separate psychoactive signal from Hand-A scribal feature without explicit within-hand re-test",
+    "Eyeball within-Hand-A ratio ~5.7x suggests signal survives, but needs formal pre-registered test"
   ],
   "test": "Pre-registered one-tailed Welch's t-test: _.oii rate on psychoactive-classified plant folios > _.oii rate on non-psychoactive plant folios. Classification by keyword-matching Sherwood medicinal_use + notes for: narcotic, hallucinogenic, soporific, psychedelic, psychoactive, consciousness-altering, hypnotic, entheogen.",
   "test_metric": "psychoactive_vs_non_one_tailed_welch_p",
@@ -25,6 +27,14 @@
       "passed": true,
       "details": "n=4 psychoactive (Paris, Cannabis, Rhododendron, Nymphaea caerulea) vs n=112 non-psychoactive. Psycho mean _.oii 2.80%% vs non 0.34%% = 8.14x ratio. t=+2.43, one-tailed p=0.046 (passes alpha=0.05), Cohen d=2.63 (passes d>=0.4). Bootstrap 95%% CI [+0.007, +0.042] excludes zero. Mann-Whitney U p=0.000015. Meets pre-registered confirmation rules.",
       "confidence_change": "0.50 -> 0.80 (n=4 caveat)"
+    },
+    {
+      "date": "2026-04-16",
+      "test": "confound_check_hand_a_restriction",
+      "score": 0.65,
+      "passed": null,
+      "details": "All 4 psychoactive folios (f15v, f16r, f28v, f49r) are Hand A. Eyeball within-Hand-A ratio ~5.7x (psycho 0.028 vs non-psycho Hand-A plants 0.005), still elevated. But formal within-hand pre-registered re-test not yet run. Downgrade pending explicit within-Hand-A test.",
+      "confidence_change": "0.80 -> 0.65"
     }
   ],
   "tests_remaining": [
@@ -37,7 +47,7 @@
   "status": "confirmed",
   "parent": "H-BV-TOXIC-01",
   "created": "2026-04-15",
-  "last_tested": "2026-04-15",
+  "last_tested": "2026-04-16",
   "reasoning": "Explicit pre-registration is discipline-enforcing. The hypothesis was identified by observation during another test's cross-check, so running it in the same session would be post-hoc fishing and would inflate the false-positive rate. By writing the specification down now - keyword list, test type, alpha, success/failure thresholds - before seeing any result, Brain-V commits to publishing whatever the test returns rather than adjusting criteria after the fact. If this hypothesis succeeds at p<0.05 in a clean future cycle, it is Brain-V's first pre-registered content-encoding finding. If it fails, it is published as a null like H-BV-EXTERNAL-NULL-01 and the field of candidate explanations narrows further.",
   "source": "Brain-V pre-registration 2026-04-15 (post-hoc observation from H-BV-EXTERNAL-NULL-01 cross-check)",
   "researcher": "brain-v"

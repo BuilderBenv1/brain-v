@@ -1,0 +1,69 @@
+{
+  "generated": "2026-04-16",
+  "currier": {
+    "plant_distribution": {
+      "A": 88,
+      "B": 25,
+      "?": 2
+    },
+    "nonplant_distribution": {
+      "A": 8,
+      "B": 7
+    },
+    "psycho_distribution": {
+      "A": 4
+    }
+  },
+  "quire": {
+    "plant_quires_n": 12,
+    "psycho_quires_n": 3,
+    "psycho_distinct_quires": [
+      "B",
+      "D",
+      "G"
+    ]
+  },
+  "length": {
+    "plant_mean_tokens": 84.35652173913043,
+    "nonplant_mean_tokens": 90.6,
+    "token_count_ttest_p": 0.5623844203168389,
+    "pearson_length_vs_oii": -0.21896337218791148,
+    "plant_aggregate_oii": 0.0037109576332336872,
+    "length_matched_nonplant_oii": 0.0014130434782608694,
+    "length_matched_enrichment": 2.626216171211533
+  },
+  "psycho_four": [
+    {
+      "folio": "f15v",
+      "quire": "B",
+      "currier": "A",
+      "section": "herbal",
+      "word_count": 71,
+      "oii_rate": 0.04225352112676056
+    },
+    {
+      "folio": "f16r",
+      "quire": "B",
+      "currier": "A",
+      "section": "herbal",
+      "word_count": 81,
+      "oii_rate": 0.012345679012345678
+    },
+    {
+      "folio": "f28v",
+      "quire": "D",
+      "currier": "A",
+      "section": "herbal",
+      "word_count": 62,
+      "oii_rate": 0.04838709677419355
+    },
+    {
+      "folio": "f49r",
+      "quire": "G",
+      "currier": "A",
+      "section": "herbal",
+      "word_count": 109,
+      "oii_rate": 0.009174311926605505
+    }
+  ]
+}

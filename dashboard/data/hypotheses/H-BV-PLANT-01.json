@@ -2,7 +2,7 @@
   "id": "H-BV-PLANT-01",
   "claim": "Vowel pattern '_.oii' is a robust plant-folio marker in the Voynich Manuscript. Across 115 plant-identified folios (Sherwood + Cohen, 4 conflicts excluded), '_.oii' appears at 4.84x the rate of 14 non-plant-ID herbal baseline folios (z=3.88). Five-fold cross-validation over plant folios shows 100% fold stability (all folds achieve enrichment >=1.5x, individual folds range 1.89x to 7.76x).",
   "type": "structural",
-  "confidence": 0.75,
+  "confidence": 0.55,
   "evidence_for": [
     "Full-dataset enrichment 4.84x with z=3.88 on 115 plant folios",
     "5/5 cross-validation folds show enrichment >=1.5x (100% stability)",
@@ -14,7 +14,10 @@
     "Baseline is thin (14 non-plant herbal folios) after plant-ID absorption",
     "Fold 3 enrichment was only 1.89x — below fold 1 (5.12x) and fold 5 (7.76x); suggests some plant subsets carry the signal more strongly",
     "Only 36 total plant-folio fires; a few miscounted plant IDs could materially shift the result",
-    "Pattern is herbal-section-biased; could reflect herbal-vs-other rather than plant-vs-non-plant within herbal"
+    "Pattern is herbal-section-biased; could reflect herbal-vs-other rather than plant-vs-non-plant within herbal",
+    "Currier hand confound: _.oii is essentially a Hand-A scribal feature; Hand B shows zero _.oii across all tested folios",
+    "Within-Hand-A plant-vs-non-plant enrichment is 1.72x (not significant at p=0.258), far below the 5.04x corpus-wide headline",
+    "The 5.04x figure is inflated by Hand-B folios contributing zero to baseline"
   ],
   "test": "Replicate with alternative baseline: use pharmaceutical-section folios as negative control instead of non-plant herbal folios",
   "test_metric": "alternative_baseline_enrichment",
@@ -27,6 +30,14 @@
       "passed": true,
       "details": "Enrichment 4.84x (z=3.88) full dataset; 100% 5-fold stability at >=1.5x threshold; pattern strengthened with 6x larger dataset rather than regressing to mean.",
       "confidence_change": "initial 0.75"
+    },
+    {
+      "date": "2026-04-16",
+      "test": "confound_check_currier_quire_length",
+      "score": 0.55,
+      "passed": false,
+      "details": "Currier hand confound: _.oii does not fire on any Hand B folio (n=25 plant + n=7 non-plant, all zero). Within-Hand-A, plant-vs-non-plant enrichment drops 5.04x -> 1.72x, within-hand t-test p=0.258 not significant. Quire and length confounds ruled out. The 5.04x headline is inflated by Hand-B zero baseline.",
+      "confidence_change": "0.75 -> 0.55"
     }
   ],
   "tests_remaining": [
@@ -37,7 +48,7 @@
   "status": "active",
   "parent": "H-BV-VOWEL-AGG-01",
   "created": "2026-04-15",
-  "last_tested": "2026-04-15",
+  "last_tested": "2026-04-16",
   "reasoning": "First plant-specific (not section-level) vowel-pattern finding to survive held-out validation. Pattern strengthens with more data (3.71x -> 4.84x), which is the OPPOSITE of overfitting. If the alternative-baseline test confirms, this is the first structurally-validated glyph-level marker tied to image-content.",
   "source": "Brain-V plant_vowel_analysis_v2 cycle 2026-04-15",
   "researcher": "brain-v"
