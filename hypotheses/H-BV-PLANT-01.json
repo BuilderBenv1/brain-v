@@ -1,6 +1,6 @@
 {
   "id": "H-BV-PLANT-01",
-  "claim": "Vowel pattern '_.oii' is a robust plant-folio marker in the Voynich Manuscript. Across 115 plant-identified folios (Sherwood + Cohen, 4 conflicts excluded), '_.oii' appears at 4.84x the rate of 14 non-plant-ID herbal baseline folios (z=3.88). Five-fold cross-validation over plant folios shows 100% fold stability (all folds achieve enrichment >=1.5x, individual folds range 1.89x to 7.76x).",
+  "claim": "Within Hand A folios, vowel pattern '_.oii' fires at elevated rate on plant-identified folios. Headline corpus-wide enrichment (5.04x) is Hand-A-inflated: Hand B shows zero _.oii across both plant (n=25) and non-plant (n=7) herbal folios. Within-Hand-A plant-vs-non-plant enrichment is only 1.72x (n=88 plant vs 8 non-plant, within-hand t-test p=0.258, not significant at alpha=0.05). The 5-fold CV stability established in v2 applies to the Hand-A plant subset, not to plants generally. Quire and length confounds are ruled out; Currier hand is not.",
   "type": "structural",
   "confidence": 0.55,
   "evidence_for": [

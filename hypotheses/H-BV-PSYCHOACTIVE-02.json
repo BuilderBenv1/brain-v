@@ -1,0 +1,31 @@
+{
+  "id": "H-BV-PSYCHOACTIVE-02",
+  "claim": "Within Hand A folios only, the _.oii fire rate is elevated on psychoactive plant folios compared to non-psychoactive plant folios. This is the within-hand re-test of H-BV-PSYCHOACTIVE-01 after the H-BV-PLANT-01 confound check revealed that _.oii is a Hand-A phenomenon (Hand B shows zero _.oii).",
+  "type": "structural",
+  "confidence": 0.50,
+  "evidence_for": [
+    "Informal eyeball estimate from the confound check: within-Hand-A ratio ~5.7x (psycho mean ~0.028 vs non-psycho Hand-A plants mean ~0.005)",
+    "All 4 pre-registered psychoactive folios (f15v, f16r, f28v, f49r) are Hand A — the sample is intact under the restriction",
+    "H-BV-PSYCHOACTIVE-01 corpus-wide signal was very strong (p=0.046 with n=4, Mann-Whitney U p=0.000015) — dropping Hand-B non-psychoactive folios which all had rate 0 should not dilute the numerator, only shrink the comparison pool"
+  ],
+  "evidence_against": [
+    "Non-psycho Hand-A plant pool is smaller than the full non-psycho plant pool (88 vs 112 folios, minus the 4 psycho = 84 Hand-A non-psycho). Smaller n reduces power.",
+    "If the 8.14x corpus-wide ratio was driven substantially by Hand-B non-psycho zeros, restriction to Hand A will shrink the ratio materially",
+    "Post-hoc within-subset test after a confound-identifying check is conceptually less airtight than a fully independent pre-registration"
+  ],
+  "test": "One-tailed Welch's t-test restricted to Hand A folios: psychoactive plants (n=4) vs non-psychoactive plants (n=~84). Include Mann-Whitney U non-parametric sanity check. Include bootstrap 95% CI on mean difference.",
+  "test_metric": "within_hand_a_psychoactive_oii_rate",
+  "test_threshold": "p < 0.05 AND Cohen's d >= 0.4: confirmed (the H-BV-PSYCHOACTIVE-01 signal survives the Hand-A confound). p >= 0.10: refuted (the corpus-wide signal was a Hand-A artefact not a psychoactive signal). 0.05 <= p < 0.10 OR d < 0.4: marginal.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute the locked test in the next step of this session (NOT in the same git commit as the pre-registration)",
+    "Explicit reporting rule: whatever the test returns is what gets published; no post-hoc threshold adjustment"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-PSYCHOACTIVE-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "Confound check on H-BV-PLANT-01 (2026-04-16) revealed _.oii is essentially a Hand-A feature. Since all 4 pre-registered psychoactive folios are Hand A, the original H-BV-PSYCHOACTIVE-01 test cannot distinguish 'psychoactive-on-Hand-A signal' from 'Hand-A-baseline signal'. This second pre-registered test locks the decision rules before any within-Hand-A data is examined, preserving the honest pre-registration discipline.",
+  "source": "Brain-V 2026-04-16 pre-registration following plant_confound_check",
+  "researcher": "brain-v"
+}

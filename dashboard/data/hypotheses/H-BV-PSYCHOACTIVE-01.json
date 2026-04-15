@@ -1,6 +1,6 @@
 {
   "id": "H-BV-PSYCHOACTIVE-01",
-  "claim": "The _.oii vowel-pattern fire rate is elevated on Voynich folios depicting psychoactive / consciousness-altering plants compared to non-psychoactive plant folios. Motivated by the H-BV-TOXIC-01 bimodal result (p=0.060) and the H-BV-EXTERNAL-NULL-01 cross-check (p=0.494), which together revealed that three of six firing toxic plants are explicitly psychoactive: Paris quadrifolia (narcotic), Rhododendron (hallucinogenic), and Nymphaea caerulea (soporific).",
+  "claim": "On Hand A folios only, the _.oii vowel-pattern fire rate is elevated on psychoactive plants (Paris quadrifolia, Cannabis, Rhododendron, Nymphaea caerulea, all Hand A) vs non-psychoactive plants. Corpus-wide one-tailed Welch p=0.046, Cohen d=2.63, Mann-Whitney U p=0.000015 (n=4 psychoactive vs n=112 non-psychoactive). CAVEAT: all 4 psychoactive folios are Hand A, so the pre-registered corpus-wide test cannot separate psychoactive from Hand-A effect. Eyeball within-Hand-A ratio ~5.7x suggests signal survives but needs formal within-hand pre-registered re-test (H-BV-PSYCHOACTIVE-02).",
   "type": "structural",
   "confidence": 0.65,
   "evidence_for": [

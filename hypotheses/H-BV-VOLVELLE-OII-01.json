@@ -1,6 +1,6 @@
 {
   "id": "H-BV-VOLVELLE-OII-01",
-  "claim": "No volvelle architecture reproduces the plant-folio _.oii enrichment observed in real Voynich. Tested across four variants (simple CV template, corpus-derived roots at 26 and 500 cartridge sizes with section-level swap, and folio-level cartridge swap at 26 and 200), all null distributions cap at <=2.80x enrichment. Real Voynich is 5.04x. Empirical p<0.01 across all four variants, N totaling 1400+ null runs. The volvelle family is structurally ruled out as the mechanism for H-BV-PLANT-01.",
+  "claim": "No volvelle architecture reproduces the plant-folio _.oii enrichment observed in real Voynich. Tested across four variants (simple CV template, corpus-derived roots at 26 and 500 cartridge sizes with section-level swap, and folio-level cartridge swap at 26 and 200), all null distributions cap at <=2.80x enrichment. Real Voynich corpus-wide is 5.04x; empirical p<0.01 across all four variants, 1,400+ null runs total. Volvelle family structurally ruled out. NOTE: Post-confound-check, the 5.04x enrichment is known to be Hand-A-restricted; within-Hand-A enrichment is 1.72x. The volvelle-ruling-out result still holds because no volvelle variant produced even 2.80x, which is well above the within-Hand-A 1.72x the signal now claims.",
   "type": "null",
   "confidence": 0.92,
   "evidence_for": [
