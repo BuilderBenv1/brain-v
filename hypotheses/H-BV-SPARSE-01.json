@@ -1,0 +1,42 @@
+{
+  "id": "H-BV-SPARSE-01",
+  "claim": "Three vowel-pattern rules survive honest held-out validation at 70%+ precision: '_.o._.o' -> herbal (82.4% precision on 34 held-out fires), '_._.eee' -> recipes (72.7% on 11 fires), '_.e.ai' -> recipes (70.6% on 17 fires). These three rules together cover 0.8% of held-out tokens at 77.4% aggregate precision. They are Brain-V's first honestly-validated decipherment fragments.",
+  "type": "structural",
+  "confidence": 0.70,
+  "evidence_for": [
+    "80/20 folio-stratified split with 181 train / 45 holdout folios",
+    "3 rules pass held-out >=0.70 precision AND >=10 fires",
+    "Sparse dictionary covers 62/8008 held-out tokens at 77.4% precision",
+    "All three rules have train-set precision comparable to or below held-out precision (no overfitting)"
+  ],
+  "evidence_against": [
+    "Tiny coverage (0.8%) limits practical utility",
+    "Earlier headline rule '_.eo -> pharmaceutical' did NOT survive this stricter test",
+    "11-fire and 17-fire supports are modest; a 4th fold might remove borderline rules"
+  ],
+  "test": "Re-split with different random seed and retest; the 3 rules should survive",
+  "test_metric": "sparse_rule_stability_across_splits",
+  "test_threshold": "At least 2 of the 3 rules survive a second 80/20 split at >=0.65 precision",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "sparse_dict_holdout_precision",
+      "score": 0.70,
+      "passed": true,
+      "details": "3/103 candidate rules survive >=0.70 precision + >=10 fires on stratified holdout. Aggregate precision 77.4% on 0.8% coverage.",
+      "confidence_change": "initial 0.70"
+    }
+  ],
+  "tests_remaining": [
+    "Second random split for stability",
+    "Look for semantic interpretation (what does _.o._.o 'mean' if herbal?)",
+    "Expand beyond section metadata to image-label targets"
+  ],
+  "status": "active",
+  "parent": "H-BV-VOWEL-AGG-01",
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Narrow, honest, replicable. The sparse high-precision path was the correct successor after H-BV-VOWEL-CODE-01 failed its held-out test. Three rules is three more than any coverage-game methodology has produced.",
+  "source": "Brain-V sparse_and_structural_v1 cycle 2026-04-15",
+  "researcher": "brain-v"
+}

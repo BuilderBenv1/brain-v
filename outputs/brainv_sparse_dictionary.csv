@@ -1,0 +1,4 @@
+vowel_pattern,section,train_prec,train_n,holdout_prec,holdout_n
+_.o._.o,herbal,0.796,108,0.824,34
+_._.eee,recipes,0.5,28,0.727,11
+_.e.ai,recipes,0.682,44,0.706,17

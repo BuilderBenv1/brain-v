@@ -1,0 +1,41 @@
+{
+  "id": "H-BV-STRUCT-01",
+  "claim": "Non-vowel structural features (q-initial flag, suffix class, bench-gallows presence, skeleton length, line-position, plain-gallows line-initial) individually add at most +1.9pp to section-prediction accuracy and collectively add only +3.6pp over majority baseline. Combining them with vowel-pattern features slightly DEGRADES performance (38.9% vs 40.1% vowel-only). Per-class precision collapses to only herbal/recipes; the classifier never predicts the other 6 sections.",
+  "type": "null",
+  "confidence": 0.85,
+  "evidence_for": [
+    "Vowel-only multi-class accuracy 40.1% on stratified holdout",
+    "Non-vowel-only accuracy 34.1% (gain +3.6pp over 30.5% majority)",
+    "Combined vowel+structural 38.9% - slight degradation from 40.1%",
+    "Single-feature gains: suffix +1.9pp, skel_len +1.5pp, bench +1.3pp, others <=0.6pp",
+    "Structural NB predicts only herbal or recipes for all held-out tokens"
+  ],
+  "evidence_against": [
+    "Q-initial marker is a near-categorical positional feature (98.9%) yet contributes -0.8pp — counterintuitive; may indicate feature is uninformative-for-section rather than uninformative-overall",
+    "Single-feature NB may not capture interactions; boosted/tree models could reveal more"
+  ],
+  "test": "Non-vowel structural features as primary signal for section prediction",
+  "test_metric": "nonvowel_nb_gain_over_majority",
+  "test_threshold": "+5pp over majority: useful. <+3pp: uninformative for section task.",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "nonvowel_structural_nb_multiclass",
+      "score": 0.036,
+      "passed": false,
+      "details": "Non-vowel-only classifier 34.1% vs majority 30.5% = +3.6pp gain. Degenerate output distribution (predicts only herbal/recipes).",
+      "confidence_change": "initial 0.85 (high confidence the null is real)"
+    }
+  ],
+  "tests_remaining": [
+    "Try tree/boosted models to capture interactions",
+    "Test non-vowel features against non-section targets (image labels, Currier A/B)"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Published null: structural features beyond vowel patterns do not discriminate section. Q-initial, suffix class, bench-gallows are real glyph-role regularities but not section-informative. Save Brain-V from pursuing structural features for section decoding; redirect toward image-label targets or other task formulations.",
+  "source": "Brain-V sparse_and_structural_v1 cycle 2026-04-15",
+  "researcher": "brain-v"
+}

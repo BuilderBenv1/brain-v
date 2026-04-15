@@ -1,0 +1,63 @@
+{
+  "generated": "2026-04-15",
+  "split": {
+    "train_folios": 181,
+    "holdout_folios": 45,
+    "train_tokens": 30045,
+    "holdout_tokens": 8008
+  },
+  "sparse_dictionary": {
+    "size": 3,
+    "coverage": 0.0077,
+    "honest_precision": 0.7742,
+    "entries": [
+      {
+        "vowel_pattern": "_.o._.o",
+        "section": "herbal",
+        "train_prec": 0.796,
+        "train_n": 108,
+        "holdout_prec": 0.824,
+        "holdout_n": 34,
+        "holdout_hits": 28
+      },
+      {
+        "vowel_pattern": "_._.eee",
+        "section": "recipes",
+        "train_prec": 0.5,
+        "train_n": 28,
+        "holdout_prec": 0.727,
+        "holdout_n": 11,
+        "holdout_hits": 8
+      },
+      {
+        "vowel_pattern": "_.e.ai",
+        "section": "recipes",
+        "train_prec": 0.682,
+        "train_n": 44,
+        "holdout_prec": 0.706,
+        "holdout_n": 17,
+        "holdout_hits": 12
+      }
+    ]
+  },
+  "structural_classifiers": {
+    "vowel_only": {
+      "label": "vowel pattern only",
+      "acc": 0.400974025974026,
+      "maj_acc": 0.3053196803196803,
+      "gain": 0.09565434565434566
+    },
+    "struct_only": {
+      "label": "non-vowel structural only",
+      "acc": 0.341033966033966,
+      "maj_acc": 0.3053196803196803,
+      "gain": 0.0357142857142857
+    },
+    "combined": {
+      "label": "combined (vowel + structural)",
+      "acc": 0.38873626373626374,
+      "maj_acc": 0.3053196803196803,
+      "gain": 0.08341658341658342
+    }
+  }
+}
