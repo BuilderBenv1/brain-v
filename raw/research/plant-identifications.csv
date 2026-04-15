@@ -1,0 +1,22 @@
+folio,latin_name,common_name,source,consensus,notes
+f2r,,Goldenrod,cohen,,
+f2v,Nymphaea,Waterlily,sherwood,CONFLICT,Sherwood:Waterlily vs Cohen:Nasturtium
+f2v,,Nasturtium,cohen,CONFLICT,See Sherwood entry
+f3r,,Beets,cohen,,
+f4r,Rhus coriaria,Sumac,sherwood,,
+f9v,Viola,Viola,sherwood,,Also attributed to Dana Scott
+f10v,,Twin flower,sherwood,,
+f13r,,Cannabis,cohen,,
+f14r,,Sorrel,sherwood,,
+f16r,,Sea Buckthorn,cohen,,
+f27v,,Clove tree,sherwood,,
+f32r,Thunbergia grandiflora,Sky flower,sherwood,,
+f33v,Eranthis hyemalis,Winter aconite,sherwood,,
+f37v,Sanguisorba minor,Pimpernel,sherwood,,anagram: corcoro
+f47v,Pulmonaria,Lungwort,sherwood,,anagram: bianco
+f53v,Hieracium,Hawkweed,sherwood,,
+f56r,Drosera,Sundew,sherwood,,
+f65r,Apium graveolens,Wild parsley,sherwood,,anagram: apio
+f68v2,,Black Hellebore,cohen,,
+f96v,,Bryony,sherwood,,
+f100v,,Sweet Chestnuts,cohen,,

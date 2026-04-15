@@ -1,0 +1,114 @@
+{
+  "generated": "2026-04-15",
+  "plant_folios_in_corpus": 19,
+  "plant_folios_missing": [],
+  "sparse_rule_plant_rate": 0.0104,
+  "sparse_rule_baseline_rate": 0.0125,
+  "top_enriched_patterns_on_plant_folios": [
+    {
+      "vp": "_.oii",
+      "plant_rate": 0.0092,
+      "baseline_rate": 0.0025,
+      "enrichment": 3.71,
+      "n": 13
+    },
+    {
+      "vp": "o._.o",
+      "plant_rate": 0.0185,
+      "baseline_rate": 0.0085,
+      "enrichment": 2.17,
+      "n": 26
+    },
+    {
+      "vp": "_._.eo",
+      "plant_rate": 0.0107,
+      "baseline_rate": 0.0063,
+      "enrichment": 1.69,
+      "n": 15
+    },
+    {
+      "vp": "_.o.eo",
+      "plant_rate": 0.0064,
+      "baseline_rate": 0.0038,
+      "enrichment": 1.67,
+      "n": 9
+    },
+    {
+      "vp": "_._.o",
+      "plant_rate": 0.0362,
+      "baseline_rate": 0.0262,
+      "enrichment": 1.38,
+      "n": 51
+    },
+    {
+      "vp": "_._._.o",
+      "plant_rate": 0.0092,
+      "baseline_rate": 0.0067,
+      "enrichment": 1.37,
+      "n": 13
+    },
+    {
+      "vp": "_.o.o",
+      "plant_rate": 0.0263,
+      "baseline_rate": 0.0195,
+      "enrichment": 1.35,
+      "n": 37
+    },
+    {
+      "vp": "_.o.ee",
+      "plant_rate": 0.0071,
+      "baseline_rate": 0.0055,
+      "enrichment": 1.29,
+      "n": 10
+    },
+    {
+      "vp": "o.eo",
+      "plant_rate": 0.0064,
+      "baseline_rate": 0.005,
+      "enrichment": 1.29,
+      "n": 9
+    },
+    {
+      "vp": "_._.ee",
+      "plant_rate": 0.0085,
+      "baseline_rate": 0.0069,
+      "enrichment": 1.23,
+      "n": 12
+    },
+    {
+      "vp": "_.aii",
+      "plant_rate": 0.0611,
+      "baseline_rate": 0.0514,
+      "enrichment": 1.19,
+      "n": 86
+    },
+    {
+      "vp": "_.o",
+      "plant_rate": 0.1882,
+      "baseline_rate": 0.1596,
+      "enrichment": 1.18,
+      "n": 265
+    },
+    {
+      "vp": "_.ai",
+      "plant_rate": 0.017,
+      "baseline_rate": 0.0145,
+      "enrichment": 1.18,
+      "n": 24
+    },
+    {
+      "vp": "o.ee",
+      "plant_rate": 0.0057,
+      "baseline_rate": 0.0049,
+      "enrichment": 1.17,
+      "n": 8
+    },
+    {
+      "vp": "_.o._.o",
+      "plant_rate": 0.0114,
+      "baseline_rate": 0.0102,
+      "enrichment": 1.12,
+      "n": 16
+    }
+  ]
+}
