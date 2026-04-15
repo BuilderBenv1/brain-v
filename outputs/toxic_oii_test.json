@@ -1,0 +1,36 @@
+{
+  "generated": "2026-04-15",
+  "toxic_folios": [
+    "f15v",
+    "f1v",
+    "f23r",
+    "f28r",
+    "f28v",
+    "f30v",
+    "f36r",
+    "f38v",
+    "f3v",
+    "f42v",
+    "f44r",
+    "f48r",
+    "f49r",
+    "f89v",
+    "f9r"
+  ],
+  "toxic_n": 14,
+  "nontoxic_n": 101,
+  "toxic_mean": 0.010802,
+  "nontoxic_mean": 0.003433,
+  "difference": 0.007369,
+  "ratio": 3.146,
+  "t_stat": 1.6544,
+  "df": 14.13,
+  "p_one_tailed": 0.060046,
+  "cohens_d": 0.726,
+  "hedges_g": 0.721,
+  "bootstrap_ci_95": [
+    -5.6e-05,
+    0.016494
+  ],
+  "ci_excludes_zero": false
+}

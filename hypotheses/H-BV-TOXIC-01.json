@@ -1,0 +1,45 @@
+{
+  "id": "H-BV-TOXIC-01",
+  "claim": "Toxic plant folios (15 specified Latin names, 14 with >=20 tokens) show elevated _.oii vowel-pattern fire rate: toxic 1.08% vs non-toxic 0.34% (3.15x ratio). One-tailed Welch's t-test p = 0.060, Cohen's d = 0.73, Hedges' g = 0.72. Bootstrap 95% CI on mean difference: [-0.00006, +0.01649] — misses excluding zero by 6 parts per million. The pre-registered alpha=0.05 threshold is NOT met, but the effect size is medium-to-large and the direction matches prediction. Signal is bimodal: 5 of 14 toxic folios fire heavily (Paris quadrifolia 4.2%, Rhododendron 4.8%, Delphinium 1.9%, Euphorbia 1.7%, Cuscuta 1.6%, Nymphaea 0.9%), 9 fire at zero.",
+  "type": "structural",
+  "confidence": 0.35,
+  "evidence_for": [
+    "Directional t = +1.65 in the predicted direction",
+    "Cohen's d = 0.73 (medium-to-large effect size)",
+    "Ratio 3.15x, same order as plant-vs-non-plant _.oii enrichment (4.84x)",
+    "5 toxic folios carry strong signal (1.6-4.8% _.oii rate)",
+    "95% CI upper bound +0.0165 strongly positive"
+  ],
+  "evidence_against": [
+    "p = 0.060 fails the pre-registered alpha = 0.05 threshold",
+    "95% CI barely includes zero — by only 6 ppm but it includes it",
+    "9 of 14 toxic folios fire _.oii at zero rate — signal is not uniformly toxic-linked",
+    "Sample is underpowered (n=14 toxic, need ~20 for 80% power at d=0.73)",
+    "Bimodal distribution suggests 'toxic' may not be the right sub-class; the 5 firing plants may share something else (growth habit, preparation, etc.)"
+  ],
+  "test": "Acquire 6+ more toxic plant folio identifications to reach n>=20 toxic, then re-run one-tailed t-test. Alternatively, study what the 5 firing toxic plants share that the 9 non-firing don't.",
+  "test_metric": "toxic_oii_p_value",
+  "test_threshold": "p < 0.05 with n>=20 toxic: confirmed illustration-content signal. p >= 0.10 at larger n: effect shrinks, hypothesis refuted.",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "toxic_vs_nontoxic_one_tailed_welch",
+      "score": 0.35,
+      "passed": false,
+      "details": "p=0.060 one-tailed, d=0.73, 3.15x ratio. Direction correct, effect meaningful, but pre-registered threshold missed by 0.010. Bimodal: 5 toxic folios carry signal, 9 zero.",
+      "confidence_change": "initial 0.35"
+    }
+  ],
+  "tests_remaining": [
+    "Acquire more toxic plant IDs (6+ needed for 80% power)",
+    "Sub-cluster analysis: what do the 5 firing toxic plants share?",
+    "Test other medicinal sub-classes (sedative, cardioactive, etc.)"
+  ],
+  "status": "active",
+  "parent": "H-BV-PLANT-01",
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Pre-registered test fell 0.01 short of significance. Brain-V publishes the marginal result rather than burying it. The discipline says: direction and effect size are real, but the pre-specified threshold was not met, so this is NOT yet evidence of illustration-content encoding. Hypothesis stays active at modest confidence pending more data.",
+  "source": "Brain-V toxic_oii_test cycle 2026-04-15",
+  "researcher": "brain-v"
+}
