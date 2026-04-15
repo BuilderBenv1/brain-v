@@ -4,7 +4,7 @@
     "confidence": 0.574,
     "source": "seeded",
     "date": "2026-04-13",
-    "evidence": "Statistical structure too regular for gibberish \u2014 Zipf fit, entropy in natural language range",
+    "evidence": "Statistical structure too regular for gibberish — Zipf fit, entropy in natural language range",
     "last_scored": "2026-04-15",
     "fix_reason": "Manual correction: was stuck at 0.05 due to belief update bug (no upward promotion path)"
   },
@@ -121,7 +121,7 @@
     "last_scored": "2026-04-15"
   },
   {
-    "belief": "Evidence supports: The text-only section (7 folios, entropy 3.9016 bits \u00e2\u20ac\u201d highest of all sections) represents unencip",
+    "belief": "Evidence supports: The text-only section (7 folios, entropy 3.9016 bits â€” highest of all sections) represents unencip",
     "confidence": 0.855,
     "source": "hypothesis-H024-2026-04-13",
     "date": "2026-04-13",
@@ -184,7 +184,7 @@
     "last_scored": "2026-04-15"
   },
   {
-    "belief": "Evidence supports: The recipes section (25 folios, 11,611 words, entropy 3.8586 bits \u00e2\u20ac\u201d second highest and largest wor",
+    "belief": "Evidence supports: The recipes section (25 folios, 11,611 words, entropy 3.8586 bits â€” second highest and largest wor",
     "confidence": 0.987,
     "source": "hypothesis-H049-2026-04-13",
     "date": "2026-04-13",
@@ -307,5 +307,45 @@
     "confidence": 0.631,
     "source": "hypothesis-H129-2026-04-15",
     "date": "2026-04-15"
+  },
+  {
+    "belief": "EVA vowel choice within a fixed consonant skeleton encodes section-linked information (Brady H-BRADY-05 verified)",
+    "confidence": 0.9,
+    "source": "brain-v",
+    "date": "2026-04-15",
+    "evidence": "55/70 skeleton groups significant at p<0.01; kdy case chi2=262 vs crit 50.9",
+    "last_scored": "2026-04-15"
+  },
+  {
+    "belief": "Token coverage alone is insufficient for Voynich decipherment: the null floor from 1,300 bigram-Markov nonsense skeletons is 83.56% (+/- 1pp), above Schechter and within 3pp of Brady",
+    "confidence": 0.92,
+    "source": "brain-v",
+    "date": "2026-04-15",
+    "evidence": "20-trial null lexicon test; Brady +3.3pp above null, Schechter -0.75pp below null",
+    "last_scored": "2026-04-15"
+  },
+  {
+    "belief": "Plain EVA gallows 't' and 'p' function as line-initial paragraph markers (H-BRADY-02): p at 5.0x line-initial enrichment, t at 2.8x, bench gallows cth/ckh/cph at <0.5x",
+    "confidence": 0.9,
+    "source": "brain-v",
+    "date": "2026-04-15",
+    "evidence": "Brain-V independent verification of Brady 2026 section 3.5",
+    "last_scored": "2026-04-15"
+  },
+  {
+    "belief": "EVA 'q' is a categorical word-initial marker at 98.9% word-initial frequency (n=5,416), the strongest positional constraint of any EVA glyph",
+    "confidence": 0.92,
+    "source": "brain-v",
+    "date": "2026-04-15",
+    "evidence": "four-parallel-tests.py glyph positional analysis",
+    "last_scored": "2026-04-15"
+  },
+  {
+    "belief": "Word-order syntactic structure is not recoverable by lexicon substitution: all 4 tested lexicons (Schechter, Brady, Hebrew, Brain-V v1) fail the shuffle test on connector-to-content bigrams (deltas -0.003 to -0.032 in-order vs shuffled).",
+    "confidence": 0.85,
+    "source": "brain-v",
+    "date": "2026-04-15",
+    "evidence": "4-lexicon shuffle test aggregate; connector-content bigram metric negative in-order vs shuffled across all",
+    "last_scored": "2026-04-15"
   }
 ]

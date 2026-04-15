@@ -1,0 +1,38 @@
+{
+  "id": "H-BV-SHUF-01",
+  "claim": "Word-order syntactic structure is absent from Voynichese. Across all tested lexicons (Schechter Latin, Brady Syriac proxy, Hebrew medieval, Brain-V v1), in-order decoded text scores equal to or LOWER than across-corpus-shuffled decoded text on the connector-to-content bigram metric. Both-matched-adjacency shows a small positive cluster effect (+0.003 to +0.028 pp) that is lexicon-size-monotonic and therefore a topical-clustering artefact, not grammatical signal.",
+  "type": "null",
+  "confidence": 0.85,
+  "evidence_for": [
+    "Schechter Latin: in-order conh -0.003, shuffle test failure",
+    "Brady Syriac proxy: conn_content -0.0098 in-order vs shuffled",
+    "Hebrew medieval: conn_content -0.0144 in-order vs shuffled",
+    "Brain-V v1 dict: conn_content -0.0321 in-order vs shuffled",
+    "Four independent lexicons, identical qualitative failure"
+  ],
+  "evidence_against": [
+    "Full Brady lexicon may change the picture once supplementary file is released",
+    "Shuffle test is defined at line level; some longer-range structure could survive"
+  ],
+  "test": "Standard coherence metrics (connector-content bigrams, match adjacency) with seeded random shuffle baseline",
+  "test_metric": "shuffle_conn_content_delta",
+  "test_threshold": "Positive and >=+0.01 in-order vs shuffled on connector-to-content metric: syntactic signal present",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "Standard coherence metrics (connector-content bigrams, match adjacency) with seeded random shuffle baseline",
+      "score": 0.85,
+      "passed": true,
+      "details": "The fundamental barrier to Voynich decipherment. Coverage-based methods find words but not sentences. Future work needs order-independent signals (vowel layer, glyph-role, section-structure) rather than pursuing more lexicons.",
+      "confidence_change": "initial 0.85"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "The fundamental barrier to Voynich decipherment. Coverage-based methods find words but not sentences. Future work needs order-independent signals (vowel layer, glyph-role, section-structure) rather than pursuing more lexicons.",
+  "source": "Brain-V 2026-04-15 four-parallel-tests cycle",
+  "researcher": "brain-v"
+}

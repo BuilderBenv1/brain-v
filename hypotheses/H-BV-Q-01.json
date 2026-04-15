@@ -1,0 +1,37 @@
+{
+  "id": "H-BV-Q-01",
+  "claim": "EVA 'q' is a categorical word-initial marker, appearing word-initial in 98.9% of its 5,416 corpus occurrences. This is the strongest positional constraint of any EVA glyph, supporting Brady's H-BRADY-03 (q maps to Syriac waw / wa- conjunction) as a structural claim independent of language identification.",
+  "type": "structural",
+  "confidence": 0.92,
+  "evidence_for": [
+    "98.9% initial position rate across 5,416 occurrences",
+    "Strongest positional asymmetry of any EVA glyph",
+    "Compatible with Brady's q -> wa- (Syriac conjunction) hypothesis",
+    "Also compatible with Latin/Italian conjunction or article marker"
+  ],
+  "evidence_against": [
+    "Position constraint doesn't specify phonetic value",
+    "Same pattern could arise from several unrelated grammatical roles"
+  ],
+  "test": "Positional distribution computable from corpus directly",
+  "test_metric": "q_initial_rate",
+  "test_threshold": ">=95% initial: confirmed. Current 98.9%.",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "Positional distribution computable from corpus directly",
+      "score": 0.92,
+      "passed": true,
+      "details": "Very strong positional signal. Future decipherment attempts should treat 'q' as a structural prefix/marker, not as a free phonetic consonant.",
+      "confidence_change": "initial 0.92"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Very strong positional signal. Future decipherment attempts should treat 'q' as a structural prefix/marker, not as a free phonetic consonant.",
+  "source": "Brain-V 2026-04-15 four-parallel-tests cycle",
+  "researcher": "brain-v"
+}

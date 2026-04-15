@@ -1,0 +1,37 @@
+{
+  "id": "H-BV-NULL-01",
+  "claim": "Coverage >=80% on the Voynich corpus is achievable by 1,300 phonotactically plausible nonsense skeletons (20-trial mean 83.56%, sigma 1.03pp) and therefore cannot, alone, be evidence of decipherment. Any abjad-reducible lexicon of 1,000-4,000 entries matching corpus word-length and bigram distributions clears this floor by construction.",
+  "type": "null",
+  "confidence": 0.92,
+  "evidence_for": [
+    "20-trial null test: 83.56% +/- 1.03pp coverage from bigram-Markov nonsense",
+    "Brady Syriac (86.9%) only +3.3pp above null floor",
+    "Schechter Latin (82.81%) is 0.75pp BELOW null floor",
+    "Hebrew medieval (57.9%) is 25.6pp below null floor - only genuine outlier"
+  ],
+  "evidence_against": [
+    "Brady's character-permutation z=3.83 is a different null (alphabet-mapping, not key-selection) and survives this critique on its own terms",
+    "Null floor depends on corpus bigram statistics - a non-abjad or different-length lexicon may show different floors"
+  ],
+  "test": "Confirmed by four-parallel-tests.py; retest on any future lexicon claim by running the same 20-trial bigram-Markov null",
+  "test_metric": "null_floor_coverage",
+  "test_threshold": "New lexicon claims must report z-score against corpus-derived null, not just raw coverage",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "Confirmed by four-parallel-tests.py; retest on any future lexicon claim by running the same 20-trial bigram-Markov null",
+      "score": 0.92,
+      "passed": true,
+      "details": "Publishable negative result. Challenges every coverage-based Voynich decipherment claim in the literature. Validated with 20 independent trials on 1,300-skeleton nonsense lexicons.",
+      "confidence_change": "initial 0.92"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Publishable negative result. Challenges every coverage-based Voynich decipherment claim in the literature. Validated with 20 independent trials on 1,300-skeleton nonsense lexicons.",
+  "source": "Brain-V 2026-04-15 four-parallel-tests cycle",
+  "researcher": "brain-v"
+}

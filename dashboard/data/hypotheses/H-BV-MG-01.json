@@ -1,0 +1,37 @@
+{
+  "id": "H-BV-MG-01",
+  "claim": "EVA 'm' (1,055 tokens) and 'g' (127 tokens) are suffix/final-marker glyphs, extending the suffix class beyond {y,n,l,r} per H023. Final-position rates: m 93.6%, g 83.5%. EVA 'l' (previously assumed final-dominant) is actually balanced (53.6% final / 32.6% mid) and should be demoted from the suffix class.",
+  "type": "structural",
+  "confidence": 0.85,
+  "evidence_for": [
+    "m at 93.6% word-final across 1,055 occurrences",
+    "g at 83.5% word-final across 127 occurrences",
+    "n at 97.0% final, y at 84.3% final, r at 74.4% final (previously known)",
+    "l at 53.6% final is a mis-assignment in H023"
+  ],
+  "evidence_against": [
+    "g's sample size (127) is modest; rate could shift with more data",
+    "Suffix class membership is a surface feature, not guaranteed to be grammatical suffixes"
+  ],
+  "test": "Positional counts from corpus",
+  "test_metric": "m_g_final_rates",
+  "test_threshold": "m >=90% final AND g >=80% final: confirmed",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "Positional counts from corpus",
+      "score": 0.85,
+      "passed": true,
+      "details": "Expands H023 suffix class to {y,n,r,m,g}; demotes l. Any stem-stripping pipeline should be updated.",
+      "confidence_change": "initial 0.85"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Expands H023 suffix class to {y,n,r,m,g}; demotes l. Any stem-stripping pipeline should be updated.",
+  "source": "Brain-V 2026-04-15 four-parallel-tests cycle",
+  "researcher": "brain-v"
+}

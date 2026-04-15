@@ -1,0 +1,38 @@
+{
+  "id": "H-BV-VOWEL-01",
+  "claim": "EVA vowel choice within a fixed consonant skeleton is section-linked. Across 70 skeleton groups with >=3 vowel variants and >=100 tokens each, 55 (78.6%) show section-distribution chi-square significant at p<0.01. Headline case 'kdy' (Brady's chedy/chody): chi2=262.17, df=28, critical 50.89, i.e. 5.15x over threshold.",
+  "type": "structural",
+  "confidence": 0.9,
+  "evidence_for": [
+    "55/70 skeleton groups significant at p<0.01",
+    "Top-5 couplings exceed critical value by 4.88-8.51x",
+    "Independent verification of Brady 2026 section 3.10 claim",
+    "chedy (501 tokens): biological/recipes dominant; chody (88 tokens): herbal-exclusive",
+    "Signal is language-independent - tests distribution, not identity"
+  ],
+  "evidence_against": [
+    "Section-coupling could reflect topical/domain vocabulary differences rather than a genuine vowel-encoding layer",
+    "Variants may cluster due to scribal preferences in different production phases, not semantic content"
+  ],
+  "test": "Chi-square test on all skeleton groups meeting size thresholds",
+  "test_metric": "vowel_section_chi_square_p01_rate",
+  "test_threshold": ">=50% of testable skeletons significant at p<0.01: confirmed. Current result 78.6%.",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "Chi-square test on all skeleton groups meeting size thresholds",
+      "score": 0.9,
+      "passed": true,
+      "details": "Strongest positive structural finding of the session. EVA vowels are not padding - they carry information the rest of the decipherment effort has been throwing away.",
+      "confidence_change": "initial 0.90"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Strongest positive structural finding of the session. EVA vowels are not padding - they carry information the rest of the decipherment effort has been throwing away.",
+  "source": "Brain-V 2026-04-15 four-parallel-tests cycle",
+  "researcher": "brain-v"
+}

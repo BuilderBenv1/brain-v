@@ -1,0 +1,37 @@
+{
+  "id": "H-BV-AB-01",
+  "claim": "Currier A is structurally distinct from Currier B at the lexical-accessibility level, resisting decipherment across three independent language hypotheses: Schechter Latin (B-A gap +8.21pp), Brady Syriac proxy (+3.92pp), Hebrew medieval (+3.07pp). B consistently fits lexicons better than A by 3-8 percentage points regardless of source language.",
+  "type": "structural",
+  "confidence": 0.8,
+  "evidence_for": [
+    "Three independent methodologies, three language families, same B>A direction",
+    "Gap magnitudes vary but direction is invariant",
+    "Cannot be lexicon-bias since lexicons are unrelated",
+    "Challenges Brain-V's own A=B same-language cluster (H004, H021, H025 etc. at >=0.95)"
+  ],
+  "evidence_against": [
+    "Gaps could still reflect sample bias - bio/recipes B-dominant sections may be over-represented in pharma vocab sources",
+    "Need a full-Brady-lexicon retest to confirm direction with stronger statistics"
+  ],
+  "test": "Compute coverage by Currier language under each lexicon",
+  "test_metric": "ab_gap_direction",
+  "test_threshold": "Sign consistent across >=2 independent lexicons: supported",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "Compute coverage by Currier language under each lexicon",
+      "score": 0.8,
+      "passed": true,
+      "details": "Brain-V's high-confidence A=B hypotheses made a testable prediction (equal lexical fit) and it failed on 3 independent tests. This hypothesis is the replacement.",
+      "confidence_change": "initial 0.80"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Brain-V's high-confidence A=B hypotheses made a testable prediction (equal lexical fit) and it failed on 3 independent tests. This hypothesis is the replacement.",
+  "source": "Brain-V 2026-04-15 four-parallel-tests cycle",
+  "researcher": "brain-v"
+}
