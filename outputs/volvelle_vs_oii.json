@@ -1,0 +1,16 @@
+{
+  "generated": "2026-04-16",
+  "trials": 100,
+  "real_enrichment": 5.043,
+  "volvelle_null": {
+    "mean": 0,
+    "stdev": 0.0,
+    "min": 0,
+    "max": 0,
+    "plant_rate_mean": 0.0,
+    "base_rate_mean": 0.0
+  },
+  "z_score": Infinity,
+  "empirical_p": 0.0,
+  "verdict": "signal_real_volvelle_cannot_explain"
+}

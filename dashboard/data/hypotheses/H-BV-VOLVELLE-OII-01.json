@@ -1,0 +1,41 @@
+{
+  "id": "H-BV-VOLVELLE-OII-01",
+  "claim": "The 3-ring volvelle model (H-BV-VOLVELLE-01) does NOT reproduce the plant-folio _.oii enrichment observed in real Voynich. Across 100 independent volvelle corpora with per-section cartridge swap, the volvelle null distribution produced _.oii enrichment of 0.00x in every single run (the volvelle cannot generate vowel clusters like 'oii' from its alternating C-V root template). Real Voynich _.oii plant-vs-non-plant-herbal enrichment is 5.04x. Empirical p < 0.01 (0 of 100 null runs >= real).",
+  "type": "null",
+  "confidence": 0.70,
+  "evidence_for": [
+    "100 of 100 volvelle simulations produced 0.00x enrichment — zero _.oii patterns generated",
+    "Real Voynich enrichment 5.04x (plant-ID folios vs non-plant herbal baseline)",
+    "The result complements H-BV-PLANT-01: the pattern is real AND mechanically unexplainable under this volvelle"
+  ],
+  "evidence_against": [
+    "THE CAVEAT: the volvelle's root generator uses alternating consonant-vowel templates that CANNOT produce triple-vowel clusters like 'oii' by construction",
+    "A richer volvelle with vowel-cluster-capable root templates (or different ring structures) might reproduce _.oii; this test does NOT rule out all volvelles, only this specific model",
+    "A fair steel-man test requires a volvelle whose per-section cartridges CAN generate _.oii at the same aggregate rate as real Voynich, then ask whether it concentrates on plant folios",
+    "Current result is underpowered against the richer volvelle hypothesis - it only rules out the simplest model"
+  ],
+  "test": "Extend the volvelle to produce _.oii patterns at the corpus-average rate (matched to real), then re-test whether enrichment concentrates on plant folios. This is the fair comparison.",
+  "test_metric": "richer_volvelle_oii_plant_enrichment",
+  "test_threshold": "Richer volvelle null enrichment >=3.0x on >= 20% of runs: volvelle still a threat. If <1.5x consistently: H-BV-PLANT-01 survives the volvelle fully.",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "simple_volvelle_oii_null",
+      "score": 0.70,
+      "passed": true,
+      "details": "100 volvelle corpora, all produced 0.00x enrichment. Real 5.04x. But volvelle root generator cannot produce triple-vowel clusters, so test is insufficient against richer volvelle models. Honest: the SIMPLE volvelle cannot explain _.oii; richer volvelles remain an open alternative.",
+      "confidence_change": "initial 0.70"
+    }
+  ],
+  "tests_remaining": [
+    "Build richer volvelle with vowel-cluster root templates and re-run the test",
+    "Compare _.oii to other vowel-cluster patterns (_.aii, o.ii, etc.) to see if the plant-folio enrichment is specific to this pattern"
+  ],
+  "status": "active",
+  "parent": "H-BV-PLANT-01",
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Honest result with a significant caveat. The SPECIFIC 3-ring volvelle fails to produce _.oii at all, which is suggestive but not conclusive against volvelle-family hypotheses. The fair test requires a volvelle that can at least produce the pattern at the aggregate rate observed in real Voynich, then asks whether random cartridges concentrate it on the specific subset of plant folios. That test is on the queue.",
+  "source": "Brain-V volvelle_vs_oii cycle 2026-04-15",
+  "researcher": "brain-v"
+}

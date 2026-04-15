@@ -1,0 +1,73 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-PSYCHOACTIVE-01",
+  "locked_keywords": [
+    "narcotic",
+    "hallucinogenic",
+    "soporific",
+    "psychedelic",
+    "psychoactive",
+    "consciousness-altering",
+    "hypnotic",
+    "entheogen"
+  ],
+  "alpha": 0.05,
+  "d_threshold": 0.4,
+  "psycho_n": 4,
+  "non_n": 112,
+  "psycho_mean": 0.02804,
+  "non_mean": 0.003445,
+  "difference": 0.024596,
+  "ratio": 8.14,
+  "t_stat": 2.4326,
+  "df": 3.04,
+  "p_one_tailed": 0.045967,
+  "cohens_d": 2.627,
+  "hedges_g": 2.61,
+  "bootstrap_ci_95": [
+    0.006993,
+    0.041996
+  ],
+  "ci_excludes_zero": true,
+  "mann_whitney_p": 1.5e-05,
+  "verdict": "CONFIRMED",
+  "psycho_folios": [
+    {
+      "folio": "f15v",
+      "latin": "Paris quadrifolia",
+      "common": "Herb Paris",
+      "keywords": [
+        "narcotic"
+      ],
+      "rate": 0.04225352112676056
+    },
+    {
+      "folio": "f16r",
+      "latin": "Cannabis",
+      "common": "Cannabis",
+      "keywords": [
+        "narcotic"
+      ],
+      "rate": 0.012345679012345678
+    },
+    {
+      "folio": "f28v",
+      "latin": "Rhododendron",
+      "common": "Rhododendron",
+      "keywords": [
+        "hallucinogenic"
+      ],
+      "rate": 0.04838709677419355
+    },
+    {
+      "folio": "f49r",
+      "latin": "Nymphaea caerulea",
+      "common": "Blue Nile Lotus",
+      "keywords": [
+        "soporific",
+        "psychedelic"
+      ],
+      "rate": 0.009174311926605505
+    }
+  ]
+}

@@ -356,5 +356,21 @@
     "date": "2026-04-15",
     "evidence": "vowel_holdout_v1.py: 1037 held-out tokens across f101r, f89r2, f78r, f82r. NB multi-class 43.6% vs 55.7% majority baseline.",
     "last_scored": "2026-04-15"
+  },
+  {
+    "belief": "Psychoactive plant folios (narcotic, hallucinogenic, soporific, psychedelic) show 8.14x elevated _.oii vowel-pattern rate vs non-psychoactive plants: 2.80% vs 0.34%. Pre-registered one-tailed Welch p=0.046, Cohen d=2.63, Mann-Whitney U p=0.000015. n=4 psychoactive folios (Paris quadrifolia, Cannabis, Rhododendron, Nymphaea caerulea) — small but all four individually elevated.",
+    "confidence": 0.8,
+    "source": "brain-v",
+    "date": "2026-04-15",
+    "evidence": "H-BV-PSYCHOACTIVE-01 pre-registered test confirmed",
+    "last_scored": "2026-04-15"
+  },
+  {
+    "belief": "The simple 3-ring volvelle (6x26x8 with per-section cartridges) does NOT reproduce the _.oii plant-folio enrichment. 100 of 100 null runs produced 0.00x enrichment. Caveat: volvelle root generator cannot produce vowel clusters by construction, so richer volvelles remain open.",
+    "confidence": 0.7,
+    "source": "brain-v",
+    "date": "2026-04-15",
+    "evidence": "H-BV-VOLVELLE-OII-01; 100-corpora null test",
+    "last_scored": "2026-04-15"
   }
 ]
