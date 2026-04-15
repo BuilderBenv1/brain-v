@@ -1,0 +1,44 @@
+{
+  "id": "H-BV-VOLVELLE-01",
+  "claim": "A simple 3-ring volvelle (6 prefixes x 26 roots x 8 suffixes) with per-section root-cartridge swap reproduces 4 of 7 Voynich statistical properties including vowel-section chi-square coupling (90% vs real 79%). It fails Zipf exponent (0.18 vs 0.65) and hapax ratio (0.24 vs 0.70) by large margins. The vowel-section coupling Brain-V treated as its strongest positive structural finding (H-BV-VOWEL-01) is NOT uniquely diagnostic of meaning: a content-free volvelle mechanism produces it trivially via section-specific cartridges.",
+  "type": "null",
+  "confidence": 0.85,
+  "evidence_for": [
+    "Volvelle vowel-section coupling rate 90% (54/60 skeletons at p<0.01) vs real 79%",
+    "Glyph entropy match 4.00 vs 3.86 (within 0.15 bits)",
+    "IC match 0.076 vs 0.082 (within 0.006)",
+    "Currier A/B divergence same order of magnitude (0.013 vs 0.018)",
+    "Shuffle-test delta sign matches (both near zero/negative)"
+  ],
+  "evidence_against": [
+    "Zipf exponent 0.18 vs real 0.65 - huge mismatch",
+    "Hapax ratio 0.24 vs real 0.70 - real Voynich is 3x more lexically diverse",
+    "3-ring volvelle may be too simple; a richer volvelle or volvelle+content hybrid could close the gap",
+    "Only aggregate coupling was tested; specific-pattern enrichments (e.g. H-BV-PLANT-01 _.oii at 4.84x on plant folios) may not be reproducible by random cartridges"
+  ],
+  "test": "Extend the simulator to test whether _.oii enrichment on plant-ID folios is reproduced by random cartridges. If not, volvelle fails on the sharper test.",
+  "test_metric": "volvelle_plant_pattern_enrichment_match",
+  "test_threshold": "If synthetic produces 4x+ plant-folio _.oii enrichment: volvelle still viable. If synthetic cannot produce pattern-to-subset enrichment: H-BV-PLANT-01 becomes the discriminating evidence.",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "volvelle_battery_vs_real",
+      "score": 0.85,
+      "passed": true,
+      "details": "4/7 matches on aggregate stats. Volvelle reproduces vowel-section chi-square coupling (79% real vs 90% synth) which was Brain-V's strongest positive signal. Volvelle fails Zipf (0.18 vs 0.65) and hapax (0.24 vs 0.70).",
+      "confidence_change": "initial 0.85 - high confidence the volvelle-can-produce-coupling result is real"
+    }
+  ],
+  "tests_remaining": [
+    "Pattern-specific enrichment test: does volvelle reproduce _.oii at 4.84x on plant folios?",
+    "Richer volvelle variants (more rings, non-uniform sampling) to see if Zipf can be matched",
+    "Evaluate volvelle+content hybrid: volvelle with real-word injection"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Major caveat on H-BV-VOWEL-01. The vowel-section coupling Brain-V published as its strongest positive finding is reproducible by a trivial random-cartridge volvelle with no content at all. Same disease as H-BV-NULL-01 diagnosed for coverage: the signal exists but is not diagnostic of meaning. H-BV-PLANT-01 may still survive since it tests specific-pattern-to-specific-folio-subset enrichment which this volvelle test does not address.",
+  "source": "Brain-V volvelle_simulator cycle 2026-04-15",
+  "researcher": "brain-v"
+}

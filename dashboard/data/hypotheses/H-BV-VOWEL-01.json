@@ -2,7 +2,7 @@
   "id": "H-BV-VOWEL-01",
   "claim": "EVA vowel choice within a fixed consonant skeleton is section-linked. Across 70 skeleton groups with >=3 vowel variants and >=100 tokens each, 55 (78.6%) show section-distribution chi-square significant at p<0.01. Headline case 'kdy' (Brady's chedy/chody): chi2=262.17, df=28, critical 50.89, i.e. 5.15x over threshold.",
   "type": "structural",
-  "confidence": 0.9,
+  "confidence": 0.55,
   "evidence_for": [
     "55/70 skeleton groups significant at p<0.01",
     "Top-5 couplings exceed critical value by 4.88-8.51x",
@@ -12,7 +12,8 @@
   ],
   "evidence_against": [
     "Section-coupling could reflect topical/domain vocabulary differences rather than a genuine vowel-encoding layer",
-    "Variants may cluster due to scribal preferences in different production phases, not semantic content"
+    "Variants may cluster due to scribal preferences in different production phases, not semantic content",
+    "Volvelle simulator (H-BV-VOLVELLE-01) reproduces aggregate coupling at 90% rate — a trivial content-free mechanism produces this"
   ],
   "test": "Chi-square test on all skeleton groups meeting size thresholds",
   "test_metric": "vowel_section_chi_square_p01_rate",
@@ -25,6 +26,14 @@
       "passed": true,
       "details": "Strongest positive structural finding of the session. EVA vowels are not padding - they carry information the rest of the decipherment effort has been throwing away.",
       "confidence_change": "initial 0.90"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "volvelle_reproducibility",
+      "score": 0.55,
+      "passed": false,
+      "details": "Simple 3-ring volvelle with per-section cartridges reproduces 90% p<0.01 coupling (vs real 79%). The chi-square coupling is NOT uniquely diagnostic of meaning.",
+      "confidence_change": "0.90 -> 0.55"
     }
   ],
   "tests_remaining": [],

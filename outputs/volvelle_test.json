@@ -1,0 +1,68 @@
+{
+  "generated": "2026-04-15",
+  "seed": 17,
+  "real": {
+    "tokens": 38053,
+    "zipf": 0.6479,
+    "r2": 0.9496,
+    "hapax": 0.7014,
+    "entropy": 3.8646,
+    "ic": 0.0817,
+    "currier_js": 0.01794,
+    "vowel_coupling": {
+      "tested": 70,
+      "significant": 55,
+      "rate": 0.786
+    },
+    "shuffle_delta": -0.0104
+  },
+  "synthetic": {
+    "tokens": 38053,
+    "zipf": 0.181,
+    "r2": 0.9861,
+    "hapax": 0.2403,
+    "entropy": 4.0043,
+    "ic": 0.0764,
+    "currier_js": 0.01347,
+    "vowel_coupling": {
+      "tested": 60,
+      "significant": 54,
+      "rate": 0.9
+    },
+    "shuffle_delta": -0.0002
+  },
+  "scorecard": {
+    "passed": 4,
+    "total": 7,
+    "items": [
+      {
+        "name": "Zipf exponent within 0.15",
+        "pass": false
+      },
+      {
+        "name": "Hapax ratio within 0.10",
+        "pass": false
+      },
+      {
+        "name": "Glyph entropy within 0.3 bits",
+        "pass": true
+      },
+      {
+        "name": "IC within 0.02",
+        "pass": true
+      },
+      {
+        "name": "Currier divergence same order of magnitude",
+        "pass": true
+      },
+      {
+        "name": "Vowel coupling p<0.01 rate within 10pp (real 79% vs synth 90%)",
+        "pass": false
+      },
+      {
+        "name": "Shuffle-test delta sign matches",
+        "pass": true
+      }
+    ]
+  }
+}
