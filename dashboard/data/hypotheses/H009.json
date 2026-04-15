@@ -2,7 +2,7 @@
   "id": "H009",
   "claim": "The text is encoded using a simple substitution cipher on an unknown language.",
   "type": "cipher",
-  "confidence": 0.424,
+  "confidence": 0.533,
   "evidence_for": [
     "Glyph entropy levels are lower than expected for Latin or Italian",
     "Word-final glyph distribution does not match Latin or Italian word endings"
@@ -117,12 +117,60 @@
       "passed": true,
       "details": "Substitution ciphers preserve Zipfian frequency distributions (0.8946 \u00e2\u2030\u02c6 1.0 is consistent with natural language), hapax ratio, and word length statistics, making the hypothesis well-supported by the corpus profile.",
       "confidence_change": "0.354 -> 0.424"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.45,
+      "passed": false,
+      "details": "Zipf exponent near natural language supports hypothesis, but glyph entropy (83% of max) and hapax ratio (70%) are inconsistent with substitution-encrypted natural language, suggesting either non-natural source text or systematic randomness.",
+      "confidence_change": "0.424 -> 0.354"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.8,
+      "passed": true,
+      "details": "The strong Zipfian distribution (R\u00c2\u00b2=0.9084), realistic hapax ratio (0.701), and glyph entropy consistent with a 25-glyph alphabet all match expectations for a substitution cipher preserving natural language statistical properties.",
+      "confidence_change": "0.354 -> 0.432"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.4,
+      "passed": false,
+      "details": "The Zipfian distribution (0.8946) suggests substitution preservation of natural language structure, but the unusually high hapax ratio (0.701) and elevated entropy (3.8627/4.64 max) contradict expectations for a simple substitution cipher on natural language.",
+      "confidence_change": "0.432 -> 0.354"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.7,
+      "passed": true,
+      "details": "The strong Zipf exponent (0.8946) and natural language-like statistical profile are consistent with what a simple substitution cipher would preserve from an underlying language, supporting the hypothesis.",
+      "confidence_change": "0.354 -> 0.422"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.7,
+      "passed": true,
+      "details": "Preserved Zipfian distribution (0.8946) and entropy profile (3.8627 bits) are consistent with substitution cipher maintaining language structure, but elevated hapax ratio (0.701) may indicate additional encoding complexity beyond simple substitution.",
+      "confidence_change": "0.422 -> 0.483"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.65,
+      "passed": true,
+      "details": "Strong Zipfian distribution (R\u00c2\u00b2=0.9084, exponent 0.8946\u00e2\u2030\u02c61.0) is characteristic of natural language and persists through substitution ciphers, supporting the hypothesis; hapax ratio of 0.701 and moderate entropy are consistent with an unknown language's statistical properties rather than contradicting the cipher hypothesis.",
+      "confidence_change": "0.483 -> 0.533"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "If the text is encoded using a simple substitution cipher on an unknown language, we would expect to see significant correlations between word-final glyphs and language model predictions."
 }

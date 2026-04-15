@@ -2,7 +2,7 @@
   "id": "H095",
   "claim": "Currier A and Currier B use two structurally distinct cipher alphabets encoding the same underlying Latin plaintext: the two sub-corpora should exhibit the same bigram entropy and the same Zipf exponent once glyph-level correspondences are remapped",
   "type": "cipher",
-  "confidence": 0.741,
+  "confidence": 0.895,
   "evidence_for": [
     "High-confidence belief (0.694) that A and B use distinct cipher tables on the same language",
     "Currier B is more than twice the size of A (23,766 vs 11,022 words), consistent with one scribe being primary",
@@ -31,12 +31,60 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.699 -> 0.741"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram entropy and zipf exponent separately for currier a and currier b token sets; then app",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.741 -> 0.777"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram entropy and zipf exponent separately for currier a and currier b token sets; then app",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.777 -> 0.808"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram entropy and zipf exponent separately for currier a and currier b token sets; then app",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.808 -> 0.835"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram entropy and zipf exponent separately for currier a and currier b token sets; then app",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.835 -> 0.858"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram entropy and zipf exponent separately for currier a and currier b token sets; then app",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.858 -> 0.878"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram entropy and zipf exponent separately for currier a and currier b token sets; then app",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.878 -> 0.895"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": ""
 }

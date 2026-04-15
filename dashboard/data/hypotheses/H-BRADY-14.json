@@ -1,0 +1,29 @@
+{
+  "id": "H-BRADY-14",
+  "claim": "The encoding reflects a 15th-century European scribe transcribing a Syriac pharmaceutical source: kaph/qoph merger (velar/uvular confusion), pharyngeal drop (het/ayin absent), gallows as paragraph markers \u2014 all consistent with a non-Semitic copyist using a purpose-built script.",
+  "type": "structural",
+  "confidence": 0.3,
+  "evidence_for": [
+    "Author profile aligns with radiocarbon date (1404-1438) and north Italian provenance",
+    "Jewish physicians working with Syriac sources in 15th-century Italy is historically documented",
+    "Multiple independent structural features converge on one copyist profile"
+  ],
+  "evidence_against": [
+    "Copyist hypothesis is unfalsifiable in its general form",
+    "Each structural feature in isolation has other possible explanations"
+  ],
+  "test": "Qualitative historical plausibility check; no direct statistical test",
+  "test_metric": "copyist_profile_coherence",
+  "test_threshold": "Narrative coherence evaluation only.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Qualitative historical plausibility check; no direct statistical test"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": null,
+  "reasoning": "Synthetic claim combining H-BRADY-02, 03, 04. Evaluate last.",
+  "source": "Brady Defibaugh (April 2026), A Syriac Pharmaceutical Dispensatory Encoded in the Voynich Manuscript (DANI pipeline v31)",
+  "researcher": "brady-defibaugh"
+}

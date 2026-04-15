@@ -1,0 +1,28 @@
+{
+  "id": "H-BRADY-13",
+  "claim": "The random-permutation baseline of 71.5% coverage is anomalously high \u2014 random permutations of 10 consonants against a 1,334-entry lexicon should not match >70% of arbitrary token streams. This suggests the lexicon is over-permissive and the 15.4pp gap to true mapping is smaller than typical for a genuine signal.",
+  "type": "null",
+  "confidence": 0.45,
+  "evidence_for": [
+    "71.5% random baseline is unusually high by cryptanalytic norms",
+    "A 1,334-entry lexicon over a 10-consonant alphabet has ~10^10 possible skeletons \u2014 yet random permutations achieve 71%"
+  ],
+  "evidence_against": [
+    "High baseline could legitimately reflect dense Syriac lexicon and short-skeleton collisions",
+    "z=3.83 still exceeds p<0.001 threshold"
+  ],
+  "test": "Reproduce permutation test with different lexicon sizes to see if baseline tracks lexicon density",
+  "test_metric": "baseline_lexicon_density",
+  "test_threshold": "Random baseline scales >80% with lexicon size alone: lexicon is over-permissive.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Reproduce permutation test with different lexicon sizes to see if baseline tracks lexicon density"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": null,
+  "reasoning": "Key skeptical test. If baseline rises with lexicon regardless of content, z-score is inflated.",
+  "source": "Brady Defibaugh (April 2026), A Syriac Pharmaceutical Dispensatory Encoded in the Voynich Manuscript (DANI pipeline v31)",
+  "researcher": "brady-defibaugh"
+}

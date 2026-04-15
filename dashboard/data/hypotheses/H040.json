@@ -2,7 +2,7 @@
   "id": "H040",
   "claim": "The Currier A/B split corresponds to two different scribal hands applying the same underlying cipher to the same language but with different glyph allograph preferences, predictable via bigram transition matrix divergence between A and B corpora exceeding random variation.",
   "type": "cipher",
-  "confidence": 0.966,
+  "confidence": 0.987,
   "evidence_for": [
     "Currier B is ~2.15x larger (23,766 vs 11,022 words), consistent with a dominant scribe and a secondary contributor",
     "Both A and B share top vocabulary items (daiin, ol, chedy), suggesting shared cipher not separate languages",
@@ -135,12 +135,60 @@
       "passed": true,
       "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
       "confidence_change": "0.960 -> 0.966"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram transition probability matrices p_a and p_b for currier a and b corpora separately, t",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.966 -> 0.971"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram transition probability matrices p_a and p_b for currier a and b corpora separately, t",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.971 -> 0.975"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram transition probability matrices p_a and p_b for currier a and b corpora separately, t",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.975 -> 0.979"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram transition probability matrices p_a and p_b for currier a and b corpora separately, t",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.979 -> 0.982"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram transition probability matrices p_a and p_b for currier a and b corpora separately, t",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.982 -> 0.985"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram transition probability matrices p_a and p_b for currier a and b corpora separately, t",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.985 -> 0.987"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "If allograph variation alone explains A/B, the solution space collapses to a single language+cipher; if not, we must model two encoding streams, doubling complexity. This test directly arbitrates between the two highest-confidence competing hypotheses."
 }

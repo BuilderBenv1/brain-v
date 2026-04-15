@@ -2,7 +2,7 @@
   "id": "H005",
   "claim": "The text is encoded using a simple substitution cipher on a language other than Latin or Italian.",
   "type": "cipher",
-  "confidence": 0.093,
+  "confidence": 0.379,
   "evidence_for": [
     "Glyph entropy is lower than expected for Latin and Italian (~4.0 bits)"
   ],
@@ -124,12 +124,60 @@
       "passed": false,
       "details": "The Zipfian exponent (0.8946) supports natural language structure, but the exceptionally high hapax ratio (0.701) contradicts substitution cipher hypothesis\u00e2\u20ac\u201dnatural languages typically show 30-50% hapax ratios, not 70%, suggesting artificial or heavily obfuscated encoding.",
       "confidence_change": "0.115 -> 0.093"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.48,
+      "passed": null,
+      "details": "Zipf exponent (0.8946, R\u00c2\u00b2=0.9084) strongly supports substitution cipher hypothesis as it preserves natural language frequency distributions, but the hapax ratio of 0.701 is unusually elevated compared to typical languages, suggesting either artificial construction or non-standard language properties, making evidence inconclusive.",
+      "confidence_change": "0.093 -> 0.112"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.7,
+      "passed": true,
+      "details": "The Zipf exponent of 0.8946 (R\u00c2\u00b2=0.9084) strongly matches natural language distributions, which a simple substitution cipher would preserve, supporting the hypothesis. The average word length (5.03) and overall statistics are consistent with natural language encoding. However, the relatively high hapax ratio (0.701) compared to typical corpora (40-60%) introduces moderate uncertainty, preventing a higher confidence score.",
+      "confidence_change": "0.112 -> 0.205"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.55,
+      "passed": null,
+      "details": "Strong Zipf exponent (0.8946) supports natural language substitution, but hapax ratio of 0.701 exceeds typical expectations for 38k-word corpora, suggesting either unusual linguistic diversity or non-standard encoding.",
+      "confidence_change": "0.205 -> 0.222"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.62,
+      "passed": true,
+      "details": "The Zipf exponent (0.8946) closely matches natural languages and is preserved by simple substitution ciphers, supporting the hypothesis. However, the elevated hapax ratio (0.701) and specific entropy pattern suggest either an unusual natural language or additional complexity beyond simple substitution.",
+      "confidence_change": "0.222 -> 0.294"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Compare glyph and word entropies to the expected values for non-Latin/Italian languages using a chi-squared test",
+      "confidence_change": "0.294 -> 0.304"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.72,
+      "passed": true,
+      "details": "Strong Zipf exponent (0.8946) aligns with natural language, supporting the substitution cipher hypothesis; glyph entropy and word length are reasonable; however, the unusually high hapax ratio (0.701) suggests either encoding artifacts or unusual source text, introducing some uncertainty.",
+      "confidence_change": "0.304 -> 0.379"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "If confirmed, this would suggest that the underlying language is not Latin or Italian, which would be a significant departure from current beliefs"
 }

@@ -2,7 +2,7 @@
   "id": "H086",
   "claim": "The zodiac and astronomical sections use a label-register encoding \u00e2\u20ac\u201d short fixed-length labels drawn from a closed vocabulary \u00e2\u20ac\u201d rather than running prose, which would produce anomalously low entropy (observed: zodiac 3.7149 bits, astronomical 3.7471 bits) and a high type-token ratio relative to sections with running text.",
   "type": "structural",
-  "confidence": 0.697,
+  "confidence": 0.792,
   "evidence_for": [
     "Zodiac section has lowest entropy of all sections (3.7149 bits) consistent with a repetitive label vocabulary",
     "Astronomical section second-lowest entropy (3.7471 bits)",
@@ -49,12 +49,60 @@
       "passed": true,
       "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
       "confidence_change": "0.677 -> 0.697"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and vocabulary coverage at top-50 most f",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.697 -> 0.716"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and vocabulary coverage at top-50 most f",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.716 -> 0.733"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and vocabulary coverage at top-50 most f",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.733 -> 0.749"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and vocabulary coverage at top-50 most f",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.749 -> 0.764"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and vocabulary coverage at top-50 most f",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.764 -> 0.778"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio (ttr = unique_words / total_words) and vocabulary coverage at top-50 most f",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.778 -> 0.792"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "Label registers and running prose have markedly different TTR profiles; this test requires no decipherment and directly confirms or eliminates the structural explanation for the entropy anomaly in the smallest sections"
 }

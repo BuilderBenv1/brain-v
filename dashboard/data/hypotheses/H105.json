@@ -2,7 +2,7 @@
   "id": "H105",
   "claim": "The Voynich script is a semi-syllabic system derived from Balkan scribal traditions, where complex glyphs are built from base characters plus modifiers (loops, triangles). The giant P glyph = N (known Balkan value), with loop = NO. The 4-shaped glyph = D, with triangle = DN, with loop = DNO. The g-shaped glyph = je/j/ja/ju. Combined glyphs produce Serbo-Croatian words (e.g., g + modified-P = jedan/jedno meaning 'one').",
   "type": "cipher",
-  "confidence": 0.25,
+  "confidence": 0.142,
   "evidence_for": [
     "AnnaLisetteMorris2: P-glyph = N matches known Balkan scribal system values",
     "Glyph modifier logic (base + loop/triangle) is consistent with semi-syllabic encoding",
@@ -29,17 +29,61 @@
       "score": 0.4252,
       "passed": false,
       "details": "SC freq corr=0.4252, IC=0.07711 closer to Latin than SC."
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.48,
+      "passed": null,
+      "details": "Zipfian distribution (0.8946) and word length (5.03) match Serbo-Croatian expectations, supporting the natural language hypothesis. However, the unusually high hapax ratio (0.701) contradicts typical natural language patterns, and the specific glyph value claims (P=N, 4=D, g=je) cannot be validated against the corpus statistics provided. Inconclusive without folio-level mapping verification and Index of Coincidence comparison.",
+      "confidence_change": "0.250 -> 0.262"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Test Balkan syllabic hypothesis: (1) Check if Voynich glyph combinatorics match semi-syllabic structure (base glyphs + modifier frequency). (2) Compare word-length distribution to Serbo-Croatian. (3) Test if proposed glyph values (P=N, 4=D, g=je) produce consistent readings across multiple folios. (4) Compare IC to Serbo-Croatian reference.",
+      "confidence_change": "0.262 -> 0.274"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": null,
+      "details": "Statistics show word-length (5.03) and Zipf exponent consistent with natural language, but high hapax ratio (0.701) and lack of empirical validation of proposed glyph-to-Serbo-Croatian mappings make the hypothesis inconclusive rather than supported.",
+      "confidence_change": "0.274 -> 0.278"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "Statistics confirm natural-language-like properties (Zipfian distribution, hapax ratio) but provide no evidence for the specific Balkan syllabic system, proposed glyph values, or Serbo-Croatian word generation; hypothesis lacks empirical validation beyond speculation.",
+      "confidence_change": "0.278 -> 0.224"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "General statistics show natural language traits (Zipf \u00e2\u2030\u02c61.0), but 70% hapax ratio contradicts efficient semi-syllabic encoding, and specific glyph mappings (P=N, 4=D, g=je) lack validation across folios.",
+      "confidence_change": "0.224 -> 0.180"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.3,
+      "passed": false,
+      "details": "Zipfian distribution and word length suggest plausibility, but 70.1% hapax ratio contradicts natural Serbo-Croatian structure and glyph mappings lack cross-folio verification.",
+      "confidence_change": "0.180 -> 0.142"
     }
   ],
-  "tests_remaining": [
-    "syllabic_combinatorics_test",
-    "ic_comparison_south_slavic",
-    "glyph_modifier_pattern_analysis"
-  ],
+  "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "Community submission from Reddit user AnnaLisetteMorris2. Proposes a Balkan semi-syllabic system where complex Voynich glyphs are composed of base characters plus modifiers (loops, triangles), producing South Slavic (Serbo-Croatian) readings. The modifier logic is an interesting structural claim that could be tested against glyph decomposition analysis. Related to H104 (Stoilova Moravian) in proposing a Slavic language but differs in the specific mechanism (syllabic vs alphabetic) and language family branch (South vs West Slavic).",
   "source": "Reddit comment by u/AnnaLisetteMorris2, r/voynich",
   "researcher": "AnnaLisetteMorris2"

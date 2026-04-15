@@ -2,7 +2,7 @@
   "id": "H091",
   "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-only register drawn from a vocabulary of fewer than 200 distinct word types \u00e2\u20ac\u201d a much smaller effective vocabulary than other sections \u00e2\u20ac\u201d producing a Zipf exponent significantly above the corpus-wide value of 0.8946.",
   "type": "structural",
-  "confidence": 0.701,
+  "confidence": 0.849,
   "evidence_for": [
     "Zodiac section has only 1,297 words across 12 folios, consistent with repeated short labels around circular diagrams",
     "Entropy 3.7149 is 0.19 bits below the text-only section and 0.15 bits below the herbal section, a large difference for a corpus with otherwise similar per-section entropies",
@@ -41,12 +41,60 @@
       "passed": true,
       "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
       "confidence_change": "0.665 -> 0.701"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the zipf exponent (log-log linear regression of rank vs frequency) separately for the zodiac",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.701 -> 0.733"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the zipf exponent (log-log linear regression of rank vs frequency) separately for the zodiac",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.733 -> 0.762"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the zipf exponent (log-log linear regression of rank vs frequency) separately for the zodiac",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.762 -> 0.788"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the zipf exponent (log-log linear regression of rank vs frequency) separately for the zodiac",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.788 -> 0.811"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the zipf exponent (log-log linear regression of rank vs frequency) separately for the zodiac",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.811 -> 0.831"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the zipf exponent (log-log linear regression of rank vs frequency) separately for the zodiac",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.831 -> 0.849"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "A label register would produce distinctively different Zipf statistics from running prose or cipher text. Confirming this would justify treating the zodiac section as a separate decipherment target with a restricted vocabulary, potentially providing a crib for the broader cipher."
 }

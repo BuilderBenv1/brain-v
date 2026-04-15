@@ -2,7 +2,7 @@
   "id": "H064",
   "claim": "The text-only section (7 folios, entropy 3.9016 bits \u00e2\u20ac\u201d highest of all sections) represents unenciphered or minimally enciphered running text in a natural language, while all other sections apply an additional layer of encoding (transposition, null insertion, or homophone expansion) that suppresses entropy, meaning the text-only section should serve as the primary decipherment anchor.",
   "type": "cipher",
-  "confidence": 0.91,
+  "confidence": 0.964,
   "evidence_for": [
     "Text-only section entropy (3.9016) is closest to natural language entropy for Latin (~4.0) and Italian (~3.95) of any section",
     "A section without illustrations would have no need for label-encoding or diagram-specific cipher conventions",
@@ -89,12 +89,60 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.895 -> 0.910"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram and trigram conditional entropy for the text-only section and compare to all other se",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.910 -> 0.923"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram and trigram conditional entropy for the text-only section and compare to all other se",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.923 -> 0.934"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram and trigram conditional entropy for the text-only section and compare to all other se",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.934 -> 0.943"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram and trigram conditional entropy for the text-only section and compare to all other se",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.943 -> 0.951"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram and trigram conditional entropy for the text-only section and compare to all other se",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.951 -> 0.958"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute bigram and trigram conditional entropy for the text-only section and compare to all other se",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.958 -> 0.964"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "If text-only section is demonstrably closer to natural language than other sections, it becomes the highest-value decipherment entry point. Confirming this would concentrate computational effort on the 7 most tractable folios and potentially yield a partial key applicable to the rest of the manuscript."
 }

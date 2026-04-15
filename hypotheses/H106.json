@@ -2,7 +2,7 @@
   "id": "H106",
   "claim": "The Voynich Manuscript is a trilingual pharmaceutical compendium encoding plant-based medicine in a mixed Latin/Greek/Arabic scribal system, with a 168-term dictionary covering ~80% of the text.",
   "type": "language",
-  "confidence": 0.2,
+  "confidence": 0.064,
   "evidence_for": [
     "Pagel (2025): 168-term dictionary on Zenodo (DOI 10.5281/zenodo.18478526)",
     "Claims 80% text coverage \u2014 far exceeds Brain-V best codebook (50.8%)",
@@ -26,16 +26,61 @@
       "passed": false,
       "details": "Claims 96% coverage, actual 23.8%. Occurrence counts systematically inflated (dam: 558 claimed vs 80 actual). daiin-sar collocation: 1 occurrence vs PMI=2.9 claimed. Hapax 43.2% claimed vs 70.1% actual.",
       "confidence_change": "0.35 -> 0.20"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "High hapax ratio (0.701) contradicts the 80% coverage claim; a 168-term dictionary covering 80% would produce far fewer rare words and a much lower hapax ratio, suggesting vocabulary is far richer than the hypothesis predicts.",
+      "confidence_change": "0.200 -> 0.152"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.18,
+      "passed": false,
+      "details": "The high hapax ratio (0.701) and sub-unitary Zipf exponent (0.8946) indicate a flatter vocabulary distribution than typical languages, making 168-term coverage of 80% unlikely; the statistics suggest non-linguistic or heavily encrypted content.",
+      "confidence_change": "0.152 -> 0.115"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.18,
+      "passed": false,
+      "details": "The hapax ratio of 0.701 means 70.1% of unique words appear only once, indicating extremely low word frequency concentration; a 168-term dictionary cannot plausibly cover 80% of the corpus with such dispersed vocabulary.",
+      "confidence_change": "0.115 -> 0.087"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "Hypothesis contradicted: a hapax ratio of 0.701 indicates 70% of unique words appear only once, inconsistent with 168 terms covering 80% of text, which would require heavy concentration among those terms.",
+      "confidence_change": "0.087 -> 0.066"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.4,
+      "passed": null,
+      "details": "Zipf exponent of 0.8946 supports natural language structure, but hapax ratio of 0.701 is unusually high, contradicting the claim that 168 terms cover 80% of text since ~5,800 hapax legomena would account for 15%+ of the corpus independently.",
+      "confidence_change": "0.066 -> 0.083"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.25,
+      "passed": false,
+      "details": "The high hapax ratio (0.701) contradicts the 168-term dictionary hypothesis; 80% coverage would require a much lower hapax ratio (~0.3-0.4) and fewer unique words (8,261 is too high). The Zipfian exponent supports natural language but not an artificially constrained vocabulary system.",
+      "confidence_change": "0.083 -> 0.064"
     }
   ],
-  "tests_remaining": [
-    "dictionary_coverage_verification",
-    "section_uniformity"
-  ],
+  "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "Most concrete decipherment claim received \u2014 168 specific mappings with DOI. If 80% coverage verifies, major lead.",
   "source": "Pagel, K. (2025) Zenodo DOI 10.5281/zenodo.18478526; voynich.net",
   "researcher": "kpagel"

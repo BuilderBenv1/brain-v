@@ -1,0 +1,29 @@
+{
+  "id": "H-BRADY-11",
+  "claim": "Nine Syriac pharmaceutical phrase-structure templates (TREATMENT, RECIPE_ACTION, etc.) match 109 decoded passages across all 225 folios, clustered on pharma and biological pages (f75v, f84r, f102r2, f102v2, f107r).",
+  "type": "structural",
+  "confidence": 0.25,
+  "evidence_for": [
+    "109 matches across 225 folios is not random",
+    "Templates derived from independent primary sources (Bhayro, Budge, M\u00fcller-Kessler)"
+  ],
+  "evidence_against": [
+    "109 matches / 225 folios \u2248 0.48/folio \u2014 is this above chance?",
+    "Template flexibility not specified; could be over-permissive",
+    "Brady has not published null-distribution comparison for templates"
+  ],
+  "test": "Replicate template matching with same 9 templates against shuffled-word baseline; compute z-score",
+  "test_metric": "phrase_template_z_score",
+  "test_threshold": "z>=3.0 vs shuffle: confirmed. z<2.0: refuted.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Replicate template matching with same 9 templates against shuffled-word baseline; compute z-score"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": null,
+  "reasoning": "Strong test \u2014 if templates fire on shuffled corpus, whole grammar claim collapses.",
+  "source": "Brady Defibaugh (April 2026), A Syriac Pharmaceutical Dispensatory Encoded in the Voynich Manuscript (DANI pipeline v31)",
+  "researcher": "brady-defibaugh"
+}

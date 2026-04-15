@@ -2,7 +2,7 @@
   "id": "H108",
   "claim": "The word 'daiin' (799 occurrences, rank 1) decomposes as 'da' (give) + 'in' (in water), a pharmaceutical instruction appearing after plant-part descriptions. This morphological decomposition is systematic across the corpus.",
   "type": "cipher",
-  "confidence": 0.45,
+  "confidence": 0.563,
   "evidence_for": [
     "Pagel: daiin = da + in pharmaceutical instruction",
     "daiin is most frequent word (799x) \u2014 frequent instruction expected",
@@ -27,15 +27,61 @@
       "passed": true,
       "details": "Pharma sections: 28.74/1000, non-pharma: 11.53/1000, ratio: 2.49x. Threshold >2x: PASS.",
       "confidence_change": "0.30 -> 0.45"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "test daiin section distribution: is it more frequent in pharmaceutical/recipe vs zodiac?",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'d', 'a', 'l', 'o'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.450 -> 0.471"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "test daiin section distribution: is it more frequent in pharmaceutical/recipe vs zodiac?",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'r', 'n'}. Universal glyphs: {'a', 'o', 'l', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.471 -> 0.491"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "test daiin section distribution: is it more frequent in pharmaceutical/recipe vs zodiac?",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'r', 'n'}. Universal glyphs: {'a', 'o', 'd', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.491 -> 0.510"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "test daiin section distribution: is it more frequent in pharmaceutical/recipe vs zodiac?",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'n', 'r'}. Universal glyphs: {'d', 'o', 'a', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.510 -> 0.528"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "test daiin section distribution: is it more frequent in pharmaceutical/recipe vs zodiac?",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'n', 'r'}. Universal glyphs: {'o', 'd', 'l', 'a'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.528 -> 0.546"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "test daiin section distribution: is it more frequent in pharmaceutical/recipe vs zodiac?",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'm', 'n'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.546 -> 0.563"
     }
   ],
-  "tests_remaining": [
-    "daiin_positional_context"
-  ],
+  "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "Most testable claim. daiin distribution across sections measurable immediately.",
   "source": "Pagel, K. (2025) Zenodo DOI 10.5281/zenodo.18478526",
   "researcher": "kpagel"

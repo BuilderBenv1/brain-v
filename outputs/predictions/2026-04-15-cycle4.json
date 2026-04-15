@@ -1,0 +1,159 @@
+{
+  "date": "2026-04-15",
+  "cycle": "predict",
+  "model": "claude-code-cli",
+  "belief_count": 41,
+  "existing_hypothesis_count": 144,
+  "new_hypotheses": [
+    "H125",
+    "H126",
+    "H127",
+    "H128",
+    "H129"
+  ],
+  "hypotheses": [
+    {
+      "id": "H125",
+      "claim": "The Voynich glyphs encode a homophonic substitution cipher on medieval Latin, where the 25 glyphs map to a Latin alphabet expanded with homophones for high-frequency letters (e, a, i, t, s), reducing glyph entropy below the expected Latin ~4.0 bits to the observed 3.8627 bits.",
+      "type": "cipher",
+      "confidence": 0.61,
+      "evidence_for": [
+        "Glyph entropy 3.8627 bits is slightly below Latin ~4.0 bits, consistent with homophonic expansion flattening the frequency distribution",
+        "Word-initial constraint set {o,c,q,s,d} and word-final set {y,n,l,r,o} could reflect Latin morphological endings masked by homophones",
+        "Multiple high-confidence beliefs already support a homophonic cipher framework",
+        "Currier A/B cipher-table divergence is consistent with two homophonic tables for the same plaintext"
+      ],
+      "evidence_against": [
+        "Hapax ratio 70.1% is far higher than expected for homophonic Latin, which should reduce not increase type diversity",
+        "Zipf exponent 0.8946 is lower than typical natural-language Latin (~1.0), suggesting either non-Latin or added noise",
+        "Word entropy 10.4508 bits exceeds typical enciphered Latin word distributions"
+      ],
+      "test": "Compute the bigram entropy and conditional entropy H(G2|G1) for all adjacent glyph pairs; compare to theoretical homophonic Latin bigram structure. Under homophonic substitution on Latin, H(G2|G1) should be lower than the unconditioned glyph entropy (3.8627) and should match shuffled Latin bigram profiles within 0.05 bits.",
+      "test_metric": "Conditional bigram entropy H(G2|G1) across full corpus and separately for Currier A and B sub-corpora",
+      "test_threshold": "Confirm if H(G2|G1) < 3.6 bits and the ratio H(G2|G1)/H(G1) falls in [0.88, 0.95], matching Latin homophonic profiles; deny if H(G2|G1) >= 3.8 bits (no redundancy exploited by bigrams)",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute the bigram entropy and conditional entropy H(G2|G1) for all adjacent glyph pairs; compare to theoretical homophonic Latin bigram structure. Under homophonic substitution on Latin, H(G2|G1) should be lower than the unconditioned glyph entropy (3.8627) and should match shuffled Latin bigram profiles within 0.05 bits."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "A homophonic cipher on Latin would produce the observed entropy suppression and glyph-positional patterns while accommodating the Currier A/B split as two distinct homophonic tables. Measuring conditional bigram entropy directly tests whether sequential glyph pairs carry the correlation structure expected from an underlying inflected language."
+    },
+    {
+      "id": "H126",
+      "claim": "The anomalously high hapax ratio (70.1%) is substantially produced by a systematic word-final suffix drawn from the set {y, n, l, r, o} that is a cipher artifact (e.g., a null, padding, or word-delimiter glyph), such that stripping that final glyph from all words reduces the unique-word count by at least 30%.",
+      "type": "cipher",
+      "confidence": 0.54,
+      "evidence_for": [
+        "Word-final glyphs {y,n,l,r,o} account for the dominant positional constraint, suggesting a structural rather than grammatical role",
+        "High hapax ratio is inconsistent with natural-language Zipf scaling at exponent 0.8946, pointing to an artificial source of surface type diversity",
+        "Existing belief at 0.54 already partially supports suffix-stripping reducing hapax count",
+        "If final glyphs are padding or nulls, stripping them would collapse many hapax forms to shared stems"
+      ],
+      "evidence_against": [
+        "Stripping final glyphs from Latin or Italian words would also be linguistically valid (case/conjugation endings), so reduction might reflect grammar not artifact",
+        "Word-final {y,n,l,r,o} could encode real Latin endings (-us, -um, -is, -am, -re)",
+        "Recipes section has the largest word count and second-highest entropy, suggesting some sections have genuine suffix variation"
+      ],
+      "test": "For each unique word form ending in any glyph from {y,n,l,r,o}, create a stemmed vocabulary by removing the final glyph; compute new vocabulary size, new hapax count, and new hapax ratio. Run the same procedure on the Currier A and B sub-corpora separately.",
+      "test_metric": "Reduction in hapax ratio after final-glyph stripping: (original_hapax_count - stemmed_hapax_count) / original_hapax_count",
+      "test_threshold": "Confirm artifact hypothesis if stripping reduces hapax ratio by >= 30 percentage points (from 70.1% to <= 40%); deny if reduction < 10 percentage points, suggesting final glyphs encode real morphological information",
+      "tests_run": [],
+      "tests_remaining": [
+        "For each unique word form ending in any glyph from {y,n,l,r,o}, create a stemmed vocabulary by removing the final glyph; compute new vocabulary size, new hapax count, and new hapax ratio. Run the same procedure on the Currier A and B sub-corpora separately."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "If the hapax explosion is artificial and caused by a trailing null or padding glyph, a single suffix-stripping pass should dramatically collapse the vocabulary. This test is fully computable from the word list and would immediately distinguish cipher artifact from natural morphological diversity."
+    },
+    {
+      "id": "H127",
+      "claim": "The text-only section (7 folios, entropy 3.9016 bits \u00e2\u20ac\u201d highest of all sections) represents a functionally distinct register encoded with minimal or no transposition, i.e., a near-plaintext or lightly enciphered layer, while lower-entropy sections (zodiac 3.7149, astronomical 3.7471) use additional transposition steps that suppress entropy.",
+      "type": "structural",
+      "confidence": 0.71,
+      "evidence_for": [
+        "Text-only entropy 3.9016 bits is closest to natural Latin/Italian (~3.95-4.0), suggesting least transformation",
+        "Zodiac entropy 3.7149 bits is lowest, consistent with label-dominated, highly repetitive encoding adding a transposition or nulling step",
+        "Section entropy ordering (text-only > recipes > herbal > cosmological > biological > pharmaceutical > astronomical > zodiac) correlates with expected register complexity",
+        "High-confidence existing belief (0.972) already supports text-only as closest to natural language"
+      ],
+      "evidence_against": [
+        "Lower entropy in zodiac could reflect label brevity and small vocabulary rather than additional cipher steps",
+        "Entropy differences across sections (~0.19 bits range) are modest and could arise from topic-specific vocabulary differences without any cipher variation",
+        "The cosmological section has more folios than astronomical yet similar entropy, complicating a simple transposition-step model"
+      ],
+      "test": "Compute the word-type/token ratio (TTR) and word-length distribution for each section independently; run a Mann-Whitney U test comparing text-only TTR and mean word length against all other sections combined. Additionally compute section-level Zipf exponents and compare to text-only.",
+      "test_metric": "Per-section TTR, mean word length, Zipf exponent, and entropy; Mann-Whitney U p-value for text-only vs. all other sections on each metric",
+      "test_threshold": "Confirm structural distinctness if text-only Zipf exponent is >= 0.95 and all other sections are <= 0.90, and Mann-Whitney p < 0.05 on TTR; deny if text-only metrics fall within one standard deviation of the cross-section mean",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute the word-type/token ratio (TTR) and word-length distribution for each section independently; run a Mann-Whitney U test comparing text-only TTR and mean word length against all other sections combined. Additionally compute section-level Zipf exponents and compare to text-only."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "If the text-only section is a distinct, less-enciphered register, it should show not just higher entropy but also different word-length distributions and a Zipf slope closer to natural language. Confirming this would justify using text-only folios as the primary decipherment target."
+    },
+    {
+      "id": "H128",
+      "claim": "Currier A and Currier B employ two structurally distinct cipher alphabets in which a core set of glyphs is shared but a subset of approximately 5-8 glyphs is exclusive or predominantly exclusive to each sub-corpus, producing measurable vocabulary intersection below 60% when controlling for word length.",
+      "type": "cipher",
+      "confidence": 0.72,
+      "evidence_for": [
+        "Multiple high-confidence beliefs (0.943, 0.944, 0.971) support two structurally distinct cipher tables for A and B",
+        "Currier B has more than twice the word count of A (23,766 vs 11,022), making glyph-frequency profiles statistically robust enough to identify exclusive glyphs",
+        "If cipher tables differ, words of identical length across A and B should show lower-than-chance overlap in glyph composition"
+      ],
+      "evidence_against": [
+        "Two scribes encoding the same language with the same cipher but different handwriting habits could produce apparent glyph-frequency divergence without a structural cipher difference",
+        "Shared positional constraints {o,c,q,s,d} / {y,n,l,r,o} appear in both sub-corpora, constraining how distinct the tables can be"
+      ],
+      "test": "Extract the per-glyph frequency distribution for Currier A and Currier B separately; compute Jensen-Shannon divergence between the two distributions. Then for each word length L from 3 to 8, compute the Jaccard similarity of the word-type sets in A vs B at that length.",
+      "test_metric": "Jensen-Shannon divergence between Currier A and B glyph distributions; per-length-bucket Jaccard similarity of word types",
+      "test_threshold": "Confirm distinct cipher tables if JSD > 0.05 bits AND mean Jaccard similarity across length buckets < 0.35; deny if JSD < 0.02 bits and mean Jaccard > 0.55 (consistent with same cipher, different scribal hands only)",
+      "tests_run": [],
+      "tests_remaining": [
+        "Extract the per-glyph frequency distribution for Currier A and Currier B separately; compute Jensen-Shannon divergence between the two distributions. Then for each word length L from 3 to 8, compute the Jaccard similarity of the word-type sets in A vs B at that length."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "Two truly distinct cipher alphabets would leave a detectable fingerprint in glyph-frequency divergence and in low vocabulary overlap at matched word lengths, since the same plaintext words would be enciphered differently. This test distinguishes cipher-table divergence from mere handwriting variation."
+    },
+    {
+      "id": "H129",
+      "claim": "The Zipf exponent of 0.8946 (below the natural-language baseline of ~1.0) is caused by systematic word-level homophones: multiple surface word forms encode the same plaintext word, inflating low-frequency tail counts. Collapsing homophones defined by shared word-initial bigram and word length would restore the Zipf exponent to >= 0.95.",
+      "type": "cipher",
+      "confidence": 0.48,
+      "evidence_for": [
+        "Zipf exponent 0.8946 with R-squared 0.9084 indicates a moderate but suboptimal fit, consistent with artificial inflation of the low-frequency tail",
+        "Homophonic ciphers are known to flatten Zipf slopes by distributing high-frequency plaintext words across multiple surface forms",
+        "Word entropy 10.4508 bits is high relative to glyph entropy 3.8627, suggesting surface word diversity exceeds what grammar alone would produce"
+      ],
+      "evidence_against": [
+        "R-squared 0.9084 is still a reasonable Zipf fit; the deviation from 1.0 could reflect topic-restricted medieval vocabulary rather than cipher homophones",
+        "Collapsing by initial bigram and length is an arbitrary grouping that may not correspond to true plaintext equivalence classes",
+        "Hapax ratio 70.1% under a homophonic model should decrease toward the tail, not inflate it, unless the homophone set is very large"
+      ],
+      "test": "Group all unique word forms by (word-initial bigram, word length) as a proxy for plaintext equivalence classes; compute the Zipf exponent of the collapsed frequency distribution (treating each group as one token type, summing its tokens). Compare collapsed Zipf exponent and R-squared to the original.",
+      "test_metric": "Zipf exponent and R-squared of the collapsed word-frequency distribution versus the original (0.8946, R\u00c2\u00b2=0.9084)",
+      "test_threshold": "Confirm homophone hypothesis if collapsed Zipf exponent >= 0.95 and R-squared improves to >= 0.94; deny if collapsed exponent changes by < 0.02 or R-squared decreases, indicating the grouping variable does not capture real equivalence classes",
+      "tests_run": [],
+      "tests_remaining": [
+        "Group all unique word forms by (word-initial bigram, word length) as a proxy for plaintext equivalence classes; compute the Zipf exponent of the collapsed frequency distribution (treating each group as one token type, summing its tokens). Compare collapsed Zipf exponent and R-squared to the original."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "If homophones are the mechanism suppressing the Zipf exponent, then grouping by a simple cipher-structure proxy (initial bigram + length) should partially undo the suppression and recover a more natural frequency distribution. A measurable improvement in Zipf fit would be strong evidence for word-level homophony."
+    }
+  ],
+  "raw_response": "{\"hypotheses\": [{\"claim\": \"The Voynich glyphs encode a homophonic substitution cipher on medieval Latin, where the 25 glyphs map to a Latin alphabet expanded with homophones for high-frequency letters (e, a, i, t, s), reducing glyph entropy below the expected Latin ~4.0 bits to the observed 3.8627 bits.\", \"type\": \"cipher\", \"confidence\": 0.61, \"evidence_for\": [\"Glyph entropy 3.8627 bits is slightly below Latin ~4.0 bits, consistent with homophonic expansion flattening the frequency distribution\", \"Word-initial constraint set {o,c,q,s,d} and word-final set {y,n,l,r,o} could reflect Latin morphological endings masked by homophones\", \"Multiple high-confidence beliefs already support a homophonic cipher framework\", \"Currier A/B cipher-table divergence is consistent with two homophonic tables for the same plaintext\"], \"evidence_against\": [\"Hapax ratio 70.1% is far higher than expected for homophonic Latin, which should reduce not increase type diversity\", \"Zipf exponent 0.8946 is lower than typical natural-language Latin (~1.0), suggesting either non-Latin or added noise\", \"Word entropy 10.4508 bits exceeds typical enciphered Latin word distributions\"], \"test\": \"Compute the bigram entropy and conditional entropy H(G2|G1) for all adjacent glyph pairs; compare to theoretical homophonic Latin bigram structure. Under homophonic substitution on Latin, H(G2|G1) should be lower than the unconditioned glyph entropy (3.8627) and should match shuffled Latin bigram profiles within 0.05 bits.\", \"test_metric\": \"Conditional bigram entropy H(G2|G1) across full corpus and separately for Currier A and B sub-corpora\", \"test_threshold\": \"Confirm if H(G2|G1) < 3.6 bits and the ratio H(G2|G1)/H(G1) falls in [0.88, 0.95], matching Latin homophonic profiles; deny if H(G2|G1) >= 3.8 bits (no redundancy exploited by bigrams)\", \"reasoning\": \"A homophonic cipher on Latin would produce the observed entropy suppression and glyph-positional patterns while accommodating the Currier A/B split as two distinct homophonic tables. Measuring conditional bigram entropy directly tests whether sequential glyph pairs carry the correlation structure expected from an underlying inflected language.\"}, {\"claim\": \"The anomalously high hapax ratio (70.1%) is substantially produced by a systematic word-final suffix drawn from the set {y, n, l, r, o} that is a cipher artifact (e.g., a null, padding, or word-delimiter glyph), such that stripping that final glyph from all words reduces the unique-word count by at least 30%.\", \"type\": \"cipher\", \"confidence\": 0.54, \"evidence_for\": [\"Word-final glyphs {y,n,l,r,o} account for the dominant positional constraint, suggesting a structural rather than grammatical role\", \"High hapax ratio is inconsistent with natural-language Zipf scaling at exponent 0.8946, pointing to an artificial source of surface type diversity\", \"Existing belief at 0.54 already partially supports suffix-stripping reducing hapax count\", \"If final glyphs are padding or nulls, stripping them would collapse many hapax forms to shared stems\"], \"evidence_against\": [\"Stripping final glyphs from Latin or Italian words would also be linguistically valid (case/conjugation endings), so reduction might reflect grammar not artifact\", \"Word-final {y,n,l,r,o} could encode real Latin endings (-us, -um, -is, -am, -re)\", \"Recipes section has the largest word count and second-highest entropy, suggesting some sections have genuine suffix variation\"], \"test\": \"For each unique word form ending in any glyph from {y,n,l,r,o}, create a stemmed vocabulary by removing the final glyph; compute new vocabulary size, new hapax count, and new hapax ratio. Run the same procedure on the Currier A and B sub-corpora separately.\", \"test_metric\": \"Reduction in hapax ratio after final-glyph stripping: (original_hapax_count - stemmed_hapax_count) / original_hapax_count\", \"test_threshold\": \"Confirm artifact hypothesis if stripping reduces hapax ratio by >= 30 percentage points (from 70.1% to <= 40%); deny if reduction < 10 percentage points, suggesting final glyphs encode real morphological information\", \"reasoning\": \"If the hapax explosion is artificial and caused by a trailing null or padding glyph, a single suffix-stripping pass should dramatically collapse the vocabulary. This test is fully computable from the word list and would immediately distinguish cipher artifact from natural morphological diversity.\"}, {\"claim\": \"The text-only section (7 folios, entropy 3.9016 bits \u00e2\u20ac\u201d highest of all sections) represents a functionally distinct register encoded with minimal or no transposition, i.e., a near-plaintext or lightly enciphered layer, while lower-entropy sections (zodiac 3.7149, astronomical 3.7471) use additional transposition steps that suppress entropy.\", \"type\": \"structural\", \"confidence\": 0.71, \"evidence_for\": [\"Text-only entropy 3.9016 bits is closest to natural Latin/Italian (~3.95-4.0), suggesting least transformation\", \"Zodiac entropy 3.7149 bits is lowest, consistent with label-dominated, highly repetitive encoding adding a transposition or nulling step\", \"Section entropy ordering (text-only > recipes > herbal > cosmological > biological > pharmaceutical > astronomical > zodiac) correlates with expected register complexity\", \"High-confidence existing belief (0.972) already supports text-only as closest to natural language\"], \"evidence_against\": [\"Lower entropy in zodiac could reflect label brevity and small vocabulary rather than additional cipher steps\", \"Entropy differences across sections (~0.19 bits range) are modest and could arise from topic-specific vocabulary differences without any cipher variation\", \"The cosmological section has more folios than astronomical yet similar entropy, complicating a simple transposition-step model\"], \"test\": \"Compute the word-type/token ratio (TTR) and word-length distribution for each section independently; run a Mann-Whitney U test comparing text-only TTR and mean word length against all other sections combined. Additionally compute section-level Zipf exponents and compare to text-only.\", \"test_metric\": \"Per-section TTR, mean word length, Zipf exponent, and entropy; Mann-Whitney U p-value for text-only vs. all other sections on each metric\", \"test_threshold\": \"Confirm structural distinctness if text-only Zipf exponent is >= 0.95 and all other sections are <= 0.90, and Mann-Whitney p < 0.05 on TTR; deny if text-only metrics fall within one standard deviation of the cross-section mean\", \"reasoning\": \"If the text-only section is a distinct, less-enciphered register, it should show not just higher entropy but also different word-length distributions and a Zipf slope closer to natural language. Confirming this would justify using text-only folios as the primary decipherment target.\"}, {\"claim\": \"Currier A and Currier B employ two structurally distinct cipher alphabets in which a core set of glyphs is shared but a subset of approximately 5-8 glyphs is exclusive or predominantly exclusive to each sub-corpus, producing measurable vocabulary intersection below 60% when controlling for word length.\", \"type\": \"cipher\", \"confidence\": 0.72, \"evidence_for\": [\"Multiple high-confidence beliefs (0.943, 0.944, 0.971) support two structurally distinct cipher tables for A and B\", \"Currier B has more than twice the word count of A (23,766 vs 11,022), making glyph-frequency profiles statistically robust enough to identify exclusive glyphs\", \"If cipher tables differ, words of identical length across A and B should show lower-than-chance overlap in glyph composition\"], \"evidence_against\": [\"Two scribes encoding the same language with the same cipher but different handwriting habits could produce apparent glyph-frequency divergence without a structural cipher difference\", \"Shared positional constraints {o,c,q,s,d} / {y,n,l,r,o} appear in both sub-corpora, constraining how distinct the tables can be\"], \"test\": \"Extract the per-glyph frequency distribution for Currier A and Currier B separately; compute Jensen-Shannon divergence between the two distributions. Then for each word length L from 3 to 8, compute the Jaccard similarity of the word-type sets in A vs B at that length.\", \"test_metric\": \"Jensen-Shannon divergence between Currier A and B glyph distributions; per-length-bucket Jaccard similarity of word types\", \"test_threshold\": \"Confirm distinct cipher tables if JSD > 0.05 bits AND mean Jaccard similarity across length buckets < 0.35; deny if JSD < 0.02 bits and mean Jaccard > 0.55 (consistent with same cipher, different scribal hands only)\", \"reasoning\": \"Two truly distinct cipher alphabets would leave a detectable fingerprint in glyph-frequency divergence and in low vocabulary overlap at matched word lengths, since the same plaintext words would be enciphered differently. This test distinguishes cipher-table divergence from mere handwriting variation.\"}, {\"claim\": \"The Zipf exponent of 0.8946 (below the natural-language baseline of ~1.0) is caused by systematic word-level homophones: multiple surface word forms encode the same plaintext word, inflating low-frequency tail counts. Collapsing homophones defined by shared word-initial bigram and word length would restore the Zipf exponent to >= 0.95.\", \"type\": \"cipher\", \"confidence\": 0.48, \"evidence_for\": [\"Zipf exponent 0.8946 with R-squared 0.9084 indicates a moderate but suboptimal fit, consistent with artificial inflation of the low-frequency tail\", \"Homophonic ciphers are known to flatten Zipf slopes by distributing high-frequency plaintext words across multiple surface forms\", \"Word entropy 10.4508 bits is high relative to glyph entropy 3.8627, suggesting surface word diversity exceeds what grammar alone would produce\"], \"evidence_against\": [\"R-squared 0.9084 is still a reasonable Zipf fit; the deviation from 1.0 could reflect topic-restricted medieval vocabulary rather than cipher homophones\", \"Collapsing by initial bigram and length is an arbitrary grouping that may not correspond to true plaintext equivalence classes\", \"Hapax ratio 70.1% under a homophonic model should decrease toward the tail, not inflate it, unless the homophone set is very large\"], \"test\": \"Group all unique word forms by (word-initial bigram, word length) as a proxy for plaintext equivalence classes; compute the Zipf exponent of the collapsed frequency distribution (treating each group as one token type, summing its tokens). Compare collapsed Zipf exponent and R-squared to the original.\", \"test_metric\": \"Zipf exponent and R-squared of the collapsed word-frequency distribution versus the original (0.8946, R\u00c2\u00b2=0.9084)\", \"test_threshold\": \"Confirm homophone hypothesis if collapsed Zipf exponent >= 0.95 and R-squared improves to >= 0.94; deny if collapsed exponent changes by < 0.02 or R-squared decreases, indicating the grouping variable does not capture real equivalence classes\", \"reasoning\": \"If homophones are the mechanism suppressing the Zipf exponent, then grouping by a simple cipher-structure proxy (initial bigram + length) should partially undo the suppression and recover a more natural frequency distribution. A measurable improvement in Zipf fit would be strong evidence for word-level homophony.\"}]}"
+}

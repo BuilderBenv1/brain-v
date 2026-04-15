@@ -2,7 +2,7 @@
   "id": "H003",
   "claim": "The manuscript's text structure reflects a mix of prose and verse, with the herbal section being primarily composed of short, rhyming couplets.",
   "type": "structural",
-  "confidence": 0.947,
+  "confidence": 0.98,
   "evidence_for": [
     "Higher hapax legomena ratio in the herbal section (70.1%) compared to other sections",
     "Glyph positional constraints may reflect poetic structure rather than prose"
@@ -125,12 +125,60 @@
       "passed": true,
       "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
       "confidence_change": "0.938 -> 0.947"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare word length distributions between the herbal and other sections using a two-sample k-s test",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.947 -> 0.955"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare word length distributions between the herbal and other sections using a two-sample k-s test",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.955 -> 0.962"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare word length distributions between the herbal and other sections using a two-sample k-s test",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.962 -> 0.968"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare word length distributions between the herbal and other sections using a two-sample k-s test",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.968 -> 0.973"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare word length distributions between the herbal and other sections using a two-sample k-s test",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.973 -> 0.977"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare word length distributions between the herbal and other sections using a two-sample k-s test",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.977 -> 0.980"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "If confirmed, this would suggest that the text structure is more complex than initially thought, which could provide clues about the underlying language and cipher"
 }

@@ -1,0 +1,36 @@
+{
+  "id": "H138",
+  "claim": "The text-only section's elevated entropy (3.9016 bits, highest of all sections) reflects unenciphered or minimally enciphered natural language prose, and its glyph unigram distribution should show statistically significantly less deviation from the expected distribution of a known natural language (medieval Latin or Italian) than any other section",
+  "type": "language",
+  "confidence": 0.756,
+  "evidence_for": [
+    "Text-only entropy (3.9016 bits) is closest to Latin (~4.0 bits) and Italian (~3.95 bits) of all sections",
+    "Multiple existing high-confidence beliefs (0.982\u00e2\u20ac\u201c0.985) support text-only as closest to natural language",
+    "7 folios with 2,349 words provides sufficient token count for reliable frequency analysis",
+    "If this section is unenciphered, chi-squared distance between its glyph frequencies and Latin/Italian letter frequencies should be minimized relative to other sections"
+  ],
+  "evidence_against": [
+    "Higher entropy could reflect a more complex cipher rather than less encipherment",
+    "The 25-glyph inventory may not map 1-to-1 to Latin/Italian letters, making direct frequency comparison ambiguous",
+    "Currier A/B affiliation of text-only folios is unknown and could confound cross-section comparison"
+  ],
+  "test": "Compute the glyph unigram frequency distribution for each section. For each section, compute the chi-squared distance (and KL divergence) between its glyph distribution and (a) medieval Latin letter frequencies and (b) medieval Italian letter frequencies. Rank all 8 sections by chi-squared distance to each reference language.",
+  "test_metric": "Chi-squared distance and KL divergence from Latin and Italian reference distributions for each section; rank of text-only section among all 8 sections",
+  "test_threshold": "Confirmation: text-only section ranks 1st (lowest chi-squared distance) to both Latin and Italian reference distributions. Denial: text-only ranks 3rd or lower to both reference distributions, or another section consistently ranks lower.",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "compute the glyph unigram frequency distribution for each section. for each section, compute the chi",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.740 -> 0.756"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "If the text-only section's glyph frequency distribution is the closest match to a known language among all sections, it provides the strongest statistical warrant for treating it as a decipherment entry point, and the specific language with lower chi-squared distance (Latin vs Italian) would help narrow the underlying language hypothesis."
+}

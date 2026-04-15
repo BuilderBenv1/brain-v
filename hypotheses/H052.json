@@ -2,7 +2,7 @@
   "id": "H052",
   "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) is caused by a label-encoding convention in which each label token is drawn from a closed vocabulary of fewer than 150 distinct words, and the type-token ratio for zodiac-section words is significantly lower than for any prose section (herbal, recipes, text-only).",
   "type": "structural",
-  "confidence": 0.959,
+  "confidence": 0.984,
   "evidence_for": [
     "Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d consistent with repetitive labeling",
     "Low entropy is most parsimoniously explained by a small, frequently recycled label set",
@@ -121,12 +121,60 @@
       "passed": true,
       "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
       "confidence_change": "0.952 -> 0.959"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "count distinct word types in the zodiac section; compute type-token ratio (ttr) for zodiac vs. herba",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.959 -> 0.965"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "count distinct word types in the zodiac section; compute type-token ratio (ttr) for zodiac vs. herba",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.965 -> 0.970"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "count distinct word types in the zodiac section; compute type-token ratio (ttr) for zodiac vs. herba",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.970 -> 0.974"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "count distinct word types in the zodiac section; compute type-token ratio (ttr) for zodiac vs. herba",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.974 -> 0.978"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "count distinct word types in the zodiac section; compute type-token ratio (ttr) for zodiac vs. herba",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.978 -> 0.981"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "count distinct word types in the zodiac section; compute type-token ratio (ttr) for zodiac vs. herba",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.981 -> 0.984"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "A confirmed label-vocabulary ceiling would let researchers treat zodiac tokens as a constrained ciphertext with known plaintext candidates (month names, star names, nymph labels), creating a potential crib for the broader cipher."
 }

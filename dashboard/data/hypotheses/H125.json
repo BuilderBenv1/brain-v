@@ -1,0 +1,52 @@
+{
+  "id": "H125",
+  "claim": "The Voynich glyphs encode a homophonic substitution cipher on medieval Latin, where the 25 glyphs map to a Latin alphabet expanded with homophones for high-frequency letters (e, a, i, t, s), reducing glyph entropy below the expected Latin ~4.0 bits to the observed 3.8627 bits.",
+  "type": "cipher",
+  "confidence": 0.751,
+  "evidence_for": [
+    "Glyph entropy 3.8627 bits is slightly below Latin ~4.0 bits, consistent with homophonic expansion flattening the frequency distribution",
+    "Word-initial constraint set {o,c,q,s,d} and word-final set {y,n,l,r,o} could reflect Latin morphological endings masked by homophones",
+    "Multiple high-confidence beliefs already support a homophonic cipher framework",
+    "Currier A/B cipher-table divergence is consistent with two homophonic tables for the same plaintext"
+  ],
+  "evidence_against": [
+    "Hapax ratio 70.1% is far higher than expected for homophonic Latin, which should reduce not increase type diversity",
+    "Zipf exponent 0.8946 is lower than typical natural-language Latin (~1.0), suggesting either non-Latin or added noise",
+    "Word entropy 10.4508 bits exceeds typical enciphered Latin word distributions"
+  ],
+  "test": "Compute the bigram entropy and conditional entropy H(G2|G1) for all adjacent glyph pairs; compare to theoretical homophonic Latin bigram structure. Under homophonic substitution on Latin, H(G2|G1) should be lower than the unconditioned glyph entropy (3.8627) and should match shuffled Latin bigram profiles within 0.05 bits.",
+  "test_metric": "Conditional bigram entropy H(G2|G1) across full corpus and separately for Currier A and B sub-corpora",
+  "test_threshold": "Confirm if H(G2|G1) < 3.6 bits and the ratio H(G2|G1)/H(G1) falls in [0.88, 0.95], matching Latin homophonic profiles; deny if H(G2|G1) >= 3.8 bits (no redundancy exploited by bigrams)",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "compute the bigram entropy and conditional entropy h(g2|g1) for all adjacent glyph pairs; compare to",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.610 -> 0.664"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the bigram entropy and conditional entropy h(g2|g1) for all adjacent glyph pairs; compare to",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.664 -> 0.711"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the bigram entropy and conditional entropy h(g2|g1) for all adjacent glyph pairs; compare to",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.711 -> 0.751"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "A homophonic cipher on Latin would produce the observed entropy suppression and glyph-positional patterns while accommodating the Currier A/B split as two distinct homophonic tables. Measuring conditional bigram entropy directly tests whether sequential glyph pairs carry the correlation structure expected from an underlying inflected language."
+}

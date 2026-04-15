@@ -2,7 +2,7 @@
   "id": "H044",
   "claim": "The dominance of word-initial glyphs o, c, q, s, d and word-final glyphs y, n, l, r, o reflects a Vigenere-style polyalphabetic cipher in which cipher-alphabet assignment is positionally determined within the word (position 1, position-final), producing artificial initial/final glyph constraints that do not reflect underlying language phonotactics.",
   "type": "cipher",
-  "confidence": 0.934,
+  "confidence": 0.973,
   "evidence_for": [
     "Strict positional constraints on glyphs (e.g., 'q' almost always followed by 'o', certain glyphs never word-final) are more consistent with cipher rules than natural phonotactics",
     "A Vigenere cipher keyed by word-position would produce exactly this pattern: fixed alphabets for position 1 and position-N inflate specific glyphs at those slots",
@@ -136,12 +136,60 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.923 -> 0.934"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "for each word-position p (1, 2, 3, 4, 5, final), compute the conditional entropy h(glyph | position=",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.934 -> 0.943"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "for each word-position p (1, 2, 3, 4, 5, final), compute the conditional entropy h(glyph | position=",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.943 -> 0.951"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "for each word-position p (1, 2, 3, 4, 5, final), compute the conditional entropy h(glyph | position=",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.951 -> 0.958"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "for each word-position p (1, 2, 3, 4, 5, final), compute the conditional entropy h(glyph | position=",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.958 -> 0.964"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "for each word-position p (1, 2, 3, 4, 5, final), compute the conditional entropy h(glyph | position=",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.964 -> 0.969"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "for each word-position p (1, 2, 3, 4, 5, final), compute the conditional entropy h(glyph | position=",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.969 -> 0.973"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "This test directly distinguishes cipher-imposed positional constraints from language-phonotactic positional constraints, which is necessary to determine whether the glyph positional rules should be modeled as cipher structure or grammatical structure in any decipherment attempt."
 }

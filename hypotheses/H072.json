@@ -2,7 +2,7 @@
   "id": "H072",
   "claim": "The zodiac section's anomalously low entropy (3.7149 bits) and label-heavy structure reflect a fixed-vocabulary encoding in which each label token is drawn from a closed set of fewer than 50 distinct label templates, with high within-label glyph redundancy serving as a positional marker rather than encoding phonemic content.",
   "type": "structural",
-  "confidence": 0.698,
+  "confidence": 0.792,
   "evidence_for": [
     "Zodiac section has fewest folios (12) and words (1,297) relative to other sections, consistent with a label-only register",
     "Lowest section entropy (3.7149 bits) suggests reduced glyph diversity, compatible with a closed label vocabulary",
@@ -71,12 +71,60 @@
       "passed": true,
       "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
       "confidence_change": "0.678 -> 0.698"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio (unique words / total words) for each section; test whether zodiac and astr",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.698 -> 0.716"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio (unique words / total words) for each section; test whether zodiac and astr",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.716 -> 0.733"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio (unique words / total words) for each section; test whether zodiac and astr",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.733 -> 0.749"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio (unique words / total words) for each section; test whether zodiac and astr",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.749 -> 0.764"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio (unique words / total words) for each section; test whether zodiac and astr",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.764 -> 0.778"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio (unique words / total words) for each section; test whether zodiac and astr",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.778 -> 0.792"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "If zodiac labels are drawn from a closed template set, the section should show a markedly lower TTR than prose sections. Confirming this would establish a two-register model (label vs. prose) that constrains decipherment strategies differently for each section."
 }

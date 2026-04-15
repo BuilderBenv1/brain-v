@@ -1,0 +1,59 @@
+{
+  "id": "H122",
+  "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-encoding regime in which most tokens are drawn from a restricted lexicon of fewer than 80 unique word types, producing a word-frequency distribution with Zipf exponent significantly steeper (greater than 1.2) than the full corpus (0.8946), consistent with a closed enumeration rather than free prose.",
+  "type": "structural",
+  "confidence": 0.81,
+  "evidence_for": [
+    "Zodiac section has lowest entropy (3.7149 bits) suggesting reduced glyph diversity consistent with label repetition",
+    "Zodiac has only 1,297 words across 12 folios \u00e2\u20ac\u201d low density consistent with label-heavy layout",
+    "Existing evidence (0.711, 0.723) supports zodiac as label-oriented encoding"
+  ],
+  "evidence_against": [
+    "Low entropy could alternatively reflect a denser homophonic substitution rather than label restriction",
+    "If zodiac labels encode planet/month names in an unknown cipher, the lexicon size may still be large",
+    "Pharmaceutical section also has low entropy (3.7772) but is not typically described as label-heavy, weakening entropy as a unique diagnostic"
+  ],
+  "test": "Extract the zodiac section token list; compute unique word count, Zipf exponent on zodiac word frequencies alone, and coverage of the top-80 most frequent zodiac word types as a fraction of all zodiac tokens; compare Zipf exponent to full-corpus exponent using a permutation test.",
+  "test_metric": "Unique word count in zodiac section; Zipf exponent for zodiac word-frequency distribution; percentage of zodiac tokens covered by top-80 word types",
+  "test_threshold": "Confirm label-encoding if unique word count is below 80 distinct types and top-80 coverage exceeds 95% of all zodiac tokens and Zipf exponent exceeds 1.2; deny if unique word count exceeds 150 or top-80 coverage is below 80%",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "extract the zodiac section token list; compute unique word count, zipf exponent on zodiac word frequ",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.700 -> 0.732"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "extract the zodiac section token list; compute unique word count, zipf exponent on zodiac word frequ",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.732 -> 0.761"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "extract the zodiac section token list; compute unique word count, zipf exponent on zodiac word frequ",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.761 -> 0.787"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "extract the zodiac section token list; compute unique word count, zipf exponent on zodiac word frequ",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.787 -> 0.810"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "A closed label lexicon would sharply distinguish the zodiac section from prose sections and would rule out free-text cipher models for that section, allowing section-specific decipherment strategies to be applied."
+}

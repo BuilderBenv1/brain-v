@@ -1,0 +1,29 @@
+{
+  "id": "H-BRADY-07",
+  "claim": "The Syriac temporal adverb kadd\u012bn (skeleton kdy) appears 1,326 times (3.8% of corpus) while the Jewish Babylonian Aramaic equivalent k\u0259\u1e0f\u0113n (skeleton kdn) appears 178 times \u2014 an 88:12 ratio supporting primarily Syriac text with minor JBA influence.",
+  "type": "language",
+  "confidence": 0.35,
+  "evidence_for": [
+    "Direct skeleton-level claim, testable from corpus",
+    "1,326 tokens is a large, statistically stable count",
+    "kdy and kdn are distinguishable skeletons"
+  ],
+  "evidence_against": [
+    "3.8% is unusually high for a temporal adverb \u2014 may indicate non-linguistic function",
+    "Could also be some other Semitic word with same skeleton"
+  ],
+  "test": "Count skeleton tokens 'kdy' (chedy/chody/ckhedy etc. by char map) and 'kdn' in corpus",
+  "test_metric": "kdy_kdn_ratio",
+  "test_threshold": "kdy:kdn >=4:1 AND kdy >=3% of corpus: confirmed. Otherwise: challenged.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Count skeleton tokens 'kdy' (chedy/chody/ckhedy etc. by char map) and 'kdn' in corpus"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": null,
+  "reasoning": "Directly testable with character mapping.",
+  "source": "Brady Defibaugh (April 2026), A Syriac Pharmaceutical Dispensatory Encoded in the Voynich Manuscript (DANI pipeline v31)",
+  "researcher": "brady-defibaugh"
+}

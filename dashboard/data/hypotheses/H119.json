@@ -1,0 +1,67 @@
+{
+  "id": "H119",
+  "claim": "The glyph positional constraints (word-initial set {o,c,q,s,d}, word-final set {y,n,l,r,o}) are produced by a Vigen\u00c3\u00a8re-style polyalphabetic cipher where the key position within a word determines the allowable glyph set, such that position 1 maps to a restricted alphabet and the final position maps to a different restricted alphabet, compressing the effective entropy at word boundaries.",
+  "type": "cipher",
+  "confidence": 0.653,
+  "evidence_for": [
+    "Positional glyph constraints are too regular to be grammatical \u00e2\u20ac\u201d they hold across all sections and both Currier variants",
+    "Belief scores 0.77\u00e2\u20ac\u201c0.87 confirm that positional constraints are cipher-structural, not grammatical",
+    "A Vigen\u00c3\u00a8re-style key cycling over word length would naturally produce position-dependent glyph restrictions if certain key values map to restricted sets"
+  ],
+  "evidence_against": [
+    "Classical Vigen\u00c3\u00a8re on a 25-glyph alphabet with a short key would produce periodic index-of-coincidence peaks that have not been confirmed",
+    "If the key length equals word length, it collapses to a running-key cipher, which would produce near-uniform positional distributions rather than constrained ones",
+    "Average word length of 5.03 suggests short words dominate; Vigen\u00c3\u00a8re period detection requires longer sequences"
+  ],
+  "test": "Compute index of coincidence (IC) for each word-position slice (position 1, 2, 3, 4, 5+) across the full corpus; test for periodic structure in IC values as a function of position offset; apply Kasiski test to sequences of same-position glyphs extracted from all words of the same length.",
+  "test_metric": "Per-position IC values; Kasiski key-length estimate from same-position glyph sequences; chi-square test of glyph uniformity at each word position",
+  "test_threshold": "Per-position IC significantly above random (IC > 0.065 for a 25-glyph alphabet) AND Kasiski suggesting key length 3\u00e2\u20ac\u201c7 would support polyalphabetic hypothesis; IC near 1/25 = 0.04 at non-boundary positions would refute it.",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "compute index of coincidence (ic) for each word-position slice (position 1, 2, 3, 4, 5+) across the ",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'r', 'n'}. Universal glyphs: {'a', 'o', 'l', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.580 -> 0.596"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute index of coincidence (ic) for each word-position slice (position 1, 2, 3, 4, 5+) across the ",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'r', 'n'}. Universal glyphs: {'a', 'o', 'd', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.596 -> 0.611"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute index of coincidence (ic) for each word-position slice (position 1, 2, 3, 4, 5+) across the ",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'n', 'r'}. Universal glyphs: {'d', 'o', 'a', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.611 -> 0.626"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute index of coincidence (ic) for each word-position slice (position 1, 2, 3, 4, 5+) across the ",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'n', 'r'}. Universal glyphs: {'o', 'd', 'l', 'a'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.626 -> 0.640"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute index of coincidence (ic) for each word-position slice (position 1, 2, 3, 4, 5+) across the ",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'm', 'n'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.640 -> 0.653"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Polyalphabetic cipher would explain positional constraints without requiring them to be grammatical, and would imply a specific key-length that could be estimated \u00e2\u20ac\u201d dramatically narrowing the cipher search space if confirmed."
+}

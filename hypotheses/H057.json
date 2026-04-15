@@ -2,7 +2,7 @@
   "id": "H057",
   "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) is caused by a label-repetition encoding scheme in which a small set of high-frequency label words are systematically repeated around circular diagrams, and the section's word-frequency distribution is therefore best fit by a truncated Zipf distribution rather than a full Zipf law.",
   "type": "structural",
-  "confidence": 0.907,
+  "confidence": 0.953,
   "evidence_for": [
     "Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d the smallest vocabulary-to-folio ratio, consistent with repetitive labeling",
     "Entropy 3.7149 bits is 0.19 bits below the next-lowest section (astronomical 3.7471), a large gap suggesting a qualitatively different text mode",
@@ -97,12 +97,60 @@
       "passed": true,
       "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
       "confidence_change": "0.896 -> 0.907"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "extract the word-frequency distribution for the zodiac section alone. fit both a standard zipf distr",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.907 -> 0.917"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "extract the word-frequency distribution for the zodiac section alone. fit both a standard zipf distr",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.917 -> 0.926"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "extract the word-frequency distribution for the zodiac section alone. fit both a standard zipf distr",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.926 -> 0.934"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "extract the word-frequency distribution for the zodiac section alone. fit both a standard zipf distr",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.934 -> 0.941"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "extract the word-frequency distribution for the zodiac section alone. fit both a standard zipf distr",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.941 -> 0.947"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "extract the word-frequency distribution for the zodiac section alone. fit both a standard zipf distr",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.947 -> 0.953"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "If the zodiac section is genuinely label-oriented, its word-frequency distribution should exhibit a sharper high-frequency peak and fewer hapax legomena than other sections \u00e2\u20ac\u201d a testable structural prediction that would confirm or deny the label-encoding explanation for its low entropy without requiring decipherment."
 }

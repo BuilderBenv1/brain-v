@@ -1,0 +1,44 @@
+{
+  "id": "H132",
+  "claim": "The Currier A and Currier B sub-corpora use two structurally distinct cipher alphabets that both encode the same underlying Latin plaintext, with Currier B employing a larger effective alphabet (more glyph diversity per word position) to explain B's larger word count (23,766 vs 11,022) without a proportional increase in semantic content.",
+  "type": "cipher",
+  "confidence": 0.867,
+  "evidence_for": [
+    "Currier B has more than twice the word count of A, yet both are attributed to the same manuscript and likely similar content domains",
+    "High-confidence belief (0.971) that A and B use structurally distinct cipher tables on the same underlying language",
+    "Larger effective alphabet in B would produce more unique surface word forms from the same plaintext, consistent with B's higher absolute vocabulary size",
+    "Overall entropy 3.8627 bits is consistent with a blended signal from two slightly different cipher alphabets"
+  ],
+  "evidence_against": [
+    "Currier B's larger size may simply reflect more content being assigned to B sections, not a richer cipher alphabet",
+    "If both encode Latin, section-level entropy differences (herbal 3.8478 vs recipes 3.8586) should reflect content domain, not cipher \u00e2\u20ac\u201d but cipher differences would also affect entropy",
+    "Distinguishing cipher-alphabet size from content volume requires per-folio normalization not yet performed"
+  ],
+  "test": "For each Currier sub-corpus separately, compute (1) the number of distinct glyph bigrams per word position (initial, medial, final), (2) the conditional entropy H(glyph_n | position) for positions 1\u00e2\u20ac\u201c5, and (3) the per-word type entropy; test whether B shows significantly higher positional glyph diversity than A at matched word-length bins.",
+  "test_metric": "Mean conditional glyph entropy H(glyph | position) for Currier A vs Currier B at word lengths 4\u00e2\u20ac\u201c7 glyphs",
+  "test_threshold": "Confirm if B's mean positional glyph entropy exceeds A's by > 0.15 bits at matched word lengths; deny if the difference is < 0.05 bits",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "for each currier sub-corpus separately, compute (1) the number of distinct glyph bigrams per word po",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.820 -> 0.845"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "for each currier sub-corpus separately, compute (1) the number of distinct glyph bigrams per word po",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.845 -> 0.867"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "If B uses a larger cipher alphabet, it will show higher positional glyph diversity independent of word length; this directly tests the two-cipher-table hypothesis and would distinguish it from the simpler explanation that B merely contains more text."
+}

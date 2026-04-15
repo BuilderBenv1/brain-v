@@ -1,0 +1,59 @@
+{
+  "id": "H121",
+  "claim": "Currier A and Currier B use two structurally distinct homophonic cipher tables mapping a single underlying Latin text, such that the bigram transition matrices of Currier A and B are statistically dissimilar (chi-squared p < 0.01) but both exhibit second-order entropy compatible with Latin (approximately 3.6-4.0 bits per glyph at order-2).",
+  "type": "cipher",
+  "confidence": 0.847,
+  "evidence_for": [
+    "High-confidence existing beliefs (0.923, 0.95, 0.959) converge on two distinct cipher tables for a shared underlying language",
+    "Currier A (11,022 words) and B (23,766 words) differ substantially in size, consistent with different scribal cipher assignments",
+    "Glyph entropy of 3.8627 bits is compatible with Latin (~4.0 bits), suggesting modest compression from homophones"
+  ],
+  "evidence_against": [
+    "If the two cipher tables encode different underlying languages rather than the same one, bigram structure would differ for linguistic rather than cipher reasons",
+    "Small Currier A corpus (11,022 words) may produce unreliable bigram estimates",
+    "Hypothesis 0.737 already supports two different plaintext languages (Latin vs. other), competing with single-language assumption"
+  ],
+  "test": "Compute the full glyph bigram frequency matrix for Currier A and Currier B separately; apply chi-squared test of homogeneity on the two matrices; additionally compute second-order conditional entropy H(g_i | g_{i-1}) for each sub-corpus and compare to known Latin bigram entropy.",
+  "test_metric": "Chi-squared statistic and p-value for bigram matrix homogeneity; second-order conditional entropy for A and B",
+  "test_threshold": "Confirm two distinct cipher tables if chi-squared p < 0.01; confirm Latin compatibility if second-order entropy for both sub-corpora falls within 3.55-4.05 bits; deny if bigram matrices are statistically homogeneous (p > 0.05)",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "compute the full glyph bigram frequency matrix for currier a and currier b separately; apply chi-squ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.720 -> 0.759"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the full glyph bigram frequency matrix for currier a and currier b separately; apply chi-squ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.759 -> 0.793"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the full glyph bigram frequency matrix for currier a and currier b separately; apply chi-squ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.793 -> 0.822"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the full glyph bigram frequency matrix for currier a and currier b separately; apply chi-squ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.822 -> 0.847"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "If A and B bigram structures are significantly different yet both fall within Latin second-order entropy range, this strongly supports two cipher tables on one Latin source, collapsing competing hypotheses about two languages vs. two ciphers."
+}

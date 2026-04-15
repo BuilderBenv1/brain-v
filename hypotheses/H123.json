@@ -1,0 +1,59 @@
+{
+  "id": "H123",
+  "claim": "The text-only section's elevated entropy (3.9016 bits, highest of all sections) reflects an underlying plaintext that has undergone minimal or no transposition \u00e2\u20ac\u201d i.e., it is a pure substitution cipher or near-plaintext \u00e2\u20ac\u201d whereas sections with lower entropy (zodiac 3.7149, biological 3.7977) involve additional transposition steps that reduce apparent glyph entropy by increasing local repetition.",
+  "type": "cipher",
+  "confidence": 0.769,
+  "evidence_for": [
+    "Text-only section has highest entropy (3.9016 bits), approaching natural Latin/Italian levels (~3.95-4.0)",
+    "Transposition ciphers applied to natural language typically reduce local bigram entropy by redistributing glyph sequences",
+    "Existing high-confidence belief (0.956) suggests text-only section represents closest approximation to natural language statistics"
+  ],
+  "evidence_against": [
+    "Lower entropy in other sections could reflect semantic content differences (e.g., zodiac labels are inherently less entropic) rather than transposition",
+    "Biological section entropy (3.7977) may reflect illustration-driven repetition of botanical/anatomical terms rather than transposition",
+    "Only 7 folios in text-only section limits statistical power"
+  ],
+  "test": "For each section, compute the excess entropy (or multi-information) at lag-1 and lag-2: I_k = H(g) - H(g_i | g_{i-1}, ..., g_{i-k}); compare these values across text-only, herbal, biological, and zodiac sections; a section with transposition will show relatively lower excess entropy at short lags due to disrupted local correlations.",
+  "test_metric": "Lag-1 and lag-2 conditional entropy for each section; excess entropy relative to unigram entropy",
+  "test_threshold": "Confirm transposition hypothesis if text-only section shows significantly higher lag-1 excess entropy than zodiac and biological sections (difference > 0.1 bits); deny if all sections show comparable excess entropy profiles",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "for each section, compute the excess entropy (or multi-information) at lag-1 and lag-2: i_k = h(g) -",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.580 -> 0.639"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "for each section, compute the excess entropy (or multi-information) at lag-1 and lag-2: i_k = h(g) -",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.639 -> 0.689"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "for each section, compute the excess entropy (or multi-information) at lag-1 and lag-2: i_k = h(g) -",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.689 -> 0.732"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "for each section, compute the excess entropy (or multi-information) at lag-1 and lag-2: i_k = h(g) -",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.732 -> 0.769"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Differentiating sections by their local correlation structure (not just unigram entropy) would identify which sections use transposition and which use pure substitution, enabling section-specific attack strategies and directly testing whether entropy variation is cipher-driven or content-driven."
+}

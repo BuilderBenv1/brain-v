@@ -2,7 +2,7 @@
   "id": "H107",
   "claim": "74.4% of Voynich plant illustrations match Mediterranean species at >=80% confidence: 100% Mediterranean flora, 0% New World. Plant families: Lamiaceae 33%, Asteraceae 22%, Solanaceae 21%, consistent with Dioscorides pharmaceutical tradition.",
   "type": "structural",
-  "confidence": 0.4,
+  "confidence": 0.386,
   "evidence_for": [
     "Pagel: systematic botanical ID with confidence scores",
     "100% Mediterranean eliminates New World hypotheses (FA013)",
@@ -17,14 +17,61 @@
   "test": "Cross-reference plant IDs with independent botanical analyses",
   "test_metric": "botanical_cross_reference",
   "test_threshold": ">60% agreement with independent analyses",
-  "tests_run": [],
-  "tests_remaining": [
-    "botanical_cross_reference"
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": null,
+      "details": "Linguistic statistics (Zipf exponent, glyph entropy, hapax ratio) characterize text structure, not botanical content. The hypothesis requires independent botanical analysis of plant illustrations, which is not provided in the corpus data.",
+      "confidence_change": "0.400 -> 0.398"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.3,
+      "passed": null,
+      "details": "Linguistic statistics (Zipf exponent, glyph entropy, word length) are orthogonal to botanical species identification; hypothesis requires independent botanical expert cross-referencing not provided in corpus statistics.",
+      "confidence_change": "0.398 -> 0.393"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.55,
+      "passed": null,
+      "details": "Linguistic statistics show natural language properties (Zipf 0.8946, normal hapax ratio) consistent with structured botanical text, but do not directly validate specific plant family identifications or Mediterranean species matching claims.",
+      "confidence_change": "0.393 -> 0.401"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Cross-reference plant IDs with independent botanical analyses",
+      "confidence_change": "0.401 -> 0.406"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.2,
+      "passed": null,
+      "details": "Linguistic statistics about text encoding (word count, glyph entropy, Zipf exponent) do not address botanical claims about illustrated plant species; hypothesis test requires independent botanical cross-reference data which is absent.",
+      "confidence_change": "0.406 -> 0.396"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.2,
+      "passed": null,
+      "details": "Text linguistic statistics are orthogonal to plant illustration identification; the hypothesis requires independent botanical analysis of the actual illustrations rather than analysis of the manuscript's glyph and word patterns.",
+      "confidence_change": "0.396 -> 0.386"
+    }
   ],
+  "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": null,
+  "last_tested": "2026-04-15",
   "reasoning": "Botanical claim is partially independent of decipherment \u2014 verifiable visually. If confirmed, strongly constrains provenance.",
   "source": "Pagel, K. (2025) Zenodo DOI 10.5281/zenodo.18478526",
   "researcher": "kpagel"

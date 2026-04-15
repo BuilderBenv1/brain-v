@@ -2,7 +2,7 @@
   "id": "H104",
   "claim": "The Voynich Manuscript encodes a late medieval Moravian (Old Czech/Slavic) dialect using a constructed cipher alphabet derived from Latin, Glagolitic, and Cyrillic characters. Folio 14v (Acanthus mollis) yields medicinal instructions consistent with period phytotherapy when decoded as Moravian, and the final row contains the Gujarati/Gojri plant name Adulsa Vasa.",
   "type": "language",
-  "confidence": 0.25,
+  "confidence": 0.065,
   "evidence_for": [
     "Stoilova (2025): f116v decoded as Moravian antisyphilitic salve recipe",
     "Stoilova (2026): f14v decoded as Acanthus mollis medicinal instructions in Moravian",
@@ -32,17 +32,61 @@
       "passed": false,
       "details": "Czech freq corr=0.6057, IC=0.07711 (Latin range), entropy=3.8627 (Latin range). Composite 0.25/1.00.",
       "confidence_change": "0.30 -> 0.250"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.15,
+      "passed": false,
+      "details": "Statistics are consistent with natural language generally but don't confirm Moravian specifically; the claim of Gujarati words contradicts a Moravian cipher hypothesis; required validation tests (glyph frequency comparison, consistent readings across folios, Moravian word-length distribution matching) are undemonstrated.",
+      "confidence_change": "0.250 -> 0.186"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.15,
+      "passed": false,
+      "details": "The statistical profile (Zipfian distribution with R\u00c2\u00b2=0.9084, moderate entropy, hapax ratio) indicates natural language-like properties but is consistent with dozens of languages, not specifically Moravian. The hypothesis lacks demonstrated successful decodings on other folios beyond unsubstantiated claims, and the inclusion of a Gujarati plant name contradicts a Moravian-only encoding theory.",
+      "confidence_change": "0.186 -> 0.139"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.3,
+      "passed": null,
+      "details": "Zipf exponent (0.8946) strongly indicates natural language structure, supporting linguistic encoding generally. However, statistics don't specifically identify Moravian over other languages, and the claim about Gujarati/Gojri plant names contradicts a Moravian-only hypothesis. Proper testing requires Moravian-specific glyph frequency comparison and multifolio decoding verification, not currently provided.",
+      "confidence_change": "0.139 -> 0.147"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "The hypothesis is contradicted by statistical analysis: Voynich word-length (5.03) matches Romance languages, not Slavic; glyph entropy (3.8627) suggests non-natural language; the claim combining medieval Moravian with Gujarati plant names is implausible; and no consistent Moravian decipherment has been found despite extensive scholarship indicating constructed language or heavily abbreviated text instead.",
+      "confidence_change": "0.147 -> 0.112"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "Statistical profile shows real-language-like properties, but the hypothesis lacks cross-folio validation, contains internal inconsistencies (mixing Medieval Moravian with Gujarati plant names), and Voynich glyph frequencies do not align with attested Old Czech/Moravian distributions.",
+      "confidence_change": "0.112 -> 0.085"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "While Zipfian properties (exponent 0.8946) indicate natural language-like structure, the hapax ratio of 0.701 is unusually high for authentic natural language texts and inconsistent with Moravian. The statistics do not specifically validate the Moravian cipher claim, Gujarati plant-name assertion, or medicinal decoding on f14v without evidence of consistent decoding across other folios as required.",
+      "confidence_change": "0.085 -> 0.065"
     }
   ],
-  "tests_remaining": [
-    "word_length_distribution_czech",
-    "ic_comparison_slavic",
-    "cross_folio_consistency"
-  ],
+  "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "Community submission based on Vessela Stoilova's published research (Academia.edu, 2025-2026). Proposes Moravian dialect with mixed Latin/Glagolitic/Cyrillic script. The pharmaceutical reading of f14v is internally consistent and matches known uses of Acanthus mollis. Needs statistical testing against Brain-V's corpus analysis to check compatibility with observed glyph distributions.",
   "source": "Stoilova, V. (2025) 'Foil 116v of Voynich Manuscript: A Moravian Antisyphilitic Salve' (Academia.edu); Stoilova, V. (2026) f14v Moravian interpretation",
   "researcher": "Vessela Stoilova"

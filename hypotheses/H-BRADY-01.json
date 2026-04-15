@@ -1,0 +1,31 @@
+{
+  "id": "H-BRADY-01",
+  "claim": "The Voynich Manuscript encodes an Aramaic pharmaceutical text in the Syriac tradition, using a consonant-skeleton abjad with stripped vowels, matching 86.9% of 35,259 filtered tokens against a 1,334-entry Syriac pharmaceutical lexicon.",
+  "type": "language",
+  "confidence": 0.4,
+  "evidence_for": [
+    "87.0% token coverage at z=3.83 vs 500 random permutations (p<0.001)",
+    "Syriac (85.1%) nearly doubles Hebrew (47.9%) and Arabic (48.0%) coverage",
+    "Cross-domain confirmation: 14 plant-image/text matches at Fisher p=6.66e-16"
+  ],
+  "evidence_against": [
+    "Author own confidence for Syriac-specifically is 40-50%",
+    "Short-skeleton ambiguity: 42.9% of tokens have only 1-2 consonant skeletons",
+    "No connected Syriac prose has been read by a specialist",
+    "Permutation baseline mean 71.5% is itself high \u2014 suggests lexicon may be over-permissive"
+  ],
+  "test": "Reproduce DANI mapping + permutation test independently; verify z-score and language-discrimination gap",
+  "test_metric": "dani_coverage_z_score",
+  "test_threshold": ">=3.0 and Syriac > Hebrew+Arabic by >=15pp: support. z<2.0: rejection.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Reproduce DANI mapping + permutation test independently; verify z-score and language-discrimination gap"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": null,
+  "reasoning": "Flagship claim of the paper. Requires independent implementation to verify.",
+  "source": "Brady Defibaugh (April 2026), A Syriac Pharmaceutical Dispensatory Encoded in the Voynich Manuscript (DANI pipeline v31)",
+  "researcher": "brady-defibaugh"
+}

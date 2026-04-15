@@ -80,4 +80,8 @@ const failedOk = copyFile(
 );
 console.log(`  failed-approaches: ${failedOk ? "ok" : "missing"}`);
 
+// lexicon-tests.json is authored in-place; preserve it.
+const lexTestsOk = fs.existsSync(path.join(DATA_DIR, "lexicon-tests.json"));
+console.log(`  lexicon-tests: ${lexTestsOk ? "ok" : "missing"}`);
+
 console.log("[sync-data] Done.");

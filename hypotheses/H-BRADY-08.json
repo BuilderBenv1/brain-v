@@ -1,0 +1,28 @@
+{
+  "id": "H-BRADY-08",
+  "claim": "Syriac \u0101sy\u0101 ('physician') dominates JBA rapp\u0101 37:1, confirming primarily Syriac rather than JBA tradition.",
+  "type": "language",
+  "confidence": 0.3,
+  "evidence_for": [
+    "Small absolute counts but large ratio",
+    "Pharmaceutical text should contain physician vocabulary"
+  ],
+  "evidence_against": [
+    "Absolute count of rapp\u0101 (1) is below statistical significance threshold",
+    "37:1 is fragile to single-token misidentification"
+  ],
+  "test": "Count skeletons '>sy' and 'rp' in corpus; verify 37:1 directivity",
+  "test_metric": "asya_rappa_ratio",
+  "test_threshold": "Ratio >=10:1: confirmed direction. <3:1: refuted.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Count skeletons '>sy' and 'rp' in corpus; verify 37:1 directivity"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": null,
+  "reasoning": "Fragile ratio but directly testable.",
+  "source": "Brady Defibaugh (April 2026), A Syriac Pharmaceutical Dispensatory Encoded in the Voynich Manuscript (DANI pipeline v31)",
+  "researcher": "brady-defibaugh"
+}

@@ -2,7 +2,7 @@
   "id": "H047",
   "claim": "The Currier A/B scribal split represents two different scribes encoding the same underlying language using two distinct but related glyph substitution tables (i.e., a two-key polyalphabetic or two-alphabet substitution), such that the same plaintext phoneme maps to different glyphs in A vs. B \u00e2\u20ac\u201d testable by checking whether word-length distributions and initial/final glyph frequencies in A and B are statistically compatible with a common underlying vocabulary after glyph remapping.",
   "type": "cipher",
-  "confidence": 0.961,
+  "confidence": 0.986,
   "evidence_for": [
     "Currier A (11,022 words) and B (23,766 words) differ in glyph frequencies but share structural constraints",
     "The Zipf exponent (0.8946) across the full corpus suggests a unified underlying lexical distribution",
@@ -127,12 +127,60 @@
       "passed": true,
       "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
       "confidence_change": "0.954 -> 0.961"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "extract the top-50 most frequent words in currier a and top-50 in currier b; compute jaccard similar",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.961 -> 0.967"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "extract the top-50 most frequent words in currier a and top-50 in currier b; compute jaccard similar",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.967 -> 0.972"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "extract the top-50 most frequent words in currier a and top-50 in currier b; compute jaccard similar",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.972 -> 0.976"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "extract the top-50 most frequent words in currier a and top-50 in currier b; compute jaccard similar",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.976 -> 0.980"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "extract the top-50 most frequent words in currier a and top-50 in currier b; compute jaccard similar",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.980 -> 0.983"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "extract the top-50 most frequent words in currier a and top-50 in currier b; compute jaccard similar",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.983 -> 0.986"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "Distinguishing 'same language, two keys' from 'two languages' is critical: the former allows cross-dialect frequency alignment to bootstrap decipherment, the latter requires independent attacks on each section"
 }

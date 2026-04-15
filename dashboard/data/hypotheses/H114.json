@@ -1,0 +1,75 @@
+{
+  "id": "H114",
+  "claim": "The dominant word-initial glyph constraint (o, c, q, s, d accounting for most word starts) and word-final constraint (y, n, l, r, o) reflect a Vigenere-type polyalphabetic cipher in which the cipher alphabet at word boundaries is fixed, causing structural glyph repetition that is unrelated to plaintext phoneme distribution at those positions.",
+  "type": "cipher",
+  "confidence": 0.483,
+  "evidence_for": [
+    "A Vigenere cipher with key reset at word boundaries would mechanically produce consistent word-initial and word-final glyph distributions regardless of plaintext content",
+    "Positional constraints are strong enough (current evidence 0.605-0.639 probability) to suggest a cipher-structural rather than grammatical origin",
+    "Word-boundary key reset was a documented technique in period cipher construction to aid the encipherer in tracking key position"
+  ],
+  "evidence_against": [
+    "Vigenere-type ciphers typically produce higher entropy than observed (3.86 bits); a word-boundary-reset Vigenere on Latin/Italian should approach 4.0 bits unless key is very short",
+    "Short Vigenere keys are vulnerable to Kasiski analysis; no strong Kasiski periodicity has been confirmed in the Voynich corpus",
+    "The specific glyph set {o,c,q,s,d} at word-initial positions may reflect plaintext vowel/consonant onset distribution rather than a fixed cipher alphabet"
+  ],
+  "test": "Apply Kasiski test and Index of Coincidence analysis to the full corpus and to Currier A and B sub-corpora separately; compute autocorrelation of glyph sequences at word-internal positions to detect periodic key cycling; compare IoC values to expected values for Vigenere with key lengths 2-10",
+  "test_metric": "Index of Coincidence for word-internal glyph sequences; Kasiski distance distribution; autocorrelation coefficient at lags 1-10 within word-internal positions",
+  "test_threshold": "Confirmation if IoC at word-internal positions significantly exceeds IoC at word-boundary positions AND Kasiski test identifies repeating distance factors consistent with key length 2-6; denial if IoC is uniform across word positions or no Kasiski periodicity is found",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "apply kasiski test and index of coincidence analysis to the full corpus and to currier a and b sub-c",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'n', 'r', 'm'}. Universal glyphs: {'d', 'a', 'l', 'o'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.350 -> 0.374"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "apply kasiski test and index of coincidence analysis to the full corpus and to currier a and b sub-c",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'r', 'n'}. Universal glyphs: {'a', 'o', 'l', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.374 -> 0.397"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "apply kasiski test and index of coincidence analysis to the full corpus and to currier a and b sub-c",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'r', 'n'}. Universal glyphs: {'a', 'o', 'd', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.397 -> 0.420"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "apply kasiski test and index of coincidence analysis to the full corpus and to currier a and b sub-c",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'n', 'r'}. Universal glyphs: {'d', 'o', 'a', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.420 -> 0.442"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "apply kasiski test and index of coincidence analysis to the full corpus and to currier a and b sub-c",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'n', 'r'}. Universal glyphs: {'o', 'd', 'l', 'a'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.442 -> 0.463"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "apply kasiski test and index of coincidence analysis to the full corpus and to currier a and b sub-c",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'm', 'n'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.463 -> 0.483"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "A word-boundary-reset polyalphabetic cipher is a mechanistically plausible period technique that would explain positional constraints while potentially being breakable via standard polyalphabetic cryptanalysis methods applied word-internally"
+}

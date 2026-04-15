@@ -1,0 +1,75 @@
+{
+  "id": "H112",
+  "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-heavy encoding in which a large fraction of tokens are proper-name labels (star names, month names) encoded with a homophonic cipher, producing reduced glyph entropy relative to prose sections.",
+  "type": "structural",
+  "confidence": 0.127,
+  "evidence_for": [
+    "Zodiac section has lowest entropy of all sections (3.7149 bits) and only 1,297 words across 12 folios, consistent with sparse label text rather than continuous prose",
+    "Astronomical section also shows low entropy (3.7471 bits) and similarly sparse word count (872 words, 8 folios), consistent with label-dominated content",
+    "Homophonic substitution of a small fixed label vocabulary would reduce effective glyph entropy by concentrating probability mass on fewer glyph sequences"
+  ],
+  "evidence_against": [
+    "Low entropy could alternatively reflect a simpler or less redundant cipher rather than label-specific encoding",
+    "If zodiac labels encoded known medieval star/month names, partial decipherment via frequency matching would already have succeeded",
+    "Word length distribution in zodiac section would need to match typical medieval Latin star-name lengths (3-8 characters)"
+  ],
+  "test": "Compute type-token ratio and average word length distribution for zodiac and astronomical sections vs. herbal and recipes sections; test whether zodiac/astronomical show significantly higher type-token ratio (fewer repeated tokens) consistent with label lists, or lower (consistent with repeated formulaic labels)",
+  "test_metric": "Type-token ratio per section, mean and variance of word length per section, proportion of hapax legomena per section",
+  "test_threshold": "Confirmation if zodiac type-token ratio is significantly lower than herbal/recipes (p < 0.05), indicating repeated labels; denial if zodiac hapax rate matches or exceeds herbal section hapax rate",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio and average word length distribution for zodiac and astronomical sections v",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.420 -> 0.344"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio and average word length distribution for zodiac and astronomical sections v",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.344 -> 0.282"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio and average word length distribution for zodiac and astronomical sections v",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.282 -> 0.231"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio and average word length distribution for zodiac and astronomical sections v",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.231 -> 0.189"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio and average word length distribution for zodiac and astronomical sections v",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.189 -> 0.155"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute type-token ratio and average word length distribution for zodiac and astronomical sections v",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.155 -> 0.127"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Label-dominated sections would exhibit a characteristic statistical fingerprint distinct from prose; confirming this would justify targeted decipherment attempts using known medieval astronomical nomenclature as a crib"
+}

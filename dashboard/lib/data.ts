@@ -30,6 +30,99 @@ const FAILED_PATH = fs.existsSync(path.join(DATA_DIR, "failed-approaches.json"))
   ? path.join(DATA_DIR, "failed-approaches.json")
   : path.join(PARENT_DIR, "raw/corpus/failed-approaches.json");
 
+const LEXICON_TESTS_PATH = path.join(DATA_DIR, "lexicon-tests.json");
+
+export interface LexiconTestData {
+  generated: string;
+  description: string;
+  lexicons: Array<{
+    name: string;
+    source: string;
+    entries: number;
+    coverage: number;
+    reported_full_coverage?: number;
+    reported_z?: number;
+    permutation_z?: number;
+    shuffle_in_order_vs_shuffled: {
+      match?: number | null;
+      conn_content?: number | null;
+      both_matched?: number | null;
+      conn_frac?: number | null;
+      notes?: string;
+    };
+  }>;
+  currier_ab_gap: {
+    description: string;
+    schechter_latin: number;
+    brady_syriac_proxy: number;
+    hebrew_medieval: number;
+  };
+  brady_gallows_confirmed: {
+    description: string;
+    p_enrichment: number;
+    p_predicted: number;
+    t_enrichment: number;
+    t_predicted: number;
+    cth_enrichment: number;
+    ckh_enrichment: number;
+    cph_enrichment: number;
+  };
+  verdict: string;
+  null_lexicon?: {
+    headline: string;
+    method: string;
+    trials: number;
+    lexicon_size: number;
+    coverage_mean: number;
+    coverage_stdev: number;
+    coverage_min: number;
+    coverage_max: number;
+    comparison: Array<{
+      system: string;
+      coverage: number;
+      delta_vs_null: number;
+      is_null?: boolean;
+    }>;
+    implication: string;
+  };
+  vowel_layer?: {
+    headline: string;
+    method: string;
+    skeletons_tested: number;
+    significant_at_p01: number;
+    significant_fraction: number;
+    headline_case: {
+      skeleton: string;
+      description: string;
+      chi2: number;
+      df: number;
+      critical_p01: number;
+      over_threshold: number;
+      variants: Array<{
+        word: string;
+        total: number;
+        biological: number;
+        recipes: number;
+        herbal: number;
+        zodiac: number;
+      }>;
+    };
+    top_coupled_skeletons: Array<{
+      skeleton: string;
+      variants_preview: string;
+      chi2: number;
+      df: number;
+      over_threshold: number;
+    }>;
+    implication: string;
+  };
+}
+
+export function getLexiconTests(): LexiconTestData | null {
+  if (!fs.existsSync(LEXICON_TESTS_PATH)) return null;
+  return JSON.parse(fs.readFileSync(LEXICON_TESTS_PATH, "utf-8")) as LexiconTestData;
+}
+
 export interface Hypothesis {
   id: string;
   claim: string;

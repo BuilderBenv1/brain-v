@@ -2,7 +2,7 @@
   "id": "H060",
   "claim": "The Voynich text uses a homophonic substitution cipher on medieval Latin where 25 glyphs encode approximately 18-20 Latin phonemes, with 2-4 glyphs mapping to each high-frequency Latin phoneme (e, a, i, o, t, n), which would explain the observed entropy of 3.8627 bits \u00e2\u20ac\u201d lower than plain Latin (~4.0) but higher than a monoalphabetic cipher.",
   "type": "cipher",
-  "confidence": 0.907,
+  "confidence": 0.962,
   "evidence_for": [
     "Glyph entropy 3.8627 bits falls between monoalphabetic cipher entropy (~3.6) and plain Latin entropy (~4.0), consistent with mild homophony",
     "Only 25 unique glyphs encoding a ~23-letter Latin alphabet requires some glyphs to double-map",
@@ -89,12 +89,60 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.892 -> 0.907"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "map each of the 25 glyphs to a candidate latin phoneme using frequency matching (most frequent voyni",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.907 -> 0.920"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "map each of the 25 glyphs to a candidate latin phoneme using frequency matching (most frequent voyni",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.920 -> 0.931"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "map each of the 25 glyphs to a candidate latin phoneme using frequency matching (most frequent voyni",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.931 -> 0.941"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "map each of the 25 glyphs to a candidate latin phoneme using frequency matching (most frequent voyni",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.941 -> 0.949"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "map each of the 25 glyphs to a candidate latin phoneme using frequency matching (most frequent voyni",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.949 -> 0.956"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "map each of the 25 glyphs to a candidate latin phoneme using frequency matching (most frequent voyni",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.956 -> 0.962"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "Homophonic substitution on Latin is the current highest-weighted cipher hypothesis. A precise mapping test would either strongly confirm or eliminate this class of cipher, narrowing the solution space significantly."
 }

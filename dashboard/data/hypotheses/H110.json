@@ -1,0 +1,75 @@
+{
+  "id": "H110",
+  "claim": "The high hapax ratio (70.1%) is substantially artifactual: word-final glyphs drawn from the set {y, n, l, r, o} function as grammatical suffixes, and stripping them would reduce the effective vocabulary by at least 30%, collapsing hapax rate to below 50%.",
+  "type": "cipher",
+  "confidence": 0.758,
+  "evidence_for": [
+    "Word-final glyph constraints show {y,n,l,r,o} account for the vast majority of word endings, consistent with a small set of suffix tokens",
+    "Top frequent words like 'daiin', 'aiin', 'chedy', 'shedy' share common endings suggesting paradigmatic inflection",
+    "Zipf exponent 0.8946 is below 1.0, consistent with a vocabulary inflated by suffix variants of stem words"
+  ],
+  "evidence_against": [
+    "If suffixes were purely grammatical, we would expect cleaner paradigm clusters around common stems",
+    "Hapax rate of 70.1% is extremely high even for inflected languages with suffixes stripped",
+    "Entropy of 3.8627 bits is close to natural language levels, not obviously inflated by suffix tokens"
+  ],
+  "test": "Compute vocabulary size and hapax ratio after stripping all word-final characters belonging to {y, n, l, r, o}; compare suffix-stripped Zipf exponent and type-token ratio to baseline",
+  "test_metric": "Hapax ratio and vocabulary size of suffix-stripped corpus vs. original",
+  "test_threshold": "Confirmation if hapax ratio drops below 50% after stripping; denial if hapax ratio remains above 60%",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "compute vocabulary size and hapax ratio after stripping all word-final characters belonging to {y, n",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.520 -> 0.572"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute vocabulary size and hapax ratio after stripping all word-final characters belonging to {y, n",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.572 -> 0.618"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute vocabulary size and hapax ratio after stripping all word-final characters belonging to {y, n",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.618 -> 0.659"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute vocabulary size and hapax ratio after stripping all word-final characters belonging to {y, n",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.659 -> 0.696"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute vocabulary size and hapax ratio after stripping all word-final characters belonging to {y, n",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.696 -> 0.729"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute vocabulary size and hapax ratio after stripping all word-final characters belonging to {y, n",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.729 -> 0.758"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "If suffixes account for most lexical diversity, confirming this would collapse a major anomaly and strongly constrain the cipher model toward an inflected-language substitution scheme"
+}

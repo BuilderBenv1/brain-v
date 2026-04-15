@@ -1,0 +1,44 @@
+{
+  "id": "H134",
+  "claim": "The text-only section's elevated entropy (3.9016 bits, highest of all sections) reflects a prose register of the underlying natural language encoded with minimal or no transposition, while the herbal and biological sections apply additional transposition or null insertion on top of the base substitution cipher, reducing their effective entropy.",
+  "type": "cipher",
+  "confidence": 0.733,
+  "evidence_for": [
+    "Text-only entropy 3.9016 is closest to Latin (~4.0) and Italian (~3.95) reference entropies, consistent with least-modified encoding",
+    "Herbal (3.8478), biological (3.7977), pharmaceutical (3.7772) and zodiac (3.7149) all show lower entropy than text-only, consistent with additional cipher operations reducing information density",
+    "High-confidence belief (0.98) that the text-only section represents the closest approximation to natural language statistics",
+    "Null insertion or transposition operations on top of substitution would reduce per-glyph entropy by spreading information across more positions"
+  ],
+  "evidence_against": [
+    "Section entropy differences may reflect content domain (dense botanical lists vs. continuous prose) rather than cipher differences",
+    "The entropy ordering could also be explained by higher repetition of domain-specific terminology in herbal/biological sections without any transposition",
+    "The text-only section is only 7 folios (2,349 words), making statistical comparisons less reliable"
+  ],
+  "test": "Compute the bigram conditional entropy H(glyph_n+1 | glyph_n) separately for the text-only section and for the herbal, biological, and pharmaceutical sections; if transposition is applied in the latter sections, their bigram structure should be disrupted (higher conditional entropy, lower mutual information between adjacent glyphs) relative to the text-only section.",
+  "test_metric": "Per-section bigram conditional glyph entropy and adjacent-glyph mutual information I(glyph_n; glyph_n+1)",
+  "test_threshold": "Confirm if text-only bigram mutual information exceeds herbal/biological by > 0.10 bits (indicating more preserved sequential structure in text-only); deny if text-only and herbal bigram mutual information are within 0.05 bits of each other",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "compute the bigram conditional entropy h(glyph_n+1 | glyph_n) separately for the text-only section a",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.640 -> 0.690"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the bigram conditional entropy h(glyph_n+1 | glyph_n) separately for the text-only section a",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.690 -> 0.733"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Transposition disrupts the sequential dependency structure of the original language; bigram mutual information is a sensitive probe of this disruption and would directly test whether section-level entropy differences reflect cipher complexity or merely content domain."
+}

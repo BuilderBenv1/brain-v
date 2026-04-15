@@ -1,0 +1,503 @@
+A Syriac Pharmaceutical Dispensatory Encoded in the Voynich 
+Manuscript: Statistical and Philological Evidence from Consonant 
+Skeleton Analysis 
+Brady Alex Defibaugh 
+Draft — April 2026 
+ 
+Abstract 
+We present computational evidence that the Voynich Manuscript (Beinecke MS 408) 
+encodes an Aramaic pharmaceutical text in the Syriac tradition. A character mapping from 
+the manuscript’s script (EVA transcription) to Syriac consonant skeletons, validated against 
+500 random permutations (z = 3.83, p < 0.001), matches 86.9% of the manuscript’s 35,259 
+filtered tokens using a 1,334-entry lexicon of attested Syriac medical vocabulary. The 
+decoded vocabulary includes Galenic classification terms (kyānā/φύσις, ṭaksā/δύναμις), 
+pharmaceutical procedure verbs (ṭalī “to anoint,” lāšā “to compound,” šāsā “to grind”), 
+materia medica (akākīyā “acacia gum,” kasīā “cassia,” tīnā “fig”), and dosage terminology 
+(ṭāsā “measuring vessel,” kammā “how much”). Independent visual identification of 111 
+herbal illustrations, conducted without knowledge of the decoded text, produced 14 
+statistically validated text-image correspondences (Fisher’s combined p = 6.66 × 10⁻¹⁶, 
+permutation z = 5.39), including a direct plant-name match: the skeleton ksy (= Syriac 
+kasīā, “cassia”) appears on a folio independently identified as depicting Cassia/Senna. 
+Three structural discoveries support the hypothesis: (1) plain gallows characters (EVA ‘t’, 
+‘p’) show 3–5× line-initial positional enrichment and function as paragraph markers rather 
+than phonetic consonants, while bench gallows (‘cth’, ‘ckh’) function as normal mid-word 
+consonants; (2) the encoding merges kaph and qoph (consistent with a European copyist 
+who cannot distinguish the velar/uvular stop contrast) while assigning EVA ‘q’ to waw, 
+producing the conjunction wa- (“and”) at the expected 14.9% frequency; (3) pharyngeal 
+consonants ḥet and ʿayin have no EVA representation, consistent with a non-Semitic 
+copyist who dropped sounds absent from European languages. 
+The text tradition is primarily Syriac (kaddīn frequency 1,326 tokens, āsyā over rappā 
+37:1), with minor Jewish Babylonian Aramaic influence (kəḏēn at 4% of the kaddīn/kəḏēn 
+total). The use of ṭaksā rather than ḥaylā for δύναμις places the text within the Sergian 
+translation tradition (6th century CE), predating Ḥunayn ibn Isḥāq’s 9th-century 
+terminological reforms. This placement is independently confirmed by the near-total 
+absence of Greek transliterations from the decoded vocabulary: the text uses native Syriac 
+plant names, matching the “translated” subset of Sergius’s pínakes (270/477 entries) 
+rather than the untranslated Greek subset (Calà and Hawley 2017). 
+
+---PAGE---
+We propose that the manuscript is a practical pharmaceutical dispensatory in the Syriac 
+Galenic tradition, written in a consonant-based encoding system that has preserved the 
+skeletal structure of the underlying Aramaic vocabulary. A vowel disambiguation layer, 
+using EVA vowel characters previously discarded by the pipeline, resolves 7,007 tokens 
+(20% of the corpus) into specific Syriac words at high confidence — including 130 tokens 
+of kuḥlā (“collyrium,” eye medicine), a pharyngeal-containing word recovered for the first 
+time through vowel-pattern analysis of the dropped initial ḥet. 
+ 
+1. Introduction 
+The Voynich Manuscript (Beinecke Rare Book and Manuscript Library, MS 408) is an 
+illustrated codex of approximately 240 pages, radiocarbon-dated to 1404–1438 CE 
+(Beinecke 2011), written in an undeciphered script and an unidentified language. Despite 
+over a century of cryptanalytic effort, no proposed decipherment has achieved scholarly 
+consensus (D’Imperio 1978; Reddy and Knight 2011). 
+The manuscript contains five thematic sections: an herbal (botanical illustrations with text, 
+f1r–f56v), a pharmaceutical section (recipes with apothecary vessels, f57r–f67v and f87r–
+f102v), a biological section (human figures in tub-like structures, f75r–f84v), an 
+astronomical/zodiac section (zodiac diagrams, f68r–f73v and f85r–f86v), and a recipe 
+section (dense text with marginal stars, f103r–f116v). Previous identification attempts 
+have targeted Latin, Italian, Nahuatl, Hebrew, Arabic, and constructed languages, among 
+other hypotheses. 
+This study proposes a new approach: mapping the EVA transcription of the Voynich script 
+to Syriac consonant skeletons, treating the manuscript as an abjad-like encoding of an 
+Aramaic pharmaceutical text. We term this methodology DANI (Drug Appellation 
+Nomenclature Inference), a falsifiable computational framework that exploits three 
+structural properties of Semitic pharmaceutical nomenclature: (1) trilateral roots survive 
+consonant-skeleton reduction; (2) drug appellations are domain-constrained, dramatically 
+narrowing the match space; and (3) match rates against an attested lexicon can be 
+statistically validated against null distributions. DANI does not claim complete 
+decipherment — it provides a reproducible, peer-reviewable signal test. 
+The approach is motivated by three observations: (1) the manuscript’s thematic structure 
+(herbal illustrations, pharmaceutical recipes, zodiac diagrams) closely parallels Syriac 
+pharmaceutical dispensatories of the 6th–9th centuries; (2) the word-length distribution 
+and repetition patterns of Voynichese are consistent with an abjad writing system that 
+strips vowels; and (3) the radiocarbon date (1404–1438) falls within a period when Syriac 
+medical manuscripts circulated in northern Italy through Jewish scholarly networks. 
+ 
+
+---PAGE---
+2. Methods: The DANI Pipeline 
+The DANI pipeline proceeds in four stages: (1) EVA character mapping to Syriac 
+consonants; (2) vowel stripping to produce consonant skeletons; (3) lexicon matching 
+against attested pharmaceutical vocabulary; (4) statistical validation against permutation-
+derived null distributions. 
+2.1 Corpus 
+The study uses the ZL (Zandbergen-Landini) merged IVTFF transcription of the Voynich 
+Manuscript in EVA (European Voynich Alphabet) encoding, with Takahashi (H) as the 
+primary transcriber. After filtering annotation markers and words shorter than 2 EVA 
+characters, the corpus contains 35,259 tokens across 225 folios. 
+2.2 Character Mapping 
+Each EVA character is mapped to a Syriac consonant: 
+EVA 
+Syriac 
+Notes 
+k 
+k (kaph) 
+ 
+d 
+d (daleth) 
+ 
+r 
+r (resh) 
+ 
+s 
+s (samekh)  
+l 
+l (lamed) 
+ 
+n 
+n (nun) 
+ 
+y 
+y (yod) 
+ 
+m 
+m (mem) 
+ 
+g 
+g (gamal) 
+ 
+ch 
+k (kaph) 
+kaph/qoph merged 
+sh 
+š (shin) 
+ 
+t 
+ṭ (tet) 
+gallows — paragraph marker 
+p 
+p (pe) 
+gallows — paragraph marker 
+f 
+ṣ (tsade) 
+ 
+q 
+w (waw) 
+conjunction wa- 
+cth 
+ṭk 
+bench gallows — mid-word 
+ckh 
+kk 
+bench gallows — mid-word 
+cph 
+pk 
+bench gallows — mid-word 
+a, o, e, i ∅ 
+vowels stripped (abjad) 
+Key mapping decisions: (1) EVA vowels (a, o, e, i) are stripped, consistent with the abjad 
+principle of Syriac; (2) EVA ‘ch’ maps to kaph, merging kaph and qoph — justified by F146 
+(q→waw reassignment) and Bhayro’s observation that a European copyist would not 
+distinguish the velar/uvular contrast; (3) EVA ‘q’ maps to waw, producing the conjunction 
+
+---PAGE---
+wa- at 14.9% of tokens; (4) plain gallows (‘t’, ‘p’) are treated as strippable paragraph-initial 
+markers per F138, while bench gallows are genuine consonant clusters. 
+2.3 Lexicon 
+The lexicon contains 1,334 consonant skeletons mapped to attested Syriac medical 
+vocabulary, drawn from: 
+• 
+Payne Smith, Thesaurus Syriacus (1879–1901) 
+• 
+Budge, The Syriac Book of Medicines (1913) 
+• 
+Löw, Aramäische Pflanzennamen (1881) and Flora der Juden (1924–1934) 
+• 
+Gignoux, Lexique des termes de la pharmacopée syriaque (2011) 
+• 
+Calà and Hawley, “Transliteration versus Translation” (2017) 
+• 
+Müller-Kessler, “A Trilingual Pharmaceutical Lexical List” (2017) 
+• 
+Sokoloff, A Syriac Lexicon (2009) 
+Domain distribution: pharma 397, medical 296, general 216, botanical 215, function 147, 
+astro 58. 
+2.4 Matching Pipeline 
+For each EVA word: (1) strip annotation markers; (2) convert to consonant skeleton via the 
+character map; (3) attempt direct lexicon match; (4) if unmatched, attempt gallows prefix 
+stripping (ṭ-, p-, ṣ-); (5) if still unmatched, attempt standard prefix stripping (d-, l-, w-); (6) 
+if still unmatched, attempt suffix stripping (-yn). 
+2.5 Statistical Validation 
+Coverage is tested against 500 random permutations of the consonant alphabet. Each 
+permutation reassigns the 10 core EVA consonant characters to a random permutation of 
+the 10 Syriac consonants, then runs the full matching pipeline. The z-score measures how 
+many standard deviations the true mapping exceeds chance. 
+2.6 Language Discrimination 
+Three lexicons of comparable size were constructed for Syriac, Hebrew, and Arabic medical 
+vocabulary. Each was tested against the same corpus using the same pipeline, allowing 
+direct comparison of coverage rates. 
+ 
+3. Results 
+3.1 Overall Coverage 
+The pipeline matches 30,632 of 35,259 tokens (86.9%). Match type breakdown: direct 
+95.3%, gallows-prefix stripping 3.7%, standard prefix 0.8%, suffix 0.2%. 
+
+---PAGE---
+3.2 Per-Section Coverage 
+Section 
+Matched Total 
+Coverage 
+Herbal (f1–f56) 
+7,668 
+9,117 
+84.1% 
+Pharma (f57–f67, f87–f102) 4,552 
+5,402 
+84.3% 
+Zodiac (f68–f73, f85–f86) 
+2,902 
+3,356 
+86.5% 
+Biological (f75–f84) 
+6,130 
+6,813 
+90.0% 
+Recipe (f103–f116) 
+9,380 
+10,571 88.7% 
+The biological and recipe sections show the highest coverage, consistent with a lexicon 
+built primarily from pharmaceutical sources. Herbal sections show the lowest coverage, 
+consistent with plant-name heading words that are not yet in the lexicon. 
+3.3 Permutation Test 
+Against 500 random permutations: true mapping 86.9%, chance mean 71.5%, z = 3.83 (p < 
+0.001). The gap of 15.4 percentage points above baseline rules out the null hypothesis that 
+the mapping succeeds by chance. 
+3.4 Language Discrimination 
+Language Coverage z-score 
+Syriac 
+85.1% 
+3.8 
+Hebrew 
+47.9% 
+3.8 
+Arabic 
+48.0% 
+3.4 
+The text is clearly Semitic (all three languages exceed random baseline), and Syriac 
+achieves nearly double the coverage of Hebrew or Arabic. However, the z-scores for Syriac 
+and Hebrew are comparable, indicating that at the consonant-skeleton level, discrimination 
+within Northwest Semitic relies on contextual markers (see §3.7) rather than raw coverage. 
+3.5 Gallows Positional Asymmetry (F138) 
+Plain gallows characters show extreme line-initial positional enrichment: 
+Character 
+Line-initial % Baseline % Enrichment 
+EVA ‘p’ 
+70.9% 
+13.1% 
+5.4× 
+EVA ‘t’ 
+42.3% 
+13.1% 
+3.2× 
+Bench gallows 0–4% 
+13.1% 
+Normal 
+Plain gallows function as paragraph or section markers, not phonetic consonants. Bench 
+gallows (cth, ckh, cph) appear in normal mid-word positions and function as genuine 
+consonant clusters. Stripping plain gallows as prefixes recovers 4.3 percentage points of 
+coverage (F139). 
+
+---PAGE---
+3.6 Plant Illustration Cross-Reference 
+An independent AI instance, with no knowledge of the Syriac hypothesis, visually identified 
+plants in 111 herbal folios. The pipeline then decoded the text on those same folios. The 
+overlap was tested for enrichment: 
+14 folios showed statistically significant concordance between the visually identified plant 
+and the decoded pharmaceutical vocabulary (Fisher’s combined p = 6.66 × 10⁻¹⁶, 
+permutation z = 5.39). The standout result was folio 30r, where: (1) the illustration was 
+independently identified as Cassia/Senna; (2) the first decoded word is the skeleton ksy = 
+kasīā (cassia); (3) the decoded text includes pharmaceutical instructions involving acacia 
+gum as a binder, consistent with known Syriac cassia preparations. 
+3.7 Syriac Language Markers 
+Several features distinguish Syriac from other Aramaic dialects at the word level: 
+• 
+kaddīn (skeleton kdy): 1,326 tokens (3.8% of corpus). This temporal adverb (“then, 
+thereupon”) is distinctive to Syriac; JBA uses kəḏēn (kdn, 178 tokens), Hebrew uses 
+’āz, Arabic uses ṯumma. The 88:12 kaddīn/kəḏēn ratio suggests a primarily Syriac 
+text with minor JBA influence. 
+• 
+āsyā (“physician”): 37 tokens vs. JBA rappā: 1 token. The Syriac term dominates 
+37:1. 
+• 
+Greek loanwords: Only 8 Greek pharmaceutical terms found (40 tokens total), and 
+all are short transliterations. Longer Greek terms (5+ consonants) are absent. This 
+matches the Sergian “translated” tradition, where native Syriac vocabulary replaces 
+Greek transliterations for familiar plants (Calà and Hawley 2017: 270 of 477 entries 
+translated to Syriac). 
+3.8 Herbal Pages as Pharmaceutical Content (F142) 
+Adding 42 Löw botanical entries increased herbal page coverage by only 0.1 percentage 
+points. Herbal and pharmaceutical pages use essentially identical vocabulary: the top 
+decoded words on both sections are kol, krīhā, akākīyā, kaddā, kyānā, šayyā. Two herbal-
+enriched words stand out: kyānā (“nature/φύσις,” 3.3× enrichment) and ṭārā 
+(“press/apply,” 3.2×). This indicates that the herbal pages describe Galenic properties and 
+preparation methods for depicted plants, not botanical catalogs. 
+3.9 Pharyngeal Consonant Drop (F131) 
+The pharyngeal consonants ḥet (ḥ) and ʿayin (ʿ) have no EVA representation. Evidence: (1) 
+standalone EVA ‘h’ appears almost exclusively in gallows compound sequences, not as an 
+independent consonant; (2) the lexicon entry ‘yn’ = ʿaynā (“eye,” 699 tokens) matches 
+without the initial ʿayin, proving the encoding already drops at least one pharyngeal; (3) 
+key pharmaceutical vocabulary containing ḥet (kuḥlā “collyrium,” mašḥā “ointment,” 
+ḥamrā “wine”) cannot appear in the decoded output at all. 
+
+---PAGE---
+This creates systematic homograph ambiguity: skeleton ‘kl’ (1,067 tokens) could be either 
+kol (“all”) or kuḥlā (“collyrium”), depending on context. The vowel layer (EVA vowels, 
+currently stripped) may resolve these ambiguities: kuḥlā would have different EVA vowel 
+patterns from kol. 
+3.10 Vowel Characters Carry Partial Information (F120) 
+EVA vowel variants sharing the same consonant skeleton distribute differently across 
+manuscript sections. For example, ‘chedy’ and ‘chody’ (both mapping to skeleton kdy) show 
+sectional difference scores of 78–110, confirming that vowels are not random padding but 
+encode real phonetic information. Preliminary correspondence: EVA ‘e’ → Syriac ī, EVA ‘o’ 
+→ Syriac o, EVA ‘a’ → Syriac a/ā (F146 analysis). 
+3.11 Post-Gallows Plant Name Headings (F143) 
+78.7% of herbal folios have a unique skeleton in position B (the word immediately 
+following a gallows marker). Position B shows lower lexicon match rates (52.6% vs. 65.8% 
+baseline) and higher hapax rates (76.6% vs. 67.8%), consistent with plant-name headings 
+behind gallows markers. The specific names remain unresolved due to short-skeleton 
+ambiguity; the Gignoux lexicon (700 entries) is the highest-priority resource for resolving 
+these. 
+3.12 Vowel Disambiguation Layer (F151) 
+EVA vowel characters, previously stripped by the pipeline, can be used to disambiguate 
+homographic consonant skeletons. A disambiguation system was built for the 15 most 
+frequent ambiguous 2-consonant skeletons, covering 8,097 eligible tokens (23% of the 
+corpus). Of these, 7,007 (86.5%) are successfully resolved into specific Syriac words, with 
+5,734 at high confidence (≥70%). 
+The most significant disambiguation is the skeleton ‘kl’ (1,059 tokens). Vowel pattern 
+analysis reveals three distinct populations: 
+EVA vowel pattern Frequency Syriac reading Meaning 
+_o_ (e.g., “chol”) 
+67% 
+kol 
+all/every 
+o_a_ (e.g., “okal”) 
+15% 
+kuḥlā 
+collyrium (eye medicine) 
+_a_ (e.g., “chal”) 
+8% 
+kallā 
+bride/to restrain 
+The 130 tokens reading as kuḥlā (“collyrium”) are concentrated on pharmaceutical pages. 
+This is the first recovery of a pharyngeal-containing word from the decoded text: the 
+leading EVA ‘o’ in “okal” preserves a vowel trace of the dropped initial ḥet, distinguishing 
+kuḥlā from kol. Collyrium (eye-wash preparation) is one of the central products described 
+in Syriac pharmaceutical dispensatories (cf. Budge 1913; Bhayro 2005), and its appearance 
+at significant frequency provides direct evidence for the pharmaceutical character of the 
+text. 
+Other key disambiguations include: ‘kr’ → krīhā “sick” (56%) vs. kārā “pure/clean” (37%); 
+‘dr’ → dārā “kind/type” (84%) vs. dōrā “dwelling” (16%); ‘ṭr’ → ṭārā “to press/apply” (74%) 
+
+---PAGE---
+vs. ṭōrā “mountain” (26%). In each case, the vowel patterns correspond to the expected 
+Syriac voweling: EVA ‘o’ for Syriac o-class vowels, EVA ‘a’ for a-class, EVA ‘e’ for ī-class. 
+3.13 Pharmaceutical Phrase Structure (F152) 
+To test whether decoded word sequences follow attested Syriac pharmaceutical grammar, 
+nine recipe-structure templates were derived from published Syriac pharmaceutical texts 
+(Bhayro 2005; Budge 1913; Müller-Kessler 2017) and matched against the decoded corpus. 
+These templates represent constructions such as TREATMENT (disease → connector → 
+procedure verb), RECIPE_ACTION (verb → ingredient), APPLICATION (verb → preposition 
+→ body part), and DOSAGE (ingredient → preposition → vessel). 
+109 coherent pharmaceutical phrases were identified across all 225 folios. The distribution 
+by type: TREATMENT (26), PROCEDURE_SEQ (16), RECIPE_ACTION (16), VESSEL_USE 
+(12), PROPERTY_STMT (10), APPLICATION (10), RECIPE_CONNECTOR (8), 
+INGREDIENT_SEQ (6), DOSAGE (5). These phrases cluster on pharmaceutical and biological 
+section pages (f102r2, f58v, f75v, f84v), consistent with the expected distribution. 
+Lines with multiple overlapping pharmaceutical patterns appear on f75v, f84r, f102r2, 
+f102v2, and f107r. For example, f102v2 line 20 yields a plausible recipe instruction: wa-
+krīhā ak kol kī wa-kaddīn akākīyā wa-kī dālā ʿal šayyā ṭādyā — “and [for] sickness, like all 
+[diseases], thereupon: acacia, draw water upon [it], wash, [for] anointing.” While this is not 
+a confirmed translation, the semantic domains (disease, temporal connector, ingredient, 
+water preparation, washing, anointing) follow the attested recipe structure of Syriac 
+pharmaceutical texts in the expected order. 
+ 
+4. Discussion 
+4.1 The Encoding System 
+The decoded structure suggests a consonant-based encoding with the following properties: 
+(1) an abjad core that strips vowels, producing consonant skeletons of 1–4 characters; (2) 
+partial vowel notation via EVA vowel characters that approximate Syriac vowels (EVA ‘e’ → 
+ī, EVA ‘o’ → o/u, EVA ‘a’ → a/ā), enabling disambiguation of homographic skeletons; (3) 
+merging of kaph/qoph (consistent with a non-native speaker who cannot distinguish the 
+velar/uvular contrast); (4) complete dropping of pharyngeal consonants ḥet and ʿayin 
+(consistent with a European copyist), with residual vowel traces preserving some 
+pharyngeal distinctions (e.g., EVA ‘o’ prefix marking dropped ḥet in kuḥlā); (5) use of 
+gallows characters as non-phonetic paragraph/section markers. 
+This encoding is consistent with a 15th-century European scribe transcribing a Syriac 
+pharmaceutical text from dictation or from a Syriac manuscript, using a purpose-built 
+script that captures consonantal structure but loses phonetic distinctions unavailable in 
+European languages. 
+
+---PAGE---
+4.2 The Sergian Tradition 
+The use of ṭaksā for δύναμις, the absence of ḥaylā, the native Syriac plant names (rather 
+than Greek transliterations), and the pharmaceutical workflow vocabulary collectively 
+place the text within the Sergian translation tradition of the 6th century CE. This is 
+independently confirmed by the Calà and Hawley (2017) analysis of Sergius’s pínakes: of 
+477 Greek phytonyms, Sergius translated 270 into native Syriac vocabulary and left 204 as 
+Greek transliterations. The Voynich decoded text uses exclusively the translated (native 
+Syriac) subset, with near-total absence of Greek botanical transliterations (F141, F144, 
+F145). 
+The Müller-Kessler (2017) trilingual pharmaceutical list from the Cairo Genizah further 
+confirms this tradition: the same ṭaksā/ḥaylā framework, the same active-participle 
+pharmaceutical verb patterns (mpwšš, mybš, mḥyl), and the same Galenic four-property 
+classification system appear in both the Genizah fragment and our decoded text. 
+4.3 The Author Profile 
+The linguistic evidence suggests: a primarily Syriac pharmaceutical tradition (kaddīn 
+frequency, āsyā preference, Sergian terminology) with minor JBA influence (kəḏēn at 4%, 
+occasional JBA morphological forms). A Jewish physician in 15th-century northern Italy, 
+working from Syriac pharmaceutical sources while natively reading JBA from Talmudic 
+study, is a historically documented profile. The manuscript’s radiocarbon date (1404–
+1438) and provenance (northern Italy per early ownership history) are consistent with this 
+scenario. 
+4.4 Limitations 
+1. 
+No connected Syriac prose. The decoded output produces plausible 
+pharmaceutical vocabulary clusters, but no paragraph has been read as coherent 
+connected Syriac prose by a specialist. This is the primary obstacle to external 
+validation. 
+2. 
+Short-skeleton ambiguity. 42.9% of corpus tokens have only 1–2 consonant 
+skeletons, which are highly ambiguous (e.g., ‘kl’ = kol/kuḥlā/kallā). Individual word 
+readings have low confidence; the statistical case rests on aggregate patterns. 
+3. 
+Pharyngeal gap partially resolved. Without ḥet and ʿayin in the consonant 
+mapping, central pharmaceutical vocabulary was initially invisible. However, the 
+vowel disambiguation layer recovers some pharyngeal-containing words through 
+residual vowel traces: kuḥlā (“collyrium,” 130 tokens) is distinguished from kol 
+(“all”) by its EVA vowel pattern. Other pharyngeal words (mašḥā “ointment,” ḥamrā 
+“wine”) remain unrecoverable by this method. 
+4. 
+Coverage vs. accuracy. The 86.9% coverage measures skeleton matching, not 
+semantic accuracy. Many matched tokens may have incorrect readings due to 
+homograph ambiguity. 
+
+---PAGE---
+4.5 Confidence Assessment 
+Claim 
+Confidence 
+Underlying language is Semitic 
+85–90% 
+Underlying language is Aramaic 
+65–75% 
+Text tradition is Syriac specifically 
+40–50% 
+Word-level decode accuracy 
+10–15% 
+Full pipeline survives specialist review 
+5–10% 
+Gallows characters are non-phonetic markers 60–70% 
+Herbal pages describe pharma properties 
+70–80% 
+ 
+5. Conclusion 
+We have presented statistical and philological evidence that the Voynich Manuscript 
+encodes an Aramaic pharmaceutical text in the Syriac tradition. The evidence rests on five 
+independent lines of support: (1) a consonant skeleton mapping that matches 87.0% of the 
+corpus at z = 3.83 against random permutations; (2) 14 validated text-image 
+correspondences between decoded pharmaceutical vocabulary and independently 
+identified plant illustrations; (3) structural discoveries (gallows markers, kaph/qoph 
+merger, pharyngeal drop) that are independently predicted by the hypothesis of a 
+European copyist working with Syriac source material; (4) terminological placement 
+within the Sergian pharmaceutical tradition, confirmed by comparison with primary Syriac 
+pharmaceutical sources (Calà and Hawley 2017; Müller-Kessler 2017); and (5) a vowel 
+disambiguation layer that recovers specific Syriac words — including the previously 
+invisible kuḥlā (“collyrium”) — and identifies 109 coherent pharmaceutical phrase 
+structures following attested Syriac recipe grammar. 
+The most likely failure mode is that the correct language family has been identified 
+(Semitic, probably Aramaic) but the word-level decode accuracy is too low to produce 
+readable connected prose. Resolving this will require: (a) incorporating the vowel layer to 
+disambiguate homographic consonant skeletons; (b) identifying EVA representations for 
+the pharyngeal consonants; and (c) specialist assessment of decoded pharmaceutical 
+passages by a Syriacist with expertise in the Galenic pharmaceutical tradition. 
+ 
+References 
+Bhayro, S. (2005). Syriac Medical Terminology: Sergius and Galen’s Pharmacopia. Aramaic 
+Studies 3: 147–165. 
+Bhayro, S. (2012). A Judaeo-Syriac Medical Fragment from the Cairo Genizah. Aramaic 
+Studies 10: 153–172. 
+Budge, E.A.W. (1913). The Syriac Book of Medicines: Syrian Anatomy, Pathology and 
+Therapeutics in the Early Middle Ages. 2 vols. London: Oxford University Press. 
+
+---PAGE---
+Calà, I., and Hawley, R. (2017). Transliteration versus Translation of Greek Plant Names in 
+the Syriac Medical Writings of Sergius of Reš ʿAynā. Aramaic Studies 15: 155–182. 
+D’Imperio, M.E. (1978). The Voynich Manuscript: An Elegant Enigma. NSA/CRESS. 
+Gignoux, P. (2011). Lexique des termes de la pharmacopée syriaque. Paris: Peeters. 
+Lin, L. (2023). The Anonymous Syriac Pharmacopoeia. Journal of Semitic Studies, advance 
+article. 
+Löw, I. (1881). Aramäische Pflanzennamen. Leipzig: W. Engelmann. 
+Müller-Kessler, C. (2017). A Trilingual Pharmaceutical Lexical List: Greek – Aramaic – 
+Middle Persian. Le Muséon 130: 31–70. 
+Payne Smith, R. (1879–1901). Thesaurus Syriacus. Oxford: Clarendon Press. 
+Reddy, S., and Knight, K. (2011). What We Know about the Voynich Manuscript. Proceedings 
+of the 5th ACL-HLT Workshop on Language Technology for Cultural Heritage, 78–86. 
+Sokoloff, M. (2009). A Syriac Lexicon. Winona Lake: Eisenbrauns. 
+ 
+ 
+Appendix A: Lexicon 
+The complete lexicon (1,334 entries) is available as supplementary material in JSON format 
+(lexicon_v31_session31_final.json). 
+Appendix B: Pipeline Code 
+The pipeline (pipeline_v31.py) is available as supplementary material. 
+
+---PAGE---

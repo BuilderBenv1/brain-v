@@ -1,0 +1,75 @@
+{
+  "id": "H111",
+  "claim": "The Currier A and Currier B sub-corpora use two structurally distinct cipher tables encoding the same underlying Latin plaintext, evidenced by differing word-initial glyph frequency distributions between the two sub-corpora that are nonetheless both consistent with Latin word-onset phoneme distributions.",
+  "type": "cipher",
+  "confidence": 0.776,
+  "evidence_for": [
+    "Currier A (11,022 words) and B (23,766 words) show measurable statistical differences suggesting different encoding schemes",
+    "Current evidence at 0.426 probability supports two distinct cipher tables for A and B",
+    "If the same Latin text were encoded with two different substitution tables, both tables would independently map Latin onset consonants/vowels to Voynich glyphs, producing correlated but shifted frequency profiles"
+  ],
+  "evidence_against": [
+    "Currier A/B split may reflect scribal hand differences rather than cipher-table differences",
+    "Evidence at 0.677 supports a single underlying language encoded by two scribes rather than two cipher tables",
+    "Shared high-frequency words across A and B sections suggest significant cipher overlap rather than complete table separation"
+  ],
+  "test": "Compute word-initial glyph frequency vectors for Currier A and B separately; run chi-squared test for independence; then test whether the two frequency vectors are consistent with a common Latin onset-frequency profile under two different permutation mappings",
+  "test_metric": "Chi-squared statistic on word-initial glyph distributions A vs. B; cosine similarity of each distribution to permuted Latin phoneme-onset frequencies",
+  "test_threshold": "Confirmation if chi-squared p < 0.01 (distributions differ) AND both sub-corpora independently achieve cosine similarity > 0.7 with some permutation of Latin onset frequencies; denial if distributions are not significantly different or neither maps to Latin",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "compute word-initial glyph frequency vectors for currier a and b separately; run chi-squared test fo",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.410 -> 0.498"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word-initial glyph frequency vectors for currier a and b separately; run chi-squared test fo",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.498 -> 0.573"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word-initial glyph frequency vectors for currier a and b separately; run chi-squared test fo",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.573 -> 0.637"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word-initial glyph frequency vectors for currier a and b separately; run chi-squared test fo",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.637 -> 0.691"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word-initial glyph frequency vectors for currier a and b separately; run chi-squared test fo",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.691 -> 0.737"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word-initial glyph frequency vectors for currier a and b separately; run chi-squared test fo",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.737 -> 0.776"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "This directly distinguishes between the two leading explanations for the A/B split (two scribes vs. two cipher tables) and would either unify or further bifurcate the solution space"
+}

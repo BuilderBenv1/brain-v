@@ -1,0 +1,52 @@
+{
+  "id": "H127",
+  "claim": "The text-only section (7 folios, entropy 3.9016 bits \u00e2\u20ac\u201d highest of all sections) represents a functionally distinct register encoded with minimal or no transposition, i.e., a near-plaintext or lightly enciphered layer, while lower-entropy sections (zodiac 3.7149, astronomical 3.7471) use additional transposition steps that suppress entropy.",
+  "type": "structural",
+  "confidence": 0.816,
+  "evidence_for": [
+    "Text-only entropy 3.9016 bits is closest to natural Latin/Italian (~3.95-4.0), suggesting least transformation",
+    "Zodiac entropy 3.7149 bits is lowest, consistent with label-dominated, highly repetitive encoding adding a transposition or nulling step",
+    "Section entropy ordering (text-only > recipes > herbal > cosmological > biological > pharmaceutical > astronomical > zodiac) correlates with expected register complexity",
+    "High-confidence existing belief (0.972) already supports text-only as closest to natural language"
+  ],
+  "evidence_against": [
+    "Lower entropy in zodiac could reflect label brevity and small vocabulary rather than additional cipher steps",
+    "Entropy differences across sections (~0.19 bits range) are modest and could arise from topic-specific vocabulary differences without any cipher variation",
+    "The cosmological section has more folios than astronomical yet similar entropy, complicating a simple transposition-step model"
+  ],
+  "test": "Compute the word-type/token ratio (TTR) and word-length distribution for each section independently; run a Mann-Whitney U test comparing text-only TTR and mean word length against all other sections combined. Additionally compute section-level Zipf exponents and compare to text-only.",
+  "test_metric": "Per-section TTR, mean word length, Zipf exponent, and entropy; Mann-Whitney U p-value for text-only vs. all other sections on each metric",
+  "test_threshold": "Confirm structural distinctness if text-only Zipf exponent is >= 0.95 and all other sections are <= 0.90, and Mann-Whitney p < 0.05 on TTR; deny if text-only metrics fall within one standard deviation of the cross-section mean",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "compute the word-type/token ratio (ttr) and word-length distribution for each section independently;",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.710 -> 0.751"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the word-type/token ratio (ttr) and word-length distribution for each section independently;",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.751 -> 0.786"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the word-type/token ratio (ttr) and word-length distribution for each section independently;",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.786 -> 0.816"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "If the text-only section is a distinct, less-enciphered register, it should show not just higher entropy but also different word-length distributions and a Zipf slope closer to natural language. Confirming this would justify using text-only folios as the primary decipherment target."
+}

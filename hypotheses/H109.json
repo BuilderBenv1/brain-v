@@ -2,7 +2,7 @@
   "id": "H109",
   "claim": "Jaccard Index between Voynich vocabulary and proposed decipherment vocabulary is J~0.08, independently confirmed. Low but non-zero overlap indicates partial but real linguistic correspondence.",
   "type": "structural",
-  "confidence": 0.3,
+  "confidence": 0.198,
   "evidence_for": [
     "Pagel: J~0.08, independently confirmed",
     "Non-zero Jaccard exceeds random expectation",
@@ -16,14 +16,61 @@
   "test": "Compute Jaccard against Pagel dictionary and random baselines",
   "test_metric": "jaccard_index",
   "test_threshold": "J(Pagel) > 2x J(random) supports",
-  "tests_run": [],
-  "tests_remaining": [
-    "jaccard_verification"
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Compute Jaccard against Pagel dictionary and random baselines",
+      "confidence_change": "0.300 -> 0.310"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": null,
+      "details": "Zipfian distribution (0.8946) supports linguistic structure, but 70% hapax ratio makes external vocabulary matching inherently difficult; 0.08 Jaccard overlap is too low to confirm 'real linguistic correspondence' as claimed.",
+      "confidence_change": "0.310 -> 0.312"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": false,
+      "details": "Jaccard Index of 0.08 is too low to support real linguistic correspondence; 70% hapax ratio indicates vocabulary distribution inconsistent with natural language alignment despite Zipfian structure.",
+      "confidence_change": "0.312 -> 0.251"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": null,
+      "details": "A Jaccard Index of 0.08 is too low to demonstrate meaningful linguistic correspondence; could easily result from random overlap in vocabularies of this size without confirming real decipherment.",
+      "confidence_change": "0.251 -> 0.256"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": null,
+      "details": "Voynich shows linguistic structure (Zipf exponent 0.89, glyph entropy 3.86) supporting real language properties, but Jaccard Index of 0.08 is critically low; significance requires comparison against random baselines per specified test, which has not been computed, leaving correspondence claim inconclusive.",
+      "confidence_change": "0.256 -> 0.261"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "Jaccard Index of 0.08 is too low to support real linguistic correspondence; this overlap level falls within random expectation given the large vocabulary size (8,261 unique words) and word distribution patterns, rather than indicating genuine linguistic relationship.",
+      "confidence_change": "0.261 -> 0.198"
+    }
   ],
+  "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": null,
+  "last_tested": "2026-04-15",
   "reasoning": "Directly verifiable if 168-term dictionary is available.",
   "source": "Pagel, K. (2025) Zenodo DOI 10.5281/zenodo.18478526",
   "researcher": "kpagel"

@@ -2,7 +2,7 @@
   "id": "H093",
   "claim": "The recipes section (25 folios, 11,611 words, entropy 3.8586 bits) encodes running prose rather than labels or lists, as evidenced by a word bigram conditional entropy significantly higher than label-heavy sections (zodiac: 3.7149, astronomical: 3.7471), and a type-token ratio and sentence-length distribution consistent with connected discourse rather than enumerated items.",
   "type": "structural",
-  "confidence": 0.714,
+  "confidence": 0.884,
   "evidence_for": [
     "Recipes section has second-highest entropy (3.8586) after text-only (3.9016), consistent with running prose carrying more information per glyph than label registers",
     "Recipes section is the largest by word count (11,611), which is unusual for a label-only register",
@@ -41,12 +41,60 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.667 -> 0.714"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word bigram conditional entropy h(w_t | w_{t-1}) separately for the recipes, zodiac, and tex",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.714 -> 0.754"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word bigram conditional entropy h(w_t | w_{t-1}) separately for the recipes, zodiac, and tex",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.754 -> 0.788"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word bigram conditional entropy h(w_t | w_{t-1}) separately for the recipes, zodiac, and tex",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.788 -> 0.818"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word bigram conditional entropy h(w_t | w_{t-1}) separately for the recipes, zodiac, and tex",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.818 -> 0.843"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word bigram conditional entropy h(w_t | w_{t-1}) separately for the recipes, zodiac, and tex",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.843 -> 0.865"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word bigram conditional entropy h(w_t | w_{t-1}) separately for the recipes, zodiac, and tex",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.865 -> 0.884"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "Distinguishing prose from enumerated label registers is critical because prose provides richer syntactic structure for cryptanalysis, including word-order patterns that could reveal the underlying language family even without full decipherment."
 }

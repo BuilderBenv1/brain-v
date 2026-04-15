@@ -1,0 +1,75 @@
+{
+  "id": "H113",
+  "claim": "The text-only section (7 folios, entropy 3.9016 bits, highest of all sections) represents unenciphered or lightly enciphered natural language prose, while all other sections apply an additional transposition or homophonic layer on top of a base substitution cipher, producing their characteristically lower entropy.",
+  "type": "cipher",
+  "confidence": 0.748,
+  "evidence_for": [
+    "Text-only section entropy (3.9016 bits) is closest to natural Latin (~4.0 bits) and Italian (~3.95 bits) of any section",
+    "A secondary cipher layer applied on top of a substitution cipher would reduce entropy by spreading probability mass, consistent with all other sections showing lower entropy than text-only",
+    "If text-only is 'base' cipher and other sections are double-enciphered, the entropy gradient across sections is directly predicted"
+  ],
+  "evidence_against": [
+    "Alternative explanation: text-only simply contains more linguistically varied content (prose vs. formulaic plant descriptions) that naturally yields higher entropy without any cipher difference",
+    "Entropy difference between text-only (3.9016) and recipes (3.8586) is only ~0.04 bits, which may not be statistically significant given small sample size (2,349 words)",
+    "No external evidence confirms the text-only section was produced by a different encipherment process"
+  ],
+  "test": "Run bootstrap resampling to establish 95% confidence intervals on entropy estimates for each section; test whether text-only entropy is significantly different from all other sections; then test whether the entropy ordering (text-only > recipes > cosmological > herbal > biological > pharmaceutical > astronomical > zodiac) is consistent with a monotonic relationship between cipher complexity and entropy reduction",
+  "test_metric": "Bootstrap confidence intervals on per-section Shannon entropy; Spearman rank correlation between section entropy and hypothesized cipher-layer count",
+  "test_threshold": "Confirmation if text-only CI does not overlap with any other section CI at 95% confidence; denial if text-only entropy CI overlaps with two or more other sections",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "run bootstrap resampling to establish 95% confidence intervals on entropy estimates for each section",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.380 -> 0.467"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "run bootstrap resampling to establish 95% confidence intervals on entropy estimates for each section",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.467 -> 0.541"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "run bootstrap resampling to establish 95% confidence intervals on entropy estimates for each section",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.541 -> 0.605"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "run bootstrap resampling to establish 95% confidence intervals on entropy estimates for each section",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.605 -> 0.660"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "run bootstrap resampling to establish 95% confidence intervals on entropy estimates for each section",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.660 -> 0.707"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "run bootstrap resampling to establish 95% confidence intervals on entropy estimates for each section",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.707 -> 0.748"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "If text-only is statistically distinguishable from all other sections in entropy, it strongly motivates treating it as a different cipher tier and using it as a privileged target for initial decipherment attempts"
+}

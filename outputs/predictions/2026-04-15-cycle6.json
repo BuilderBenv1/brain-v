@@ -1,0 +1,162 @@
+{
+  "date": "2026-04-15",
+  "cycle": "predict",
+  "model": "claude-code-cli",
+  "belief_count": 42,
+  "existing_hypothesis_count": 154,
+  "new_hypotheses": [
+    "H135",
+    "H136",
+    "H137",
+    "H138",
+    "H139"
+  ],
+  "hypotheses": [
+    {
+      "id": "H135",
+      "claim": "The high hapax ratio (70.1%) is substantially artifactual: word-final glyphs drawn from {y,n,l,r,o} function as inflectional suffixes, and stripping the final glyph of every word reduces unique word types by at least 30%, collapsing the vocabulary toward a size consistent with a 3,000\u00e2\u20ac\u201c5,000-root natural language",
+      "type": "structural",
+      "confidence": 0.71,
+      "evidence_for": [
+        "Word-final glyph set {y,n,l,r,o} is highly constrained and accounts for the overwhelming majority of word endings",
+        "Hapax ratio of 70.1% far exceeds Latin (~45%) or Italian (~50%), suggesting artificial inflation",
+        "Top frequent words like 'daiin','aiin','chedy','shedy' share common suffixes, consistent with a suffix paradigm",
+        "Zipf exponent 0.8946 is below 1.0, consistent with a vocabulary inflated by morphological variants rather than semantic diversity"
+      ],
+      "evidence_against": [
+        "If suffixes encode cipher structure rather than grammar, stripping them may not reduce vocabulary meaningfully",
+        "Currier A/B split could mean two different suffix systems, complicating normalization",
+        "Word entropy of 10.45 bits is high, suggesting genuine vocabulary diversity rather than paradigmatic expansion"
+      ],
+      "test": "Strip the final glyph from every word token in the full corpus (38,053 words) and recompute: unique word types, hapax count, and hapax ratio on the stemmed vocabulary. Compare stemmed Zipf fit (R-squared) against unstemmed.",
+      "test_metric": "Reduction in unique word types (%), stemmed hapax ratio, stemmed Zipf R-squared",
+      "test_threshold": "Confirmation: stemmed hapax ratio drops below 50% and stemmed Zipf R-squared rises above 0.95. Denial: stemmed hapax ratio remains above 65% or R-squared does not improve by >0.03.",
+      "tests_run": [],
+      "tests_remaining": [
+        "Strip the final glyph from every word token in the full corpus (38,053 words) and recompute: unique word types, hapax count, and hapax ratio on the stemmed vocabulary. Compare stemmed Zipf fit (R-squared) against unstemmed."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "If stripping a single suffix glyph substantially collapses the vocabulary and improves Zipf fit, it confirms that word-final positional glyphs are grammatical markers (inflection/case endings) rather than cipher artifacts, which would narrow decipherment to inflected natural languages and allow paradigm-table reconstruction."
+    },
+    {
+      "id": "H136",
+      "claim": "The Currier A and Currier B sub-corpora use two structurally distinct homophonic cipher tables encoding the same underlying Latin text: Currier A uses a wider homophone set per plaintext letter (lower per-glyph entropy ~3.75 bits) while Currier B uses a narrower set (higher per-glyph entropy ~3.90 bits), producing the observed entropy difference between the two dialects",
+      "type": "cipher",
+      "confidence": 0.72,
+      "evidence_for": [
+        "Multiple high-confidence existing hypotheses (0.977\u00e2\u20ac\u201c0.982) support Currier A/B as two distinct cipher tables over the same underlying language",
+        "Currier B is larger (23,766 words vs 11,022) and if it uses a narrower homophone set its entropy should be measurably higher",
+        "Section-level entropy variation (3.71\u00e2\u20ac\u201c3.90 bits) is consistent with varying homophone ratios per section, not with a single fixed cipher",
+        "Glyph inventory of 25 is consistent with a homophonic expansion of a Latin alphabet of ~23 letters"
+      ],
+      "evidence_against": [
+        "Underlying language may differ between scribes rather than cipher table alone",
+        "If both scribes use identical homophone ratios, per-sub-corpus entropy difference would be negligible",
+        "Word-level entropy (10.45 bits) may swamp glyph-level entropy differences between A and B"
+      ],
+      "test": "Partition corpus into Currier A (11,022 words) and Currier B (23,766 words) tokens. Compute per-glyph Shannon entropy separately for each sub-corpus. Compute bigram glyph entropy and type-token ratio per sub-corpus. Test whether the entropy difference is statistically significant via bootstrap resampling (1,000 iterations).",
+      "test_metric": "Per-glyph entropy difference H(B) - H(A), bigram entropy per sub-corpus, bootstrap 95% CI on entropy difference",
+      "test_threshold": "Confirmation: H(B) - H(A) > 0.05 bits with bootstrap p < 0.05. Denial: |H(B) - H(A)| < 0.02 bits or CI crosses zero.",
+      "tests_run": [],
+      "tests_remaining": [
+        "Partition corpus into Currier A (11,022 words) and Currier B (23,766 words) tokens. Compute per-glyph Shannon entropy separately for each sub-corpus. Compute bigram glyph entropy and type-token ratio per sub-corpus. Test whether the entropy difference is statistically significant via bootstrap resampling (1,000 iterations)."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "A measurable, statistically significant entropy difference between Currier A and B at the glyph level, in the predicted direction, would confirm that the two scribes used cipher tables with different homophone densities \u00e2\u20ac\u201d enabling separate cryptanalysis of each sub-corpus independently and doubling decipherment leverage."
+    },
+    {
+      "id": "H137",
+      "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) is explained by a label-oriented encoding in which the same small set of ~15\u00e2\u20ac\u201c20 root words are repeatedly inflected and reused as astronomical labels, such that the top 20 most frequent words in the zodiac section account for over 55% of all word tokens in that section",
+      "type": "structural",
+      "confidence": 0.78,
+      "evidence_for": [
+        "Zodiac entropy (3.7149 bits) is the lowest of all sections, consistent with a restricted, repetitive vocabulary",
+        "Label sections in other medieval manuscripts use highly repetitive short word sets for month names, zodiac signs, and star names",
+        "12 zodiac folios with 1,297 words averages ~108 words per folio \u00e2\u20ac\u201d consistent with short recurring captions rather than running prose",
+        "Existing high-confidence belief (0.763) already supports label-oriented encoding for zodiac/astronomical sections"
+      ],
+      "evidence_against": [
+        "Low entropy could also reflect a denser homophonic cipher masking fewer plaintext characters",
+        "Text-only section has highest entropy (3.9016) despite presumably being the most natural language \u00e2\u20ac\u201d entropy alone may not distinguish label from prose",
+        "If zodiac labels are in an unknown language, the 55% coverage threshold is arbitrary"
+      ],
+      "test": "Extract all word tokens from the zodiac section (1,297 words). Rank words by frequency. Compute cumulative coverage: what percentage of tokens are covered by the top 10, 20, and 30 unique word types. Compare these coverage statistics to the herbal section (10,872 words) as a prose baseline and to the text-only section (2,349 words) as a high-entropy baseline.",
+      "test_metric": "Cumulative token coverage of top-N word types for N=10,20,30; ratio of zodiac coverage to herbal coverage at each N",
+      "test_threshold": "Confirmation: top-20 words cover >55% of zodiac tokens AND this ratio exceeds herbal top-20 coverage by >1.5x. Denial: top-20 zodiac coverage is within 10 percentage points of herbal top-20 coverage.",
+      "tests_run": [],
+      "tests_remaining": [
+        "Extract all word tokens from the zodiac section (1,297 words). Rank words by frequency. Compute cumulative coverage: what percentage of tokens are covered by the top 10, 20, and 30 unique word types. Compare these coverage statistics to the herbal section (10,872 words) as a prose baseline and to the text-only section (2,349 words) as a high-entropy baseline."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "If a small lexical core dominates the zodiac section far more than in prose sections, it confirms a label-grammar hypothesis and would allow targeted plaintext guessing (month names, constellation names in Latin/Italian) against that core vocabulary, providing a potential crib attack entry point."
+    },
+    {
+      "id": "H138",
+      "claim": "The text-only section's elevated entropy (3.9016 bits, highest of all sections) reflects unenciphered or minimally enciphered natural language prose, and its glyph unigram distribution should show statistically significantly less deviation from the expected distribution of a known natural language (medieval Latin or Italian) than any other section",
+      "type": "language",
+      "confidence": 0.74,
+      "evidence_for": [
+        "Text-only entropy (3.9016 bits) is closest to Latin (~4.0 bits) and Italian (~3.95 bits) of all sections",
+        "Multiple existing high-confidence beliefs (0.982\u00e2\u20ac\u201c0.985) support text-only as closest to natural language",
+        "7 folios with 2,349 words provides sufficient token count for reliable frequency analysis",
+        "If this section is unenciphered, chi-squared distance between its glyph frequencies and Latin/Italian letter frequencies should be minimized relative to other sections"
+      ],
+      "evidence_against": [
+        "Higher entropy could reflect a more complex cipher rather than less encipherment",
+        "The 25-glyph inventory may not map 1-to-1 to Latin/Italian letters, making direct frequency comparison ambiguous",
+        "Currier A/B affiliation of text-only folios is unknown and could confound cross-section comparison"
+      ],
+      "test": "Compute the glyph unigram frequency distribution for each section. For each section, compute the chi-squared distance (and KL divergence) between its glyph distribution and (a) medieval Latin letter frequencies and (b) medieval Italian letter frequencies. Rank all 8 sections by chi-squared distance to each reference language.",
+      "test_metric": "Chi-squared distance and KL divergence from Latin and Italian reference distributions for each section; rank of text-only section among all 8 sections",
+      "test_threshold": "Confirmation: text-only section ranks 1st (lowest chi-squared distance) to both Latin and Italian reference distributions. Denial: text-only ranks 3rd or lower to both reference distributions, or another section consistently ranks lower.",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute the glyph unigram frequency distribution for each section. For each section, compute the chi-squared distance (and KL divergence) between its glyph distribution and (a) medieval Latin letter frequencies and (b) medieval Italian letter frequencies. Rank all 8 sections by chi-squared distance to each reference language."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "If the text-only section's glyph frequency distribution is the closest match to a known language among all sections, it provides the strongest statistical warrant for treating it as a decipherment entry point, and the specific language with lower chi-squared distance (Latin vs Italian) would help narrow the underlying language hypothesis."
+    },
+    {
+      "id": "H139",
+      "claim": "The Voynich script encodes plaintext using a systematic nulls-and-abbreviations scheme in which roughly 20\u00e2\u20ac\u201c25% of all word tokens are null words (carrying no semantic content) inserted at predictable positional intervals, detectable by the fact that the most frequent short words (length 1\u00e2\u20ac\u201c2 glyphs, e.g., 'y', 'ol', 'ar', 'or') appear at inter-word positions with a non-random distribution inconsistent with natural language function words",
+      "type": "cipher",
+      "confidence": 0.58,
+      "evidence_for": [
+        "Words 'y' (329 occurrences), 'ol' (553), 'ar' (402), 'or' (378) are very short and among the top 10 most frequent \u00e2\u20ac\u201d atypical for content words in natural language",
+        "Zipf exponent 0.8946 is lower than expected for pure natural language (typically ~1.0), consistent with a vocabulary inflated by null insertions",
+        "Hapax ratio of 70.1% could be partially explained if null words vary by context but are semantically empty",
+        "Medieval cipher traditions (e.g., Trithemius) include null insertion as a deliberate obfuscation technique"
+      ],
+      "evidence_against": [
+        "Short high-frequency words are consistent with natural language function words (articles, prepositions) in Latin or Italian",
+        "Existing hypotheses with moderate confidence already attribute high hapax ratio to suffix stripping rather than null insertion",
+        "If nulls are inserted randomly, they would reduce rather than preserve Zipf fit \u00e2\u20ac\u201d the moderate Zipf fit argues against heavy null use"
+      ],
+      "test": "Extract all word tokens of length 1\u00e2\u20ac\u201c2 glyphs. Compute their positional distribution within sentences/lines (first position, last position, medial position). Compare observed positional distribution to expected under a null hypothesis of uniform placement using chi-squared test. Additionally, compute mutual information between short-word occurrence and adjacent word identity to test for predictable insertion patterns.",
+      "test_metric": "Chi-squared statistic for positional uniformity of length-1 and length-2 words; mutual information between short words and their left/right neighbors",
+      "test_threshold": "Confirmation: chi-squared p < 0.01 for non-uniform positional distribution AND mutual information with neighbors is significantly lower than for length-3+ words (indicating independence from context, consistent with nulls). Denial: positional distribution is uniform (p > 0.10) and mutual information matches length-3+ words.",
+      "tests_run": [],
+      "tests_remaining": [
+        "Extract all word tokens of length 1\u00e2\u20ac\u201c2 glyphs. Compute their positional distribution within sentences/lines (first position, last position, medial position). Compare observed positional distribution to expected under a null hypothesis of uniform placement using chi-squared test. Additionally, compute mutual information between short-word occurrence and adjacent word identity to test for predictable insertion patterns."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "If short high-frequency words cluster at non-random positions and show low contextual mutual information, it supports null insertion \u00e2\u20ac\u201d which, if confirmed, would allow their removal and potentially reduce apparent vocabulary size and improve cipher analysis on the remaining tokens."
+    }
+  ],
+  "raw_response": "{\"hypotheses\":[{\"claim\":\"The high hapax ratio (70.1%) is substantially artifactual: word-final glyphs drawn from {y,n,l,r,o} function as inflectional suffixes, and stripping the final glyph of every word reduces unique word types by at least 30%, collapsing the vocabulary toward a size consistent with a 3,000\u00e2\u20ac\u201c5,000-root natural language\",\"type\":\"structural\",\"confidence\":0.71,\"evidence_for\":[\"Word-final glyph set {y,n,l,r,o} is highly constrained and accounts for the overwhelming majority of word endings\",\"Hapax ratio of 70.1% far exceeds Latin (~45%) or Italian (~50%), suggesting artificial inflation\",\"Top frequent words like 'daiin','aiin','chedy','shedy' share common suffixes, consistent with a suffix paradigm\",\"Zipf exponent 0.8946 is below 1.0, consistent with a vocabulary inflated by morphological variants rather than semantic diversity\"],\"evidence_against\":[\"If suffixes encode cipher structure rather than grammar, stripping them may not reduce vocabulary meaningfully\",\"Currier A/B split could mean two different suffix systems, complicating normalization\",\"Word entropy of 10.45 bits is high, suggesting genuine vocabulary diversity rather than paradigmatic expansion\"],\"test\":\"Strip the final glyph from every word token in the full corpus (38,053 words) and recompute: unique word types, hapax count, and hapax ratio on the stemmed vocabulary. Compare stemmed Zipf fit (R-squared) against unstemmed.\",\"test_metric\":\"Reduction in unique word types (%), stemmed hapax ratio, stemmed Zipf R-squared\",\"test_threshold\":\"Confirmation: stemmed hapax ratio drops below 50% and stemmed Zipf R-squared rises above 0.95. Denial: stemmed hapax ratio remains above 65% or R-squared does not improve by >0.03.\",\"reasoning\":\"If stripping a single suffix glyph substantially collapses the vocabulary and improves Zipf fit, it confirms that word-final positional glyphs are grammatical markers (inflection/case endings) rather than cipher artifacts, which would narrow decipherment to inflected natural languages and allow paradigm-table reconstruction.\"},{\"claim\":\"The Currier A and Currier B sub-corpora use two structurally distinct homophonic cipher tables encoding the same underlying Latin text: Currier A uses a wider homophone set per plaintext letter (lower per-glyph entropy ~3.75 bits) while Currier B uses a narrower set (higher per-glyph entropy ~3.90 bits), producing the observed entropy difference between the two dialects\",\"type\":\"cipher\",\"confidence\":0.72,\"evidence_for\":[\"Multiple high-confidence existing hypotheses (0.977\u00e2\u20ac\u201c0.982) support Currier A/B as two distinct cipher tables over the same underlying language\",\"Currier B is larger (23,766 words vs 11,022) and if it uses a narrower homophone set its entropy should be measurably higher\",\"Section-level entropy variation (3.71\u00e2\u20ac\u201c3.90 bits) is consistent with varying homophone ratios per section, not with a single fixed cipher\",\"Glyph inventory of 25 is consistent with a homophonic expansion of a Latin alphabet of ~23 letters\"],\"evidence_against\":[\"Underlying language may differ between scribes rather than cipher table alone\",\"If both scribes use identical homophone ratios, per-sub-corpus entropy difference would be negligible\",\"Word-level entropy (10.45 bits) may swamp glyph-level entropy differences between A and B\"],\"test\":\"Partition corpus into Currier A (11,022 words) and Currier B (23,766 words) tokens. Compute per-glyph Shannon entropy separately for each sub-corpus. Compute bigram glyph entropy and type-token ratio per sub-corpus. Test whether the entropy difference is statistically significant via bootstrap resampling (1,000 iterations).\",\"test_metric\":\"Per-glyph entropy difference H(B) - H(A), bigram entropy per sub-corpus, bootstrap 95% CI on entropy difference\",\"test_threshold\":\"Confirmation: H(B) - H(A) > 0.05 bits with bootstrap p < 0.05. Denial: |H(B) - H(A)| < 0.02 bits or CI crosses zero.\",\"reasoning\":\"A measurable, statistically significant entropy difference between Currier A and B at the glyph level, in the predicted direction, would confirm that the two scribes used cipher tables with different homophone densities \u00e2\u20ac\u201d enabling separate cryptanalysis of each sub-corpus independently and doubling decipherment leverage.\"},{\"claim\":\"The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) is explained by a label-oriented encoding in which the same small set of ~15\u00e2\u20ac\u201c20 root words are repeatedly inflected and reused as astronomical labels, such that the top 20 most frequent words in the zodiac section account for over 55% of all word tokens in that section\",\"type\":\"structural\",\"confidence\":0.78,\"evidence_for\":[\"Zodiac entropy (3.7149 bits) is the lowest of all sections, consistent with a restricted, repetitive vocabulary\",\"Label sections in other medieval manuscripts use highly repetitive short word sets for month names, zodiac signs, and star names\",\"12 zodiac folios with 1,297 words averages ~108 words per folio \u00e2\u20ac\u201d consistent with short recurring captions rather than running prose\",\"Existing high-confidence belief (0.763) already supports label-oriented encoding for zodiac/astronomical sections\"],\"evidence_against\":[\"Low entropy could also reflect a denser homophonic cipher masking fewer plaintext characters\",\"Text-only section has highest entropy (3.9016) despite presumably being the most natural language \u00e2\u20ac\u201d entropy alone may not distinguish label from prose\",\"If zodiac labels are in an unknown language, the 55% coverage threshold is arbitrary\"],\"test\":\"Extract all word tokens from the zodiac section (1,297 words). Rank words by frequency. Compute cumulative coverage: what percentage of tokens are covered by the top 10, 20, and 30 unique word types. Compare these coverage statistics to the herbal section (10,872 words) as a prose baseline and to the text-only section (2,349 words) as a high-entropy baseline.\",\"test_metric\":\"Cumulative token coverage of top-N word types for N=10,20,30; ratio of zodiac coverage to herbal coverage at each N\",\"test_threshold\":\"Confirmation: top-20 words cover >55% of zodiac tokens AND this ratio exceeds herbal top-20 coverage by >1.5x. Denial: top-20 zodiac coverage is within 10 percentage points of herbal top-20 coverage.\",\"reasoning\":\"If a small lexical core dominates the zodiac section far more than in prose sections, it confirms a label-grammar hypothesis and would allow targeted plaintext guessing (month names, constellation names in Latin/Italian) against that core vocabulary, providing a potential crib attack entry point.\"},{\"claim\":\"The text-only section's elevated entropy (3.9016 bits, highest of all sections) reflects unenciphered or minimally enciphered natural language prose, and its glyph unigram distribution should show statistically significantly less deviation from the expected distribution of a known natural language (medieval Latin or Italian) than any other section\",\"type\":\"language\",\"confidence\":0.74,\"evidence_for\":[\"Text-only entropy (3.9016 bits) is closest to Latin (~4.0 bits) and Italian (~3.95 bits) of all sections\",\"Multiple existing high-confidence beliefs (0.982\u00e2\u20ac\u201c0.985) support text-only as closest to natural language\",\"7 folios with 2,349 words provides sufficient token count for reliable frequency analysis\",\"If this section is unenciphered, chi-squared distance between its glyph frequencies and Latin/Italian letter frequencies should be minimized relative to other sections\"],\"evidence_against\":[\"Higher entropy could reflect a more complex cipher rather than less encipherment\",\"The 25-glyph inventory may not map 1-to-1 to Latin/Italian letters, making direct frequency comparison ambiguous\",\"Currier A/B affiliation of text-only folios is unknown and could confound cross-section comparison\"],\"test\":\"Compute the glyph unigram frequency distribution for each section. For each section, compute the chi-squared distance (and KL divergence) between its glyph distribution and (a) medieval Latin letter frequencies and (b) medieval Italian letter frequencies. Rank all 8 sections by chi-squared distance to each reference language.\",\"test_metric\":\"Chi-squared distance and KL divergence from Latin and Italian reference distributions for each section; rank of text-only section among all 8 sections\",\"test_threshold\":\"Confirmation: text-only section ranks 1st (lowest chi-squared distance) to both Latin and Italian reference distributions. Denial: text-only ranks 3rd or lower to both reference distributions, or another section consistently ranks lower.\",\"reasoning\":\"If the text-only section's glyph frequency distribution is the closest match to a known language among all sections, it provides the strongest statistical warrant for treating it as a decipherment entry point, and the specific language with lower chi-squared distance (Latin vs Italian) would help narrow the underlying language hypothesis.\"},{\"claim\":\"The Voynich script encodes plaintext using a systematic nulls-and-abbreviations scheme in which roughly 20\u00e2\u20ac\u201c25% of all word tokens are null words (carrying no semantic content) inserted at predictable positional intervals, detectable by the fact that the most frequent short words (length 1\u00e2\u20ac\u201c2 glyphs, e.g., 'y', 'ol', 'ar', 'or') appear at inter-word positions with a non-random distribution inconsistent with natural language function words\",\"type\":\"cipher\",\"confidence\":0.58,\"evidence_for\":[\"Words 'y' (329 occurrences), 'ol' (553), 'ar' (402), 'or' (378) are very short and among the top 10 most frequent \u00e2\u20ac\u201d atypical for content words in natural language\",\"Zipf exponent 0.8946 is lower than expected for pure natural language (typically ~1.0), consistent with a vocabulary inflated by null insertions\",\"Hapax ratio of 70.1% could be partially explained if null words vary by context but are semantically empty\",\"Medieval cipher traditions (e.g., Trithemius) include null insertion as a deliberate obfuscation technique\"],\"evidence_against\":[\"Short high-frequency words are consistent with natural language function words (articles, prepositions) in Latin or Italian\",\"Existing hypotheses with moderate confidence already attribute high hapax ratio to suffix stripping rather than null insertion\",\"If nulls are inserted randomly, they would reduce rather than preserve Zipf fit \u00e2\u20ac\u201d the moderate Zipf fit argues against heavy null use\"],\"test\":\"Extract all word tokens of length 1\u00e2\u20ac\u201c2 glyphs. Compute their positional distribution within sentences/lines (first position, last position, medial position). Compare observed positional distribution to expected under a null hypothesis of uniform placement using chi-squared test. Additionally, compute mutual information between short-word occurrence and adjacent word identity to test for predictable insertion patterns.\",\"test_metric\":\"Chi-squared statistic for positional uniformity of length-1 and length-2 words; mutual information between short words and their left/right neighbors\",\"test_threshold\":\"Confirmation: chi-squared p < 0.01 for non-uniform positional distribution AND mutual information with neighbors is significantly lower than for length-3+ words (indicating independence from context, consistent with nulls). Denial: positional distribution is uniform (p > 0.10) and mutual information matches length-3+ words.\",\"reasoning\":\"If short high-frequency words cluster at non-random positions and show low contextual mutual information, it supports null insertion \u00e2\u20ac\u201d which, if confirmed, would allow their removal and potentially reduce apparent vocabulary size and improve cipher analysis on the remaining tokens.\"}]}"
+}

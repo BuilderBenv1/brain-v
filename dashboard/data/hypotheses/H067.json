@@ -2,7 +2,7 @@
   "id": "H067",
   "claim": "The zodiac and astronomical sections use a label-encoding scheme where words are proper nouns or fixed labels (star names, month names, zodiac terms) rather than running prose, which explains their anomalously low entropy (3.7149 and 3.7471 bits) as a reduced effective vocabulary with high repetition of a small label lexicon.",
   "type": "structural",
-  "confidence": 0.144,
+  "confidence": 0.043,
   "evidence_for": [
     "Zodiac entropy 3.7149 bits is the lowest of all sections \u00e2\u20ac\u201d consistent with a small fixed vocabulary of labels",
     "Astronomical entropy 3.7471 bits is second-lowest, consistent with the same label-encoding pattern",
@@ -80,12 +80,60 @@
       "passed": false,
       "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
       "confidence_change": "0.176 -> 0.144"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute average word length, type-token ratio (ttr), and hapax ratio separately for zodiac and astro",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.144 -> 0.118"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute average word length, type-token ratio (ttr), and hapax ratio separately for zodiac and astro",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.118 -> 0.097"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute average word length, type-token ratio (ttr), and hapax ratio separately for zodiac and astro",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.097 -> 0.079"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute average word length, type-token ratio (ttr), and hapax ratio separately for zodiac and astro",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.079 -> 0.065"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute average word length, type-token ratio (ttr), and hapax ratio separately for zodiac and astro",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.065 -> 0.053"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute average word length, type-token ratio (ttr), and hapax ratio separately for zodiac and astro",
+      "score": 0.39700000000000013,
+      "passed": false,
+      "details": "Observed hapax ratio: 0.701. Expected: ~0.50. Voynich has unusually high hapax ratio (70.1%), suggesting either large vocabulary, verbose encoding, or noise.",
+      "confidence_change": "0.053 -> 0.043"
     }
   ],
   "tests_remaining": [],
-  "status": "active",
+  "status": "eliminated",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "Label-encoding is the most parsimonious explanation for the entropy gradient across sections. Confirming it would allow the low-entropy sections to be analyzed separately as a constrained vocabulary problem, significantly simplifying the decipherment task for those sections."
 }

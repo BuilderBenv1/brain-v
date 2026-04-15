@@ -1,0 +1,28 @@
+{
+  "id": "H-BRADY-12",
+  "claim": "Short skeletons (1-2 consonants) cover 42.9% of corpus tokens and are irreducibly ambiguous, meaning ANY decipherment hypothesis using consonant-skeleton methodology has ceiling ~57% on word-level accuracy without a vowel-disambiguation layer.",
+  "type": "structural",
+  "confidence": 0.7,
+  "evidence_for": [
+    "Mathematical consequence of skeleton length distribution",
+    "Independent of which Semitic language is assumed",
+    "Brady acknowledges this as a primary limitation"
+  ],
+  "evidence_against": [
+    "Short-skeleton ambiguity could be partially resolved by contextual co-occurrence"
+  ],
+  "test": "Compute length distribution of Brady-map skeletons; fraction with length <=2",
+  "test_metric": "short_skeleton_fraction",
+  "test_threshold": "42.9% +/- 2pp: confirmed.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Compute length distribution of Brady-map skeletons; fraction with length <=2"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": null,
+  "reasoning": "Almost trivially testable. Critical for bounding all Syriac claims.",
+  "source": "Brady Defibaugh (April 2026), A Syriac Pharmaceutical Dispensatory Encoded in the Voynich Manuscript (DANI pipeline v31)",
+  "researcher": "brady-defibaugh"
+}

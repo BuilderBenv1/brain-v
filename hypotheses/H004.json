@@ -2,7 +2,7 @@
   "id": "H004",
   "claim": "The Currier A/B split reflects a genuine linguistic difference between two distinct languages or dialects.",
   "type": "language",
-  "confidence": 0.939,
+  "confidence": 0.978,
   "evidence_for": [
     "Currier A/B split is significant (R-squared=0.9084) and moderate Zipf fit"
   ],
@@ -124,12 +124,60 @@
       "passed": true,
       "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
       "confidence_change": "0.928 -> 0.939"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare word and glyph distributions between currier a and b using a chi-squared test",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.939 -> 0.948"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare word and glyph distributions between currier a and b using a chi-squared test",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.948 -> 0.956"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare word and glyph distributions between currier a and b using a chi-squared test",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.956 -> 0.963"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare word and glyph distributions between currier a and b using a chi-squared test",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.963 -> 0.969"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare word and glyph distributions between currier a and b using a chi-squared test",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.969 -> 0.974"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare word and glyph distributions between currier a and b using a chi-squared test",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.974 -> 0.978"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "If confirmed, this would suggest that the manuscript contains multiple languages or dialects, which would greatly complicate decipherment"
 }

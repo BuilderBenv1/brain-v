@@ -1,0 +1,155 @@
+{
+  "date": "2026-04-15",
+  "cycle": "predict",
+  "model": "claude-code-cli",
+  "belief_count": 39,
+  "existing_hypothesis_count": 134,
+  "new_hypotheses": [
+    "H115",
+    "H116",
+    "H117",
+    "H118",
+    "H119"
+  ],
+  "hypotheses": [
+    {
+      "id": "H115",
+      "claim": "The Currier A and B sub-corpora encode the same underlying language but use two structurally distinct homophonic cipher tables, each mapping plaintext letters to different glyph sets, which explains why the A/B vocabularies share Zipf-law structure but differ in high-frequency word forms.",
+      "type": "cipher",
+      "confidence": 0.81,
+      "evidence_for": [
+        "Currier A (11,022 words) and B (23,766 words) show different top word distributions yet both obey Zipf scaling (exponent ~0.89)",
+        "High belief scores (0.843\u00e2\u20ac\u201c0.918) consistently support two scribes using two distinct cipher tables on the same underlying language",
+        "Word-initial and word-final glyph positional constraints are present in both sub-corpora, suggesting a shared grammatical structure beneath the cipher"
+      ],
+      "evidence_against": [
+        "If the tables are truly distinct, cross-corpus bigram transitions should show near-zero overlap, but some overlap is observed",
+        "Hapax ratio of 70.1% is higher than expected for a homophonic system with a fixed table, which should reduce type diversity"
+      ],
+      "test": "Split corpus into Currier A and B; compute pairwise Jaccard similarity of top-200 word types and of word-initial/final glyph frequency vectors between the two sub-corpora; then test whether a shared underlying vocabulary can be recovered by aligning each sub-corpus's high-frequency words to a common rank-ordered list.",
+      "test_metric": "Jaccard similarity of top-200 word types between A and B; Pearson correlation of their word-initial glyph frequency vectors",
+      "test_threshold": "Jaccard < 0.15 and glyph-vector correlation > 0.7 would confirm structurally distinct tables over the same language; Jaccard > 0.4 would suggest the same table (or same dialect).",
+      "tests_run": [],
+      "tests_remaining": [
+        "Split corpus into Currier A and B; compute pairwise Jaccard similarity of top-200 word types and of word-initial/final glyph frequency vectors between the two sub-corpora; then test whether a shared underlying vocabulary can be recovered by aligning each sub-corpus's high-frequency words to a common rank-ordered list."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "If confirmed, this narrows the cipher search to a two-table homophonic system and eliminates single-table substitution; if denied, it supports a genuine bi-lingual or bi-dialectal explanation for the A/B split."
+    },
+    {
+      "id": "H116",
+      "claim": "The anomalously low entropy in the zodiac (3.7149 bits) and astronomical (3.7471 bits) sections relative to the text-only section (3.9016 bits) is produced by a label-encoding convention in which short positional labels (star names, month labels) are drawn from a restricted glyph sub-alphabet, reducing effective entropy rather than reflecting a different cipher.",
+      "type": "structural",
+      "confidence": 0.71,
+      "evidence_for": [
+        "Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d consistent with sparse label-heavy layout",
+        "Entropy gradient across sections (zodiac 3.71 < astronomical 3.75 < biological 3.80 < herbal 3.85 < text-only 3.90) tracks visually observed label density",
+        "Strong prior belief (0.704\u00e2\u20ac\u201c0.726) that zodiac entropy reflects label-oriented encoding"
+      ],
+      "evidence_against": [
+        "If labels are simply shorter words, average word length in zodiac should be significantly below corpus mean of 5.03 \u00e2\u20ac\u201d this needs verification",
+        "Some zodiac folios contain longer running text, not only labels, which would dilute the label-entropy effect"
+      ],
+      "test": "Segment zodiac and astronomical folios into 'label tokens' (words appearing beside illustrations, isolated by white space) versus 'running text tokens'; compute glyph entropy separately for each segment and compare to herbal and text-only section entropy.",
+      "test_metric": "Glyph entropy of zodiac label tokens vs. zodiac running-text tokens vs. herbal section; mean word length of label tokens",
+      "test_threshold": "Label-token entropy < 3.5 bits AND running-text entropy > 3.8 bits would confirm the label-encoding hypothesis; if both segments share entropy ~3.71, a different explanation is needed.",
+      "tests_run": [],
+      "tests_remaining": [
+        "Segment zodiac and astronomical folios into 'label tokens' (words appearing beside illustrations, isolated by white space) versus 'running text tokens'; compute glyph entropy separately for each segment and compare to herbal and text-only section entropy."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "Isolating the entropy drop to label tokens would sharply constrain the cipher model for those sections, potentially revealing the restricted sub-alphabet used for labels."
+    },
+    {
+      "id": "H117",
+      "claim": "The 70.1% hapax ratio is substantially artifactual: a systematic suffix composed of word-final glyphs drawn from {y, n, l, r, o} acts as a grammatical or cipher suffix, and stripping these final glyphs from all word tokens reduces the effective vocabulary size and hapax ratio to levels consistent with natural language (~30\u00e2\u20ac\u201c45% hapax).",
+      "type": "cipher",
+      "confidence": 0.62,
+      "evidence_for": [
+        "Word-final glyph set {y, n, l, r, o} is highly constrained and positionally predictable \u00e2\u20ac\u201d consistent with suffixal affixes rather than freely distributed glyphs",
+        "Belief score 0.37 for suffix-stripping reducing hapax ratio, but higher scores (0.79\u00e2\u20ac\u201c0.87) confirm positional constraints are cipher-structural",
+        "Stripping inflectional suffixes in Latin reduces hapax rates significantly in comparable medieval corpora"
+      ],
+      "evidence_against": [
+        "Prior attempt scored only 0.37 confidence, suggesting the reduction may not bring hapax to natural-language levels",
+        "If suffixes encode meaningful cipher content rather than grammar, stripping them would destroy information rather than reveal stems",
+        "Average word length of 5.03 is short; removing 1\u00e2\u20ac\u201c2 final glyphs may fragment many tokens"
+      ],
+      "test": "For each unique word type, strip all trailing glyphs belonging to {y, n, l, r, o} (up to 2 glyphs); recompute vocabulary size, hapax count, and hapax ratio on the stemmed corpus; also recompute Zipf exponent and entropy on stemmed tokens.",
+      "test_metric": "Hapax ratio of stemmed corpus; Zipf exponent of stemmed corpus; reduction in unique vocabulary size",
+      "test_threshold": "Stemmed hapax ratio < 45% and Zipf exponent moving closer to 1.0 would support systematic suffix hypothesis; ratio remaining > 60% would suggest hapaxes are not suffix-driven.",
+      "tests_run": [],
+      "tests_remaining": [
+        "For each unique word type, strip all trailing glyphs belonging to {y, n, l, r, o} (up to 2 glyphs); recompute vocabulary size, hapax count, and hapax ratio on the stemmed corpus; also recompute Zipf exponent and entropy on stemmed tokens."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "If suffix-stripping halves the hapax rate and improves the Zipf fit, it strongly supports a morphologically inflected plaintext (Latin/Italian) with a predictable cipher suffix, narrowing both the language and cipher type simultaneously."
+    },
+    {
+      "id": "H118",
+      "claim": "The recipes section (25 folios, 11,611 words, entropy 3.8586 bits \u00e2\u20ac\u201d the largest section by word count) encodes a natural-language text with less cipher transformation than the herbal section, as evidenced by its higher entropy and larger word count approximating the statistical footprint of an unenciphered medieval recipe corpus.",
+      "type": "language",
+      "confidence": 0.68,
+      "evidence_for": [
+        "Recipes section has second-highest entropy (3.8586 bits), just below text-only (3.9016), suggesting less entropy-reducing cipher transformation",
+        "At 11,611 words it is the largest section, providing the most statistical power for language identification",
+        "High belief (0.88) that recipes section is closest to natural language among illustrated sections"
+      ],
+      "evidence_against": [
+        "Entropy of 3.8586 is still below the text-only section, so some cipher transformation may remain",
+        "Recipes sections in medieval manuscripts use highly formulaic, repetitive language which independently lowers entropy \u00e2\u20ac\u201d this could confound the comparison",
+        "Without a decoded passage, language identification from entropy alone is ambiguous between Latin, Italian, and other Romance languages"
+      ],
+      "test": "Compare the bigram and trigram glyph entropy of the recipes section against (a) text-only section, (b) herbal section, and (c) a synthetic corpus of medieval Latin recipes encoded under simple substitution; compute mutual information between adjacent word pairs in the recipes section and compare to herbal.",
+      "test_metric": "Bigram conditional entropy H(g2|g1) and trigram conditional entropy H(g3|g2,g1) for recipes vs. other sections; inter-word mutual information",
+      "test_threshold": "Recipes bigram entropy within 0.05 bits of text-only section AND significantly above herbal would confirm recipes as least-enciphered section; inter-word MI > herbal MI would indicate more grammatical structure.",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compare the bigram and trigram glyph entropy of the recipes section against (a) text-only section, (b) herbal section, and (c) a synthetic corpus of medieval Latin recipes encoded under simple substitution; compute mutual information between adjacent word pairs in the recipes section and compare to herbal."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "If recipes section statistical profile matches natural language more closely than herbal, it should be prioritized alongside text-only as a decipherment entry point, potentially contradicting the current high prior on herbal as the best starting section."
+    },
+    {
+      "id": "H119",
+      "claim": "The glyph positional constraints (word-initial set {o,c,q,s,d}, word-final set {y,n,l,r,o}) are produced by a Vigen\u00c3\u00a8re-style polyalphabetic cipher where the key position within a word determines the allowable glyph set, such that position 1 maps to a restricted alphabet and the final position maps to a different restricted alphabet, compressing the effective entropy at word boundaries.",
+      "type": "cipher",
+      "confidence": 0.58,
+      "evidence_for": [
+        "Positional glyph constraints are too regular to be grammatical \u00e2\u20ac\u201d they hold across all sections and both Currier variants",
+        "Belief scores 0.77\u00e2\u20ac\u201c0.87 confirm that positional constraints are cipher-structural, not grammatical",
+        "A Vigen\u00c3\u00a8re-style key cycling over word length would naturally produce position-dependent glyph restrictions if certain key values map to restricted sets"
+      ],
+      "evidence_against": [
+        "Classical Vigen\u00c3\u00a8re on a 25-glyph alphabet with a short key would produce periodic index-of-coincidence peaks that have not been confirmed",
+        "If the key length equals word length, it collapses to a running-key cipher, which would produce near-uniform positional distributions rather than constrained ones",
+        "Average word length of 5.03 suggests short words dominate; Vigen\u00c3\u00a8re period detection requires longer sequences"
+      ],
+      "test": "Compute index of coincidence (IC) for each word-position slice (position 1, 2, 3, 4, 5+) across the full corpus; test for periodic structure in IC values as a function of position offset; apply Kasiski test to sequences of same-position glyphs extracted from all words of the same length.",
+      "test_metric": "Per-position IC values; Kasiski key-length estimate from same-position glyph sequences; chi-square test of glyph uniformity at each word position",
+      "test_threshold": "Per-position IC significantly above random (IC > 0.065 for a 25-glyph alphabet) AND Kasiski suggesting key length 3\u00e2\u20ac\u201c7 would support polyalphabetic hypothesis; IC near 1/25 = 0.04 at non-boundary positions would refute it.",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute index of coincidence (IC) for each word-position slice (position 1, 2, 3, 4, 5+) across the full corpus; test for periodic structure in IC values as a function of position offset; apply Kasiski test to sequences of same-position glyphs extracted from all words of the same length."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "Polyalphabetic cipher would explain positional constraints without requiring them to be grammatical, and would imply a specific key-length that could be estimated \u00e2\u20ac\u201d dramatically narrowing the cipher search space if confirmed."
+    }
+  ],
+  "raw_response": "{\"hypotheses\":[{\"claim\":\"The Currier A and B sub-corpora encode the same underlying language but use two structurally distinct homophonic cipher tables, each mapping plaintext letters to different glyph sets, which explains why the A/B vocabularies share Zipf-law structure but differ in high-frequency word forms.\",\"type\":\"cipher\",\"confidence\":0.81,\"evidence_for\":[\"Currier A (11,022 words) and B (23,766 words) show different top word distributions yet both obey Zipf scaling (exponent ~0.89)\",\"High belief scores (0.843\u00e2\u20ac\u201c0.918) consistently support two scribes using two distinct cipher tables on the same underlying language\",\"Word-initial and word-final glyph positional constraints are present in both sub-corpora, suggesting a shared grammatical structure beneath the cipher\"],\"evidence_against\":[\"If the tables are truly distinct, cross-corpus bigram transitions should show near-zero overlap, but some overlap is observed\",\"Hapax ratio of 70.1% is higher than expected for a homophonic system with a fixed table, which should reduce type diversity\"],\"test\":\"Split corpus into Currier A and B; compute pairwise Jaccard similarity of top-200 word types and of word-initial/final glyph frequency vectors between the two sub-corpora; then test whether a shared underlying vocabulary can be recovered by aligning each sub-corpus's high-frequency words to a common rank-ordered list.\",\"test_metric\":\"Jaccard similarity of top-200 word types between A and B; Pearson correlation of their word-initial glyph frequency vectors\",\"test_threshold\":\"Jaccard < 0.15 and glyph-vector correlation > 0.7 would confirm structurally distinct tables over the same language; Jaccard > 0.4 would suggest the same table (or same dialect).\",\"reasoning\":\"If confirmed, this narrows the cipher search to a two-table homophonic system and eliminates single-table substitution; if denied, it supports a genuine bi-lingual or bi-dialectal explanation for the A/B split.\"},{\"claim\":\"The anomalously low entropy in the zodiac (3.7149 bits) and astronomical (3.7471 bits) sections relative to the text-only section (3.9016 bits) is produced by a label-encoding convention in which short positional labels (star names, month labels) are drawn from a restricted glyph sub-alphabet, reducing effective entropy rather than reflecting a different cipher.\",\"type\":\"structural\",\"confidence\":0.71,\"evidence_for\":[\"Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d consistent with sparse label-heavy layout\",\"Entropy gradient across sections (zodiac 3.71 < astronomical 3.75 < biological 3.80 < herbal 3.85 < text-only 3.90) tracks visually observed label density\",\"Strong prior belief (0.704\u00e2\u20ac\u201c0.726) that zodiac entropy reflects label-oriented encoding\"],\"evidence_against\":[\"If labels are simply shorter words, average word length in zodiac should be significantly below corpus mean of 5.03 \u00e2\u20ac\u201d this needs verification\",\"Some zodiac folios contain longer running text, not only labels, which would dilute the label-entropy effect\"],\"test\":\"Segment zodiac and astronomical folios into 'label tokens' (words appearing beside illustrations, isolated by white space) versus 'running text tokens'; compute glyph entropy separately for each segment and compare to herbal and text-only section entropy.\",\"test_metric\":\"Glyph entropy of zodiac label tokens vs. zodiac running-text tokens vs. herbal section; mean word length of label tokens\",\"test_threshold\":\"Label-token entropy < 3.5 bits AND running-text entropy > 3.8 bits would confirm the label-encoding hypothesis; if both segments share entropy ~3.71, a different explanation is needed.\",\"reasoning\":\"Isolating the entropy drop to label tokens would sharply constrain the cipher model for those sections, potentially revealing the restricted sub-alphabet used for labels.\"},{\"claim\":\"The 70.1% hapax ratio is substantially artifactual: a systematic suffix composed of word-final glyphs drawn from {y, n, l, r, o} acts as a grammatical or cipher suffix, and stripping these final glyphs from all word tokens reduces the effective vocabulary size and hapax ratio to levels consistent with natural language (~30\u00e2\u20ac\u201c45% hapax).\",\"type\":\"cipher\",\"confidence\":0.62,\"evidence_for\":[\"Word-final glyph set {y, n, l, r, o} is highly constrained and positionally predictable \u00e2\u20ac\u201d consistent with suffixal affixes rather than freely distributed glyphs\",\"Belief score 0.37 for suffix-stripping reducing hapax ratio, but higher scores (0.79\u00e2\u20ac\u201c0.87) confirm positional constraints are cipher-structural\",\"Stripping inflectional suffixes in Latin reduces hapax rates significantly in comparable medieval corpora\"],\"evidence_against\":[\"Prior attempt scored only 0.37 confidence, suggesting the reduction may not bring hapax to natural-language levels\",\"If suffixes encode meaningful cipher content rather than grammar, stripping them would destroy information rather than reveal stems\",\"Average word length of 5.03 is short; removing 1\u00e2\u20ac\u201c2 final glyphs may fragment many tokens\"],\"test\":\"For each unique word type, strip all trailing glyphs belonging to {y, n, l, r, o} (up to 2 glyphs); recompute vocabulary size, hapax count, and hapax ratio on the stemmed corpus; also recompute Zipf exponent and entropy on stemmed tokens.\",\"test_metric\":\"Hapax ratio of stemmed corpus; Zipf exponent of stemmed corpus; reduction in unique vocabulary size\",\"test_threshold\":\"Stemmed hapax ratio < 45% and Zipf exponent moving closer to 1.0 would support systematic suffix hypothesis; ratio remaining > 60% would suggest hapaxes are not suffix-driven.\",\"reasoning\":\"If suffix-stripping halves the hapax rate and improves the Zipf fit, it strongly supports a morphologically inflected plaintext (Latin/Italian) with a predictable cipher suffix, narrowing both the language and cipher type simultaneously.\"},{\"claim\":\"The recipes section (25 folios, 11,611 words, entropy 3.8586 bits \u00e2\u20ac\u201d the largest section by word count) encodes a natural-language text with less cipher transformation than the herbal section, as evidenced by its higher entropy and larger word count approximating the statistical footprint of an unenciphered medieval recipe corpus.\",\"type\":\"language\",\"confidence\":0.68,\"evidence_for\":[\"Recipes section has second-highest entropy (3.8586 bits), just below text-only (3.9016), suggesting less entropy-reducing cipher transformation\",\"At 11,611 words it is the largest section, providing the most statistical power for language identification\",\"High belief (0.88) that recipes section is closest to natural language among illustrated sections\"],\"evidence_against\":[\"Entropy of 3.8586 is still below the text-only section, so some cipher transformation may remain\",\"Recipes sections in medieval manuscripts use highly formulaic, repetitive language which independently lowers entropy \u00e2\u20ac\u201d this could confound the comparison\",\"Without a decoded passage, language identification from entropy alone is ambiguous between Latin, Italian, and other Romance languages\"],\"test\":\"Compare the bigram and trigram glyph entropy of the recipes section against (a) text-only section, (b) herbal section, and (c) a synthetic corpus of medieval Latin recipes encoded under simple substitution; compute mutual information between adjacent word pairs in the recipes section and compare to herbal.\",\"test_metric\":\"Bigram conditional entropy H(g2|g1) and trigram conditional entropy H(g3|g2,g1) for recipes vs. other sections; inter-word mutual information\",\"test_threshold\":\"Recipes bigram entropy within 0.05 bits of text-only section AND significantly above herbal would confirm recipes as least-enciphered section; inter-word MI > herbal MI would indicate more grammatical structure.\",\"reasoning\":\"If recipes section statistical profile matches natural language more closely than herbal, it should be prioritized alongside text-only as a decipherment entry point, potentially contradicting the current high prior on herbal as the best starting section.\"},{\"claim\":\"The glyph positional constraints (word-initial set {o,c,q,s,d}, word-final set {y,n,l,r,o}) are produced by a Vigen\u00c3\u00a8re-style polyalphabetic cipher where the key position within a word determines the allowable glyph set, such that position 1 maps to a restricted alphabet and the final position maps to a different restricted alphabet, compressing the effective entropy at word boundaries.\",\"type\":\"cipher\",\"confidence\":0.58,\"evidence_for\":[\"Positional glyph constraints are too regular to be grammatical \u00e2\u20ac\u201d they hold across all sections and both Currier variants\",\"Belief scores 0.77\u00e2\u20ac\u201c0.87 confirm that positional constraints are cipher-structural, not grammatical\",\"A Vigen\u00c3\u00a8re-style key cycling over word length would naturally produce position-dependent glyph restrictions if certain key values map to restricted sets\"],\"evidence_against\":[\"Classical Vigen\u00c3\u00a8re on a 25-glyph alphabet with a short key would produce periodic index-of-coincidence peaks that have not been confirmed\",\"If the key length equals word length, it collapses to a running-key cipher, which would produce near-uniform positional distributions rather than constrained ones\",\"Average word length of 5.03 suggests short words dominate; Vigen\u00c3\u00a8re period detection requires longer sequences\"],\"test\":\"Compute index of coincidence (IC) for each word-position slice (position 1, 2, 3, 4, 5+) across the full corpus; test for periodic structure in IC values as a function of position offset; apply Kasiski test to sequences of same-position glyphs extracted from all words of the same length.\",\"test_metric\":\"Per-position IC values; Kasiski key-length estimate from same-position glyph sequences; chi-square test of glyph uniformity at each word position\",\"test_threshold\":\"Per-position IC significantly above random (IC > 0.065 for a 25-glyph alphabet) AND Kasiski suggesting key length 3\u00e2\u20ac\u201c7 would support polyalphabetic hypothesis; IC near 1/25 = 0.04 at non-boundary positions would refute it.\",\"reasoning\":\"Polyalphabetic cipher would explain positional constraints without requiring them to be grammatical, and would imply a specific key-length that could be estimated \u00e2\u20ac\u201d dramatically narrowing the cipher search space if confirmed.\"}]}"
+}

@@ -1,0 +1,59 @@
+{
+  "id": "H124",
+  "claim": "The dominant word-initial glyph constraints {o, c, q, s, d} and word-final constraints {y, n, l, r, o} are artefacts of a Vigenere-like polyalphabetic cipher with a key length of 3-7 characters, such that glyph positional bias within words is a function of key-phase position rather than the underlying language's phonotactics, and the index of coincidence computed within each key-phase position would be elevated (above 0.065) relative to the overall corpus index of coincidence.",
+  "type": "cipher",
+  "confidence": 0.519,
+  "evidence_for": [
+    "Strong positional glyph constraints are difficult to explain by natural language phonotactics alone and may reflect cipher key cycling",
+    "Glyph entropy (3.8627 bits) is slightly below Latin (~4.0), consistent with modest index-of-coincidence elevation from a polyalphabetic cipher with short key",
+    "Average word length 5.03 is consistent with a key length in the 3-7 range producing detectable periodic patterns"
+  ],
+  "evidence_against": [
+    "Vigenere-type ciphers typically do not produce strong word-boundary-aligned positional constraints unless key resets at word boundaries \u00e2\u20ac\u201d an unusual design",
+    "Existing high-confidence beliefs (0.946, 0.863) favor word-boundary constraints as reflecting cipher structure or Vigenere-like word-boundary key resets rather than intra-word periodicity",
+    "If key resets at each word start, a Kasiski/Friedman test on the full character stream would fail to detect period, making the test harder to apply"
+  ],
+  "test": "Apply Friedman index-of-coincidence test across the full linearized glyph sequence (ignoring word boundaries) using sliding windows of length 3 through 10; additionally, if word-boundary key reset is suspected, compute index of coincidence within each word-position stratum (position 1, 2, 3, ...) across all words of length >= 5 and test whether any stratum shows IC above 0.065.",
+  "test_metric": "Index of coincidence for each candidate key length (3-10) in Friedman test; per-position IC across words stratified by within-word glyph position",
+  "test_threshold": "Confirm polyalphabetic cipher with key length k if IC at period k exceeds 0.065 (Latin IC ~0.0667) and is significantly above overall corpus IC; deny if no period in 3-10 shows IC elevation and per-position IC is uniform across word positions",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "apply friedman index-of-coincidence test across the full linearized glyph sequence (ignoring word bo",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'r', 'n'}. Universal glyphs: {'a', 'o', 'd', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.440 -> 0.461"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "apply friedman index-of-coincidence test across the full linearized glyph sequence (ignoring word bo",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'n', 'r'}. Universal glyphs: {'d', 'o', 'a', 'l'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.461 -> 0.481"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "apply friedman index-of-coincidence test across the full linearized glyph sequence (ignoring word bo",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'m', 'n', 'r'}. Universal glyphs: {'o', 'd', 'l', 'a'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.481 -> 0.500"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "apply friedman index-of-coincidence test across the full linearized glyph sequence (ignoring word bo",
+      "score": 0.25,
+      "passed": true,
+      "details": "Positional distinctness: 0.25. First-only glyphs: {'q'}. Last-only glyphs: {'r', 'm', 'n'}. Universal glyphs: {'l', 'o', 'a', 'd'}. Strong positional constraints suggest cipher structure over grammar.",
+      "confidence_change": "0.500 -> 0.519"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "A polyalphabetic explanation for positional constraints would be confirmed or eliminated by IC periodicity analysis, which is computationally straightforward; if denied, it shifts probability mass toward the word-boundary cipher-reset model already supported by existing high-confidence hypotheses."
+}

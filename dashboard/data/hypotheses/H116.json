@@ -1,0 +1,66 @@
+{
+  "id": "H116",
+  "claim": "The anomalously low entropy in the zodiac (3.7149 bits) and astronomical (3.7471 bits) sections relative to the text-only section (3.9016 bits) is produced by a label-encoding convention in which short positional labels (star names, month labels) are drawn from a restricted glyph sub-alphabet, reducing effective entropy rather than reflecting a different cipher.",
+  "type": "structural",
+  "confidence": 0.864,
+  "evidence_for": [
+    "Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d consistent with sparse label-heavy layout",
+    "Entropy gradient across sections (zodiac 3.71 < astronomical 3.75 < biological 3.80 < herbal 3.85 < text-only 3.90) tracks visually observed label density",
+    "Strong prior belief (0.704\u00e2\u20ac\u201c0.726) that zodiac entropy reflects label-oriented encoding"
+  ],
+  "evidence_against": [
+    "If labels are simply shorter words, average word length in zodiac should be significantly below corpus mean of 5.03 \u00e2\u20ac\u201d this needs verification",
+    "Some zodiac folios contain longer running text, not only labels, which would dilute the label-entropy effect"
+  ],
+  "test": "Segment zodiac and astronomical folios into 'label tokens' (words appearing beside illustrations, isolated by white space) versus 'running text tokens'; compute glyph entropy separately for each segment and compare to herbal and text-only section entropy.",
+  "test_metric": "Glyph entropy of zodiac label tokens vs. zodiac running-text tokens vs. herbal section; mean word length of label tokens",
+  "test_threshold": "Label-token entropy < 3.5 bits AND running-text entropy > 3.8 bits would confirm the label-encoding hypothesis; if both segments share entropy ~3.71, a different explanation is needed.",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "segment zodiac and astronomical folios into 'label tokens' (words appearing beside illustrations, is",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.710 -> 0.751"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "segment zodiac and astronomical folios into 'label tokens' (words appearing beside illustrations, is",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.751 -> 0.786"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "segment zodiac and astronomical folios into 'label tokens' (words appearing beside illustrations, is",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.786 -> 0.816"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "segment zodiac and astronomical folios into 'label tokens' (words appearing beside illustrations, is",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.816 -> 0.842"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "segment zodiac and astronomical folios into 'label tokens' (words appearing beside illustrations, is",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.842 -> 0.864"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Isolating the entropy drop to label tokens would sharply constrain the cipher model for those sections, potentially revealing the restricted sub-alphabet used for labels."
+}

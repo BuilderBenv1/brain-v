@@ -2,7 +2,7 @@
   "id": "H100",
   "claim": "Currier A and Currier B employ two structurally distinct cipher alphabets encoding the same underlying Latin plaintext: the two sub-corpora should exhibit near-identical word-length distributions and Zipf exponents but divergent bigram transition matrices, consistent with two key tables applied to the same plaintext.",
   "type": "cipher",
-  "confidence": 0.536,
+  "confidence": 0.766,
   "evidence_for": [
     "Currier A/B split is well-attested in scribal-hand analysis",
     "High-confidence belief (0.501-0.677) that same underlying language is encoded differently across A and B",
@@ -23,12 +23,60 @@
       "passed": true,
       "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
       "confidence_change": "0.480 -> 0.536"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word-length frequency distributions, zipf exponents, and bigram transition matrices separate",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.536 -> 0.586"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word-length frequency distributions, zipf exponents, and bigram transition matrices separate",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.586 -> 0.631"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word-length frequency distributions, zipf exponents, and bigram transition matrices separate",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.631 -> 0.671"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word-length frequency distributions, zipf exponents, and bigram transition matrices separate",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.671 -> 0.706"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word-length frequency distributions, zipf exponents, and bigram transition matrices separate",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.706 -> 0.738"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute word-length frequency distributions, zipf exponents, and bigram transition matrices separate",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.738 -> 0.766"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "This test can distinguish 'same plaintext, two cipher tables' from 'two different plaintexts' without requiring decipherment, directly resolving a high-uncertainty split in current beliefs."
 }

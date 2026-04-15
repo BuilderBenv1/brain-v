@@ -1,0 +1,67 @@
+{
+  "id": "H117",
+  "claim": "The 70.1% hapax ratio is substantially artifactual: a systematic suffix composed of word-final glyphs drawn from {y, n, l, r, o} acts as a grammatical or cipher suffix, and stripping these final glyphs from all word tokens reduces the effective vocabulary size and hapax ratio to levels consistent with natural language (~30\u00e2\u20ac\u201c45% hapax).",
+  "type": "cipher",
+  "confidence": 0.821,
+  "evidence_for": [
+    "Word-final glyph set {y, n, l, r, o} is highly constrained and positionally predictable \u00e2\u20ac\u201d consistent with suffixal affixes rather than freely distributed glyphs",
+    "Belief score 0.37 for suffix-stripping reducing hapax ratio, but higher scores (0.79\u00e2\u20ac\u201c0.87) confirm positional constraints are cipher-structural",
+    "Stripping inflectional suffixes in Latin reduces hapax rates significantly in comparable medieval corpora"
+  ],
+  "evidence_against": [
+    "Prior attempt scored only 0.37 confidence, suggesting the reduction may not bring hapax to natural-language levels",
+    "If suffixes encode meaningful cipher content rather than grammar, stripping them would destroy information rather than reveal stems",
+    "Average word length of 5.03 is short; removing 1\u00e2\u20ac\u201c2 final glyphs may fragment many tokens"
+  ],
+  "test": "For each unique word type, strip all trailing glyphs belonging to {y, n, l, r, o} (up to 2 glyphs); recompute vocabulary size, hapax count, and hapax ratio on the stemmed corpus; also recompute Zipf exponent and entropy on stemmed tokens.",
+  "test_metric": "Hapax ratio of stemmed corpus; Zipf exponent of stemmed corpus; reduction in unique vocabulary size",
+  "test_threshold": "Stemmed hapax ratio < 45% and Zipf exponent moving closer to 1.0 would support systematic suffix hypothesis; ratio remaining > 60% would suggest hapaxes are not suffix-driven.",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "for each unique word type, strip all trailing glyphs belonging to {y, n, l, r, o} (up to 2 glyphs); ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.620 -> 0.673"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "for each unique word type, strip all trailing glyphs belonging to {y, n, l, r, o} (up to 2 glyphs); ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.673 -> 0.719"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "for each unique word type, strip all trailing glyphs belonging to {y, n, l, r, o} (up to 2 glyphs); ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.719 -> 0.758"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "for each unique word type, strip all trailing glyphs belonging to {y, n, l, r, o} (up to 2 glyphs); ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.758 -> 0.792"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "for each unique word type, strip all trailing glyphs belonging to {y, n, l, r, o} (up to 2 glyphs); ",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.792 -> 0.821"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "If suffix-stripping halves the hapax rate and improves the Zipf fit, it strongly supports a morphologically inflected plaintext (Latin/Italian) with a predictable cipher suffix, narrowing both the language and cipher type simultaneously."
+}

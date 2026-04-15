@@ -2,7 +2,7 @@
   "id": "H019",
   "claim": "The text uses a combination of substitution and transposition ciphers in the herbal section.",
   "type": "cipher",
-  "confidence": 0.849,
+  "confidence": 0.897,
   "evidence_for": [
     "The herbal section has higher entropy levels compared to other sections",
     "The word-final glyph distribution in the herbal section shows a higher frequency of 'y' and 'n', which are common in transposition ciphers"
@@ -99,12 +99,60 @@
       "passed": true,
       "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
       "confidence_change": "0.839 -> 0.849"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "run a mutual information test on the relationship between glyphs in the herbal section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.849 -> 0.858"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "run a mutual information test on the relationship between glyphs in the herbal section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.858 -> 0.867"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "run a mutual information test on the relationship between glyphs in the herbal section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.867 -> 0.875"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "run a mutual information test on the relationship between glyphs in the herbal section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.875 -> 0.883"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "run a mutual information test on the relationship between glyphs in the herbal section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.883 -> 0.890"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "run a mutual information test on the relationship between glyphs in the herbal section",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.890 -> 0.897"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "If confirmed, this would provide insight into the cipher structure used in the manuscript"
 }

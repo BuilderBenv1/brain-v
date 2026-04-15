@@ -311,12 +311,60 @@
       "passed": true,
       "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
       "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute 25x25 bigram transition matrices separately for currier a and b; attempt to find a permutati",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute 25x25 bigram transition matrices separately for currier a and b; attempt to find a permutati",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute 25x25 bigram transition matrices separately for currier a and b; attempt to find a permutati",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute 25x25 bigram transition matrices separately for currier a and b; attempt to find a permutati",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute 25x25 bigram transition matrices separately for currier a and b; attempt to find a permutati",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute 25x25 bigram transition matrices separately for currier a and b; attempt to find a permutati",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.990 -> 0.990"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "This hypothesis sharply distinguishes between two leading explanations for the A/B split and would either unify the decipherment problem (one language, two hands) or confirm the need for separate linguistic models. The permutation search is computationally tractable with 25 glyphs."
 }

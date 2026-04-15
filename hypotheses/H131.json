@@ -1,0 +1,44 @@
+{
+  "id": "H131",
+  "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) results from a label-only encoding where each glyph token maps to one of a small closed set of calendar or ordinal terms (month names, numerals, star names), making the zodiac section structurally independent from the prose cipher used in herbal and recipes sections.",
+  "type": "structural",
+  "confidence": 0.789,
+  "evidence_for": [
+    "Zodiac entropy 3.7149 bits is the lowest across all sections, consistent with a restricted vocabulary of labels",
+    "Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d far fewer words per folio than herbal (84/folio) or recipes (464/folio)",
+    "Label-heavy sections would naturally produce lower entropy due to repetition of a small token set",
+    "Astronomical section also shows reduced entropy (3.7471 bits), consistent with a shared label-encoding scheme"
+  ],
+  "evidence_against": [
+    "Low entropy could also result from heavier use of the word-initial constraint glyphs {o,c,q,s,d} rather than a label vocabulary",
+    "No confirmed correspondence between zodiac tokens and known calendar terms has been established",
+    "If zodiac uses a different cipher, Currier A/B classification within the zodiac would need to be independent \u00e2\u20ac\u201d not yet verified"
+  ],
+  "test": "Compute the type-token ratio (TTR) and the frequency distribution of the top-20 word types in the zodiac section; compare TTR and top-type coverage to all other sections; test whether zodiac top-20 words account for a significantly higher fraction of total zodiac tokens than in herbal or recipes sections.",
+  "test_metric": "Fraction of total zodiac tokens covered by the top-20 word types versus the same metric for herbal and recipes sections",
+  "test_threshold": "Confirm if zodiac top-20 coverage > 60% of tokens AND herbal/recipes top-20 coverage < 40%; deny if zodiac top-20 coverage is within 5 percentage points of herbal top-20 coverage",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "compute the type-token ratio (ttr) and the frequency distribution of the top-20 word types in the zo",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.760 -> 0.775"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the type-token ratio (ttr) and the frequency distribution of the top-20 word types in the zo",
+      "score": 0.4073624632205617,
+      "passed": true,
+      "details": "Section entropy std dev: 0.0593. Range: 3.7149 - 3.9016. Variable across sections.",
+      "confidence_change": "0.775 -> 0.789"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "A label-only encoding would produce a sharply peaked frequency distribution with a small number of types dominating total token count; this is directly testable and, if confirmed, would justify analyzing the zodiac independently from prose sections."
+}

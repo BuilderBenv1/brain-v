@@ -1,0 +1,67 @@
+{
+  "id": "H118",
+  "claim": "The recipes section (25 folios, 11,611 words, entropy 3.8586 bits \u00e2\u20ac\u201d the largest section by word count) encodes a natural-language text with less cipher transformation than the herbal section, as evidenced by its higher entropy and larger word count approximating the statistical footprint of an unenciphered medieval recipe corpus.",
+  "type": "language",
+  "confidence": 0.849,
+  "evidence_for": [
+    "Recipes section has second-highest entropy (3.8586 bits), just below text-only (3.9016), suggesting less entropy-reducing cipher transformation",
+    "At 11,611 words it is the largest section, providing the most statistical power for language identification",
+    "High belief (0.88) that recipes section is closest to natural language among illustrated sections"
+  ],
+  "evidence_against": [
+    "Entropy of 3.8586 is still below the text-only section, so some cipher transformation may remain",
+    "Recipes sections in medieval manuscripts use highly formulaic, repetitive language which independently lowers entropy \u00e2\u20ac\u201d this could confound the comparison",
+    "Without a decoded passage, language identification from entropy alone is ambiguous between Latin, Italian, and other Romance languages"
+  ],
+  "test": "Compare the bigram and trigram glyph entropy of the recipes section against (a) text-only section, (b) herbal section, and (c) a synthetic corpus of medieval Latin recipes encoded under simple substitution; compute mutual information between adjacent word pairs in the recipes section and compare to herbal.",
+  "test_metric": "Bigram conditional entropy H(g2|g1) and trigram conditional entropy H(g3|g2,g1) for recipes vs. other sections; inter-word mutual information",
+  "test_threshold": "Recipes bigram entropy within 0.05 bits of text-only section AND significantly above herbal would confirm recipes as least-enciphered section; inter-word MI > herbal MI would indicate more grammatical structure.",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "compare the bigram and trigram glyph entropy of the recipes section against (a) text-only section, (",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.680 -> 0.725"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare the bigram and trigram glyph entropy of the recipes section against (a) text-only section, (",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.725 -> 0.763"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare the bigram and trigram glyph entropy of the recipes section against (a) text-only section, (",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.763 -> 0.796"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare the bigram and trigram glyph entropy of the recipes section against (a) text-only section, (",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.796 -> 0.824"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compare the bigram and trigram glyph entropy of the recipes section against (a) text-only section, (",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.824 -> 0.849"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "If recipes section statistical profile matches natural language more closely than herbal, it should be prioritized alongside text-only as a decipherment entry point, potentially contradicting the current high prior on herbal as the best starting section."
+}

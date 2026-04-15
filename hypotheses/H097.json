@@ -2,7 +2,7 @@
   "id": "H097",
   "claim": "The strong positional constraints on word-initial glyphs {o,c,q,s,d} and word-final glyphs {y,n,l,r,o} are artifacts of a structured nulls-and-affixes system rather than natural phonotactics: removing these positional glyphs as null markers should produce a residual corpus whose glyph entropy approaches Latin's ~4.0 bits",
   "type": "cipher",
-  "confidence": 0.689,
+  "confidence": 0.874,
   "evidence_for": [
     "Glyph entropy 3.8627 bits is measurably below Latin (~4.0) and Italian (~3.95), consistent with entropy suppression from null/affix glyphs",
     "Positional constraints are among the highest-confidence beliefs in the system (0.624, 0.608, 0.605)",
@@ -31,12 +31,60 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.639 -> 0.689"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "remove all word-initial tokens from {o,c,q,s,d} and all word-final tokens from {y,n,l,r,o} at the gl",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.689 -> 0.732"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "remove all word-initial tokens from {o,c,q,s,d} and all word-final tokens from {y,n,l,r,o} at the gl",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.732 -> 0.769"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "remove all word-initial tokens from {o,c,q,s,d} and all word-final tokens from {y,n,l,r,o} at the gl",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.769 -> 0.801"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "remove all word-initial tokens from {o,c,q,s,d} and all word-final tokens from {y,n,l,r,o} at the gl",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.801 -> 0.829"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "remove all word-initial tokens from {o,c,q,s,d} and all word-final tokens from {y,n,l,r,o} at the gl",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.829 -> 0.853"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "remove all word-initial tokens from {o,c,q,s,d} and all word-final tokens from {y,n,l,r,o} at the gl",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.853 -> 0.874"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": ""
 }

@@ -1,0 +1,162 @@
+{
+  "date": "2026-04-15",
+  "cycle": "predict",
+  "model": "claude-code-cli",
+  "belief_count": 42,
+  "existing_hypothesis_count": 149,
+  "new_hypotheses": [
+    "H130",
+    "H131",
+    "H132",
+    "H133",
+    "H134"
+  ],
+  "hypotheses": [
+    {
+      "id": "H130",
+      "claim": "The Voynich text uses a homophonic substitution cipher where word-final glyphs {y, n, l, r, o} function as morphological suffixes encoding inflectional endings of a single underlying Latin text, causing artificial vocabulary inflation and explaining the 70.1% hapax ratio.",
+      "type": "cipher",
+      "confidence": 0.71,
+      "evidence_for": [
+        "Word-final glyph set {y,n,l,r,o} mirrors common Latin inflectional endings (-i, -um, -us, -is, -a)",
+        "Stripping word-final glyphs from the hapax set would reduce unique vocabulary toward a plausible Latin core",
+        "High hapax ratio (70.1%) is disproportionate to the Zipf exponent (0.8946) for natural language",
+        "Entropy 3.8627 bits is close to Latin ~4.0 bits, consistent with a near-flat homophonic expansion"
+      ],
+      "evidence_against": [
+        "Currier A/B split suggests two encoding schemes, complicating a single-cipher model",
+        "Word entropy 10.4508 bits is high, suggesting vocabulary diversity beyond simple inflection stripping",
+        "If suffix-stripping collapses hapaxes, the remaining stem distribution should match Latin Zipf more tightly \u00e2\u20ac\u201d not yet confirmed"
+      ],
+      "test": "Strip word-final glyphs from {y,n,l,r,o} from every word token; compute new type-token ratio and Zipf exponent on the resulting stem vocabulary; compare to raw Voynich and to Latin reference corpora.",
+      "test_metric": "Post-stripping hapax ratio and Zipf exponent (expected: hapax ratio drops below 40%, Zipf exponent moves toward 1.0)",
+      "test_threshold": "Confirm if post-stripping hapax ratio < 45% AND Zipf exponent > 0.95; deny if hapax ratio remains above 60% after stripping",
+      "tests_run": [],
+      "tests_remaining": [
+        "Strip word-final glyphs from {y,n,l,r,o} from every word token; compute new type-token ratio and Zipf exponent on the resulting stem vocabulary; compare to raw Voynich and to Latin reference corpora."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "If word-final glyphs are purely morphological markers added by the cipher, stripping them should dramatically reduce vocabulary size and improve Zipf fit, narrowing the solution space to suffix-augmented substitution ciphers on inflected languages."
+    },
+    {
+      "id": "H131",
+      "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) results from a label-only encoding where each glyph token maps to one of a small closed set of calendar or ordinal terms (month names, numerals, star names), making the zodiac section structurally independent from the prose cipher used in herbal and recipes sections.",
+      "type": "structural",
+      "confidence": 0.76,
+      "evidence_for": [
+        "Zodiac entropy 3.7149 bits is the lowest across all sections, consistent with a restricted vocabulary of labels",
+        "Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d far fewer words per folio than herbal (84/folio) or recipes (464/folio)",
+        "Label-heavy sections would naturally produce lower entropy due to repetition of a small token set",
+        "Astronomical section also shows reduced entropy (3.7471 bits), consistent with a shared label-encoding scheme"
+      ],
+      "evidence_against": [
+        "Low entropy could also result from heavier use of the word-initial constraint glyphs {o,c,q,s,d} rather than a label vocabulary",
+        "No confirmed correspondence between zodiac tokens and known calendar terms has been established",
+        "If zodiac uses a different cipher, Currier A/B classification within the zodiac would need to be independent \u00e2\u20ac\u201d not yet verified"
+      ],
+      "test": "Compute the type-token ratio (TTR) and the frequency distribution of the top-20 word types in the zodiac section; compare TTR and top-type coverage to all other sections; test whether zodiac top-20 words account for a significantly higher fraction of total zodiac tokens than in herbal or recipes sections.",
+      "test_metric": "Fraction of total zodiac tokens covered by the top-20 word types versus the same metric for herbal and recipes sections",
+      "test_threshold": "Confirm if zodiac top-20 coverage > 60% of tokens AND herbal/recipes top-20 coverage < 40%; deny if zodiac top-20 coverage is within 5 percentage points of herbal top-20 coverage",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute the type-token ratio (TTR) and the frequency distribution of the top-20 word types in the zodiac section; compare TTR and top-type coverage to all other sections; test whether zodiac top-20 words account for a significantly higher fraction of total zodiac tokens than in herbal or recipes sections."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "A label-only encoding would produce a sharply peaked frequency distribution with a small number of types dominating total token count; this is directly testable and, if confirmed, would justify analyzing the zodiac independently from prose sections."
+    },
+    {
+      "id": "H132",
+      "claim": "The Currier A and Currier B sub-corpora use two structurally distinct cipher alphabets that both encode the same underlying Latin plaintext, with Currier B employing a larger effective alphabet (more glyph diversity per word position) to explain B's larger word count (23,766 vs 11,022) without a proportional increase in semantic content.",
+      "type": "cipher",
+      "confidence": 0.82,
+      "evidence_for": [
+        "Currier B has more than twice the word count of A, yet both are attributed to the same manuscript and likely similar content domains",
+        "High-confidence belief (0.971) that A and B use structurally distinct cipher tables on the same underlying language",
+        "Larger effective alphabet in B would produce more unique surface word forms from the same plaintext, consistent with B's higher absolute vocabulary size",
+        "Overall entropy 3.8627 bits is consistent with a blended signal from two slightly different cipher alphabets"
+      ],
+      "evidence_against": [
+        "Currier B's larger size may simply reflect more content being assigned to B sections, not a richer cipher alphabet",
+        "If both encode Latin, section-level entropy differences (herbal 3.8478 vs recipes 3.8586) should reflect content domain, not cipher \u00e2\u20ac\u201d but cipher differences would also affect entropy",
+        "Distinguishing cipher-alphabet size from content volume requires per-folio normalization not yet performed"
+      ],
+      "test": "For each Currier sub-corpus separately, compute (1) the number of distinct glyph bigrams per word position (initial, medial, final), (2) the conditional entropy H(glyph_n | position) for positions 1\u00e2\u20ac\u201c5, and (3) the per-word type entropy; test whether B shows significantly higher positional glyph diversity than A at matched word-length bins.",
+      "test_metric": "Mean conditional glyph entropy H(glyph | position) for Currier A vs Currier B at word lengths 4\u00e2\u20ac\u201c7 glyphs",
+      "test_threshold": "Confirm if B's mean positional glyph entropy exceeds A's by > 0.15 bits at matched word lengths; deny if the difference is < 0.05 bits",
+      "tests_run": [],
+      "tests_remaining": [
+        "For each Currier sub-corpus separately, compute (1) the number of distinct glyph bigrams per word position (initial, medial, final), (2) the conditional entropy H(glyph_n | position) for positions 1\u00e2\u20ac\u201c5, and (3) the per-word type entropy; test whether B shows significantly higher positional glyph diversity than A at matched word-length bins."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "If B uses a larger cipher alphabet, it will show higher positional glyph diversity independent of word length; this directly tests the two-cipher-table hypothesis and would distinguish it from the simpler explanation that B merely contains more text."
+    },
+    {
+      "id": "H133",
+      "claim": "The high word-initial glyph constraint ({o,c,q,s,d} dominating word starts) and word-final glyph constraint ({y,n,l,r,o} dominating word ends) are artifacts of a Vigenere-like polyalphabetic cipher where the key resets at word boundaries, causing the first and last characters of each word to be systematically drawn from whichever cipher-alphabet rows correspond to the key's initial and terminal positions.",
+      "type": "cipher",
+      "confidence": 0.67,
+      "evidence_for": [
+        "Positional glyph constraints are among the strongest structural signals in the corpus (belief 0.973)",
+        "A word-boundary key-reset in a polyalphabetic cipher would mechanically confine word-edge glyphs to a small subset of the cipher alphabet",
+        "The specific initial set {o,c,q,s,d} and final set {y,n,l,r,o} are each approximately 5 glyphs from a 25-glyph alphabet (~20%), consistent with 1\u00e2\u20ac\u201c2 active key rows at word edges",
+        "This model is consistent with Currier A/B differences if the two scribes used different key lengths or starting positions"
+      ],
+      "evidence_against": [
+        "Glyph entropy 3.8627 bits is relatively high for a polyalphabetic cipher with only 25 symbols, unless the key is long",
+        "Simple Vigenere on Latin would be expected to produce entropy closer to 4.0 bits; the slight deficit may require additional explanation",
+        "Word-boundary key resets are an unusual feature not documented in known period ciphers, reducing prior plausibility"
+      ],
+      "test": "Model the corpus as a word-boundary-reset polyalphabetic cipher: for each word-length class (3\u00e2\u20ac\u201c8 glyphs), compute the empirical glyph probability distribution at each within-word position and test whether position 1 and position N distributions are significantly more concentrated (lower entropy) than positions 2 through N-1 using a chi-squared test.",
+      "test_metric": "Per-position glyph entropy H(glyph | position_index) across word-length-controlled bins, with particular focus on the entropy gap between edge positions and interior positions",
+      "test_threshold": "Confirm if mean edge-position entropy is at least 0.4 bits lower than mean interior-position entropy; deny if edge and interior entropies differ by less than 0.15 bits",
+      "tests_run": [],
+      "tests_remaining": [
+        "Model the corpus as a word-boundary-reset polyalphabetic cipher: for each word-length class (3\u00e2\u20ac\u201c8 glyphs), compute the empirical glyph probability distribution at each within-word position and test whether position 1 and position N distributions are significantly more concentrated (lower entropy) than positions 2 through N-1 using a chi-squared test."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "A polyalphabetic cipher with word-boundary key resets produces a specific, testable signature: edge positions should show substantially lower glyph entropy than interior positions, and this pattern should be consistent across word lengths."
+    },
+    {
+      "id": "H134",
+      "claim": "The text-only section's elevated entropy (3.9016 bits, highest of all sections) reflects a prose register of the underlying natural language encoded with minimal or no transposition, while the herbal and biological sections apply additional transposition or null insertion on top of the base substitution cipher, reducing their effective entropy.",
+      "type": "cipher",
+      "confidence": 0.64,
+      "evidence_for": [
+        "Text-only entropy 3.9016 is closest to Latin (~4.0) and Italian (~3.95) reference entropies, consistent with least-modified encoding",
+        "Herbal (3.8478), biological (3.7977), pharmaceutical (3.7772) and zodiac (3.7149) all show lower entropy than text-only, consistent with additional cipher operations reducing information density",
+        "High-confidence belief (0.98) that the text-only section represents the closest approximation to natural language statistics",
+        "Null insertion or transposition operations on top of substitution would reduce per-glyph entropy by spreading information across more positions"
+      ],
+      "evidence_against": [
+        "Section entropy differences may reflect content domain (dense botanical lists vs. continuous prose) rather than cipher differences",
+        "The entropy ordering could also be explained by higher repetition of domain-specific terminology in herbal/biological sections without any transposition",
+        "The text-only section is only 7 folios (2,349 words), making statistical comparisons less reliable"
+      ],
+      "test": "Compute the bigram conditional entropy H(glyph_n+1 | glyph_n) separately for the text-only section and for the herbal, biological, and pharmaceutical sections; if transposition is applied in the latter sections, their bigram structure should be disrupted (higher conditional entropy, lower mutual information between adjacent glyphs) relative to the text-only section.",
+      "test_metric": "Per-section bigram conditional glyph entropy and adjacent-glyph mutual information I(glyph_n; glyph_n+1)",
+      "test_threshold": "Confirm if text-only bigram mutual information exceeds herbal/biological by > 0.10 bits (indicating more preserved sequential structure in text-only); deny if text-only and herbal bigram mutual information are within 0.05 bits of each other",
+      "tests_run": [],
+      "tests_remaining": [
+        "Compute the bigram conditional entropy H(glyph_n+1 | glyph_n) separately for the text-only section and for the herbal, biological, and pharmaceutical sections; if transposition is applied in the latter sections, their bigram structure should be disrupted (higher conditional entropy, lower mutual information between adjacent glyphs) relative to the text-only section."
+      ],
+      "status": "active",
+      "parent": null,
+      "created": "2026-04-15",
+      "last_tested": null,
+      "reasoning": "Transposition disrupts the sequential dependency structure of the original language; bigram mutual information is a sensitive probe of this disruption and would directly test whether section-level entropy differences reflect cipher complexity or merely content domain."
+    }
+  ],
+  "raw_response": "{\"hypotheses\": [{\"claim\": \"The Voynich text uses a homophonic substitution cipher where word-final glyphs {y, n, l, r, o} function as morphological suffixes encoding inflectional endings of a single underlying Latin text, causing artificial vocabulary inflation and explaining the 70.1% hapax ratio.\", \"type\": \"cipher\", \"confidence\": 0.71, \"evidence_for\": [\"Word-final glyph set {y,n,l,r,o} mirrors common Latin inflectional endings (-i, -um, -us, -is, -a)\", \"Stripping word-final glyphs from the hapax set would reduce unique vocabulary toward a plausible Latin core\", \"High hapax ratio (70.1%) is disproportionate to the Zipf exponent (0.8946) for natural language\", \"Entropy 3.8627 bits is close to Latin ~4.0 bits, consistent with a near-flat homophonic expansion\"], \"evidence_against\": [\"Currier A/B split suggests two encoding schemes, complicating a single-cipher model\", \"Word entropy 10.4508 bits is high, suggesting vocabulary diversity beyond simple inflection stripping\", \"If suffix-stripping collapses hapaxes, the remaining stem distribution should match Latin Zipf more tightly \u00e2\u20ac\u201d not yet confirmed\"], \"test\": \"Strip word-final glyphs from {y,n,l,r,o} from every word token; compute new type-token ratio and Zipf exponent on the resulting stem vocabulary; compare to raw Voynich and to Latin reference corpora.\", \"test_metric\": \"Post-stripping hapax ratio and Zipf exponent (expected: hapax ratio drops below 40%, Zipf exponent moves toward 1.0)\", \"test_threshold\": \"Confirm if post-stripping hapax ratio < 45% AND Zipf exponent > 0.95; deny if hapax ratio remains above 60% after stripping\", \"reasoning\": \"If word-final glyphs are purely morphological markers added by the cipher, stripping them should dramatically reduce vocabulary size and improve Zipf fit, narrowing the solution space to suffix-augmented substitution ciphers on inflected languages.\"},{\"claim\": \"The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) results from a label-only encoding where each glyph token maps to one of a small closed set of calendar or ordinal terms (month names, numerals, star names), making the zodiac section structurally independent from the prose cipher used in herbal and recipes sections.\", \"type\": \"structural\", \"confidence\": 0.76, \"evidence_for\": [\"Zodiac entropy 3.7149 bits is the lowest across all sections, consistent with a restricted vocabulary of labels\", \"Zodiac section has only 1,297 words across 12 folios \u00e2\u20ac\u201d far fewer words per folio than herbal (84/folio) or recipes (464/folio)\", \"Label-heavy sections would naturally produce lower entropy due to repetition of a small token set\", \"Astronomical section also shows reduced entropy (3.7471 bits), consistent with a shared label-encoding scheme\"], \"evidence_against\": [\"Low entropy could also result from heavier use of the word-initial constraint glyphs {o,c,q,s,d} rather than a label vocabulary\", \"No confirmed correspondence between zodiac tokens and known calendar terms has been established\", \"If zodiac uses a different cipher, Currier A/B classification within the zodiac would need to be independent \u00e2\u20ac\u201d not yet verified\"], \"test\": \"Compute the type-token ratio (TTR) and the frequency distribution of the top-20 word types in the zodiac section; compare TTR and top-type coverage to all other sections; test whether zodiac top-20 words account for a significantly higher fraction of total zodiac tokens than in herbal or recipes sections.\", \"test_metric\": \"Fraction of total zodiac tokens covered by the top-20 word types versus the same metric for herbal and recipes sections\", \"test_threshold\": \"Confirm if zodiac top-20 coverage > 60% of tokens AND herbal/recipes top-20 coverage < 40%; deny if zodiac top-20 coverage is within 5 percentage points of herbal top-20 coverage\", \"reasoning\": \"A label-only encoding would produce a sharply peaked frequency distribution with a small number of types dominating total token count; this is directly testable and, if confirmed, would justify analyzing the zodiac independently from prose sections.\"},{\"claim\": \"The Currier A and Currier B sub-corpora use two structurally distinct cipher alphabets that both encode the same underlying Latin plaintext, with Currier B employing a larger effective alphabet (more glyph diversity per word position) to explain B's larger word count (23,766 vs 11,022) without a proportional increase in semantic content.\", \"type\": \"cipher\", \"confidence\": 0.82, \"evidence_for\": [\"Currier B has more than twice the word count of A, yet both are attributed to the same manuscript and likely similar content domains\", \"High-confidence belief (0.971) that A and B use structurally distinct cipher tables on the same underlying language\", \"Larger effective alphabet in B would produce more unique surface word forms from the same plaintext, consistent with B's higher absolute vocabulary size\", \"Overall entropy 3.8627 bits is consistent with a blended signal from two slightly different cipher alphabets\"], \"evidence_against\": [\"Currier B's larger size may simply reflect more content being assigned to B sections, not a richer cipher alphabet\", \"If both encode Latin, section-level entropy differences (herbal 3.8478 vs recipes 3.8586) should reflect content domain, not cipher \u00e2\u20ac\u201d but cipher differences would also affect entropy\", \"Distinguishing cipher-alphabet size from content volume requires per-folio normalization not yet performed\"], \"test\": \"For each Currier sub-corpus separately, compute (1) the number of distinct glyph bigrams per word position (initial, medial, final), (2) the conditional entropy H(glyph_n | position) for positions 1\u00e2\u20ac\u201c5, and (3) the per-word type entropy; test whether B shows significantly higher positional glyph diversity than A at matched word-length bins.\", \"test_metric\": \"Mean conditional glyph entropy H(glyph | position) for Currier A vs Currier B at word lengths 4\u00e2\u20ac\u201c7 glyphs\", \"test_threshold\": \"Confirm if B's mean positional glyph entropy exceeds A's by > 0.15 bits at matched word lengths; deny if the difference is < 0.05 bits\", \"reasoning\": \"If B uses a larger cipher alphabet, it will show higher positional glyph diversity independent of word length; this directly tests the two-cipher-table hypothesis and would distinguish it from the simpler explanation that B merely contains more text.\"},{\"claim\": \"The high word-initial glyph constraint ({o,c,q,s,d} dominating word starts) and word-final glyph constraint ({y,n,l,r,o} dominating word ends) are artifacts of a Vigenere-like polyalphabetic cipher where the key resets at word boundaries, causing the first and last characters of each word to be systematically drawn from whichever cipher-alphabet rows correspond to the key's initial and terminal positions.\", \"type\": \"cipher\", \"confidence\": 0.67, \"evidence_for\": [\"Positional glyph constraints are among the strongest structural signals in the corpus (belief 0.973)\", \"A word-boundary key-reset in a polyalphabetic cipher would mechanically confine word-edge glyphs to a small subset of the cipher alphabet\", \"The specific initial set {o,c,q,s,d} and final set {y,n,l,r,o} are each approximately 5 glyphs from a 25-glyph alphabet (~20%), consistent with 1\u00e2\u20ac\u201c2 active key rows at word edges\", \"This model is consistent with Currier A/B differences if the two scribes used different key lengths or starting positions\"], \"evidence_against\": [\"Glyph entropy 3.8627 bits is relatively high for a polyalphabetic cipher with only 25 symbols, unless the key is long\", \"Simple Vigenere on Latin would be expected to produce entropy closer to 4.0 bits; the slight deficit may require additional explanation\", \"Word-boundary key resets are an unusual feature not documented in known period ciphers, reducing prior plausibility\"], \"test\": \"Model the corpus as a word-boundary-reset polyalphabetic cipher: for each word-length class (3\u00e2\u20ac\u201c8 glyphs), compute the empirical glyph probability distribution at each within-word position and test whether position 1 and position N distributions are significantly more concentrated (lower entropy) than positions 2 through N-1 using a chi-squared test.\", \"test_metric\": \"Per-position glyph entropy H(glyph | position_index) across word-length-controlled bins, with particular focus on the entropy gap between edge positions and interior positions\", \"test_threshold\": \"Confirm if mean edge-position entropy is at least 0.4 bits lower than mean interior-position entropy; deny if edge and interior entropies differ by less than 0.15 bits\", \"reasoning\": \"A polyalphabetic cipher with word-boundary key resets produces a specific, testable signature: edge positions should show substantially lower glyph entropy than interior positions, and this pattern should be consistent across word lengths.\"},{\"claim\": \"The text-only section's elevated entropy (3.9016 bits, highest of all sections) reflects a prose register of the underlying natural language encoded with minimal or no transposition, while the herbal and biological sections apply additional transposition or null insertion on top of the base substitution cipher, reducing their effective entropy.\", \"type\": \"cipher\", \"confidence\": 0.64, \"evidence_for\": [\"Text-only entropy 3.9016 is closest to Latin (~4.0) and Italian (~3.95) reference entropies, consistent with least-modified encoding\", \"Herbal (3.8478), biological (3.7977), pharmaceutical (3.7772) and zodiac (3.7149) all show lower entropy than text-only, consistent with additional cipher operations reducing information density\", \"High-confidence belief (0.98) that the text-only section represents the closest approximation to natural language statistics\", \"Null insertion or transposition operations on top of substitution would reduce per-glyph entropy by spreading information across more positions\"], \"evidence_against\": [\"Section entropy differences may reflect content domain (dense botanical lists vs. continuous prose) rather than cipher differences\", \"The entropy ordering could also be explained by higher repetition of domain-specific terminology in herbal/biological sections without any transposition\", \"The text-only section is only 7 folios (2,349 words), making statistical comparisons less reliable\"], \"test\": \"Compute the bigram conditional entropy H(glyph_n+1 | glyph_n) separately for the text-only section and for the herbal, biological, and pharmaceutical sections; if transposition is applied in the latter sections, their bigram structure should be disrupted (higher conditional entropy, lower mutual information between adjacent glyphs) relative to the text-only section.\", \"test_metric\": \"Per-section bigram conditional glyph entropy and adjacent-glyph mutual information I(glyph_n; glyph_n+1)\", \"test_threshold\": \"Confirm if text-only bigram mutual information exceeds herbal/biological by > 0.10 bits (indicating more preserved sequential structure in text-only); deny if text-only and herbal bigram mutual information are within 0.05 bits of each other\", \"reasoning\": \"Transposition disrupts the sequential dependency structure of the original language; bigram mutual information is a sensitive probe of this disruption and would directly test whether section-level entropy differences reflect cipher complexity or merely content domain.\"}]}"
+}

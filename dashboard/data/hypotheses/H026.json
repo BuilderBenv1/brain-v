@@ -2,7 +2,7 @@
   "id": "H026",
   "claim": "The manuscript uses a null-derived word-construction rule (e.g., a gallows-glyph prefix system) such that a small set of ~5 prefix glyphs accounts for > 60% of all word tokens, producing the observed Zipf exponent of ~0.89 via combinatorial explosion of a limited stem vocabulary",
   "type": "cipher",
-  "confidence": 0.217,
+  "confidence": 0.14,
   "evidence_for": [
     "Word-initial glyphs are highly skewed: ['o','c','q','s','d'] dominate",
     "Low Zipf exponent (0.8946) compared to natural language (~1.0\u00e2\u20ac\u201c1.2) suggests constrained word formation",
@@ -304,12 +304,60 @@
       "passed": true,
       "details": "Observed Zipf exponent (0.8946) closely matches the hypothesis prediction (~0.89), and the very high hapax ratio (0.701) is consistent with combinatorial prefix-stem combinations of limited elements, though direct measurement of the top-5 initial glyphs accounting for >60% of tokens was not performed.",
       "confidence_change": "0.128 -> 0.217"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.3,
+      "passed": false,
+      "details": "The hypothesis is contradicted by the extremely high hapax ratio (0.701), indicating 70% of unique words appear only once. A system generating vocabulary via 5 prefixes \u00c3\u2014 50 stems (~250 combinations) would produce much higher token concentration and lower hapax ratio among a total of 8,261 unique words; the observed diversity suggests the vocabulary is not primarily constructed from this limited combinatorial mechanism.",
+      "confidence_change": "0.217 -> 0.171"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.7,
+      "passed": true,
+      "details": "The Zipf exponent of 0.8946 and extremely high hapax ratio (0.701) are consistent with a prefix-based combinatorial word-formation system; however, the specified test (computing top-5 initial glyph token fractions and fitting prefix-stem bigram coverage) cannot be verified without access to the raw manuscript data.",
+      "confidence_change": "0.171 -> 0.258"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.25,
+      "passed": false,
+      "details": "The high hapax ratio (70.1%) and glyph entropy (3.8627 bits) contradict the hypothesis: if 5 prefixes generated >60% of tokens via combinatorial explosion with ~50 stems, far fewer unique words would exist and entropy would be much lower; the observed distribution appears too uniform and diverse for such concentrated prefix-driven morphology.",
+      "confidence_change": "0.258 -> 0.200"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.28,
+      "passed": false,
+      "details": "The high hapax ratio (70.1%) and substantial glyph entropy (3.86 bits) contradict concentration in 5 prefix glyphs accounting for >60% of tokens; such a system would show lower entropy and far fewer hapaxes due to heavy prefix reuse.",
+      "confidence_change": "0.200 -> 0.157"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.45,
+      "passed": null,
+      "details": "The predicted Zipf exponent (~0.89) matches the observed value, lending moderate support, but the core hypothesis requires glyph frequency verification\u00e2\u20ac\u201dspecifically that 5 initial glyphs account for >60% of tokens\u00e2\u20ac\u201dwhich cannot be confirmed from aggregate statistics alone.",
+      "confidence_change": "0.157 -> 0.172"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "claude_evaluation",
+      "score": 0.38,
+      "passed": false,
+      "details": "The 70.1% hapax ratio and relatively flat Zipf exponent (0.8946, below typical 1.0+) indicate high vocabulary diversity and weak word-frequency concentration, contradicting the prediction that 5 prefix glyphs combined with 50 stems would generate >60% of tokens via systematic combinatorial expansion.",
+      "confidence_change": "0.172 -> 0.140"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "If word formation is template-driven rather than phonemic, decipherment attempts based on phoneme-to-glyph mapping will systematically fail; confirming this would redirect effort toward structural rather than substitution models"
 }

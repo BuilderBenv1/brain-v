@@ -1,0 +1,28 @@
+{
+  "id": "H-BRADY-10",
+  "claim": "78.7% of herbal folios have a unique skeleton in position B (word immediately following a gallows marker), with lower lexicon match rates (52.6% vs 65.8%) and higher hapax (76.6% vs 67.8%) \u2014 consistent with plant-name headings behind gallows.",
+  "type": "structural",
+  "confidence": 0.45,
+  "evidence_for": [
+    "Two-way difference (lower match AND higher hapax) harder to fake",
+    "Plant names are a natural place for unique vocabulary",
+    "Structural claim independent of lexicon quality"
+  ],
+  "evidence_against": [
+    "Position-B effects could also reflect scribal line-beginning conventions"
+  ],
+  "test": "Measure hapax rate and lexicon match rate at position B vs baseline across herbal folios",
+  "test_metric": "position_b_hapax_gap",
+  "test_threshold": "position-B hapax >= baseline+5pp AND match rate <= baseline-5pp: confirmed.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Measure hapax rate and lexicon match rate at position B vs baseline across herbal folios"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": null,
+  "reasoning": "Computable from corpus + lexicon. High-value test.",
+  "source": "Brady Defibaugh (April 2026), A Syriac Pharmaceutical Dispensatory Encoded in the Voynich Manuscript (DANI pipeline v31)",
+  "researcher": "brady-defibaugh"
+}

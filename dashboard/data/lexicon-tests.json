@@ -1,0 +1,113 @@
+{
+  "generated": "2026-04-15",
+  "description": "Brain-V three-lexicon comparison: Latin (Schechter), Syriac (Brady), Hebrew medieval medical. All three run through abjad-reducible skeleton matching against the ZL3b EVA corpus (38,053 tokens).",
+  "lexicons": [
+    {
+      "name": "Schechter Latin/Occitan",
+      "source": "github.com/scott-schechter/voynich-decoded",
+      "entries": 4063,
+      "coverage": 0.8281,
+      "type_coverage": 0.4300,
+      "dict_hit_rate": 0.8742,
+      "permutation_z": 10.36,
+      "permutation_null_mean": 0.5689,
+      "shuffle_in_order_vs_shuffled": {
+        "match": -0.0055,
+        "conn_content": null,
+        "both_matched": 0.0,
+        "notes": "Word-level mapping. In-order text scored 0.2268 vs shuffled 0.2302 on Latin coherence (-0.003) - no syntactic signal."
+      }
+    },
+    {
+      "name": "Brady Syriac (proxy, 71 terms)",
+      "source": "zenodo.org/records/19583306 (paper only; supplementary files not released)",
+      "entries": 71,
+      "coverage": 0.4817,
+      "reported_full_coverage": 0.8690,
+      "reported_z": 3.83,
+      "shuffle_in_order_vs_shuffled": {
+        "match": -0.0055,
+        "conn_content": -0.0098,
+        "both_matched": 0.0149,
+        "conn_frac": -0.0113,
+        "notes": "Proxy lexicon reconstructed from Syriac terms named in paper body."
+      }
+    },
+    {
+      "name": "Hebrew medieval medical",
+      "source": "Reconstructed from Asaph HaRofe, Maimonides, Genizah glossaries (1,300 skeletons via documented Hebrew morphology)",
+      "entries": 1300,
+      "coverage": 0.5790,
+      "shuffle_in_order_vs_shuffled": {
+        "match": 0.0074,
+        "conn_content": -0.0144,
+        "both_matched": 0.0281,
+        "conn_frac": -0.0072
+      }
+    }
+  ],
+  "currier_ab_gap": {
+    "description": "Coverage gap (B - A) across all three lexicons. Positive = B fits better. Three independent methodologies converge on B > A.",
+    "schechter_latin": 0.0821,
+    "brady_syriac_proxy": 0.0392,
+    "hebrew_medieval": 0.0307
+  },
+  "brady_gallows_confirmed": {
+    "description": "H-BRADY-02: plain gallows t/p are paragraph markers, bench gallows cth/ckh/cph are normal consonants. Verified by Brain-V in one cycle.",
+    "p_enrichment": 5.0,
+    "p_predicted": 5.4,
+    "t_enrichment": 2.8,
+    "t_predicted": 3.2,
+    "cth_enrichment": 0.1,
+    "ckh_enrichment": 0.0,
+    "cph_enrichment": 0.4
+  },
+  "verdict": "Three independent lexicons from three language families produce (a) varying but substantial coverage (48-83%), (b) zero connector->content word-order signal under shuffle test, (c) reproducible Currier B>A asymmetry (+3-8pp). Lexicon-based methods establish thematic clustering, not decipherment. Currier A appears structurally distinct from B in a way that resists lexical matching regardless of source language.",
+  "null_lexicon": {
+    "headline": "Coverage as a decipherment metric is dead",
+    "method": "1,300 phonotactically plausible nonsense skeletons drawn from the corpus's own bigram-Markov distribution, size-matched to Voynichese word-length distribution. 20 independent trials.",
+    "trials": 20,
+    "lexicon_size": 1300,
+    "coverage_mean": 0.8356,
+    "coverage_stdev": 0.0103,
+    "coverage_min": 0.8168,
+    "coverage_max": 0.8512,
+    "comparison": [
+      {"system": "Brady Syriac (1,334, claimed)", "coverage": 0.8690, "delta_vs_null": 0.0334},
+      {"system": "Null nonsense (1,300)", "coverage": 0.8356, "delta_vs_null": 0.0000, "is_null": true},
+      {"system": "Schechter Latin (4,063)", "coverage": 0.8281, "delta_vs_null": -0.0075},
+      {"system": "Hebrew medieval (1,300)", "coverage": 0.5790, "delta_vs_null": -0.2566}
+    ],
+    "implication": "Nonsense skeletons that match corpus word-length and bigram distributions achieve 83.6% coverage with sigma=1pp over 20 trials. Any abjad-reducible lexicon of 1,000-4,000 entries will hit ~80% on the Voynich corpus by virtue of length and bigram structure alone. Brady sits 3.3pp above the null floor; Schechter sits below it. Only Hebrew is statistically distinct from random, and it is 25pp worse. Coverage-based 'decipherment' claims require a z-score against a corpus-derived null, not a random-alphabet null."
+  },
+  "vowel_layer": {
+    "headline": "EVA vowels encode section-linked information in 79% of testable skeleton groups",
+    "method": "For every consonant skeleton with >=3 vowel variants and >=100 tokens, chi-square test of variant distribution across the 8 manuscript sections. Critical value at p<0.01 from df.",
+    "skeletons_tested": 70,
+    "significant_at_p01": 55,
+    "significant_fraction": 0.786,
+    "headline_case": {
+      "skeleton": "kdy",
+      "description": "Brady's chedy vs chody case (§3.10). Same consonant skeleton, different vowel pattern.",
+      "chi2": 262.17,
+      "df": 28,
+      "critical_p01": 50.89,
+      "over_threshold": 5.15,
+      "variants": [
+        {"word": "chedy", "total": 501, "biological": 181, "recipes": 199, "herbal": 62, "zodiac": 4},
+        {"word": "chdy",  "total": 140, "biological": 17,  "recipes": 40,  "herbal": 52, "zodiac": 3},
+        {"word": "okedy", "total": 116, "biological": 41,  "recipes": 31,  "herbal": 22, "zodiac": 3},
+        {"word": "okeedy","total": 108, "biological": 36,  "recipes": 47,  "herbal": 15, "zodiac": 4},
+        {"word": "chody", "total": 88,  "biological": 0,   "recipes": 23,  "herbal": 43, "zodiac": 0}
+      ]
+    },
+    "top_coupled_skeletons": [
+      {"skeleton": "wkdy", "variants_preview": "qokeedy,qokedy,qokeody", "chi2": 432.8, "df": 28, "over_threshold": 8.51},
+      {"skeleton": "l",    "variants_preview": "ol,al,l",                "chi2": 294.4, "df": 28, "over_threshold": 5.79},
+      {"skeleton": "kdy",  "variants_preview": "chedy,chdy,okedy",       "chi2": 262.2, "df": 28, "over_threshold": 5.15},
+      {"skeleton": "sdy",  "variants_preview": "shedy,sheedy,shody",     "chi2": 254.0, "df": 28, "over_threshold": 4.99},
+      {"skeleton": "kl",   "variants_preview": "chol,cheol,okal",        "chi2": 248.2, "df": 28, "over_threshold": 4.88}
+    ],
+    "implication": "EVA vowels are not padding. Vowel choice within a fixed consonant frame correlates with section (herbal vs biological vs recipes vs zodiac) strongly enough to reject the independence null at p<0.01 in 55 of 70 testable skeleton groups. This is a language-independent structural property of Voynichese. Any future decipherment that treats EVA vowels as noise, or as free positional slots, is discarding information that the manuscript demonstrably encodes."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "H-BRADY-09",
+  "claim": "Herbal pages describe Galenic pharmaceutical properties (ky\u0101n\u0101 'nature', \u1e6d\u0101r\u0101 'press/apply') rather than botanical catalogs \u2014 adding L\u00f6w botanical entries (42 terms) increased herbal coverage by only 0.1pp, and top decoded words match pharma page vocabulary.",
+  "type": "structural",
+  "confidence": 0.35,
+  "evidence_for": [
+    "0.1pp coverage change from 42-term botanical supplement is low ceiling",
+    "ky\u0101n\u0101 enriched 3.3x on herbal pages, \u1e6d\u0101r\u0101 3.2x \u2014 suggests pharma vocabulary"
+  ],
+  "evidence_against": [
+    "Top-word overlap could also reflect shared function-word vocabulary",
+    "The 0.1pp test is contingent on lexicon completeness"
+  ],
+  "test": "Compare decoded top-10 words on herbal vs pharma folios for overlap percentage",
+  "test_metric": "herbal_pharma_vocab_overlap",
+  "test_threshold": ">=70% top-10 overlap: confirmed. <30%: refuted.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Compare decoded top-10 words on herbal vs pharma folios for overlap percentage"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": null,
+  "reasoning": "Requires Brady pipeline output to fully test.",
+  "source": "Brady Defibaugh (April 2026), A Syriac Pharmaceutical Dispensatory Encoded in the Voynich Manuscript (DANI pipeline v31)",
+  "researcher": "brady-defibaugh"
+}

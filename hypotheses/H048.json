@@ -2,7 +2,7 @@
   "id": "H048",
   "claim": "The dominant word-initial glyph constraint (o, c, q, s, d account for most word starts) reflects a cipher rule in which a fixed 'onset marker' glyph class must precede the root \u00e2\u20ac\u201d analogous to a mandatory null prefix \u00e2\u20ac\u201d rather than reflecting the initial phoneme distribution of the underlying language, which would produce a flatter initial-glyph distribution matching Latin or Italian onset frequencies.",
   "type": "cipher",
-  "confidence": 0.935,
+  "confidence": 0.974,
   "evidence_for": [
     "Five glyphs dominating word-initial positions is unusually concentrated compared to Latin (where any of ~15 consonants can be word-initial)",
     "Glyph 'q' appears word-initially but rarely or never word-finally \u00e2\u20ac\u201d a positional constraint inconsistent with natural phoneme distribution",
@@ -127,12 +127,60 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.925 -> 0.935"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the entropy of the word-initial glyph distribution and compare it to the entropy of the word",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.935 -> 0.944"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the entropy of the word-initial glyph distribution and compare it to the entropy of the word",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.944 -> 0.952"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the entropy of the word-initial glyph distribution and compare it to the entropy of the word",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.952 -> 0.959"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the entropy of the word-initial glyph distribution and compare it to the entropy of the word",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.959 -> 0.965"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the entropy of the word-initial glyph distribution and compare it to the entropy of the word",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.965 -> 0.970"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute the entropy of the word-initial glyph distribution and compare it to the entropy of the word",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.970 -> 0.974"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "If onset glyphs are cipher artifacts (null prefixes or class markers), stripping them before frequency analysis could significantly improve character-frequency matching to candidate languages"
 }

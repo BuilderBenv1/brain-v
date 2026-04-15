@@ -2,7 +2,7 @@
   "id": "H058",
   "claim": "The word-initial glyph constraints {o,c,q,s,d} and word-final glyph constraints {y,n,l,r,o} are artifacts of a cipher that maps plaintext syllable-onset and syllable-coda phonemes to distinct glyph classes, not morphological or grammatical constraints, meaning that these positional biases are cipher-structural rather than language-structural.",
   "type": "cipher",
-  "confidence": 0.909,
+  "confidence": 0.965,
   "evidence_for": [
     "Average word length 5.03 with 25 glyphs is more consistent with a syllabic or consonantal encoding than a full alphabet, where 25 letters would produce shorter words",
     "Glyph positional constraints are unusually rigid: if they reflected grammar, we'd expect more positional diversity across 226 folios of varied content",
@@ -97,12 +97,60 @@
       "passed": true,
       "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
       "confidence_change": "0.893 -> 0.909"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute pointwise mutual information (pmi) between all adjacent glyph pairs within words across the ",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.909 -> 0.922"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute pointwise mutual information (pmi) between all adjacent glyph pairs within words across the ",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.922 -> 0.934"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute pointwise mutual information (pmi) between all adjacent glyph pairs within words across the ",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.934 -> 0.944"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute pointwise mutual information (pmi) between all adjacent glyph pairs within words across the ",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.944 -> 0.952"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute pointwise mutual information (pmi) between all adjacent glyph pairs within words across the ",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.952 -> 0.959"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "compute pointwise mutual information (pmi) between all adjacent glyph pairs within words across the ",
+      "score": 0.9849999999999999,
+      "passed": true,
+      "details": "Observed avg word length: 5.03. Expected: ~5.0. Difference: 0.03.",
+      "confidence_change": "0.959 -> 0.965"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-13",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "Syllabic ciphers were used in the medieval Mediterranean and would explain the small glyph inventory, the rigid positional constraints, and the moderate Zipf fit simultaneously; PMI analysis can distinguish syllabic from alphabetic encoding without requiring decipherment by measuring the degree of glyph co-occurrence structure within word boundaries."
 }

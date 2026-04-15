@@ -1,0 +1,51 @@
+{
+  "id": "H129",
+  "claim": "The Zipf exponent of 0.8946 (below the natural-language baseline of ~1.0) is caused by systematic word-level homophones: multiple surface word forms encode the same plaintext word, inflating low-frequency tail counts. Collapsing homophones defined by shared word-initial bigram and word length would restore the Zipf exponent to >= 0.95.",
+  "type": "cipher",
+  "confidence": 0.631,
+  "evidence_for": [
+    "Zipf exponent 0.8946 with R-squared 0.9084 indicates a moderate but suboptimal fit, consistent with artificial inflation of the low-frequency tail",
+    "Homophonic ciphers are known to flatten Zipf slopes by distributing high-frequency plaintext words across multiple surface forms",
+    "Word entropy 10.4508 bits is high relative to glyph entropy 3.8627, suggesting surface word diversity exceeds what grammar alone would produce"
+  ],
+  "evidence_against": [
+    "R-squared 0.9084 is still a reasonable Zipf fit; the deviation from 1.0 could reflect topic-restricted medieval vocabulary rather than cipher homophones",
+    "Collapsing by initial bigram and length is an arbitrary grouping that may not correspond to true plaintext equivalence classes",
+    "Hapax ratio 70.1% under a homophonic model should decrease toward the tail, not inflate it, unless the homophone set is very large"
+  ],
+  "test": "Group all unique word forms by (word-initial bigram, word length) as a proxy for plaintext equivalence classes; compute the Zipf exponent of the collapsed frequency distribution (treating each group as one token type, summing its tokens). Compare collapsed Zipf exponent and R-squared to the original.",
+  "test_metric": "Zipf exponent and R-squared of the collapsed word-frequency distribution versus the original (0.8946, R\u00c2\u00b2=0.9084)",
+  "test_threshold": "Confirm homophone hypothesis if collapsed Zipf exponent >= 0.95 and R-squared improves to >= 0.94; deny if collapsed exponent changes by < 0.02 or R-squared decreases, indicating the grouping variable does not capture real equivalence classes",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "group all unique word forms by (word-initial bigram, word length) as a proxy for plaintext equivalen",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.480 -> 0.536"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "group all unique word forms by (word-initial bigram, word length) as a proxy for plaintext equivalen",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.536 -> 0.586"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "group all unique word forms by (word-initial bigram, word length) as a proxy for plaintext equivalen",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.586 -> 0.631"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "If homophones are the mechanism suppressing the Zipf exponent, then grouping by a simple cipher-structure proxy (initial bigram + length) should partially undo the suppression and recover a more natural frequency distribution. A measurable improvement in Zipf fit would be strong evidence for word-level homophony."
+}

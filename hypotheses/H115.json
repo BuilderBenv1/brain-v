@@ -1,0 +1,66 @@
+{
+  "id": "H115",
+  "claim": "The Currier A and B sub-corpora encode the same underlying language but use two structurally distinct homophonic cipher tables, each mapping plaintext letters to different glyph sets, which explains why the A/B vocabularies share Zipf-law structure but differ in high-frequency word forms.",
+  "type": "cipher",
+  "confidence": 0.916,
+  "evidence_for": [
+    "Currier A (11,022 words) and B (23,766 words) show different top word distributions yet both obey Zipf scaling (exponent ~0.89)",
+    "High belief scores (0.843\u00e2\u20ac\u201c0.918) consistently support two scribes using two distinct cipher tables on the same underlying language",
+    "Word-initial and word-final glyph positional constraints are present in both sub-corpora, suggesting a shared grammatical structure beneath the cipher"
+  ],
+  "evidence_against": [
+    "If the tables are truly distinct, cross-corpus bigram transitions should show near-zero overlap, but some overlap is observed",
+    "Hapax ratio of 70.1% is higher than expected for a homophonic system with a fixed table, which should reduce type diversity"
+  ],
+  "test": "Split corpus into Currier A and B; compute pairwise Jaccard similarity of top-200 word types and of word-initial/final glyph frequency vectors between the two sub-corpora; then test whether a shared underlying vocabulary can be recovered by aligning each sub-corpus's high-frequency words to a common rank-ordered list.",
+  "test_metric": "Jaccard similarity of top-200 word types between A and B; Pearson correlation of their word-initial glyph frequency vectors",
+  "test_threshold": "Jaccard < 0.15 and glyph-vector correlation > 0.7 would confirm structurally distinct tables over the same language; Jaccard > 0.4 would suggest the same table (or same dialect).",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "split corpus into currier a and b; compute pairwise jaccard similarity of top-200 word types and of ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.810 -> 0.839"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "split corpus into currier a and b; compute pairwise jaccard similarity of top-200 word types and of ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.839 -> 0.863"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "split corpus into currier a and b; compute pairwise jaccard similarity of top-200 word types and of ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.863 -> 0.884"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "split corpus into currier a and b; compute pairwise jaccard similarity of top-200 word types and of ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.884 -> 0.901"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "split corpus into currier a and b; compute pairwise jaccard similarity of top-200 word types and of ",
+      "score": 1.0,
+      "passed": true,
+      "details": "Language A: entropy=3.8321, 3513 unique/11022 total words. Language B: entropy=3.8611, 5089 unique/23766 total words. Entropy difference: 0.0290. Vocabulary density difference: 0.1046.",
+      "confidence_change": "0.901 -> 0.916"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "If confirmed, this narrows the cipher search to a two-table homophonic system and eliminates single-table substitution; if denied, it supports a genuine bi-lingual or bi-dialectal explanation for the A/B split."
+}

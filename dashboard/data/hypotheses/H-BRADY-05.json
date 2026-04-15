@@ -1,0 +1,29 @@
+{
+  "id": "H-BRADY-05",
+  "claim": "EVA vowel characters (a,o,e,i), currently stripped by the consonant-skeleton pipeline, encode real phonetic distinctions in Syriac vowels: EVA 'e'\u2192\u012b, EVA 'o'\u2192o/u, EVA 'a'\u2192a/\u0101. Disambiguation layer resolves 7,007 tokens (20% of corpus) at >=70% confidence.",
+  "type": "cipher",
+  "confidence": 0.35,
+  "evidence_for": [
+    "Skeleton 'kl' (1,059 tokens) splits into three populations via vowel pattern",
+    "130 tokens of _o_a_ pattern (e.g. 'okal') read as kuhla ('collyrium') on pharma pages",
+    "'chedy' vs 'chody' (same skeleton kdy) show sectional difference scores 78-110"
+  ],
+  "evidence_against": [
+    "Vowel-pattern assignment may be circular: is kuhla concentrated on pharma pages because of the encoding rule, or fit to that distribution?",
+    "Independent test requires separate vowel-disambiguation implementation"
+  ],
+  "test": "Independent: partition 'chedy' vs 'chody' tokens by section; chi-square test for non-random distribution",
+  "test_metric": "vowel_sectional_chi_square",
+  "test_threshold": "chi-square p<0.001: confirmed vowels carry info. p>0.05: refuted.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Independent: partition 'chedy' vs 'chody' tokens by section; chi-square test for non-random distribution"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": null,
+  "reasoning": "Partially testable now; full test requires vowel-layer implementation.",
+  "source": "Brady Defibaugh (April 2026), A Syriac Pharmaceutical Dispensatory Encoded in the Voynich Manuscript (DANI pipeline v31)",
+  "researcher": "brady-defibaugh"
+}

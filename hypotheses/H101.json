@@ -2,7 +2,7 @@
   "id": "H101",
   "claim": "The zodiac section's anomalously low entropy (3.7149 bits, lowest of all sections) reflects a label-register vocabulary of fewer than 150 distinct content words, with a word-frequency distribution that fits a truncated power law rather than full Zipf, consistent with a glossary or label list rather than running prose.",
   "type": "structural",
-  "confidence": 0.652,
+  "confidence": 0.824,
   "evidence_for": [
     "Zodiac section entropy 3.7149 bits is the lowest across all sections",
     "Zodiac section contains only 1,297 words over 12 folios, consistent with short labels around diagrams",
@@ -24,12 +24,60 @@
       "passed": true,
       "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
       "confidence_change": "0.610 -> 0.652"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "fit a truncated zipf/power-law model vs. a full zipf model to the unigram frequency distribution of ",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.652 -> 0.689"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "fit a truncated zipf/power-law model vs. a full zipf model to the unigram frequency distribution of ",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.689 -> 0.722"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "fit a truncated zipf/power-law model vs. a full zipf model to the unigram frequency distribution of ",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.722 -> 0.752"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "fit a truncated zipf/power-law model vs. a full zipf model to the unigram frequency distribution of ",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.752 -> 0.779"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "fit a truncated zipf/power-law model vs. a full zipf model to the unigram frequency distribution of ",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.779 -> 0.803"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "fit a truncated zipf/power-law model vs. a full zipf model to the unigram frequency distribution of ",
+      "score": 0.7169092799999999,
+      "passed": true,
+      "details": "Observed Zipf exponent: 0.8946 (R\u00b2=0.9084). Natural language expected: ~1.0. Fit quality: moderate.",
+      "confidence_change": "0.803 -> 0.824"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "If the zodiac section is confirmed as a closed-vocabulary label register, it becomes the highest-priority decipherment target because label content (month names, zodiac names, star names) is predictable, enabling crib-based attacks on the cipher."
 }

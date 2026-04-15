@@ -2,7 +2,7 @@
   "id": "H090",
   "claim": "The 70.1% hapax ratio is substantially artifactual: stripping word-final glyphs drawn from the set {y, n, l, r, o} normalizes words to a stem form, reducing the unique vocabulary to roughly 30-40% of current count and the hapax ratio to below 45%, consistent with a systematic suffixation or abbreviation cipher.",
   "type": "cipher",
-  "confidence": 0.751,
+  "confidence": 0.899,
   "evidence_for": [
     "Word-final glyph constraints are already believed [0.624] to reflect cipher structure rather than grammar",
     "Top-frequency words daiin, aiin differ only in a leading glyph, suggesting a stem 'ain' with prefixation/suffixation",
@@ -41,12 +41,60 @@
       "passed": true,
       "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
       "confidence_change": "0.711 -> 0.751"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "strip all word-final glyphs in {y, n, l, r, o} from the full corpus to produce a stemmed vocabulary.",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.751 -> 0.786"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "strip all word-final glyphs in {y, n, l, r, o} from the full corpus to produce a stemmed vocabulary.",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.786 -> 0.816"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "strip all word-final glyphs in {y, n, l, r, o} from the full corpus to produce a stemmed vocabulary.",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.816 -> 0.842"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "strip all word-final glyphs in {y, n, l, r, o} from the full corpus to produce a stemmed vocabulary.",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.842 -> 0.864"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "strip all word-final glyphs in {y, n, l, r, o} from the full corpus to produce a stemmed vocabulary.",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.864 -> 0.883"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "strip all word-final glyphs in {y, n, l, r, o} from the full corpus to produce a stemmed vocabulary.",
+      "score": 0.9313499999999999,
+      "passed": true,
+      "details": "Observed glyph entropy: 3.8627 bits. Expected for hypothesis: ~4.0 bits. Difference: 0.1373 bits.",
+      "confidence_change": "0.883 -> 0.899"
     }
   ],
   "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-14",
-  "last_tested": "2026-04-14",
+  "last_tested": "2026-04-15",
   "reasoning": "This test is cheap to run, directly targets the most statistically anomalous feature of the corpus (the hapax ratio), and would immediately narrow the solution space by confirming or denying whether the surface vocabulary is inflated by a mechanical suffix rule."
 }
