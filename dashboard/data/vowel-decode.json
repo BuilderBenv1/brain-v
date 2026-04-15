@@ -1,0 +1,160 @@
+{
+  "generated": "2026-04-15",
+  "cycle": "vowel_decode_v1",
+  "skeletons_significant": 55,
+  "variants_analyzed": 181,
+  "patterns_with_section_agreement": [
+    {
+      "pattern": "_.eo",
+      "n_skeletons": 8,
+      "top_modal_section": "pharmaceutical",
+      "agreement": 1.0
+    },
+    {
+      "pattern": "_.o.e",
+      "n_skeletons": 3,
+      "top_modal_section": "biological",
+      "agreement": 1.0
+    },
+    {
+      "pattern": "_.o.eo",
+      "n_skeletons": 3,
+      "top_modal_section": "pharmaceutical",
+      "agreement": 1.0
+    },
+    {
+      "pattern": "o.ai",
+      "n_skeletons": 3,
+      "top_modal_section": "recipes",
+      "agreement": 0.667
+    },
+    {
+      "pattern": "_._.ee",
+      "n_skeletons": 3,
+      "top_modal_section": "recipes",
+      "agreement": 0.667
+    },
+    {
+      "pattern": "_.o.ee",
+      "n_skeletons": 3,
+      "top_modal_section": "biological",
+      "agreement": 0.667
+    },
+    {
+      "pattern": "_.o.ai",
+      "n_skeletons": 3,
+      "top_modal_section": "biological",
+      "agreement": 0.667
+    },
+    {
+      "pattern": "_._.e",
+      "n_skeletons": 5,
+      "top_modal_section": "recipes",
+      "agreement": 0.6
+    },
+    {
+      "pattern": "_.e",
+      "n_skeletons": 12,
+      "top_modal_section": "biological",
+      "agreement": 0.583
+    },
+    {
+      "pattern": "o.a",
+      "n_skeletons": 6,
+      "top_modal_section": "zodiac",
+      "agreement": 0.5
+    },
+    {
+      "pattern": "a",
+      "n_skeletons": 4,
+      "top_modal_section": "text-only",
+      "agreement": 0.5
+    },
+    {
+      "pattern": "_.aii",
+      "n_skeletons": 4,
+      "top_modal_section": "herbal",
+      "agreement": 0.5
+    },
+    {
+      "pattern": "_.ee",
+      "n_skeletons": 4,
+      "top_modal_section": "pharmaceutical",
+      "agreement": 0.5
+    },
+    {
+      "pattern": "o.eo",
+      "n_skeletons": 4,
+      "top_modal_section": "pharmaceutical",
+      "agreement": 0.5
+    },
+    {
+      "pattern": "_.o.a",
+      "n_skeletons": 4,
+      "top_modal_section": "text-only",
+      "agreement": 0.5
+    }
+  ],
+  "strong_slot_features": [
+    {
+      "slot": 2,
+      "vowel": "e",
+      "n": 36,
+      "modal": "biological",
+      "rate": 0.472
+    }
+  ],
+  "classifier": {
+    "cv_folds": 5,
+    "mean_accuracy": 0.272,
+    "majority_baseline": 0.211,
+    "gain_over_majority_pp": 6.11,
+    "sections": [
+      "astronomical",
+      "biological",
+      "cosmological",
+      "herbal",
+      "pharmaceutical",
+      "recipes",
+      "text-only",
+      "zodiac"
+    ]
+  },
+  "case_kdy": [
+    {
+      "word": "chedy",
+      "vp": "_.e",
+      "total": 501,
+      "modal": "biological",
+      "enrichment": 2.18
+    },
+    {
+      "word": "chdy",
+      "vp": "",
+      "total": 140,
+      "modal": "text-only",
+      "enrichment": 1.85
+    },
+    {
+      "word": "okedy",
+      "vp": "o.e",
+      "total": 116,
+      "modal": "biological",
+      "enrichment": 2.13
+    },
+    {
+      "word": "okeedy",
+      "vp": "o.ee",
+      "total": 108,
+      "modal": "biological",
+      "enrichment": 2.01
+    },
+    {
+      "word": "chody",
+      "vp": "_.o",
+      "total": 88,
+      "modal": "pharmaceutical",
+      "enrichment": 2.04
+    }
+  ]
+}

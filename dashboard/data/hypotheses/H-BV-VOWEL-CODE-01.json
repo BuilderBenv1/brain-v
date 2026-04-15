@@ -1,0 +1,45 @@
+{
+  "id": "H-BV-VOWEL-CODE-01",
+  "claim": "EVA vowel patterns encode section/domain content independent of the consonant skeleton. Specifically: pattern '_.eo' predicts pharmaceutical section modality at 100% across 8 unrelated skeletons; pattern '_.o.e' predicts biological at 100% across 3 skeletons; pattern '_.e' predicts biological at 58% across 12 skeletons (vs 30.5% random baseline). A naive-Bayes classifier using vowel-pattern features alone achieves 27.2% 5-fold CV accuracy vs 21.1% majority baseline (+6.1pp).",
+  "type": "structural",
+  "confidence": 0.75,
+  "evidence_for": [
+    "_.eo pattern: 8/8 skeletons modal to pharmaceutical (100% agreement, 3.3x over baseline)",
+    "_.o.e pattern: 3/3 biological (100%, 3.3x over baseline)",
+    "_.o.eo pattern: 3/3 pharmaceutical (100%)",
+    "Skeleton kdy internal consistency: chedy/okedy/okeedy (e-vowels) all biological at 2.0-2.2x enrichment, chody (o-vowel) pharmaceutical/herbal at 2.0x",
+    "Cross-skeleton generalisation: vowel pattern carries meaning not derivable from consonant frame",
+    "Classifier accuracy 27.2% vs 21.1% majority = predictive info above chance"
+  ],
+  "evidence_against": [
+    "Sample sizes are small for 100%-agreement patterns (n=3-8 skeletons)",
+    "Classifier gain of +6.1pp is modest; vowel patterns explain only a fraction of section variance",
+    "Vowel-section coupling could reflect scribal production phases rather than a designed encoding",
+    "Some patterns have <50% agreement (e.g. 'o.a' at 50%)"
+  ],
+  "test": "Held-out prediction: pick 2 pharmaceutical folios Brain-V has never scored, predict section content from vowel patterns of their tokens, measure accuracy vs baseline.",
+  "test_metric": "holdout_section_prediction_accuracy",
+  "test_threshold": ">=35%: strong support. 25-35%: consistent with training signal. <20%: training-set artefact.",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "vowel_pattern_agreement_and_classifier",
+      "score": 0.75,
+      "passed": true,
+      "details": "55 skeleton groups significant at p<0.01; 100% agreement on _.eo (n=8) and _.o.e (n=3); classifier gain +6.1pp over majority baseline",
+      "confidence_change": "initial 0.75"
+    }
+  ],
+  "tests_remaining": [
+    "Held-out pharmaceutical folio prediction",
+    "Consonant+vowel combined classifier (does skeleton add signal?)",
+    "Currier A vs B consistency of vowel-section rule"
+  ],
+  "status": "active",
+  "parent": "H-BV-VOWEL-01",
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "First working language-independent decode signal. Does not depend on dictionary matching. Challenges the coverage-game paradigm by demonstrating that EVA vowels carry exploitable structure without reference to any natural language lexicon. Strategic pivot anchor.",
+  "source": "Brain-V vowel_decode_v1 cycle 2026-04-15",
+  "researcher": "brain-v"
+}
