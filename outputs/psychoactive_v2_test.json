@@ -1,0 +1,49 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-PSYCHOACTIVE-02",
+  "restricted_to_hand": "A",
+  "psycho_n": 4,
+  "non_n": 85,
+  "psycho_mean": 0.02804,
+  "non_mean": 0.004539,
+  "difference": 0.023501,
+  "ratio": 6.178,
+  "t_stat": 2.3191,
+  "df": 3.07,
+  "p_one_tailed": 0.05059,
+  "cohens_d": 2.241,
+  "hedges_g": 2.221,
+  "bootstrap_ci_95": [
+    0.005943,
+    0.041214
+  ],
+  "ci_excludes_zero": true,
+  "mann_whitney_p": 0.000218,
+  "verdict": "MARGINAL",
+  "psycho_folios": [
+    {
+      "folio": "f15v",
+      "latin": "Paris quadrifolia",
+      "common": "Herb Paris",
+      "rate": 0.04225352112676056
+    },
+    {
+      "folio": "f16r",
+      "latin": "Cannabis",
+      "common": "Cannabis",
+      "rate": 0.012345679012345678
+    },
+    {
+      "folio": "f28v",
+      "latin": "Rhododendron",
+      "common": "Rhododendron",
+      "rate": 0.04838709677419355
+    },
+    {
+      "folio": "f49r",
+      "latin": "Nymphaea caerulea",
+      "common": "Blue Nile Lotus",
+      "rate": 0.009174311926605505
+    }
+  ]
+}
