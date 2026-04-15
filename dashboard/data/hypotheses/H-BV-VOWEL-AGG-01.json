@@ -1,0 +1,43 @@
+{
+  "id": "H-BV-VOWEL-AGG-01",
+  "claim": "EVA vowel patterns are non-randomly distributed across manuscript sections at the aggregate level (chi-square significant at p<0.01 in 55/70 testable skeleton groups) but this distributional coupling does NOT translate to per-token section prediction on held-out folios. The narrower surviving result: sparse high-precision vowel-pattern rules exist (e.g. '_.eo' is pharma-modal with rule-precision 0.827 on held-out data) but fire on only ~40% of tokens, so F1 is below always-predict-majority baselines.",
+  "type": "structural",
+  "confidence": 0.60,
+  "evidence_for": [
+    "55/70 skeleton groups section-coupled at p<0.01 (aggregate chi-square)",
+    "Held-out rule table precision 0.827 for pharmaceutical when the rule fires",
+    "Held-out NB precision 0.655 for biological vs 0.557 prevalence (+10pp)",
+    "kdy case holds: e-vowel variants all biological, o-vowel variants pharma/herbal"
+  ],
+  "evidence_against": [
+    "Pharma F1 0.341 (best) vs blind 0.614 on held-out data",
+    "Bio F1 0.658 (best) vs blind 0.716 on held-out data",
+    "Multi-class NB accuracy 43.6% vs majority baseline 55.7%",
+    "Per-folio: held-out pharma folios mis-classified as biological at 75%+ rate",
+    "Rule coverage only 40% of held-out tokens - most tokens have no applicable rule"
+  ],
+  "test": "Held-out validation with 4 unseen folios (f101r, f89r2, f78r, f82r) was the pre-registered falsifier for H-BV-VOWEL-CODE-01. That failed. This narrower hypothesis passes aggregate chi-square but fails per-token F1.",
+  "test_metric": "aggregate_chi_square_plus_heldout_precision",
+  "test_threshold": "Chi-square signif. AND heldout precision > prevalence + 10pp on at least one target section",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "heldout_validation_aggregate",
+      "score": 0.60,
+      "passed": true,
+      "details": "Aggregate chi-square unchanged (55/70 at p<0.01). Heldout precision 0.827 (pharma, rule fires) and 0.655 (bio, NB) both exceed prevalence baseline. F1 fails, precision survives.",
+      "confidence_change": "initial 0.60"
+    }
+  ],
+  "tests_remaining": [
+    "Build sparse high-precision dictionary of rule-fires-only patterns",
+    "Test whether image-labeled content (vs section metadata) is the right target"
+  ],
+  "status": "active",
+  "parent": "H-BV-VOWEL-01",
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Honest successor to H-BV-VOWEL-CODE-01 after that hypothesis failed its pre-registered held-out test. The aggregate chi-square signal is real. The per-token prediction is not. The right future path is sparse high-precision mappings, not broad classifiers.",
+  "source": "Brain-V vowel_holdout_v1 cycle 2026-04-15",
+  "researcher": "brain-v"
+}

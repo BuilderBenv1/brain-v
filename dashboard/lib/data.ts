@@ -85,6 +85,48 @@ export interface LexiconTestData {
     }>;
     implication: string;
   };
+  vowel_holdout?: {
+    headline: string;
+    method: string;
+    heldout_folios: string[];
+    heldout_tokens: number;
+    pharmaceutical: {
+      prevalence: number;
+      always_predict_f1: number;
+      rule_precision: number;
+      rule_recall: number;
+      rule_f1: number;
+      nb_precision: number;
+      nb_recall: number;
+      nb_f1: number;
+      verdict_signal_survives: boolean;
+    };
+    biological: {
+      prevalence: number;
+      always_predict_f1: number;
+      rule_precision: number;
+      rule_recall: number;
+      rule_f1: number;
+      nb_precision: number;
+      nb_recall: number;
+      nb_f1: number;
+      verdict_signal_survives: boolean;
+    };
+    multiclass: {
+      nb_accuracy: number;
+      majority_baseline: number;
+      rule_accuracy_on_covered: number;
+      rule_coverage: number;
+    };
+    per_folio: Array<{
+      folio: string;
+      true: string;
+      n: number;
+      nb_hit_rate: number;
+    }>;
+    interpretation: string;
+    strategic_note: string;
+  };
   vowel_layer?: {
     headline: string;
     method: string;

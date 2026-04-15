@@ -80,6 +80,48 @@
     ],
     "implication": "Nonsense skeletons that match corpus word-length and bigram distributions achieve 83.6% coverage with sigma=1pp over 20 trials. Any abjad-reducible lexicon of 1,000-4,000 entries will hit ~80% on the Voynich corpus by virtue of length and bigram structure alone. Brady sits 3.3pp above the null floor; Schechter sits below it. Only Hebrew is statistically distinct from random, and it is 25pp worse. Coverage-based 'decipherment' claims require a z-score against a corpus-derived null, not a random-alphabet null."
   },
+  "vowel_holdout": {
+    "headline": "Vowel-section decode FAILS held-out validation",
+    "method": "4 folios (f101r, f89r2 pharma; f78r, f82r bio) removed entirely from training. Rules and naive-Bayes classifier re-derived on the remaining corpus. Every held-out token predicted from vowel pattern alone. Scored against ground-truth section label.",
+    "heldout_folios": ["f101r", "f89r2", "f78r", "f82r"],
+    "heldout_tokens": 1037,
+    "pharmaceutical": {
+      "prevalence": 0.443,
+      "always_predict_f1": 0.614,
+      "rule_precision": 0.827,
+      "rule_recall": 0.146,
+      "rule_f1": 0.248,
+      "nb_precision": 0.673,
+      "nb_recall": 0.229,
+      "nb_f1": 0.341,
+      "verdict_signal_survives": false
+    },
+    "biological": {
+      "prevalence": 0.557,
+      "always_predict_f1": 0.716,
+      "rule_precision": 0.568,
+      "rule_recall": 0.782,
+      "rule_f1": 0.658,
+      "nb_precision": 0.655,
+      "nb_recall": 0.600,
+      "nb_f1": 0.626,
+      "verdict_signal_survives": false
+    },
+    "multiclass": {
+      "nb_accuracy": 0.436,
+      "majority_baseline": 0.557,
+      "rule_accuracy_on_covered": 0.501,
+      "rule_coverage": 0.400
+    },
+    "per_folio": [
+      {"folio": "f101r", "true": "pharmaceutical", "n": 226, "nb_hit_rate": 0.226},
+      {"folio": "f89r2", "true": "pharmaceutical", "n": 233, "nb_hit_rate": 0.232},
+      {"folio": "f78r",  "true": "biological",     "n": 293, "nb_hit_rate": 0.614},
+      {"folio": "f82r",  "true": "biological",     "n": 285, "nb_hit_rate": 0.586}
+    ],
+    "interpretation": "The 100% agreement on _.eo -> pharmaceutical in training (8 skeletons) was an in-sample artefact. On held-out pharmaceutical folios, the classifier confidently predicts biological for ~75% of tokens. What survives: rule precision 0.827 on pharma when the rule fires — a real but sparse signal covering 40% of tokens. H-BV-VOWEL-CODE-01 demoted 0.75 -> 0.35. Aggregate chi-square coupling (H-BV-VOWEL-01) is unaffected; what failed is per-token prediction, not distribution-level coupling.",
+    "strategic_note": "Brain-V publishes this negative result instead of suppressing it. The coverage-game critique (H-BV-NULL-01) still stands; the vowel layer still has aggregate signal; but the per-token decoding path is not the right frontier. Future work: sparse high-precision mappings, non-vowel structural features (glyph-role combos, line-position interactions), or image-label targets instead of section-metadata targets."
+  },
   "vowel_layer": {
     "headline": "EVA vowels encode section-linked information in 79% of testable skeleton groups",
     "method": "For every consonant skeleton with >=3 vowel variants and >=100 tokens, chi-square test of variant distribution across the 8 manuscript sections. Critical value at p<0.01 from df.",

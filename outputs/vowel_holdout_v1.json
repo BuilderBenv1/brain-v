@@ -1,0 +1,82 @@
+{
+  "generated": "2026-04-15",
+  "heldout_folios": [
+    "f101r",
+    "f78r",
+    "f82r",
+    "f89r2"
+  ],
+  "heldout_tokens": 1037,
+  "heldout_token_per_folio": {
+    "f78r": 293,
+    "f82r": 285,
+    "f89r2": 233,
+    "f101r": 226
+  },
+  "training_variants": 179,
+  "training_rules": 14,
+  "results": {
+    "pharmaceutical": {
+      "prevalence": 0.4426229508196721,
+      "always_predict": {
+        "precision": 0.4426229508196721,
+        "recall": 1.0,
+        "f1": 0.6136363636363636
+      },
+      "rule": {
+        "tp": 67,
+        "fp": 14,
+        "fn": 392,
+        "tn": 564,
+        "precision": 0.8271604938271605,
+        "recall": 0.14596949891067537,
+        "f1": 0.24814814814814815,
+        "coverage": 0.40019286403085824
+      },
+      "nb": {
+        "tp": 105,
+        "fp": 51,
+        "fn": 354,
+        "tn": 527,
+        "precision": 0.6730769230769231,
+        "recall": 0.22875816993464052,
+        "f1": 0.34146341463414637,
+        "coverage": 1.0
+      }
+    },
+    "biological": {
+      "prevalence": 0.5573770491803278,
+      "always_predict": {
+        "precision": 0.5573770491803278,
+        "recall": 1.0,
+        "f1": 0.7157894736842105
+      },
+      "rule": {
+        "tp": 452,
+        "fp": 344,
+        "fn": 126,
+        "tn": 115,
+        "precision": 0.5678391959798995,
+        "recall": 0.7820069204152249,
+        "f1": 0.6579330422125181,
+        "coverage": 0.40019286403085824
+      },
+      "nb": {
+        "tp": 347,
+        "fp": 183,
+        "fn": 231,
+        "tn": 276,
+        "precision": 0.6547169811320754,
+        "recall": 0.6003460207612457,
+        "f1": 0.6263537906137183,
+        "coverage": 1.0
+      }
+    }
+  },
+  "multiclass_accuracy": {
+    "nb_on_holdout": 0.43587270973963355,
+    "rule_on_covered": 0.5012048192771085,
+    "rule_coverage": 0.40019286403085824,
+    "majority_baseline": 0.5573770491803278
+  }
+}

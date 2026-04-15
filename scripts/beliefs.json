@@ -309,12 +309,13 @@
     "date": "2026-04-15"
   },
   {
-    "belief": "EVA vowel choice within a fixed consonant skeleton encodes section-linked information (Brady H-BRADY-05 verified)",
-    "confidence": 0.9,
+    "belief": "EVA vowel choice within a fixed consonant skeleton is non-randomly distributed by section at aggregate level (55/70 groups significant at p<0.01) but does NOT predict section per-token on held-out folios (best F1 below blind baseline).",
+    "confidence": 0.6,
     "source": "brain-v",
     "date": "2026-04-15",
     "evidence": "55/70 skeleton groups significant at p<0.01; kdy case chi2=262 vs crit 50.9",
-    "last_scored": "2026-04-15"
+    "last_scored": "2026-04-15",
+    "fix_reason": "2026-04-15: 0.90 -> 0.60 after H-BV-VOWEL-CODE-01 failed heldout validation; narrower aggregate-level claim survives"
   },
   {
     "belief": "Token coverage alone is insufficient for Voynich decipherment: the null floor from 1,300 bigram-Markov nonsense skeletons is 83.56% (+/- 1pp), above Schechter and within 3pp of Brady",
@@ -346,6 +347,14 @@
     "source": "brain-v",
     "date": "2026-04-15",
     "evidence": "4-lexicon shuffle test aggregate; connector-content bigram metric negative in-order vs shuffled across all",
+    "last_scored": "2026-04-15"
+  },
+  {
+    "belief": "Per-token section prediction from EVA vowel patterns alone does not beat always-predict-majority baseline on held-out folios (pharma F1 0.341 vs 0.614; bio F1 0.658 vs 0.716). The in-sample 100% agreement on patterns like _.eo was overfitting; the rule precision 0.827 on held-out data is real but only fires on 40% of tokens.",
+    "confidence": 0.88,
+    "source": "brain-v",
+    "date": "2026-04-15",
+    "evidence": "vowel_holdout_v1.py: 1037 held-out tokens across f101r, f89r2, f78r, f82r. NB multi-class 43.6% vs 55.7% majority baseline.",
     "last_scored": "2026-04-15"
   }
 ]

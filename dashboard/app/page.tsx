@@ -210,6 +210,116 @@ export default function Home() {
         </div>
       )}
 
+      {/* Vowel holdout — published negative result */}
+      {lexTests?.vowel_holdout && (
+        <div className="border-2 border-warning/60 bg-warning/5 rounded-lg p-6">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-xs px-2 py-0.5 rounded bg-warning/20 text-warning font-bold uppercase tracking-wide">
+              Negative result (published)
+            </span>
+            <span className="text-xs text-muted">{lexTests.generated}</span>
+          </div>
+          <h2 className="text-2xl font-bold mb-2">
+            {lexTests.vowel_holdout.headline}
+          </h2>
+          <p className="text-sm text-muted mb-4">
+            {lexTests.vowel_holdout.method}
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-4 mb-4">
+            {(["pharmaceutical", "biological"] as const).map((target) => {
+              const r = lexTests.vowel_holdout![target];
+              return (
+                <div key={target} className="bg-surface rounded p-4">
+                  <h3 className="text-sm font-bold mb-2 capitalize">
+                    Target: {target}{" "}
+                    <span className="text-xs text-muted font-normal">
+                      (prevalence {(r.prevalence * 100).toFixed(1)}%)
+                    </span>
+                  </h3>
+                  <table className="w-full text-xs font-mono">
+                    <thead>
+                      <tr className="text-muted border-b border-border">
+                        <th className="py-1 text-left">method</th>
+                        <th className="py-1 text-right">prec</th>
+                        <th className="py-1 text-right">rec</th>
+                        <th className="py-1 text-right">F1</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b border-border/40">
+                        <td className="py-1">always-predict</td>
+                        <td className="py-1 text-right">{r.prevalence.toFixed(3)}</td>
+                        <td className="py-1 text-right">1.000</td>
+                        <td className="py-1 text-right text-success font-bold">
+                          {r.always_predict_f1.toFixed(3)}
+                        </td>
+                      </tr>
+                      <tr className="border-b border-border/40">
+                        <td className="py-1">rule table</td>
+                        <td className="py-1 text-right text-success">
+                          {r.rule_precision.toFixed(3)}
+                        </td>
+                        <td className="py-1 text-right">{r.rule_recall.toFixed(3)}</td>
+                        <td className="py-1 text-right">{r.rule_f1.toFixed(3)}</td>
+                      </tr>
+                      <tr>
+                        <td className="py-1">naive Bayes</td>
+                        <td className="py-1 text-right">{r.nb_precision.toFixed(3)}</td>
+                        <td className="py-1 text-right">{r.nb_recall.toFixed(3)}</td>
+                        <td className="py-1 text-right">{r.nb_f1.toFixed(3)}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p className="text-xs text-danger mt-2">
+                    Signal does not survive: best F1 below always-predict baseline.
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="bg-surface rounded p-4 mb-4">
+            <h3 className="text-sm font-bold mb-2">Per-folio NB hit rate</h3>
+            <div className="space-y-1 text-xs font-mono">
+              {lexTests.vowel_holdout.per_folio.map((f) => (
+                <div key={f.folio} className="flex items-center justify-between">
+                  <span>
+                    <span className="text-accent">{f.folio}</span>{" "}
+                    <span className="text-muted">
+                      (true: {f.true}, n={f.n})
+                    </span>
+                  </span>
+                  <span
+                    className={
+                      f.nb_hit_rate >= 0.5 ? "text-warning" : "text-danger"
+                    }
+                  >
+                    {(f.nb_hit_rate * 100).toFixed(1)}%
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted mt-2">
+              Held-out pharmaceutical folios mis-classified as biological at ~75%+
+              rate. Multi-class NB accuracy{" "}
+              {(lexTests.vowel_holdout.multiclass.nb_accuracy * 100).toFixed(1)}%
+              vs majority baseline{" "}
+              {(lexTests.vowel_holdout.multiclass.majority_baseline * 100).toFixed(1)}
+              %.
+            </p>
+          </div>
+
+          <p className="text-sm bg-surface rounded p-4 border-l-2 border-warning mb-2">
+            <strong>Interpretation.</strong> {lexTests.vowel_holdout.interpretation}
+          </p>
+          <p className="text-sm bg-surface rounded p-4 border-l-2 border-accent">
+            <strong>Why this is published.</strong>{" "}
+            {lexTests.vowel_holdout.strategic_note}
+          </p>
+        </div>
+      )}
+
       {/* Vowel-layer finding */}
       {lexTests?.vowel_layer && (
         <div className="border-2 border-success/60 bg-success/5 rounded-lg p-6">

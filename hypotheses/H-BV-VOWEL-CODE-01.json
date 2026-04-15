@@ -2,7 +2,7 @@
   "id": "H-BV-VOWEL-CODE-01",
   "claim": "EVA vowel patterns encode section/domain content independent of the consonant skeleton. Specifically: pattern '_.eo' predicts pharmaceutical section modality at 100% across 8 unrelated skeletons; pattern '_.o.e' predicts biological at 100% across 3 skeletons; pattern '_.e' predicts biological at 58% across 12 skeletons (vs 30.5% random baseline). A naive-Bayes classifier using vowel-pattern features alone achieves 27.2% 5-fold CV accuracy vs 21.1% majority baseline (+6.1pp).",
   "type": "structural",
-  "confidence": 0.75,
+  "confidence": 0.35,
   "evidence_for": [
     "_.eo pattern: 8/8 skeletons modal to pharmaceutical (100% agreement, 3.3x over baseline)",
     "_.o.e pattern: 3/3 biological (100%, 3.3x over baseline)",
@@ -28,12 +28,19 @@
       "passed": true,
       "details": "55 skeleton groups significant at p<0.01; 100% agreement on _.eo (n=8) and _.o.e (n=3); classifier gain +6.1pp over majority baseline",
       "confidence_change": "initial 0.75"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "heldout_validation_4_folios",
+      "score": 0.35,
+      "passed": false,
+      "details": "Held-out: f101r+f89r2 (pharma), f78r+f82r (bio). Pharma F1 0.341 (NB) vs blind 0.614. Bio F1 0.658 (rule) vs blind 0.716. Multi-class 43.6% NB vs 55.7% majority. Signal survives at aggregate (chi-square) but dies at per-token prediction. Rule precision 0.827 on pharma when fires (40% coverage) is a real but sparse effect.",
+      "confidence_change": "0.75 -> 0.35"
     }
   ],
   "tests_remaining": [
-    "Held-out pharmaceutical folio prediction",
-    "Consonant+vowel combined classifier (does skeleton add signal?)",
-    "Currier A vs B consistency of vowel-section rule"
+    "Narrower hypothesis: sparse high-precision mappings only",
+    "Non-vowel structural features (glyph-role combos, line-position)"
   ],
   "status": "active",
   "parent": "H-BV-VOWEL-01",
