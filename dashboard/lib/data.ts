@@ -85,6 +85,24 @@ export interface LexiconTestData {
     }>;
     implication: string;
   };
+  plant_cluster?: {
+    headline: string;
+    generated: string;
+    summary: string;
+    findings: Array<{
+      id: string;
+      claim: string;
+      confidence: number;
+      key_stat: string;
+      validation: string;
+      dataset: string;
+      preregistered: boolean;
+      preregistered_thresholds_met?: string[];
+    }>;
+    structural_argument: string;
+    remaining_escape_hatches: string[];
+    strategic_note: string;
+  };
   vowel_holdout?: {
     headline: string;
     method: string;

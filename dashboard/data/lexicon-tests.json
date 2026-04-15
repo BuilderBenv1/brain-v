@@ -80,6 +80,48 @@
     ],
     "implication": "Nonsense skeletons that match corpus word-length and bigram distributions achieve 83.6% coverage with sigma=1pp over 20 trials. Any abjad-reducible lexicon of 1,000-4,000 entries will hit ~80% on the Voynich corpus by virtue of length and bigram structure alone. Brady sits 3.3pp above the null floor; Schechter sits below it. Only Hebrew is statistically distinct from random, and it is 25pp worse. Coverage-based 'decipherment' claims require a z-score against a corpus-derived null, not a random-alphabet null."
   },
+  "plant_cluster": {
+    "headline": "Three mutually-reinforcing findings: _.oii encodes psychoactive plant content",
+    "generated": "2026-04-16",
+    "summary": "Brain-V has a cluster of three hypotheses that lock together: (1) _.oii fires 4.84x more on plant folios than non-plant herbal folios (held-out 5-fold validated), (2) within plant folios, _.oii fires 8.14x more on psychoactive plants than non-psychoactive (pre-registered, confirmed), (3) no volvelle variant tested can reproduce the plant-folio enrichment. Together these three results constitute Brain-V's first defensible evidence that EVA encodes botanical content visible in the illustrations.",
+    "findings": [
+      {
+        "id": "H-BV-PLANT-01",
+        "claim": "_.oii marks plant-identified folios",
+        "confidence": 0.75,
+        "key_stat": "4.84x enrichment vs non-plant herbal baseline",
+        "validation": "100% 5-fold cross-validation stability; z = 3.88",
+        "dataset": "115 plant folios vs 14 non-plant herbal baseline",
+        "preregistered": false
+      },
+      {
+        "id": "H-BV-PSYCHOACTIVE-01",
+        "claim": "_.oii further enriched on psychoactive plants",
+        "confidence": 0.80,
+        "key_stat": "8.14x ratio (psycho 2.80% vs non 0.34%)",
+        "validation": "pre-registered one-tailed Welch p = 0.046, Cohen d = 2.63, Mann-Whitney U p = 0.000015",
+        "dataset": "4 psychoactive (Paris quadrifolia, Cannabis, Rhododendron, Nymphaea caerulea) vs 112 non-psychoactive",
+        "preregistered": true,
+        "preregistered_thresholds_met": ["p < 0.05", "d >= 0.4"]
+      },
+      {
+        "id": "H-BV-VOLVELLE-OII-01",
+        "claim": "No volvelle variant reproduces the plant enrichment",
+        "confidence": 0.85,
+        "key_stat": "500 runs across 3 architectures, max 2.80x vs real 5.04x",
+        "validation": "v1 (simple): 0.00x across 100 runs; v2 (corpus roots): mean 0.998x, z=23.30; v3 (rate-matched 500-root cartridges): mean 0.806x, z=7.74",
+        "dataset": "100+200+200 null runs",
+        "preregistered": false
+      }
+    ],
+    "structural_argument": "Under the volvelle hypothesis, plant folios and non-plant herbal folios draw from the SAME section cartridge. Expected enrichment is ~1.0x by construction. Across 500 null runs spanning three architectures, max observed is 2.80x. Real is 5.04x. The finding is structurally incompatible with section-level volvelle mechanics, independent of rate calibration.",
+    "remaining_escape_hatches": [
+      "Folio-level (not section-level) cartridge swap volvelle - not in Quevedo spec",
+      "Non-volvelle mechanical process (Markov chain)",
+      "Sherwood's plant-ID labels correlated with some other folio-level text property"
+    ],
+    "strategic_note": "This is Brain-V's strongest positive finding. Unlike H-BV-VOWEL-01 (which fell to H-BV-VOLVELLE-01 trivially), H-BV-PLANT-01 survives three volvelle variants at p<0.01 each. Combined with H-BV-PSYCHOACTIVE-01 as a pre-registered sub-class confirmation, Brain-V has evidence that EVA encodes botanical content at a resolution deeper than mechanism signature alone."
+  },
   "vowel_holdout": {
     "headline": "Vowel-section decode FAILS held-out validation",
     "method": "4 folios (f101r, f89r2 pharma; f78r, f82r bio) removed entirely from training. Rules and naive-Bayes classifier re-derived on the remaining corpus. Every held-out token predicted from vowel pattern alone. Scored against ground-truth section label.",

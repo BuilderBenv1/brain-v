@@ -123,6 +123,92 @@ export default function Home() {
         </div>
       )}
 
+      {/* Three-finding cluster — Brain-V's strongest positive result */}
+      {lexTests?.plant_cluster && (
+        <div className="border-2 border-accent/70 bg-accent/5 rounded-lg p-6">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-xs px-2 py-0.5 rounded bg-accent/25 text-accent font-bold uppercase tracking-wide">
+              Strongest positive finding
+            </span>
+            <span className="text-xs text-muted">
+              {lexTests.plant_cluster.generated}
+            </span>
+          </div>
+          <h2 className="text-2xl font-bold mb-2">
+            {lexTests.plant_cluster.headline}
+          </h2>
+          <p className="text-sm text-muted mb-5">
+            {lexTests.plant_cluster.summary}
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-3 mb-4">
+            {lexTests.plant_cluster.findings.map((f) => (
+              <div
+                key={f.id}
+                className="bg-surface rounded p-4 border border-border"
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <span className="font-mono text-xs text-accent">{f.id}</span>
+                  <span
+                    className={`text-lg font-mono font-bold ${
+                      f.confidence >= 0.8
+                        ? "text-success"
+                        : f.confidence >= 0.6
+                          ? "text-warning"
+                          : "text-danger"
+                    }`}
+                  >
+                    {f.confidence.toFixed(2)}
+                  </span>
+                </div>
+                <p className="text-sm font-bold mb-2">{f.claim}</p>
+                <div className="text-xs space-y-1">
+                  <div className="font-mono text-accent">{f.key_stat}</div>
+                  <div className="text-muted">{f.validation}</div>
+                  <div className="text-muted italic">n: {f.dataset}</div>
+                </div>
+                {f.preregistered && (
+                  <div className="mt-2 text-xs px-2 py-1 rounded bg-success/20 text-success inline-block">
+                    PRE-REGISTERED · thresholds met:{" "}
+                    {f.preregistered_thresholds_met?.join(", ")}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-surface rounded p-4 mb-3 border-l-2 border-accent">
+            <h3 className="text-sm font-bold mb-1">Structural argument</h3>
+            <p className="text-sm">
+              {lexTests.plant_cluster.structural_argument}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-3">
+            <div className="bg-surface rounded p-3">
+              <h3 className="text-xs font-bold mb-2 text-muted uppercase tracking-wide">
+                Remaining escape hatches
+              </h3>
+              <ul className="text-xs space-y-1">
+                {lexTests.plant_cluster.remaining_escape_hatches.map(
+                  (h, i) => (
+                    <li key={i} className="text-muted">
+                      • {h}
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
+            <div className="bg-surface rounded p-3 border-l-2 border-success">
+              <h3 className="text-xs font-bold mb-2 text-muted uppercase tracking-wide">
+                Strategic note
+              </h3>
+              <p className="text-xs">{lexTests.plant_cluster.strategic_note}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Null lexicon headline — Brain-V's strongest contribution */}
       {lexTests?.null_lexicon && (
         <div className="border-2 border-danger/60 bg-danger/5 rounded-lg p-6">
