@@ -1,0 +1,45 @@
+{
+  "id": "H-BV-PERUN-NULL-01",
+  "claim": "Plant illustration properties (use class: toxic/food/medicinal; geographic origin: Mediterranean vs non-Mediterranean; plant family) do NOT correlate with measurable text properties (mean word length, glyph entropy, q-initial rate, gallows-initial-line rate, top vowel-pattern frequency, _.oii fire rate) on the same folio. Across 24 tests (4 botanical axes x 6 text features, n=117 plant folios), ZERO reach p<=0.05. The Perun visual-key hypothesis is not supported at this resolution.",
+  "type": "null",
+  "confidence": 0.80,
+  "evidence_for": [
+    "Toxic vs food (n=15 vs 19): all 6 features p>0.20",
+    "Med vs non-Med (n=12 vs 7): all 6 features p>0.20, closest t=-1.59",
+    "Family ANOVA across 5 families (asteraceae 19, lamiaceae 10, ranunculaceae 8, apiaceae 4, brassicaceae 4): all features F<2.5 (max 1.71)",
+    "_.oii rate medicinal vs non-medicinal: 0.35% vs 0.41%, t=-0.31",
+    "Consistent with volvelle hypothesis (H-BV-VOLVELLE-01): mechanical text generation would not encode sub-folio botanical structure"
+  ],
+  "evidence_against": [
+    "Toxic-plant _.oii rate (0.81%) is 2.1x medicinal (0.35%) and food (0.38%); untested formally due to small n=15",
+    "Sample sizes are modest (7-19 per group in most tests); larger dataset could reveal effects",
+    "Only 6 text features tested - richer feature sets (glyph bigrams, line-position interactions, specific vowel patterns beyond _.oii) might correlate",
+    "Botanical categorisation is heuristic (Sherwood notes text-match) not clean expert labels",
+    "Does NOT contradict H-BV-PLANT-01: _.oii distinguishes plant-folio vs non-plant-herbal at 4.84x; the Perun null tests within-plant subclass signal, which is a different question"
+  ],
+  "test": "Targeted test: toxic vs non-toxic _.oii rate, using all plant folios (15 toxic vs ~100 non-toxic). Formal one-tailed t-test.",
+  "test_metric": "toxic_oii_signal",
+  "test_threshold": "If toxic _.oii rate stays >=2x non-toxic at p<0.05: narrow counter-signal worth pursuing. If collapses: null holds.",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "perun_24_tests_battery",
+      "score": 0.80,
+      "passed": true,
+      "details": "24 tests across use class, origin, family, medicinal flag x 6 text features. Zero reach p<=0.05. Toxic _.oii elevation flagged but not formally tested.",
+      "confidence_change": "initial 0.80"
+    }
+  ],
+  "tests_remaining": [
+    "Toxic _.oii targeted test",
+    "Richer text-feature set (glyph bigrams, specific vowel patterns beyond _.oii)",
+    "Replicate with expert botanical labels if available"
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Direct null result on the hypothesis that illustrations constrain the text. Strengthens the volvelle interpretation: if a mechanical process generated the text, sub-folio image properties should NOT leak through. The one dangling signal (toxic _.oii at 2x) deserves a targeted follow-up rather than being buried in a battery.",
+  "source": "Brain-V perun_visual_key_test cycle 2026-04-15",
+  "researcher": "brain-v"
+}
