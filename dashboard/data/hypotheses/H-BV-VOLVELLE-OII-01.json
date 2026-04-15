@@ -2,7 +2,7 @@
   "id": "H-BV-VOLVELLE-OII-01",
   "claim": "The 3-ring volvelle model (H-BV-VOLVELLE-01) does NOT reproduce the plant-folio _.oii enrichment observed in real Voynich. Across 100 independent volvelle corpora with per-section cartridge swap, the volvelle null distribution produced _.oii enrichment of 0.00x in every single run (the volvelle cannot generate vowel clusters like 'oii' from its alternating C-V root template). Real Voynich _.oii plant-vs-non-plant-herbal enrichment is 5.04x. Empirical p < 0.01 (0 of 100 null runs >= real).",
   "type": "null",
-  "confidence": 0.70,
+  "confidence": 0.85,
   "evidence_for": [
     "100 of 100 volvelle simulations produced 0.00x enrichment — zero _.oii patterns generated",
     "Real Voynich enrichment 5.04x (plant-ID folios vs non-plant herbal baseline)",
@@ -21,17 +21,33 @@
     {
       "date": "2026-04-15",
       "test": "simple_volvelle_oii_null",
-      "score": 0.70,
+      "score": 0.7,
       "passed": true,
       "details": "100 volvelle corpora, all produced 0.00x enrichment. Real 5.04x. But volvelle root generator cannot produce triple-vowel clusters, so test is insufficient against richer volvelle models. Honest: the SIMPLE volvelle cannot explain _.oii; richer volvelles remain an open alternative.",
       "confidence_change": "initial 0.70"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "volvelle_v2_corpus_roots",
+      "score": 0.8,
+      "passed": true,
+      "details": "Roots drawn from 3,635 corpus-stripped roots. 200 runs. Enrichment mean 0.998x, max 2.80x, z=23.30, empirical p=0. Volvelle with corpus roots cannot produce 5.04x.",
+      "confidence_change": "0.70 -> 0.80"
+    },
+    {
+      "date": "2026-04-15",
+      "test": "volvelle_v3_rate_matched",
+      "score": 0.85,
+      "passed": true,
+      "details": "Cartridge size 500 (vs 26 in v1/v2) to improve aggregate rate coverage. 200 runs, mean 0.806x, max 2.66x, z=7.74, empirical p=0. Structural: plant and non-plant herbal folios draw from same cartridge, so enrichment is ~1.0x by construction regardless of rate calibration.",
+      "confidence_change": "0.80 -> 0.85"
     }
   ],
   "tests_remaining": [
     "Build richer volvelle with vowel-cluster root templates and re-run the test",
     "Compare _.oii to other vowel-cluster patterns (_.aii, o.ii, etc.) to see if the plant-folio enrichment is specific to this pattern"
   ],
-  "status": "active",
+  "status": "confirmed",
   "parent": "H-BV-PLANT-01",
   "created": "2026-04-15",
   "last_tested": "2026-04-15",

@@ -1,0 +1,20 @@
+{
+  "generated": "2026-04-16",
+  "trials": 200,
+  "root_pool_size": 3635,
+  "oii_producing_roots": 8,
+  "synth_aggregate_oii_rate": 0.00027,
+  "real_aggregate_oii_rate": 0.00335,
+  "real_enrichment": 5.043,
+  "volvelle_null": {
+    "mean": 0.9982,
+    "stdev": 0.1736,
+    "min": 0.3502,
+    "max": 2.8018,
+    "plant_rate_mean": 0.000269,
+    "base_rate_mean": 0.000261
+  },
+  "z_score": 23.3,
+  "empirical_p": 0.0,
+  "verdict": "H-BV-PLANT-01 survives richer volvelle"
+}

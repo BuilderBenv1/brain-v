@@ -1,0 +1,17 @@
+{
+  "generated": "2026-04-16",
+  "trials": 200,
+  "cartridge_size": 500,
+  "synth_agg_rate": 0.00079,
+  "real_agg_rate": 0.00335,
+  "real_enrichment": 5.043,
+  "null_mean": 0.8061,
+  "null_stdev": 0.5476,
+  "null_range": [
+    0.0,
+    2.6617
+  ],
+  "z_score": 7.74,
+  "empirical_p": 0.0,
+  "verdict": "survives"
+}
