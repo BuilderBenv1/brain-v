@@ -1,0 +1,26 @@
+{
+  "generated": "2026-04-15",
+  "classification_counts": {
+    "external": 26,
+    "internal": 55,
+    "mixed": 3,
+    "unknown": 42
+  },
+  "ext_n": 24,
+  "int_n": 54,
+  "ext_mean": 0.005609,
+  "int_mean": 0.005574,
+  "difference": 3.5e-05,
+  "ratio": 1.006,
+  "t_stat": 0.0142,
+  "df": 53.55,
+  "p_one_tailed": 0.494351,
+  "cohens_d": 0.003,
+  "hedges_g": 0.003,
+  "bootstrap_ci_95": [
+    -0.004642,
+    0.004829
+  ],
+  "ci_excludes_zero": false,
+  "mann_whitney_p": 0.341223
+}

@@ -1,0 +1,41 @@
+{
+  "id": "H-BV-EXTERNAL-NULL-01",
+  "claim": "Preparation route (external topical application vs internal ingestion) does NOT explain the _.oii vowel-pattern fire rate on plant folios. External-classified folios (n=24) and internal-classified folios (n=54) have essentially identical mean _.oii rates (0.561% vs 0.557%, ratio 1.01x). One-tailed Welch's t-test p = 0.494, Cohen's d = 0.003, Mann-Whitney U p = 0.341. Bootstrap 95% CI on difference [-0.0046, +0.0048] straddles zero.",
+  "type": "null",
+  "confidence": 0.90,
+  "evidence_for": [
+    "24 external folios vs 54 internal folios, adequate sample size",
+    "Cohen's d = 0.003 — effectively zero effect",
+    "Difference 0.00004 (four parts per 100,000 token rate)",
+    "Mann-Whitney non-parametric sanity check agrees (p=0.341)",
+    "95% CI on difference well-centered on zero, not near exclusion"
+  ],
+  "evidence_against": [
+    "Classification is keyword-heuristic from Sherwood notes, not expert ethnobotanical labels",
+    "Some plants have both internal and external uses (3 were flagged MIXED)",
+    "42 folios were UNKNOWN (no keywords matched) and were excluded"
+  ],
+  "test": "Pre-registered single-hypothesis test",
+  "test_metric": "external_vs_internal_oii_welch_one_tailed",
+  "test_threshold": "p < 0.05: supported. p >= 0.10: refuted.",
+  "tests_run": [
+    {
+      "date": "2026-04-15",
+      "test": "external_vs_internal_oii_one_tailed_welch",
+      "score": 0.90,
+      "passed": true,
+      "details": "p = 0.494 (far above 0.05). d = 0.003. Hypothesis refuted cleanly.",
+      "confidence_change": "initial 0.90 - high confidence the null is real"
+    }
+  ],
+  "tests_remaining": [
+    "Follow-up hypothesis: psychoactive plants (narcotic/hallucinogenic/soporific) fire _.oii more than non-psychoactive. Observed post-hoc in the toxic cross-check (Paris, Rhododendron, Nymphaea all psychoactive + firing; Atropa, Mandragora, Ricinus non-firing despite also psychoactive — counter-signal). Needs explicit pre-registered formulation before testing."
+  ],
+  "status": "active",
+  "parent": "H-BV-TOXIC-01",
+  "created": "2026-04-15",
+  "last_tested": "2026-04-15",
+  "reasoning": "Brain-V has now attempted two content-encoding sub-hypotheses for the H-BV-PLANT-01 _.oii enrichment: toxicity (p=0.060, marginal) and external-application (p=0.494, null). The field of candidate explanations is narrower by one more. The bimodality of toxic _.oii firing remains unexplained; a post-hoc observation suggests psychoactive plants may be the discriminator, but this must be pre-registered and tested separately.",
+  "source": "Brain-V external_oii_test cycle 2026-04-15",
+  "researcher": "brain-v"
+}
