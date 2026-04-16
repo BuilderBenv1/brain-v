@@ -1,0 +1,97 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-HAND-B-SPECIES-01",
+  "locked_in_commit": "bbf01c8",
+  "n_hand_b_plant_folios": 25,
+  "n_firing_folios": 15,
+  "total_marker_tokens": 42,
+  "species_ge2_count": 0,
+  "genera_ge2_count": 0,
+  "primary_species_with_shared": [],
+  "primary_genera_with_shared": [],
+  "secondary_stem_concentration": {
+    "unique_stems": 25,
+    "recurring_stems_ge2_tokens": 10,
+    "mean_folios_per_stem": 2.3,
+    "median_folios_per_stem": 2.0,
+    "max_folios_per_stem": 4,
+    "stem_detail": {
+      "kkdy": {
+        "tokens": 4,
+        "folios": [
+          "f26v",
+          "f41r"
+        ]
+      },
+      "kl": {
+        "tokens": 3,
+        "folios": [
+          "f26v",
+          "f31r",
+          "f31v"
+        ]
+      },
+      "ks": {
+        "tokens": 2,
+        "folios": [
+          "f26v"
+        ]
+      },
+      "kky": {
+        "tokens": 4,
+        "folios": [
+          "f31r",
+          "f33r",
+          "f34r",
+          "f34v"
+        ]
+      },
+      "sdy": {
+        "tokens": 2,
+        "folios": [
+          "f31r",
+          "f41r"
+        ]
+      },
+      "wkdy": {
+        "tokens": 3,
+        "folios": [
+          "f31r",
+          "f41v",
+          "f57r"
+        ]
+      },
+      "s": {
+        "tokens": 2,
+        "folios": [
+          "f31r",
+          "f57r"
+        ]
+      },
+      "kdy": {
+        "tokens": 3,
+        "folios": [
+          "f31v",
+          "f57r"
+        ]
+      },
+      "sky": {
+        "tokens": 2,
+        "folios": [
+          "f41v",
+          "f57r"
+        ]
+      },
+      "wtl": {
+        "tokens": 2,
+        "folios": [
+          "f41v",
+          "f46r"
+        ]
+      }
+    }
+  },
+  "primary_verdict": "REFUTED",
+  "secondary_verdict": "INTERMEDIATE",
+  "overall_verdict": "INTERMEDIATE"
+}
