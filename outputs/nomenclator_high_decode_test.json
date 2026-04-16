@@ -1,0 +1,57 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-NOMENCLATOR-HIGH-DECODE-01",
+  "R_split_rank": 146,
+  "high_types_count": 146,
+  "high_only_lines": 987,
+  "high_only_tokens_total": 4701,
+  "results": [
+    {
+      "n_tokens": 4701,
+      "matched": 2788,
+      "match_rate": 0.5931,
+      "connectors": 1196,
+      "connector_rate": 0.2544,
+      "in_order": 0.2109,
+      "shuffled": 0.2463,
+      "delta": -0.0354,
+      "map": "Brady-Syriac",
+      "verdict": "REFUTED"
+    },
+    {
+      "n_tokens": 4701,
+      "matched": 4410,
+      "match_rate": 0.9381,
+      "connectors": 566,
+      "connector_rate": 0.1204,
+      "in_order": 0.2711,
+      "shuffled": 0.327,
+      "delta": -0.0559,
+      "map": "Schechter-LatinOcc",
+      "verdict": "REFUTED"
+    },
+    {
+      "n_tokens": 4701,
+      "matched": 2155,
+      "match_rate": 0.4584,
+      "connectors": 628,
+      "connector_rate": 0.1336,
+      "in_order": 0.1305,
+      "shuffled": 0.1338,
+      "delta": -0.0033,
+      "map": "Pagel-trilingual",
+      "verdict": "REFUTED"
+    }
+  ],
+  "full_hand_a_priors_for_comparison": {
+    "Brady-Syriac": 0.0044,
+    "Schechter-LatinOcc": -0.0608,
+    "Pagel-trilingual": 0.0118
+  },
+  "overall_verdict": "NOMENCLATOR-SUBSTRATE-REFUTED",
+  "thresholds": {
+    "confirmed": "delta >= +0.010",
+    "marginal": "0 < delta < +0.010",
+    "refuted": "delta <= 0"
+  }
+}

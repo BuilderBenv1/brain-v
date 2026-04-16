@@ -18,14 +18,27 @@
   "test": "LOCKED PROCEDURE.\n\n  (1) Reproduce HIGH_TYPES from H-BV-NOMENCLATOR-01: sort Hand-A types by descending token frequency; take top R=146 types (cumulative tokens >= 50.1%). Lock R to 146 (the value computed and committed in NOMENCLATOR-01).\n\n  (2) For each map M in {Brady Syriac, Schechter Latin-Occitan, Pagel trilingual}:\n        (a) For each Hand-A line, produce a filtered sub-line consisting ONLY of tokens in HIGH_TYPES (maintaining original order). Drop filtered lines shorter than 3 tokens after filtering.\n        (b) Apply map M's decode function to each surviving token (same decode functions as `run_hand_a_map_comparison.py`).\n        (c) Compute connector-content bigram rate:\n              for adjacent pairs (a, b) in the filtered decoded line,\n              conn_n += (a is_connector),\n              hits += (a is_connector AND b is matched AND b is_not_connector)\n              rate = hits / conn_n\n        (d) Per-line mean of the rate.\n        (e) Shuffle test: pool all HIGH-only decoded tokens across Hand A, shuffle (seed 0), rechunk to the same line lengths, compute the same rate. Delta = in_order - shuffled.\n\n  (3) Report delta per map; compare against +0.010 CONFIRMED threshold.",
   "test_metric": "max_high_only_shuffle_delta_across_3_maps",
   "test_threshold": "CONFIRMED for a map if its HIGH-only delta >= +0.010. MARGINAL if 0 < delta < +0.010. REFUTED if delta <= 0. OVERALL NOMENCLATOR-SUPPORTED if at least one map is CONFIRMED (primary substrate identified). NOMENCLATOR-SUBSTRATE-REFUTED if all three maps are REFUTED on HIGH-only — the two-population structure is real but none of Brady/Schechter/Pagel is the substrate cipher.",
-  "tests_run": [],
-  "tests_remaining": [
-    "Execute HIGH-only shuffle test for Brady/Schechter/Pagel in separate commit after lock"
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "locked_high_only_shuffle_test",
+      "score": 0.25,
+      "passed": false,
+      "details": "NOMENCLATOR-SUBSTRATE-REFUTED. All three maps REFUTED on HIGH-only. HIGH-only filter: 987 Hand-A lines with >=3 HIGH tokens; 4,701 HIGH tokens total. Results (in-order | shuffled | delta): Brady-Syriac 0.211 | 0.246 | -0.0354; Schechter-LatinOcc 0.271 | 0.327 | -0.0559; Pagel-trilingual 0.131 | 0.134 | -0.0033. Comparison to full-Hand-A priors (HIGH-only delta vs full-Hand-A delta): Brady -0.0354 vs +0.0044 (shifts -0.0398, collapses negative); Schechter -0.0559 vs -0.0608 (stable negative); Pagel -0.0033 vs +0.0118 (shifts -0.0151, drops from CONFIRMED to REFUTED). Critical finding: Pagel's full-Hand-A +0.0118 was NOT driven by the HIGH class — when the LOW class is removed, the Pagel signal DROPS, not rises. This directly contradicts the nomenclator substrate prediction that the HIGH class would be decodable under a correct substrate cipher while the LOW class was opaque. Either (a) the HIGH class is enciphered under some UNTESTED substrate, (b) the HIGH class is not natural-language ciphertext at all, or (c) the HIGH/LOW split is not a function/content split in the nomenclator sense.",
+      "confidence_change": "0.4 -> 0.25"
+    }
   ],
-  "status": "pre-registered",
+  "tests_remaining": [],
+  "status": "refuted",
+  "verdict_note": "NONE of Brady-Syriac, Schechter-Latin-Occitan, or Pagel-trilingual is the substrate cipher for the HIGH class. Pagel's full-Hand-A +0.0118 CONFIRMED dissolves under HIGH-only restriction (drops to -0.0033), which means that confirmation was driven by LOW-class matches — the 81-term lexicon happened to catch content-rare connector-content bigrams, NOT the function-word scaffold. Brady's marginal +0.0044 similarly collapses to -0.0354. The two-population vocabulary structure from NOMENCLATOR-01 and NOMENCLATOR-NLREF-01 remains confirmed, but the classical nomenclator reading — HIGH = enciphered natural language, LOW = codebook — is REFUTED for the three candidate substrates.",
+  "findings_for_followup": [
+    "Search for a HIGH-class substrate that is NOT Brady/Schechter/Pagel. Candidates: a variable-glyph volvelle per H-BV-VOLVELLE-OII-01's architecture space; a positional substitution scheme that depends on line or folio position; a Thomassen-style constructed-language scaffold.",
+    "Re-examine what drove Pagel's full-Hand-A +0.0118 signal now that HIGH-only has collapsed it. If the signal is LOW-class-only, it suggests the 81 terms catch specific content-word patterns rather than a connective substrate — consistent with the expansion result (`H-BV-PAGEL-EXPANSION-01`) and inconsistent with a coherent language identification.",
+    "Consider testing an alternative vocabulary split: not frequency head/tail but POSITIONAL (line-initial vs line-medial) or MORPHOLOGICAL (stem-final suffix-present vs suffix-absent). The NOMENCLATOR-01 two-population result may be real but the axis may not be frequency."
+  ],
   "parent": "H-BV-NOMENCLATOR-01",
   "created": "2026-04-16",
-  "last_tested": null,
+  "last_tested": "2026-04-16",
   "reasoning": "If Hand A is a nomenclator, the HIGH class is ordinary enciphered natural language and the LOW class is opaque code. Schechter/Pagel/Brady all tested on the full vocabulary, so LOW-class noise could have swamped a real HIGH-class signal (or supported a spurious one in Pagel's case). Restricting each map's shuffle test to HIGH-only is the clean test: if Pagel now clears +0.010 on HIGH-only (he's already at +0.0118 on the full corpus, likely from the head), the nomenclator substrate is Pagel's Latin/Hebrew/Arabic hybrid and the LOW class is the codebook. If Brady now clears +0.010 on HIGH-only (was +0.0044 full-corpus, Hand-A-restricted), the substrate is Syriac. If none clears, the HIGH/LOW structure from NOMENCLATOR-01 is real but the substrate is still unknown.",
   "source": "Brain-V 2026-04-16 user-proposed hypothesis #3 following NOMENCLATOR-NLREF-01 SUPPORTED result",
   "researcher": "brain-v"

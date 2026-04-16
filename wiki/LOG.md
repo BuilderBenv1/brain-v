@@ -4,6 +4,37 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-16 — H-BV-NOMENCLATOR-HIGH-DECODE-01 REFUTED (all 3 maps fail)
+
+**Hypothesis**: If Hand A has a nomenclator-style head/tail split, then Brady / Schechter / Pagel — previously tested on the full Hand-A vocabulary — should succeed on the HIGH class alone. The HIGH class is the function-word scaffold; if it is enciphered natural language, a correct substrate mapping should clear the +0.010 connector-content bigram shuffle-test threshold on HIGH-only tokens.
+
+**Method**: Filter each Hand-A line to HIGH-only tokens (R=146 frequency-rank split from NOMENCLATOR-01, 5,518 HIGH tokens); apply each of the three decoders; compute connector-content bigram shuffle-test delta with identical methodology to `H-BV-HAND-A-MAP-COMPARISON-01`.
+
+**Result**: NOMENCLATOR-SUBSTRATE-REFUTED. All three maps REFUTED on HIGH-only.
+
+| map | HIGH-only delta | full-Hand-A prior | shift | verdict |
+|---|---|---|---|---|
+| Brady-Syriac | **−0.0354** | +0.0044 | −0.0398 | REFUTED |
+| Schechter-LatinOcc | **−0.0559** | −0.0608 | +0.0049 | REFUTED |
+| Pagel-trilingual | **−0.0033** | +0.0118 | −0.0151 | REFUTED |
+
+987 Hand-A lines survived the filter (≥3 HIGH tokens each); 4,701 HIGH tokens total.
+
+**Critical finding**: Pagel's full-Hand-A +0.0118 (previously CONFIRMED in `H-BV-HAND-A-MAP-COMPARISON-01`) DROPS to −0.0033 when restricted to HIGH-only. This is the opposite of the nomenclator substrate prediction — removing the LOW class (which the hypothesis said was the opaque codebook) should have *preserved or strengthened* the signal. Instead it eliminated it. Pagel's signal must have been driven by LOW-class matches.
+
+**Brady's** drop is even sharper: +0.0044 → −0.0354, a 40-point swing. **Schechter** stays negative throughout, consistent with prior REFUTED status.
+
+**Implication**: the classical nomenclator reading — HIGH class is enciphered natural language, LOW class is arbitrary codebook — is REFUTED for all three best-available substrate candidates. The two-population vocabulary structure from NOMENCLATOR-01 and NOMENCLATOR-NLREF-01 remains confirmed (Hand A differs from Latin and Italian on 3/5 measures), but the FUNCTION-WORD-SCAFFOLD interpretation of the HIGH class is not correct under Brady/Schechter/Pagel.
+
+Three directions survive:
+1. The HIGH class is enciphered under some UNTESTED substrate (different language, different map).
+2. The HIGH class is not natural-language ciphertext at all.
+3. The HIGH/LOW split, though real, is not the function/content axis. Alternatives: positional (line-initial vs medial), morphological (suffix-present vs suffix-absent), or syntactic-role.
+
+Confidence 0.4 → 0.25.
+
+**Files**: `hypotheses/H-BV-NOMENCLATOR-HIGH-DECODE-01.json`, `outputs/nomenclator_high_decode_test.json`, `scripts/run_nomenclator_high_decode.py`.
+
 ## 2026-04-16 — H-BV-NOMENCLATOR-NLREF-01 SUPPORTED (mixed substantive)
 
 **Hypothesis**: Hand A's head/tail vocabulary gaps from H-BV-NOMENCLATOR-01 are significantly more extreme (in nomenclator-predicted direction) than the same gaps measured on natural-language reference corpora of comparable size.
