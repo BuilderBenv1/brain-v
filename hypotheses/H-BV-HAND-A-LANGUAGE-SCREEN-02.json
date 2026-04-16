@@ -1,0 +1,32 @@
+{
+  "id": "H-BV-HAND-A-LANGUAGE-SCREEN-02",
+  "claim": "At least one of seven under-tested candidate languages (Basque, Hungarian, Finnish, Armenian, Ottoman Turkish, Italian-dialect, German), when mapped to Hand A EVA glyphs by simple frequency rank, produces a decoded stream whose connector-to-content bigram rate exceeds the shuffled-baseline rate by at least +0.005 (same shuffle test as Brady/Pagel/Schechter). The top-scoring language, if any, becomes Brain-V's primary Hand-A decipherment hypothesis. If NO candidate exceeds +0.005 delta, simple frequency-rank character substitution in these languages is eliminated, pointing to cipher/constructed/shorthand options.",
+  "type": "language",
+  "confidence": 0.3,
+  "evidence_for": [
+    "Hand A is internally natural-language-like (H-BV-HAND-A-INTERNAL-01 CONFIRMED)",
+    "Brady's mapping restricted to Hand A produced a positive (though sub-threshold) +0.0044 delta — the shuffle test has measurable discriminating power",
+    "None of the 7 candidates have been systematically tested on Hand A to date in this project",
+    "15th-century Italian/German are historically plausible by provenance; Hungarian/Finnish/Basque/Armenian/Ottoman are non-Indo-European or isolated language families that produce unusual letter-frequency profiles resembling Hand A's flat-vowel distribution"
+  ],
+  "evidence_against": [
+    "Simple frequency-rank substitution is the weakest possible cipher assumption and rarely survives rigorous corpora",
+    "Schechter's Latin dictionary, Brady's Syriac map, and Pagel's Latin/Hebrew/Arabic mix all failed the same shuffle test",
+    "Hand A's flat-ish glyph frequency curve (top glyph 18% vs Italian top 12%, German top 17%) suggests letter frequencies may not align well for any natural language under rank substitution",
+    "The Currier-A/B split suggests the encoding may be paradigm-specific, not language-specific — frequency substitution cannot capture that"
+  ],
+  "test": "PRE-REGISTERED SEVEN-LANGUAGE SCREEN. For each candidate in [italian, german, finnish, hungarian, basque, ottoman_turkish, armenian]:\n\n  (1) FREQUENCY TABLE: use published letter-frequency ranking for that language (sources cited in run script). Strip diacritics for mapping.\n  (2) EVA TOKENIZATION: collapse {ch, sh, ckh, cth, cph} to single glyph-units as in Brain-V's standard EVA tokenizer.\n  (3) FREQUENCY-RANK MAPPING: sort Hand-A EVA glyph-units by descending frequency; map rank-i EVA glyph -> rank-i language letter (top-20 positions).\n  (4) DECODE: apply mapping to every Hand-A token to produce a decoded letter stream.\n  (5) LEXICON MATCH: against a fixed 80-item common-word lexicon per language (top 15 function words as CONNECTORS, next 65 content words as CONTENT). Match exact or with single-letter-insertion tolerance.\n  (6) SHUFFLE TEST: in-order connector-content bigram rate vs. shuffled-across-Hand-A bigram rate; delta = in-order − shuffled. Same random seed (0) and methodology as the Brady Hand-A test.\n\n  OUTPUT: ranked list of seven deltas.",
+  "test_metric": "max_connector_content_bigram_delta_across_7_languages",
+  "test_threshold": "PRIMARY DECISION: If any language's delta >= +0.010, CONFIRMED for that language — promote to primary hypothesis. If best delta is in (+0.005, +0.010), MARGINAL for that language — promote to secondary. If best delta <= +0.005, REFUTED — simple frequency-rank substitution in all seven candidate languages is eliminated, redirecting effort to cipher/constructed/shorthand models.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute seven-language screen in separate commit after lock"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-HAND-A-INTERNAL-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "Hand A is natural-language-like internally, yet Brady's Syriac-mapped version is only marginally better than shuffle. Before abandoning frequency-rank substitution entirely, Brain-V screens seven untested candidate languages in a single pre-registered sweep. The negative result is as valuable as the positive: a clean REFUTED across all seven redirects effort from substitution ciphers to structural/constructed systems. The positive result identifies the next primary hypothesis.",
+  "source": "Brain-V 2026-04-16 user-directed pre-registration following Brady Hand-A MARGINAL result",
+  "researcher": "brain-v"
+}
