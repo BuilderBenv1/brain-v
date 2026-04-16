@@ -1,0 +1,31 @@
+{
+  "id": "H-BV-RECIPE-STRUCTURE-01",
+  "claim": "Hand A text follows medieval pharmaceutical recipe structure: paragraph-initial ingredient/topic names (LOW-class, rarely reused in running text), paragraph-medial preparation instructions (HIGH-class verbs, reused across all folios), and boundary-terminal ingredients or dosage. The H-BV-HIGH-LOW-STRUCTURE-01 finding that paragraph-initial tokens are 87.5% LOW-class and that HIGH/LOW classes anti-alternate in runs is consistent with this recipe structure; this test directly verifies it.",
+  "type": "structural",
+  "confidence": 0.4,
+  "evidence_for": [
+    "H-BV-HIGH-LOW-STRUCTURE-01 found paragraph-initial tokens are 87.5% LOW-class, HIGH/LOW classes anti-alternate (cross-class 46.9% vs 50% random), and clusters form runs rather than interleaving — directly consistent with recipe structure",
+    "H-BV-HAND-A-INTERNAL-01 confirmed Hand A has natural-language inflection (mean 2.46 distinct suffixes per frequent skeleton) and LDA topic-section purity 0.831 — compatible with a recipe corpus where instruction verbs inflect and topics cluster by section",
+    "Four consecutive refutations of per-plant content decoding (`H-BV-SYLLABLE-LEVEL-01`, `H-BV-HAND-A-CONTENT-INDEPENDENCE-01`, `H-BV-CONSONANT-ID-01`, `H-BV-CONSONANT-SEMANTICS-01`) all consistent with 'Hand A is generic-instructional text, not plant-specific description' — i.e. recipes with reusable verbs",
+    "Medieval pharmaceutical recipe manuals (e.g. Circa Instans, Macer Floridus, Antidotarium Nicolai) have this exact structure: ingredient header, then preparation, then dosage"
+  ],
+  "evidence_against": [
+    "Paragraph boundaries inferred from line-initial plain gallows may be noisy; only 271 paragraphs across 11,022 tokens means mean paragraph length ~40 tokens, which is long for a recipe",
+    "If each recipe has a unique ingredient, paragraph-initial tokens might NOT repeat much — Test 4's 10% recurrence threshold may be optimistic",
+    "The recipe-verb prediction (top medial tokens = inflected verbs) competes with the null that top medial tokens are just FREQUENT words for any reason (conjunctions, articles, anaphora)"
+  ],
+  "test": "LOCKED FOUR-CRITERION PROCEDURE on Hand A.\n\n  Paragraphs: 271 detected in H-BV-HIGH-LOW-STRUCTURE-01 via line-initial plain gallows t/p markers. Same detection method here.\n  HIGH_TYPES = 146 types from H-BV-NOMENCLATOR-01 (cumulative 50.1%).\n  LOW_TYPES  = 3,367 types.\n\n  POSITION BINS per paragraph (length N tokens):\n    INITIAL    = position 0\n    FIRST      = positions 1 .. ceil(N/3) - 1\n    MIDDLE     = positions ceil(N/3) .. ceil(2N/3) - 1\n    FINAL      = positions ceil(2N/3) .. N - 1\n\n  CRITERION 1 — VOCABULARY DISJUNCTION (Test 2 in user spec):\n    Aggregate types appearing at paragraph-INITIAL position (I) and types\n    appearing anywhere in MIDDLE position (M) across all paragraphs.\n    Disjunction = |I \\ M| / |I| (fraction of INITIAL types that never\n    appear medially).\n    PASS if disjunction >= 0.70.\n\n  CRITERION 2 — RECIPE-VERB PROPERTIES (Test 3):\n    Top-20 most frequent MIDDLE-position tokens. For each:\n      (a) inflection: number of distinct types that strip to the same\n          consonant skeleton (via Brady's EVA->skeleton map used in prior\n          Brain-V tests). Inflected if >=2 distinct variants.\n      (b) cross-folio: the token appears on >=30% of Hand-A folios.\n    Token passes if BOTH (a) and (b). Criterion passes if >=15 of 20\n    top medial tokens pass.\n\n  CRITERION 3 — LOW-CLASS INITIAL RECURRENCE (Test 4):\n    Among the 237 LOW-class paragraph-INITIAL tokens, count types that\n    initiate >=3 distinct paragraphs.\n    Let n_recur be that count; n_low_init_types = total distinct LOW\n    types appearing at paragraph-INITIAL.\n    PASS if n_recur / n_low_init_types >= 0.10.",
+  "test_metric": "n_criteria_passing_out_of_3",
+  "test_threshold": "CONFIRMED (pharmaceutical recipes) if all 3 criteria pass. MARGINAL if exactly 2 pass — follow up with ingredient-clustering test on recurring LOW-class initials. REFUTED (not recipe structure) if 0 or 1 of 3 pass.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute three-criterion recipe-structure test in separate commit after lock"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-HIGH-LOW-STRUCTURE-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "The combined findings of NOMENCLATOR-01, NLREF-01, HIGH-DECODE-01, and HIGH-LOW-STRUCTURE-01 consistently point at a two-register prose with topic-initial rare tokens and instruction-medial common tokens. Medieval pharmaceutical recipes are the most parsimonious generative model for this signature. This test operationalises three independent predictions of the recipe model and scores them against locked thresholds.",
+  "source": "Brain-V 2026-04-16 user-directed test after HIGH-LOW-STRUCTURE-01 surfaced regime-alternation and topic-initial LOW signals",
+  "researcher": "brain-v"
+}
