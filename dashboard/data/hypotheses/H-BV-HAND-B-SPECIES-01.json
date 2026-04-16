@@ -1,0 +1,31 @@
+{
+  "id": "H-BV-HAND-B-SPECIES-01",
+  "claim": "Within Hand B plant-marker words (_.e.e, _.eeo, _.o.eo), different consonant skeletons cluster on folios depicting different plant species. Hand A was refuted at this level because its _.oii marker rides a 3-stem closed class; Hand B uses 25 unique stems across 42 tokens, so species-level clustering is actually testable here.",
+  "type": "structural",
+  "confidence": 0.40,
+  "evidence_for": [
+    "Hand B uses 25 stems across 42 marker tokens (60% unique-per-token) — genuinely productive vocabulary",
+    "Top Hand-B stems fire 2-4 times each; if each stem is folio-specific, species clustering becomes detectable",
+    "If Hand A tags categories and Hand B inflects content, Hand B is the place where species information would live"
+  ],
+  "evidence_against": [
+    "Sherwood + Cohen plant IDs are mostly one-per-folio-unique species, so few species appear on multiple Hand-B folios (same limitation that forced H-BV-CONSONANT-ID-01 into REFUTED status)",
+    "Only 25 Hand-B plant folios; with 25 unique stems across 42 tokens, many stems appear only once",
+    "If Hand B stems are folio-specific but each folio has a unique species, we cannot distinguish species-level encoding from folio-level encoding without species repetition"
+  ],
+  "test": "PRIMARY: for each Hand-B plant-marker vowel pattern, group Hand-B plant folios by Sherwood-assigned species. For species appearing on >=2 Hand-B folios, test whether the same skeleton recurs across instances. SECONDARY (runs regardless of species repetition): measure stem concentration — for each Hand-B stem appearing >=2 times, count how many distinct folios it fires on. If stems are folio-specific (average 1-2 folios per stem), Hand B's productive vocabulary carries folio-level info; if diffuse (3+ folios per stem), it does not.",
+  "test_metric": "species_skeleton_consistency_and_stem_concentration",
+  "test_threshold": "PRIMARY: >=3 species with >=2 folios each sharing a skeleton AND different species using different dominant skeletons = CONFIRMED. No species-level repetition OR random skeleton distribution = primary REFUTED. SECONDARY: mean folios-per-stem <= 1.5 for stems >=2 occurrences = stems carry folio/species-level information. Mean >= 3 = stems are diffuse, carry no folio-specific info. Overall PARTIAL if primary refuted but secondary supports folio-level specificity.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute locked test in separate commit",
+    "If primary refuted, report secondary stem-concentration result as the surviving signal"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-CLOSED-CLASS-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "The H-BV-CLOSED-CLASS-01 refutation showed Hand B uses productive vocabulary. The natural follow-up: does that vocabulary encode species, or is it productive for some other reason (inflectional, scribal habit)? This test probes whether Hand B's open-class stems carry the species information that Hand A's closed tags cannot.",
+  "source": "Brain-V 2026-04-16 pre-registration following H-BV-CLOSED-CLASS-01 refutation",
+  "researcher": "brain-v"
+}
