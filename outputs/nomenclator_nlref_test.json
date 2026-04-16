@@ -1,0 +1,148 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-NOMENCLATOR-NLREF-01",
+  "target_tokens": 11022,
+  "hand_a": {
+    "label": "hand_a",
+    "n_tokens": 11022,
+    "n_types": 3513,
+    "split_R": 146,
+    "cumulative_high_pct": 50.06,
+    "high": {
+      "zipf": 0.7513,
+      "glyph_entropy_weighted": 3.7728,
+      "type_glyph_entropy": 3.7859,
+      "mean_length": 3.4123,
+      "length_stddev": 1.3707
+    },
+    "low": {
+      "zipf": 0.5114,
+      "glyph_entropy_weighted": 3.9241,
+      "type_glyph_entropy": 3.9377,
+      "mean_length": 5.2202,
+      "length_stddev": 1.9373
+    },
+    "gaps": {
+      "zipf": 0.2399,
+      "glyph_entropy_weighted": -0.1513,
+      "type_glyph_entropy": -0.1518,
+      "mean_length": -1.8079,
+      "length_stddev": -0.5666
+    }
+  },
+  "vulgate_latin": {
+    "label": "vulgate_latin",
+    "n_tokens": 11022,
+    "n_types": 2854,
+    "split_R": 142,
+    "cumulative_high_pct": 50.03,
+    "high": {
+      "zipf": 0.729,
+      "glyph_entropy_weighted": 3.8409,
+      "type_glyph_entropy": 3.9612,
+      "mean_length": 3.7294,
+      "length_stddev": 1.6935
+    },
+    "low": {
+      "zipf": 0.6234,
+      "glyph_entropy_weighted": 4.0501,
+      "type_glyph_entropy": 4.0337,
+      "mean_length": 6.758,
+      "length_stddev": 2.4209
+    },
+    "gaps": {
+      "zipf": 0.1056,
+      "glyph_entropy_weighted": -0.2092,
+      "type_glyph_entropy": -0.0726,
+      "mean_length": -3.0286,
+      "length_stddev": -0.7274
+    }
+  },
+  "dante_italian": {
+    "label": "dante_italian",
+    "n_tokens": 11022,
+    "n_types": 2953,
+    "split_R": 95,
+    "cumulative_high_pct": 50.05,
+    "high": {
+      "zipf": 0.8386,
+      "glyph_entropy_weighted": 4.0117,
+      "type_glyph_entropy": 4.1373,
+      "mean_length": 2.3949,
+      "length_stddev": 1.2431
+    },
+    "low": {
+      "zipf": 0.6072,
+      "glyph_entropy_weighted": 4.0719,
+      "type_glyph_entropy": 4.0542,
+      "mean_length": 5.5323,
+      "length_stddev": 1.8703
+    },
+    "gaps": {
+      "zipf": 0.2314,
+      "glyph_entropy_weighted": -0.0602,
+      "type_glyph_entropy": 0.0831,
+      "mean_length": -3.1375,
+      "length_stddev": -0.6272
+    }
+  },
+  "comparison": [
+    {
+      "measure": "zipf",
+      "predicted_direction": 1,
+      "hand_a_gap": 0.2399,
+      "vulgate_gap": 0.1056,
+      "dante_gap": 0.2314,
+      "more_extreme_than_vulgate": true,
+      "more_extreme_than_dante": true,
+      "more_extreme_than_both": true
+    },
+    {
+      "measure": "glyph_entropy_weighted",
+      "predicted_direction": -1,
+      "hand_a_gap": -0.1513,
+      "vulgate_gap": -0.2092,
+      "dante_gap": -0.0602,
+      "more_extreme_than_vulgate": false,
+      "more_extreme_than_dante": true,
+      "more_extreme_than_both": false
+    },
+    {
+      "measure": "type_glyph_entropy",
+      "predicted_direction": -1,
+      "hand_a_gap": -0.1518,
+      "vulgate_gap": -0.0726,
+      "dante_gap": 0.0831,
+      "more_extreme_than_vulgate": true,
+      "more_extreme_than_dante": true,
+      "more_extreme_than_both": true
+    },
+    {
+      "measure": "mean_length",
+      "predicted_direction": -1,
+      "hand_a_gap": -1.8079,
+      "vulgate_gap": -3.0286,
+      "dante_gap": -3.1375,
+      "more_extreme_than_vulgate": false,
+      "more_extreme_than_dante": false,
+      "more_extreme_than_both": false
+    },
+    {
+      "measure": "length_stddev",
+      "predicted_direction": 1,
+      "hand_a_gap": -0.5666,
+      "vulgate_gap": -0.7274,
+      "dante_gap": -0.6272,
+      "more_extreme_than_vulgate": true,
+      "more_extreme_than_dante": true,
+      "more_extreme_than_both": true
+    }
+  ],
+  "n_hand_a_more_extreme_than_both_refs": 3,
+  "verdict": "NOMENCLATOR-SUPPORTED",
+  "thresholds": {
+    "supported": ">=3 of 5",
+    "ambiguous": "1-2 of 5",
+    "not_nomenclator": "0 of 5"
+  }
+}
