@@ -1,0 +1,32 @@
+{
+  "id": "H-BV-TP-ALTERNATION-01",
+  "claim": "The choice between plain gallows t- and p- prefixes on Hand A paragraph-initial tokens is NOT random. It predicts one or more of: (A) folio section type (herbal, pharmaceutical, biological, recipes, etc.), (B) quire position (scribal-session structure, supports Timm continuous-evolution), or (C) within-folio position (liturgical/antiphon alternation pattern). If one or more predictors reach significance at locked thresholds, the gallows decoration encodes structured information at that axis. If none reach significance, t/p alternation is decorative noise on a closed-class header pool.",
+  "type": "structural",
+  "confidence": 0.55,
+  "evidence_for": [
+    "H-BV-GALLOWS-STRIP-HEADER-01 documented that the SAME base stem (chor, ol, shol, cho, cheol, aiin, odaiin) appears at paragraph-initial under BOTH t- and p- gallows — the decoration is systematically applied to a small base-stem pool",
+    "The t vs p choice is highly unbalanced in the recurring-stem data (e.g. tol 12 vs pol 1; tor 5 vs por 1; tchor 10 vs pchor 4 — strong t-preference with variable p-minority), suggesting the choice is structured rather than 50/50 random",
+    "Prior Brain-V work established plain gallows t/p as paragraph markers with different enrichment (2.8x and 5.0x) — they are already known to carry structural information",
+    "`H-BV-TIMM-CHALLENGE-01` produced a PARTIAL verdict showing quire-anchored effects on several markers; the t/p alternation is the natural candidate for the fine-grained quire-position signal Timm predicts"
+  ],
+  "evidence_against": [
+    "With 268 paragraphs and a t/p-unbalanced distribution, sample sizes per section may be small (e.g. <20 paragraphs per section for several sections), limiting chi-square power",
+    "Section tags in the corpus are image-derived (illustrations) not text-derived; if t/p encodes a TEXT-internal distinction unrelated to illustration, the section test returns null even if the alternation is meaningful",
+    "Quire information is coarse (ZL3b quire tags are single letters A-T); a quire-position test with <20 quires may be under-powered",
+    "Within-folio alternation depends on folios having >=3 gallows-paragraphs; many folios may have only 1-2 paragraphs"
+  ],
+  "test": "LOCKED FOUR-PART PROCEDURE on Hand A.\n\n  DATA:\n    - Paragraphs: re-detect via H-BV-HIGH-LOW-STRUCTURE-01 / CIRCA-INSTANS-BENCHMARK-01 gallows rule.\n    - Filter: keep paragraphs whose paragraph-initial token starts with plain gallows 't' or 'p' (first char t or p, second char not h if length >= 2). Drop paragraphs whose first token starts with cth/ckh/cph benched-gallows, or doesn't start with gallows at all (first-of-folio openers).\n    - Per retained paragraph, record (gallows_letter, folio, quire, section, within_folio_index).\n\n  BASELINE: global t-vs-p ratio. Report.\n\n  TEST A — SECTION PREDICTOR:\n    Chi-square on 2 x K contingency table (t vs p) x (section) where K = number of sections with >=10 retained paragraphs.\n    PASS if p_value < 0.01 AND Cramer's V >= 0.20 (medium-to-large effect).\n\n  TEST B — QUIRE PREDICTOR:\n    Chi-square on 2 x Q contingency table (t vs p) x (quire) where Q = number of quires with >=10 retained paragraphs.\n    PASS if p_value < 0.01 AND Cramer's V >= 0.20.\n\n  TEST C — WITHIN-FOLIO ALTERNATION:\n    For folios with >=3 retained paragraphs, compute the per-folio sequence of t/p letters.\n    Metric: mean runs test z-score (Wald-Wolfowitz runs test) aggregated across folios with >=3 paragraphs.\n    Observed number of runs vs expected under random binomial with folio's t-rate.\n    PASS if the cross-folio aggregate |z| >= 2.58 (two-sided p < 0.01) in EITHER direction:\n      positive z -> alternation (liturgical-style t,p,t,p)\n      negative z -> clustering (block structure t,t,t,p,p,p)\n\n  TEST D — STEM-CONDITIONAL ALTERNATION:\n    For the top-10 recurring stripped stems, compute P(t | stem) and test whether this differs SIGNIFICANTLY by stem (chi-square on 2 x 10 table). This tests whether some stems prefer t while others prefer p — a stem-level constraint on the decoration.\n    PASS if p_value < 0.01 AND Cramer's V >= 0.20.",
+  "test_metric": "which_axes_yield_significant_t_vs_p_predictors",
+  "test_threshold": "Report the verdict for each of tests A/B/C/D independently. Overall interpretation:\n  - If A passes: Hand A encodes a binary content attribute at section level.\n  - If B passes (and A doesn't): Hand A shows scribal-session structure (Timm-compatible).\n  - If C passes: Hand A has liturgical/antiphon-style within-folio alternation.\n  - If D passes: t/p is stem-linked (lexical-phonological constraint rather than positional structure).\n  - If 0 of 4 pass: t/p is decorative noise; the 14-item header stem pool is the primary finding.\n  Multiple-test caveat: with 4 tests at p<0.01, family-wise error ~0.04; passes near threshold should be interpreted cautiously. A single clean pass (p<0.001 AND V>=0.30) is more decisive than a p-in-0.005-0.01 pass.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute four-part t/p alternation test in separate commit after lock"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-GALLOWS-STRIP-HEADER-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "GALLOWS-STRIP-HEADER-01 established that ~14 stems appear at paragraph-initial under both t- and p- gallows. The alternation is the single most diagnostic feature Brain-V can test cheaply with existing data. Four pre-registered hypotheses span the space of possible information the t/p choice could encode: content (section), scribal (quire), positional (within-folio), lexical (stem). Running all four gives a clean map of which axis (if any) carries signal.",
+  "source": "Brain-V 2026-04-16 user-directed test following GALLOWS-STRIP-HEADER-01 REFUTED result; user flagged t/p alternation as the highest-diagnostic next test",
+  "researcher": "brain-v"
+}
