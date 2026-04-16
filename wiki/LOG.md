@@ -4,6 +4,22 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-16 — H-BV-TEXT-STRUCTURE-01 executed
+
+**Hypothesis**: Hand A four-statistic baseline test (prose vs list).
+**Tokens analysed**: 11,022 Hand A tokens (3,513 unique types).
+**Results**:
+- Repetition rate (top-50 share): 0.3388 → prose
+- TTR @ window 500: 0.6349 → prose
+- Mean repeat distance, top-20: 86.66 (gap CV 1.32) → variable spacing → prose
+- Gallows-unit length std: 10.85 (mean 10.07, CV 1.08) → high variation → prose
+
+**Verdict**: 4/4 metrics align with prose baseline; none align with list baseline.
+**Confidence**: 0.50 → 0.70.
+**Output**: outputs/text_structure_test.json
+
+---
+
 ## 2026-04-15 — Brain-V cognitive cycle (automated)
 
 **Hypotheses scored**: 109

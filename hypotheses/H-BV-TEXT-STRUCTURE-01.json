@@ -1,0 +1,36 @@
+{
+  "id": "H-BV-TEXT-STRUCTURE-01",
+  "claim": "Hand A token statistics distinguish between two structural archetypes: (a) running prose, characterised by lower top-50 repetition rate (~0.45), higher windowed type-token ratio (~0.35), variable inter-occurrence spacing for top tokens, and high variation in unit length between gallows markers; or (b) list/inventory structure, characterised by high top-50 repetition (>=0.60), low windowed TTR (~0.25), regular spacing, and low unit-length variation. Brain-V tests which baseline Hand A more closely matches.",
+  "type": "structural",
+  "confidence": 0.7,
+  "evidence_for": [
+    "Voynichese has unusually high token-level repetition compared with most natural-language samples",
+    "If Hand A is list-like (inventory of plant names, recipe ingredients, etc.) the four metrics should cluster against the list baseline",
+    "If Hand A is prose-like (continuous text), the metrics should cluster against the prose baseline"
+  ],
+  "evidence_against": [
+    "The four metrics may straddle both baselines if Hand A is neither pure prose nor pure list",
+    "Cipher or constructed-language outputs can mimic either baseline depending on the encoding rule"
+  ],
+  "test": "On Hand A tokens only, compute four numbers internally, with no reference to any external corpus or text:\n  (1) Repetition rate = share of total tokens that belong to the top-50 most frequent types.\n  (2) Type-token ratio at window size 500 = mean of (unique types / 500) over non-overlapping 500-token windows.\n  (3) Mean distance between repeat occurrences of top-20 tokens = mean of all consecutive-occurrence gaps in token positions.\n  (4) Gallows-delimited unit length variation = standard deviation of token counts in units bounded by gallows-initial markers (tokens whose first character is t, k, p, or f).",
+  "test_metric": "four_number_baseline_comparison",
+  "test_threshold": "Each of the four numbers tagged against prose baseline (0.45 repetition, 0.35 TTR, variable spacing, high unit variation) vs list baseline (0.60+ repetition, 0.25 TTR, regular spacing, low unit variation). Majority direction wins.",
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "four_statistic_hand_a_baseline",
+      "score": 0.7,
+      "passed": true,
+      "details": "Hand A (11022 tokens, 3513 types). (1) top-50 repetition rate 0.3388 -> prose (below 0.45 prose ref, far below 0.60 list ref). (2) TTR @ window 500 = 0.6349 -> prose (well above 0.35 prose ref, far above 0.25 list ref). (3) Mean repeat distance top-20 = 86.66 tokens; per-token gap CV = 1.32 -> variable spacing -> prose. (4) Gallows-unit length std = 10.85 (mean unit 10.07, CV 1.08) -> high variation -> prose. All four metrics align with the prose baseline rather than the list baseline.",
+      "confidence_change": "0.50 -> 0.70"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "confirmed",
+  "parent": "H-BV-HAND-A-INTERNAL-01",
+  "created": "2026-04-16",
+  "last_tested": "2026-04-16",
+  "reasoning": "After Hand A internal coherence was confirmed, Brain-V needs to know whether to model Hand A as prose (linear text) or as list/inventory (catalogue) before applying further linguistic tools. The four metrics together are a low-cost discriminator that uses only Hand A's own tokens.",
+  "source": "Brain-V 2026-04-16 follow-up to H-BV-HAND-A-INTERNAL-01",
+  "researcher": "brain-v"
+}

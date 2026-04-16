@@ -1,0 +1,39 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-TEXT-STRUCTURE-01",
+  "hand_a_tokens": 11022,
+  "hand_a_types": 3513,
+  "stat_1_repetition_rate_top50": 0.338777,
+  "stat_2_ttr_window_500": 0.634909,
+  "stat_3_mean_repeat_distance_top20": 86.658035,
+  "stat_4_gallows_unit_length_std": 10.849206,
+  "auxiliary": {
+    "top20_gap_cv_mean": 1.320286,
+    "gallows_unit_length_mean": 10.065327,
+    "gallows_unit_length_cv": 1.077879,
+    "n_windows_500": 22,
+    "n_top20_gaps": 2433,
+    "n_gallows_units": 995
+  },
+  "baselines": {
+    "prose": {
+      "repetition": 0.45,
+      "ttr": 0.35,
+      "spacing": "variable",
+      "unit_variation": "high"
+    },
+    "list": {
+      "repetition": 0.6,
+      "ttr": 0.25,
+      "spacing": "regular",
+      "unit_variation": "low"
+    }
+  },
+  "tags": {
+    "repetition_rate": "prose",
+    "ttr_500": "prose",
+    "repeat_spacing": "prose",
+    "unit_length_variation": "prose"
+  },
+  "majority_verdict": "prose"
+}
