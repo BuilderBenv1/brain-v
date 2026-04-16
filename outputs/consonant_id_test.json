@@ -1,0 +1,63 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-CONSONANT-ID-01",
+  "locked_in_commit": "7fc990f",
+  "hand_a_plant_folios_firing_oii": 22,
+  "total_oii_words": 36,
+  "species_with_multiple_hand_a_folios": {
+    "cynara cardunculus": [
+      {
+        "folio": "f20v",
+        "latin": "Cynara cardunculus",
+        "common": "Cardoon"
+      },
+      {
+        "folio": "f93r",
+        "latin": "Cynara cardunculus",
+        "common": "Artichoke"
+      }
+    ]
+  },
+  "genera_with_multiple_hand_a_folios": {
+    "campanula": [
+      {
+        "folio": "f4v",
+        "latin": "Campanula rapunculus",
+        "common": "Rampion"
+      },
+      {
+        "folio": "f32v",
+        "latin": "Campanula rotundifolia",
+        "common": "Harebell"
+      }
+    ],
+    "cichorium": [
+      {
+        "folio": "f10r",
+        "latin": "Cichorium pumilum",
+        "common": "Chicory / Endive"
+      },
+      {
+        "folio": "f35r",
+        "latin": "Cichorium intybus",
+        "common": "Radicchio"
+      }
+    ],
+    "cynara": [
+      {
+        "folio": "f20v",
+        "latin": "Cynara cardunculus",
+        "common": "Cardoon"
+      },
+      {
+        "folio": "f93r",
+        "latin": "Cynara cardunculus",
+        "common": "Artichoke"
+      }
+    ]
+  },
+  "species_level_results": [],
+  "genus_level_results": [],
+  "verdict": "REFUTED",
+  "distinct_dominant_skeletons": 0
+}

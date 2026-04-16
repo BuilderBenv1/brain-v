@@ -2,7 +2,7 @@
   "id": "H-BV-CONSONANT-ID-01",
   "claim": "Within Hand A plant folios where _.oii fires, different consonant skeletons cluster on folios depicting different plant species. If confirmed, this means _.oii acts as a category-level 'plant' marker AND the consonant skeleton carrying it acts as a species-level identifier — lifting Brain-V's finding from 'marker of a plant folio' to 'marker of a specific plant.'",
   "type": "structural",
-  "confidence": 0.30,
+  "confidence": 0.15,
   "evidence_for": [
     "H-BV-PLANT-01 and H-BV-HAND-B-PLANT-01 already established that _.oii is a plant-folio marker in Hand A",
     "Jensen's TF-IDF clustering independently identifies the same folio subsets (cross-reference 2026-04-16) — suggesting structural specificity at folio level",
@@ -17,15 +17,24 @@
   "test": "For each Hand A plant folio where _.oii fires: extract every word whose vowel pattern is exactly _.oii, record its consonant skeleton. Group by Sherwood-assigned species. For species appearing on >=2 Hand-A folios, test whether the same skeleton recurs. Also test at genus level as a secondary analysis.",
   "test_metric": "species_skeleton_consistency",
   "test_threshold": ">=3 plant species show >=2 folios each with the SAME consonant skeleton in their _.oii words AND different species use different dominant skeletons: CONFIRMED (species-level ID proven). Weaker patterns (e.g. genus-level consistency or 1-2 species with repeated skeletons): MARGINAL. No species shows repeated skeleton: REFUTED (category-level only).",
-  "tests_run": [],
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "locked_species_skeleton_consistency",
+      "score": 0.15,
+      "passed": false,
+      "details": "22 Hand-A plant folios fire _.oii (36 words total). Sherwood IDs are one-per-folio unique, so only 1 species appears on >=2 Hand-A folios. Locked rule requires >=3 species with repeated skeletons — cannot be satisfied. REFUTED. Secondary observation: _.oii concentrates on just 3 consonant skeletons (kn, sn, dn) across 29/36 words, indicating a closed lexical class rather than species-specific vocabulary. Psychoactive-vs-other: no distinctive skeleton signature (all use kn-dominant pattern). _.oii is a category-level marker, not species-level.",
+      "confidence_change": "0.30 -> 0.15"
+    }
+  ],
   "tests_remaining": [
     "Execute the locked test in a separate commit after this pre-registration",
     "If Sherwood species are mostly unique per folio, run the analysis at genus level as secondary"
   ],
-  "status": "pre-registered",
+  "status": "refuted",
   "parent": "H-BV-PLANT-01",
   "created": "2026-04-16",
-  "last_tested": null,
+  "last_tested": "2026-04-16",
   "reasoning": "Sharpens the plant-marker finding from category-level (this is a plant folio) to species-level (this is this specific plant). The test is likely to fail or return marginal results because of sample thinness, but an honest attempt is worth making because any positive finding would substantially strengthen Brain-V's decoder. Pre-registered to preserve the discipline chain.",
   "source": "Brain-V 2026-04-16 pre-registration following Jensen cross-reference confirmation",
   "researcher": "brain-v"
