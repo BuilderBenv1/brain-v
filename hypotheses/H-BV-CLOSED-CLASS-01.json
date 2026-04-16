@@ -2,7 +2,7 @@
   "id": "H-BV-CLOSED-CLASS-01",
   "claim": "Hand B plant markers (_.e.e, _.eeo, _.o.eo) ride on closed consonant-stem classes analogous to Hand A's _.oii class (which rides the closed class {kn, sn, dn, tkn} accounting for 33 of 36 tokens at >90% coverage per H-BV-CONSONANT-ID-01). If Hand B markers are similarly closed-class, this supports the category-marker interpretation; if Hand B markers use open vocabulary, they encode something structurally different from Hand A _.oii.",
   "type": "structural",
-  "confidence": 0.55,
+  "confidence": 0.85,
   "evidence_for": [
     "H-BV-CONSONANT-ID-01 refutation showed _.oii rides {kn, sn, dn} at 29/36 tokens, with trailing {tkn, kkn, dr} making up 35/36 — a closed 5-6 element class at >95% coverage",
     "If the two hands use analogous closed-class marker systems, it supports the two-scribes-same-encoding framing of H-BV-HAND-B-PLANT-01",
@@ -16,15 +16,24 @@
   "test": "For each of the three Hand-B plant-marker vowel patterns (_.e.e, _.eeo, _.o.eo), extract every Hand-B plant-folio word exactly matching it. Record the consonant skeleton for each. Count unique skeletons per marker. Report whether the top-5 skeletons account for >80% of tokens (CLOSED) or not (OPEN). Cross-hand comparison: do any Hand-B marker skeletons appear in Hand A's {kn, sn, dn, tkn, kkn, dr} set?",
   "test_metric": "closed_class_coverage_per_marker",
   "test_threshold": "For each marker pattern: top-5 skeletons account for >80% of tokens = CLOSED CLASS. <80% = OPEN. After per-marker classification: if all three markers are CLOSED, overall verdict = CLOSED (supports shared closed-class framing). If any marker is OPEN, the overall verdict is MIXED or OPEN.",
-  "tests_run": [],
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "locked_per_marker_closed_class",
+      "score": 0.85,
+      "passed": false,
+      "details": "All 3 Hand-B markers OPEN: _.e.e top-5 75.0%, _.eeo 73.3%, _.o.eo 72.7% (all below 80%% threshold). 25 unique skeletons across 42 tokens (60%% unique-per-token). Hand A _.oii by contrast has 6 skeletons across 36 tokens (17%%). Cross-hand overlap: 0 shared stems. Hypothesis refuted — Hand B does NOT use analogous closed class.",
+      "confidence_change": "0.55 -> 0.85 (high confidence the null is real)"
+    }
+  ],
   "tests_remaining": [
     "Execute the locked test in a separate commit after this pre-registration",
     "Cross-hand stem overlap analysis regardless of primary verdict"
   ],
-  "status": "pre-registered",
+  "status": "refuted",
   "parent": "H-BV-HAND-B-PLANT-01",
   "created": "2026-04-16",
-  "last_tested": null,
+  "last_tested": "2026-04-16",
   "reasoning": "Extends the closed-class observation from Hand A to Hand B. The pre-registered threshold (top-5 stems > 80% coverage) is the operational definition of 'closed class' that matches Hand A's actual observed distribution. If Hand B behaves the same way, the scribe-dialect framing of H-BV-HAND-B-PLANT-01 generalises from 'different markers' to 'different closed-class vocabularies for the same function.'",
   "source": "Brain-V 2026-04-16 pre-registration after H-BV-CONSONANT-ID-01 refutation revealed Hand-A _.oii closed-class structure",
   "researcher": "brain-v"

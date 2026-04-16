@@ -1,0 +1,190 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-CLOSED-CLASS-01",
+  "locked_in_commit": "cb85f39",
+  "hand_b_plant_folios": 25,
+  "per_marker": {
+    "_.e.e": {
+      "verdict": "OPEN",
+      "n": 16,
+      "unique_skeletons": 9,
+      "top_5": [
+        {
+          "skeleton": "kkdy",
+          "count": 4
+        },
+        {
+          "skeleton": "kky",
+          "count": 4
+        },
+        {
+          "skeleton": "sky",
+          "count": 2
+        },
+        {
+          "skeleton": "sdy",
+          "count": 1
+        },
+        {
+          "skeleton": "kkd",
+          "count": 1
+        }
+      ],
+      "top_5_coverage": 0.75
+    },
+    "_.eeo": {
+      "verdict": "OPEN",
+      "n": 15,
+      "unique_skeletons": 9,
+      "top_5": [
+        {
+          "skeleton": "kdy",
+          "count": 3
+        },
+        {
+          "skeleton": "kl",
+          "count": 3
+        },
+        {
+          "skeleton": "s",
+          "count": 2
+        },
+        {
+          "skeleton": "ks",
+          "count": 2
+        },
+        {
+          "skeleton": "kr",
+          "count": 1
+        }
+      ],
+      "top_5_coverage": 0.7333
+    },
+    "_.o.eo": {
+      "verdict": "OPEN",
+      "n": 11,
+      "unique_skeletons": 8,
+      "top_5": [
+        {
+          "skeleton": "wkdy",
+          "count": 3
+        },
+        {
+          "skeleton": "wtl",
+          "count": 2
+        },
+        {
+          "skeleton": "kpkd",
+          "count": 1
+        },
+        {
+          "skeleton": "wks",
+          "count": 1
+        },
+        {
+          "skeleton": "wkr",
+          "count": 1
+        }
+      ],
+      "top_5_coverage": 0.7273
+    }
+  },
+  "combined": {
+    "total_tokens": 42,
+    "unique_skeletons": 25,
+    "top_10": [
+      {
+        "skeleton": "kkdy",
+        "count": 4,
+        "in_hand_a_oii_class": false
+      },
+      {
+        "skeleton": "kky",
+        "count": 4,
+        "in_hand_a_oii_class": false
+      },
+      {
+        "skeleton": "kdy",
+        "count": 3,
+        "in_hand_a_oii_class": false
+      },
+      {
+        "skeleton": "kl",
+        "count": 3,
+        "in_hand_a_oii_class": false
+      },
+      {
+        "skeleton": "wkdy",
+        "count": 3,
+        "in_hand_a_oii_class": false
+      },
+      {
+        "skeleton": "sdy",
+        "count": 2,
+        "in_hand_a_oii_class": false
+      },
+      {
+        "skeleton": "sky",
+        "count": 2,
+        "in_hand_a_oii_class": false
+      },
+      {
+        "skeleton": "s",
+        "count": 2,
+        "in_hand_a_oii_class": false
+      },
+      {
+        "skeleton": "ks",
+        "count": 2,
+        "in_hand_a_oii_class": false
+      },
+      {
+        "skeleton": "wtl",
+        "count": 2,
+        "in_hand_a_oii_class": false
+      }
+    ]
+  },
+  "cross_hand": {
+    "hand_a_oii_stems": [
+      "dn",
+      "dr",
+      "kkn",
+      "kn",
+      "sn",
+      "tkn"
+    ],
+    "hand_b_marker_stems": [
+      "dl",
+      "kdy",
+      "kkd",
+      "kkdy",
+      "kkky",
+      "kky",
+      "kl",
+      "kpkd",
+      "kr",
+      "ks",
+      "ktdy",
+      "kty",
+      "ky",
+      "s",
+      "sdy",
+      "skdy",
+      "sky",
+      "sly",
+      "ss",
+      "wkdy",
+      "wkl",
+      "wkr",
+      "wks",
+      "wt",
+      "wtl"
+    ],
+    "overlap": [],
+    "overlap_count": 0
+  },
+  "overall_verdict": "OPEN (all three)",
+  "closed_count": 0,
+  "open_count": 3
+}
