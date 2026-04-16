@@ -4,6 +4,47 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-16 — H-BV-HIGH-LOW-STRUCTURE-01 PARTIAL (regime-alternation signal)
+
+**Hypothesis**: The HIGH/LOW vocabulary split may reflect a structural axis (line position, morphological state, paragraph role) rather than lexical function/content; or the function/content reading may survive via adjacency analysis.
+
+**Method**: four-part locked test on Hand A with R=146 split from NOMENCLATOR-01.
+
+**Result**: PARTIAL/UNRESOLVED per locked rule — 0 of 3 structural triggers, Test 4 neither at natural-language band nor at random null.
+
+| test | metric | observed | threshold | triggered? |
+|---|---|---|---|---|
+| 1 line position | any quartile HIGH-share | max 29% (Q1) | ≥60% | **no** |
+| 1 line position | Q1+Q4 edges | 48% | ≥70% | **no** |
+| 2 morphological | HIGH 0-suffix | 37.4% | ≥70% | no |
+| 2 morphological | LOW ≥2-suffix | 1.9% | ≥50% | no |
+| 3 paragraph role | boundary / medial | **0.47x** (inverse) | ≥1.5x | no |
+| 4 adjacency | Hand A cross-class | **46.9%** | [60%, 80%] match refs | no |
+
+**Two substantive signals the locked rule did not capture:**
+
+1. **HIGH and LOW classes ANTI-ALTERNATE.** Hand A cross-class rate 46.9% is BELOW random 50% and BELOW Latin Vulgate (53.8%) and Italian Dante (56.7%). Natural languages alternate function/content above random; Hand A clusters like-with-like. The classes appear in RUNS rather than interleaved.
+
+2. **Paragraph-initial tokens are 87.5% LOW-class** (34 HIGH vs 237 LOW across 271 paragraphs; boundary-to-medial HIGH-share ratio 0.47x — inverse of the predicted clustering direction). Consistent with a *'[topic or ingredient name] [common instruction words]'* structure: paragraphs open with a rare/technical token, then transition to a HIGH-dominated middle.
+
+**Combined picture across NOMENCLATOR-01, NLREF-01, HIGH-DECODE-01, and this test:**
+
+- The HIGH/LOW vocabulary split is **real** (Zipf gap, glyph entropy gap, type-glyph entropy gap all p<0.01; 3/5 gaps exceed natural-language references).
+- It is **not** function/content (Brady/Schechter/Pagel all fail on HIGH-only; adjacency anti-alternates).
+- It is **not** line-positional, not morphological, not paragraph-role clustering.
+- It **is** regime-alternation plus topic-initial structure: text segments between HIGH-dominated and LOW-dominated runs, with rare tokens opening paragraphs.
+
+This reframes the nomenclator interpretation. Hand A's statistical fingerprint fits a **two-register prose** — common (HIGH) words cluster in running instructional text, rare (LOW) words cluster at topic boundaries and in technical-term blocks. This is consistent with medieval pharmaceutical recipe structure (ingredient → preparation → dosage) and consistent with a regime-switching cipher architecture, but NOT consistent with the classical nomenclator "cipher+codebook" model.
+
+Confidence 0.4 → 0.35.
+
+**Follow-ups:**
+- Run-length distribution on HIGH/LOW classes vs natural-language baselines — quantify the regime-alternation.
+- Characterise paragraph-initial LOW tokens — do they cluster by plant species / ingredient family?
+- Reframe NOMENCLATOR-NLREF-01's 3/5 gaps as register-switching rather than cipher structure.
+
+**Files**: `hypotheses/H-BV-HIGH-LOW-STRUCTURE-01.json`, `outputs/high_low_structure_test.json`, `scripts/run_high_low_structure.py`.
+
 ## 2026-04-16 — H-BV-NOMENCLATOR-HIGH-DECODE-01 REFUTED (all 3 maps fail)
 
 **Hypothesis**: If Hand A has a nomenclator-style head/tail split, then Brady / Schechter / Pagel — previously tested on the full Hand-A vocabulary — should succeed on the HIGH class alone. The HIGH class is the function-word scaffold; if it is enciphered natural language, a correct substrate mapping should clear the +0.010 connector-content bigram shuffle-test threshold on HIGH-only tokens.

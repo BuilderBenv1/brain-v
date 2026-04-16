@@ -1,0 +1,68 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-HIGH-LOW-STRUCTURE-01",
+  "R_split": 146,
+  "test_1_line_position": {
+    "quartile_high_share": {
+      "Q1": 0.494,
+      "Q2": 0.5627,
+      "Q3": 0.5232,
+      "Q4": 0.4729
+    },
+    "high_distribution_across_quartiles": {
+      "Q1": 0.2917,
+      "Q2": 0.251,
+      "Q3": 0.2686,
+      "Q4": 0.1887
+    },
+    "any_quartile_ge_60pct": false,
+    "Q1_plus_Q4_ge_70pct": false,
+    "triggered": false
+  },
+  "test_2_morphological": {
+    "high_0_suffix_pct": 0.374,
+    "low_ge2_suffix_pct": 0.0185,
+    "high_suffix_distribution": {
+      "1": 3454,
+      "0": 2064
+    },
+    "low_suffix_distribution": {
+      "0": 1712,
+      "1": 3690,
+      "2": 101,
+      "3": 1
+    },
+    "triggered": false
+  },
+  "test_3_paragraph": {
+    "n_paragraphs": 271,
+    "high_share_by_role": {
+      "initial": 0.1255,
+      "medial": 0.5141,
+      "final": 0.3532
+    },
+    "boundary_to_medial_ratio": 0.465,
+    "triggered": false
+  },
+  "test_4_adjacency": {
+    "hand_a": {
+      "HH": 0.2934,
+      "HL_or_LH": 0.4694,
+      "LL": 0.2372,
+      "total_bigrams": 9213,
+      "cross_class_rate": 0.4694
+    },
+    "vulgate_cross_class_rate": 0.5382,
+    "dante_cross_class_rate": 0.5667,
+    "hand_a_cross_class_rate": 0.4694,
+    "random_null_expected": 0.5,
+    "function_content_match": false,
+    "at_random_null": false
+  },
+  "triggers": {
+    "positional (Test 1)": false,
+    "morphological (Test 2)": false,
+    "paragraph-role (Test 3)": false
+  },
+  "verdict": "PARTIAL_OR_UNRESOLVED"
+}
