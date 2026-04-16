@@ -2,7 +2,7 @@
   "id": "H-BRADY-06",
   "claim": "The Voynich text uses the Sergian translation tradition (6th century Syriac), evidenced by: (a) tak-sa for dynamis (not hayl\u0101), (b) <=8 Greek loanwords (40 tokens total, all short transliterations), (c) native Syriac plant names dominate.",
   "type": "language",
-  "confidence": 0.3,
+  "confidence": 0.31,
   "evidence_for": [
     "Near-total absence of long Greek transliterations in decoded output",
     "Matches Cal\u00e0 and Hawley 2017 'translated' subset (270/477 Sergius entries)"
@@ -14,14 +14,21 @@
   "test": "Count Greek-transliteration-compatible skeletons in decoded output; compare against Sergian baseline",
   "test_metric": "greek_loanword_count",
   "test_threshold": "<=10 distinct Greek terms and <=60 tokens: consistent. >20 terms: challenged.",
-  "tests_run": [],
-  "tests_remaining": [
-    "Count Greek-transliteration-compatible skeletons in decoded output; compare against Sergian baseline"
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "claude_evaluation_failed",
+      "score": 0.5,
+      "passed": null,
+      "details": "Could not evaluate: Count Greek-transliteration-compatible skeletons in decoded output; compare against Sergian baseline",
+      "confidence_change": "0.300 -> 0.310"
+    }
   ],
+  "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-15",
-  "last_tested": null,
+  "last_tested": "2026-04-16",
   "reasoning": "Dating/tradition claim; hinges on primary hypothesis.",
   "source": "Brady Defibaugh (April 2026), A Syriac Pharmaceutical Dispensatory Encoded in the Voynich Manuscript (DANI pipeline v31)",
   "researcher": "brady-defibaugh"

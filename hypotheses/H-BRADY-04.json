@@ -2,7 +2,7 @@
   "id": "H-BRADY-04",
   "claim": "The encoding drops pharyngeal consonants (Syriac het and ayin have no EVA representation) \u2014 consistent with a non-Semitic (European) copyist who lacks these phonemes.",
   "type": "cipher",
-  "confidence": 0.4,
+  "confidence": 0.398,
   "evidence_for": [
     "Lexicon 'yn'=ayn\u0101 ('eye', 699 tokens) matches without the initial ayin",
     "Pharmaceutical vocabulary with het (kuhla, mashha, hamra) initially invisible without this assumption"
@@ -14,14 +14,21 @@
   "test": "Test whether reintroducing het/ayin assumptions changes coverage significantly; count homograph collisions produced",
   "test_metric": "pharyngeal_drop_plausibility",
   "test_threshold": "Structural argument more than numerical test. Evaluate qualitatively.",
-  "tests_run": [],
-  "tests_remaining": [
-    "Test whether reintroducing het/ayin assumptions changes coverage significantly; count homograph collisions produced"
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "claude_evaluation",
+      "score": 0.35,
+      "passed": null,
+      "details": "Zipfian distribution (0.8946) confirms natural language patterns, but pharyngeal consonant dropping requires plaintext knowledge to test directly; high hapax ratio (0.701) suggests complex encoding, making the hypothesis plausible but statistically inconclusive.",
+      "confidence_change": "0.400 -> 0.398"
+    }
   ],
+  "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-15",
-  "last_tested": null,
+  "last_tested": "2026-04-16",
   "reasoning": "Linguistic plausibility claim; numerical test secondary.",
   "source": "Brady Defibaugh (April 2026), A Syriac Pharmaceutical Dispensatory Encoded in the Voynich Manuscript (DANI pipeline v31)",
   "researcher": "brady-defibaugh"

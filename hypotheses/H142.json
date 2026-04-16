@@ -1,0 +1,28 @@
+{
+  "id": "H142",
+  "claim": "Per-section Zipf exponents vary monotonically with section entropy: the text-only section (entropy 3.9016 bits) has a Zipf exponent closest to 1.0, the zodiac section (entropy 3.7149 bits) has the flattest Zipf exponent (furthest below 1.0), and all other sections fall in between\u00e2\u20ac\u201dconsistent with the text-only section being least transformed from natural language and label-heavy sections being most compressed or formulaic.",
+  "type": "structural",
+  "confidence": 0.65,
+  "evidence_for": [
+    "Overall Zipf exponent 0.8946 is below natural language baseline of ~1.0, indicating artificial compression or label-repetition effects",
+    "Zodiac entropy 3.7149 (lowest) is consistent with a small repeated label vocabulary, which produces flat Zipf distributions",
+    "Text-only section entropy 3.9016 (highest) is most similar to natural language entropy (Latin ~4.0, Italian ~3.95)",
+    "The 0.987 confidence belief that text-only section represents the closest approximation to natural language directly predicts this"
+  ],
+  "evidence_against": [
+    "Small section sizes (zodiac: 1,297 words; text-only: 2,349 words) make Zipf fits noisy and confidence intervals wide",
+    "If zodiac pages use a fixed label vocabulary rather than running text, the low entropy reflects vocabulary size not cipher depth, and the relationship to Zipf may be non-monotonic"
+  ],
+  "test": "Fit Zipf power law (log-log OLS) to word frequency distribution for each of the 7 sections separately. Record exponent and R-squared. Compute Spearman rank correlation between section entropy and section Zipf exponent across all 7 sections. Bootstrap 1,000 random section-size-matched samples from the full corpus to establish null correlation distribution.",
+  "test_metric": "Spearman rho between section entropy and section Zipf exponent; individual section exponents for zodiac and text-only",
+  "test_threshold": "Confirm if Spearman rho > 0.7 AND text-only Zipf exponent > 0.92 AND zodiac Zipf exponent < 0.80; deny if rho < 0.4 or ordering is violated for text-only/zodiac pair",
+  "tests_run": [],
+  "tests_remaining": [
+    "Fit Zipf power law (log-log OLS) to word frequency distribution for each of the 7 sections separately. Record exponent and R-squared. Compute Spearman rank correlation between section entropy and section Zipf exponent across all 7 sections. Bootstrap 1,000 random section-size-matched samples from the full corpus to establish null correlation distribution."
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "A monotonic entropy-Zipf relationship across sections would unify multiple high-confidence beliefs into a single testable prediction and identify which sections are most and least transformed from natural language\u00e2\u20ac\u201ddirectly prioritizing which sections to attempt decipherment on first"
+}

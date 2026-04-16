@@ -2,7 +2,7 @@
   "id": "H-BV-EO-FAMILY-01",
   "claim": "Vowel patterns containing the substring 'eo' (the 'eo family') fire at elevated rates on preparation-content folios (pharmaceutical + recipes) compared to non-preparation non-plant folios, within EACH scribal hand separately. If true, the 'eo' element is a cross-hand meta-feature for preparation vocabulary, not a hand-specific quirk.",
   "type": "structural",
-  "confidence": 0.50,
+  "confidence": 0.55,
   "evidence_for": [
     "Observational: Hand A pharmaceutical top markers (_.o.eo, o.eo, o.eeo, _.eeo) share 'eo' element",
     "Observational: Hand B recipes top markers (o.eeo, o._.eeo, _.o.eeo) share 'eo' element",
@@ -16,15 +16,24 @@
   "test": "Within each hand (A, B) separately: compare 'eo-family rate' (fraction of tokens whose vowel pattern contains the substring 'eo') on preparation folios (pharma + recipes in that hand) vs non-preparation non-plant folios (biological + cosmological + astronomical + zodiac + text-only + non-plant herbal in that hand). One-tailed Welch's t-test per hand, folio-level rates. Alpha = 0.05. Cohen's d >= 0.4. Mann-Whitney U one-tailed as non-parametric sanity. Bootstrap 95% CI on mean difference.",
   "test_metric": "eo_family_rate_prep_vs_nonprep_within_hand",
   "test_threshold": "Both hands pass (p<0.05 AND d>=0.4): confirmed cross-hand meta-feature. Only one hand passes: PARTIAL (hand-specific). Neither passes: refuted.",
-  "tests_run": [],
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "locked_preregistered_per_hand_welch",
+      "score": 0.55,
+      "passed": null,
+      "details": "Hand A: p=0.130, d=0.592 (passes d, fails p). Hand B: p<0.000001, d=1.709 (passes both). Locked rule both-hands -> PARTIAL (hand-specific). eo-family is a Hand-B marker for preparation content, not a cross-hand meta-feature. Hand A underpowered (18 vs 9 folios).",
+      "confidence_change": "0.50 -> 0.55"
+    }
+  ],
   "tests_remaining": [
     "Execute the locked test in a separate commit after this pre-registration",
     "Report per-hand numbers plus combined interpretation"
   ],
-  "status": "pre-registered",
+  "status": "partial",
   "parent": "H-BV-DIALECT-01",
   "created": "2026-04-16",
-  "last_tested": null,
+  "last_tested": "2026-04-16",
   "reasoning": "Explicit pre-registration of the cross-hand 'eo' family hypothesis before any data is inspected. The claim is a shared-meta-feature hypothesis: even with different hand dialects, both hands should use 'eo'-containing patterns more for preparation content. If the claim holds only for one hand, that's hand-specific not meta-shared.",
   "source": "Brain-V 2026-04-16 pre-registration following H-BV-DIALECT-01",
   "researcher": "brain-v"

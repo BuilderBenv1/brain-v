@@ -1,0 +1,407 @@
+{
+  "generated": "2026-04-16",
+  "task1_holdout_cv": {
+    "HandA_pharma": {
+      "n_in": 16,
+      "n_out": 98,
+      "combined_baseline": 0.01521,
+      "fold_rates": [
+        0.0878,
+        0.12231,
+        0.11549,
+        0.08108,
+        0.07753
+      ],
+      "fold_enrs": [
+        5.775,
+        8.044,
+        7.596,
+        5.332,
+        5.099
+      ],
+      "combined_pass_4_5": true,
+      "per_pattern": {
+        "_.o.eo": {
+          "fold_enrs": [
+            7.76,
+            5.259,
+            15.683,
+            7.817,
+            4.877
+          ],
+          "pass_4_5": true
+        },
+        "o.eo": {
+          "fold_enrs": [
+            7.27,
+            11.37,
+            5.813,
+            5.634,
+            4.821
+          ],
+          "pass_4_5": true
+        },
+        "o.eeo": {
+          "fold_enrs": [
+            4.139,
+            12.621,
+            14.339,
+            2.085,
+            1.115
+          ],
+          "pass_4_5": true
+        },
+        "_.oo": {
+          "fold_enrs": [
+            8.868,
+            0.0,
+            3.414,
+            8.934,
+            7.963
+          ],
+          "pass_4_5": true
+        },
+        "o.ee": {
+          "fold_enrs": [
+            2.434,
+            10.724,
+            1.406,
+            3.679,
+            6.558
+          ],
+          "pass_4_5": true
+        },
+        "_.eeo": {
+          "fold_enrs": [
+            3.183,
+            5.394,
+            2.758,
+            3.207,
+            5.574
+          ],
+          "pass_4_5": true
+        }
+      }
+    },
+    "HandA_herbal": {
+      "n_in": 95,
+      "n_out": 19,
+      "combined_baseline": 0.01715,
+      "fold_rates": [
+        0.07891,
+        0.05412,
+        0.07793,
+        0.0526,
+        0.06285
+      ],
+      "fold_enrs": [
+        4.602,
+        3.156,
+        4.545,
+        3.067,
+        3.665
+      ],
+      "combined_pass_4_5": true,
+      "per_pattern": {
+        "_.o._.o": {
+          "fold_enrs": [
+            10.181,
+            7.515,
+            9.344,
+            6.359,
+            10.887
+          ],
+          "pass_4_5": true
+        },
+        "_._._.o": {
+          "fold_enrs": [
+            6.597,
+            1.578,
+            2.294,
+            2.469,
+            3.701
+          ],
+          "pass_4_5": true
+        },
+        "_._.o": {
+          "fold_enrs": [
+            3.069,
+            2.726,
+            4.208,
+            2.662,
+            2.532
+          ],
+          "pass_4_5": true
+        },
+        "_._.o.o": {
+          "fold_enrs": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "pass_4_5": true
+        },
+        "_.eaii": {
+          "fold_enrs": [
+            4.887,
+            6.764,
+            10.194,
+            4.489,
+            4.355
+          ],
+          "pass_4_5": true
+        }
+      }
+    },
+    "HandB_biological": {
+      "n_in": 19,
+      "n_out": 63,
+      "combined_baseline": 0.00109,
+      "fold_rates": [
+        0.00535,
+        0.00739,
+        0.00437,
+        0.01119,
+        0.00208
+      ],
+      "fold_enrs": [
+        4.912,
+        6.791,
+        4.011,
+        10.278,
+        1.914
+      ],
+      "combined_pass_4_5": true,
+      "per_pattern": {
+        "o._.ai": {
+          "fold_enrs": [
+            4.912,
+            6.791,
+            4.011,
+            10.278,
+            1.914
+          ],
+          "pass_4_5": true
+        }
+      }
+    },
+    "HandB_recipes": {
+      "n_in": 23,
+      "n_out": 59,
+      "combined_baseline": 0.00201,
+      "fold_rates": [
+        0.01839,
+        0.01869,
+        0.00844,
+        0.01452,
+        0.01303
+      ],
+      "fold_enrs": [
+        9.132,
+        9.277,
+        4.189,
+        7.21,
+        6.469
+      ],
+      "combined_pass_4_5": true,
+      "per_pattern": {
+        "oai": {
+          "fold_enrs": [
+            21.584,
+            24.738,
+            6.807,
+            0.0,
+            8.009
+          ],
+          "pass_4_5": true
+        },
+        "ai.o": {
+          "fold_enrs": [
+            14.389,
+            6.184,
+            0.0,
+            0.0,
+            28.033
+          ],
+          "pass_4_5": false
+        },
+        "o.ea": {
+          "fold_enrs": [
+            7.195,
+            18.553,
+            10.211,
+            13.886,
+            4.005
+          ],
+          "pass_4_5": true
+        },
+        "o._.eeo": {
+          "fold_enrs": [
+            21.584,
+            12.369,
+            3.404,
+            6.943,
+            4.005
+          ],
+          "pass_4_5": true
+        },
+        "o.eeo": {
+          "fold_enrs": [
+            10.792,
+            12.369,
+            3.404,
+            9.257,
+            7.342
+          ],
+          "pass_4_5": true
+        },
+        "_.eo.ai": {
+          "fold_enrs": [
+            3.597,
+            12.369,
+            3.404,
+            3.471,
+            10.012
+          ],
+          "pass_4_5": true
+        },
+        "o.ee.a": {
+          "fold_enrs": [
+            7.195,
+            0.0,
+            13.615,
+            10.414,
+            2.002
+          ],
+          "pass_4_5": true
+        },
+        "_.o.eeo": {
+          "fold_enrs": [
+            5.756,
+            4.948,
+            2.042,
+            6.249,
+            4.806
+          ],
+          "pass_4_5": true
+        }
+      }
+    }
+  },
+  "task2_volvelle_null": {
+    "HandA_pharma": {
+      "real_in_rate": 0.09574,
+      "real_out_rate": 0.01521,
+      "real_diff": 0.08054,
+      "null_mean": 0.00034,
+      "null_sd": 0.00323,
+      "z": 24.79,
+      "p_emp": 0.0
+    },
+    "HandA_herbal": {
+      "real_in_rate": 0.06473,
+      "real_out_rate": 0.01715,
+      "real_diff": 0.04759,
+      "null_mean": -0.00028,
+      "null_sd": 0.00556,
+      "z": 8.61,
+      "p_emp": 0.0
+    },
+    "HandB_biological": {
+      "real_in_rate": 0.00523,
+      "real_out_rate": 0.00109,
+      "real_diff": 0.00414,
+      "null_mean": 4e-05,
+      "null_sd": 0.00078,
+      "z": 5.29,
+      "p_emp": 0.0
+    },
+    "HandB_recipes": {
+      "real_in_rate": 0.01446,
+      "real_out_rate": 0.00201,
+      "real_diff": 0.01244,
+      "null_mean": 0.00011,
+      "null_sd": 0.00143,
+      "z": 8.64,
+      "p_emp": 0.0
+    }
+  },
+  "task3_classifier": {
+    "n_classes": 6,
+    "class_counts": {
+      "('A', 'herbal')": 95,
+      "('B', 'herbal')": 32,
+      "('B', 'text-only')": 5,
+      "('B', 'biological')": 19,
+      "('A', 'pharmaceutical')": 16,
+      "('B', 'recipes')": 23
+    },
+    "accuracy": 0.7421,
+    "majority_baseline": 0.5,
+    "chance": 0.1667,
+    "gain_over_majority": 0.2421,
+    "per_class": {
+      "('A', 'herbal')": {
+        "correct": 88,
+        "total": 95
+      },
+      "('B', 'herbal')": {
+        "correct": 2,
+        "total": 32
+      },
+      "('B', 'text-only')": {
+        "correct": 0,
+        "total": 5
+      },
+      "('B', 'biological')": {
+        "correct": 19,
+        "total": 19
+      },
+      "('A', 'pharmaceutical')": {
+        "correct": 9,
+        "total": 16
+      },
+      "('B', 'recipes')": {
+        "correct": 23,
+        "total": 23
+      }
+    }
+  },
+  "task4_eo_family": {
+    "A": {
+      "prep_n": 18,
+      "nonprep_n": 9,
+      "prep_mean": 0.223114,
+      "nonprep_mean": 0.158177,
+      "ratio": 1.411,
+      "t": 1.1913,
+      "p_one_tailed": 0.130051,
+      "cohens_d": 0.592,
+      "mann_whitney_p": 0.103809,
+      "ci_95": [
+        -0.038727,
+        0.159183
+      ],
+      "passed": false
+    },
+    "B": {
+      "prep_n": 23,
+      "nonprep_n": 34,
+      "prep_mean": 0.094132,
+      "nonprep_mean": 0.035253,
+      "ratio": 2.67,
+      "t": 6.0514,
+      "p_one_tailed": 0.0,
+      "cohens_d": 1.709,
+      "mann_whitney_p": 0.0,
+      "ci_95": [
+        0.040336,
+        0.077073
+      ],
+      "passed": true
+    }
+  },
+  "task4_verdict": "partial"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "H143",
+  "claim": "Words containing gallows glyphs (EVA t, p, k, f and bench variants cth, ckh, cph) occupy structurally distinct syntactic positions: they appear predominantly as the first content word after line-initial position and are followed by non-gallows words at a rate significantly higher than the corpus baseline, consistent with gallows functioning as topic-marking or noun-phrase-head indicators rather than phonemes.",
+  "type": "structural",
+  "confidence": 0.61,
+  "evidence_for": [
+    "H-BRADY-02 (confidence 0.7) establishes 'p' at 5.4x and 't' at 3.2x line-initial enrichment, already suggesting paragraph/section marking function",
+    "If gallows mark noun-phrase heads, they should be followed by modifier-class words (non-gallows) more often than preceded by them",
+    "The biological and herbal sections both show high gallows density, consistent with noun-phrase headings for plant/anatomy entries"
+  ],
+  "evidence_against": [
+    "Bench gallows (cth/ckh/cph) appear at <0.5x line-initial rate, suggesting they do not share the paragraph-marker function and may be phonemic",
+    "If gallows are purely positional markers, the within-line bigram prediction (gallows followed by non-gallows) may be confounded by the general rarity of gallows words making them structurally salient by frequency alone"
+  ],
+  "test": "For all within-line word bigrams (w_i, w_{i+1}): compute the conditional probability P(w_{i+1} is non-gallows | w_i is gallows) and compare to the marginal P(w is non-gallows) in the corpus. Separately compute P(w_{i+1} is gallows | w_i is gallows). Run chi-squared test with 1 degree of freedom. Stratify by plain gallows (t,p,k,f) vs. bench gallows (cth,ckh,cph) vs. no gallows.",
+  "test_metric": "P(non-gallows follows gallows) vs. corpus baseline; chi-squared statistic and p-value; transition matrix for gallows\u00e2\u2020\u2019gallows, gallows\u00e2\u2020\u2019non-gallows, non-gallows\u00e2\u2020\u2019gallows, non-gallows\u00e2\u2020\u2019non-gallows",
+  "test_threshold": "Confirm syntactic-marker hypothesis if P(non-gallows | gallows) > corpus baseline by >15 percentage points AND chi-squared p < 0.001 for plain gallows; deny if plain and bench gallows show indistinguishable transition profiles",
+  "tests_run": [],
+  "tests_remaining": [
+    "For all within-line word bigrams (w_i, w_{i+1}): compute the conditional probability P(w_{i+1} is non-gallows | w_i is gallows) and compare to the marginal P(w is non-gallows) in the corpus. Separately compute P(w_{i+1} is gallows | w_i is gallows). Run chi-squared test with 1 degree of freedom. Stratify by plain gallows (t,p,k,f) vs. bench gallows (cth,ckh,cph) vs. no gallows."
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "If gallows glyphs are structural markers, any mapping that treats them as phonemes will systematically misalign decoded text; confirming this collapses a large class of cipher hypotheses and constrains any decipherment to treat gallows as non-phonemic structural tokens"
+}

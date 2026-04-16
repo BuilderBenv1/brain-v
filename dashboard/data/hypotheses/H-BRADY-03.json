@@ -2,7 +2,7 @@
   "id": "H-BRADY-03",
   "claim": "EVA 'q' maps to Syriac waw, producing the conjunction wa- ('and') at 14.9% of tokens \u2014 a frequency consistent with attested Syriac prose.",
   "type": "cipher",
-  "confidence": 0.35,
+  "confidence": 0.266,
   "evidence_for": [
     "14.9% matches published Syriac prose wa- frequency",
     "q is known to be heavily position-constrained in Voynichese (initial only)"
@@ -14,14 +14,21 @@
   "test": "Measure: what fraction of tokens begin with EVA 'q'? Compare to 14.9% prediction",
   "test_metric": "q_initial_fraction",
   "test_threshold": "Within [12%,18%]: support. Outside: challenged.",
-  "tests_run": [],
-  "tests_remaining": [
-    "Measure: what fraction of tokens begin with EVA 'q'? Compare to 14.9% prediction"
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "claude_evaluation",
+      "score": 0.2,
+      "passed": false,
+      "details": "Predicted 14.9% word-initial frequency for a single glyph is implausibly high given typical linguistic patterns; individual glyphs at word start rarely exceed 5% in attested languages, even for common conjunctions.",
+      "confidence_change": "0.350 -> 0.266"
+    }
   ],
+  "tests_remaining": [],
   "status": "active",
   "parent": null,
   "created": "2026-04-15",
-  "last_tested": null,
+  "last_tested": "2026-04-16",
   "reasoning": "Simple to verify from corpus.",
   "source": "Brady Defibaugh (April 2026), A Syriac Pharmaceutical Dispensatory Encoded in the Voynich Manuscript (DANI pipeline v31)",
   "researcher": "brady-defibaugh"

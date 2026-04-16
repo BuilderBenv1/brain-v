@@ -1,0 +1,27 @@
+{
+  "id": "H141",
+  "claim": "Currier A and Currier B sub-corpora have glyph unigram distributions that are more statistically divergent from each other than any random equal-sized split of the same combined corpus, confirming they encode under structurally distinct cipher tables rather than merely reflecting scribal style variation.",
+  "type": "cipher",
+  "confidence": 0.87,
+  "evidence_for": [
+    "Multiple high-confidence beliefs (0.96, 0.958, 0.942) converge on A/B using distinct cipher alphabets",
+    "Currier A (11,022 words) vs B (23,766 words) size difference suggests different scribal contexts, not random variation",
+    "EVA 'q' at 98.9% word-initial frequency is the strongest positional constraint\u00e2\u20ac\u201dif A and B use different tables, q's positional profile should differ between sub-corpora"
+  ],
+  "evidence_against": [
+    "If A and B encode the same language with the same cipher but different register or topic, glyph distributions could diverge due to content rather than cipher table differences",
+    "Section overlap with A/B (herbal is predominantly A, biological predominantly B) confounds topic vs. cipher table as explanatory variable"
+  ],
+  "test": "Compute Jensen-Shannon divergence JSD(P_A, P_B) on 25-glyph unigram distributions. Bootstrap 10,000 random splits of the full 34,788-word corpus (excluding zodiac labels) into sizes matching A and B, compute JSD for each. Report empirical p-value of observed JSD versus bootstrap null.",
+  "test_metric": "Jensen-Shannon divergence between Currier A and B glyph unigrams vs. bootstrap null distribution",
+  "test_threshold": "Confirm if observed JSD exceeds the 99th percentile of the bootstrap null (empirical p < 0.01); deny if observed JSD falls below the 95th percentile",
+  "tests_run": [],
+  "tests_remaining": [
+    "Compute Jensen-Shannon divergence JSD(P_A, P_B) on 25-glyph unigram distributions. Bootstrap 10,000 random splits of the full 34,788-word corpus (excluding zodiac labels) into sizes matching A and B, compute JSD for each. Report empirical p-value of observed JSD versus bootstrap null."
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "A statistically significant glyph distribution divergence beyond topic-driven variation would prove the cipher-table-distinction hypothesis and constrain decipherment to dual-alphabet models; a null result would collapse A/B hypotheses to scribal style"
+}

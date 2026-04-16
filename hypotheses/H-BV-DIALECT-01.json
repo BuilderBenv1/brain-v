@@ -2,7 +2,7 @@
   "id": "H-BV-DIALECT-01",
   "claim": "Voynich scribes A and B divide the manuscript by section — Hand A writes the herbal (95 folios), pharmaceutical (16), and a handful of recipes (2); Hand B writes the biological (19), cosmological (3), recipes (23), and some herbal (32). Only herbal and recipes have both hands present. In recipes — the only content-shared section — the two hands use completely disjoint vowel-pattern dialects: 0 of 8 Hand-A markers overlap with 8 Hand-B markers. Hand A's marker vocabulary across all sections is 'o'-heavy (o/e ratio 2.00); Hand B's is more balanced (o/e 1.36). Both hands use 'eo'-containing patterns for preparation-related content (Hand A pharma, Hand B recipes).",
   "type": "structural",
-  "confidence": 0.80,
+  "confidence": 0.88,
   "evidence_for": [
     "Scribe-section division of labor is absolute for most sections: Hand A owns pharma and most of herbal, Hand B owns biological/cosmological/recipes",
     "In recipes (only section both hands co-write with n>=8), 0/8 top marker patterns overlap between hands",
@@ -24,10 +24,34 @@
     {
       "date": "2026-04-16",
       "test": "dialect_dictionary_discovery",
-      "score": 0.80,
+      "score": 0.8,
       "passed": true,
       "details": "12 (section, hand) cells examined. Pharmaceutical Hand A and recipes Hand B have robust markers (5-8 patterns each at 3x-8x enrichment). Perfect dialect separation in recipes (0/8 overlap). Hand A o/e=2.00, Hand B o/e=1.36.",
       "confidence_change": "initial 0.80"
+    },
+    {
+      "date": "2026-04-16",
+      "test": "task1_5fold_cv_per_marker_set",
+      "score": 0.88,
+      "passed": true,
+      "details": "HandA_pharma 5/5 folds >=2x (5.10x-8.04x). HandA_herbal 5/5 (3.07x-4.60x). HandB_biological 4/5 (1.91x-10.28x). HandB_recipes 5/5 (4.19x-9.28x). All four marker sets held out.",
+      "confidence_change": "0.80 -> 0.84"
+    },
+    {
+      "date": "2026-04-16",
+      "test": "task2_volvelle_null_per_marker_set",
+      "score": 0.88,
+      "passed": true,
+      "details": "All four marker sets z>=5.29 and empirical p=0.0000 against 100-run folio-level volvelle null. HandA_pharma z=24.79. Mechanical generation ruled out for every (section, hand) marker set.",
+      "confidence_change": "0.84 -> 0.88"
+    },
+    {
+      "date": "2026-04-16",
+      "test": "task3_classifier_folio_to_section_hand",
+      "score": 0.88,
+      "passed": true,
+      "details": "5-fold CV naive-Bayes classifier: 74.2%% accuracy across 6 classes vs 50%% majority vs 16.7%% chance (+24.2pp over majority). Perfect accuracy on (B, biological) and (B, recipes); 92.6%% on (A, herbal).",
+      "confidence_change": "confirmed"
     }
   ],
   "tests_remaining": [

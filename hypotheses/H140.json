@@ -1,0 +1,29 @@
+{
+  "id": "H140",
+  "claim": "The 70.1% hapax ratio is primarily artifactual: word-initial glyphs from {o,c,q,s,d} and word-final glyphs from {y,n,l,r,o} are morphological affixes, not root characters. Stripping one character from each end when it belongs to these sets will reduce the unique root vocabulary below 2,500 types and the hapax rate below 40%, consistent with inflectional morphology in a natural language.",
+  "type": "structural",
+  "confidence": 0.72,
+  "evidence_for": [
+    "Word-initial {o,c,q,s,d} and word-final {y,n,l,r,o} account for a disproportionate share of all word starts and ends, suggesting they are affixes rather than phonemic roots",
+    "Confidence 0.691 belief already notes that stripping word-final glyphs from {y,n,l,r,o} reduces hapax count",
+    "Natural languages with inflectional morphology (Latin, Syriac) have hapax rates of 30-50% in comparable corpus sizes, not 70%",
+    "Average word length of 5.03 glyphs is consistent with root length ~3 plus one affix on each end"
+  ],
+  "evidence_against": [
+    "Stripping may over-segment: some word-initial o or c may be root-initial, not prefixes",
+    "If the cipher is homophonic, stripped 'roots' may still appear unique due to cipher variation rather than genuine vocabulary reduction",
+    "The 0.631 belief notes Zipf exponent below 1.0 is caused by systematic word-suffix stripping, suggesting this effect is already partially captured"
+  ],
+  "test": "For every token in the corpus: if the first glyph is in {o,c,q,s,d}, strip it; if the last glyph is in {y,n,l,r,o}, strip it. Count unique types and hapax legomena in the resulting root-token list. Compare to 1000 bootstrap samples where the same number of random characters are stripped from random positions.",
+  "test_metric": "Unique root types after stripping (target <2,500) and hapax rate of stripped roots (target <40%)",
+  "test_threshold": "Confirm if stripped-root hapax rate < 40% AND unique root types < 2,500; deny if stripped hapax rate remains above 55% or unique roots exceed 4,000",
+  "tests_run": [],
+  "tests_remaining": [
+    "For every token in the corpus: if the first glyph is in {o,c,q,s,d}, strip it; if the last glyph is in {y,n,l,r,o}, strip it. Count unique types and hapax legomena in the resulting root-token list. Compare to 1000 bootstrap samples where the same number of random characters are stripped from random positions."
+  ],
+  "status": "active",
+  "parent": null,
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "If affixal stripping collapses the vocabulary by more than 60%, it proves the glyph positional constraints reflect morphological structure, not cipher artifacts, and identifies the true root lexicon size\u00e2\u20ac\u201da critical constraint for any decipherment attempt"
+}
