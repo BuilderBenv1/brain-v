@@ -1,0 +1,49 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-HAND-A-MAP-COMPARISON-01",
+  "locked_in_commit": "d95fce0",
+  "hand_a_lines": 1515,
+  "total_tokens": 10679,
+  "results": [
+    {
+      "map": "Brady-Syriac",
+      "n_tokens": 10679,
+      "matched": 4837,
+      "match_rate": 0.4529,
+      "connectors": 1693,
+      "connector_rate": 0.1585,
+      "in_order": 0.1802,
+      "shuffled": 0.1758,
+      "delta": 0.0044
+    },
+    {
+      "map": "Schechter-LatinOcc",
+      "n_tokens": 10679,
+      "matched": 8427,
+      "match_rate": 0.7891,
+      "connectors": 884,
+      "connector_rate": 0.0828,
+      "in_order": 0.2416,
+      "shuffled": 0.3024,
+      "delta": -0.0608
+    },
+    {
+      "map": "Pagel-trilingual",
+      "n_tokens": 10679,
+      "matched": 2548,
+      "match_rate": 0.2386,
+      "connectors": 737,
+      "connector_rate": 0.069,
+      "in_order": 0.0618,
+      "shuffled": 0.05,
+      "delta": 0.0118
+    }
+  ],
+  "ranking": [
+    "Pagel-trilingual",
+    "Brady-Syriac",
+    "Schechter-LatinOcc"
+  ],
+  "primary_candidate": "Pagel-trilingual",
+  "primary_delta": 0.0118
+}

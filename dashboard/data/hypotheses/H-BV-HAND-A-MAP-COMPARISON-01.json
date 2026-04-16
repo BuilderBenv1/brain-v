@@ -2,7 +2,7 @@
   "id": "H-BV-HAND-A-MAP-COMPARISON-01",
   "claim": "Among the published character/word mappings for Voynich (Brady Syriac, Schechter Latin-Occitan, Pagel trilingual), one produces a meaningfully higher connector-content bigram delta on Hand A alone than the others. That map ranks first as the candidate for Hand A's underlying language.",
   "type": "cipher",
-  "confidence": 0.35,
+  "confidence": 0.7,
   "evidence_for": [
     "H-BV-HAND-A-LANGUAGE-01 showed Brady's Syriac map yields delta +0.0044 on Hand A alone — sign flipped positive from -0.0098 full-corpus",
     "H-BV-HAND-A-INTERNAL-01 confirmed Hand A is linguistically structured; some map should produce better shuffle-test behaviour than random",
@@ -16,14 +16,23 @@
   "test": "For each of Brady (Syriac, char-level), Schechter (Latin-Occitan, word-level glossary 4,063 entries), Pagel (trilingual, word-level 81-term): apply the map to every Hand-A token to produce decoded-word sequences. Define CONNECTORS for each map via the map's own function-word class (Brady: {w,d,l,m,kl,km,dy,ky}; Schechter: top ~20 Latin/Occitan function words in glossary whose decoded value is in {et, in, de, ad, est, cum, ex, non, sed, per, vel, si, e, en, a, am, es, o, que, ni, lo, la}; Pagel: {y=et, s=est, chey=cum, sho=sume, ar=aer, al=alius, por=pro}). Compute conn-content bigram delta (in-order minus shuffled) per map. Shuffled baseline: pool Hand-A decoded tokens, shuffle, rechunk by original line lengths.",
   "test_metric": "ranked_conn_content_delta_per_map",
   "test_threshold": "Report the ordered ranking by delta. The highest-delta map becomes the primary hypothesis for future confirmation testing (pre-registered with expanded vocabulary). A map with delta >= +0.010 would individually trigger CONFIRMED under H-BV-HAND-A-LANGUAGE-01 rules. Otherwise the ranking is the output.",
-  "tests_run": [],
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "locked_preregistered_ranking",
+      "score": 0.7,
+      "passed": true,
+      "details": "RANKING: 1. Pagel-trilingual delta +0.0118 CONFIRMED (match rate 23.9%%). 2. Brady-Syriac delta +0.0044 MARGINAL (match rate 45.3%%). 3. Schechter-LatinOcc delta -0.0608 REFUTED (match rate 78.9%% but strongly anti-syntactic). Pagel is primary candidate for Hand A underlying language, despite low coverage.",
+      "confidence_change": "0.35 -> 0.70"
+    }
+  ],
   "tests_remaining": [
     "Execute in separate commit"
   ],
-  "status": "pre-registered",
+  "status": "confirmed",
   "parent": "H-BV-HAND-A-LANGUAGE-01",
   "created": "2026-04-16",
-  "last_tested": null,
+  "last_tested": "2026-04-16",
   "reasoning": "Hand A passes the linguistic-structure test but Brady's map is only marginal. The question Brain-V should answer next is: among the characters maps in the literature, which one is most consistent with Hand A's syntax? A ranking — even without any single map crossing confirmation — identifies the strongest candidate for deeper investigation.",
   "source": "Brain-V 2026-04-16 pre-registration following H-BV-HAND-A-LANGUAGE-01 marginal result",
   "researcher": "brain-v"
