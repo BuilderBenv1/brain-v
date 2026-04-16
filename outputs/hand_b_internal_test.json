@@ -1,0 +1,35 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-HAND-B-INTERNAL-01",
+  "locked_in_commit": "2b8171b",
+  "n_hand_b_folios": 82,
+  "test_1_inflection": {
+    "frequent_skeletons": 216,
+    "mean_distinct_suffixes": 2.431,
+    "pct_with_ge2": 0.704,
+    "pass": true
+  },
+  "test_2_plant_specificity": {
+    "within_plant": 0.001,
+    "across": 0.0016,
+    "ratio": 0.668,
+    "pass": false
+  },
+  "test_3_lda": {
+    "K": 8,
+    "per_topic_purity": [
+      0.95,
+      0.75,
+      0.85,
+      0.5,
+      0.95,
+      0.95,
+      0.65,
+      0.7
+    ],
+    "mean_purity": 0.7875,
+    "pass": true
+  },
+  "verdict": "PARTIAL (2/3)",
+  "passes": 2
+}

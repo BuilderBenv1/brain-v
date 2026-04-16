@@ -2,7 +2,7 @@
   "id": "H-BV-HAND-A-LANGUAGE-01",
   "claim": "Brady's Syriac EVA-to-consonant character map, applied to Hand A folios IN ISOLATION (no Hand B tokens mixed in), produces decoded text whose in-order word-order coherence exceeds the shuffled-corpus baseline on the connector-to-content bigram metric. If so, the original cross-corpus Brady-shuffle-test failure (Brain-V 2026-04-15) was due to Hand B masking a real Hand-A signal.",
   "type": "cipher",
-  "confidence": 0.30,
+  "confidence": 0.4,
   "evidence_for": [
     "H-BV-HAND-A-INTERNAL-01 just confirmed Hand A is natural-language-like",
     "Brady's original methodology mixed both hands; if Hand B is a different system, its shuffle-test noise could have drowned out Hand-A signal",
@@ -16,14 +16,23 @@
   "test": "Apply Brady's EVA-to-Syriac-consonant character map (identical to earlier volvelle and Brady tests) to every token on every Hand-A folio. Produce line-level sequences of Syriac consonant skeletons. Apply Brain-V's Syriac proxy lexicon (71 skeletons from earlier Brady test) to label each skeleton as MATCHED/UNMATCHED and classify CONNECTOR ({w, d, l, m, k, kl, km, dy, ky}) or CONTENT.\n\nCompute shuffle-test metrics on the Hand-A-only decoded stream:\n  in-order connector-content bigram rate (fraction of connector tokens followed by non-connector content)\n  shuffled connector-content bigram rate (same token pool shuffled across corpus)\n  delta = in-order - shuffled\n\nCompare to original full-corpus Brady test: delta was -0.0098 (in-order worse).",
   "test_metric": "hand_a_only_brady_shuffle_delta",
   "test_threshold": "CONFIRMED if Hand-A-only connector-content bigram delta is POSITIVE and >= +0.010. MARGINAL if 0 < delta < +0.010. REFUTED if delta <= 0 (Hand A alone also fails the shuffle test, consistent with earlier cross-corpus result).",
-  "tests_run": [],
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "locked_preregistered",
+      "score": 0.4,
+      "passed": null,
+      "details": "MARGINAL +0.0044 (threshold +0.010). Sign FLIPPED from full-corpus -0.0098 to positive within Hand A alone — Hand B noise was partially masking a Hand-A signal. Magnitude below confirmed threshold but directionally supportive of Brady within Hand A.",
+      "confidence_change": "-> 0.4"
+    }
+  ],
   "tests_remaining": [
     "Execute in separate commit"
   ],
-  "status": "pre-registered",
+  "status": "marginal",
   "parent": "H-BV-HAND-A-INTERNAL-01",
   "created": "2026-04-16",
-  "last_tested": null,
+  "last_tested": "2026-04-16",
   "reasoning": "Hand A passed the language-structure internal test (H-BV-HAND-A-INTERNAL-01 confirmed). The natural next check: does any existing character-map hypothesis (Brady's is the best-worked-out option) survive when restricted to Hand A? If yes, Brady's Syriac hypothesis gets new legs under the restriction; if no, Hand A has linguistic structure but Brady's specific map is not the right key.",
   "source": "Brain-V 2026-04-16 pre-registration after H-BV-HAND-A-INTERNAL-01 confirmed",
   "researcher": "brain-v"

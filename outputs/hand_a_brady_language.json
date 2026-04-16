@@ -1,0 +1,14 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-HAND-A-LANGUAGE-01",
+  "locked_in_commit": "2b8171b",
+  "hand_a_lines": 1515,
+  "total_tokens": 10679,
+  "matched_tokens": 4837,
+  "match_rate": 0.4529,
+  "in_order_conn_content_rate": 0.1802,
+  "shuffled_conn_content_rate": 0.1758,
+  "delta": 0.0044,
+  "verdict": "MARGINAL",
+  "full_corpus_delta_for_comparison": -0.0098
+}
