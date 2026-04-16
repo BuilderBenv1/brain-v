@@ -1,0 +1,639 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-CIRCA-INSTANS-BENCHMARK-01",
+  "primary_corpus": "Isidore Etymologiae Book 17 (+ 18 if padded)",
+  "secondary_corpus": "Macer Floridus De viribus herbarum",
+  "circa_instans_note": "Circa Instans unavailable in clean digital; Isidore Etymologiae Book 17 is the prose-matched primary benchmark",
+  "tolerance_bands": {
+    "disjunction": 0.1,
+    "top20_medial": 4,
+    "header_recurrence": 0.05,
+    "cross_class_rate": 0.05
+  },
+  "hand_a": {
+    "label": "Hand A",
+    "n_tokens": 11018,
+    "n_types": 3510,
+    "n_paragraphs": 268,
+    "mean_paragraph_len": 41.11,
+    "R_split": 146,
+    "high_type_pct": 0.0416,
+    "disjunction": 0.8488,
+    "top20_medial_passes": 5,
+    "top20_details": [
+      {
+        "token": "daiin",
+        "count": 147,
+        "skeleton": "dn",
+        "variants": 14,
+        "coverage": 0.657,
+        "pass": true
+      },
+      {
+        "token": "chol",
+        "count": 104,
+        "skeleton": "chl",
+        "variants": 13,
+        "coverage": 0.493,
+        "pass": true
+      },
+      {
+        "token": "s",
+        "count": 56,
+        "skeleton": "s",
+        "variants": 20,
+        "coverage": 0.399,
+        "pass": true
+      },
+      {
+        "token": "chor",
+        "count": 55,
+        "skeleton": "chr",
+        "variants": 13,
+        "coverage": 0.388,
+        "pass": true
+      },
+      {
+        "token": "sho",
+        "count": 44,
+        "skeleton": "sh",
+        "variants": 10,
+        "coverage": 0.254,
+        "pass": false
+      },
+      {
+        "token": "y",
+        "count": 39,
+        "skeleton": "y",
+        "variants": 10,
+        "coverage": 0.325,
+        "pass": true
+      },
+      {
+        "token": "ol",
+        "count": 37,
+        "skeleton": "l",
+        "variants": 10,
+        "coverage": 0.257,
+        "pass": false
+      },
+      {
+        "token": "shol",
+        "count": 36,
+        "skeleton": "shl",
+        "variants": 8,
+        "coverage": 0.261,
+        "pass": false
+      },
+      {
+        "token": "dy",
+        "count": 34,
+        "skeleton": "dy",
+        "variants": 13,
+        "coverage": 0.265,
+        "pass": false
+      },
+      {
+        "token": "chey",
+        "count": 33,
+        "skeleton": "chy",
+        "variants": 9,
+        "coverage": 0.216,
+        "pass": false
+      },
+      {
+        "token": "cheol",
+        "count": 30,
+        "skeleton": "chl",
+        "variants": 13,
+        "coverage": 0.16,
+        "pass": false
+      },
+      {
+        "token": "chy",
+        "count": 29,
+        "skeleton": "chy",
+        "variants": 9,
+        "coverage": 0.261,
+        "pass": false
+      },
+      {
+        "token": "cthy",
+        "count": 28,
+        "skeleton": "cthy",
+        "variants": 6,
+        "coverage": 0.213,
+        "pass": false
+      },
+      {
+        "token": "or",
+        "count": 28,
+        "skeleton": "r",
+        "variants": 19,
+        "coverage": 0.235,
+        "pass": false
+      },
+      {
+        "token": "dain",
+        "count": 26,
+        "skeleton": "dn",
+        "variants": 14,
+        "coverage": 0.198,
+        "pass": false
+      },
+      {
+        "token": "dal",
+        "count": 26,
+        "skeleton": "dl",
+        "variants": 13,
+        "coverage": 0.216,
+        "pass": false
+      },
+      {
+        "token": "aiin",
+        "count": 26,
+        "skeleton": "n",
+        "variants": 16,
+        "coverage": 0.205,
+        "pass": false
+      },
+      {
+        "token": "dar",
+        "count": 24,
+        "skeleton": "dr",
+        "variants": 17,
+        "coverage": 0.243,
+        "pass": false
+      },
+      {
+        "token": "shy",
+        "count": 23,
+        "skeleton": "shy",
+        "variants": 8,
+        "coverage": 0.183,
+        "pass": false
+      },
+      {
+        "token": "chody",
+        "count": 22,
+        "skeleton": "chdy",
+        "variants": 10,
+        "coverage": 0.127,
+        "pass": false
+      }
+    ],
+    "header_recurrence": 0.0634,
+    "n_initial_types": 205,
+    "n_recurring_types": 13,
+    "top_recurring": [
+      {
+        "token": "tol",
+        "count": 12
+      },
+      {
+        "token": "tchor",
+        "count": 10
+      },
+      {
+        "token": "tor",
+        "count": 5
+      },
+      {
+        "token": "tshol",
+        "count": 4
+      },
+      {
+        "token": "pchor",
+        "count": 4
+      },
+      {
+        "token": "pcheol",
+        "count": 4
+      },
+      {
+        "token": "tshor",
+        "count": 3
+      },
+      {
+        "token": "pchocthy",
+        "count": 3
+      }
+    ],
+    "cross_class_rate": 0.4676,
+    "adjacency": {
+      "HH": 0.2735,
+      "HL_LH": 0.4676,
+      "LL": 0.2589,
+      "n_bigrams": 10750
+    }
+  },
+  "isidore_primary_reference": {
+    "label": "Isidore Etym Bk 17+18",
+    "n_tokens": 10003,
+    "n_types": 3999,
+    "n_paragraphs": 327,
+    "mean_paragraph_len": 30.59,
+    "R_split": 250,
+    "high_type_pct": 0.0625,
+    "disjunction": 0.7712,
+    "top20_medial_passes": 5,
+    "top20_details": [
+      {
+        "token": "et",
+        "count": 126,
+        "skeleton": "t",
+        "variants": 9,
+        "coverage": 0.624,
+        "pass": true
+      },
+      {
+        "token": "quod",
+        "count": 97,
+        "skeleton": "qd",
+        "variants": 2,
+        "coverage": 0.599,
+        "pass": true
+      },
+      {
+        "token": "est",
+        "count": 80,
+        "skeleton": "st",
+        "variants": 8,
+        "coverage": 0.486,
+        "pass": true
+      },
+      {
+        "token": "in",
+        "count": 79,
+        "skeleton": "n",
+        "variants": 6,
+        "coverage": 0.419,
+        "pass": true
+      },
+      {
+        "token": "enim",
+        "count": 40,
+        "skeleton": "nm",
+        "variants": 3,
+        "coverage": 0.211,
+        "pass": false
+      },
+      {
+        "token": "a",
+        "count": 39,
+        "skeleton": "",
+        "variants": 6,
+        "coverage": 0.343,
+        "pass": true
+      },
+      {
+        "token": "ex",
+        "count": 36,
+        "skeleton": "x",
+        "variants": 4,
+        "coverage": 0.217,
+        "pass": false
+      },
+      {
+        "token": "autem",
+        "count": 32,
+        "skeleton": "tm",
+        "variants": 4,
+        "coverage": 0.22,
+        "pass": false
+      },
+      {
+        "token": "nam",
+        "count": 27,
+        "skeleton": "nm",
+        "variants": 3,
+        "coverage": 0.153,
+        "pass": false
+      },
+      {
+        "token": "eius",
+        "count": 25,
+        "skeleton": "s",
+        "variants": 16,
+        "coverage": 0.177,
+        "pass": false
+      },
+      {
+        "token": "sunt",
+        "count": 23,
+        "skeleton": "snt",
+        "variants": 3,
+        "coverage": 0.156,
+        "pass": false
+      },
+      {
+        "token": "unde",
+        "count": 22,
+        "skeleton": "nd",
+        "variants": 8,
+        "coverage": 0.144,
+        "pass": false
+      },
+      {
+        "token": "ut",
+        "count": 19,
+        "skeleton": "t",
+        "variants": 9,
+        "coverage": 0.141,
+        "pass": false
+      },
+      {
+        "token": "vel",
+        "count": 19,
+        "skeleton": "vl",
+        "variants": 3,
+        "coverage": 0.125,
+        "pass": false
+      },
+      {
+        "token": "eo",
+        "count": 19,
+        "skeleton": "",
+        "variants": 6,
+        "coverage": 0.165,
+        "pass": false
+      },
+      {
+        "token": "quia",
+        "count": 18,
+        "skeleton": "q",
+        "variants": 8,
+        "coverage": 0.138,
+        "pass": false
+      },
+      {
+        "token": "sit",
+        "count": 18,
+        "skeleton": "st",
+        "variants": 8,
+        "coverage": 0.141,
+        "pass": false
+      },
+      {
+        "token": "dicunt",
+        "count": 17,
+        "skeleton": "dcnt",
+        "variants": 2,
+        "coverage": 0.076,
+        "pass": false
+      },
+      {
+        "token": "cuius",
+        "count": 17,
+        "skeleton": "cs",
+        "variants": 5,
+        "coverage": 0.138,
+        "pass": false
+      },
+      {
+        "token": "quae",
+        "count": 16,
+        "skeleton": "q",
+        "variants": 8,
+        "coverage": 0.131,
+        "pass": false
+      }
+    ],
+    "header_recurrence": 0.0031,
+    "n_initial_types": 319,
+    "n_recurring_types": 1,
+    "top_recurring": [
+      {
+        "token": "malum",
+        "count": 3
+      }
+    ],
+    "cross_class_rate": 0.5093,
+    "adjacency": {
+      "HH": 0.257,
+      "HL_LH": 0.5093,
+      "LL": 0.2337,
+      "n_bigrams": 9676
+    }
+  },
+  "macer_secondary_verse": {
+    "label": "Macer Floridus (verse)",
+    "n_tokens": 11022,
+    "n_types": 3682,
+    "n_paragraphs": 31,
+    "mean_paragraph_len": 355.55,
+    "R_split": 267,
+    "high_type_pct": 0.0725,
+    "disjunction": 0.3333,
+    "top20_medial_passes": 15,
+    "top20_details": [
+      {
+        "token": "et",
+        "count": 93,
+        "skeleton": "t",
+        "variants": 10,
+        "coverage": 1.0,
+        "pass": true
+      },
+      {
+        "token": "si",
+        "count": 72,
+        "skeleton": "s",
+        "variants": 14,
+        "coverage": 1.0,
+        "pass": true
+      },
+      {
+        "token": "cum",
+        "count": 56,
+        "skeleton": "cm",
+        "variants": 1,
+        "coverage": 1.0,
+        "pass": false
+      },
+      {
+        "token": "in",
+        "count": 30,
+        "skeleton": "n",
+        "variants": 12,
+        "coverage": 0.806,
+        "pass": true
+      },
+      {
+        "token": "est",
+        "count": 30,
+        "skeleton": "st",
+        "variants": 11,
+        "coverage": 0.839,
+        "pass": true
+      },
+      {
+        "token": "nn",
+        "count": 29,
+        "skeleton": "nn",
+        "variants": 2,
+        "coverage": 0.806,
+        "pass": true
+      },
+      {
+        "token": "a",
+        "count": 29,
+        "skeleton": "",
+        "variants": 17,
+        "coverage": 0.871,
+        "pass": true
+      },
+      {
+        "token": "x",
+        "count": 28,
+        "skeleton": "x",
+        "variants": 2,
+        "coverage": 0.839,
+        "pass": true
+      },
+      {
+        "token": "sic",
+        "count": 27,
+        "skeleton": "sc",
+        "variants": 5,
+        "coverage": 0.774,
+        "pass": true
+      },
+      {
+        "token": "yy",
+        "count": 27,
+        "skeleton": "yy",
+        "variants": 1,
+        "coverage": 0.774,
+        "pass": false
+      },
+      {
+        "token": "g",
+        "count": 25,
+        "skeleton": "g",
+        "variants": 5,
+        "coverage": 0.548,
+        "pass": true
+      },
+      {
+        "token": "vel",
+        "count": 23,
+        "skeleton": "vl",
+        "variants": 3,
+        "coverage": 0.903,
+        "pass": true
+      },
+      {
+        "token": "c",
+        "count": 22,
+        "skeleton": "c",
+        "variants": 12,
+        "coverage": 0.71,
+        "pass": true
+      },
+      {
+        "token": "vino",
+        "count": 21,
+        "skeleton": "vn",
+        "variants": 5,
+        "coverage": 0.968,
+        "pass": true
+      },
+      {
+        "token": "y",
+        "count": 21,
+        "skeleton": "y",
+        "variants": 1,
+        "coverage": 0.742,
+        "pass": false
+      },
+      {
+        "token": "prodest",
+        "count": 20,
+        "skeleton": "prdst",
+        "variants": 1,
+        "coverage": 0.645,
+        "pass": false
+      },
+      {
+        "token": "eius",
+        "count": 20,
+        "skeleton": "s",
+        "variants": 14,
+        "coverage": 0.71,
+        "pass": true
+      },
+      {
+        "token": "non",
+        "count": 20,
+        "skeleton": "nn",
+        "variants": 2,
+        "coverage": 0.613,
+        "pass": true
+      },
+      {
+        "token": "de",
+        "count": 20,
+        "skeleton": "d",
+        "variants": 12,
+        "coverage": 0.645,
+        "pass": true
+      },
+      {
+        "token": "xx",
+        "count": 20,
+        "skeleton": "xx",
+        "variants": 1,
+        "coverage": 0.677,
+        "pass": false
+      }
+    ],
+    "header_recurrence": 0.0,
+    "n_initial_types": 27,
+    "n_recurring_types": 0,
+    "top_recurring": [],
+    "cross_class_rate": 0.4717,
+    "adjacency": {
+      "HH": 0.2642,
+      "HL_LH": 0.4717,
+      "LL": 0.2641,
+      "n_bigrams": 10991
+    }
+  },
+  "test_framing": "Hand A tested for inclusion in tolerance bands centred on ISIDORE (the genre reference); Macer provides genre-form sensitivity check",
+  "isidore_reference_values": {
+    "disjunction": 0.7712,
+    "top20_medial": 5,
+    "header_recurrence": 0.0031,
+    "cross_class_rate": 0.5093
+  },
+  "hand_a_values": {
+    "disjunction": 0.8488,
+    "top20_medial": 5,
+    "header_recurrence": 0.0634,
+    "cross_class_rate": 0.4676
+  },
+  "macer_values": {
+    "disjunction": 0.3333,
+    "top20_medial": 15,
+    "header_recurrence": 0.0,
+    "cross_class_rate": 0.4717
+  },
+  "hand_a_matches_isidore_band": {
+    "disjunction": true,
+    "top20_medial": true,
+    "header_recurrence": false,
+    "cross_class_rate": true
+  },
+  "form_sensitive_measures": {
+    "disjunction": true,
+    "top20_medial": true,
+    "header_recurrence": false,
+    "cross_class_rate": false
+  },
+  "n_hand_a_matches_of_4": 3,
+  "n_form_sensitive_of_4": 2,
+  "refute_triggered": false,
+  "size_caveat": false,
+  "verdict": "MARGINAL"
+}
