@@ -82,6 +82,15 @@ export default function RootLayout({
               </a>
               . All reasoning on-chain from day 1.
             </p>
+            <p className="mt-1">
+              Preprint:{" "}
+              <a
+                href="https://doi.org/10.5281/zenodo.19610118"
+                className="text-accent hover:underline"
+              >
+                doi.org/10.5281/zenodo.19610118
+              </a>
+            </p>
           </div>
         </footer>
       </body>
