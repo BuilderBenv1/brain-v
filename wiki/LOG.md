@@ -4,6 +4,41 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-16 — H-BV-SUFFIX-SEQUENCE-01 MARGINAL (partial two-layer, weak ordering)
+
+**Hypothesis**: Hand A's termination sequences decompose into an ordered two-layer morphology (stem + Layer-1 inner + Layer-2 outer) on re-tokenised data. Dual-tokenisation test: A = MULTI_GLYPHS + 'ol'; B = MULTI_GLYPHS + 'ol' + 'qo'. Side purpose: whether qo's inclusion affects structure diagnoses its ligature status.
+
+**Result**: MARGINAL 4/5 on BOTH tokenisations; results near-identical.
+
+| criterion | Tokenisation A (+ol) | Tokenisation B (+ol+qo) | threshold | verdict |
+|---|---|---|---|---|
+| C1 Inner closure | 0.933 | 0.932 | ≥0.70 | **PASS** |
+| C2 Outer closure | 0.858 | 0.860 | ≥0.70 | **PASS** |
+| C3 Productivity | mean 3.157 / 72.5% | mean 3.154 / 72.5% | ≥2.0 / ≥40% | **PASS** |
+| **C4 Ordering** | **1.12** | **1.13** | **≥2.0** | **FAIL** |
+| C5 Coverage | 0.806 | 0.808 | ≥0.60 | **PASS** |
+
+**Top-10 inner inventory** (identical in both tokenisations): `i, e, o, a, ch, d, k, t, sh, l` — 4 vowel-like + 6 consonant-like glyph-units, covering 93% of penultimate positions.
+
+**Top-5 outer inventory**: `y, n, r, ol, l` — covers 86% of word-final positions. Notable: `ol` (the newly-confirmed ligature from LIGATURE-CHECK-01) is the 4th most common word-final glyph. Extends Brain-V's earlier single-char suffix class {y, n, r, m, g}.
+
+**C4 failure is the central finding**:
+- P(outer top-5 | inner top-10) = 0.864
+- P(outer top-5 | inner NOT top-10) = 0.769
+- Ratio = 1.12, far below the 2.0 threshold
+
+Layer-2 outer morphemes follow Layer-1 inners only 10 percentage points more often than they follow other glyphs. The outers don't REQUIRE Layer-1 below them — they are simply word-final-preferring glyphs that attach with weak selectional restrictions. This is NOT a Latin-style stem+theme+ending ordered system.
+
+**qo side-question — NEUTRAL**. Tokenisation B differs from A by only 41 affected tokens and shifts no metric by more than 0.001. qo is word-initial (98.9%), not terminal — it does not participate in word-end morphology, so atomising it has no effect on this test. qo-ligature-status remains unresolved; it operates at a different structural level (initial/positional) than `ol`.
+
+**Linguistic implication**: the weak ordering (1.12 ratio) rules out strict inflecting morphology (Latin, Greek, Sanskrit). Hand A's termination system is more permissive — closer to AGGLUTINATIVE (Turkic, Finno-Ugric) or ISOLATING patterns where terminal morphemes attach with loose positional rules. Combined with H-BV-HAND-A-LANGUAGE-SCREEN-02's refutation of twelve European and Semitic substitutions, the morphological profile is increasingly unlike any tested Romance, Germanic, or Semitic language.
+
+**Sub-finding**: the Layer-1 inner inventory is HETEROGENEOUS — vowels (i, e, o, a) mixed with consonants (ch, d, k, t, sh, l). A refined test should separate vowel-inner from consonant-inner positions and check whether ordering strengthens within either sub-class.
+
+Confidence 0.50 → 0.50 (unchanged; the result is informative but perfectly balanced between support and refutation).
+
+**Files**: `hypotheses/H-BV-SUFFIX-SEQUENCE-01.json`, `outputs/suffix_sequence_test.json`, `scripts/run_suffix_sequence.py`.
+
 ## 2026-04-16 — H-BV-LIGATURE-CHECK-01 MIS-PARSING DETECTED (ol is a ligature)
 
 **Hypothesis**: at least one of the common EVA bigrams currently not collapsed by Brain-V's tokeniser (qo, ol) behaves statistically as a single glyph. Sanity check before H-BV-SUFFIX-SEQUENCE-01.
