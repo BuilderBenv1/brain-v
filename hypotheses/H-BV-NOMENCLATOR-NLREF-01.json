@@ -1,0 +1,30 @@
+{
+  "id": "H-BV-NOMENCLATOR-NLREF-01",
+  "claim": "Hand A's head/tail vocabulary gaps from H-BV-NOMENCLATOR-01 (Zipf, glyph entropy, type-glyph entropy, mean length, length stddev) are SIGNIFICANTLY MORE EXTREME (in the nomenclator-predicted direction) than the same gaps measured on natural-language reference corpora of comparable size (Latin Vulgate Genesis-Exodus-Leviticus excerpt and Italian Dante Divina Commedia excerpt, each truncated to 11,022 word tokens to match Hand A). If at least 3 of 5 Hand-A gaps exceed BOTH reference-corpus gaps in the nomenclator-predicted direction, the nomenclator interpretation is supported. If 0-1 of 5 do so, the H-BV-NOMENCLATOR-01 confirmation is reinterpreted as ordinary natural-language function-vs-content stratification, NOT a cipher signature.",
+  "type": "cipher",
+  "confidence": 0.5,
+  "evidence_for": [
+    "H-BV-NOMENCLATOR-01 confirmed Hand A has a strongly two-population vocabulary with 4/5 directional predictions and 3/5 at permutation p<0.01 — but the test was internal to Hand A and could not distinguish nomenclator from ordinary function-vs-content stratification",
+    "Pagel's only-the-head-clears-shuffle-threshold pattern (`H-BV-HAND-A-MAP-COMPARISON-01` confirmed at +0.0118; expanded `H-BV-PAGEL-EXPANSION-01` collapsed to +0.0030) is independent corroboration that the high-frequency vocabulary behaves differently from the low-frequency tail",
+    "If Hand A's head/tail gaps are consistently larger than Latin/Italian gaps, the case for an artificial two-population structure (codebook + cipher) becomes much stronger than ordinary natural language"
+  ],
+  "evidence_against": [
+    "Natural languages also produce significant head/tail gaps from the function-vs-content distinction; the gap MAGNITUDE is what discriminates, and natural-language Zipf/length gaps in 11k-token samples may already be extreme",
+    "The reference corpora (Vulgate Latin, Dante Italian) are POETIC/SCRIPTURAL prose and may have unusual stylistic properties (Dante is verse with rhyme constraints; Vulgate is translated narrative). They are not a perfect match to a 15th-century pharmaceutical text",
+    "If the Hand A gaps fall WITHIN the reference range, the H-BV-NOMENCLATOR-01 result loses its cipher-specific interpretation and becomes a generic natural-language signal"
+  ],
+  "test": "LOCKED PROCEDURE.\n\n  CORPORA (frozen):\n    - Hand A: 11,022 tokens (already computed in H-BV-NOMENCLATOR-01)\n    - Latin: Vulgate Genesis + Exodus + Leviticus, fetched from www.fourmilab.ch/etexts/www/Vulgate/, HTML-stripped, lowercased, punctuation removed, first 11,022 word tokens.\n    - Italian: Dante Divina Commedia (Project Gutenberg #1012), Project-Gutenberg header/footer stripped, lowercased, punctuation/diacritics retained as part of word, first 11,022 word tokens.\n\n  PROCEDURE for each corpus:\n    (1) Tokenize words (whitespace split after punctuation strip).\n    (2) Take exactly first 11,022 tokens.\n    (3) Treat each Latin/Italian letter as a single glyph-unit (no multigraph collapsing). Hand A keeps its EVA tokenisation as in H-BV-NOMENCLATOR-01.\n    (4) Build type-frequency table; sort by descending frequency.\n    (5) Find split rank R where cumulative tokens first reach 50% of total.\n    (6) Compute the same five measures as H-BV-NOMENCLATOR-01 for HIGH and LOW classes:\n          (a) Zipf exponent (negative slope of log-rank vs log-freq within class)\n          (b) weighted glyph entropy (token-weighted)\n          (c) type-glyph entropy (unweighted)\n          (d) mean word length\n          (e) length stddev\n    (7) Compute gap = HIGH - LOW for each measure.\n\n  PREDICTED nomenclator direction (same as H-BV-NOMENCLATOR-01):\n    zipf_gap > 0; glyph_entropy_gap < 0; type_glyph_entropy_gap < 0;\n    mean_length_gap < 0; length_stddev_gap > 0.\n\n  COMPARISON:\n    For each of 5 measures, check if Hand A's gap is MORE EXTREME (in the nomenclator-predicted direction) than BOTH the Latin and Italian reference gaps.",
+  "test_metric": "n_measures_HandA_more_extreme_than_both_references",
+  "test_threshold": "NOMENCLATOR-SUPPORTED if 3 or more of 5 measures show Hand A's gap more extreme (in predicted direction) than BOTH reference corpora. AMBIGUOUS if 1-2 of 5. NOT-NOMENCLATOR (H-BV-NOMENCLATOR-01 reinterpreted as ordinary natural-language stratification) if 0 of 5.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute reference-comparison test in separate commit after lock"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-NOMENCLATOR-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "H-BV-NOMENCLATOR-01 confirmed a two-population vocabulary structure but could not distinguish nomenclator from ordinary natural-language function-vs-content stratification. This follow-up runs the IDENTICAL test on two natural-language reference corpora (Latin Vulgate, Italian Dante) of matched 11,022-token size. If Hand A's gaps are larger than both references, the nomenclator interpretation gains decisive support. If they fall within the natural-language range, the cipher-specific reading is dissolved and the original confirmation becomes a confirmation of ordinary natural-language stratification only.",
+  "source": "Brain-V 2026-04-16 follow-up to NOMENCLATOR-01 confirmed result; user-directed",
+  "researcher": "brain-v"
+}
