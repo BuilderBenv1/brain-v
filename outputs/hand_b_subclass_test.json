@@ -1,0 +1,104 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-HAND-B-SUBCLASS-01",
+  "tokenisation": "A (MULTI_GLYPHS + 'ol')",
+  "n_hand_b_valid_tokens": 20682,
+  "locked_partition": {
+    "VOWEL_INNERS": [
+      "a",
+      "e",
+      "i",
+      "o"
+    ],
+    "CONSONANT_INNERS": [
+      "ch",
+      "d",
+      "k",
+      "l",
+      "sh",
+      "t"
+    ],
+    "TOP5_OUTERS": [
+      "y",
+      "n",
+      "r",
+      "ol",
+      "l"
+    ]
+  },
+  "M4_hand_b_native_inventories": {
+    "top10_inner": [
+      "d",
+      "i",
+      "e",
+      "a",
+      "o",
+      "k",
+      "ch",
+      "t",
+      "ckh",
+      "r"
+    ],
+    "top5_outer": [
+      "y",
+      "n",
+      "r",
+      "l",
+      "ol"
+    ],
+    "note": "diagnostic only; not used in decision"
+  },
+  "M1_vowel": {
+    "label": "VOWEL",
+    "n_in_subclass": 12523,
+    "n_not_in_subclass": 8159,
+    "p_top5_given_in": 0.8787,
+    "p_top5_given_not_in": 0.9565,
+    "ratio": 0.919
+  },
+  "M1_consonant": {
+    "label": "CONSONANT",
+    "n_in_subclass": 7205,
+    "n_not_in_subclass": 13477,
+    "p_top5_given_in": 0.9653,
+    "p_top5_given_not_in": 0.8795,
+    "ratio": 1.098
+  },
+  "M2_outer_preference": {
+    "y": {
+      "p_vowel": 0.2158,
+      "p_cons": 0.9201,
+      "diff_v_over_c": "0.235",
+      "flag": ">=3x consonant-preferring"
+    },
+    "n": {
+      "p_vowel": 0.3188,
+      "p_cons": 0.0,
+      "diff_v_over_c": "vowel-excl",
+      "flag": "vowel-exclusive (categorical)"
+    },
+    "r": {
+      "p_vowel": 0.2148,
+      "p_cons": 0.0028,
+      "diff_v_over_c": "77.383",
+      "flag": ">=3x vowel-preferring"
+    },
+    "ol": {
+      "p_vowel": 0.0318,
+      "p_cons": 0.0337,
+      "diff_v_over_c": "0.942",
+      "flag": "<2x (weak)"
+    },
+    "l": {
+      "p_vowel": 0.0975,
+      "p_cons": 0.0087,
+      "diff_v_over_c": "11.151",
+      "flag": ">=3x vowel-preferring"
+    }
+  },
+  "M3_categorical_gaps": 1,
+  "all_5_outers_above_3x": false,
+  "all_5_outers_below_2x": false,
+  "verdict": "MARGINAL",
+  "rationale": "3/5 outers cross the 3x threshold; 1 categorical gap(s); intermediate pattern"
+}
