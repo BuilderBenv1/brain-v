@@ -1,0 +1,30 @@
+{
+  "id": "H-BV-PAGEL-EXPANSION-01",
+  "claim": "A deterministically-expanded Pagel-style Latin mapping, reaching >=30% Hand-A token coverage, maintains positive connector-content bigram delta on Hand A. If so, Hand A is Latin-derived pharmaceutical text. If delta drops below +0.010 under expansion, Pagel's original positive delta (+0.0118 at 23.9% coverage) was a small-sample artefact.",
+  "type": "cipher",
+  "confidence": 0.40,
+  "evidence_for": [
+    "H-BV-HAND-A-MAP-COMPARISON-01 confirmed Pagel's 81-term map at +0.0118 delta on Hand A alone",
+    "Pagel's existing mappings target medieval Latin pharmaceutical vocabulary (Dioscorides, Circa Instans)",
+    "Hand A is natural-language-like (H-BV-HAND-A-INTERNAL-01 confirmed inflection + topics)"
+  ],
+  "evidence_against": [
+    "Adding arbitrary mappings can inflate match rate without preserving syntactic structure — if the expansion is not principled, delta will wash out",
+    "Pagel's original 81 terms were hand-selected by him; deterministic expansion may introduce noise that his hand-tuned terms avoided",
+    "If Hand A's underlying language isn't Latin, expansion will fail regardless of coverage"
+  ],
+  "test": "LOCKED EXPANSION RULE: (1) Rank all Hand-A EVA tokens by frequency, excluding those already in Pagel's 81-term dictionary. (2) Compile an independent medieval-pharmaceutical Latin vocabulary (Circa Instans + Dioscorides + Antidotarium Nicolai common terms, ~120 ranked by hand based on their relative frequency in those canonical sources). (3) Deterministically align: Hand-A token at frequency rank i is assigned the Latin word at rank i among the vocabulary pool, constrained by length compatibility (|EVA_len - Latin_len| <= 2). If a token's rank-matched Latin word violates length constraint, skip to the next Latin word. (4) Do NOT hand-tune. Do NOT re-assign after seeing the shuffle-test result. (5) Classify each decoded Latin term as CONNECTOR (et, in, de, ad, est, cum, ex, non, sed, per, vel, si, aut, nec, quod, quia, sic, si, ut, ergo, si, super, sub, ante, post, inter) or CONTENT.\n\nMeasure: Hand-A token coverage under expanded dictionary; connector-content bigram delta (in-order minus shuffled, same pooling/re-chunking protocol as H-BV-HAND-A-LANGUAGE-01 and H-BV-HAND-A-MAP-COMPARISON-01).",
+  "test_metric": "expanded_pagel_coverage_and_delta",
+  "test_threshold": "CONFIRMED if coverage >= 30% AND delta >= +0.010 (Hand A is Latin-derived). REFUTED if coverage >= 30% AND delta < +0.010 (original Pagel finding was small-sample artefact). INCONCLUSIVE if coverage < 30% after expansion rule exhausts the vocabulary pool.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute in separate commit"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-HAND-A-MAP-COMPARISON-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "Tests whether Pagel's Hand-A signal scales with coverage. A deterministic expansion rule prevents Brain-V from cherry-picking mappings to match the desired outcome. Whatever the expanded coverage and delta come out to, that is the result.",
+  "source": "Brain-V 2026-04-16 pre-registration following Pagel confirmation at 23.9% coverage",
+  "researcher": "brain-v"
+}
