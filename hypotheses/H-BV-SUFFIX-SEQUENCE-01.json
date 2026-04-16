@@ -1,0 +1,31 @@
+{
+  "id": "H-BV-SUFFIX-SEQUENCE-01",
+  "claim": "Hand A's termination sequences decompose into an ordered two-layer morphology (stem + Layer-1 inner morpheme + Layer-2 outer morpheme) when the corpus is tokenised with 'ol' treated as a single glyph (confirmed by H-BV-LIGATURE-CHECK-01). The test is dual-purpose: it runs on two tokenisations — (A) MULTI_GLYPHS + 'ol', and (B) MULTI_GLYPHS + 'ol' + 'qo' — and the pattern of which tokenisation confirms the morphology also tells us whether 'qo' should be treated as a ligature (an unresolved question from H-BV-LIGATURE-CHECK-01 where qo's chi-square was uninformative due to q's positional constraint).",
+  "type": "structural",
+  "confidence": 0.5,
+  "evidence_for": [
+    "H-BV-HAND-A-INTERNAL-01 confirmed Hand A has inflectional morphology with mean 2.46 distinct suffixes per frequent skeleton (>=5 occurrences)",
+    "Common Hand-A terminations like '-aiin', '-edy', '-eedy', '-chedy' suggest multi-character suffix sequences that could decompose",
+    "The prior Brain-V suffix class {y, n, r, m, g} was a single-character inventory; a two-layer system would nest these inside a larger morpheme system",
+    "H-BV-LIGATURE-CHECK-01 confirmed 'ol' is a ligature; re-tokenising with ol as a single glyph unit removes a known transcription artifact before morphology analysis"
+  ],
+  "evidence_against": [
+    "Hand A's morphology may be genuinely flat: single-character suffixes attaching directly to stems without intermediate layer",
+    "The 'productivity' criterion assumes stems repeat sufficiently; with Hand A's hapax ratio of 0.701, productive stems may be scarce",
+    "Tokenising qo as a ligature when it isn't could artificially introduce structure; tokenising it correctly as two glyphs when it IS a ligature could obscure structure — the dual-purpose test distinguishes these"
+  ],
+  "test": "LOCKED FIVE-CRITERION PROCEDURE run on two tokenisations.\n\n  TOKENISATIONS:\n    A) MULTI_GLYPHS_A = ['ckh', 'cth', 'cph', 'ch', 'sh', 'ol'] (add 'ol' only)\n    B) MULTI_GLYPHS_B = ['ckh', 'cth', 'cph', 'ch', 'sh', 'ol', 'qo'] (add ol and qo)\n    Longest-match-first tokenisation.\n\n  For each tokenisation, restrict to Hand A tokens. Build:\n    - For each tokenised word w = [g_1, g_2, ..., g_N] with N >= 3, decompose as\n      STEM = g_1..g_{N-2}, INNER = g_{N-1}, OUTER = g_N.\n    - Keep only tokens with N >= 3 (need at least one stem glyph plus two suffix glyph-units).\n\n  CRITERIA (all five must PASS on a tokenisation for that tokenisation to CONFIRM):\n\n  C1 — LAYER-1 (INNER) CLOSURE:\n    Rank inner glyphs by count. The top-10 inner glyphs must cover >= 70%\n    of all inner-position occurrences.\n\n  C2 — LAYER-2 (OUTER) CLOSURE:\n    Rank outer glyphs by count. The top-5 outer glyphs must cover >= 70%\n    of all outer-position occurrences.\n\n  C3 — PRODUCTIVITY:\n    Group tokens by STEM. For each stem appearing in >= 3 tokens (productive),\n    count distinct INNER glyph-units attached. Criterion PASS if\n    (a) mean distinct inners per productive stem >= 2.0 AND\n    (b) at least 40% of productive stems take >= 2 distinct inners.\n\n  C4 — ORDERING (Layer-2 depends on Layer-1):\n    Test whether top-5 outer glyphs appear preferentially AFTER top-10 inner\n    glyphs vs after non-top-10 inners.\n    ratio = P(outer in top5 | inner in top10) / P(outer in top5 | inner not in top10).\n    PASS if ratio >= 2.0 AND the conditional is not trivially 1.0 on both sides.\n\n  C5 — COVERAGE:\n    Form the candidate two-layer termination set = {(inner in top10) + (outer in top5)}.\n    Fraction of Hand A N>=3 tokens whose last two glyph-units are in this set.\n    PASS if coverage >= 0.60.",
+  "test_metric": "tokenisation_A_passes_of_5 and tokenisation_B_passes_of_5",
+  "test_threshold": "Per tokenisation, CONFIRMED if all 5 criteria pass. MARGINAL if 3-4 pass. REFUTED if 0-2 pass.\n\nOverall two-tokenisation verdict:\n  Both A and B CONFIRMED -> CONFIRMED morphology (robust to qo status)\n  Only A CONFIRMED -> CONFIRMED morphology BUT qo is NOT a ligature (including qo disrupts the structure)\n  Only B CONFIRMED -> CONFIRMED morphology AND qo IS a ligature (only emerges when qo is atomised)\n  Neither CONFIRMED (both MARGINAL or REFUTED) -> REFUTED morphology (flat)\n  One CONFIRMED, one MARGINAL -> MARGINAL overall",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute dual-tokenisation morphology test in separate commit after lock"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-LIGATURE-CHECK-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "H-BV-HAND-A-INTERNAL-01 confirmed inflectional morphology at the single-suffix level; the natural next question is whether the suffix system is two-layered like Latin (stem + theme + ending) or flat. H-BV-LIGATURE-CHECK-01 established 'ol' should be collapsed and left 'qo' unresolved. This test both answers the morphology question AND resolves the qo-ligature question as a side effect: if structure emerges on tokenisation B but not A, qo is a ligature; if structure emerges on A but not B, qo is NOT a ligature; if both show the same pattern, qo is neutral.",
+  "source": "Brain-V 2026-04-16 user-directed test following H-BV-LIGATURE-CHECK-01 MIS-PARSING DETECTED",
+  "researcher": "brain-v"
+}
