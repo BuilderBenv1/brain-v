@@ -1,0 +1,32 @@
+{
+  "id": "H-BV-CONSONANT-ID-01",
+  "claim": "Within Hand A plant folios where _.oii fires, different consonant skeletons cluster on folios depicting different plant species. If confirmed, this means _.oii acts as a category-level 'plant' marker AND the consonant skeleton carrying it acts as a species-level identifier — lifting Brain-V's finding from 'marker of a plant folio' to 'marker of a specific plant.'",
+  "type": "structural",
+  "confidence": 0.30,
+  "evidence_for": [
+    "H-BV-PLANT-01 and H-BV-HAND-B-PLANT-01 already established that _.oii is a plant-folio marker in Hand A",
+    "Jensen's TF-IDF clustering independently identifies the same folio subsets (cross-reference 2026-04-16) — suggesting structural specificity at folio level",
+    "If _.oii were a pure category marker with no species content, the consonant skeletons carrying it should be randomly distributed; a species-specific pattern would be structurally detectable"
+  ],
+  "evidence_against": [
+    "Sherwood's identifications are mostly one-per-folio unique species, so few species appear on multiple Hand-A plant folios; decision rule may be hard to trigger from sample alone",
+    "Even if repeated species exist, _.oii words per folio are few (0-6 per folio based on earlier analysis), giving thin samples per species",
+    "Medieval herbals commonly show the same plant from different angles, with text perhaps varying per illustration, which could mask any species-skeleton consistency",
+    "A negative result is the expected outcome if _.oii is purely category-level"
+  ],
+  "test": "For each Hand A plant folio where _.oii fires: extract every word whose vowel pattern is exactly _.oii, record its consonant skeleton. Group by Sherwood-assigned species. For species appearing on >=2 Hand-A folios, test whether the same skeleton recurs. Also test at genus level as a secondary analysis.",
+  "test_metric": "species_skeleton_consistency",
+  "test_threshold": ">=3 plant species show >=2 folios each with the SAME consonant skeleton in their _.oii words AND different species use different dominant skeletons: CONFIRMED (species-level ID proven). Weaker patterns (e.g. genus-level consistency or 1-2 species with repeated skeletons): MARGINAL. No species shows repeated skeleton: REFUTED (category-level only).",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute the locked test in a separate commit after this pre-registration",
+    "If Sherwood species are mostly unique per folio, run the analysis at genus level as secondary"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-PLANT-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "Sharpens the plant-marker finding from category-level (this is a plant folio) to species-level (this is this specific plant). The test is likely to fail or return marginal results because of sample thinness, but an honest attempt is worth making because any positive finding would substantially strengthen Brain-V's decoder. Pre-registered to preserve the discipline chain.",
+  "source": "Brain-V 2026-04-16 pre-registration following Jensen cross-reference confirmation",
+  "researcher": "brain-v"
+}
