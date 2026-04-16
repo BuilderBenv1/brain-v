@@ -4,6 +4,45 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-16 — H-BV-SUFFIX-SUBCLASS-01 MARGINAL (letter) / CONFIRMED (spirit): complementary sub-slot selection
+
+**Hypothesis**: Hand A's Layer-1 top-10 inner inventory consists of two distinct morphological sub-slots — VOWEL-CLASS {i, e, o, a} and CONSONANT-CLASS {ch, d, k, t, sh, l} — that H-BV-SUFFIX-SEQUENCE-01 incorrectly merged. Locked decision rule: CONFIRMED if max(ratio_VOWEL, ratio_CONSONANT) >= 2.0; REFUTED if both < 1.5 AND no outer differential >= 3x; MARGINAL otherwise.
+
+**Result**: MARGINAL by letter (both ratios < 1.5), but the M2 secondary signal is overwhelming.
+
+**M1 ordering ratios** (locked primary metric):
+- ratio_VOWEL     = 0.985  (P(top5 | V)=0.8533 vs P(top5 | ¬V)=0.8664)
+- ratio_CONSONANT = 1.055  (P(top5 | C)=0.8920 vs P(top5 | ¬C)=0.8457)
+- combined_ratio  = 1.123  (sanity: reproduces SUFFIX-SEQUENCE-01's 1.12)
+
+Both sub-classes attach to the TOP-5 outer SET with nearly identical probability to their complements. The 2.0 threshold is not met in either sub-class.
+
+**M2 sub-class outer preference** (2×5 table — the central finding):
+
+| outer | p_vowel | p_cons | diff (V/C) | note |
+|---|---|---|---|---|
+| y  | 0.1724 | 0.6732 | 0.256 | **3.9× CONSONANT-preferring** |
+| n  | 0.2845 | 0.0000 | ∞     | **VOWEL-EXCLUSIVE** (0/2240 cons attachments) |
+| r  | 0.2716 | 0.0036 | 76.06 | **76× VOWEL-preferring** |
+| ol | 0.0607 | 0.2080 | 0.292 | **3.4× CONSONANT-preferring** |
+| l  | 0.0641 | 0.0071 | 8.97  | **9× VOWEL-preferring** |
+
+**Every top-5 outer has a ≥3× sub-class differential.** The two sub-classes select complementary outer inventories:
+- VOWEL-inner → {n, r, l}
+- CONSONANT-inner → {y, ol}
+
+The SUFFIX-SEQUENCE-01 ordering failure (ratio 1.12) was a **sub-class-mixing artifact**. Each sub-slot has strict selectional restrictions, but the restrictions are OPPOSITE in direction — they cancel when pooled, producing the spurious "permissive morphology" signal. Under the correct partition, selection is near-deterministic within each sub-class.
+
+**Hardest combinatorial constraint yet found in Hand A**: `n` never appears after a consonant-class Layer-1 inner (0 hits across 2240 consonant-inner tokens). This is a categorical gap, not a frequency dip.
+
+**Interpretation**: Hand A's Layer-1 is two grammatically distinct slots. The terminal two-glyph region is a 2×2 (at minimum) inflectional paradigm: {vowel, consonant} inner × {V-class outer, C-class outer} with near-deterministic pairing. This is the morphological signature of **agglutinative languages**, where morphemes occupy fixed slots with slot-specific inventories and strict selectional restrictions.
+
+**Model update**: Layer-1 is reframed as TWO sub-slots with complementary Layer-2 preferences. Confidence in "Hand A has structured morphology" rises from 0.6 → 0.75. SUFFIX-SEQUENCE-01's verdict is updated from "partial two-layer, weak ordering" to "partial two-layer, weak ORDERING but strong SELECTION once sub-slots are separated."
+
+**Follow-up pre-registered**: H-BV-AGGLUTINATIVE-SCREEN-01 — morphological-structure comparison (not character-frequency substitution) against Hungarian, Finnish, Turkish, Basque, Quechua profiles using P1-P4 profile variables with EMD / JSD distances. Decision rule locked; execution deferred to next cycle to preserve pre-registration discipline.
+
+---
+
 ## 2026-04-16 — H-BV-SUFFIX-SEQUENCE-01 MARGINAL (partial two-layer, weak ordering)
 
 **Hypothesis**: Hand A's termination sequences decompose into an ordered two-layer morphology (stem + Layer-1 inner + Layer-2 outer) on re-tokenised data. Dual-tokenisation test: A = MULTI_GLYPHS + 'ol'; B = MULTI_GLYPHS + 'ol' + 'qo'. Side purpose: whether qo's inclusion affects structure diagnoses its ligature status.

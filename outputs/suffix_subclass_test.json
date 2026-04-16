@@ -1,0 +1,86 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-SUFFIX-SUBCLASS-01",
+  "tokenisation": "A (MULTI_GLYPHS + 'ol')",
+  "n_valid_tokens": 8794,
+  "partition": {
+    "VOWEL_INNERS": [
+      "a",
+      "e",
+      "i",
+      "o"
+    ],
+    "CONSONANT_INNERS": [
+      "ch",
+      "d",
+      "k",
+      "l",
+      "sh",
+      "t"
+    ],
+    "TOP5_OUTERS": [
+      "l",
+      "n",
+      "ol",
+      "r",
+      "y"
+    ]
+  },
+  "M1_vowel": {
+    "label": "VOWEL",
+    "n_in_subclass": 5964,
+    "n_not_in_subclass": 2830,
+    "p_top5_given_in": 0.8533,
+    "p_top5_given_not_in": 0.8664,
+    "ratio": 0.985
+  },
+  "M1_consonant": {
+    "label": "CONSONANT",
+    "n_in_subclass": 2240,
+    "n_not_in_subclass": 6554,
+    "p_top5_given_in": 0.892,
+    "p_top5_given_not_in": 0.8457,
+    "ratio": 1.055
+  },
+  "M1b_combined": {
+    "p_top5_given_top10": 0.8638,
+    "p_top5_given_out10": 0.7695,
+    "ratio": 1.123,
+    "sanity_expected": 1.12
+  },
+  "M2_outer_preference": {
+    "y": {
+      "p_vowel": 0.1724,
+      "p_cons": 0.6732,
+      "diff_v_over_c": "0.256",
+      "note": ">=3x cons-preferring"
+    },
+    "n": {
+      "p_vowel": 0.2845,
+      "p_cons": 0.0,
+      "diff_v_over_c": "vowel-excl",
+      "note": "vowel-exclusive"
+    },
+    "r": {
+      "p_vowel": 0.2716,
+      "p_cons": 0.0036,
+      "diff_v_over_c": "76.056",
+      "note": ">=3x vowel-preferring"
+    },
+    "ol": {
+      "p_vowel": 0.0607,
+      "p_cons": 0.208,
+      "diff_v_over_c": "0.292",
+      "note": ">=3x cons-preferring"
+    },
+    "l": {
+      "p_vowel": 0.0641,
+      "p_cons": 0.0071,
+      "diff_v_over_c": "8.967",
+      "note": ">=3x vowel-preferring"
+    }
+  },
+  "strong_differential": true,
+  "verdict": "MARGINAL",
+  "rationale": "ratios V=0.985, C=1.055; strong_differential=True; partial sub-slot structure"
+}
