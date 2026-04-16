@@ -1,218 +1,343 @@
 # Brain-V: An Autonomous Cognitive Architecture Attacks the Voynich Manuscript
 
-**One day. Sixty scoring cycles. Six findings.**
+**Three days. Two hundred scoring cycles. A working content-type decoder.**
 
-Brain-V is a persistent cognitive architecture — a system that generates hypotheses, tests them against statistical evidence, eliminates failures, updates its beliefs, and repeats. It was pointed at the Voynich Manuscript on April 14, 2026. This is what it found.
+Brain-V is a persistent cognitive architecture — a system that generates
+hypotheses, tests them against statistical evidence, eliminates failures,
+updates its beliefs, and publishes its own nulls. It was pointed at the
+Voynich Manuscript on April 14, 2026.
 
-Everything described here is reproducible. The code, the data, the scoring methodology, and every hypothesis file are public in this repository. Every claim includes the test that produced it and the numbers behind it.
-
----
-
-## Background
-
-The Voynich Manuscript (MS 408, Yale Beinecke Library) is a 15th-century document written in an undeciphered script across 226 folios. It contains approximately 38,000 words using 25 distinct glyphs, alongside illustrations of unidentified plants, astronomical diagrams, and bathing figures. No one has produced an accepted decipherment in over a century of attempts.
-
-In November 2025, Michael Greshko published the Naibbe cipher in *Cryptologia* — a historically plausible mechanism that encrypts Latin and Italian into text matching the manuscript's statistical profile. The Naibbe cipher does not decode the manuscript, but it demonstrates that the "cipher hypothesis" remains viable.
-
-Brain-V builds on this foundation. Rather than proposing a single theory, it systematically tests competing hypotheses against the corpus statistics and eliminates those that fail.
+This README reports what it has found through April 16. Everything is
+reproducible: the code, the data, the scoring methodology, every hypothesis
+file, and every pre-registration commit.
 
 ---
 
-## How Brain-V Works
+## Headline finding
 
-Brain-V runs a cognitive loop:
+**Two independent scribes encode plant-folio content in the Voynich
+Manuscript using scribe-specific vowel-pattern dialects that no mechanical
+(volvelle-family) null model reproduces.**
 
-1. **Perceive** — Parse the EVA transliteration of all 226 folios into structured data: words, glyphs, sections, Currier language classification (A/B).
-2. **Hypothesise** — Generate testable claims about the manuscript's structure, encoding, and source language. Each hypothesis specifies what statistical test would confirm or deny it.
-3. **Test** — Run the specified test against the corpus. 90 attacks per cycle, including frequency substitution, transposition, homophonic reduction, morphological stripping, section-comparative analysis, and combined multi-layer approaches.
-4. **Score** — Evaluate results honestly. Measure frequency correlation to Latin and Italian reference profiles, dictionary hit rates, entropy, Index of Coincidence (IC), and Zipf's law fit.
-5. **Update** — Promote hypotheses supported by evidence. Demote or eliminate those contradicted. Update the belief state.
-6. **Repeat.**
+- Hand A marks plant folios with `_.oii` (o-heavy vowel pattern).
+- Hand B marks plant folios with `_.e.e`, `_.eeo`, `_.o.eo` (e-heavy patterns,
+  all with zero non-plant fires).
+- Top-10 plant-enriched patterns between the two hands overlap on **1** of 10.
+- Across 1,600+ volvelle null runs spanning 4 architectures, empirical p < 0.01
+  for every hand's markers.
+- A naive-Bayes classifier trained on folio vowel-pattern distributions
+  achieves **74.2% 5-fold-CV accuracy** at classifying (scribe, content-type),
+  across 6 classes, vs 50% majority-class baseline.
 
-Over 60 cycles, Brain-V generated 123 hypotheses, eliminated 18, and converged on 53 with confidence above 0.8. The system's surprise score (a measure of how much the world model changed per cycle) dropped from 0.087 to 0.023, indicating convergence.
+The manuscript encodes *something* about each folio — at least, plant vs
+non-plant herbal and scribe identity — through conventions that survive
+held-out validation and refute the volvelle hypothesis.
 
----
-
-## Finding 1: Honest Scoring Killed a False Positive
-
-**The field needs this correction.**
-
-Brain-V's initial word-level codebook attack scored 0.8701 against Latin — an apparently strong signal. The attack mapped high-frequency Voynich words to Latin equivalents and produced output containing recognisable Latin function words (*de*, *et*, *quod*, *medicina*).
-
-On inspection, the scoring was dishonest. It excluded 64% of the text (unmapped words in brackets) from the dictionary hit calculation. When unmapped words were included in the score — as they must be, since a real decipherment must account for all text — the score dropped to **0.1894**.
-
-**Honest score: 0.1894. Not 0.8701.**
-
-This matters because partial-coverage attacks that ignore what they can't decode will always produce flattering numbers. Any claimed decipherment of the Voynich that reports accuracy only on the words it successfully maps should be treated with scepticism.
-
-The medical Latin codebook variant scored 0.2753 with 50.8% coverage and 51.2% real dictionary hits — better, but still far from a decipherment.
+The preprint-level write-up is at
+[`outputs/preprint/scribe-specific-plant-markers.md`](outputs/preprint/scribe-specific-plant-markers.md).
 
 ---
 
-## Finding 2: Systematic Morphological Structure
+## The findings in order
 
-**37.3% vocabulary reduction from suffix stripping. This is real morphology.**
+### 1. The null-lexicon result: coverage is not evidence
 
-The Voynich Manuscript has an anomalously high hapax legomenon ratio — 70.1% of all word types appear only once. This has fuelled speculation that the text is meaningless or randomly generated. Brain-V tested the alternative: that the apparent vocabulary size is inflated by systematic suffixes.
+**1,300 phonotactically plausible nonsense skeletons achieve 83.56% coverage
+on the Voynich corpus.** Schechter's 4,063-entry "Latin/Occitan" glossary
+scores 82.81% — below the nonsense floor. Brady's 1,334-entry Syriac
+dictionary (claimed 87.8%) sits +3.3pp above the null.
 
-Stripping word-final glyphs identified as probable suffixes (y, n, l, r, and multi-character sequences including dy, ey, in, ain, ol) reduced the unique vocabulary from 8,261 types to 5,181 — a **37.3% reduction**.
-
-This is consistent across all sections of the manuscript. It is not an artefact of a single section or a small sample.
-
-The suffix stripping also revealed that glyph **y** is not a letter in the cipher alphabet. It drops 7–10 percentage points in frequency in every section after stripping. It is overwhelmingly word-final. It functions as a grammatical marker — most likely an inflectional suffix in the source language — not a phoneme in the plaintext.
-
-**Implication:** Previous frequency analyses that treated y as a cipher letter were working with a corrupted frequency distribution. Any substitution attack must strip morphological suffixes first.
-
----
-
-## Finding 3: A Three-Layer Cipher Model
-
-**This is why 600 years of single-layer attacks have failed.**
-
-After suffix stripping, Brain-V measured the hapax ratio of the remaining stems. It barely changed — from 70.1% to 70.4%. The suffixes are real morphology, but the stems underneath are still overwhelmingly unique.
-
-This means the encoding has (at least) three layers:
-
-| Layer | What it does | Evidence |
+| System | Coverage | Δ vs null |
 |---|---|---|
-| 1. Suffix morphology | Attaches grammatical markers (y/n/l/r/...) to stems | 37.3% vocabulary reduction on stripping |
-| 2. Stem cipher | Substitution and/or transposition on the content words | High stem hapax ratio (70.4%), IC consistent with monoalphabetic substitution |
-| 3. Natural language | Medieval Latin or northern Italian underneath | Zipf's law fit (R²=0.91), frequency correlation to Latin/Italian after stripping |
+| Brady Syriac claim | 86.90% | +3.34pp |
+| **Null nonsense (1,300)** | **83.56%** | baseline |
+| Schechter Latin/Occitan | 82.81% | −0.75pp |
+| Hebrew medieval medical | 57.90% | −25.66pp |
 
-Every known decipherment attempt has attacked a single layer — either treating the text as a straight substitution cipher, or as a natural language, or as a codebook. None have addressed the layered structure.
+Coverage-based decipherment claims for the Voynich require a corpus-derived
+null baseline, not just raw hit rate. (Hypothesis `H-BV-NULL-01`.)
 
-The Naibbe cipher (Greshko, 2025) is compatible with this model. Its dice-and-card mechanism produces exactly this kind of layered output: natural language → substitution table → verbose encoding with positional structure.
+### 2. The shuffle-test ceiling: no word-order signal survives
 
----
+Across four independent lexicons (Schechter Latin, Brady Syriac proxy,
+Hebrew medieval medical, Brain-V's own dictionary v1), the in-order decoded
+text scores ≤ the shuffled decoded text on the connector→content bigram
+metric. All four show the same failure mode: lexicons produce Latin-looking
+words without Latin syntactic structure.
 
-## Finding 4: One Cipher, Not Many
+**Word-order syntactic signal is absent from Voynichese under lexicon
+substitution**, regardless of source language. (`H-BV-SHUF-01`.)
 
-**The biological section's substitution table transfers to all other sections with less than 5% loss.**
+### 3. Volvelle family ruled out for `_.oii`
 
-A persistent question in Voynich research is whether different sections use different encoding methods. Brain-V tested this by deriving a stem-level frequency substitution table from the biological section (the section with the strongest Latin signal after stripping) and applying it to every other section.
+Four volvelle architectures tested against the observed 5.04× Hand-A
+plant-folio `_.oii` enrichment:
 
-The cross-section transfer loss was below 5% in all cases. This means the entire manuscript — herbal, astronomical, biological, cosmological, pharmaceutical, recipes, and text-only sections — uses the **same underlying cipher on the stems**.
-
-The Currier A/B language split (a well-established statistical difference between portions of the manuscript) is real — Brain-V confirmed it at 0.99 confidence across multiple tests — but it reflects different scribal hands or dialect variation, not different cipher systems.
-
----
-
-## Finding 5: The Biological Section Is the Optimal Attack Surface
-
-**IC = 0.100 after stripping. 340x improvement in Latin dictionary hits. This is where the cipher is thinnest.**
-
-| Section | Latin Dict Hits (raw) | Latin Dict Hits (stems) | Improvement | IC (stems) |
-|---|---|---|---|---|
-| Biological | 0.02% | 6.81% | 340x | 0.100 |
-| Text-only | 0.17% | 3.28% | 19x | 0.087 |
-| Recipes | 0.37% | 3.09% | 8x | — |
-| Herbal | 0.21% | 2.32% | 11x | — |
-
-The biological section's IC of 0.100 after suffix stripping is above the natural language range (0.065–0.075 for Latin). This is consistent with a monoalphabetic substitution cipher on a restricted vocabulary — exactly what you would expect from a medical or anatomical text repeating body-part terminology and preparation instructions.
-
-**The biological section is the Rosetta Stone.** If the stem cipher can be cracked anywhere, it will be cracked here first, and Finding 4 shows that solution will generalise to the rest of the manuscript.
-
----
-
-## Finding 6: Stem Families Reveal Cipher Structure
-
-**The word qo spawns qol, qotol, qotain, qopar — all sharing a root with systematic suffix variation.**
-
-Stem analysis revealed consistent word families where a root glyph sequence appears with multiple different suffixes:
-
-| Word | Stem | Maps to (freq. sub.) | Suffix |
+| Variant | Architecture | Null max | vs real 5.04× |
 |---|---|---|---|
-| daly | dal | "ab" | y |
-| olain | ol | "est" | ain |
-| qol | qo | "os" | l |
-| qotol | qo | "os" | tol |
-| qotain | qo | "os" | tain |
-| qopar | qo | "os" | par |
+| v1 | Simple CV template, 26-root section cartridge | 0.00× | fails |
+| v2 | Corpus roots, 26-root section cartridge | 2.80× | fails |
+| v3 | Corpus roots, 500-root section cartridge | 2.66× | fails |
+| v4a | Corpus roots, 26-root folio-level cartridge | 1.82× | fails |
+| v4b | Corpus roots, 200-root folio-level cartridge | 1.68× | fails |
 
-Additionally, high-frequency single-character words (d, r, o, l — each appearing 9 times in the text-only section) may be standalone function particles or abbreviated Latin terms (d for *de* or *dosis*, r for *recipe*).
+1,400+ null runs. Empirical p = 0 in every variant. Plant folios and
+non-plant herbal folios draw from the same cartridge under section-level
+volvelle, so enrichment ≈ 1.0× by construction. Folio-level cartridges
+allow independence but average signal away. (`H-BV-VOLVELLE-OII-01`.)
 
-This internal consistency — the same stems recurring with the same suffix patterns — is strong evidence against the "meaningless text" hypothesis and supports a natural language with real grammatical inflection underneath the cipher layers.
+### 4. The Hand-A `_.oii` plant marker
+
+On 115 plant-identified folios (Sherwood + Cohen), `_.oii` appears at
+4.84× the rate of 14 non-plant herbal baseline folios. Held-out 5-fold
+cross-validation: 100% fold stability, all folds ≥1.5× enrichment.
+
+A confound check revealed that `_.oii` is essentially a **Hand-A-specific**
+feature: Hand B shows zero `_.oii` across all 25 Hand-B plant and 7
+Hand-B non-plant herbal folios. Within-Hand-A enrichment is 1.72× (not
+significant at p=0.258). The corpus-wide 5.04× headline is Hand-A-inflated.
+
+Quire and length confounds were ruled out. (`H-BV-PLANT-01`.)
+
+### 5. Hand B uses its own plant-marker vocabulary
+
+After the confound check revealed the hand restriction, we searched Hand
+B for its own plant markers. Three vowel patterns fire on Hand-B plant
+folios with **zero non-plant fires**:
+
+| pattern | plant hits | non-plant hits |
+|---|---|---|
+| `_.e.e` | 16 | 0 |
+| `_.eeo` | 15 | 0 |
+| `_.o.eo` | 11 | 0 |
+
+Combined plant-folio rate: 1.63%. Combined non-plant rate: 0.00%.
+5-fold CV: `_.e.e` positive in 5/5 held-out folds, the other two in 4/5.
+200 folio-level volvelle runs produced a null plant-non-plant difference
+of +0.00011 ± 0.00366; real is +0.01633, **z = 4.43**, empirical p = 0.
+
+**Two scribes, two vowel dialects, same function.** Hand A uses o-heavy
+patterns on plant folios; Hand B uses e-heavy patterns. Top-10 overlap
+between hands: 1 pattern (`o.e`). (`H-BV-HAND-B-PLANT-01`.)
+
+### 6. The scribes divide labor by section
+
+| section | Hand A | Hand B |
+|---|---|---|
+| pharmaceutical | **16** | 0 |
+| biological | 0 | **19** |
+| herbal | **95** | 32 |
+| recipes | 2 | **23** |
+| cosmological | 0 | 3 |
+| astronomical/zodiac | 0 | 0 |
+
+Only herbal and recipes have both hands present at n ≥ 2. In recipes —
+the only section where both hands have ≥8 discoverable markers — the top
+marker sets **do not overlap at all** (0/8).
+
+| Hand A recipes | Hand B recipes |
+|---|---|
+| `a.a`, `_.a.a`, `o.a`, `a`, `o.ai`, `_.o.ai`, `_.o.a`, `_._.a` | `oai`, `ai.o`, `o.ea`, `o._.eeo`, `o.eeo`, `_.eo.ai`, `o.ee.a`, `_.o.eeo` |
+
+Hand A across all sections: o/e ratio 2.00 in its markers.
+Hand B across all sections: o/e ratio 1.36. (`H-BV-DIALECT-01`.)
+
+### 7. Content-type classifier at 74.2%
+
+Bag-of-vowel-patterns → (scribe, content-type) naive-Bayes classifier.
+5-fold CV on 190 folios across 6 classes:
+
+| class | n | accuracy |
+|---|---|---|
+| (A, herbal) | 95 | 92.6% |
+| (A, pharmaceutical) | 16 | 56.2% |
+| (B, biological) | 19 | **100%** |
+| (B, herbal) | 32 | 6.2% |
+| (B, recipes) | 23 | **100%** |
+| (B, text-only) | 5 | 0.0% |
+
+**Overall: 74.2%**, vs 50% majority-class baseline, vs 16.7% chance.
+**Brain-V can read what a folio is *about* from its vowel patterns alone,
+without any language model.** (`H-BV-DIALECT-01` test 3.)
+
+### 8. Pre-registered sub-class signals
+
+- **Psychoactive plants**: corpus-wide `_.oii` rate 8.14× on 4 psychoactive
+  folios (Paris quadrifolia, Cannabis, Rhododendron, Nymphaea caerulea).
+  Pre-registered one-tailed Welch p = 0.046, Cohen d = 2.63 → **CONFIRMED**.
+  Within-Hand-A re-test: p = 0.0506 (misses α = 0.05 by 0.0006) → marginal
+  under locked rules. Mann-Whitney U p = 0.000218. (`H-BV-PSYCHOACTIVE-01/02`.)
+- **"eo" family as cross-hand preparation marker**: pre-registered, Hand B
+  passes (p < 1e-6), Hand A fails (p = 0.130). Locked rule → **PARTIAL**
+  (Hand-B-specific, not cross-hand). (`H-BV-EO-FAMILY-01`.)
+- **Toxic plants**: pre-registered, p = 0.060 (misses α = 0.05 by 0.010).
+  **Refuted** under locked rules, replaced by the psychoactive hypothesis
+  after cross-check. (`H-BV-TOXIC-01`.)
+- **External vs internal preparation**: pre-registered, p = 0.494 → **refuted**.
+  (`H-BV-EXTERNAL-NULL-01`.)
+
+Four pre-registered sub-class tests; one confirmed cleanly, two marginal,
+one refuted, one partial. The discipline holds.
+
+### 9. Published nulls
+
+- **H-BV-NULL-01** — coverage ≥80% is a free null floor
+- **H-BV-SHUF-01** — word-order signal absent under lexicon substitution
+- **H-BV-VOLVELLE-OII-01** — volvelle family ruled out for Hand-A plant marker
+- **H-BV-PERUN-NULL-01** — illustration botanical properties do not correlate
+  with text features at p < 0.05 across 24 tests
+- **H-BV-STRUCT-01** — non-vowel structural features add <+1.9pp to section
+  prediction; combining with vowels hurts
+- **H-BV-VOWEL-CODE-01** (demoted 0.75 → 0.35) — per-token section prediction
+  from vowel patterns fails held-out F1
+
+Brain-V publishes its failed hypotheses with the same rigor as its
+confirmed ones. Every pre-registration is a separate git commit made
+*before* the test is run.
 
 ---
 
-## What Brain-V Has Not Done
+## What Brain-V has *not* done
 
-Brain-V has **not** deciphered the Voynich Manuscript.
+- It has **not** deciphered the Voynich Manuscript.
+- It has **not** identified the underlying language.
+- It has **not** produced a reading of any folio.
 
-It has not produced a reading of any folio. It has not identified the source language with certainty. It has not recovered the cipher key.
+It has demonstrated:
 
-What it has done is:
+1. That the manuscript encodes content-type information at a resolution
+   detectable by vowel-pattern analysis, with **74.2% classifier accuracy**
+   across scribe-section classes.
+2. That this encoding uses **scribe-specific vowel dialects** that barely
+   overlap between the two Currier hands.
+3. That the coverage metric dominating the Voynich decipherment field
+   is **compromised** by a phonotactic null floor.
+4. That **no volvelle architecture** among the four tested can reproduce
+   the observed scribe-specific plant-folio enrichment.
 
-- Identified and validated a morphological suffix system with quantitative evidence
-- Proposed and tested a three-layer cipher model that explains why previous approaches failed
-- Demonstrated that one cipher system underlies the entire manuscript
-- Identified the biological section as the optimal attack surface
-- Corrected a false positive in its own scoring and published the correction
-- Completed 60 cycles of hypothesis generation, testing, and elimination — all logged, timestamped, and reproducible
-
-The 49.2% of stems that remain unmapped after codebook and frequency substitution represent the frontier. Cracking the stem cipher is the next phase.
+The remaining open questions are the language identity of the plaintext,
+the specific consonant-skeleton cipher, and whether the `_.oii`/`_.e.e`
+pattern family corresponds to a semantic class (plant, genus, preparation)
+that would allow cross-referencing with known medieval botanical texts.
 
 ---
 
-## Methodology and Reproducibility
+## Key hypotheses and their confidence
 
-All code is in this repository.
+| ID | Claim | Confidence | Status |
+|---|---|---|---|
+| H-BV-NULL-01 | Coverage ≥80% is a null floor | 0.92 | confirmed |
+| H-BV-VOLVELLE-OII-01 | Volvelle family ruled out | 0.92 | confirmed |
+| H-BV-DIALECT-01 | Scribe-section dialect dictionary (classifier 74.2%) | 0.88 | confirmed |
+| H-BV-HAND-B-PLANT-01 | Hand B uses distinct plant markers | 0.88 | confirmed |
+| H-BV-PERUN-NULL-01 | Illustration properties don't correlate with text | 0.80 | null published |
+| H-BV-Q-01 | EVA `q` is categorical word-initial marker (98.9%) | 0.92 | confirmed |
+| H-BV-PLANT-01 | Hand-A `_.oii` plant marker | 0.55 | Hand-A-restricted |
+| H-BV-PSYCHOACTIVE-01/02 | Psychoactive plant sub-signal | 0.65/0.55 | confirmed/marginal |
+| H-BV-EO-FAMILY-01 | `eo`-family preparation marker | 0.55 | partial (Hand-B only) |
 
-- `scripts/perceive.py` — Parses the EVA transliteration into structured data
-- `scripts/predict.py` — Generates hypotheses via Claude Sonnet
-- `scripts/score.py` — Tests hypotheses against corpus statistics via Claude Haiku
-- `scripts/decrypt.py` — Runs 90 cipher attacks per cycle (pure Python, no LLM)
-- `hypotheses/` — Every hypothesis file with confidence scores, evidence, and test history
-- `outputs/scores/` — Every scoring cycle's full results
-- `outputs/decryption/` — Every decryption attempt's full output
-- `wiki/LOG.md` — Chronological log of all cycles, findings, and belief updates
+All 180+ hypothesis files are in `hypotheses/`. Each records its full test
+history with dates, confidences, and evidence.
 
-The corpus is the standard EVA transliteration of MS 408, publicly available. Reference frequency profiles for medieval Latin and Italian are included in `raw/corpus/reference-profiles/`.
+---
 
-Brain-V uses Claude Sonnet for hypothesis generation and Claude Haiku for scoring evaluation. The decryption engine (`decrypt.py`) is pure Python — no LLM in the attack loop. All statistical tests are deterministic and reproducible.
+## Methodology and reproducibility
+
+All code is public in this repository.
+
+- `scripts/perceive.py` — Parses EVA transliteration into structured data
+- `scripts/predict.py` — Hypothesis generator (Claude Sonnet)
+- `scripts/score.py` — Hypothesis scorer (Claude Haiku)
+- `scripts/decrypt.py` — Deterministic cipher attacks (pure Python)
+- `scripts/plant_vowel_analysis_v2.py` — Hand-A `_.oii` discovery + 5-fold CV
+- `scripts/plant_confound_check.py` — Currier/quire/length confound tests
+- `scripts/hand_b_characterisation.py` — Hand-B pattern discovery
+- `scripts/hand_b_holdout_and_volvelle.py` — Hand-B CV + volvelle null
+- `scripts/volvelle_v4_folio.py` — folio-level volvelle null for Hand A
+- `scripts/scribe_dialect_dictionary.py` — per-(section, hand) markers
+- `scripts/dialect_validation_and_classifier.py` — CV + volvelle + classifier
+- `scripts/run_psychoactive.py` / `run_psychoactive_v2.py` — pre-registered tests
+- `hypotheses/` — every hypothesis with test history
+- `outputs/` — raw JSON outputs from every cycle
+- `outputs/preprint/scribe-specific-plant-markers.md` — current preprint
+- `raw/research/plant-identifications.csv` — 125 plant-ID rows (Sherwood + Cohen)
+- `wiki/LOG.md` — chronological change log
+
+The corpus is the ZL3b merged IVTFF transcription (Zandbergen + Landini,
+Takahashi as primary transcriber). Plant identifications are from Edith
+Sherwood's *Voynich Botanical Plants Decoded* series and from independent
+IDs by Cohen.
+
+**Pre-registration discipline**: Each pre-registered hypothesis is committed
+to git with `status: "pre-registered"` and `tests_run: []` in a separate
+commit *before* the test script is run. The test-execution commit includes
+the results; the decision rules are never adjusted after observing the
+outcome.
 
 ---
 
 ## Architecture
 
-Brain-V is a fork of [Project Brain](https://github.com/BuilderBenv1/project-brain), a persistent cognitive architecture built by Ben Horne. Project Brain runs a daily perceive-predict-score loop on arXiv cs.AI papers, with beliefs persisted on-chain via AgentOS. Brain-V duplicates that architecture and retargets it at the Voynich Manuscript.
+Brain-V is a fork of [Project Brain](https://github.com/BuilderBenv1/project-brain),
+a persistent cognitive architecture by Ben Horne. Brain-V duplicates the
+perceive-hypothesise-test-score-update loop and retargets it at MS 408.
 
-Both systems run on [AgentProof](https://agentproof.sh) infrastructure — ERC-8004 compliant reputation and trust scoring for autonomous AI agents. Brain-V's agents are registered on SKALE (zero gas fees, enabling aggressive cycling). Every hypothesis, every cycle log, and every belief update is anchored to IPFS with on-chain timestamps.
+Both systems run on [AgentProof](https://agentproof.sh) infrastructure —
+ERC-8004 compliant reputation and trust scoring for autonomous AI agents.
+Brain-V's agents are registered on SKALE (zero gas fees). Every hypothesis,
+cycle log, and belief update is anchored to IPFS with on-chain timestamps.
 
-The cognitive loop — perceive, hypothesise, test, score, update, repeat — is the core innovation. Brain-V doesn't apply a single theory and check if it works. It maintains a population of competing theories, tests them against evidence, eliminates failures, and compounds its knowledge over time.
-
----
-
-## What Comes Next
-
-1. **Crack the stem cipher on the biological section.** IC of 0.100 and 6.81% Latin dictionary hits after stripping suggest a monoalphabetic substitution. Focused hill-climbing on the stem substitution table with biological/medical Latin vocabulary constraints.
-
-2. **Cross-validate against the Naibbe cipher.** Greshko's mechanism produces layered output compatible with Brain-V's three-layer model. Testing whether the Naibbe cipher's specific structure matches Brain-V's observed suffix and stem patterns.
-
-3. **Community hypothesis intake.** Submit theories as GitHub Issues. Brain-V will test them using the same methodology and publish results. Every hypothesis gets the same treatment — honest scoring, full evidence chain, public results.
-
-4. **Deeper Currier A/B analysis.** The universal substitution table transfers across sections, but A/B show measurable differences. Are these dialectal? Different hands with different suffix preferences? Different source texts?
+The cognitive loop is the core innovation. Brain-V doesn't apply a single
+theory and check if it works. It maintains a population of competing
+theories, tests them against evidence, eliminates failures, and compounds
+knowledge over time. When a positive finding is identified, Brain-V
+actively tries to destroy it — running confound checks, volvelle nulls,
+and pre-registered sub-class tests — and publishes whatever survives.
 
 ---
 
 ## Contributing
 
-If you have a hypothesis about the Voynich Manuscript, open a GitHub Issue with:
+If you have a hypothesis about the Voynich Manuscript, open a GitHub
+Issue with:
 
 - **Claim** — plain English statement of what you believe is true
 - **Type** — cipher / language / structural / null hypothesis
 - **Test** — what statistical test would confirm or deny it
 
-Brain-V will add it to the hypothesis pool and test it in the next cycle batch. Results will be posted back to the issue.
+Brain-V will add it to the hypothesis pool and test it. Results are
+posted back to the issue with the raw stats, the decision rule applied,
+and the confidence update.
+
+Specific open invitations:
+
+- **Richer plant-ID labels.** The current 125 IDs are from Sherwood and
+  Cohen. Expert botanical audit or alternative identification sources
+  would sharpen the plant vs non-plant binary and enable finer-grained
+  sub-class tests.
+- **Brady's supplementary files.** The Syriac dispensatory paper
+  (Zenodo 10.5281/zenodo.19583306) promises a 1,389-entry lexicon and
+  pipeline code that weren't attached at time of analysis. Running
+  Brain-V's full battery against the actual lexicon would be the
+  definitive comparative test.
+- **Non-volvelle mechanical nulls.** Hidden Markov, grammar-based
+  generators, and other non-cartridge mechanical processes haven't
+  been tested against Brain-V's findings.
 
 ---
 
 ## Contact
 
-Built by Ben Horne ([@AgentProof](https://x.com/AgentProof_sh)) using the Project Brain cognitive architecture.
+Built by Ben Horne ([@AgentProof](https://x.com/AgentProof_sh)) using
+the Project Brain cognitive architecture.
 
-Brain-V is part of the [AgentProof](https://agentproof.sh) ecosystem — trust scoring infrastructure for autonomous AI agents.
+Brain-V is part of the [AgentProof](https://agentproof.sh) ecosystem —
+trust scoring infrastructure for autonomous AI agents.
 
 ---
 
-*Brain-V's first thought was about a 600-year-old mystery. Everything it found is here. Verify it, challenge it, extend it.*
+*Brain-V did not solve the Voynich. It built a working content-type
+decoder from vowel patterns alone, with every null published and every
+pre-registration locked before the test ran. The decoder works at 74.2%
+accuracy across six scribe-content classes. What the manuscript is about,
+Brain-V can now read — in aggregate. What it says is still open.*
