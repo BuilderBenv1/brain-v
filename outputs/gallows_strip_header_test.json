@@ -1,0 +1,188 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-GALLOWS-STRIP-HEADER-01",
+  "n_paragraphs": 268,
+  "n_tokens": 11018,
+  "unstripped": {
+    "n_types": 205,
+    "n_recurring_types_ge3": 13,
+    "recurrence_rate": 0.0634,
+    "top_recurring": [
+      {
+        "token": "tol",
+        "count": 12
+      },
+      {
+        "token": "tchor",
+        "count": 10
+      },
+      {
+        "token": "tor",
+        "count": 5
+      },
+      {
+        "token": "pcheol",
+        "count": 4
+      },
+      {
+        "token": "pchor",
+        "count": 4
+      },
+      {
+        "token": "tshol",
+        "count": 4
+      },
+      {
+        "token": "pchocthy",
+        "count": 3
+      },
+      {
+        "token": "tchol",
+        "count": 3
+      },
+      {
+        "token": "tshor",
+        "count": 3
+      },
+      {
+        "token": "tcho",
+        "count": 3
+      },
+      {
+        "token": "tcheody",
+        "count": 3
+      },
+      {
+        "token": "taiin",
+        "count": 3
+      },
+      {
+        "token": "teol",
+        "count": 3
+      }
+    ]
+  },
+  "stripped": {
+    "n_types": 186,
+    "n_recurring_types_ge3": 14,
+    "recurrence_rate": 0.0753,
+    "top_recurring": [
+      {
+        "token": "chor",
+        "count": 14
+      },
+      {
+        "token": "ol",
+        "count": 13
+      },
+      {
+        "token": "shol",
+        "count": 6
+      },
+      {
+        "token": "cho",
+        "count": 6
+      },
+      {
+        "token": "or",
+        "count": 6
+      },
+      {
+        "token": "cheol",
+        "count": 5
+      },
+      {
+        "token": "aiin",
+        "count": 5
+      },
+      {
+        "token": "chol",
+        "count": 4
+      },
+      {
+        "token": "odaiin",
+        "count": 4
+      },
+      {
+        "token": "cheody",
+        "count": 4
+      },
+      {
+        "token": "chody",
+        "count": 3
+      },
+      {
+        "token": "chocthy",
+        "count": 3
+      },
+      {
+        "token": "shor",
+        "count": 3
+      },
+      {
+        "token": "eol",
+        "count": 3
+      }
+    ]
+  },
+  "strip_merge_trace": {
+    "cheol": {
+      "pcheol": 4,
+      "tcheol": 1
+    },
+    "chor": {
+      "tchor": 10,
+      "pchor": 4
+    },
+    "chody": {
+      "tchody": 2,
+      "pchody": 1
+    },
+    "shol": {
+      "pshol": 2,
+      "tshol": 4
+    },
+    "chocthy": {
+      "pchocthy": 3
+    },
+    "aiin": {
+      "paiin": 2,
+      "taiin": 3
+    },
+    "chol": {
+      "tchol": 3,
+      "pchol": 1
+    },
+    "cho": {
+      "pcho": 2,
+      "tcho": 3,
+      "cho": 1
+    },
+    "shor": {
+      "tshor": 3
+    },
+    "ol": {
+      "pol": 1,
+      "tol": 12
+    },
+    "or": {
+      "por": 1,
+      "tor": 5
+    },
+    "odaiin": {
+      "podaiin": 2,
+      "todaiin": 2
+    },
+    "cheody": {
+      "tcheody": 3,
+      "pcheody": 1
+    },
+    "eol": {
+      "teol": 3
+    }
+  },
+  "isidore_reference": 0.003,
+  "tolerance": 0.05,
+  "band_max": 0.053000000000000005,
+  "verdict": "REFUTED"
+}

@@ -4,6 +4,59 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-16 — H-BV-GALLOWS-STRIP-HEADER-01 REFUTED (recurrence is real, not gallows-artifact)
+
+**Hypothesis**: Hand A's header-recurrence miss against Isidore (0.063 vs 0.003 in CIRCA-INSTANS-BENCHMARK-01) is an artifact of gallows-initial scribal markers. Stripping leading cth/ckh/cph or plain t/p should close the gap to within Isidore's ±0.05 tolerance band (≤0.053).
+
+**Method**: for each of the 268 Hand-A paragraphs, strip longest-match gallows prefix from paragraph-initial token (cth/ckh/cph three-char, else t/p single-char). Recompute recurrence on stripped stems.
+
+**Result**: REFUTED. Stripping **increased** recurrence from 0.0634 to 0.0753, moving AWAY from Isidore's 0.003.
+
+| metric | unstripped | stripped |
+|---|---|---|
+| distinct types | 205 | 186 (−19) |
+| recurring types (≥3 paragraphs) | 13 | 14 (+1) |
+| recurrence rate | 0.0634 | **0.0753** |
+
+Isidore reference 0.003; tolerance band ≤ 0.053. Hand A stripped 0.0753 > 0.053 → **REFUTED**.
+
+**Revelatory finding**: paragraph-initial tokens are SYSTEMATICALLY gallows-decorated variants of a small base-stem pool. The same base stem appears at paragraph-initial under multiple gallows:
+
+| stripped stem | total paragraphs | unstripped contributors |
+|---|---|---|
+| chor | 14 | tchor × 10, pchor × 4 |
+| ol | 13 | tol × 12, pol × 1 |
+| shol | 6 | tshol × 4, pshol × 2 |
+| cho | 6 | tcho × 3, pcho × 2, cho × 1 |
+| or | 6 | tor × 5, por × 1 |
+| cheol | 5 | pcheol × 4, tcheol × 1 |
+| aiin | 5 | taiin × 3, paiin × 2 |
+| chol | 4 | tchol × 3, pchol × 1 |
+| odaiin | 4 | todaiin × 2, podaiin × 2 |
+| cheody | 4 | tcheody × 3, pcheody × 1 |
+
+Hand A reuses a ~14-item HEADER STEM POOL across paragraphs, with systematic t-/p-gallows decoration creating surface diversity over a small underlying vocabulary.
+
+**Implication**: this is INCOMPATIBLE with Isidore-style encyclopedic structure, where each section header is a unique nominal. Hand A's paragraph-header organisation follows a different principle: formulaic stem pool + gallows decoration, closer to liturgical/litanic repetition or to a closed-class classification scheme than to encyclopedic enumeration.
+
+Combined with CIRCA-INSTANS-BENCHMARK-01's three other matches (disjunction 0.85, top-20 medial 5/5, cross-class 0.47 — all consistent with encyclopedic prose), the full picture is a **hybrid**: encyclopedic-register body text combined with a formulaic/litanic header system. This is NOT the pure Isidore-type encyclopedia; it is more constrained in its section markers.
+
+Notable morphological structure in the header pool:
+- cho-family: cho, chor, chol, cheol, cheody (shared ch* stem)
+- ol-family: ol, shol, or (short-o stems)
+- aiin-family: aiin, odaiin (shared -aiin ending)
+
+This resembles an inflectional paradigm — small stem set with suffix variants used as section markers. Consistent with Hand-A-Internal-01's documented inflection signal (mean 2.46 distinct suffixes per skeleton).
+
+**Next directions**:
+- Test whether t- vs p- gallows alternation has a structural pattern (alternating, section-clustered, content-linked). If systematic, the choice may encode a binary distinction.
+- Compare the ~14-item header pool against liturgical Latin texts (Psalter, antiphonary) — pre-registered `H-BV-LITURGICAL-01` is now directly relevant.
+- Consider whether Hand A is a pharmaceutical antidotarium or similar formulaic genre with fixed section markers, rather than free-form encyclopedia.
+
+Confidence 0.50 → 0.20.
+
+**Files**: `hypotheses/H-BV-GALLOWS-STRIP-HEADER-01.json`, `outputs/gallows_strip_header_test.json`, `scripts/run_gallows_strip_header.py`.
+
 ## 2026-04-16 — H-BV-CIRCA-INSTANS-BENCHMARK-01 MARGINAL (3/4 match Isidore)
 
 **Hypothesis**: Hand A's paragraph-structure signature falls within tolerance bands of Isidore of Seville's Etymologiae Book 17 — an established medieval Latin prose encyclopedic herbal reference. Reference anchor: Isidore (not Hand A). Macer Floridus is a secondary verse sanity check, informational only.
