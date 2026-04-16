@@ -18,14 +18,21 @@
   "test": "PRE-REGISTERED SEVEN-LANGUAGE SCREEN. For each candidate in [italian, german, finnish, hungarian, basque, ottoman_turkish, armenian]:\n\n  (1) FREQUENCY TABLE: use published letter-frequency ranking for that language (sources cited in run script). Strip diacritics for mapping.\n  (2) EVA TOKENIZATION: collapse {ch, sh, ckh, cth, cph} to single glyph-units as in Brain-V's standard EVA tokenizer.\n  (3) FREQUENCY-RANK MAPPING: sort Hand-A EVA glyph-units by descending frequency; map rank-i EVA glyph -> rank-i language letter (top-20 positions).\n  (4) DECODE: apply mapping to every Hand-A token to produce a decoded letter stream.\n  (5) LEXICON MATCH: against a fixed 80-item common-word lexicon per language (top 15 function words as CONNECTORS, next 65 content words as CONTENT). Match exact or with single-letter-insertion tolerance.\n  (6) SHUFFLE TEST: in-order connector-content bigram rate vs. shuffled-across-Hand-A bigram rate; delta = in-order − shuffled. Same random seed (0) and methodology as the Brady Hand-A test.\n\n  OUTPUT: ranked list of seven deltas.",
   "test_metric": "max_connector_content_bigram_delta_across_7_languages",
   "test_threshold": "PRIMARY DECISION: If any language's delta >= +0.010, CONFIRMED for that language — promote to primary hypothesis. If best delta is in (+0.005, +0.010), MARGINAL for that language — promote to secondary. If best delta <= +0.005, REFUTED — simple frequency-rank substitution in all seven candidate languages is eliminated, redirecting effort to cipher/constructed/shorthand models.",
-  "tests_run": [],
-  "tests_remaining": [
-    "Execute seven-language screen in separate commit after lock"
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "locked_seven_language_frequency_rank_screen",
+      "score": 0.15,
+      "passed": false,
+      "details": "REFUTED. Best delta +0.00198 (german) below +0.005 threshold. All seven candidates fail. Ranked deltas: german +0.00198, finnish +0.00066, basque +0.00066, armenian -0.00066, italian -0.00099, ottoman_turkish -0.00121, hungarian -0.00638. Ottoman Turkish and Hungarian have high lexicon match rates (~11%) but NEGATIVE deltas — shuffle outperforms in-order, meaning matches are not syntactically structured. Even the best (german) sits below Brady's Hand-A +0.0044, so simple frequency-rank substitution in these seven candidates is eliminated. Points to cipher/constructed/shorthand models, not natural-language substitution.",
+      "confidence_change": "0.3 -> 0.15"
+    }
   ],
-  "status": "pre-registered",
+  "tests_remaining": [],
+  "status": "refuted",
   "parent": "H-BV-HAND-A-INTERNAL-01",
   "created": "2026-04-16",
-  "last_tested": null,
+  "last_tested": "2026-04-16",
   "reasoning": "Hand A is natural-language-like internally, yet Brady's Syriac-mapped version is only marginally better than shuffle. Before abandoning frequency-rank substitution entirely, Brain-V screens seven untested candidate languages in a single pre-registered sweep. The negative result is as valuable as the positive: a clean REFUTED across all seven redirects effort from substitution ciphers to structural/constructed systems. The positive result identifies the next primary hypothesis.",
   "source": "Brain-V 2026-04-16 user-directed pre-registration following Brady Hand-A MARGINAL result",
   "researcher": "brain-v"

@@ -4,6 +4,33 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-16 — H-BV-HAND-A-LANGUAGE-SCREEN-02 REFUTED
+
+**Hypothesis**: At least one of seven under-tested candidate languages — Basque, Hungarian, Finnish, Armenian, Ottoman Turkish, Italian-dialect, German — produces a connector-to-content bigram delta >= +0.005 under frequency-rank EVA-to-letter substitution on Hand A.
+
+**Method**: For each candidate, sort Hand-A EVA glyph-units (ch/sh/ckh/cth/cph collapsed) by descending frequency. Map rank-i EVA glyph to rank-i letter of the language's published letter-frequency ranking (top-20). Decode all Hand-A tokens. Match against a fixed 80-item lexicon (15 connectors + 65 content). Compute in-order vs. Hand-A-shuffled connector-content bigram rate (same shuffle-test as Brady/Pagel/Schechter).
+
+**Result**: REFUTED. Best delta +0.00198 (german), below +0.005 threshold.
+
+| rank | language | match% | in-order | shuffled | delta |
+|------|----------|--------|----------|----------|-------|
+| 1 | german | 5.19% | 0.0026 | 0.0007 | +0.00198 |
+| 2 | finnish | 3.74% | 0.0007 | 0.0000 | +0.00066 |
+| 3 | basque | 1.49% | 0.0007 | 0.0000 | +0.00066 |
+| 4 | armenian | 2.41% | 0.0000 | 0.0007 | -0.00066 |
+| 5 | italian | 7.11% | 0.0000 | 0.0010 | -0.00099 |
+| 6 | ottoman_turkish | 11.21% | 0.0127 | 0.0139 | -0.00121 |
+| 7 | hungarian | 11.18% | 0.0067 | 0.0131 | -0.00638 |
+
+**Key observations**:
+- Ottoman Turkish and Hungarian have the highest lexicon match rates (~11%) — but negative deltas. High match is driven by the letter-set rather than syntactic structure.
+- German's small positive delta (+0.002) is below Brady's Syriac Hand-A result (+0.0044), which itself is sub-threshold.
+- Italian — the strongest historical prior by Voynich provenance — produces a negative delta.
+
+**Implication**: Simple frequency-rank character substitution in all seven candidates is eliminated. Combined with prior Brady/Pagel/Schechter results, no tested natural-language substitution survives the shuffle test on Hand A. Direction: cipher/constructed/shorthand models (polyalphabetic, nomenclator, abjad-style consonantal shorthand, or verbose cipher with nulls).
+
+**Files**: `hypotheses/H-BV-HAND-A-LANGUAGE-SCREEN-02.json`, `outputs/hand_a_language_screen.json`, `scripts/run_hand_a_language_screen.py`.
+
 ## 2026-04-15 — Brain-V cognitive cycle (automated)
 
 **Hypotheses scored**: 109
