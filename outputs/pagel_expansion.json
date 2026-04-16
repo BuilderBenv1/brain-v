@@ -1,0 +1,17 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-PAGEL-EXPANSION-01",
+  "locked_in_commit": "7adcf4a",
+  "base_pagel_terms": 56,
+  "latin_vocab_ranked": 123,
+  "expansion_mappings_added": 111,
+  "total_dictionary": 167,
+  "hand_a_tokens": 10679,
+  "match_rate": 0.5132,
+  "connector_rate": 0.1848,
+  "in_order_conn_content": 0.2261,
+  "shuffled_conn_content": 0.2231,
+  "delta": 0.003,
+  "base_pagel_delta_reference": 0.0118,
+  "verdict": "REFUTED"
+}
