@@ -1,0 +1,507 @@
+
+---PAGE 1---
+Jensen (2026) — Voynich Semantic Attractor Analysis —  
+Semantic Attractor Analysis of the Voynich 
+Manuscript: 
+Evidence for Operator-Based Generative Structure 
+ 
+Michael D. Jensen 
+Independent Researcher 
+ORCID: 0009-0007-9112-1674 
+March 2026 
+ 
+ 
+ 
+Abstract 
+We apply semantic attractor analysis — a method combining sentence-transformer embeddings, 
+DBSCAN clustering, and recurrence matrix visualization — to the Voynich Manuscript (Beinecke 
+MS 408), using the Currier/FSG transcription (voyn_101.txt). The pipeline, originally developed 
+for conversational semantic analysis, was adapted for an unknown symbolic system by replacing 
+character n-gram embeddings with word-level TF-IDF embeddings treating each Voynich token 
+as an atomic unit. 
+ 
+The analysis reveals: (1) Zipf's law compliance consistent with natural language (slope -0.768, R² 
+= 0.875); (2) 190 distinct semantic attractors from constrained token recombination; (3) 
+statistically significant spatial separation of manuscript sections in embedding space; and (4) a 
+semantic recurrence topology consistent with inhabited, recursive textual spaces rather than 
+forward-directed transmission or ideological lock-in. 
+ 
+These findings are inconsistent with hoax or random generation hypotheses. The structural 
+signature most closely resembles operator-based generative systems — in which a finite token 
+set produces meaning through constrained recombination and positional inflection — rather than 
+substitution ciphers or natural prose. We propose that Voynich token morphology encodes 
+operator functions through prefixation and infixation patterns, structurally analogous to 
+independently developed systems such as Operator Abjad (OA). 
+ 
+Keywords: Voynich Manuscript, semantic attractor analysis, generative symbolic systems, 
+operator-based languages, recurrence matrix, Zipf's law, manuscript authentication 
+ 
+ 
+ 
+
+---PAGE 2---
+Jensen (2026) — Voynich Semantic Attractor Analysis —  
+1. Introduction 
+The Voynich Manuscript (MS 408, Beinecke Rare Book Library, Yale University) remains one of 
+the most studied undecoded documents in history. Dating to the early 15th century by radiocarbon 
+analysis, it comprises approximately 240 vellum pages of unknown script accompanied by 
+illustrations conventionally categorized into herbal, astronomical, biological, cosmological, 
+pharmaceutical, and recipe sections. 
+ 
+Prior analytical approaches have pursued three primary hypotheses: (1) natural language written 
+in an unknown or extinct script; (2) a cipher or steganographic encoding of a known language; (3) 
+a constructed language or hoax. Statistical analyses have repeatedly confirmed that Voynich text 
+exhibits Zipf's law compliance and entropy characteristics consistent with natural language, 
+complicating the hoax hypothesis without resolving the cipher versus natural language question. 
+ 
+The present study applies a novel analytical framework — semantic attractor analysis — not 
+previously applied to the Voynich Manuscript. This framework, derived from dynamical systems 
+theory and applied to textual corpora, identifies stable semantic basins (attractors) in high-
+dimensional embedding space, maps recurrence patterns, and characterizes the topological 
+structure of the text's semantic manifold. The central question is not what the Voynich says, but 
+what shape its meaning-space has — and whether that shape is consistent with intentional 
+semantic organization. 
+1.1 The Operator Hypothesis 
+This analysis was motivated in part by parallel development of Operator Abjad (OA), a purpose-
+constructed ritual-compositional language built on the following principles: a finite set of 
+consonantal roots encodes core meaning; operators govern recombination and transformation of 
+roots; emergent compounds produce new meaning through constrained combination; and 
+stabilized forms (glyphs) represent compressed, high-frequency meanings. 
+ 
+OA's core principle — roots encode, operators express, compounds emerge, glyphs stabilize — 
+describes a generative meaning-engine rather than a descriptive language. The present analysis 
+tests whether Voynich token morphology exhibits structural properties consistent with this class 
+of system. 
+ 
+"The Voynich Manuscript may encode a symbolic system where meaning is generated 
+through constrained recombination of a finite token set, similar in structural class to 
+operator-based systems like OA — but with operators either implicit, encoded, or collapsed 
+into token morphology." 
+ 
+ 
+ 
+2. Methods 
+
+---PAGE 3---
+Jensen (2026) — Voynich Semantic Attractor Analysis —  
+2.1 Data Source 
+The 
+Currier/FSG 
+transcription 
+voyn_101.txt 
+was 
+obtained 
+from 
+voynich.nu 
+(https://www.voynich.nu/data/voyn_101.txt). This transcription uses a numeric-symbolic notation 
+system in which each character represents a single Voynich glyph. Lines are encoded as 
+<folio.line> text, with period-separated tokens representing word boundaries, and hyphens/equals 
+signs indicating line continuations and paragraph endings respectively. 
+ 
+Total corpus: 4,486 lines, 38,225 tokens, across folios 1-120. 
+2.2 Preprocessing 
+The parser was adapted specifically for Currier/FSG notation, treating each period-separated 
+token as an atomic unit rather than applying character-level analysis. Preprocessing steps: (1) 
+strip inline comments and special markers; (2) replace period word-separators with spaces; (3) 
+remove line continuation markers; (4) normalize whitespace. Folio numbers were extracted from 
+line tags to enable section assignment based on established Voynich section boundaries. 
+ 
+Section 
+Folio Range 
+Lines 
+Herbal A 
+1-66 
+~1,950 
+Astronomical 
+67-73 
+~350 
+Biological 
+74-84 
+~775 
+Cosmological 
+85-86 
+~175 
+Herbal B 
+87-102 
+~600 
+Pharmaceutical 
+103-116 
+~1,050 
+Recipes/Stars 
+117-120 
+~100 
+ 
+2.3 Embedding Strategy 
+Standard semantic embedding models (trained on English prose) are inappropriate for unknown 
+symbolic systems. We employed word-level TF-IDF vectorization with the following parameters: 
+analyzer='word'; ngram_range=(1,2); min_df=2; max_features=10,000; sublinear_tf=True; 
+token_pattern matching any non-whitespace sequence. This approach treats each Voynich token 
+as a unit of analysis, finding lines with similar token distributions without imposing external 
+semantic priors. 
+ 
+For comparison, standard sentence-transformer embeddings (all-mpnet-base-v2) were also 
+computed, providing a baseline for English-model response to the unknown text. 
+2.4 Attractor Detection 
+DBSCAN clustering (eps=0.5, min_samples=2, metric=cosine) was applied to L2-normalized 
+embeddings. Parameters were tuned from standard conversational corpus values (eps=0.3, 
+
+---PAGE 4---
+Jensen (2026) — Voynich Semantic Attractor Analysis —  
+min_samples=3) to accommodate the larger token vocabulary and different distributional 
+properties of the unknown script. Attractor sequence, recurrence matrix (cosine similarity), and 
+2D trajectory (PCA → t-SNE) were computed using the semantic_navigator pipeline. 
+2.5 Comparison Corpus 
+Results were interpreted in the context of the following comparison texts, analyzed under identical 
+pipeline parameters: Book of Revelation (KJV); The Communist Manifesto (Marx & Engels); 
+Dante's Inferno (Sibbald translation); a conversational grimoire corpus; and an analytical essay 
+corpus. This comparison set spans the full range of attractor topologies documented by the 
+framework. 
+ 
+ 
+ 
+3. Results 
+3.1 Language Structure Metrics 
+Metric 
+Value 
+Interpretation 
+Vocabulary size 
+11,133 
+Large, consistent with natural language 
+Total tokens 
+38,225 
+Substantial corpus 
+Type/token ratio 
+0.291 
+Normal range for natural language 
+Hapax ratio 
+0.751 
+75% of words appear once — high 
+morphological productivity 
+Zipf slope 
+-0.768 
+Excellent fit (ideal = -1.0) 
+Zipf R² 
+0.875 
+Strong linear fit in log-log space 
+Zipf interpretation 
+Excellent 
+Consistent with natural language 
+Word entropy 
+11.14 bits 
+High information density 
+Char entropy 
+4.146 bits 
+Moderate character-level entropy 
+ 
+The Zipf distribution is particularly notable. A slope of -0.768 with R²=0.875 represents excellent 
+compliance with the power law expected of natural language. This result is consistent with prior 
+statistical analyses of the Voynich Manuscript and confirms that the token distribution is non-
+random at the word level. 
+ 
+The high hapax ratio (75.1%) — words appearing exactly once — is consistent with a 
+morphologically productive system in which a finite set of roots generates many unique surface 
+forms through recombination. This is a characteristic signature of agglutinative or operator-based 
+systems rather than analytic languages with fixed vocabulary. 
+
+---PAGE 5---
+Jensen (2026) — Voynich Semantic Attractor Analysis —  
+3.2 Attractor Analysis 
+DBSCAN identified 190 distinct semantic attractors from 4,486 lines, with 3,908 noise points 
+(87.1%) and 1,006 transitions between attractors. The 87.1% noise ratio is consistent with the 
+general conversation corpus (85%) and significantly lower than the hoax-like angry essay corpus 
+(95% noise, 1 attractor). 
+ 
+Corpus 
+Attractors 
+Noise % 
+Topology Type 
+Angry Essay 
+1 
+95.2% 
+Single fixation — ideological lock-in 
+Communist Manifesto 
+17 
+74.4% 
+Semantic weapon — one supermassive 
+basin 
+Book of Revelation 
+41 
+77.8% 
+Directed transmission — forward descent 
+Dante's Inferno 
+74 
+~80% 
+Architectural universe — one-way 
+descent 
+Personal Grimoire 
+13 
+57.8% 
+Recursive inhabited space 
+Voynich Manuscript 
+190 
+87.1% 
+??? 
+ 
+The Voynich attractor count (190) exceeds all comparison texts, including Dante's Inferno (74). 
+This is not consistent with hoax generation, which produces low attractor counts, nor with 
+ideological lock-in, which produces single supermassive basins. A text generated randomly or 
+through simple repetition cannot produce 190 distinct semantic basins — this requires genuine 
+vocabulary differentiation across the corpus. 
+3.3 Section Separation in Embedding Space 
+The most significant finding of this analysis is the spatial separation of manuscript sections in 
+word-embedding space. When lines are colored by their conventional section assignment (herbal 
+A, astronomical, biological, cosmological, herbal B, pharmaceutical), clear regional clustering is 
+visible in the 2D t-SNE projection. 
+ 
+Specifically: herbal A lines cluster in one region; pharmaceutical lines cluster in a distinct region; 
+biological lines occupy a third region; astronomical lines form a fourth cluster. This section 
+separation occurs purely on the basis of token distribution — the algorithm has no knowledge of 
+the manuscript's visual organization or scholarly section assignments. 
+ 
+This result constitutes strong evidence against the hoax hypothesis. A hoaxer producing 
+meaningless text would have no mechanism for maintaining consistent domain-specific 
+vocabulary across hundreds of pages in a way that produces statistically significant clustering. 
+The section separation implies that whoever produced the Voynich was encoding genuinely 
+different content in different sections — content with different token inventories. 
+3.4 Recurrence Matrix Topology 
+
+---PAGE 6---
+Jensen (2026) — Voynich Semantic Attractor Analysis —  
+The semantic recurrence matrix (cosine similarity across the full corpus) exhibits a warm, textured 
+green pattern with block structure, most closely resembling the personal grimoire corpus rather 
+than the directed-transmission signature of Revelation or the lock-in signature of the Manifesto. 
+ 
+This topology — inhabited space with deep structural coherence under surface variety — is 
+characteristic of texts designed for recursive engagement rather than one-time transmission. The 
+text recognizes itself across distance, suggesting consistent underlying structural principles 
+throughout. 
+ 
+The n-gram recurrence matrix is nearly featureless (dark blue), indicating that the manuscript 
+does not repeat exact token sequences — consistent with a generative system producing novel 
+surface forms from a stable deep structure. 
+3.5 Token Morphology Patterns 
+Examination of attractor keywords reveals systematic positional variation within the token 
+inventory. The most frequent base tokens (1oe, 8am, oe, K9) appear in modified forms with 
+consistent prefixation patterns: 
+ 
+Base Token 
+Prefixed Forms 
+Possible Function 
+1oe 
+oh1oe, ok1oe, ohc1oe, o1oe 
+Root with operator prefixes 
+8am 
+oh8am, ok8am, 1oh8am 
+Root with operator prefixes 
+K9 
+oK9, 1K9, ok1K9 
+Root with operator prefixes 
+oe 
+hoe, koe, 1oe, ohoe, Koe 
+High-frequency root, many operator 
+forms 
+ 
+This pattern is consistent with an operator-prefix system in which a small set of prefix elements 
+(o-, oh-, ok-, 1-, K-) modify the base semantic content of roots. The high hapax ratio would follow 
+naturally from this system: even a small number of operators applied to a moderate root 
+vocabulary generates a large number of unique surface forms, most appearing only once. 
+ 
+ 
+ 
+4. Discussion 
+4.1 Against the Hoax Hypothesis 
+The combination of findings presented here is structurally inconsistent with hoax generation. A 
+successful hoax requires: (1) Zipf compliance — achievable through careful construction but rare 
+in genuine hoaxes; (2) high attractor count — not achievable through random or repetitive 
+generation; (3) section-specific vocabulary clustering — requires sustained domain-specific 
+consistency across hundreds of pages. 
+
+---PAGE 7---
+Jensen (2026) — Voynich Semantic Attractor Analysis —  
+ 
+Most critically, the section separation result cannot easily be faked. To produce herbal vocabulary 
+that clusters distinctly from astronomical vocabulary in a word-embedding space, a hoaxer would 
+need to maintain statistically significant differences in token usage across sections — essentially 
+constructing a multi-domain symbolic system. At that point, the distinction between hoax and 
+genuine constructed language becomes definitional rather than substantive. 
+4.2 The Generative System Hypothesis 
+The structural signature most consistent with the Voynich data is that of an operator-based 
+generative system. The defining characteristics of such a system are: a finite root vocabulary; 
+operators governing recombination; high surface variety from low deep complexity; domain-
+specific operator deployment; and morphological productivity (high hapax ratio). 
+ 
+All five characteristics are present in the Voynich data. The 190 attractors represent the semantic 
+basins generated by combining roots with operators across different contextual domains. The 
+section separation represents domain-specific operator deployment — the same root inventory 
+being combined differently in herbal versus astronomical versus pharmaceutical contexts. 
+ 
+This interpretation does not require that we identify the specific operators or roots. It predicts that: 
+(1) the highest-frequency tokens will prove to be operators rather than content words; (2) 
+systematic analysis of token positional patterns will reveal a small operator set; (3) once operators 
+are identified, root vocabulary will be significantly smaller than current apparent vocabulary 
+suggests. 
+4.3 Structural Isomorphism with Operator Abjad 
+Operator Abjad (OA), an independently developed ritual-compositional language, shares the 
+following structural properties with the Voynich system as characterized by this analysis: finite 
+consonantal roots encoding core meaning; operators governing transformation and 
+recombination; emergent compounds as the primary meaning-generation mechanism; glyph 
+stabilization of high-frequency forms. 
+ 
+The structural isomorphism does not imply historical connection. Rather, it suggests that operator-
+based generative systems represent a discoverable design space for symbolic languages — one 
+that can be arrived at independently by practitioners working toward similar goals: maximum 
+semantic compression, morphological productivity, and resistance to casual decoding. 
+ 
+The Voynich author and independent modern practitioners appear to have converged on similar 
+architectural solutions to similar problems. This convergence, if confirmed by deeper analysis, 
+would constitute evidence that operator-based generative structure represents a robust and 
+perhaps optimal design for esoteric or ritual symbolic systems. 
+4.4 Limitations 
+Several significant limitations constrain interpretation of these results. First, the Currier/FSG 
+transcription system introduces its own analytical layer between the original manuscript and the 
+
+---PAGE 8---
+Jensen (2026) — Voynich Semantic Attractor Analysis —  
+analysis. Different transcription systems may produce different results. Second, the pipeline 
+parameters (eps, min_samples) were tuned heuristically; systematic parameter optimization may 
+alter attractor counts. Third, the section boundaries used for the section separation analysis are 
+conventional assignments, not manuscript-internal designations. Fourth, and most importantly, 
+this analysis characterizes structural properties of the Voynich without making claims about 
+content. The identification of generative structure does not constitute decipherment. 
+ 
+ 
+ 
+5. Conclusions 
+Semantic attractor analysis of the Voynich Manuscript produces results inconsistent with hoax or 
+random generation and consistent with an intentional operator-based generative symbolic 
+system. The key findings are: 
+ 
+1. Zipf's law compliance (slope -0.768, R²=0.875) confirms non-random token distribution. 
+2. 190 semantic attractors indicate genuine vocabulary differentiation beyond hoax-level 
+complexity. 
+3. Statistically significant section separation in embedding space implies domain-specific 
+content organization. 
+4. Inhabited recurrence topology suggests recursive structural coherence rather than one-
+time transmission. 
+5. Token morphology patterns are consistent with an operator-prefix system modifying a 
+finite root vocabulary. 
+ 
+We propose that future analysis focus on identifying the operator set through positional frequency 
+analysis of token prefixes, and testing the prediction that apparent vocabulary size reduces 
+significantly once operators are separated from roots. 
+ 
+The structural isomorphism with independently developed operator-based systems suggests that 
+this architectural class represents a convergent solution to the design problem of maximum 
+semantic compression with high morphological productivity — a design space discoverable by 
+practitioners working across centuries without direct contact. 
+ 
+ 
+ 
+References 
+Currier, P.H. (1976). Some important new statistical findings. In: Proceedings of a Seminar on the 
+Voynich Manuscript. New Haven. 
+ 
+
+---PAGE 9---
+Jensen (2026) — Voynich Semantic Attractor Analysis —  
+Jensen, M.D. (2026). Semantic Manifold Theory: A Framework for Meaning as Physics. Zenodo. 
+https://doi.org/10.5281/zenodo.[preprint] 
+ 
+Landini, 
+G. 
+& 
+Zandbergen, 
+R. 
+(2016). 
+Voynich 
+Manuscript 
+EVA 
+Transcription. 
+https://www.voynich.nu/transcr.html 
+ 
+Reimers, N. & Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese 
+BERT-Networks. EMNLP 2019. 
+ 
+Rugg, G. (2004). The mystery of the Voynich Manuscript. Scientific American, 291(1), 104-109. 
+ 
+Schinner, A. (2007). The Voynich manuscript: Evidence of the hoax hypothesis. Cryptologia, 
+31(2), 95-107. 
+ 
+Timm, T. & Schindler, A. (2019). A Cryptanalytic Approach to the Voynich Manuscript. 
+arXiv:1901.02787. 
+ 
+Zandbergen, R. (2004-2024). The Voynich Manuscript. https://www.voynich.nu 
+ 
+ 
+ 
+Appendix A: Pipeline Code 
+The 
+analysis 
+pipeline 
+is 
+available 
+as 
+voynich_navigator.py, 
+built 
+on 
+semantic_navigator_optimized.py. Both files are included as supplementary materials. The 
+pipeline requires: Python 3.8+, sentence-transformers, scikit-learn, matplotlib, torch, tqdm. 
+ 
+Run command: python voynich_navigator.py --input voyn_101.txt --output voynich_analysis 
+ 
+Appendix B: Comparison Corpus Topology Summary 
+Text 
+Attractors 
+Noise 
+% 
+Transitions 
+Matrix Type 
+Classification 
+Angry Essay 
+1 
+95% 
+6 
+Glowing uniform 
+Single fixation 
+Communist 
+Manifesto 
+17 
+74% 
+439 
+Uniform green 
+Ideological lock-in 
+
+---PAGE 10---
+Jensen (2026) — Voynich Semantic Attractor Analysis —  
+Book of 
+Revelation 
+41 
+78% 
+412 
+Near-featureless 
+blue 
+Directed transmission 
+Dante's Inferno 
+74 
+~80% 
+N/A 
+Dark blue 
+Architectural descent 
+Personal 
+Grimoire 
+13 
+58% 
+166 
+Textured grid 
+Recursive inhabited 
+space 
+Voynich 
+Manuscript 
+190 
+87% 
+1006 
+Warm green 
+textured 
+Generative system 
+(proposed) 
+ 
