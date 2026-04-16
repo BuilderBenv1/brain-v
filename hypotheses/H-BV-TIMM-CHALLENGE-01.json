@@ -1,0 +1,33 @@
+{
+  "id": "H-BV-TIMM-CHALLENGE-01",
+  "claim": "Brain-V's dialect-marker enrichments are better explained by Currier hand classification than by quire position alone. Under Timm (2026a,c), the manuscript is a single continuously-evolving hand whose apparent Hand-A/Hand-B split is a smooth gradient over quire position; under Brain-V's two-scribe framing, the Hand-A vs Hand-B markers split sharply at Currier hand boundaries regardless of quire.",
+  "type": "structural",
+  "confidence": 0.55,
+  "evidence_for": [
+    "Brain-V's _.oii fires on Hand-A plant folios and is exactly zero on all 32 Hand-B folios tested; sharp binary split consistent with hand-categorical not continuous",
+    "Hand-A and Hand-B recipe markers overlap 0/8 patterns, which is easier to explain as two distinct conventions than as continuous evolution",
+    "Timm's own evidence notes Currier A pages and Currier B pages interleave within quires (Quire 4 f26/f31 are Currier B surrounded by Currier A), making quire-position-only prediction weaker"
+  ],
+  "evidence_against": [
+    "Timm (2026a) documents continuous cosine-similarity decline across the manuscript, strongly implying any feature (including vowel patterns) could track quire position",
+    "Hurych (2007) found no scribal difference across 17 paleographic criteria — if the paleography is one hand, Brain-V's 'Hand A vs Hand B' framing is arguably a statistical fingerprint of an evolutionary stage, not two people",
+    "Timm shows Davis's k-crossbar and n-flourish diagnostics fail; if the underlying hand classification is weak, Brain-V's reliance on it is also weak",
+    "The single-scribe model also explains the vocabulary asymmetry (A-typical words appear in B but not vice versa), which hand-categorical cannot"
+  ],
+  "test": "For each dialect marker or marker set, compute per-folio fire rate and fit three linear regressions: (a) rate ~ hand (binary A/B), (b) rate ~ quire_position (numeric, derived from first-folio-of-quire ordering), (c) rate ~ hand + quire_position. Compare R^2 across the three models for each marker. Markers tested (8 total): _.oii, _.e.e, _.eeo, _.o.eo, combined HandA_pharma set, combined HandA_herbal set, combined HandB_biological set (single pattern o._.ai), combined HandB_recipes set. For each marker also report: hand coefficient and p-value in model (c), quire coefficient and p-value in model (c), and hand-only minus quire-only R^2.",
+  "test_metric": "hand_vs_quire_r_squared_majority",
+  "test_threshold": "If quire-only R^2 >= hand-only R^2 for majority of markers (>=5 of 8): Timm's continuous-evolution framing prevails; Brain-V's two-scribe framing is refuted. If hand-only R^2 > quire-only R^2 for majority of markers: Brain-V's framing prevails. If mixed with combined-model R^2 substantially greater than either alone for majority of markers: both partially true (hand explains some variance, quire explains additional variance).",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute the locked test in a separate commit after this pre-registration",
+    "Report per-marker R^2 table",
+    "Apply the pre-registered decision rule to the result"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-DIALECT-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "Timm (2026c) challenges the entire discrete-scribe framework that Brain-V's H-BV-PLANT-01 through H-BV-DIALECT-01 relies on. If Timm is right, the Hand-A/B distinction Brain-V has been using is a projection of continuous evolution onto a discrete label. This test asks whether the dialect-marker fire rates split more cleanly along the hand label or along quire position. The quire-position alternative steelmans Timm: it is the single best single-variable operationalisation of his continuous-evolution claim.",
+  "source": "Brain-V 2026-04-16 pre-registration after reading Timm (2026c), 'One Hand, Five Labels'",
+  "researcher": "brain-v"
+}
