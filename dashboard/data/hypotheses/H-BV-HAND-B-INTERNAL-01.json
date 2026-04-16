@@ -1,0 +1,30 @@
+{
+  "id": "H-BV-HAND-B-INTERNAL-01",
+  "claim": "Hand B passes the identical four-threshold linguistic-structure test that H-BV-HAND-A-INTERNAL-01 confirmed for Hand A. If Hand B also passes, both hands are internally coherent natural-language-like systems that just happen to share no surface vocabulary. If Hand B fails, the two hands are structurally different kinds of encoding (e.g. Hand A linguistic + Hand B code/cipher/cartridge).",
+  "type": "structural",
+  "confidence": 0.50,
+  "evidence_for": [
+    "Hand B has larger productive vocabulary (25 stems / 42 marker tokens vs Hand A 6 / 36); more vocabulary diversity is often found in natural languages",
+    "Hand B plant markers (_.e.e, _.eeo, _.o.eo) are three distinct forms — consistent with morphological complexity",
+    "Timm's continuous-evolution framing predicts Hand B is a later stage of the same linguistic system; if correct, it should also pass"
+  ],
+  "evidence_against": [
+    "H-BV-HAND-B-SPECIES-01 showed Hand B stems cluster at folio-neighbourhood granularity, which is more consistent with quire-locality than with stable linguistic structure",
+    "Hand B has only 82 folios vs Hand A's 114, reducing power for some sub-tests",
+    "If Hand B is a cartridge/cipher encoding rather than a language, it could fail one or more sub-tests cleanly"
+  ],
+  "test": "LOCKED IDENTICAL METHODOLOGY TO H-BV-HAND-A-INTERNAL-01 but restricted to Hand B folios:\n  (1) INFLECTION: for each consonant skeleton appearing >=5 times in Hand B, count distinct final-suffix chars from {y,n,r,m,g}. Mean and %-with->=2.\n  (2) PLANT SPECIFICITY: within-Hand-B plant vs Hand-B non-plant herbal, top-50 bigram Jaccard ratio.\n  (3) LDA TOPIC STRUCTURE: K=8 on Hand-B folio-level bag-of-words. Mean top-20 section purity.",
+  "test_metric": "four_threshold_linguistic_structure_hand_b",
+  "test_threshold": "CONFIRMED if all four pass: (a) mean suffixes per skeleton >= 2.0 (b) >=50% of skeletons take >=2 suffixes (c) plant-vs-plant / plant-vs-nonplant bigram ratio >= 1.3x (d) mean LDA section purity >= 0.60. REFUTED if any fails. Use the EXACT same thresholds as H-BV-HAND-A-INTERNAL-01; do not re-tune for Hand B.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute in separate commit"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-HAND-A-INTERNAL-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "Symmetric test. The threshold asymmetry question matters: if Hand A passes and Hand B fails, Brain-V has evidence that the two hands are structurally different kinds of thing — one natural-language, one something else. If both pass, both are languages (possibly the same language with dialect variation, possibly not).",
+  "source": "Brain-V 2026-04-16 pre-registration symmetric to H-BV-HAND-A-INTERNAL-01",
+  "researcher": "brain-v"
+}
