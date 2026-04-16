@@ -1,0 +1,31 @@
+{
+  "id": "H-BV-HIGH-LOW-STRUCTURE-01",
+  "claim": "The HIGH/LOW vocabulary split established by H-BV-NOMENCLATOR-01 and supported against natural-language references by H-BV-NOMENCLATOR-NLREF-01, but refuted as a function/content axis by H-BV-NOMENCLATOR-HIGH-DECODE-01, may instead reflect a STRUCTURAL axis — line position, morphological state, paragraph role, or pure adjacency pattern — rather than a lexical function/content distinction. Four locked tests discriminate: (1) line-position clustering, (2) morphological-state (bare vs inflected), (3) paragraph-role (initial/medial/final), (4) adjacency cross-class rate compared to natural-language function/content baseline. If any of tests 1-3 crosses its clustering threshold, the split is STRUCTURAL, not lexical. If test 4 matches natural-language cross-class rates, the function/content reading survives. If none of the above, the split is ORTHOGONAL to both structure and function.",
+  "type": "structural",
+  "confidence": 0.4,
+  "evidence_for": [
+    "H-BV-NOMENCLATOR-01 confirmed a two-population vocabulary (Zipf / type-glyph entropy / mean length all p<0.01 by permutation)",
+    "H-BV-NOMENCLATOR-NLREF-01 showed Hand A more extreme than both Latin Vulgate and Italian Dante on 3 of 5 head/tail measures — the two populations are NOT ordinary natural-language function/content stratification",
+    "H-BV-NOMENCLATOR-HIGH-DECODE-01 REFUTED the function-word-scaffold reading: Brady, Schechter, and Pagel all fail on HIGH-only tokens (Pagel's +0.0118 CONFIRMED dissolves to -0.0033)",
+    "Plain gallows t/p at line-initial position already confirmed as paragraph markers in prior Brain-V work (2.8x and 5.0x enrichment) — the corpus has known structural markers, so a structural HIGH/LOW split is plausible"
+  ],
+  "evidence_against": [
+    "Four refutations of per-plant content decoding (`H-BV-SYLLABLE-LEVEL-01`, `H-BV-HAND-A-CONTENT-INDEPENDENCE-01`, `H-BV-CONSONANT-ID-01`, `H-BV-CONSONANT-SEMANTICS-01`) already suggest Hand A's content axis is decoupled from illustration; a structural HIGH/LOW axis is a plausible reinterpretation but not the only one",
+    "A structural split (e.g. bare-stem vs inflected) would still need to explain why natural-language reference corpora (Latin, Italian) show SMALLER head/tail gaps than Hand A — neither Latin nor Italian has a morphological HIGH/LOW stratification aligned with frequency in this way",
+    "The tests below may return NULL on all four, leaving the HIGH/LOW split genuinely orthogonal to all known axes — an outcome that would leave the two-population result unexplained"
+  ],
+  "test": "LOCKED FOUR-PART PROCEDURE on Hand A only.\n\n  HIGH_TYPES = top 146 types from H-BV-NOMENCLATOR-01 (cumulative 50.1%).\n  LOW_TYPES  = remaining 3,367 types.\n  SUFFIX_CHARS = {y, n, r, m, g} (per Brain-V's inflection modelling).\n\n  TEST 1 — LINE POSITION:\n    For each Hand-A line with >=4 tokens, assign each token to a quartile\n    of its position within the line (Q1=first 25%, Q2=25-50%, Q3=50-75%,\n    Q4=last 25%). Compute the fraction of HIGH tokens falling in each\n    quartile (normalised by quartile occupancy).\n    CLUSTERING DETECTED if any single quartile holds >=60% of HIGH tokens,\n    OR if Q1 + Q4 (line edges) together hold >=70% of HIGH tokens.\n\n  TEST 2 — MORPHOLOGICAL STATE:\n    For each token, strip one trailing SUFFIX_CHAR iteratively until none\n    remains; count the number of suffixes stripped.\n    Compute: %% of HIGH tokens with 0 suffixes; %% of LOW tokens with >=2\n    suffixes.\n    MORPHOLOGICAL SPLIT if HIGH 0-suffix >= 70%% AND LOW >=2-suffix >= 50%%.\n\n  TEST 3 — PARAGRAPH ROLE:\n    Define a paragraph as the sequence of consecutive lines within a folio\n    where the FIRST line begins with a plain gallows (t or p, not followed\n    by h), and the paragraph continues until the next gallows-initial line\n    or end of folio. Assign each token:\n      'initial'  -- first token of a paragraph\n      'final'    -- last token of a paragraph\n      'medial'   -- anything else\n    Compute HIGH-token share of each role. BOUNDARY CONCENTRATION if\n    (HIGH-share of initial + HIGH-share of final) / HIGH-share of medial\n    >= 1.5.\n\n  TEST 4 — ADJACENCY CROSS-CLASS RATE:\n    For all adjacent token pairs (a, b) within Hand-A lines, classify:\n      HH, HL, LH, LL.\n    Random-class null (given p_HIGH = 0.501, p_LOW = 0.499):\n      expected HH = 25.1%%, HL+LH = 50.0%%, LL = 24.9%%.\n    Compute observed cross-class rate HL+LH. Also compute the same on\n    natural-language references (Latin Vulgate Gen+Exod+Lev and Italian\n    Dante Divina Commedia, each truncated to 11,022 tokens and split at\n    their own cumulative-50%% rank) for comparison.\n    FUNCTION/CONTENT PATTERN if Hand A's cross-class rate falls within\n    [0.60, 0.80] and matches reference corpora within +/- 0.05.",
+  "test_metric": "which_axis_explains_the_HIGH_LOW_split",
+  "test_threshold": "STRUCTURAL if any of Tests 1/2/3 triggers its clustering condition. FUNCTION/CONTENT if Test 4's Hand-A cross-class rate is in [0.60, 0.80] AND within +/- 0.05 of both reference corpora. ORTHOGONAL if none of Tests 1/2/3 triggers AND Test 4's cross-class rate is within 0.02 of the random 0.50 null (no alternation pattern). Report all four test outcomes regardless.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute four-part structural test in separate commit after lock"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-NOMENCLATOR-HIGH-DECODE-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "NOMENCLATOR-01 established a real two-population vocabulary structure in Hand A; NLREF-01 showed it exceeds natural-language head/tail gaps; HIGH-DECODE-01 refuted the function-word-scaffold reading. Something else is driving the split. Four plausible alternatives can be tested with existing corpus data: line position, morphological state, paragraph role, and pure adjacency. The four tests are mutually non-exclusive (e.g. morphological and positional could both be true) and collectively span the main structural axes Brain-V has evidence for.",
+  "source": "Brain-V 2026-04-16 user-directed test following NOMENCLATOR-HIGH-DECODE-01 refutation",
+  "researcher": "brain-v"
+}
