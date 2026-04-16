@@ -1,128 +1,173 @@
 """
-Execute pre-registered H-BV-CIRCA-INSTANS-BENCHMARK-01.
+Execute pre-registered H-BV-CIRCA-INSTANS-BENCHMARK-01 (amended).
 
-Benchmark Hand A against a medieval Latin herbal-encyclopedic text.
-Circa Instans unavailable in clean digital form; using Macer Floridus
-(De viribus herbarum, Choulant 1832 edition from archive.org).
+Dual benchmark:
+  PRIMARY (prose, binding):  Isidore Etymologiae Book 17 (Latin Library)
+                             padded with Book 18 if under 11,022 tokens.
+  SECONDARY (verse, informational): Macer Floridus (Choulant 1832).
 
-Pipeline identical to H-BV-RECIPE-STRUCTURE-01 but applied to Macer:
-  - HIGH/LOW split at cumulative-50% rank
-  - Paragraph detection via chapter headings
-  - 5 comparison measures vs Hand A
+Five measures per corpus (including Hand A baseline):
+  M1 HIGH/LOW split (R where cumulative tokens reach 50%)
+  M2 Vocabulary disjunction |INITIAL \\ MIDDLE| / |INITIAL|
+  M3 Top-20 MIDDLE recipe-verb passes (>=2 skel variants AND >=30% cov)
+  M4 Header recurrence rate (initial types in >=3 paragraphs)
+  M5 Cross-class adjacency rate HL+LH
+
+Relative-match tolerance bands against Hand A:
+  disjunction       +/- 0.10
+  top-20 medial     +/- 4
+  header recurrence +/- 0.05
+  cross-class       +/- 0.05
 
 Decision (locked):
-  CONFIRMED if Macer: header-recur<10% AND disjunction>=0.70 AND
-    top-20 medial reuse>=15/20 AND cross-class<0.52
-  REFUTED if Macer: header-recur>=30% OR cross-class>=0.55
-  MARGINAL otherwise
+  Isidore matches all 4 bands AND no refute conditions -> CONFIRMED
+  Isidore header_recur >= 0.30 OR cross_class >= 0.55    -> REFUTED
+  Otherwise                                              -> MARGINAL
+
+Macer reported alongside but does not bind the verdict.
 """
 import json
 import math
 import re
+import html
 from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(r"C:\Projects\brain-v")
 REF = ROOT / "raw/corpus/reference-corpora"
-
-# =============================================================================
-# Load and clean Macer Floridus
-# =============================================================================
-raw = (REF / "macer_floridus_raw.txt").read_text(encoding="utf-8", errors="replace")
-lines = raw.split("\n")
-
-# Locate Macer content start and end
-start_idx = end_idx = None
-for i, L in enumerate(lines):
-    if start_idx is None and re.search(r"^\s*II?l?\.?\s*ABSINTHIUM", L):
-        start_idx = i
-    if start_idx is not None and re.match(r"^\s*CONFECTBUCH", L):
-        end_idx = i; break
-if end_idx is None:
-    end_idx = len(lines)
-content = lines[start_idx:end_idx]
-print(f"Macer content window: lines {start_idx}..{end_idx} ({len(content)} lines)")
-
-# Per-chapter segmentation: detect chapter-heading lines
-# Pattern: roman numeral + period + uppercase plant name (often ends with period)
-CHAPTER_RE = re.compile(r"^\s*[IVXLCDM]+l?\.\s*[A-Z][A-Z]+")
-GREEK_RE = re.compile(r"[\u0370-\u03FF\u1F00-\u1FFF]")
-
-def is_apparatus(line):
-    if GREEK_RE.search(line):
-        return True
-    # Lines starting with digit followed by space are apparatus
-    if re.match(r"^\s*\d+\s", line):
-        return True
-    return False
-
-# Step through content, group lines into chapter blocks
-chapters = []  # list of list-of-lines (clean body of each chapter)
-current = []
-in_chapter = False
-for L in content:
-    if CHAPTER_RE.match(L):
-        if in_chapter and current:
-            chapters.append(current)
-        current = []
-        in_chapter = True
-        continue
-    if not in_chapter:
-        continue
-    if is_apparatus(L):
-        continue
-    current.append(L)
-if current and in_chapter:
-    chapters.append(current)
-
-print(f"Chapters detected: {len(chapters)}")
-
-# Tokenize: lowercase, strip non-alpha, Latin only
-def tokenize_latin(lines_list):
-    text = " ".join(lines_list).lower()
-    text = re.sub(r"[^a-z\s]", " ", text)
-    return text.split()
-
-chapter_tokens = [tokenize_latin(c) for c in chapters]
-chapter_tokens = [ct for ct in chapter_tokens if len(ct) >= 3]
-flat_tokens = [w for ct in chapter_tokens for w in ct]
-print(f"Total Macer tokens (filtered): {len(flat_tokens)}")
-
-# Truncate to 11022 tokens — preserving chapter structure
 TARGET = 11022
-used_chapters = []
-total = 0
-for ct in chapter_tokens:
-    if total + len(ct) <= TARGET:
-        used_chapters.append(ct)
-        total += len(ct)
-    elif TARGET - total >= 3:
-        used_chapters.append(ct[:TARGET - total])
-        total = TARGET
-        break
-    else:
-        break
-print(f"Used {len(used_chapters)} chapters totalling {total} tokens")
 
-macer_flat = [w for c in used_chapters for w in c]
-
-# =============================================================================
-# HIGH/LOW split at cumulative-50% rank
-# =============================================================================
-freq = Counter(macer_flat)
-Nt = sum(freq.values())
-st = freq.most_common()
-cum = 0; R = 0
-for i, (t, c) in enumerate(st, 1):
-    cum += c
-    if cum >= Nt / 2:
-        R = i; break
-HIGH_TYPES = {t for t, _ in st[:R]}
-print(f"\nMacer HIGH: {R} types covering {cum} tokens ({100*cum/Nt:.1f}%)")
-print(f"Macer LOW:  {len(freq) - R} types ({Nt - cum} tokens)")
+HAND_A = {
+    "R_split": 146,
+    "n_paragraphs": 271,
+    "mean_paragraph_len": 11022 / 271,  # ~40.7
+    "disjunction": 0.850,
+    "top20_medial_passes": 19,
+    "header_recurrence": 0.046,
+    "cross_class_rate": 0.469,
+}
+TOLERANCE = {
+    "disjunction": 0.10,
+    "top20_medial": 4,
+    "header_recurrence": 0.05,
+    "cross_class_rate": 0.05,
+}
 
 # =============================================================================
-# Position bins per chapter (same as RECIPE-STRUCTURE-01)
+# Paragraph segmentation & cleaning per corpus
+# =============================================================================
+def strip_html_keep_sections(html_raw):
+    """Strip HTML tags but preserve Latin-Library's [N] section markers."""
+    txt = re.sub(r"<[^>]+>", " ", html_raw)
+    txt = html.unescape(txt)
+    txt = re.sub(r"\s+", " ", txt)
+    return txt
+
+def load_isidore():
+    """Load Book 17 (+ Book 18 if under target). Split on numbered markers
+    [N]. Keep only Latin ASCII words."""
+    books = []
+    for book_num in (17, 18):
+        path = REF / f"isidore_etym_{book_num}_raw.html"
+        if not path.exists():
+            continue
+        raw = path.read_text(encoding="latin-1")
+        txt = strip_html_keep_sections(raw)
+        books.append(txt)
+    full = " ".join(books)
+    # Split into sections at [N] markers
+    parts = re.split(r"\[\d+\]", full)
+    # Tokenize each paragraph
+    paragraphs = []
+    for p in parts:
+        p = p.lower()
+        p = re.sub(r"[^a-z\s]", " ", p)
+        tokens = p.split()
+        if len(tokens) >= 3:
+            paragraphs.append(tokens)
+    return paragraphs
+
+def load_macer():
+    """Macer Floridus: content between 'III. ABSINTHIUM.' and first
+    'CONFECTBUCH'. Skip Greek-containing and digit-initial apparatus
+    lines. Paragraph = chapter (content between chapter-heading lines)."""
+    raw_path = REF / "macer_floridus_raw.txt"
+    if not raw_path.exists():
+        return []
+    raw = raw_path.read_text(encoding="utf-8", errors="replace")
+    lines = raw.split("\n")
+    start = end = None
+    for i, L in enumerate(lines):
+        if start is None and re.search(r"^\s*II?l?\.\s*ABSINTHIUM", L):
+            start = i
+        if start is not None and re.match(r"^\s*CONFECTBUCH", L):
+            end = i; break
+    if end is None: end = len(lines)
+    content = lines[start:end]
+    CHAPTER_RE = re.compile(r"^\s*[IVXLCDM]+l?\.\s*[A-Z][A-Z]+")
+    GREEK_RE = re.compile(r"[\u0370-\u03FF\u1F00-\u1FFF]")
+    chapters = []
+    current = []
+    in_ch = False
+    for L in content:
+        if CHAPTER_RE.match(L):
+            if in_ch and current:
+                chapters.append(current)
+            current = []
+            in_ch = True
+            continue
+        if not in_ch: continue
+        if GREEK_RE.search(L): continue
+        if re.match(r"^\s*\d+\s", L): continue
+        current.append(L)
+    if in_ch and current:
+        chapters.append(current)
+    paragraphs = []
+    for c in chapters:
+        txt = " ".join(c).lower()
+        txt = re.sub(r"[^a-z\s]", " ", txt)
+        toks = txt.split()
+        if len(toks) >= 3:
+            paragraphs.append(toks)
+    return paragraphs
+
+def load_hand_a():
+    """Reload Hand A with gallows-bounded paragraphs (same as
+    RECIPE-STRUCTURE-01)."""
+    corpus = json.loads((ROOT / "raw/perception/voynich-corpus.json").read_text(encoding="utf-8"))
+    def starts_gallows(w):
+        if not w or w[0] not in "tp": return False
+        return len(w) == 1 or w[1] != "h"
+    paragraphs = []
+    for f in corpus["folios"]:
+        if f.get("currier_language") != "A":
+            continue
+        current = []
+        for line in f["lines"]:
+            ws = line["words"]
+            if not ws: continue
+            if starts_gallows(ws[0]) and current:
+                paragraphs.append(current); current = []
+            current.extend(ws)
+        if current: paragraphs.append(current)
+    return [p for p in paragraphs if len(p) >= 3]
+
+# =============================================================================
+# Truncation to TARGET tokens preserving paragraph structure
+# =============================================================================
+def truncate(paragraphs, target):
+    out = []; total = 0
+    for p in paragraphs:
+        if total + len(p) <= target:
+            out.append(p); total += len(p)
+        elif target - total >= 3:
+            out.append(p[:target - total]); total = target; break
+        else:
+            break
+    return out, total
+
+# =============================================================================
+# Pipeline measures (identical across corpora)
 # =============================================================================
 def bin_of(pos, n):
     if pos == 0: return "INITIAL"
@@ -131,189 +176,235 @@ def bin_of(pos, n):
     if pos < math.ceil(2*n / 3): return "MIDDLE"
     return "FINAL"
 
-bin_tokens = defaultdict(list)
-bin_types = defaultdict(set)
-initial_paragraph_count = Counter()  # token -> # chapters it initiates
-token_chapters = defaultdict(set)    # token -> {chapter_idx}
+def consonant_skeleton(word, vowels="aeiou"):
+    return "".join(c for c in word if c not in vowels)
 
-for ci, tokens in enumerate(used_chapters):
-    n = len(tokens)
-    if n == 0: continue
-    for pos, w in enumerate(tokens):
-        b = bin_of(pos, n)
-        bin_tokens[b].append(w)
-        bin_types[b].add(w)
-        token_chapters[w].add(ci)
-    initial_paragraph_count[tokens[0]] += 1
+def analyse(paragraphs, label):
+    flat = [w for p in paragraphs for w in p]
+    freq = Counter(flat)
+    Nt = sum(freq.values())
+    st = freq.most_common()
+    cum = 0; R = 0
+    for i, (t, c) in enumerate(st, 1):
+        cum += c
+        if cum >= Nt/2: R = i; break
+    HIGH = {t for t, _ in st[:R]}
 
-for b in ("INITIAL","FIRST","MIDDLE","FINAL"):
-    print(f"  {b:<8}: {len(bin_tokens[b]):>5} tokens, {len(bin_types[b]):>4} types")
+    bin_tokens = defaultdict(list)
+    bin_types = defaultdict(set)
+    initial_count = Counter()
+    token_paragraphs = defaultdict(set)
+
+    for pi, p in enumerate(paragraphs):
+        n = len(p)
+        if n == 0: continue
+        for pos, w in enumerate(p):
+            b = bin_of(pos, n)
+            bin_tokens[b].append(w); bin_types[b].add(w)
+            token_paragraphs[w].add(pi)
+        initial_count[p[0]] += 1
+
+    # M2 disjunction
+    I = bin_types["INITIAL"]; M = bin_types["MIDDLE"]
+    disjunction = len(I - M) / len(I) if I else 0
+
+    # M3 top-20 middle recipe-verb passes
+    skel_to_words = defaultdict(set)
+    for w in set(flat):
+        skel_to_words[consonant_skeleton(w)].add(w)
+    middle_counts = Counter(bin_tokens["MIDDLE"])
+    top20 = middle_counts.most_common(20)
+    n_paras = len(paragraphs)
+    m3_passes = 0
+    top20_details = []
+    for tok, cnt in top20:
+        sk = consonant_skeleton(tok)
+        variants = len(skel_to_words[sk])
+        cov = len(token_paragraphs[tok]) / n_paras if n_paras else 0
+        passed = variants >= 2 and cov >= 0.30
+        if passed: m3_passes += 1
+        top20_details.append({"token": tok, "count": cnt, "skeleton": sk,
+                              "variants": variants, "coverage": round(cov, 3),
+                              "pass": passed})
+
+    # M4 header recurrence
+    init_types = set(bin_tokens["INITIAL"])
+    recur = [t for t in init_types if initial_count[t] >= 3]
+    recur_ratio = len(recur) / len(init_types) if init_types else 0
+    top_recur = sorted([(t, initial_count[t]) for t in recur],
+                       key=lambda x: -x[1])[:8]
+
+    # M5 adjacency
+    def is_high(w): return w in HIGH
+    hh = hl = lh = ll = 0
+    for p in paragraphs:
+        for a, b in zip(p, p[1:]):
+            ah = is_high(a); bh = is_high(b)
+            if ah and bh: hh += 1
+            elif ah and not bh: hl += 1
+            elif not ah and bh: lh += 1
+            else: ll += 1
+    tot = hh + hl + lh + ll
+    cross = (hl + lh) / tot if tot else 0
+
+    return {
+        "label": label,
+        "n_tokens": Nt,
+        "n_types": len(freq),
+        "n_paragraphs": len(paragraphs),
+        "mean_paragraph_len": round(Nt / len(paragraphs), 2) if paragraphs else 0,
+        "R_split": R,
+        "high_type_pct": round(R / len(freq), 4) if freq else 0,
+        "disjunction": round(disjunction, 4),
+        "top20_medial_passes": m3_passes,
+        "top20_details": top20_details,
+        "header_recurrence": round(recur_ratio, 4),
+        "n_initial_types": len(init_types),
+        "n_recurring_types": len(recur),
+        "top_recurring": [{"token": t, "count": n} for t, n in top_recur],
+        "cross_class_rate": round(cross, 4),
+        "adjacency": {"HH": round(hh/tot, 4) if tot else 0,
+                       "HL_LH": round((hl+lh)/tot, 4) if tot else 0,
+                       "LL": round(ll/tot, 4) if tot else 0,
+                       "n_bigrams": tot},
+    }
 
 # =============================================================================
-# Measure 1 — vocabulary disjunction
+# Run
 # =============================================================================
-I_types = bin_types["INITIAL"]
-M_types = bin_types["MIDDLE"]
-disjunct = I_types - M_types
-disj_ratio = len(disjunct) / len(I_types) if I_types else 0
+print("Loading Hand A, Isidore, Macer...")
+hand_a_paras = load_hand_a()
+hand_a_paras_t, n_ha = truncate(hand_a_paras, TARGET)
+print(f"  Hand A:   {len(hand_a_paras_t)} paragraphs, {n_ha} tokens")
 
-# =============================================================================
-# Measure 2 — top-20 middle recipe-verb properties
-# =============================================================================
-def latin_skeleton(word):
-    return re.sub(r"[aeiou]", "", word)
+isidore_paras = load_isidore()
+print(f"  Isidore:  {len(isidore_paras)} raw paragraphs")
+if sum(len(p) for p in isidore_paras) < TARGET:
+    print(f"  NOTE: Isidore has only {sum(len(p) for p in isidore_paras)} tokens; "
+          "fallback to use all available.")
+isidore_paras_t, n_is = truncate(isidore_paras, TARGET)
+print(f"  Isidore truncated: {len(isidore_paras_t)} paragraphs, {n_is} tokens")
 
-# Global skeleton index
-skel_to_words = defaultdict(set)
-for w in set(macer_flat):
-    skel_to_words[latin_skeleton(w)].add(w)
+macer_paras = load_macer()
+macer_paras_t, n_mc = truncate(macer_paras, TARGET)
+print(f"  Macer:    {len(macer_paras_t)} paragraphs, {n_mc} tokens")
 
-middle_counts = Counter(bin_tokens["MIDDLE"])
-top20 = middle_counts.most_common(20)
-n_chapters = len(used_chapters)
-crit2_passes = 0
-top20_details = []
-for tok, cnt in top20:
-    sk = latin_skeleton(tok)
-    variants = len(skel_to_words[sk])
-    n_ch = len(token_chapters[tok])
-    cov = n_ch / n_chapters if n_chapters else 0
-    passed = variants >= 2 and cov >= 0.30
-    if passed: crit2_passes += 1
-    top20_details.append({
-        "token": tok, "count": cnt, "skeleton": sk,
-        "n_variants": variants, "n_chapters": n_ch,
-        "coverage": round(cov, 3), "pass": passed,
-    })
-
-# =============================================================================
-# Measure 3 — header recurrence rate
-# =============================================================================
-initial_types = set(bin_tokens["INITIAL"])
-n_initial_types = len(initial_types)
-recur_types = [t for t in initial_types if initial_paragraph_count[t] >= 3]
-recur_ratio = len(recur_types) / n_initial_types if n_initial_types else 0
-top_recur = sorted([(t, initial_paragraph_count[t]) for t in recur_types],
-                    key=lambda x: -x[1])[:10]
-
-# =============================================================================
-# Measure 4 — cross-class adjacency
-# =============================================================================
-def is_high(w): return w in HIGH_TYPES
-
-hh = hl = lh = ll = 0
-for tokens in used_chapters:
-    for a, b in zip(tokens, tokens[1:]):
-        ah = is_high(a); bh = is_high(b)
-        if ah and bh: hh += 1
-        elif ah and not bh: hl += 1
-        elif not ah and bh: lh += 1
-        else: ll += 1
-tot = hh + hl + lh + ll
-cross_rate = (hl + lh) / tot if tot else 0
-hh_rate = hh / tot if tot else 0
-ll_rate = ll / tot if tot else 0
+# Analyse each (on Hand A use prior numbers to cross-check)
+hand_a_res = analyse(hand_a_paras_t, "Hand A")
+isidore_res = analyse(isidore_paras_t, "Isidore Etym Bk 17+18")
+macer_res = analyse(macer_paras_t, "Macer Floridus (verse)")
 
 # =============================================================================
 # Report
 # =============================================================================
-# Hand-A values from prior tests
-HAND_A = {
-    "R_split": 146,
-    "high_pct": 0.501,
-    "n_paragraphs": 271,
-    "disjunction_ratio": 0.850,
-    "top20_medial_passes": 19,
-    "header_recurrence": 0.046,
-    "cross_class_rate": 0.469,
-}
-
-print("\n" + "="*86)
-print("  MACER FLORIDUS BENCHMARK vs HAND A")
-print("="*86)
-print(f"  {'measure':<36}{'Hand A':>14}{'Macer':>14}{'match?':>10}")
-
-rows = [
-    ("R (rank for cum 50%)", HAND_A["R_split"], R, None),
-    ("HIGH class % tokens", HAND_A["high_pct"]*100, cum/Nt*100, None),
-    ("n paragraphs/chapters", HAND_A["n_paragraphs"], len(used_chapters), None),
-    ("vocab disjunction |I\\M|/|I|", HAND_A["disjunction_ratio"], disj_ratio,
-      "PASS >=0.70"),
-    ("top-20 medial recipe-verbs/20", HAND_A["top20_medial_passes"], crit2_passes,
-      "PASS >=15"),
-    ("header recurrence rate", HAND_A["header_recurrence"], recur_ratio,
-      "match if <0.10"),
-    ("cross-class rate HL+LH", HAND_A["cross_class_rate"], cross_rate,
-      "match if <0.52"),
-]
-for lbl, ha, m, thr in rows:
-    ha_s = f"{ha:.3f}" if isinstance(ha, float) and ha < 10 else f"{ha:.0f}" if isinstance(ha, (int, float)) and ha > 10 else f"{ha}"
-    m_s = f"{m:.3f}" if isinstance(m, float) and m < 10 else f"{m:.0f}" if isinstance(m, (int, float)) and m > 10 else f"{m}"
-    notes = thr if thr else ""
-    print(f"  {lbl:<36}{ha_s:>14}{m_s:>14}  {notes}")
+print("\n" + "="*90)
+print("  BENCHMARK — Hand A vs Isidore (prose primary) vs Macer (verse secondary)")
+print("="*90)
+print(f"  {'measure':<30}{'Hand A':>14}{'Isidore':>16}{'Macer':>16}")
+fmt = lambda x: f"{x:.3f}" if isinstance(x, float) else f"{x}"
+for k, lbl in [
+    ("n_tokens", "tokens"),
+    ("n_paragraphs", "paragraphs"),
+    ("mean_paragraph_len", "mean paragraph len"),
+    ("R_split", "R split rank"),
+    ("disjunction", "M2 disjunction"),
+    ("top20_medial_passes", "M3 top-20 medial (of 20)"),
+    ("header_recurrence", "M4 header recurrence"),
+    ("cross_class_rate", "M5 cross-class rate"),
+]:
+    print(f"  {lbl:<30}{fmt(hand_a_res[k]):>14}"
+          f"{fmt(isidore_res[k]):>16}{fmt(macer_res[k]):>16}")
 
 # =============================================================================
-# Decision
+# Decision on Isidore (PRIMARY, binding)
 # =============================================================================
-print("\n" + "="*86)
-print("  PRE-REGISTERED DECISION")
-print("="*86)
+print("\n" + "="*90)
+print("  PRIMARY DECISION — Isidore vs Hand A relative-match tolerance bands")
+print("="*90)
 
-criteria = {
-    "header_recur_lt_10pct":    recur_ratio < 0.10,
-    "disjunction_ge_70pct":     disj_ratio >= 0.70,
-    "top20_medial_ge_15":       crit2_passes >= 15,
-    "cross_class_lt_52pct":     cross_rate < 0.52,
+bands = {
+    "disjunction":       ("disjunction", HAND_A["disjunction"], TOLERANCE["disjunction"]),
+    "top20_medial":      ("top20_medial_passes", HAND_A["top20_medial_passes"], TOLERANCE["top20_medial"]),
+    "header_recurrence": ("header_recurrence", HAND_A["header_recurrence"], TOLERANCE["header_recurrence"]),
+    "cross_class_rate":  ("cross_class_rate", HAND_A["cross_class_rate"], TOLERANCE["cross_class_rate"]),
 }
-n_pass = sum(criteria.values())
-for k, v in criteria.items():
-    print(f"    {k:<32} {'PASS' if v else 'FAIL'}")
+isidore_matches = {}
+for name, (key, target, tol) in bands.items():
+    obs = isidore_res[key]
+    dist = abs(obs - target)
+    ok = dist <= tol
+    isidore_matches[name] = ok
+    print(f"    {name:<22} Hand A={target:<7}  Isidore={obs:<7}  "
+          f"|diff|={dist:.3f}  tol={tol}  {'MATCH' if ok else 'miss'}")
 
-recur_refute = recur_ratio >= 0.30
-cross_refute = cross_rate >= 0.55
+n_match = sum(isidore_matches.values())
 
-print(f"\n  All 4 signature features pass? {n_pass == 4}")
-print(f"  Recipe-manual refute conditions: header-recur>=30%? {recur_refute}")
-print(f"                                   cross-class>=55%?  {cross_refute}")
+# Refute conditions
+refute_hdr = isidore_res["header_recurrence"] >= 0.30
+refute_adj = isidore_res["cross_class_rate"] >= 0.55
+refuted = refute_hdr or refute_adj
 
-if n_pass == 4 and not (recur_refute or cross_refute):
-    verdict = "CONFIRMED"
-    print(f"  -> CONFIRMED. Macer Floridus reproduces all 4 Hand-A signature")
-    print(f"     features. Herbal-encyclopedic framework is CORRECT for Hand A.")
-elif recur_refute or cross_refute:
+# Unit-size caveat
+isidore_mean_p = isidore_res["mean_paragraph_len"]
+size_caveat = isidore_mean_p > 2 * HAND_A["mean_paragraph_len"] or \
+              isidore_mean_p < 0.5 * HAND_A["mean_paragraph_len"]
+if size_caveat:
+    print(f"\n  UNIT-SIZE CAVEAT: Isidore mean paragraph length "
+          f"{isidore_mean_p:.1f} tokens vs Hand A {HAND_A['mean_paragraph_len']:.1f}. "
+          f"Paragraphs not size-matched; signature deviations may reflect scale.")
+
+print(f"\n  Isidore signature matches: {n_match} / 4 of Hand A tolerance bands")
+print(f"  Refute conditions: header>=0.30? {refute_hdr}; cross-class>=0.55? {refute_adj}")
+
+if refuted:
     verdict = "REFUTED"
-    print(f"  -> REFUTED. Macer shows classical-recipe or natural-language pattern.")
+    print(f"  -> REFUTED. Isidore shows classical-recipe or natural-language pattern.")
     print(f"     The herbal-encyclopedic reframe of Hand A is wrong.")
+elif n_match == 4:
+    verdict = "CONFIRMED"
+    print(f"  -> CONFIRMED. Isidore matches Hand A on all 4 signature bands.")
+    print(f"     Herbal-encyclopedic framework is supported.")
 else:
     verdict = "MARGINAL"
-    print(f"  -> MARGINAL. {n_pass}/4 signature features match. Partial support")
-    print(f"     for herbal-encyclopedic framework; additional comparison text needed.")
+    print(f"  -> MARGINAL. Isidore matches {n_match}/4 bands; no refute fired.")
 
+# =============================================================================
+# Macer secondary (informational)
+# =============================================================================
+print("\n" + "="*90)
+print("  SECONDARY — Macer (verse) relative-match bands (INFORMATIONAL ONLY)")
+print("="*90)
+macer_matches = {}
+for name, (key, target, tol) in bands.items():
+    obs = macer_res[key]
+    dist = abs(obs - target)
+    ok = dist <= tol
+    macer_matches[name] = ok
+    print(f"    {name:<22} Hand A={target:<7}  Macer={obs:<7}  "
+          f"|diff|={dist:.3f}  tol={tol}  {'match' if ok else 'miss'}")
+print(f"  Macer signature matches: {sum(macer_matches.values())} / 4 "
+      f"(verse caveat — not binding)")
+
+# =============================================================================
+# Save
+# =============================================================================
 out_path = ROOT / "outputs" / "circa_instans_benchmark_test.json"
 out_path.write_text(json.dumps({
     "generated": "2026-04-16",
     "hypothesis": "H-BV-CIRCA-INSTANS-BENCHMARK-01",
-    "primary_corpus": "Macer Floridus, De viribus herbarum (Choulant 1832)",
-    "circa_instans_status": "not available in clean digital plaintext; Macer Floridus substituted",
-    "n_macer_tokens_used": total,
-    "n_macer_chapters_used": len(used_chapters),
-    "macer_R_split": R,
-    "macer": {
-        "disjunction_ratio": round(disj_ratio, 4),
-        "top20_medial_passes_of_20": crit2_passes,
-        "top20_details": top20_details,
-        "header_recurrence_rate": round(recur_ratio, 4),
-        "n_initial_types": n_initial_types,
-        "n_recurring_types": len(recur_types),
-        "top_recurring_headers": [{"token": t, "chapters": n} for t, n in top_recur],
-        "cross_class_rate": round(cross_rate, 4),
-        "HH_rate": round(hh_rate, 4),
-        "LL_rate": round(ll_rate, 4),
-    },
-    "hand_a_priors": HAND_A,
-    "criteria": criteria,
-    "n_criteria_passing_of_4": n_pass,
-    "recipe_manual_refute_triggered": (recur_refute or cross_refute),
+    "primary_corpus": "Isidore Etymologiae Book 17 (+ 18 if padded)",
+    "secondary_corpus": "Macer Floridus De viribus herbarum",
+    "circa_instans_note": "Circa Instans unavailable in clean digital; Isidore Etymologiae Book 17 is the prose-matched primary benchmark",
+    "tolerance_bands": {k: TOLERANCE[k] for k in ("disjunction","top20_medial","header_recurrence","cross_class_rate")},
+    "hand_a": hand_a_res,
+    "isidore_primary": isidore_res,
+    "macer_secondary": macer_res,
+    "isidore_matches_band": isidore_matches,
+    "macer_matches_band": macer_matches,
+    "n_isidore_matches_of_4": n_match,
+    "n_macer_matches_of_4": sum(macer_matches.values()),
+    "refute_triggered": refuted,
+    "size_caveat": size_caveat,
     "verdict": verdict,
 }, indent=2), encoding="utf-8")
 print(f"\nSaved: {out_path}")
