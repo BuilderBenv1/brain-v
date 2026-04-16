@@ -1,0 +1,45 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-VOWEL-HARMONY-01",
+  "tokenisation": "A (MULTI_GLYPHS + 'ol')",
+  "n_hand_a_valid_tokens": 8794,
+  "n_eligible_stems": 73,
+  "low_power_flag": false,
+  "kmeans": {
+    "k": 2,
+    "n_init": 50,
+    "random_state": 42,
+    "cluster_0_size": 31,
+    "cluster_1_size": 42,
+    "cluster_0_centre": [
+      0.0002,
+      0.5699,
+      0.2555,
+      0.1744
+    ],
+    "cluster_1_centre": [
+      0.0321,
+      0.2718,
+      0.4434,
+      0.2527
+    ],
+    "cluster_0_label": "FRONT",
+    "cluster_1_label": "BACK"
+  },
+  "silhouette_score": 0.3305,
+  "stem_internal_prediction": {
+    "evaluated_stems": 41,
+    "skipped_ties_or_zero": 32,
+    "correct": 25,
+    "accuracy": 0.6098,
+    "breakdown": {
+      "skip": 32,
+      "correct_BACK": 15,
+      "wrong_BACK_actual_FRONT": 7,
+      "wrong_FRONT_actual_BACK": 9,
+      "correct_FRONT": 10
+    }
+  },
+  "verdict": "REFUTED",
+  "rationale": "silhouette=0.331 < 0.35; no meaningful clustering, n/r/l vs y/ol split is NOT vowel-harmony driven"
+}
