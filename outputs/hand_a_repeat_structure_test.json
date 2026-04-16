@@ -1,0 +1,327 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-HAND-A-REPEAT-STRUCTURE-01",
+  "hand_a_tokens": 11022,
+  "hand_a_types": 3513,
+  "hand_a_folios": 114,
+  "top20_per_token": [
+    {
+      "token": "daiin",
+      "freq": 458,
+      "line_start_rate": 0.1331877729257642,
+      "top_folio_share": 0.039301310043668124,
+      "folio_herfindahl": 0.0141396998531683,
+      "chi2_uniform": 292.5412336555082,
+      "n_folios_present": 106
+    },
+    {
+      "token": "chol",
+      "freq": 261,
+      "line_start_rate": 0.04980842911877394,
+      "top_folio_share": 0.038314176245210725,
+      "folio_herfindahl": 0.015868821655583454,
+      "chi2_uniform": 206.89531398413573,
+      "n_folios_present": 93
+    },
+    {
+      "token": "chor",
+      "freq": 167,
+      "line_start_rate": 0.0658682634730539,
+      "top_folio_share": 0.03592814371257485,
+      "folio_herfindahl": 0.016744953207357742,
+      "chi2_uniform": 161.01187929373222,
+      "n_folios_present": 82
+    },
+    {
+      "token": "s",
+      "freq": 164,
+      "line_start_rate": 0.036585365853658534,
+      "top_folio_share": 0.06097560975609756,
+      "folio_herfindahl": 0.020820939916716245,
+      "chi2_uniform": 167.46757459150962,
+      "n_folios_present": 76
+    },
+    {
+      "token": "y",
+      "freq": 111,
+      "line_start_rate": 0.16216216216216217,
+      "top_folio_share": 0.05405405405405406,
+      "folio_herfindahl": 0.020534047561074575,
+      "chi2_uniform": 136.39675210404224,
+      "n_folios_present": 67
+    },
+    {
+      "token": "shol",
+      "freq": 108,
+      "line_start_rate": 0.09259259259259259,
+      "top_folio_share": 0.1111111111111111,
+      "folio_herfindahl": 0.03137860082304527,
+      "chi2_uniform": 236.96828551434805,
+      "n_folios_present": 56
+    },
+    {
+      "token": "or",
+      "freq": 102,
+      "line_start_rate": 0.18627450980392157,
+      "top_folio_share": 0.06862745098039216,
+      "folio_herfindahl": 0.030565167243367945,
+      "chi2_uniform": 151.51085391164986,
+      "n_folios_present": 49
+    },
+    {
+      "token": "ol",
+      "freq": 102,
+      "line_start_rate": 0.13725490196078433,
+      "top_folio_share": 0.09803921568627451,
+      "folio_herfindahl": 0.03210303729334871,
+      "chi2_uniform": 157.32262815535134,
+      "n_folios_present": 51
+    },
+    {
+      "token": "chy",
+      "freq": 98,
+      "line_start_rate": 0.01020408163265306,
+      "top_folio_share": 0.05102040816326531,
+      "folio_herfindahl": 0.02207413577675969,
+      "chi2_uniform": 186.11051993389762,
+      "n_folios_present": 57
+    },
+    {
+      "token": "dy",
+      "freq": 97,
+      "line_start_rate": 0.020618556701030927,
+      "top_folio_share": 0.061855670103092786,
+      "folio_herfindahl": 0.022000212562440224,
+      "chi2_uniform": 194.15574278672383,
+      "n_folios_present": 60
+    },
+    {
+      "token": "sho",
+      "freq": 96,
+      "line_start_rate": 0.3020833333333333,
+      "top_folio_share": 0.052083333333333336,
+      "folio_herfindahl": 0.02387152777777776,
+      "chi2_uniform": 201.52656015134625,
+      "n_folios_present": 55
+    },
+    {
+      "token": "cthy",
+      "freq": 87,
+      "line_start_rate": 0.0,
+      "top_folio_share": 0.04597701149425287,
+      "folio_herfindahl": 0.028141101862861687,
+      "chi2_uniform": 245.5333393437848,
+      "n_folios_present": 46
+    },
+    {
+      "token": "chey",
+      "freq": 87,
+      "line_start_rate": 0.0,
+      "top_folio_share": 0.06896551724137931,
+      "folio_herfindahl": 0.028405337561104516,
+      "chi2_uniform": 169.9581969517923,
+      "n_folios_present": 49
+    },
+    {
+      "token": "dar",
+      "freq": 85,
+      "line_start_rate": 0.16470588235294117,
+      "top_folio_share": 0.07058823529411765,
+      "folio_herfindahl": 0.02560553633217993,
+      "chi2_uniform": 124.63013722437557,
+      "n_folios_present": 56
+    },
+    {
+      "token": "aiin",
+      "freq": 85,
+      "line_start_rate": 0.011764705882352941,
+      "top_folio_share": 0.08235294117647059,
+      "folio_herfindahl": 0.03640138408304497,
+      "chi2_uniform": 146.04865409395077,
+      "n_folios_present": 40
+    },
+    {
+      "token": "dain",
+      "freq": 79,
+      "line_start_rate": 0.17721518987341772,
+      "top_folio_share": 0.0759493670886076,
+      "folio_herfindahl": 0.02868130107354588,
+      "chi2_uniform": 167.7833933339886,
+      "n_folios_present": 48
+    },
+    {
+      "token": "dal",
+      "freq": 73,
+      "line_start_rate": 0.0,
+      "top_folio_share": 0.1095890410958904,
+      "folio_herfindahl": 0.045224244698817785,
+      "chi2_uniform": 161.68613008627221,
+      "n_folios_present": 39
+    },
+    {
+      "token": "o",
+      "freq": 66,
+      "line_start_rate": 0.21212121212121213,
+      "top_folio_share": 0.09090909090909091,
+      "folio_herfindahl": 0.031221303948576678,
+      "chi2_uniform": 149.8168284625952,
+      "n_folios_present": 45
+    },
+    {
+      "token": "cheol",
+      "freq": 65,
+      "line_start_rate": 0.0,
+      "top_folio_share": 0.09230769230769231,
+      "folio_herfindahl": 0.048047337278106506,
+      "chi2_uniform": 172.22138035623772,
+      "n_folios_present": 35
+    },
+    {
+      "token": "shor",
+      "freq": 62,
+      "line_start_rate": 0.1935483870967742,
+      "top_folio_share": 0.06451612903225806,
+      "folio_herfindahl": 0.02705515088449533,
+      "chi2_uniform": 160.14383653726534,
+      "n_folios_present": 45
+    }
+  ],
+  "summary": {
+    "mean_line_start_rate": 0.0978,
+    "mean_top_folio_share": 0.068623,
+    "mean_folio_herfindahl": 0.027444,
+    "mean_chi2_uniform": 179.4865,
+    "zipf_exponent_top100": 0.694079,
+    "zipf_r_squared": 0.982192,
+    "mean_burstiness_top20": 0.129972
+  },
+  "burstiness_per_token": [
+    {
+      "token": "daiin",
+      "mu": 23.9168,
+      "sigma": 29.7065,
+      "B": 0.107968
+    },
+    {
+      "token": "chol",
+      "mu": 41.7038,
+      "sigma": 50.1641,
+      "B": 0.092092
+    },
+    {
+      "token": "chor",
+      "mu": 65.7108,
+      "sigma": 77.3756,
+      "B": 0.081523
+    },
+    {
+      "token": "s",
+      "mu": 66.8957,
+      "sigma": 73.0636,
+      "B": 0.044069
+    },
+    {
+      "token": "y",
+      "mu": 99.4818,
+      "sigma": 117.7764,
+      "B": 0.084207
+    },
+    {
+      "token": "shol",
+      "mu": 97.4486,
+      "sigma": 129.0164,
+      "B": 0.139394
+    },
+    {
+      "token": "or",
+      "mu": 108.5941,
+      "sigma": 143.5731,
+      "B": 0.138714
+    },
+    {
+      "token": "ol",
+      "mu": 106,
+      "sigma": 132.2212,
+      "B": 0.110071
+    },
+    {
+      "token": "chy",
+      "mu": 89.3093,
+      "sigma": 109.1451,
+      "B": 0.099951
+    },
+    {
+      "token": "dy",
+      "mu": 107.2604,
+      "sigma": 133.206,
+      "B": 0.107897
+    },
+    {
+      "token": "sho",
+      "mu": 114.9263,
+      "sigma": 180.181,
+      "B": 0.221122
+    },
+    {
+      "token": "cthy",
+      "mu": 118.8488,
+      "sigma": 248.4922,
+      "B": 0.352924
+    },
+    {
+      "token": "chey",
+      "mu": 125.5698,
+      "sigma": 149.4437,
+      "B": 0.08681
+    },
+    {
+      "token": "dar",
+      "mu": 128.4524,
+      "sigma": 123.3007,
+      "B": -0.020463
+    },
+    {
+      "token": "aiin",
+      "mu": 123.6071,
+      "sigma": 178.1983,
+      "B": 0.180882
+    },
+    {
+      "token": "dain",
+      "mu": 137.3846,
+      "sigma": 203.3249,
+      "B": 0.193538
+    },
+    {
+      "token": "dal",
+      "mu": 143.4028,
+      "sigma": 172.6839,
+      "B": 0.092636
+    },
+    {
+      "token": "o",
+      "mu": 162.4769,
+      "sigma": 201.8079,
+      "B": 0.107968
+    },
+    {
+      "token": "cheol",
+      "mu": 168.1875,
+      "sigma": 287.8297,
+      "B": 0.262363
+    },
+    {
+      "token": "shor",
+      "mu": 160.2131,
+      "sigma": 202.1678,
+      "B": 0.115775
+    }
+  ],
+  "decision_rule": {
+    "line_start_threshold_formulaic": 0.4,
+    "burstiness_threshold_narrative": 0.3,
+    "top_share_threshold_didactic": 0.2,
+    "herfindahl_threshold_didactic": 0.1
+  },
+  "verdict": "mixed (no archetype dominates)"
+}

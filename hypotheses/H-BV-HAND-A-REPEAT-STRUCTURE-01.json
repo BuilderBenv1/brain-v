@@ -1,0 +1,37 @@
+{
+  "id": "H-BV-HAND-A-REPEAT-STRUCTURE-01",
+  "claim": "Hand A's top-20 token repetition pattern distinguishes between three content archetypes: (a) formulaic/structured text (de herbis-style headers) shows >40% line-start clustering; (b) narrative/philosophical text shows uniform distribution with high burstiness; (c) didactic/technical text shows section-specific folio clustering. Brain-V tests which archetype Hand A's repetition pattern matches.",
+  "type": "structural",
+  "confidence": 0.6,
+  "evidence_for": [
+    "Prior test H-BV-TEXT-STRUCTURE-01 placed Hand A on the prose side of all four list/prose discriminators, so the next question is which kind of prose",
+    "Top-token distribution shape is a low-cost discriminator that uses only Hand A's own positional information",
+    "Burstiness (Clauset & Eagle 2012) is a single bounded scalar that captures clumping of top-token occurrences"
+  ],
+  "evidence_against": [
+    "A mixed corpus may show all three signatures partially, defeating a clean three-way decision",
+    "Line-start clustering can be inflated by the well-known Voynichese line-initial gallows preference (orthographic, not semantic)",
+    "Section clustering may be a side effect of Currier's own A/B classification rather than independent evidence"
+  ],
+  "test": "On Hand A tokens only, with no external text:\n  (1) For each of the top-20 most frequent Hand A tokens, compute (a) line-start rate = fraction of its occurrences that are the first token of a line; (b) folio concentration = Herfindahl-style sum of squared per-folio share, plus the top-folio share; (c) chi-square uniformity test against a uniform-across-folios null.\n  (2) Compute the Zipf exponent for Hand A by log-log regression on the rank-frequency curve (top 100 ranks).\n  (3) Compute Clauset & Eagle 2012 burstiness B = (sigma - mu) / (sigma + mu) of inter-occurrence gaps for each of the top-20 tokens, then take the mean.",
+  "test_metric": "line_start_pct_and_zipf_and_burstiness",
+  "test_threshold": "If mean top-20 line-start rate > 0.40 -> formulaic/structured. Else if mean burstiness >= 0.30 with low folio concentration (mean top-folio share < 0.20) -> narrative/philosophical. Else if mean folio concentration is high (mean top-folio share >= 0.20 or mean Herfindahl >= 0.10) -> didactic/technical. The dominant signal wins; ties reported as mixed.",
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "three_part_repeat_structure_hand_a",
+      "score": 0.6,
+      "passed": false,
+      "details": "Hand A top-20 tokens (11022 tokens, 3513 types, 114 folios). (1a) Mean line-start rate 0.0978 -- well below the 0.40 formulaic threshold (no de-herbis-style header pattern). (1b) Mean folio top-share 0.0686, mean Herfindahl 0.0274 -- well below 0.20 / 0.10 didactic thresholds; top tokens spread across 35-106 of 114 folios. (1c) Chi-square vs folio-uniform = 179.49 (significant non-uniformity but not concentrated). (2) Zipf exponent |slope| = 0.6941, R^2 = 0.9822 -- shallower than natural-language ~1.0, consistent with known Voynichese flatness. (3) Mean burstiness B = 0.1300 -- below the 0.30 narrative threshold; top tokens are near-Poisson with mild clumping (only cthy 0.353 and cheol 0.262 stand out). VERDICT: mixed -- none of the three archetypes dominate. Hand A top tokens behave like distributed function-word equivalents rather than headers, narrative content words, or section-bound technical vocabulary.",
+      "confidence_change": "0.50 -> 0.60"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "active",
+  "parent": "H-BV-TEXT-STRUCTURE-01",
+  "created": "2026-04-16",
+  "last_tested": "2026-04-16",
+  "reasoning": "H-BV-TEXT-STRUCTURE-01 placed Hand A on the prose side of every list/prose discriminator. The follow-up question is what kind of prose: formulaic header-driven text, free narrative, or section-specific didactic text. The three measurements together discriminate among those archetypes using only Hand A's own positional structure.",
+  "source": "Brain-V 2026-04-16 follow-up to H-BV-TEXT-STRUCTURE-01",
+  "researcher": "brain-v"
+}

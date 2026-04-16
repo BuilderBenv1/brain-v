@@ -4,6 +4,25 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-16 — H-BV-HAND-A-REPEAT-STRUCTURE-01 executed
+
+**Hypothesis**: Hand A top-20 repeat-structure archetype test (formulaic vs narrative vs didactic).
+**Tokens analysed**: 11,022 Hand A tokens; 3,513 types; 114 folios.
+**Results**:
+- Mean line-start rate (top-20): 0.0978 → not formulaic (<0.40)
+- Mean folio top-share (top-20): 0.0686; Herfindahl 0.0274 → not didactic (<0.20 / <0.10)
+- Mean chi-square vs folio-uniform: 179.49 (significant but diffuse non-uniformity)
+- Zipf exponent (top-100): 0.6941 (R² 0.9822) — shallower than natural-language ~1.0
+- Mean burstiness B (top-20): 0.1300 → not narrative (<0.30); near-Poisson with mild clumping
+
+**Verdict**: mixed. None of the three archetypes dominate. Hand A top tokens behave like
+distributed function-word equivalents — present in most folios, near-Poisson spaced, rarely
+line-initial. Notable per-token outliers: `cthy` B=0.353, `cheol` B=0.262 (mildly bursty).
+**Confidence**: 0.50 → 0.60.
+**Output**: outputs/hand_a_repeat_structure_test.json
+
+---
+
 ## 2026-04-16 — H-BV-TEXT-STRUCTURE-01 executed
 
 **Hypothesis**: Hand A four-statistic baseline test (prose vs list).
