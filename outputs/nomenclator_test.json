@@ -1,0 +1,68 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-NOMENCLATOR-01",
+  "hand_a_tokens": 11022,
+  "hand_a_types": 3513,
+  "split_rank_R": 146,
+  "high_class": {
+    "n_types": 146,
+    "n_tokens": 5518,
+    "pct_tokens": 50.06
+  },
+  "low_class": {
+    "n_types": 3367,
+    "n_tokens": 5504,
+    "pct_tokens": 49.94
+  },
+  "measures_high": {
+    "zipf": 0.7513,
+    "glyph_entropy_weighted": 3.7728,
+    "type_glyph_entropy": 3.7859,
+    "mean_length": 3.4123,
+    "length_stddev": 1.3707
+  },
+  "measures_low": {
+    "zipf": 0.5114,
+    "glyph_entropy_weighted": 3.9241,
+    "type_glyph_entropy": 3.9377,
+    "mean_length": 5.2202,
+    "length_stddev": 1.9373
+  },
+  "gaps_high_minus_low": {
+    "zipf": 0.2399,
+    "glyph_entropy_weighted": -0.1513,
+    "type_glyph_entropy": -0.1518,
+    "mean_length": -1.8079,
+    "length_stddev": -0.5666
+  },
+  "predicted_directions": {
+    "zipf": 1,
+    "glyph_entropy_weighted": -1,
+    "type_glyph_entropy": -1,
+    "mean_length": -1,
+    "length_stddev": 1
+  },
+  "direction_pass": {
+    "zipf": true,
+    "glyph_entropy_weighted": true,
+    "type_glyph_entropy": true,
+    "mean_length": true,
+    "length_stddev": false
+  },
+  "n_direction_pass": 4,
+  "permutation_p_values": {
+    "zipf": 0.003,
+    "glyph_entropy_weighted": 0.254,
+    "type_glyph_entropy": 0.0,
+    "mean_length": 0.0,
+    "length_stddev": 0.98
+  },
+  "n_p_lt_001": 3,
+  "n_p_lt_005": 3,
+  "verdict": "CONFIRMED",
+  "thresholds": {
+    "confirmed": "n_pass>=4 AND n_p<0.01>=2",
+    "marginal": "2<=n_pass<=3 AND n_p<0.05>=1",
+    "refuted": "n_pass<=1 OR no permutation significance"
+  }
+}

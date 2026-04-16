@@ -18,14 +18,26 @@
   "test": "LOCKED PROCEDURE on Hand A only:\n\n  (1) BUILD type-frequency table: count every token in Hand A. Sort types by descending frequency.\n  (2) HEAD/TAIL SPLIT at the rank R where cumulative token count first reaches 50% of total Hand-A tokens. HIGH = ranks 1..R (head), LOW = ranks R+1..end (tail). The HIGH class is small (~50-200 types) but covers ~50% of tokens; the LOW class is large (~3000+ types) and covers the other 50%.\n  (3) MEASURES per class:\n        (a) Zipf exponent: linear regression of log(rank within class) vs log(frequency); report slope.\n        (b) Glyph entropy: Shannon entropy of the glyph-unit distribution computed over the EVA-tokenised glyphs of all WORDS in that class (weighted by token count).\n        (c) Mean word length and standard deviation in glyph-units.\n        (d) Type-glyph entropy: entropy of glyph-units treating each TYPE as an iid sample (unweighted) — gauges code-set uniformity.\n  (4) GAPS: compute (HIGH - LOW) for each measure. Nomenclator predicts:\n        - Zipf gap > 0 (high-freq class steeper)\n        - Glyph entropy gap < 0 (low-freq class FLATTER, hence higher entropy)\n        - Mean length gap < 0 (low-freq class LONGER on average)\n        - Length stddev gap > 0 (low-freq class more UNIFORM length, lower stddev)\n        - Type-glyph entropy gap < 0 (low-freq class more uniform)\n  (5) PERMUTATION NULL: randomly relabel each TYPE as HIGH or LOW preserving class sizes; recompute all gaps; repeat 1000 times. Two-tailed p-value for each gap = fraction of null gaps at least as extreme as observed in the nomenclator-predicted direction.",
   "test_metric": "n_predictions_passing_p_lt_0.01_in_predicted_direction",
   "test_threshold": "CONFIRMED if 4 of 5 nomenclator predictions hold AND at least 2 of those have permutation p < 0.01 in the predicted direction. MARGINAL if 2-3 of 5 hold with at least one p < 0.05. REFUTED if 0-1 of 5 predictions hold or all gaps fall within the natural-language permutation null at p > 0.05.",
-  "tests_run": [],
-  "tests_remaining": [
-    "Execute locked nomenclator vocabulary-split test in separate commit after lock"
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "locked_head_tail_split_nomenclator_test",
+      "score": 0.7,
+      "passed": true,
+      "details": "CONFIRMED per locked rule. 4 of 5 nomenclator predictions hold; 3 of 5 reach permutation p<0.01. Hand A splits at rank R=146 (cumulative tokens = 50.1%). HIGH class: 146 types covering 5518 tokens. LOW class: 3367 types covering 5504 tokens. Measures (HIGH | LOW | gap H-L | one-sided p): Zipf 0.751 | 0.511 | +0.240 | p=0.003 PASS; weighted glyph entropy 3.773 | 3.924 | -0.151 | p=0.254 direction-pass weak; type-glyph entropy 3.786 | 3.938 | -0.152 | p<0.001 PASS; mean length 3.41 | 5.22 | -1.81 | p<0.001 PASS; length stddev 1.37 | 1.94 | -0.57 | p=0.98 FAIL. The length-stddev prediction (fixed-length codes) FAILS — the LOW class has HIGHER variance, not lower. So Hand A does NOT have the rigid fixed-length codebook of a classical Cicco-Simonetta nomenclator. It does have a strongly two-population vocabulary: the head behaves with steeper Zipf, more concentrated glyph distribution, and shorter words; the tail flattens, lengthens, and uses a more uniform glyph inventory. This pattern is consistent EITHER with a flexible (variable-length) nomenclator OR with ordinary natural-language function-vs-content stratification — the test cannot fully distinguish the two without comparing observed gap magnitudes against a natural-language reference corpus of comparable size.",
+      "confidence_change": "0.4 -> 0.7"
+    }
   ],
-  "status": "pre-registered",
+  "tests_remaining": [],
+  "status": "confirmed",
+  "verdict_note": "Two-population vocabulary structure confirmed at p<0.01 on three of five measures, but the nomenclator-specific prediction of FIXED-LENGTH codes (length stddev gap > 0) FAILED — the low-frequency class has HIGHER length variance than the high-frequency class. This rules out a rigid Cicco-Simonetta-style nomenclator with fixed code-word length, but is consistent with either a variable-length nomenclator OR with ordinary natural-language function-vs-content stratification. Further work needs to compare gap magnitudes against a natural-language reference corpus of similar size to discriminate the two interpretations.",
+  "findings_for_followup": [
+    "Compare Hand A's head/tail gap magnitudes against a 11k-token Latin or Italian reference corpus split by the same 50%-cumulative rule. If Hand A's gaps are SIGNIFICANTLY larger than the natural-language reference, the nomenclator hypothesis gains support. If they are comparable, the result is consistent with ordinary natural language — and refutes the nomenclator-specific reading.",
+    "Test whether the LOW class glyph composition resembles uniform-random (consistent with arbitrary codes) or shows phonotactic structure (consistent with natural-language content words). A unigram-vs-bigram entropy ratio test would distinguish these."
+  ],
   "parent": "H-BV-HAND-A-LANGUAGE-SCREEN-02",
   "created": "2026-04-16",
-  "last_tested": null,
+  "last_tested": "2026-04-16",
   "reasoning": "Twelve language mappings refuted, abjad chi-square under-discriminating, Brady's Hand-A-only result marginal, Pagel's only-the-head clears threshold while expansion fails. The pattern is consistent with a hybrid cipher in which the high-frequency vocabulary is real natural language (under some substitution that may be partially decodable) and the low-frequency vocabulary is arbitrary code. Nomenclator was the dominant 15th-century Italian diplomatic cipher form; testing it explicitly is overdue. The vocabulary-split test runs in one cycle on existing corpus data and either redirects effort toward dual-corpus reconstruction (nomenclator) or eliminates it.",
   "source": "Brain-V 2026-04-16 user-directed pre-registration following 8-hypothesis domain-informed list (#7)",
   "researcher": "brain-v"

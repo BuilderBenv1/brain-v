@@ -4,6 +4,34 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-16 — H-BV-NOMENCLATOR-01 CONFIRMED (with refinement)
+
+**Hypothesis**: Hand A's vocabulary splits into two statistically distinct populations consistent with a 15th-century nomenclator cipher: a HIGH-frequency class (function words / connectors, behaving as natural language) and a LOW-frequency class (technical terms / arbitrary codebook entries, NOT behaving as natural language).
+
+**Method**: Head/tail split at the rank R where cumulative tokens reach 50% of total Hand A. Five measures per class — Zipf exponent, weighted glyph entropy, type-glyph entropy, mean word length, length stddev. Permutation null with 1000 random type-relabellings.
+
+**Result**: CONFIRMED per locked rule. Split rank R=146 (HIGH = 146 types covering 5,518 tokens / 50.1%; LOW = 3,367 types covering 5,504 tokens / 49.9%).
+
+| measure | HIGH | LOW | gap (H−L) | predicted | one-sided p | verdict |
+|---|---|---|---|---|---|---|
+| Zipf exponent | 0.751 | 0.511 | +0.240 | + | **0.003** | PASS |
+| weighted glyph entropy | 3.773 | 3.924 | −0.151 | − | 0.254 | direction-pass weak |
+| type-glyph entropy | 3.786 | 3.938 | −0.152 | − | **<0.001** | PASS |
+| mean word length | 3.41 | 5.22 | −1.81 | − | **<0.001** | PASS |
+| length stddev | 1.37 | 1.94 | −0.57 | + | 0.98 | **FAIL** |
+
+4 of 5 nomenclator predictions hold; 3 reach permutation p<0.01 → CONFIRMED under the locked rule.
+
+**Refinement**: the FIXED-LENGTH-CODE prediction failed — the LOW class has HIGHER length variance, not lower. This rules out the rigid Cicco-Simonetta-style nomenclator with constant-length code words. The two-population vocabulary structure is real and statistically robust, but consistent with EITHER a variable-length nomenclator OR ordinary natural-language function-vs-content stratification. The locked test cannot fully distinguish those without a natural-language reference corpus of comparable size.
+
+**Implication**: this is the strongest cipher-architecture signal Brain-V has produced on Hand A to date. Combined with the 12 refuted character-substitution mappings, the per-plant-content refutation chain, and Pagel's-only-the-head-clears-shuffle pattern, the picture is consistent with a hybrid system in which the high-frequency vocabulary is a (partially) decodable substitution and the low-frequency tail is opaque code. Confidence 0.4 → 0.7.
+
+**Follow-ups (to be pre-registered)**:
+- Compare gap magnitudes against an 11k-token Latin/Italian reference corpus split by the same rule.
+- Unigram-vs-bigram entropy ratio test on the LOW class to distinguish "uniform-random codes" from "phonotactically-structured natural-language content".
+
+**Files**: `hypotheses/H-BV-NOMENCLATOR-01.json`, `outputs/nomenclator_test.json`, `scripts/run_nomenclator.py`.
+
 ## 2026-04-16 — H-BV-ABJAD-CONSONANT-01 CONFIRMED (with caveat)
 
 **Hypothesis**: Hand A's consonantal skeleton (vowels a/e/i/o stripped, word-final suffix y/n/r/m/g stripped, line-initial plain gallows t/p stripped) matches at least one natural-language consonant-frequency distribution with chi-square p<0.01 AND improvement factor over uniform null > 2.0.
