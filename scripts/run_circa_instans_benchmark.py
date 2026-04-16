@@ -37,7 +37,7 @@ ROOT = Path(r"C:\Projects\brain-v")
 REF = ROOT / "raw/corpus/reference-corpora"
 TARGET = 11022
 
-HAND_A = {
+HAND_A_PRIOR = {
     "R_split": 146,
     "n_paragraphs": 271,
     "mean_paragraph_len": 11022 / 271,  # ~40.7
@@ -46,6 +46,7 @@ HAND_A = {
     "header_recurrence": 0.046,
     "cross_class_rate": 0.469,
 }
+# Tolerance sizes anchored on Isidore (genre reference) at runtime.
 TOLERANCE = {
     "disjunction": 0.10,
     "top20_medial": 4,
@@ -316,74 +317,77 @@ for k, lbl in [
           f"{fmt(isidore_res[k]):>16}{fmt(macer_res[k]):>16}")
 
 # =============================================================================
-# Decision on Isidore (PRIMARY, binding)
+# PRIMARY DECISION — Hand A tested for inclusion in Isidore-centred bands
 # =============================================================================
 print("\n" + "="*90)
-print("  PRIMARY DECISION — Isidore vs Hand A relative-match tolerance bands")
+print("  PRIMARY DECISION — Hand A signature within tolerance of Isidore (reference)")
 print("="*90)
 
 bands = {
-    "disjunction":       ("disjunction", HAND_A["disjunction"], TOLERANCE["disjunction"]),
-    "top20_medial":      ("top20_medial_passes", HAND_A["top20_medial_passes"], TOLERANCE["top20_medial"]),
-    "header_recurrence": ("header_recurrence", HAND_A["header_recurrence"], TOLERANCE["header_recurrence"]),
-    "cross_class_rate":  ("cross_class_rate", HAND_A["cross_class_rate"], TOLERANCE["cross_class_rate"]),
+    "disjunction":       ("disjunction", TOLERANCE["disjunction"]),
+    "top20_medial":      ("top20_medial_passes", TOLERANCE["top20_medial"]),
+    "header_recurrence": ("header_recurrence", TOLERANCE["header_recurrence"]),
+    "cross_class_rate":  ("cross_class_rate", TOLERANCE["cross_class_rate"]),
 }
-isidore_matches = {}
-for name, (key, target, tol) in bands.items():
-    obs = isidore_res[key]
-    dist = abs(obs - target)
-    ok = dist <= tol
-    isidore_matches[name] = ok
-    print(f"    {name:<22} Hand A={target:<7}  Isidore={obs:<7}  "
-          f"|diff|={dist:.3f}  tol={tol}  {'MATCH' if ok else 'miss'}")
 
-n_match = sum(isidore_matches.values())
+# Reference values = Isidore's runtime measurements
+ref_values = {name: isidore_res[key] for name, (key, _) in bands.items()}
+hand_a_values = {name: hand_a_res[key] for name, (key, _) in bands.items()}
+macer_values = {name: macer_res[key] for name, (key, _) in bands.items()}
 
-# Refute conditions
-refute_hdr = isidore_res["header_recurrence"] >= 0.30
-refute_adj = isidore_res["cross_class_rate"] >= 0.55
+hand_a_matches = {}
+form_sensitive = {}
+for name, (key, tol) in bands.items():
+    iso = ref_values[name]
+    ha = hand_a_values[name]
+    mc = macer_values[name]
+    hand_a_dist = abs(ha - iso)
+    form_dist = abs(iso - mc)
+    hand_a_matches[name] = hand_a_dist <= tol
+    form_sensitive[name] = form_dist > 2 * tol
+    print(f"    {name:<22} Isidore={iso:<7.3f}  Hand A={ha:<7.3f}  "
+          f"|HA-Iso|={hand_a_dist:.3f}  tol={tol}  "
+          f"{'MATCH' if hand_a_matches[name] else 'miss':<6}  "
+          f"Macer={mc:<7.3f} {'[form-sensitive]' if form_sensitive[name] else ''}")
+
+n_match = sum(hand_a_matches.values())
+n_form = sum(form_sensitive.values())
+
+# Refute conditions apply to HAND A's values (not Isidore's)
+refute_hdr = hand_a_res["header_recurrence"] >= 0.30
+refute_adj = hand_a_res["cross_class_rate"] >= 0.55
 refuted = refute_hdr or refute_adj
 
-# Unit-size caveat
+# Unit-size caveat: compare Isidore mean paragraph length to Hand A
 isidore_mean_p = isidore_res["mean_paragraph_len"]
-size_caveat = isidore_mean_p > 2 * HAND_A["mean_paragraph_len"] or \
-              isidore_mean_p < 0.5 * HAND_A["mean_paragraph_len"]
+hand_a_mean_p = hand_a_res["mean_paragraph_len"]
+size_caveat = isidore_mean_p > 2 * hand_a_mean_p or isidore_mean_p < 0.5 * hand_a_mean_p
 if size_caveat:
-    print(f"\n  UNIT-SIZE CAVEAT: Isidore mean paragraph length "
-          f"{isidore_mean_p:.1f} tokens vs Hand A {HAND_A['mean_paragraph_len']:.1f}. "
-          f"Paragraphs not size-matched; signature deviations may reflect scale.")
+    print(f"\n  UNIT-SIZE CAVEAT: Isidore mean paragraph {isidore_mean_p:.1f} tokens "
+          f"vs Hand A {hand_a_mean_p:.1f}. Paragraphs not size-matched; signature "
+          f"deviations may reflect unit scale.")
 
-print(f"\n  Isidore signature matches: {n_match} / 4 of Hand A tolerance bands")
-print(f"  Refute conditions: header>=0.30? {refute_hdr}; cross-class>=0.55? {refute_adj}")
+print(f"\n  Hand A matches Isidore bands: {n_match} / 4")
+print(f"  Form-sensitive measures (|Isidore-Macer| > 2x tol): {n_form} / 4")
+print(f"  Refute conditions (on Hand A): header>=0.30? {refute_hdr}; "
+      f"cross-class>=0.55? {refute_adj}")
 
 if refuted:
     verdict = "REFUTED"
-    print(f"  -> REFUTED. Isidore shows classical-recipe or natural-language pattern.")
-    print(f"     The herbal-encyclopedic reframe of Hand A is wrong.")
+    print(f"  -> REFUTED. Hand A itself exhibits classical-recipe or natural-language")
+    print(f"     pattern. Herbal-encyclopedic reframe is wrong.")
 elif n_match == 4:
     verdict = "CONFIRMED"
-    print(f"  -> CONFIRMED. Isidore matches Hand A on all 4 signature bands.")
-    print(f"     Herbal-encyclopedic framework is supported.")
+    print(f"  -> CONFIRMED. Hand A's signature falls within tolerance of Isidore on")
+    print(f"     all 4 measures. Hand A is CONSISTENT WITH herbal-encyclopedic prose.")
 else:
     verdict = "MARGINAL"
-    print(f"  -> MARGINAL. Isidore matches {n_match}/4 bands; no refute fired.")
+    print(f"  -> MARGINAL. Hand A matches {n_match}/4 Isidore bands.")
 
-# =============================================================================
-# Macer secondary (informational)
-# =============================================================================
-print("\n" + "="*90)
-print("  SECONDARY — Macer (verse) relative-match bands (INFORMATIONAL ONLY)")
-print("="*90)
-macer_matches = {}
-for name, (key, target, tol) in bands.items():
-    obs = macer_res[key]
-    dist = abs(obs - target)
-    ok = dist <= tol
-    macer_matches[name] = ok
-    print(f"    {name:<22} Hand A={target:<7}  Macer={obs:<7}  "
-          f"|diff|={dist:.3f}  tol={tol}  {'match' if ok else 'miss'}")
-print(f"  Macer signature matches: {sum(macer_matches.values())} / 4 "
-      f"(verse caveat — not binding)")
+if n_form >= 3:
+    print(f"\n  CAVEAT: {n_form}/4 measures are form-sensitive (Isidore and Macer")
+    print(f"     disagree by >2x tolerance). Genre reference itself is unstable;")
+    print(f"     test is under-powered. Interpret verdict with caution.")
 
 # =============================================================================
 # Save
@@ -397,12 +401,16 @@ out_path.write_text(json.dumps({
     "circa_instans_note": "Circa Instans unavailable in clean digital; Isidore Etymologiae Book 17 is the prose-matched primary benchmark",
     "tolerance_bands": {k: TOLERANCE[k] for k in ("disjunction","top20_medial","header_recurrence","cross_class_rate")},
     "hand_a": hand_a_res,
-    "isidore_primary": isidore_res,
-    "macer_secondary": macer_res,
-    "isidore_matches_band": isidore_matches,
-    "macer_matches_band": macer_matches,
-    "n_isidore_matches_of_4": n_match,
-    "n_macer_matches_of_4": sum(macer_matches.values()),
+    "isidore_primary_reference": isidore_res,
+    "macer_secondary_verse": macer_res,
+    "test_framing": "Hand A tested for inclusion in tolerance bands centred on ISIDORE (the genre reference); Macer provides genre-form sensitivity check",
+    "isidore_reference_values": ref_values,
+    "hand_a_values": hand_a_values,
+    "macer_values": macer_values,
+    "hand_a_matches_isidore_band": hand_a_matches,
+    "form_sensitive_measures": form_sensitive,
+    "n_hand_a_matches_of_4": n_match,
+    "n_form_sensitive_of_4": n_form,
     "refute_triggered": refuted,
     "size_caveat": size_caveat,
     "verdict": verdict,
