@@ -1,0 +1,37 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-HAND-A-INTERNAL-01",
+  "locked_in_commit": "0a57312",
+  "n_hand_a_folios": 114,
+  "test_1_inflection": {
+    "frequent_skeletons": 162,
+    "mean_distinct_suffixes": 2.463,
+    "median_suffixes": 2.0,
+    "max_suffixes": 5,
+    "pct_with_ge2": 0.698,
+    "pass": true
+  },
+  "test_2_plant_specificity": {
+    "within_plant_jaccard": 0.0014,
+    "across_plant_nonplant_jaccard": 0.001,
+    "ratio": 1.436,
+    "pass": true
+  },
+  "test_3_lda": {
+    "K": 8,
+    "per_topic_purity": [
+      0.95,
+      0.7,
+      1.0,
+      0.95,
+      0.8,
+      0.5,
+      0.9,
+      0.85
+    ],
+    "mean_purity": 0.8313,
+    "pass": true
+  },
+  "verdict": "CONFIRMED (natural-language-like)",
+  "passes": 3
+}
