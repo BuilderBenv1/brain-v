@@ -1,0 +1,365 @@
+{
+  "generated": "2026-04-16",
+  "dictionary": {
+    "pharmaceutical": {
+      "A": [
+        {
+          "pattern": "_.o.eo",
+          "in_hits": 71,
+          "out_hits": 32,
+          "in_rate": 0.02797,
+          "out_rate": 0.00377,
+          "enr": 7.42
+        },
+        {
+          "pattern": "o.eo",
+          "in_hits": 78,
+          "out_hits": 37,
+          "in_rate": 0.03073,
+          "out_rate": 0.00436,
+          "enr": 7.05
+        },
+        {
+          "pattern": "o.eeo",
+          "in_hits": 19,
+          "out_hits": 10,
+          "in_rate": 0.00749,
+          "out_rate": 0.00118,
+          "enr": 6.35
+        },
+        {
+          "pattern": "_.oo",
+          "in_hits": 12,
+          "out_hits": 7,
+          "in_rate": 0.00473,
+          "out_rate": 0.00083,
+          "enr": 5.73
+        },
+        {
+          "pattern": "o.ee",
+          "in_hits": 29,
+          "out_hits": 17,
+          "in_rate": 0.01143,
+          "out_rate": 0.002,
+          "enr": 5.7
+        },
+        {
+          "pattern": "o.a.a",
+          "in_hits": 10,
+          "out_hits": 7,
+          "in_rate": 0.00394,
+          "out_rate": 0.00083,
+          "enr": 4.78
+        },
+        {
+          "pattern": "_.eeo",
+          "in_hits": 34,
+          "out_hits": 26,
+          "in_rate": 0.0134,
+          "out_rate": 0.00306,
+          "enr": 4.37
+        },
+        {
+          "pattern": "o._.eo",
+          "in_hits": 17,
+          "out_hits": 13,
+          "in_rate": 0.0067,
+          "out_rate": 0.00153,
+          "enr": 4.37
+        }
+      ]
+    },
+    "biological": {
+      "B": [
+        {
+          "pattern": "o._.ai",
+          "in_hits": 33,
+          "out_hits": 19,
+          "in_rate": 0.00523,
+          "out_rate": 0.00109,
+          "enr": 4.8
+        }
+      ]
+    },
+    "cosmological": {
+      "B": [
+        {
+          "pattern": "_.e.aii",
+          "in_hits": 13,
+          "out_hits": 59,
+          "in_rate": 0.01133,
+          "out_rate": 0.00261,
+          "enr": 4.35
+        },
+        {
+          "pattern": "o.o",
+          "in_hits": 41,
+          "out_hits": 200,
+          "in_rate": 0.03575,
+          "out_rate": 0.00884,
+          "enr": 4.04
+        },
+        {
+          "pattern": "o._.a",
+          "in_hits": 11,
+          "out_hits": 66,
+          "in_rate": 0.00959,
+          "out_rate": 0.00292,
+          "enr": 3.29
+        }
+      ]
+    },
+    "recipes": {
+      "A": [
+        {
+          "pattern": "a.a",
+          "in_hits": 10,
+          "out_hits": 4,
+          "in_rate": 0.0133,
+          "out_rate": 0.00039,
+          "enr": 34.14
+        },
+        {
+          "pattern": "_.a.a",
+          "in_hits": 10,
+          "out_hits": 12,
+          "in_rate": 0.0133,
+          "out_rate": 0.00117,
+          "enr": 11.38
+        },
+        {
+          "pattern": "o.a",
+          "in_hits": 63,
+          "out_hits": 102,
+          "in_rate": 0.08378,
+          "out_rate": 0.00993,
+          "enr": 8.44
+        },
+        {
+          "pattern": "a",
+          "in_hits": 50,
+          "out_hits": 82,
+          "in_rate": 0.06649,
+          "out_rate": 0.00798,
+          "enr": 8.33
+        },
+        {
+          "pattern": "o.ai",
+          "in_hits": 10,
+          "out_hits": 18,
+          "in_rate": 0.0133,
+          "out_rate": 0.00175,
+          "enr": 7.59
+        },
+        {
+          "pattern": "_.o.ai",
+          "in_hits": 13,
+          "out_hits": 26,
+          "in_rate": 0.01729,
+          "out_rate": 0.00253,
+          "enr": 6.83
+        },
+        {
+          "pattern": "_.o.a",
+          "in_hits": 37,
+          "out_hits": 101,
+          "in_rate": 0.0492,
+          "out_rate": 0.00983,
+          "enr": 5.0
+        },
+        {
+          "pattern": "_._.a",
+          "in_hits": 24,
+          "out_hits": 67,
+          "in_rate": 0.03191,
+          "out_rate": 0.00652,
+          "enr": 4.89
+        }
+      ],
+      "B": [
+        {
+          "pattern": "oai",
+          "in_hits": 10,
+          "out_hits": 1,
+          "in_rate": 0.00092,
+          "out_rate": 8e-05,
+          "enr": 11.89
+        },
+        {
+          "pattern": "ai.o",
+          "in_hits": 10,
+          "out_hits": 1,
+          "in_rate": 0.00092,
+          "out_rate": 8e-05,
+          "enr": 11.89
+        },
+        {
+          "pattern": "o.ea",
+          "in_hits": 17,
+          "out_hits": 2,
+          "in_rate": 0.00157,
+          "out_rate": 0.00015,
+          "enr": 10.1
+        },
+        {
+          "pattern": "o._.eeo",
+          "in_hits": 15,
+          "out_hits": 2,
+          "in_rate": 0.00138,
+          "out_rate": 0.00015,
+          "enr": 8.91
+        },
+        {
+          "pattern": "o.eeo",
+          "in_hits": 43,
+          "out_hits": 6,
+          "in_rate": 0.00396,
+          "out_rate": 0.00046,
+          "enr": 8.52
+        },
+        {
+          "pattern": "_.eo.ai",
+          "in_hits": 12,
+          "out_hits": 2,
+          "in_rate": 0.00111,
+          "out_rate": 0.00015,
+          "enr": 7.13
+        },
+        {
+          "pattern": "o.ee.a",
+          "in_hits": 10,
+          "out_hits": 2,
+          "in_rate": 0.00092,
+          "out_rate": 0.00015,
+          "enr": 5.94
+        },
+        {
+          "pattern": "_.o.eeo",
+          "in_hits": 40,
+          "out_hits": 10,
+          "in_rate": 0.00368,
+          "out_rate": 0.00077,
+          "enr": 4.75
+        }
+      ]
+    },
+    "text-only": {
+      "A": [],
+      "B": []
+    },
+    "herbal": {
+      "A": [
+        {
+          "pattern": "_._.o.o",
+          "in_hits": 11,
+          "out_hits": 0,
+          "in_rate": 0.00146,
+          "out_rate": 0.0,
+          "enr": 9999
+        },
+        {
+          "pattern": "_.o._.o",
+          "in_hits": 114,
+          "out_hits": 6,
+          "in_rate": 0.01515,
+          "out_rate": 0.00171,
+          "enr": 8.84
+        },
+        {
+          "pattern": "_.o._._.o",
+          "in_hits": 14,
+          "out_hits": 1,
+          "in_rate": 0.00186,
+          "out_rate": 0.00029,
+          "enr": 6.51
+        },
+        {
+          "pattern": "_.eaii",
+          "in_hits": 13,
+          "out_hits": 1,
+          "in_rate": 0.00173,
+          "out_rate": 0.00029,
+          "enr": 6.05
+        },
+        {
+          "pattern": "_.eee",
+          "in_hits": 10,
+          "out_hits": 1,
+          "in_rate": 0.00133,
+          "out_rate": 0.00029,
+          "enr": 4.65
+        },
+        {
+          "pattern": "_.o._.aii",
+          "in_hits": 15,
+          "out_hits": 2,
+          "in_rate": 0.00199,
+          "out_rate": 0.00057,
+          "enr": 3.49
+        },
+        {
+          "pattern": "_._._.o",
+          "in_hits": 71,
+          "out_hits": 10,
+          "in_rate": 0.00944,
+          "out_rate": 0.00286,
+          "enr": 3.3
+        },
+        {
+          "pattern": "_._.o",
+          "in_hits": 278,
+          "out_hits": 43,
+          "in_rate": 0.03695,
+          "out_rate": 0.01229,
+          "enr": 3.01
+        }
+      ],
+      "B": []
+    }
+  },
+  "cross_hand_overlap": {
+    "recipes": {
+      "A": [
+        "_._.a",
+        "_.a.a",
+        "_.o.a",
+        "_.o.ai",
+        "a",
+        "a.a",
+        "o.a",
+        "o.ai"
+      ],
+      "B": [
+        "_.eo.ai",
+        "_.o.eeo",
+        "ai.o",
+        "o._.eeo",
+        "o.ea",
+        "o.ee.a",
+        "o.eeo",
+        "oai"
+      ],
+      "overlap": []
+    }
+  },
+  "hand_dialect": {
+    "A": {
+      "n_markers": 24,
+      "vowel_chars": {
+        "a": 14,
+        "o": 26,
+        "i": 6,
+        "e": 13
+      }
+    },
+    "B": {
+      "n_markers": 12,
+      "vowel_chars": {
+        "o": 15,
+        "a": 8,
+        "i": 6,
+        "e": 11
+      }
+    }
+  }
+}
