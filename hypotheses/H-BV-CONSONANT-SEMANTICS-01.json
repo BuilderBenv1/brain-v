@@ -2,7 +2,7 @@
   "id": "H-BV-CONSONANT-SEMANTICS-01",
   "claim": "Consonant skeletons (computed by stripping vowels, word-final suffix glyphs y/n/r/m/g, and line-initial plain gallows t/p from every EVA word) carry semantic content shared across scribal hands and sections. Vowel patterns — the refinement layer examined in prior Brain-V tests — carry hand-specific metadata. If true, consonants are content; vowels are inflection/category tag.",
   "type": "structural",
-  "confidence": 0.45,
+  "confidence": 0.82,
   "evidence_for": [
     "H-BV-CLOSED-CLASS-01 showed zero stem overlap between Hand-A _.oii stems and Hand-B marker stems — BUT only within already-filtered vowel-pattern words. Stripped skeletons across ALL words on plant folios may tell a different story.",
     "Brady (2026) and others have argued the Voynich may be an abjad (vowels stripped in underlying system); if consonants are content, this test operationalises that claim cleanly.",
@@ -16,14 +16,23 @@
   "test": "For every EVA word in the corpus: strip EVA vowels {a,o,e,i}, strip a trailing suffix char from {y,n,r,m,g}, strip a line-initial plain gallows {t,p} when word-first-of-line and not bench-gallows; apply Brain-V's EVA->skeleton char map. Each folio becomes a Counter(consonant_skeleton). Metrics:\n(a) Top-20 skeleton Jaccard between Hand A plant folios (sum across folios) and Hand B plant folios\n(b) Top-20 skeleton Jaccard between Hand A plant folios and Hand B non-plant herbal folios\n(c) Same for pharmaceutical (A) vs biological (B) vs zodiac vs (A)herbal\n(d) Per-folio skeleton set similarity via mean-pairwise Jaccard within content groups vs across content groups",
   "test_metric": "cross_hand_content_skeleton_jaccard_vs_null",
   "test_threshold": "CONFIRMED if: top-20 skeleton Jaccard(HandA plant, HandB plant) >= 2x Jaccard(HandA plant, HandB non-plant herbal) AND mean per-folio Jaccard within plant content >= 2x across content. REFUTED if Jaccard ratio <= 1.2. MARGINAL between.",
-  "tests_run": [],
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "locked_cross_hand_content_skeleton_jaccard",
+      "score": 0.82,
+      "passed": false,
+      "details": "Top-20 Jaccard(A_plant, B_plant) 0.600 vs Jaccard(A_plant, B_nonplant_herbal) 0.538 -> ratio 1.11x (below 1.2 refute). Per-folio within-plant 0.240 vs across 0.249 -> ratio 0.96x. Telling: B_plant vs B_nonplant_herbal Jaccard 0.818 (within-hand) exceeds A_plant vs B_plant 0.600 (cross-hand same content). Consonant skeletons cluster by scribal hand, not by illustrated content. Hypothesis refuted cleanly.",
+      "confidence_change": "0.45 -> 0.82 (high confidence the null is real)"
+    }
+  ],
   "tests_remaining": [
     "Execute locked test in separate commit"
   ],
-  "status": "pre-registered",
+  "status": "refuted",
   "parent": "H-BV-HAND-B-SPECIES-01",
   "created": "2026-04-16",
-  "last_tested": null,
+  "last_tested": "2026-04-16",
   "reasoning": "If this confirms, it flips Brain-V's framing: vowel markers are metadata, consonants are content. Hand A's 3-stem closed class and Hand B's 25-stem productive vocabulary would be different METADATA systems attached to the same content. If it refutes, the hands genuinely use different vocabularies at every level, and there is no shared semantic layer.",
   "source": "Brain-V 2026-04-16 pre-registration after three refutations of species-level decoding",
   "researcher": "brain-v"
