@@ -2,7 +2,7 @@
   "id": "H-BV-HAND-A-CONTENT-INDEPENDENCE-01",
   "claim": "Hand A text content is independent of the illustrated plant identity. Under the content-dependent alternative, folios depicting same-family plants should show significantly higher pairwise lexical similarity than folios depicting different-family plants. Under the independence hypothesis, text similarity is uncorrelated with botanical relationships and Hand A is generic text re-used across illustrations rather than plant-specific description.",
   "type": "structural",
-  "confidence": 0.40,
+  "confidence": 0.65,
   "evidence_for": [
     "H-BV-SYLLABLE-LEVEL-01 found Hand-A plant folio token counts in narrow range (45-147, sd 19) independent of Sherwood proxy for plant prominence — consistent with generic text",
     "Three consecutive character-map refutations (Schechter, Pagel expanded, syllable) are all consistent with 'Hand A is structured text but not plant-specific'",
@@ -16,14 +16,23 @@
   "test": "LOCKED: (1) For each Hand-A plant folio, compute word-frequency vector. (2) Compute pairwise cosine similarity between every pair of Hand-A plant folios. (3) Group folios by plant family using the genus->family map from scripts/perun_visual_key_test.py (covers common Mediterranean genera). (4) Compute mean within-family cosine vs mean cross-family cosine. (5) Permutation test: shuffle folio-family labels 1000 times, count fraction of shuffles where within-family mean exceeds observed. (6) Secondary: Pearson r between folio-pair text cosine similarity and folio-pair medicinal_use text Jaccard.",
   "test_metric": "within_family_cosine_vs_cross_family",
   "test_threshold": "CONFIRMED PLANT-SPECIFIC if (a) within-family cosine > cross-family cosine AND permutation-test p < 0.05. Then H-BV-CONTENT-INDEPENDENCE is REFUTED. CONFIRMED INDEPENDENT if within ~= cross (difference < 0.01) AND permutation p > 0.20 AND secondary medicinal-correlation r < 0.1. MARGINAL otherwise.",
-  "tests_run": [],
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "locked_within_vs_cross_family",
+      "score": 0.65,
+      "passed": null,
+      "details": "n=83 Hand-A plant folios with known family. Within-family mean cosine 0.2407, cross-family 0.2622, diff -0.0214 (within LESS similar than cross, opposite of plant-specific direction). Permutation p=0.856 (not significant in plant-specific direction). Medicinal-use correlation r=-0.041. Under locked rule: |diff|=0.021 exceeds 0.01 threshold so INDEPENDENCE-CONFIRMED path fails; within<cross so PLANT-SPECIFIC path also fails -> MARGINAL. Substantive reading: text is directionally content-independent. No botanical-relationship -> text-similarity link.",
+      "confidence_change": "0.40 -> 0.65"
+    }
+  ],
   "tests_remaining": [
     "Execute in separate commit"
   ],
-  "status": "pre-registered",
+  "status": "marginal_directionally_independent",
   "parent": "H-BV-SYLLABLE-LEVEL-01",
   "created": "2026-04-16",
-  "last_tested": null,
+  "last_tested": "2026-04-16",
   "reasoning": "High-stakes test. If plant-specific, Brain-V continues decoding; if independent, reframes everything. Five character-map refutations already point toward the independence hypothesis.",
   "source": "Brain-V 2026-04-16 pre-registration following syllable-level refutation",
   "researcher": "brain-v"
