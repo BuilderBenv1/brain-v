@@ -1,0 +1,259 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-RECIPE-STRUCTURE-01",
+  "n_paragraphs": 271,
+  "bin_sizes": {
+    "INITIAL": 271,
+    "FIRST": 3489,
+    "MIDDLE": 3678,
+    "FINAL": 3584
+  },
+  "bin_types": {
+    "INITIAL": 207,
+    "FIRST": 1534,
+    "MIDDLE": 1455,
+    "FINAL": 1467
+  },
+  "criterion_1": {
+    "initial_types": 207,
+    "middle_types": 1455,
+    "initial_not_in_middle": 176,
+    "disjunction_ratio": 0.8502,
+    "threshold": 0.7,
+    "pass": true
+  },
+  "criterion_2": {
+    "top20_details": [
+      {
+        "token": "daiin",
+        "count": 147,
+        "skeleton": "dn",
+        "n_variants": 15,
+        "n_folios": 106,
+        "coverage": 0.93,
+        "pass": true
+      },
+      {
+        "token": "chol",
+        "count": 104,
+        "skeleton": "kl",
+        "n_variants": 26,
+        "n_folios": 93,
+        "coverage": 0.816,
+        "pass": true
+      },
+      {
+        "token": "s",
+        "count": 56,
+        "skeleton": "s",
+        "n_variants": 32,
+        "n_folios": 76,
+        "coverage": 0.667,
+        "pass": true
+      },
+      {
+        "token": "chor",
+        "count": 55,
+        "skeleton": "kr",
+        "n_variants": 33,
+        "n_folios": 82,
+        "coverage": 0.719,
+        "pass": true
+      },
+      {
+        "token": "sho",
+        "count": 44,
+        "skeleton": "s",
+        "n_variants": 32,
+        "n_folios": 55,
+        "coverage": 0.482,
+        "pass": true
+      },
+      {
+        "token": "y",
+        "count": 39,
+        "skeleton": "y",
+        "n_variants": 11,
+        "n_folios": 67,
+        "coverage": 0.588,
+        "pass": true
+      },
+      {
+        "token": "ol",
+        "count": 37,
+        "skeleton": "l",
+        "n_variants": 11,
+        "n_folios": 51,
+        "coverage": 0.447,
+        "pass": true
+      },
+      {
+        "token": "shol",
+        "count": 36,
+        "skeleton": "sl",
+        "n_variants": 17,
+        "n_folios": 56,
+        "coverage": 0.491,
+        "pass": true
+      },
+      {
+        "token": "dy",
+        "count": 34,
+        "skeleton": "dy",
+        "n_variants": 13,
+        "n_folios": 60,
+        "coverage": 0.526,
+        "pass": true
+      },
+      {
+        "token": "chey",
+        "count": 33,
+        "skeleton": "ky",
+        "n_variants": 26,
+        "n_folios": 49,
+        "coverage": 0.43,
+        "pass": true
+      },
+      {
+        "token": "cheol",
+        "count": 30,
+        "skeleton": "kl",
+        "n_variants": 26,
+        "n_folios": 35,
+        "coverage": 0.307,
+        "pass": true
+      },
+      {
+        "token": "chy",
+        "count": 29,
+        "skeleton": "ky",
+        "n_variants": 26,
+        "n_folios": 57,
+        "coverage": 0.5,
+        "pass": true
+      },
+      {
+        "token": "cthy",
+        "count": 28,
+        "skeleton": "tky",
+        "n_variants": 16,
+        "n_folios": 46,
+        "coverage": 0.404,
+        "pass": true
+      },
+      {
+        "token": "or",
+        "count": 28,
+        "skeleton": "r",
+        "n_variants": 20,
+        "n_folios": 49,
+        "coverage": 0.43,
+        "pass": true
+      },
+      {
+        "token": "dain",
+        "count": 26,
+        "skeleton": "dn",
+        "n_variants": 15,
+        "n_folios": 48,
+        "coverage": 0.421,
+        "pass": true
+      },
+      {
+        "token": "dal",
+        "count": 26,
+        "skeleton": "dl",
+        "n_variants": 13,
+        "n_folios": 39,
+        "coverage": 0.342,
+        "pass": true
+      },
+      {
+        "token": "aiin",
+        "count": 26,
+        "skeleton": "n",
+        "n_variants": 16,
+        "n_folios": 40,
+        "coverage": 0.351,
+        "pass": true
+      },
+      {
+        "token": "dar",
+        "count": 24,
+        "skeleton": "dr",
+        "n_variants": 17,
+        "n_folios": 56,
+        "coverage": 0.491,
+        "pass": true
+      },
+      {
+        "token": "shy",
+        "count": 23,
+        "skeleton": "sy",
+        "n_variants": 17,
+        "n_folios": 43,
+        "coverage": 0.377,
+        "pass": true
+      },
+      {
+        "token": "chody",
+        "count": 22,
+        "skeleton": "kdy",
+        "n_variants": 18,
+        "n_folios": 30,
+        "coverage": 0.263,
+        "pass": false
+      }
+    ],
+    "n_passing_both": 19,
+    "threshold": 15,
+    "pass": true
+  },
+  "criterion_3": {
+    "low_initial_types": 197,
+    "types_in_ge3_paragraphs": 9,
+    "recurrence_ratio": 0.0457,
+    "top_recurring": [
+      {
+        "token": "tor",
+        "paragraphs": 5
+      },
+      {
+        "token": "pchor",
+        "paragraphs": 4
+      },
+      {
+        "token": "tshol",
+        "paragraphs": 4
+      },
+      {
+        "token": "pcheol",
+        "paragraphs": 4
+      },
+      {
+        "token": "tcheody",
+        "paragraphs": 3
+      },
+      {
+        "token": "teol",
+        "paragraphs": 3
+      },
+      {
+        "token": "tcho",
+        "paragraphs": 3
+      },
+      {
+        "token": "tshor",
+        "paragraphs": 3
+      },
+      {
+        "token": "pchocthy",
+        "paragraphs": 3
+      }
+    ],
+    "threshold": 0.1,
+    "pass": false
+  },
+  "n_criteria_passing": 2,
+  "verdict": "MARGINAL"
+}

@@ -4,6 +4,42 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-16 — H-BV-RECIPE-STRUCTURE-01 MARGINAL (herbal-encyclopedic fit)
+
+**Hypothesis**: Hand A follows medieval pharmaceutical recipe structure — paragraph-initial ingredient/topic terms, paragraph-medial preparation instructions, plus ingredient recurrence across paragraphs.
+
+**Method**: three-criterion locked test on 271 paragraphs. Position bins: INITIAL (pos 0), FIRST (1..⌈N/3⌉-1), MIDDLE (⌈N/3⌉..⌈2N/3⌉-1), FINAL (⌈2N/3⌉..N-1).
+
+**Result**: MARGINAL (2 of 3 criteria pass).
+
+| criterion | metric | observed | threshold | pass |
+|---|---|---|---|---|
+| C1 vocabulary disjunction | \|INITIAL \ MIDDLE\| / \|INITIAL\| | **0.850** | ≥0.70 | **PASS** |
+| C2 recipe-verb properties | top-20 MIDDLE with ≥2 variants AND ≥30% folio cov | **19 / 20** | ≥15 / 20 | **PASS** |
+| C3 LOW-initial recurrence | LOW initial types in ≥3 paragraphs | **4.6%** (9/197) | ≥10% | **FAIL** |
+
+**C1**: 176 of 207 paragraph-initial types never appear in paragraph-medial position. Paragraph openers use a vocabulary almost entirely separate from running-text vocabulary.
+
+**C2**: Top-20 medial tokens include **daiin** (147 occurrences, 93% of Hand-A folios, 15 skeleton variants), **chol** (104, 81.6%, 26 variants), **s** (56, 66.7%, 32 variants), **chor** (55, 71.9%, 33 variants). Notable: Pagel (2025) translated daiin as *datur* ("is given") and chol as *folium* ("leaf") — regardless of Pagel's reading accuracy, these tokens have the statistical profile of a generic medieval-Latin recipe verb and a recurring anatomical noun.
+
+**C3**: Only 9 LOW-class paragraph-initial types recur across ≥3 paragraphs (tor, pchor, tshol, pcheol, tcheody, teol, tcho, tshor, pchocthy). **Paragraph headers are nearly all unique**.
+
+**Substantive conclusion**: the MARGINAL verdict reflects a real structural distinction that the locked rule couldn't capture cleanly. Paragraphs are *topically headed + instructional-body*, but headers do NOT repeat. This argues AGAINST classical pharmaceutical recipes (where ingredients recur) and FOR a **herbal-encyclopedic entry-per-paragraph** structure: one unique topic or plant per paragraph, with descriptive vocabulary (Galenic qualities, uses, preparation verbs) shared across all entries. Medieval encyclopedic herbals like *Circa Instans* and *Macer Floridus* have exactly this signature.
+
+This is compatible with the prior Brain-V findings:
+- Per-plant content-decoding refutations (`H-BV-SYLLABLE-LEVEL-01` et al.) — the plant-specific content lives in the *unique headers*, not the reusable body.
+- HIGH/LOW anti-alternation from HIGH-LOW-STRUCTURE-01 — run-clustering is the encyclopedic pattern, not function/content alternation.
+- Hand A internal linguistic structure from HAND-A-INTERNAL-01 — an encyclopedic register with inflected descriptive verbs.
+
+Confidence 0.4 → 0.55.
+
+**Follow-ups**:
+- Ingredient-clustering: do paragraph-initial tokens on plant-ID folios cluster by plant family or species?
+- Benchmark paragraph-header recurrence against an 11k-token *Circa Instans* or *Macer Floridus* excerpt — if natural herbal encyclopedias show ~5% header recurrence, C3's 10% threshold was too strict.
+- Test the Pagel readings (daiin=datur, chol=folium) as locked predictions against paragraph-medial behaviour.
+
+**Files**: `hypotheses/H-BV-RECIPE-STRUCTURE-01.json`, `outputs/recipe_structure_test.json`, `scripts/run_recipe_structure.py`.
+
 ## 2026-04-16 — H-BV-HIGH-LOW-STRUCTURE-01 PARTIAL (regime-alternation signal)
 
 **Hypothesis**: The HIGH/LOW vocabulary split may reflect a structural axis (line position, morphological state, paragraph role) rather than lexical function/content; or the function/content reading may survive via adjacency analysis.
