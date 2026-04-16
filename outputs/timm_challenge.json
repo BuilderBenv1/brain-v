@@ -1,0 +1,122 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-TIMM-CHALLENGE-01",
+  "pre_registered_in_commit": "c90b171",
+  "n_folios": 196,
+  "markers_tested": 8,
+  "quire_ordering": {
+    "A": 1,
+    "B": 2,
+    "C": 3,
+    "D": 4,
+    "E": 5,
+    "F": 6,
+    "G": 7,
+    "H": 8,
+    "I": 9,
+    "J": 10,
+    "K": 11,
+    "L": 12,
+    "M": 13,
+    "N": 14,
+    "O": 15,
+    "Q": 16,
+    "S": 17,
+    "T": 18
+  },
+  "results": [
+    {
+      "marker": "_.oii",
+      "r2_hand": 0.0649253491690771,
+      "r2_quire": 0.03549360504476362,
+      "r2_both": 0.07068355518617642,
+      "hand_coef_combined": -0.003681842452502413,
+      "quire_coef_combined": -0.0001225064240036762,
+      "hand_p_combined": 0.007476536043583115,
+      "quire_p_combined": 0.2755134075175607,
+      "better_combined": 0.0
+    },
+    {
+      "marker": "_.e.e",
+      "r2_hand": 0.05887703569796543,
+      "r2_quire": 0.002261888027194292,
+      "r2_both": 0.06493346253214338,
+      "hand_coef_combined": 0.0033672602699023847,
+      "quire_coef_combined": -8.610116128585138e-05,
+      "hand_p_combined": 0.00040950938753625543,
+      "quire_p_combined": 0.2649305454982822,
+      "better_combined": 0.0
+    },
+    {
+      "marker": "_.eeo",
+      "r2_hand": 4.649970487846655e-05,
+      "r2_quire": 0.073205627110428,
+      "r2_both": 0.09720165795482993,
+      "hand_coef_combined": -0.0029721694244433266,
+      "quire_coef_combined": 0.0004919219213931925,
+      "hand_p_combined": 0.024628718975702846,
+      "quire_p_combined": 9.175392736926469e-06,
+      "better_combined": 1.0
+    },
+    {
+      "marker": "_.o.eo",
+      "r2_hand": 0.02506915813151167,
+      "r2_quire": 0.09480100131180702,
+      "r2_both": 0.21568191376113288,
+      "hand_coef_combined": -0.010254050686023607,
+      "quire_coef_combined": 0.0010591365688240293,
+      "hand_p_combined": 1.4964785477467046e-07,
+      "quire_p_combined": 9.700817926727723e-11,
+      "better_combined": 1.0
+    },
+    {
+      "marker": "HandA_pharma",
+      "r2_hand": 0.007941601171793655,
+      "r2_quire": 0.26787353045301454,
+      "r2_both": 0.30028462226637664,
+      "hand_coef_combined": -0.013972934035747798,
+      "quire_coef_combined": 0.003451807211987085,
+      "hand_p_combined": 0.0031535285715771355,
+      "quire_p_combined": 2.220446049250313e-16,
+      "better_combined": 1.0
+    },
+    {
+      "marker": "HandA_herbal",
+      "r2_hand": 0.41075084665757344,
+      "r2_quire": 0.2644380534555042,
+      "r2_both": 0.46683260241162583,
+      "hand_coef_combined": -0.03970404205717532,
+      "quire_coef_combined": -0.001719117278907159,
+      "hand_p_combined": 3.552713678800501e-15,
+      "quire_p_combined": 1.1448362172927773e-05,
+      "better_combined": 1.0
+    },
+    {
+      "marker": "HandB_biological",
+      "r2_hand": 0.061854070135916484,
+      "r2_quire": 0.031890813074856195,
+      "r2_both": 0.06648143635288417,
+      "hand_coef_combined": 0.0018259231754249887,
+      "quire_coef_combined": 5.493253374247169e-05,
+      "hand_p_combined": 0.008132759655774313,
+      "quire_p_combined": 0.32924834131587644,
+      "better_combined": 0.0
+    },
+    {
+      "marker": "HandB_recipes",
+      "r2_hand": 0.0005544880776283678,
+      "r2_quire": 0.2088207887621445,
+      "r2_both": 0.2579776736198137,
+      "hand_coef_combined": -0.004824567185748748,
+      "quire_coef_combined": 0.0009081328805999528,
+      "hand_p_combined": 0.00044142159724969154,
+      "quire_p_combined": 3.68594044175552e-14,
+      "better_combined": 1.0
+    }
+  ],
+  "quire_wins": 4,
+  "hand_wins": 4,
+  "combined_substantially_better": 5,
+  "majority_threshold": 5,
+  "verdict": "BOTH_PARTIAL"
+}
