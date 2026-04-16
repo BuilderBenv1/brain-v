@@ -29,11 +29,16 @@
     }
   ],
   "tests_remaining": [],
-  "status": "confirmed",
+  "status": "confirmed_but_under_discriminating",
+  "verdict_note": "Technically confirmed under locked rule (all 7 languages exceed chi-square p<0.01 and 2x uniform improvement), but substantively refutes the abjad hypothesis. Semitic abjads (Hebrew, Syriac) fit WORST, Mediterranean alphabetic languages (Italian, Latin, Greek) fit BEST. This contradicts the prediction that a vowel-less encoding should preferentially match abjad languages.",
+  "findings_for_followup": [
+    "Italian medieval consonant distribution matches Hand A skeleton at 9.82x improvement, the highest of any tested language. This should be a new pre-registered hypothesis with a discrimination-validated test methodology, not interpreted as confirmation from this test."
+  ],
   "parent": "H-BV-HAND-A-LANGUAGE-SCREEN-02",
   "created": "2026-04-16",
   "last_tested": "2026-04-16",
-  "reasoning": "Language-screen-02 refuted simple frequency-rank substitution. Natural next test: strip vowels and inflectional suffixes, treat Hand A as an abjad, and compare the CONSONANTAL SHAPE against published consonant-frequency tables. This is the weakest-form abjad test (rank-matched chi-square); a refutation here is a strong signal that Hand A's statistical profile does not resemble any of the seven tested languages even at the consonant-shape level, leaving constructed-language or verbose-cipher models.",
-  "source": "Brain-V 2026-04-16 user-directed pre-registration following LANGUAGE-SCREEN-02 refutation",
+  "amended": "2026-04-16",
+  "reasoning": "Language-screen-02 refuted simple frequency-rank substitution. Natural next test: strip vowels and inflectional suffixes, treat Hand A as an abjad, and compare the CONSONANTAL SHAPE against published consonant-frequency tables. This is the weakest-form abjad test (rank-matched chi-square); a refutation here is a strong signal that Hand A's statistical profile does not resemble any of the seven tested languages even at the consonant-shape level, leaving constructed-language or verbose-cipher models. Post-hoc amendment: the binary pass/fail rule turned out to be under-discriminating at N≈20k — every reasonably non-uniform distribution passes. The substantive interpretation must lean on the improvement-factor SPREAD (2.95x to 9.82x), and on the fact that the pre-registered abjad prediction is contradicted by the data (Semitic abjads fit worst).",
+  "source": "Brain-V 2026-04-16 user-directed pre-registration following LANGUAGE-SCREEN-02 refutation; amended same day with substantive-interpretation note after under-discrimination finding",
   "researcher": "brain-v"
 }
