@@ -1,0 +1,170 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-TP-ALTERNATION-01",
+  "n_paragraphs_detected": 268,
+  "n_retained_plain_gallows_initial": 216,
+  "global": {
+    "t": 135,
+    "p": 81,
+    "t_rate": 0.625
+  },
+  "test_A_section": {
+    "sections_used": [
+      "herbal",
+      "recipes",
+      "pharmaceutical"
+    ],
+    "contingency": {
+      "herbal": {
+        "t": 92,
+        "p": 66
+      },
+      "recipes": {
+        "t": 16,
+        "p": 3
+      },
+      "pharmaceutical": {
+        "t": 27,
+        "p": 12
+      }
+    },
+    "chi2": 5.805,
+    "df": 2,
+    "p_value": 0.054878,
+    "cramers_v": 0.164,
+    "pass": false
+  },
+  "test_B_quire": {
+    "quires_used": [
+      "A",
+      "B",
+      "C",
+      "E",
+      "F",
+      "G",
+      "H",
+      "O",
+      "Q",
+      "S"
+    ],
+    "contingency": {
+      "A": {
+        "t": 12,
+        "p": 8
+      },
+      "B": {
+        "t": 10,
+        "p": 11
+      },
+      "C": {
+        "t": 14,
+        "p": 13
+      },
+      "E": {
+        "t": 6,
+        "p": 6
+      },
+      "F": {
+        "t": 9,
+        "p": 8
+      },
+      "G": {
+        "t": 20,
+        "p": 8
+      },
+      "H": {
+        "t": 16,
+        "p": 3
+      },
+      "O": {
+        "t": 23,
+        "p": 8
+      },
+      "Q": {
+        "t": 9,
+        "p": 2
+      },
+      "S": {
+        "t": 14,
+        "p": 9
+      }
+    },
+    "chi2": 13.218,
+    "df": 9,
+    "p_value": 0.152972,
+    "cramers_v": 0.251,
+    "pass": false
+  },
+  "test_C_within_folio_runs": {
+    "n_folios_used": 23,
+    "mean_per_folio_z": -0.42,
+    "stouffer_combined_z": -2.014,
+    "direction": "clustering",
+    "pass": false
+  },
+  "test_D_stem_conditional": {
+    "stems_used": [
+      "chor",
+      "ol",
+      "shol",
+      "or",
+      "cheol",
+      "aiin",
+      "cho",
+      "chol",
+      "odaiin",
+      "cheody"
+    ],
+    "contingency": {
+      "chor": {
+        "t": 10,
+        "p": 4
+      },
+      "ol": {
+        "t": 12,
+        "p": 1
+      },
+      "shol": {
+        "t": 4,
+        "p": 2
+      },
+      "or": {
+        "t": 5,
+        "p": 1
+      },
+      "cheol": {
+        "t": 1,
+        "p": 4
+      },
+      "aiin": {
+        "t": 3,
+        "p": 2
+      },
+      "cho": {
+        "t": 3,
+        "p": 2
+      },
+      "chol": {
+        "t": 3,
+        "p": 1
+      },
+      "odaiin": {
+        "t": 2,
+        "p": 2
+      },
+      "cheody": {
+        "t": 3,
+        "p": 1
+      }
+    },
+    "chi2": 10.855,
+    "df": 9,
+    "p_value": 0.285813,
+    "cramers_v": 0.406,
+    "pass": false
+  },
+  "n_tests_passing": 0,
+  "interpretations": [
+    "t/p alternation is DECORATIVE NOISE; the 14-item header stem pool is the primary finding"
+  ]
+}

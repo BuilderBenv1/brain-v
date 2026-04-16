@@ -4,6 +4,47 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-16 — H-BV-TP-ALTERNATION-01 REFUTED (noise under locked rule, suggestive under-power)
+
+**Hypothesis**: the t- vs p- gallows choice on Hand A paragraph-initial tokens encodes structured information along one of four axes (section, quire, within-folio alternation, stem-conditional).
+
+**Method**: four independent locked tests on 216 paragraphs with plain-gallows-initial tokens (135 t / 81 p; global 62.5% t-rate).
+
+**Result**: 0 of 4 tests pass locked thresholds (p<0.01 AND V≥0.20, or |z|≥2.58 for runs test).
+
+| test | axis | statistic | p-value | V | verdict |
+|---|---|---|---|---|---|
+| A | section | χ² = 5.80 (df=2) | 0.055 | 0.164 | near-miss |
+| B | quire | χ² = 13.22 (df=9) | 0.153 | **0.251** | large V, dilute p |
+| C | within-folio runs | z = −2.014 | 0.044 | — | direction: clustering |
+| D | stem | χ² = 10.86 (df=9) | 0.286 | **0.406** | large V, dilute p |
+
+Per locked rule → **t/p alternation is decorative noise; the 14-item header stem pool remains the primary finding**.
+
+**But the near-miss pattern is structured, not random**:
+- Test B (quire): Cramer's V = 0.251 EXCEEDS the 0.20 effect-size threshold — quires G/H/O/Q cluster at 71-84% t while A/B/C/E/F sit at 47-60% t. Chi-square fails only because df=9 dilutes across 10 quires.
+- Test D (stem): V = 0.406 is a LARGE effect size. Stem 'ol' is 92% t, 'cheol' is 20% t (the only clear p-preferring stem). Omnibus chi-square dilutes this signal.
+- Test A (section): 'recipes' section is 84% t vs herbal 58% — near-miss at p=0.055 hints at section-level bias.
+- Test C (runs): negative Stouffer z=−2.014 indicates paragraph-gallows CLUSTER within folios (t-block / p-block) rather than alternate, at borderline two-tailed p=0.044.
+
+**Interpretation**:
+- The locked verdict is binding: t/p alternation is NOISE for decision purposes.
+- The effect-size pattern strongly suggests UNDER-POWERED rather than ABSENT signal. 216 paragraphs spread across 10 quires / 3 sections / 10 stems leaves each cell thinly populated.
+- Most interesting individual signal: stem 'cheol' is the lone p-preferring top-10 stem (80% p), suggesting lexical-phonological constraint at the stem level even if the omnibus fails.
+- Within-folio clustering (z=−2.014) is NOT alternation. If t/p has structure, it's BLOCK-SEGMENTATION (groups of t-paragraphs then groups of p-paragraphs), not liturgical antiphon pattern.
+
+**Confirmed primary finding (unchanged from GALLOWS-STRIP-HEADER-01)**: Hand A uses a ~14-item closed-class header stem pool. t/p gallows prefixing adds surface diversity but, under omnibus testing, does not cleanly encode section / quire / position / stem distinctions at the locked thresholds.
+
+**Pre-registered follow-ups**:
+- Pairwise quire contrasts (G/H/O/Q vs A/B/C/E/F) to concentrate the diluted Test B signal
+- 'cheol' content-analysis — is the p-preferring stem semantically distinct from t-preferring 'chor'/'chol'/'cho'?
+- Block-segmentation test — does each folio split cleanly into a t-majority region and a p-majority region?
+- Extend sample by including benched-gallows initials (cth/ckh/cph) as a third category, testing t/p/benched ternary structure.
+
+Confidence 0.55 → 0.35.
+
+**Files**: `hypotheses/H-BV-TP-ALTERNATION-01.json`, `outputs/tp_alternation_test.json`, `scripts/run_tp_alternation.py`.
+
 ## 2026-04-16 — H-BV-GALLOWS-STRIP-HEADER-01 REFUTED (recurrence is real, not gallows-artifact)
 
 **Hypothesis**: Hand A's header-recurrence miss against Isidore (0.063 vs 0.003 in CIRCA-INSTANS-BENCHMARK-01) is an artifact of gallows-initial scribal markers. Stripping leading cth/ckh/cph or plain t/p should close the gap to within Isidore's ±0.05 tolerance band (≤0.053).
