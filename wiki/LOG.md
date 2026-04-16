@@ -4,6 +4,35 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-16 — H-BV-ABJAD-CONSONANT-01 CONFIRMED (with caveat)
+
+**Hypothesis**: Hand A's consonantal skeleton (vowels a/e/i/o stripped, word-final suffix y/n/r/m/g stripped, line-initial plain gallows t/p stripped) matches at least one natural-language consonant-frequency distribution with chi-square p<0.01 AND improvement factor over uniform null > 2.0.
+
+**Method**: Hand-A residual after stripping yielded N=19,651 consonantal glyph-units across 25 distinct types. Top-12 (ch, d, l, k, t, sh, q, y, s, cth, r, ckh) rank-paired against published top-12 consonant frequencies for seven languages. Chi-square df=11 against each language's expected distribution and against uniform null.
+
+**Result**: CONFIRMED per locked rule — but all seven languages pass the threshold, limiting discrimination.
+
+| rank by fit | language | chi² | p-value | improvement |
+|---|---|---|---|---|
+| 1 | italian_medieval | 944.08 | 2.1e-195 | **9.82x** |
+| 2 | latin | 956.59 | 4.2e-198 | 9.69x |
+| 3 | greek | 1028.14 | 1.7e-213 | 9.02x |
+| 4 | arabic | 1522.35 | ~0 | 6.09x |
+| 5 | german | 1786.05 | ~0 | 5.19x |
+| 6 | hebrew | 2556.35 | ~0 | 3.63x |
+| 7 | syriac | 3148.73 | ~0 | 2.95x |
+
+Uniform null chi² = 9273.58. All seven languages meet p<0.01 AND improvement>2x.
+
+**Key observations**:
+- Per the pre-registered rule, primary abjad candidate is **italian_medieval** (narrow margin over Latin and Greek).
+- **Surprise**: the best fits are Mediterranean ALPHABETIC languages (Italian, Latin, Greek all cluster near 9x), while the SEMITIC ABJADS (Hebrew 3.63x, Syriac 2.95x) fit WORST. The naive abjad-shorthand prediction — that vowel-stripped Voynich should look most like Hebrew/Syriac/Arabic — is directly contradicted.
+- The test is under-powered for discrimination at N≈20k: any non-uniform consonant distribution passes the thresholds. The spread in improvement factor (2.95x to 9.82x) is the informative signal, not the binary pass/fail.
+
+**Implication**: Hand A's consonantal skeleton shape resembles Latin/Italian alphabetic consonants more than Semitic abjads. The abjad hypothesis passes its letter but fails its spirit — direction shifts toward "vowel-stripped Latin/Italian" (a known medieval shorthand device) rather than true Semitic abjad shorthand.
+
+**Files**: `hypotheses/H-BV-ABJAD-CONSONANT-01.json`, `outputs/abjad_consonant_test.json`, `scripts/run_abjad_consonant.py`.
+
 ## 2026-04-16 — H-BV-HAND-A-LANGUAGE-SCREEN-02 REFUTED
 
 **Hypothesis**: At least one of seven under-tested candidate languages — Basque, Hungarian, Finnish, Armenian, Ottoman Turkish, Italian-dialect, German — produces a connector-to-content bigram delta >= +0.005 under frequency-rank EVA-to-letter substitution on Hand A.

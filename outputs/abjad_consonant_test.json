@@ -1,0 +1,240 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-ABJAD-CONSONANT-01",
+  "hand_a_tokens": 11022,
+  "residual_consonantal_glyphs_total": 20361,
+  "distinct_residual_glyphs": 25,
+  "top_12_hand_a": [
+    {
+      "glyph": "ch",
+      "count": 3890,
+      "pct": 19.795
+    },
+    {
+      "glyph": "d",
+      "count": 3135,
+      "pct": 15.953
+    },
+    {
+      "glyph": "l",
+      "count": 3009,
+      "pct": 15.312
+    },
+    {
+      "glyph": "k",
+      "count": 2336,
+      "pct": 11.887
+    },
+    {
+      "glyph": "t",
+      "count": 1469,
+      "pct": 7.475
+    },
+    {
+      "glyph": "sh",
+      "count": 1360,
+      "pct": 6.921
+    },
+    {
+      "glyph": "q",
+      "count": 1119,
+      "pct": 5.694
+    },
+    {
+      "glyph": "y",
+      "count": 1018,
+      "pct": 5.18
+    },
+    {
+      "glyph": "s",
+      "count": 997,
+      "pct": 5.074
+    },
+    {
+      "glyph": "cth",
+      "count": 537,
+      "pct": 2.733
+    },
+    {
+      "glyph": "r",
+      "count": 467,
+      "pct": 2.376
+    },
+    {
+      "glyph": "ckh",
+      "count": 314,
+      "pct": 1.598
+    }
+  ],
+  "N_used_for_chi2": 19651,
+  "df": 11,
+  "uniform_null": {
+    "chi2": 9273.581,
+    "p_value": 0.0
+  },
+  "languages": [
+    {
+      "language": "italian_medieval",
+      "source": "Bortolini-Tagliavini-Zampolli (1971) Lessico di frequenza",
+      "rank_paired_expected_freqs": [
+        0.157,
+        0.133,
+        0.131,
+        0.114,
+        0.103,
+        0.092,
+        0.075,
+        0.064,
+        0.052,
+        0.043,
+        0.025,
+        0.011
+      ],
+      "chi2": 944.083,
+      "p_value": 2.056761918752194e-195,
+      "improvement_over_uniform": 9.823
+    },
+    {
+      "language": "latin",
+      "source": "Kenny (1975) + Diederich (1939) Classical Latin consonant freqs",
+      "rank_paired_expected_freqs": [
+        0.157,
+        0.137,
+        0.125,
+        0.125,
+        0.097,
+        0.079,
+        0.072,
+        0.057,
+        0.051,
+        0.032,
+        0.025,
+        0.043
+      ],
+      "chi2": 956.593,
+      "p_value": 4.191512047879073e-198,
+      "improvement_over_uniform": 9.694
+    },
+    {
+      "language": "greek",
+      "source": "Perseus Digital Library Classical Greek consonant aggregate",
+      "rank_paired_expected_freqs": [
+        0.155,
+        0.14,
+        0.13,
+        0.1,
+        0.09,
+        0.075,
+        0.07,
+        0.065,
+        0.06,
+        0.05,
+        0.035,
+        0.03
+      ],
+      "chi2": 1028.14,
+      "p_value": 1.6858209713819434e-213,
+      "improvement_over_uniform": 9.02
+    },
+    {
+      "language": "arabic",
+      "source": "Buckwalter Arabic Treebank / Van Mol (2003)",
+      "rank_paired_expected_freqs": [
+        0.2,
+        0.16,
+        0.1,
+        0.09,
+        0.075,
+        0.065,
+        0.06,
+        0.055,
+        0.055,
+        0.05,
+        0.045,
+        0.045
+      ],
+      "chi2": 1522.345,
+      "p_value": 0.0,
+      "improvement_over_uniform": 6.092
+    },
+    {
+      "language": "german",
+      "source": "Leipzig Corpora Collection (modern German proxy)",
+      "rank_paired_expected_freqs": [
+        0.145,
+        0.132,
+        0.117,
+        0.112,
+        0.092,
+        0.087,
+        0.061,
+        0.056,
+        0.054,
+        0.045,
+        0.035,
+        0.064
+      ],
+      "chi2": 1786.051,
+      "p_value": 0.0,
+      "improvement_over_uniform": 5.192
+    },
+    {
+      "language": "hebrew",
+      "source": "Biblical Hebrew corpus (Andersen-Forbes)",
+      "rank_paired_expected_freqs": [
+        0.135,
+        0.12,
+        0.11,
+        0.1,
+        0.085,
+        0.082,
+        0.075,
+        0.08,
+        0.06,
+        0.06,
+        0.055,
+        0.038
+      ],
+      "chi2": 2556.346,
+      "p_value": 0.0,
+      "improvement_over_uniform": 3.628
+    },
+    {
+      "language": "syriac",
+      "source": "Peshitta NT letter-frequency studies (Brady 2025 ref.)",
+      "rank_paired_expected_freqs": [
+        0.135,
+        0.115,
+        0.1,
+        0.1,
+        0.085,
+        0.075,
+        0.08,
+        0.075,
+        0.065,
+        0.06,
+        0.055,
+        0.055
+      ],
+      "chi2": 3148.731,
+      "p_value": 0.0,
+      "improvement_over_uniform": 2.945
+    }
+  ],
+  "best_language": "italian_medieval",
+  "passers": [
+    "italian_medieval",
+    "latin",
+    "greek",
+    "arabic",
+    "german",
+    "hebrew",
+    "syriac"
+  ],
+  "verdict": "CONFIRMED",
+  "thresholds": {
+    "p_value": "< 0.01",
+    "improvement_over_uniform": "> 2.0",
+    "both_required": true
+  }
+}
