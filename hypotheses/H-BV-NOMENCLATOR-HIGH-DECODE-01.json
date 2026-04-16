@@ -1,0 +1,32 @@
+{
+  "id": "H-BV-NOMENCLATOR-HIGH-DECODE-01",
+  "claim": "If Hand A has a nomenclator-style head/tail vocabulary split (per H-BV-NOMENCLATOR-01), then one or more of the previously-tested character/word mappings (Brady Syriac, Schechter Latin-Occitan, Pagel trilingual) that failed on the full Hand A corpus should succeed when restricted to the HIGH class (146 types, 50.1% of tokens) alone. The HIGH class is the function-word scaffold; if it is enciphered natural language, a correct substrate mapping should clear the +0.010 connector-content bigram shuffle-test threshold on HIGH-only tokens. If none of the three mappings crosses +0.010 on HIGH-only, the nomenclator interpretation's substrate-decodable prediction is REFUTED and the HIGH class is not ordinary substitution-enciphered natural language under any of these three maps.",
+  "type": "cipher",
+  "confidence": 0.4,
+  "evidence_for": [
+    "H-BV-NOMENCLATOR-01 confirmed a two-population vocabulary with 3 of 5 measures reaching permutation p<0.01",
+    "H-BV-NOMENCLATOR-NLREF-01 SUPPORTED — 3 of 5 head/tail gaps more extreme than both Latin Vulgate and Italian Dante references, so the HIGH/LOW populations are genuinely distinct from natural language",
+    "Pagel's trilingual map crossed +0.0118 on the full corpus (`H-BV-HAND-A-MAP-COMPARISON-01` CONFIRMED) but expansion to 167 terms collapsed to +0.0030 (`H-BV-PAGEL-EXPANSION-01` REFUTED) — consistent with 'the head is decodable, the tail isn't'",
+    "Brady's full-corpus -0.0098 flips to +0.0044 when restricted to Hand A (`H-BV-HAND-A-LANGUAGE-01` MARGINAL) — restriction helps; restriction to HIGH-only may help further",
+    "If HIGH-only decoding succeeds for any of the three maps, the nomenclator hypothesis gains decisive support: the substrate is identified and the codebook can be attacked separately"
+  ],
+  "evidence_against": [
+    "Restricting to HIGH-only tokens reduces the adjacency signal (LOW tokens interrupt HIGH sequences in natural text), which could mechanically inflate or deflate the shuffle-test delta independent of the underlying language match",
+    "Sample size drops: HIGH tokens are ~5,518 in Hand A vs 11,022 full; shuffle-test variance increases",
+    "All three mappings rely on specific function-word hypotheses (Pagel: y=et, s=est; Brady: w=wa-, d=d-; Schechter: various) — none was derived from the HIGH class directly, so a HIGH-only test may still fail even if the general approach is right"
+  ],
+  "test": "LOCKED PROCEDURE.\n\n  (1) Reproduce HIGH_TYPES from H-BV-NOMENCLATOR-01: sort Hand-A types by descending token frequency; take top R=146 types (cumulative tokens >= 50.1%). Lock R to 146 (the value computed and committed in NOMENCLATOR-01).\n\n  (2) For each map M in {Brady Syriac, Schechter Latin-Occitan, Pagel trilingual}:\n        (a) For each Hand-A line, produce a filtered sub-line consisting ONLY of tokens in HIGH_TYPES (maintaining original order). Drop filtered lines shorter than 3 tokens after filtering.\n        (b) Apply map M's decode function to each surviving token (same decode functions as `run_hand_a_map_comparison.py`).\n        (c) Compute connector-content bigram rate:\n              for adjacent pairs (a, b) in the filtered decoded line,\n              conn_n += (a is_connector),\n              hits += (a is_connector AND b is matched AND b is_not_connector)\n              rate = hits / conn_n\n        (d) Per-line mean of the rate.\n        (e) Shuffle test: pool all HIGH-only decoded tokens across Hand A, shuffle (seed 0), rechunk to the same line lengths, compute the same rate. Delta = in_order - shuffled.\n\n  (3) Report delta per map; compare against +0.010 CONFIRMED threshold.",
+  "test_metric": "max_high_only_shuffle_delta_across_3_maps",
+  "test_threshold": "CONFIRMED for a map if its HIGH-only delta >= +0.010. MARGINAL if 0 < delta < +0.010. REFUTED if delta <= 0. OVERALL NOMENCLATOR-SUPPORTED if at least one map is CONFIRMED (primary substrate identified). NOMENCLATOR-SUBSTRATE-REFUTED if all three maps are REFUTED on HIGH-only — the two-population structure is real but none of Brady/Schechter/Pagel is the substrate cipher.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute HIGH-only shuffle test for Brady/Schechter/Pagel in separate commit after lock"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-NOMENCLATOR-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "If Hand A is a nomenclator, the HIGH class is ordinary enciphered natural language and the LOW class is opaque code. Schechter/Pagel/Brady all tested on the full vocabulary, so LOW-class noise could have swamped a real HIGH-class signal (or supported a spurious one in Pagel's case). Restricting each map's shuffle test to HIGH-only is the clean test: if Pagel now clears +0.010 on HIGH-only (he's already at +0.0118 on the full corpus, likely from the head), the nomenclator substrate is Pagel's Latin/Hebrew/Arabic hybrid and the LOW class is the codebook. If Brady now clears +0.010 on HIGH-only (was +0.0044 full-corpus, Hand-A-restricted), the substrate is Syriac. If none clears, the HIGH/LOW structure from NOMENCLATOR-01 is real but the substrate is still unknown.",
+  "source": "Brain-V 2026-04-16 user-proposed hypothesis #3 following NOMENCLATOR-NLREF-01 SUPPORTED result",
+  "researcher": "brain-v"
+}
