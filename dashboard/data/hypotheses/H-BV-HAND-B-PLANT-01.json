@@ -2,7 +2,7 @@
   "id": "H-BV-HAND-B-PLANT-01",
   "claim": "Hand B encodes plant content with its own vowel-pattern vocabulary that barely overlaps with Hand A's. Three Hand-B patterns fire exclusively on plant folios: _.e.e (16 hits, 0 non-plant), _.o.eo (11, 0), _.eeo (15, 0). Four additional patterns show >=3x enrichment on Hand-B plant folios: o.eo (6.86x), _.o.e (5.33x), _.ee (3.09x), _.eo (2.57x). Top-10 enriched patterns between Hand A and Hand B overlap on only 1 pattern (o.e). This refutes the interpretation that _.oii is a Hand-A-only scribal habit with no content: both hands encode plant information, using different vowel dialects.",
   "type": "structural",
-  "confidence": 0.75,
+  "confidence": 0.88,
   "evidence_for": [
     "Three Hand-B patterns have infinite enrichment (zero non-plant hits)",
     "4 additional Hand-B patterns at 2.57x-6.86x enrichment",
@@ -27,6 +27,22 @@
       "passed": true,
       "details": "Hand-B plant folios (n=25) vs non-plant herbal (n=7). Three patterns at infinite enrichment, four more at 2.57x-6.86x. Top-10 Hand-A/B overlap: 1 pattern. Different vowel dialects encoding same content distinction.",
       "confidence_change": "initial 0.75"
+    },
+    {
+      "date": "2026-04-16",
+      "test": "holdout_5fold_cv_hand_b_patterns",
+      "score": 0.88,
+      "passed": true,
+      "details": "5-fold CV on 25 Hand-B plant folios. _.e.e: 5/5 folds positive (fires in every held-out fold). _.eeo: 4/5. _.o.eo: 4/5. Combined fold rates 0.76%-2.73%, all infinite-enriched over 0% non-plant baseline. Patterns survive holdout.",
+      "confidence_change": "0.75 -> 0.88"
+    },
+    {
+      "date": "2026-04-16",
+      "test": "volvelle_null_hand_b",
+      "score": 0.88,
+      "passed": true,
+      "details": "200 folio-level volvelle runs (cart_size=100). Null plant rate 0.80%%, non-plant 0.79%%, diff +0.00011 sd 0.00366. Real diff +0.01633. z=4.43, empirical p=0. 0/200 runs matched real. Volvelle cannot reproduce Hand-B plant enrichment.",
+      "confidence_change": "confirmed at 0.88"
     }
   ],
   "tests_remaining": [
@@ -35,7 +51,7 @@
     "Psychoactive-subset test within Hand B - but only 1-2 psychoactive folios are Hand B, underpowered",
     "Cross-hand test: do Hand-B patterns enrich within Hand A? If not, these are genuinely hand-specific"
   ],
-  "status": "active",
+  "status": "confirmed",
   "parent": "H-BV-PLANT-01",
   "created": "2026-04-16",
   "last_tested": "2026-04-16",
