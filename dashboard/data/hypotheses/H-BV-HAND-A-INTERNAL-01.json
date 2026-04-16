@@ -1,0 +1,30 @@
+{
+  "id": "H-BV-HAND-A-INTERNAL-01",
+  "claim": "Ignoring Hand B entirely, Hand A text exhibits internal linguistic coherence: (1) consonant skeletons take multiple suffixes (inflection-like), (2) plant folios have folio-specific bigram distributions beyond the _.oii category tag, and (3) LDA topic structure correlates with section labels. If all three hold, Hand A supports linguistic analysis as a natural-language-like system. If not, Hand A is a code, cipher, or non-linguistic encoding.",
+  "type": "structural",
+  "confidence": 0.45,
+  "evidence_for": [
+    "Hand A's _.oii closed-class tag behavior (H-BV-CONSONANT-ID-01) is consistent with a functional morpheme in a natural language",
+    "Natural languages produce inflectional diversity (same stem with multiple endings), so this is a clean falsifiable test",
+    "If Hand A is linguistically coherent, Brain-V's decoding effort should focus exclusively on it and treat Hand B as a separate system"
+  ],
+  "evidence_against": [
+    "Hand A _.oii's 3-stem closed class could also reflect a cipher-level category marker rather than a linguistic morpheme",
+    "Four consecutive refutations of cross-hand semantics suggest Brain-V may find similar nulls internally",
+    "Medieval Latin has strong inflection but not strong suffix cross-product; the test may over-predict"
+  ],
+  "test": "LOCKED THREE-PART TEST within Hand A only:\n  (1) INFLECTION: for each consonant skeleton appearing >=5 times in Hand A, count distinct final-suffix chars attached from {y,n,r,m,g}. Report mean and median suffixes per skeleton; % of skeletons with >=2 distinct suffixes.\n  (2) PLANT-FOLIO SPECIFICITY: for each Hand-A plant folio vs each non-plant herbal folio, compute folio-level word-bigram distribution. Mean pairwise Jaccard top-50 bigrams within plant folios vs across plant/non-plant.\n  (3) LDA TOPIC STRUCTURE: run Latent Dirichlet Allocation with K=8 on Hand-A folio-level bag-of-words. For each topic, compute section-label purity (fraction of top-20 high-weight folios in a single section). Report mean top-20 section purity across topics.",
+  "test_metric": "inflection_mean_and_plant_jaccard_ratio_and_lda_purity",
+  "test_threshold": "CONFIRMED if: (1) mean suffixes per skeleton >= 2.0 AND >=50% of skeletons take >=2 suffixes, (2) plant-vs-plant Jaccard >= 1.3x plant-vs-nonplant, (3) mean per-topic section purity >= 0.60. If all three pass: natural-language-like. REFUTED if any fails: code/cipher/non-linguistic.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute locked test in separate commit"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-CONSONANT-SEMANTICS-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "After four refutations of cross-hand semantics, Brain-V pivots to testing internal coherence of one hand. If Hand A alone is linguistically coherent, that's the surface on which decoding effort should concentrate. If not, Brain-V accepts Hand A is a code/cipher and the linguistic-decoding approach is the wrong tool.",
+  "source": "Brain-V 2026-04-16 pre-registration after 4 cross-hand-semantics refutations",
+  "researcher": "brain-v"
+}
