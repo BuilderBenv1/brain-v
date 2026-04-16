@@ -1,0 +1,200 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-LIGATURE-CHECK-01",
+  "corpus_words": 38053,
+  "total_within_word_chars": 191562,
+  "total_2grams_within_words": 153509,
+  "total_3grams_within_words": 116850,
+  "candidates": [
+    {
+      "candidate": "qo",
+      "length": 2,
+      "observed": 5289,
+      "expected": 574.9,
+      "enrichment": 9.2,
+      "within_word": 5289,
+      "cross_boundary": 0,
+      "split_rate": 0.0,
+      "AB_positions": {
+        "initial": 5235,
+        "medial": 52,
+        "final": 2
+      },
+      "A_not_B_positions": {
+        "initial": 122,
+        "medial": 2,
+        "final": 0
+      },
+      "chi2": 0.53,
+      "df": 2,
+      "p_value": 0.76613,
+      "classification": "AMBIGUOUS",
+      "currently_collapsed": false,
+      "matches_current_treatment": true
+    },
+    {
+      "candidate": "ol",
+      "length": 2,
+      "observed": 5588,
+      "expected": 1127.3,
+      "enrichment": 4.96,
+      "within_word": 5588,
+      "cross_boundary": 215,
+      "split_rate": 0.037,
+      "AB_positions": {
+        "initial": 1608,
+        "medial": 1104,
+        "final": 2876
+      },
+      "A_not_B_positions": {
+        "initial": 6885,
+        "medial": 8895,
+        "final": 2653
+      },
+      "chi2": 3486.6,
+      "df": 2,
+      "p_value": 0.0,
+      "classification": "LIGATURE",
+      "currently_collapsed": false,
+      "matches_current_treatment": false
+    },
+    {
+      "candidate": "ch",
+      "length": 2,
+      "observed": 10968,
+      "expected": 950.4,
+      "enrichment": 11.54,
+      "within_word": 10968,
+      "cross_boundary": 0,
+      "split_rate": 0.0,
+      "AB_positions": {
+        "initial": 5984,
+        "medial": 4959,
+        "final": 25
+      },
+      "A_not_B_positions": {
+        "initial": 788,
+        "medial": 1225,
+        "final": 0
+      },
+      "chi2": 169.39,
+      "df": 2,
+      "p_value": 0.0,
+      "classification": "LIGATURE",
+      "currently_collapsed": true,
+      "matches_current_treatment": true
+    },
+    {
+      "candidate": "sh",
+      "length": 2,
+      "observed": 4514,
+      "expected": 528.4,
+      "enrichment": 8.54,
+      "within_word": 4514,
+      "cross_boundary": 0,
+      "split_rate": 0.0,
+      "AB_positions": {
+        "initial": 3173,
+        "medial": 1324,
+        "final": 17
+      },
+      "A_not_B_positions": {
+        "initial": 957,
+        "medial": 314,
+        "final": 109
+      },
+      "chi2": 296.31,
+      "df": 2,
+      "p_value": 0.0,
+      "classification": "LIGATURE",
+      "currently_collapsed": true,
+      "matches_current_treatment": true
+    },
+    {
+      "candidate": "cth",
+      "length": 3,
+      "observed": 883,
+      "expected": 26.0,
+      "enrichment": 34.02,
+      "within_word": 883,
+      "cross_boundary": 0,
+      "split_rate": 0.0,
+      "ABC_positions": {
+        "initial": 457,
+        "medial": 420,
+        "final": 6
+      },
+      "AB_not_C_positions": {
+        "initial": 0,
+        "medial": 0,
+        "final": 0
+      },
+      "chi2": 0.0,
+      "df": 2,
+      "p_value": 1.0,
+      "classification": "AMBIGUOUS",
+      "currently_collapsed": true,
+      "matches_current_treatment": true
+    },
+    {
+      "candidate": "ckh",
+      "length": 3,
+      "observed": 859,
+      "expected": 41.3,
+      "enrichment": 20.82,
+      "within_word": 859,
+      "cross_boundary": 0,
+      "split_rate": 0.0,
+      "ABC_positions": {
+        "initial": 175,
+        "medial": 682,
+        "final": 2
+      },
+      "AB_not_C_positions": {
+        "initial": 1,
+        "medial": 2,
+        "final": 0
+      },
+      "chi2": 0.31,
+      "df": 2,
+      "p_value": 0.854712,
+      "classification": "AMBIGUOUS",
+      "currently_collapsed": true,
+      "matches_current_treatment": true
+    },
+    {
+      "candidate": "cph",
+      "length": 3,
+      "observed": 200,
+      "expected": 6.2,
+      "enrichment": 32.35,
+      "within_word": 200,
+      "cross_boundary": 0,
+      "split_rate": 0.0,
+      "ABC_positions": {
+        "initial": 122,
+        "medial": 78,
+        "final": 0
+      },
+      "AB_not_C_positions": {
+        "initial": 0,
+        "medial": 0,
+        "final": 0
+      },
+      "chi2": 0.0,
+      "df": 2,
+      "p_value": 1.0,
+      "classification": "AMBIGUOUS",
+      "currently_collapsed": true,
+      "matches_current_treatment": true
+    }
+  ],
+  "currently_collapsed_ligatures": [
+    "ckh",
+    "cph",
+    "sh",
+    "cth",
+    "ch"
+  ],
+  "overall_verdict": "MIS-PARSING DETECTED"
+}

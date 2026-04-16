@@ -4,6 +4,40 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-16 — H-BV-LIGATURE-CHECK-01 MIS-PARSING DETECTED (ol is a ligature)
+
+**Hypothesis**: at least one of the common EVA bigrams currently not collapsed by Brain-V's tokeniser (qo, ol) behaves statistically as a single glyph. Sanity check before H-BV-SUFFIX-SEQUENCE-01.
+
+**Method**: per candidate, compute (M1) frequency enrichment over independence, (M2) cross-word-boundary split rate, (M3) positional chi-square vs A-followed-by-non-B. Locked classification: LIGATURE if enrichment ≥3.0 AND split ≤0.05 AND p<0.01; TRUE BIGRAM if enrichment ≤1.5 AND split ≥0.15; AMBIGUOUS otherwise.
+
+**Result**:
+
+| candidate | obs | expected | enrichment | within | cross | split | χ² | p | class |
+|---|---|---|---|---|---|---|---|---|---|
+| qo | 5,289 | 575 | 9.20× | 5,289 | 0 | 0.000 | 0.5 | 0.77 | AMBIGUOUS |
+| **ol** | 5,588 | 1,127 | **4.96×** | **5,588** | **215** | **0.037** | **3,487** | **<0.001** | **LIGATURE** |
+| ch | 10,968 | 950 | 11.54× | 10,968 | 0 | 0.000 | 169 | <0.001 | LIGATURE |
+| sh | 4,514 | 528 | 8.54× | 4,514 | 0 | 0.000 | 296 | <0.001 | LIGATURE |
+| cth | 883 | 26 | 34.02× | 883 | 0 | 0.000 | 0.0 | 1.00 | AMBIGUOUS |
+| ckh | 859 | 41 | 20.82× | 859 | 0 | 0.000 | 0.3 | 0.85 | AMBIGUOUS |
+| cph | 200 | 6 | 32.35× | 200 | 0 | 0.000 | 0.0 | 1.00 | AMBIGUOUS |
+
+**Actionable finding**: **`ol` is a ligature** (passes all three locked criteria) but is NOT in Brain-V's MULTI_GLYPHS list. The tokeniser has been treating `o` and `l` as two separate glyphs when they are likely a single glyph. Every Brain-V bigram / skeleton analysis that used the two-character `ol` treatment has been subtly off on this sequence (5,588 within-word occurrences; the second-most-common bigram after `ch`).
+
+**Secondary findings**:
+- `qo` has extreme enrichment (9.20×) and zero cross-boundary splits but fails chi-square (p=0.77). Reason: q's near-universal word-initial position (98.9%) means `qo`'s position is inherited from q alone; the positional comparator test can't distinguish ligature from concatenation when the first character is positionally determined. qo is a probable but unproven ligature.
+- `cth/ckh/cph` show overwhelming enrichment (20–34×) and zero cross-boundary but fail chi-square for the analogous reason (the c+t/k/p+not-h comparator has the same word-medial distribution as the full 3-char sequence). Already collapsed in the tokeniser; verdict unchanged.
+
+**Verdict per locked rule**: MIS-PARSING DETECTED — `ol` disagrees with current treatment.
+
+**Implication**: before running H-BV-SUFFIX-SEQUENCE-01 (second-order morphology), add 'ol' to MULTI_GLYPHS. Consider adding 'qo' given the strong non-chi-square evidence. Prior MARGINAL results that depended on 2-character `ol` treatment should be audited.
+
+**Methodological note**: the locked chi-square criterion is uninformative when the first character of the candidate has a near-universal positional constraint (q → word-initial; c+t/k/p → word-medial). Future ligature tests should supplement with a LENGTH-ATOMIC Zipf-fit test — retokenise with candidate as atomic, check if Zipf improves.
+
+Confidence 0.50 → 0.75.
+
+**Files**: `hypotheses/H-BV-LIGATURE-CHECK-01.json`, `outputs/ligature_check_test.json`, `scripts/run_ligature_check.py`.
+
 ## 2026-04-16 — H-BV-TP-ALTERNATION-01 REFUTED (noise under locked rule, suggestive under-power)
 
 **Hypothesis**: the t- vs p- gallows choice on Hand A paragraph-initial tokens encodes structured information along one of four axes (section, quire, within-folio alternation, stem-conditional).
