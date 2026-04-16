@@ -1,0 +1,30 @@
+{
+  "id": "H-BV-LITURGICAL-01",
+  "claim": "Hand A's token-frequency profile matches medieval liturgical Latin (Vulgate Psalter) more closely than Latin medical prose (Circa Instans-style), classical literary Latin (Cicero), or Latin scientific text (Pliny). If so, Hand A's content-independence from illustrated plants becomes explicable: it is liturgical/devotional text re-used across illustrated pages.",
+  "type": "language",
+  "confidence": 0.35,
+  "evidence_for": [
+    "H-BV-HAND-A-CONTENT-INDEPENDENCE-01 found plant-family content does not predict text similarity — consistent with re-used generic text",
+    "H-BV-HAND-A-INTERNAL-01 confirmed inflection and topic structure — matches liturgical Latin",
+    "Vulgate Psalter is the dominant liturgical text of 15th-century European monastic practice; high repetition and formulaic structure match Voynich's narrow token-count distribution"
+  ],
+  "evidence_against": [
+    "Voynich herbal illustrations look pharmaceutical/medical rather than devotional — content mismatch with Psalms text",
+    "Reference corpora must be embedded in the test script rather than full canonical sources; small excerpts may misrepresent genre distributions",
+    "Liturgical Latin has specific named-God / named-saint vocabulary that would appear in Hand A if the text were Psalm-derived — not obviously present"
+  ],
+  "test": "LOCKED: Embed 4 reference Latin corpora of ~1500-2500 tokens each: (A) Vulgate Psalms 1-20 (liturgical), (B) Circa Instans pharmacology excerpts (medical), (C) Cicero excerpt from De Natura Deorum (classical literary prose), (D) Pliny Natural History excerpt on herbs (scientific). For each reference and for Hand A, compute: (1) top-20 token frequency rank, (2) repetition rate (fraction of tokens in that corpus's top-100), (3) type-token ratio at a matched length (truncate to 2000 tokens). Compare Hand A's triple (rank-20, repetition, TTR) to each reference's triple using (a) Spearman rank correlation on top-20 ranks when tokens overlap (uses the structural shape regardless of vocabulary), (b) absolute difference in repetition rate, (c) absolute difference in TTR. Assign a composite score per reference = 0.5 * rank-correlation-proxy + 0.25 * repetition-closeness + 0.25 * TTR-closeness, where closeness = 1 - |Hand_A_metric - ref_metric| / max_observed_diff.",
+  "test_metric": "closest_reference_by_composite_score",
+  "test_threshold": "CONFIRMED LITURGICAL if Vulgate ranks #1 by composite score AND its margin over the 2nd-place reference >= 0.10. REFUTED if Vulgate ranks 3rd or 4th. MARGINAL if Vulgate is #1 or #2 by small margin or ties.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute in separate commit"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-HAND-A-CONTENT-INDEPENDENCE-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "After content-independence finding, liturgical is the natural candidate. Psalter is the text a 15th-century monastic scribe would know by heart and could re-use across pages. If match confirms, Brain-V has a candidate content hypothesis that explains why plant-descriptive decoding failed.",
+  "source": "Brain-V 2026-04-16 pre-registration following content-independence finding",
+  "researcher": "brain-v"
+}
