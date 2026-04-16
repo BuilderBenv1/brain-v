@@ -1,0 +1,32 @@
+{
+  "id": "H-BV-ABJAD-CONSONANT-01",
+  "claim": "Hand A's consonantal skeleton (vowels a/e/i/o stripped, word-final suffix class y/n/r/m/g stripped, line-initial gallows t/p stripped) matches at least one natural-language consonant-frequency distribution with chi-square goodness-of-fit p < 0.01 AND improvement factor over uniform null > 2x. If so, that language is the abjad candidate for Hand A; simple abjad-style consonantal shorthand is a live decipherment model. If no language passes, abjad-shorthand is eliminated for Hand A.",
+  "type": "cipher",
+  "confidence": 0.35,
+  "evidence_for": [
+    "H-BV-HAND-A-INTERNAL-01 confirmed Hand A is natural-language-like",
+    "H-BV-HAND-A-LANGUAGE-SCREEN-02 REFUTED simple frequency-rank character substitution in 7 languages — next natural move is to strip vowels (a device commonly used in medieval European cryptography to convert non-abjad languages to abjad form)",
+    "Brady's Syriac reconstruction already operates on consonantal skeletons and achieved +0.0044 Hand-A delta (MARGINAL); the abjad angle is under-tested as a standalone claim with a SHAPE metric (chi-square) rather than lexicon matching",
+    "The EVA suffix class {y, n, r, m, g} is already known to behave like inflection (H-BV-HAND-A-INTERNAL-01 Test 1); stripping it word-finally is consistent with removing inflectional morphology before comparing consonantal inventory"
+  ],
+  "evidence_against": [
+    "Chi-square rank-matched comparison is a weaker test than lexicon survival (it will mistake any moderately-similar zipfian distribution for a match)",
+    "Voynich consonantal skeleton has ~17 active glyph-units; natural languages typically have 17-28 consonants — rank alignment can produce spurious fits",
+    "Abjad writing is characteristic of Semitic languages (Arabic, Hebrew, Syriac). Greek/Latin/Italian/German are alphabetic not abjad; including them is the null-comparison arm, not the positive arm",
+    "Hand A's top consonant-glyph (after stripping) is still likely to be a benched-gallows digraph (ch/sh), which has no single-letter analogue in any of the seven languages — the rank-mapping is forced"
+  ],
+  "test": "LOCKED PROCEDURE:\n\n  (1) EXTRACT Hand A tokens with line-position tracking.\n  (2) EVA TOKENIZATION: collapse ckh/cth/cph/ch/sh to single glyph-units.\n  (3) STRIP: (a) vowels a, e, i, o from any position; (b) word-final y, n, r, m, g (one char); (c) line-initial t or p (one char, only if not followed by h — i.e. plain gallows).\n  (4) COUNT remaining glyph-units across all Hand A tokens.\n  (5) TOP-12 RANK: order Hand A residual glyph-units by descending count; take top 12. Let N = sum of top-12 counts.\n  (6) COMPARE against seven published consonant-frequency distributions (sources cited in run script):\n        Latin, Italian-medieval, German, Arabic, Hebrew, Syriac, Greek.\n      Each language table gives its top-12 consonants and normalised frequencies (sum = 1.0 over its top 12).\n      Expected counts E_i = N * language_freq_i (rank-paired 1..12).\n      Chi-square = sum((O_i - E_i)^2 / E_i). df = 11. p-value from chi2 survival.\n  (7) UNIFORM NULL: E_uniform_i = N / 12 for all i. Compute uniform chi-square.\n  (8) IMPROVEMENT FACTOR: uniform_chi2 / language_chi2 (higher = language fits better).\n\n  DECISION: report results for all seven languages.",
+  "test_metric": "min_language_chi2_pvalue_and_improvement_factor",
+  "test_threshold": "CONFIRMED if any language has chi-square p-value < 0.01 AND improvement factor over uniform > 2.0. That language is then the primary abjad candidate for Hand A. REFUTED if no language meets BOTH criteria — abjad-style consonantal shorthand eliminated for Hand A.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute locked chi-square screen in separate commit after lock"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-HAND-A-LANGUAGE-SCREEN-02",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "Language-screen-02 refuted simple frequency-rank substitution. Natural next test: strip vowels and inflectional suffixes, treat Hand A as an abjad, and compare the CONSONANTAL SHAPE against published consonant-frequency tables. This is the weakest-form abjad test (rank-matched chi-square); a refutation here is a strong signal that Hand A's statistical profile does not resemble any of the seven tested languages even at the consonant-shape level, leaving constructed-language or verbose-cipher models.",
+  "source": "Brain-V 2026-04-16 user-directed pre-registration following LANGUAGE-SCREEN-02 refutation",
+  "researcher": "brain-v"
+}
