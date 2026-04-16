@@ -1,0 +1,31 @@
+{
+  "id": "H-BV-GALLOWS-STRIP-HEADER-01",
+  "claim": "Hand A's header recurrence rate of 0.063 (the single miss in H-BV-CIRCA-INSTANS-BENCHMARK-01) is inflated by gallows-initial scribal markers. When gallows-initial characters (plain gallows t, p OR benched-gallows cth, ckh, cph) are stripped from Hand A paragraph-initial tokens and the remaining non-gallows stem is used as the 'header' for recurrence counting, the rate falls at or below 0.055 (Isidore's 0.003 plus the ±0.05 tolerance band). If so, Hand A's header-repetition was a gallows-artifact of scribal convention, not a content-level repetition, and all four CIRCA-INSTANS-BENCHMARK-01 signature measures now match Isidore — the herbal-encyclopedic framework is fully supported. If stripping leaves the rate above 0.055, the gap is genuine and Hand A has an additional structural feature beyond standard medieval encyclopedic prose.",
+  "type": "structural",
+  "confidence": 0.5,
+  "evidence_for": [
+    "H-BV-CIRCA-INSTANS-BENCHMARK-01 matched Isidore on 3 of 4 measures; the one miss (header recurrence) was only 0.010 above the tolerance band",
+    "H-BV-RECIPE-STRUCTURE-01 already documented that the 9 recurring Hand-A paragraph-initial tokens (tor, pchor, tshol, pcheol, tcheody, teol, tcho, tshor, pchocthy) all begin with gallows characters (t or p) — i.e., the recurrence signal IS gallows-driven at the token surface",
+    "Brain-V's prior Hand-A work established plain gallows t/p at line-initial as paragraph/section markers (2.8x and 5.0x enrichment); by construction, Hand-A paragraph-initial tokens carry gallows prefixes",
+    "If the gallows is a structural marker layered on top of the lexical content (like a capital letter or initial), stripping it recovers the underlying 'header vocabulary' for apples-to-apples comparison with Isidore's lowercase prose"
+  ],
+  "evidence_against": [
+    "Stripping could INCREASE recurrence if many gallows-prefixed paragraph-initial tokens share a common non-gallows stem (e.g. 'tchor' and 'pchor' both strip to 'chor'). In that case, fewer unique stripped stems but more repetitions per stem — the ratio could go UP, refuting the hypothesis directly.",
+    "If gallows prefixes are random decorations on otherwise-unique lexical items, stripping collapses distinct types artificially and creates apparent recurrence where none exists at the content level",
+    "The 0.010 tolerance-miss is small; a null stripping effect could plausibly push Hand A across the line via noise rather than genuine signal"
+  ],
+  "test": "LOCKED PROCEDURE on Hand A.\n\n  (1) Re-run the CIRCA-INSTANS-BENCHMARK-01 paragraph extraction (gallows-bounded Hand-A paragraphs, 268 paragraphs from 11,018 tokens used).\n\n  (2) For each paragraph, take position-0 token (paragraph-initial).\n\n  (3) STRIP leading gallows prefix from each paragraph-initial token using longest-match-first rule:\n        - if token starts with 'cth', 'ckh', or 'cph' (3-char benched gallows), remove those 3 characters\n        - else if token starts with 't' or 'p' (1-char plain gallows), remove that character\n        - otherwise, token is unchanged\n      The result is a 'stripped header'. Record each paragraph's stripped-header token.\n\n  (4) RECOMPUTE header recurrence on stripped headers:\n        n_types = number of distinct stripped-header types\n        n_recur = number of stripped-header types appearing as paragraph-initial (stripped) in >=3 paragraphs\n        stripped_recurrence = n_recur / n_types\n\n  (5) COMPARISON: Isidore CIRCA-INSTANS value = 0.003. Tolerance band +/- 0.05, so match if stripped_recurrence in [0.00, 0.053] (Isidore + tolerance ≈ 0.053; 0.055 in the user spec is a rounding that we treat as 0.053 to keep the exact +/- 0.05 rule consistent with the locked CIRCA-INSTANS bands).\n\n  (6) REPORT: for audit, list the top-10 stripped-header stems by paragraph count, and the total number of stripped-headers that fell from recurring (>=3) to non-recurring (<3) or vice versa compared to the unstripped version.",
+  "test_metric": "stripped_header_recurrence_rate_compared_to_isidore_plus_tolerance",
+  "test_threshold": "CONFIRMED (Hand A's header miss was a gallows artifact; all 4 signature measures now match Isidore within tolerance) if stripped_recurrence <= 0.053. REFUTED (the gap is genuine) if stripped_recurrence > 0.053. Note: stripped_recurrence >= 0.30 is also a REFUTED case (classical-recipe pattern), but this is extremely unlikely given the unstripped rate was 0.063.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute gallows-strip header test in separate commit after lock"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-CIRCA-INSTANS-BENCHMARK-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "CIRCA-INSTANS-BENCHMARK-01 matched Isidore on disjunction, top-20 medial, and cross-class rate but missed header recurrence by 0.010. RECIPE-STRUCTURE-01's audit trail shows all nine recurring headers carry plain gallows prefixes, consistent with scribal-marker convention rather than content-level repetition. Stripping that prefix and re-measuring is the clean diagnostic: if gallows-driven, the miss closes; if content-driven, the miss remains and Hand A is known to have an additional structural feature beyond Isidore-type encyclopedia. The test is fast (one-shot script on existing data) and the decision is binding.",
+  "source": "Brain-V 2026-04-16 user-directed test following CIRCA-INSTANS-BENCHMARK-01 MARGINAL result",
+  "researcher": "brain-v"
+}
