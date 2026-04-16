@@ -1,0 +1,31 @@
+{
+  "id": "H-BV-LIGATURE-CHECK-01",
+  "claim": "At least one of the common EVA bigrams currently treated as two-character sequences by Brain-V's tokeniser ({qo, ol} are not in Brain-V's MULTI_GLYPHS list; {ch, sh, cth, ckh, cph} are) behaves statistically as a single glyph (ligature). If qo or ol test as ligatures under three locked criteria — frequency enrichment over independence >=3x, cross-word-boundary split rate <=5%, and positional chi-square p<0.01 against same-initial-character bigrams — Brain-V's tokenisation has been systematically mis-parsing those pairs, and some prior bigram and morphological findings may need re-examination. If all tested bigrams that are currently-collapsed (ch, sh, cth, ckh, cph) test LIGATURE-like and qo/ol test TRUE-BIGRAM-like, the current tokenisation is validated and downstream tests (#5 second-order suffix) can proceed on existing data without change.",
+  "type": "structural",
+  "confidence": 0.5,
+  "evidence_for": [
+    "Brain-V's own EVA tokeniser collapses 5 of the 7 candidate bigrams (ch, sh, ckh, cth, cph) — the very presence of this list acknowledges that some EVA bigrams are single-glyph ligatures",
+    "q was confirmed 98.9% word-initial (prior Brain-V finding), and 'qo' is one of the most frequent word-initial bigrams; its positional behaviour could be driven entirely by q's word-initial constraint OR by qo being a cohesive ligature",
+    "Stolfi and others have argued that EVA mis-parses some glyphs as multi-character sequences; the hypothesis is already in the literature",
+    "If qo or ol are ligatures, every Brain-V bigram/skeleton test that operated on 2-character tokenisation has been subtly wrong — catching this before the morphology test (#5) prevents compounding errors"
+  ],
+  "evidence_against": [
+    "q's near-universal word-initial position already explains why 'qo' appears word-initial — a ligature interpretation is not strictly required",
+    "The current MULTI_GLYPHS list (ch/sh/ckh/cth/cph) was chosen based on EVA convention; adding qo and ol would require strong evidence, not borderline signal",
+    "Cross-boundary split rate for 'q'-ending words is inherently near-zero because q almost never ends words; the cross-boundary metric is under-informative for qo"
+  ],
+  "test": "LOCKED PROCEDURE on the full Voynich corpus.\n\n  CANDIDATES: qo, ol, ch, sh, cth, ckh, cph.\n\n  For each candidate bigram AB (3-char sequence for cth/ckh/cph), compute:\n\n  METRIC 1 — FREQUENCY ENRICHMENT over independence:\n    Let P(A) = count(A as glyph within words) / total glyphs within words.\n    Let P(B) = same for B (treating cth/ckh/cph's 3-char case: P(A)=P(c), P(B)=P(th or kh or ph) as bigram-then-character).\n    For 2-char candidates: expected(AB) = N_bigrams_total * P(A) * P(B).\n    Observed(AB) = count(AB as within-word 2-char sequence).\n    Enrichment = observed / expected.\n    For cth/ckh/cph: compute enrichment of the 3-char sequence against independence of (c, t|k|p, h).\n\n  METRIC 2 — CROSS-BOUNDARY SPLIT RATE:\n    Let within_word(AB) = count(AB appearing as a sub-sequence of a single word).\n    Let cross_boundary(AB) = count(A ending word N, B beginning word N+1) across all consecutive word pairs in the corpus.\n    Split rate = cross_boundary / (within_word + cross_boundary).\n\n  METRIC 3 — POSITIONAL CHI-SQUARE vs same-initial-bigram:\n    Tabulate position of AB within its containing word: INITIAL (first char(s) of word), MEDIAL, FINAL (last char(s) of word).\n    Tabulate same positions for 'A followed by any character NOT equal to B' (call it A-star).\n    For cth/ckh/cph: tabulate for 'c followed by (t|k|p) followed by any char != h' as the comparator.\n    Compute 2x3 chi-square contingency on (AB vs A-star) x (INITIAL/MEDIAL/FINAL).\n    Larger chi-square = AB's position depends on the following character = AB behaves as a unit.\n\n  DECISION per candidate (locked):\n    LIGATURE if: enrichment >= 3.0 AND split_rate <= 0.05 AND chi2 p_value < 0.01.\n    TRUE BIGRAM if: enrichment <= 1.5 AND split_rate >= 0.15.\n    AMBIGUOUS otherwise.\n\n  OVERALL:\n    VALIDATED TOKENISATION if all 5 currently-collapsed bigrams (ch, sh, cth, ckh, cph) test LIGATURE AND qo/ol test TRUE BIGRAM or AMBIGUOUS (but not LIGATURE).\n    MIS-PARSING DETECTED if qo OR ol tests LIGATURE (the tokeniser needs to collapse them).\n    OR if any of ch/sh/ckh/cth/cph tests TRUE BIGRAM (the tokeniser is WRONG in the other direction).",
+  "test_metric": "per_candidate_classification_and_overall_tokenisation_validation",
+  "test_threshold": "VALIDATED if existing 5 collapsed bigrams are all LIGATURE and qo/ol are both non-LIGATURE. MIS-PARSING DETECTED if any candidate tests against its current treatment (qo or ol LIGATURE, or any of ch/sh/ckh/cth/cph TRUE BIGRAM). AMBIGUOUS overall if multiple candidates fall in the AMBIGUOUS range.",
+  "tests_run": [],
+  "tests_remaining": [
+    "Execute ligature sanity check in separate commit after lock"
+  ],
+  "status": "pre-registered",
+  "parent": "H-BV-NULL-01",
+  "created": "2026-04-16",
+  "last_tested": null,
+  "reasoning": "Brain-V has built many bigram- and skeleton-based analyses on top of a tokenisation rule that collapses 5 specific EVA bigrams as single glyphs. Before running a second-order suffix analysis (#5) that depends on morphological decomposition, verify the tokenisation empirically. If qo or ol are mis-parsed as two-character sequences when they should be single glyphs, every bigram test to date has been slightly off on those pairs and the morphology test must be run on re-tokenised data. If the sanity check validates the current tokenisation, #5 runs on existing data as planned.",
+  "source": "Brain-V 2026-04-16 user-directed sanity check before H-BV-SUFFIX-SEQUENCE-01 morphology test",
+  "researcher": "brain-v"
+}
