@@ -2,7 +2,7 @@
   "id": "H-BV-SYLLABLE-LEVEL-01",
   "claim": "Hand A EVA 'words' encode Latin syllables, not Latin words. Under this hypothesis, per-folio Hand-A token counts should correlate with the length of the corresponding plant's typical pharmaceutical entry — measured here via Sherwood/Cohen medicinal_use + notes field length as a proxy for canonical-source (Circa Instans) entry length.",
   "type": "cipher",
-  "confidence": 0.35,
+  "confidence": 0.7,
   "evidence_for": [
     "H-BV-HAND-A-INTERNAL-01 confirmed inflectional morphology and topic structure — consistent with either word or syllable-level encoding",
     "Pagel expansion refuted (H-BV-PAGEL-EXPANSION-01) — Latin word-to-word mapping does not scale; a syllable-level encoding would explain why word-level glossaries produce low-signal output",
@@ -16,14 +16,23 @@
   "test": "LOCKED: (1) For each Hand-A plant folio with a Sherwood/Cohen plant-ID (non-conflict), compute x = Hand-A token count (>=20 threshold). (2) Compute y = length in characters of (medicinal_use + notes) fields, as proxy for canonical-source entry length. (3) Compute Pearson r between x and y across all qualifying Hand-A plant folios. (4) Also compute Spearman rho as non-parametric check.",
   "test_metric": "pearson_r_token_count_vs_proxy_entry_length",
   "test_threshold": "CONFIRMED if Pearson r > 0.5 AND Spearman rho > 0.4 (syllable-level mapping supported). MARGINAL if 0.3 < r <= 0.5. REFUTED if r <= 0.3 (test H-BV-HOMOPHONIC-01 next).",
-  "tests_run": [],
+  "tests_run": [
+    {
+      "date": "2026-04-16",
+      "test": "locked_pearson_correlation",
+      "score": 0.7,
+      "passed": false,
+      "details": "n=88 Hand-A plant folios. Pearson r=+0.0589 (p=0.586), Spearman rho=+0.0454 (p=0.674). Essentially zero correlation. REFUTED under locked rule r<=0.3. CAVEAT: proxy (Sherwood notes length) is weak — not actual Circa Instans. OBSERVATION: Hand-A folio token counts are tight (mean 79.5, sd 19.3, range 45-147) suggesting fixed page-length constraint OR content not plant-specific. Next test: homophonic substitution.",
+      "confidence_change": "0.35 -> 0.70"
+    }
+  ],
   "tests_remaining": [
     "Execute in separate commit"
   ],
-  "status": "pre-registered",
+  "status": "refuted",
   "parent": "H-BV-PAGEL-EXPANSION-01",
   "created": "2026-04-16",
-  "last_tested": null,
+  "last_tested": "2026-04-16",
   "reasoning": "After Pagel expansion refuted word-level Latin mapping, the natural successor is syllable-level. The proxy (Sherwood notes length) is weak but gives SOMETHING to test. A strong correlation under a weak proxy would be all the more compelling; a null correlation under a weak proxy is evidence but not definitive.",
   "source": "Brain-V 2026-04-16 pre-registration following H-BV-PAGEL-EXPANSION-01 refutation",
   "researcher": "brain-v"

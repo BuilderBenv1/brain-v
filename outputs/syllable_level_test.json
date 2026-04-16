@@ -1,0 +1,641 @@
+{
+  "generated": "2026-04-16",
+  "hypothesis": "H-BV-SYLLABLE-LEVEL-01",
+  "locked_in_commit": "2c2e471",
+  "n_folios": 88,
+  "token_count_stats": {
+    "mean": 79.45,
+    "sd": 19.28,
+    "min": 45,
+    "max": 147
+  },
+  "proxy_length_stats": {
+    "mean": 37.48,
+    "sd": 8.89,
+    "min": 17,
+    "max": 54
+  },
+  "pearson_r": 0.0589,
+  "pearson_p": 0.585953,
+  "spearman_rho": 0.0454,
+  "spearman_p": 0.674402,
+  "verdict": "REFUTED",
+  "sample_data": [
+    {
+      "folio": "f1v",
+      "latin": "Atropa belladonna",
+      "common": "Deadly Nightshade",
+      "tokens": 82,
+      "proxy_len": 46
+    },
+    {
+      "folio": "f2r",
+      "latin": "Centaurea diffusa",
+      "common": "Diffuse Knapweed",
+      "tokens": 81,
+      "proxy_len": 41
+    },
+    {
+      "folio": "f3r",
+      "latin": "Celosia argentea",
+      "common": "Feathery Amaranth",
+      "tokens": 110,
+      "proxy_len": 47
+    },
+    {
+      "folio": "f3v",
+      "latin": "Helleborus foetidus",
+      "common": "Dungwort / Bears Foot",
+      "tokens": 85,
+      "proxy_len": 29
+    },
+    {
+      "folio": "f4r",
+      "latin": "Saxifraga cespitosa",
+      "common": "Alpine Saxifrage",
+      "tokens": 61,
+      "proxy_len": 42
+    },
+    {
+      "folio": "f4v",
+      "latin": "Campanula rapunculus",
+      "common": "Rampion",
+      "tokens": 78,
+      "proxy_len": 44
+    },
+    {
+      "folio": "f5r",
+      "latin": "Arnica montana",
+      "common": "Wolfs Bane",
+      "tokens": 54,
+      "proxy_len": 39
+    },
+    {
+      "folio": "f5v",
+      "latin": "Malva sylvestris",
+      "common": "Mallow",
+      "tokens": 46,
+      "proxy_len": 37
+    },
+    {
+      "folio": "f6r",
+      "latin": "Acanthus mollis",
+      "common": "Bear Breeches",
+      "tokens": 80,
+      "proxy_len": 28
+    },
+    {
+      "folio": "f6v",
+      "latin": "Eryngium maritimum",
+      "common": "Sea Holly",
+      "tokens": 112,
+      "proxy_len": 38
+    },
+    {
+      "folio": "f7r",
+      "latin": "Trientalis europaea",
+      "common": "Starflower",
+      "tokens": 57,
+      "proxy_len": 34
+    },
+    {
+      "folio": "f7v",
+      "latin": "Myrica gale",
+      "common": "Bog Myrtle",
+      "tokens": 75,
+      "proxy_len": 40
+    },
+    {
+      "folio": "f8r",
+      "latin": "Pisum sativum",
+      "common": "Green Pea",
+      "tokens": 134,
+      "proxy_len": 33
+    },
+    {
+      "folio": "f8v",
+      "latin": "Symphytum officinale",
+      "common": "Comfrey",
+      "tokens": 101,
+      "proxy_len": 40
+    },
+    {
+      "folio": "f9r",
+      "latin": "Ricinus communis",
+      "common": "Casteroil",
+      "tokens": 74,
+      "proxy_len": 26
+    },
+    {
+      "folio": "f9v",
+      "latin": "Viola",
+      "common": "Viola",
+      "tokens": 74,
+      "proxy_len": 41
+    },
+    {
+      "folio": "f10r",
+      "latin": "Cichorium pumilum",
+      "common": "Chicory / Endive",
+      "tokens": 86,
+      "proxy_len": 27
+    },
+    {
+      "folio": "f10v",
+      "latin": "Linnaea borealis",
+      "common": "Twinflower",
+      "tokens": 57,
+      "proxy_len": 24
+    },
+    {
+      "folio": "f11r",
+      "latin": "Rosmarinus officinalis",
+      "common": "Rosemary",
+      "tokens": 59,
+      "proxy_len": 39
+    },
+    {
+      "folio": "f11v",
+      "latin": "Curcuma longa",
+      "common": "Turmeric",
+      "tokens": 45,
+      "proxy_len": 45
+    },
+    {
+      "folio": "f13r",
+      "latin": "Musa",
+      "common": "Banana",
+      "tokens": 74,
+      "proxy_len": 38
+    },
+    {
+      "folio": "f13v",
+      "latin": "Lonicera periclymenum",
+      "common": "Honeysuckle",
+      "tokens": 61,
+      "proxy_len": 42
+    },
+    {
+      "folio": "f14r",
+      "latin": "Scorzonera",
+      "common": "Black Salsify",
+      "tokens": 72,
+      "proxy_len": 33
+    },
+    {
+      "folio": "f14v",
+      "latin": "Stachys monnieri",
+      "common": "Wood Betony",
+      "tokens": 72,
+      "proxy_len": 42
+    },
+    {
+      "folio": "f15r",
+      "latin": "Sonchus oleraceus",
+      "common": "Sow Thistle",
+      "tokens": 78,
+      "proxy_len": 25
+    },
+    {
+      "folio": "f15v",
+      "latin": "Paris quadrifolia",
+      "common": "Herb Paris",
+      "tokens": 71,
+      "proxy_len": 36
+    },
+    {
+      "folio": "f16r",
+      "latin": "Cannabis",
+      "common": "Cannabis",
+      "tokens": 81,
+      "proxy_len": 40
+    },
+    {
+      "folio": "f16v",
+      "latin": "Chrysanthemum",
+      "common": "Chrysanthemum",
+      "tokens": 76,
+      "proxy_len": 22
+    },
+    {
+      "folio": "f17r",
+      "latin": "Catananche caerulea",
+      "common": "Cupids Dart",
+      "tokens": 76,
+      "proxy_len": 45
+    },
+    {
+      "folio": "f17v",
+      "latin": "Dioscorea",
+      "common": "Yam",
+      "tokens": 134,
+      "proxy_len": 31
+    },
+    {
+      "folio": "f18r",
+      "latin": "Aster alpinus",
+      "common": "Aster",
+      "tokens": 79,
+      "proxy_len": 24
+    },
+    {
+      "folio": "f18v",
+      "latin": "Telfairia",
+      "common": "Fluted Pumpkin",
+      "tokens": 69,
+      "proxy_len": 42
+    },
+    {
+      "folio": "f19r",
+      "latin": "Polemonium coeruleum",
+      "common": "Greek Valerian",
+      "tokens": 75,
+      "proxy_len": 43
+    },
+    {
+      "folio": "f19v",
+      "latin": "Draba nivalis",
+      "common": "Nailwort",
+      "tokens": 77,
+      "proxy_len": 41
+    },
+    {
+      "folio": "f20r",
+      "latin": "Astragalus hypoglottis",
+      "common": "Milk Vetch",
+      "tokens": 88,
+      "proxy_len": 42
+    },
+    {
+      "folio": "f20v",
+      "latin": "Cynara cardunculus",
+      "common": "Cardoon",
+      "tokens": 85,
+      "proxy_len": 45
+    },
+    {
+      "folio": "f21r",
+      "latin": "Anagallis arvensis",
+      "common": "Pimpernel",
+      "tokens": 104,
+      "proxy_len": 40
+    },
+    {
+      "folio": "f21v",
+      "latin": "Dictamnus albus",
+      "common": "Burning Bush",
+      "tokens": 57,
+      "proxy_len": 45
+    },
+    {
+      "folio": "f22r",
+      "latin": "Verbena officinalis",
+      "common": "Common Vervain",
+      "tokens": 103,
+      "proxy_len": 41
+    },
+    {
+      "folio": "f22v",
+      "latin": "Tulipa",
+      "common": "Tulip",
+      "tokens": 70,
+      "proxy_len": 41
+    },
+    {
+      "folio": "f23r",
+      "latin": "Pulsatilla vulgaris",
+      "common": "Pasque Flower",
+      "tokens": 104,
+      "proxy_len": 46
+    },
+    {
+      "folio": "f23v",
+      "latin": "Borago officinalis",
+      "common": "Borage",
+      "tokens": 86,
+      "proxy_len": 37
+    },
+    {
+      "folio": "f24r",
+      "latin": "Cucumis sativus",
+      "common": "Cucumber",
+      "tokens": 110,
+      "proxy_len": 52
+    },
+    {
+      "folio": "f24v",
+      "latin": "Ficus religiosa",
+      "common": "Sacred Fig / Bo-Tree",
+      "tokens": 84,
+      "proxy_len": 20
+    },
+    {
+      "folio": "f25r",
+      "latin": "Thymus",
+      "common": "Wild Thyme",
+      "tokens": 47,
+      "proxy_len": 43
+    },
+    {
+      "folio": "f25v",
+      "latin": "Isatis tinctoria",
+      "common": "Woad",
+      "tokens": 57,
+      "proxy_len": 42
+    },
+    {
+      "folio": "f27r",
+      "latin": "Spinacia oleracea",
+      "common": "Spinach",
+      "tokens": 85,
+      "proxy_len": 42
+    },
+    {
+      "folio": "f27v",
+      "latin": "Dianthus superbus",
+      "common": "Dianthus",
+      "tokens": 54,
+      "proxy_len": 36
+    },
+    {
+      "folio": "f28r",
+      "latin": "Aristolochia",
+      "common": "Birthwort / Pipevine",
+      "tokens": 60,
+      "proxy_len": 45
+    },
+    {
+      "folio": "f28v",
+      "latin": "Rhododendron",
+      "common": "Rhododendron",
+      "tokens": 62,
+      "proxy_len": 45
+    },
+    {
+      "folio": "f29r",
+      "latin": "Lactuca sativa longifolia",
+      "common": "Romaine Lettuce",
+      "tokens": 60,
+      "proxy_len": 24
+    },
+    {
+      "folio": "f29v",
+      "latin": "Nigella sativa",
+      "common": "Roman Coriander",
+      "tokens": 73,
+      "proxy_len": 40
+    },
+    {
+      "folio": "f30r",
+      "latin": "Prunella vulgaris",
+      "common": "Healall",
+      "tokens": 92,
+      "proxy_len": 46
+    },
+    {
+      "folio": "f30v",
+      "latin": "Cuscuta europaea",
+      "common": "Dodder",
+      "tokens": 63,
+      "proxy_len": 26
+    },
+    {
+      "folio": "f32r",
+      "latin": "Veronica triphyllos",
+      "common": "Speedwell",
+      "tokens": 72,
+      "proxy_len": 20
+    },
+    {
+      "folio": "f32v",
+      "latin": "Campanula rotundifolia",
+      "common": "Harebell",
+      "tokens": 79,
+      "proxy_len": 22
+    },
+    {
+      "folio": "f35r",
+      "latin": "Cichorium intybus",
+      "common": "Radicchio",
+      "tokens": 90,
+      "proxy_len": 49
+    },
+    {
+      "folio": "f35v",
+      "latin": "Ribes nigrum",
+      "common": "Blackcurrant",
+      "tokens": 90,
+      "proxy_len": 31
+    },
+    {
+      "folio": "f36r",
+      "latin": "Delphinium staphisagria",
+      "common": "Delphinium",
+      "tokens": 53,
+      "proxy_len": 43
+    },
+    {
+      "folio": "f36v",
+      "latin": "Lamium amplexicaule",
+      "common": "Henbit / Deadnettle",
+      "tokens": 74,
+      "proxy_len": 46
+    },
+    {
+      "folio": "f37r",
+      "latin": "Mentha longifolia",
+      "common": "Mint",
+      "tokens": 73,
+      "proxy_len": 42
+    },
+    {
+      "folio": "f37v",
+      "latin": "Emilia fosbergii",
+      "common": "Tassel Flower",
+      "tokens": 89,
+      "proxy_len": 38
+    },
+    {
+      "folio": "f38v",
+      "latin": "Euphorbia myrsinites",
+      "common": "Myrtle Spurge",
+      "tokens": 60,
+      "proxy_len": 32
+    },
+    {
+      "folio": "f42v",
+      "latin": "Aquilegia vulgaris",
+      "common": "Columbine",
+      "tokens": 99,
+      "proxy_len": 39
+    },
+    {
+      "folio": "f44r",
+      "latin": "Mandragora officinarum",
+      "common": "Mandrake",
+      "tokens": 74,
+      "proxy_len": 45
+    },
+    {
+      "folio": "f44v",
+      "latin": "Apium graveolens",
+      "common": "Celery",
+      "tokens": 98,
+      "proxy_len": 43
+    },
+    {
+      "folio": "f45r",
+      "latin": "Atriplex hortensis",
+      "common": "Orach / Saltbush",
+      "tokens": 88,
+      "proxy_len": 35
+    },
+    {
+      "folio": "f45v",
+      "latin": "Lavandula angustifolia",
+      "common": "Lavender",
+      "tokens": 74,
+      "proxy_len": 42
+    },
+    {
+      "folio": "f47r",
+      "latin": "Sempervivum tectorum",
+      "common": "Houseleek",
+      "tokens": 76,
+      "proxy_len": 54
+    },
+    {
+      "folio": "f47v",
+      "latin": "Pulmonaria officinalis",
+      "common": "Lungwort",
+      "tokens": 74,
+      "proxy_len": 52
+    },
+    {
+      "folio": "f49r",
+      "latin": "Nymphaea caerulea",
+      "common": "Blue Nile Lotus",
+      "tokens": 109,
+      "proxy_len": 44
+    },
+    {
+      "folio": "f51r",
+      "latin": "Cakile maritima",
+      "common": "European Searocket",
+      "tokens": 86,
+      "proxy_len": 43
+    },
+    {
+      "folio": "f51v",
+      "latin": "Salvia officinalis",
+      "common": "Sage",
+      "tokens": 75,
+      "proxy_len": 44
+    },
+    {
+      "folio": "f52r",
+      "latin": "Anemone coronaria",
+      "common": "Poppy Anemone",
+      "tokens": 63,
+      "proxy_len": 22
+    },
+    {
+      "folio": "f52v",
+      "latin": "",
+      "common": "Fern (unidentified)",
+      "tokens": 77,
+      "proxy_len": 19
+    },
+    {
+      "folio": "f53r",
+      "latin": "Achillea ptarmica",
+      "common": "Sneezewort",
+      "tokens": 56,
+      "proxy_len": 36
+    },
+    {
+      "folio": "f53v",
+      "latin": "Hieracium aurantiacum",
+      "common": "Hawkweed",
+      "tokens": 72,
+      "proxy_len": 51
+    },
+    {
+      "folio": "f54r",
+      "latin": "Cirsium oleraceum",
+      "common": "Cabbage Thistle",
+      "tokens": 99,
+      "proxy_len": 38
+    },
+    {
+      "folio": "f54v",
+      "latin": "Perovskia atriplicifolia",
+      "common": "Russian Sage",
+      "tokens": 93,
+      "proxy_len": 19
+    },
+    {
+      "folio": "f56r",
+      "latin": "Drosera",
+      "common": "Sundew",
+      "tokens": 101,
+      "proxy_len": 51
+    },
+    {
+      "folio": "f56v",
+      "latin": "Cycas revoluta",
+      "common": "Sago Palm",
+      "tokens": 90,
+      "proxy_len": 29
+    },
+    {
+      "folio": "f87r",
+      "latin": "Satureja hortensis",
+      "common": "Summer Savory",
+      "tokens": 101,
+      "proxy_len": 17
+    },
+    {
+      "folio": "f87v",
+      "latin": "Primula vulgaris",
+      "common": "Primrose",
+      "tokens": 77,
+      "proxy_len": 36
+    },
+    {
+      "folio": "f93r",
+      "latin": "Cynara cardunculus",
+      "common": "Artichoke",
+      "tokens": 147,
+      "proxy_len": 49
+    },
+    {
+      "folio": "f93v",
+      "latin": "Lupinus",
+      "common": "Lupin",
+      "tokens": 71,
+      "proxy_len": 27
+    },
+    {
+      "folio": "f96r",
+      "latin": "Angelica archangelica",
+      "common": "Garden Angelica",
+      "tokens": 78,
+      "proxy_len": 41
+    },
+    {
+      "folio": "f96v",
+      "latin": "Tamus communis",
+      "common": "Black Bryony",
+      "tokens": 51,
+      "proxy_len": 35
+    },
+    {
+      "folio": "f100v",
+      "latin": "",
+      "common": "Sweet Chestnuts",
+      "tokens": 93,
+      "proxy_len": 22
+    }
+  ]
+}
