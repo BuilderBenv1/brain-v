@@ -1,0 +1,197 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-BASQUE-DIRECT-CORPUS-01",
+  "ud_basque_content_tokens": 39456,
+  "direct_measurements": {
+    "M1": 3.3796,
+    "M2_L1": 6,
+    "M2_L2": 25,
+    "M3": 4.4107,
+    "M4": 0.1333,
+    "M5": 0.6429,
+    "M2_L1_breakdown": {
+      "Aspect": [
+        "Imp",
+        "Perf",
+        "Prog",
+        "Prosp"
+      ],
+      "Number": [
+        "Plur",
+        "Sing"
+      ]
+    },
+    "M2_L2_breakdown": {
+      "Definite": [
+        "Def",
+        "Ind"
+      ],
+      "Case": [
+        "Abl",
+        "Abs",
+        "All",
+        "Ben",
+        "Cau",
+        "Com",
+        "Dat",
+        "Erg",
+        "Ess",
+        "Gen",
+        "Ine",
+        "Ins",
+        "Lat",
+        "Loc",
+        "Par"
+      ],
+      "VerbForm": [
+        "Fin",
+        "Inf",
+        "Part"
+      ],
+      "Mood": [
+        "Cnd",
+        "Imp",
+        "Ind",
+        "Pot",
+        "Sub"
+      ]
+    },
+    "M4_breakdown": {
+      "number_values": {
+        "Sing": 13418,
+        "Plur": 3367
+      },
+      "case_values_count": 15,
+      "total_cells": 30,
+      "zero_cells": 4
+    },
+    "M5_breakdown": {
+      "asymmetric_cases": 9,
+      "qualifying_cases": 14
+    }
+  },
+  "hand_a_values": {
+    "M1": 4.12,
+    "M2_L1": 10,
+    "M2_L2": 5,
+    "M3": 3.16,
+    "M4": 0.2,
+    "M5": 1.0
+  },
+  "published_ranges": {
+    "M1": [
+      2.5,
+      4.5
+    ],
+    "M2_L1": [
+      8,
+      16
+    ],
+    "M2_L2": [
+      3,
+      8
+    ],
+    "M3": [
+      2.0,
+      5.0
+    ],
+    "M4": [
+      0.02,
+      0.2
+    ],
+    "M5": [
+      0.6,
+      1.0
+    ]
+  },
+  "per_metric_report": {
+    "M1": {
+      "direct": 3.3796,
+      "published_range": [
+        2.5,
+        4.5
+      ],
+      "published_validated": true,
+      "hand_a": 4.12,
+      "tolerance_band_around_direct": [
+        1.6898,
+        5.0695
+      ],
+      "hand_a_fits": true
+    },
+    "M2_L1": {
+      "direct": 6,
+      "published_range": [
+        8,
+        16
+      ],
+      "published_validated": false,
+      "hand_a": 10,
+      "tolerance_band_around_direct": [
+        4.2,
+        7.8
+      ],
+      "hand_a_fits": false
+    },
+    "M2_L2": {
+      "direct": 25,
+      "published_range": [
+        3,
+        8
+      ],
+      "published_validated": false,
+      "hand_a": 5,
+      "tolerance_band_around_direct": [
+        17.5,
+        32.5
+      ],
+      "hand_a_fits": false
+    },
+    "M3": {
+      "direct": 4.4107,
+      "published_range": [
+        2.0,
+        5.0
+      ],
+      "published_validated": true,
+      "hand_a": 3.16,
+      "tolerance_band_around_direct": [
+        2.2054,
+        6.6161
+      ],
+      "hand_a_fits": true
+    },
+    "M4": {
+      "direct": 0.1333,
+      "published_range": [
+        0.02,
+        0.2
+      ],
+      "published_validated": true,
+      "hand_a": 0.2,
+      "tolerance_band_around_direct": [
+        0.0667,
+        0.2
+      ],
+      "hand_a_fits": true
+    },
+    "M5": {
+      "direct": 0.6429,
+      "published_range": [
+        0.6,
+        1.0
+      ],
+      "published_validated": true,
+      "hand_a": 1.0,
+      "tolerance_band_around_direct": [
+        0.5429,
+        0.7429
+      ],
+      "hand_a_fits": false
+    }
+  },
+  "published_validated_count": 4,
+  "hand_a_fits_count": 3,
+  "published_range_failure_overlay": false,
+  "verdict": "CORPUS_WEAK"
+}
