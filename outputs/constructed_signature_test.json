@@ -1,0 +1,159 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-CONSTRUCTED-SIGNATURE-01",
+  "corpus_sizes_chars": {
+    "Hand_A": 65758,
+    "Basque": 481692,
+    "Hungarian": 130293,
+    "Turkish": 234554,
+    "Esperanto": 360432,
+    "Shuffled_HA": 65758,
+    "Markov_HA": 65758
+  },
+  "per_corpus_metrics": {
+    "Hand_A": {
+      "M1_H_norm": 0.8273,
+      "M1_H_raw": 3.842,
+      "alphabet_size": 25,
+      "M2_H_cond": 2.1906,
+      "M3_reach": 0.4432,
+      "M4_zipf": 0.9735,
+      "M5_ttr": 0.3618,
+      "M6_heaps": 0.8778
+    },
+    "Basque": {
+      "M1_H_norm": 0.7016,
+      "M1_H_raw": 4.1099,
+      "alphabet_size": 58,
+      "M2_H_cond": 3.2433,
+      "M3_reach": 0.2809,
+      "M4_zipf": 0.8733,
+      "M5_ttr": 0.4856,
+      "M6_heaps": 0.909
+    },
+    "Hungarian": {
+      "M1_H_norm": 0.7824,
+      "M1_H_raw": 4.6027,
+      "alphabet_size": 59,
+      "M2_H_cond": 3.7029,
+      "M3_reach": 0.3255,
+      "M4_zipf": 0.8264,
+      "M5_ttr": 0.4752,
+      "M6_heaps": 0.899
+    },
+    "Turkish": {
+      "M1_H_norm": 0.7678,
+      "M1_H_raw": 4.4389,
+      "alphabet_size": 55,
+      "M2_H_cond": 3.4833,
+      "M3_reach": 0.279,
+      "M4_zipf": 0.8188,
+      "M5_ttr": 0.459,
+      "M6_heaps": 0.8972
+    },
+    "Esperanto": {
+      "M1_H_norm": 0.5871,
+      "M1_H_raw": 4.4444,
+      "alphabet_size": 190,
+      "M2_H_cond": 3.4501,
+      "M3_reach": 0.054,
+      "M4_zipf": 0.8793,
+      "M5_ttr": 0.4812,
+      "M6_heaps": 0.9156
+    },
+    "Shuffled_HA": {
+      "M1_H_norm": 0.8273,
+      "M1_H_raw": 3.842,
+      "alphabet_size": 25,
+      "M2_H_cond": 3.8364,
+      "M3_reach": 0.6848,
+      "M4_zipf": 0.8589,
+      "M5_ttr": 0.7222,
+      "M6_heaps": 0.9587
+    },
+    "Markov_HA": {
+      "M1_H_norm": 0.828,
+      "M1_H_raw": 3.8453,
+      "alphabet_size": 25,
+      "M2_H_cond": 2.1985,
+      "M3_reach": 0.4144,
+      "M4_zipf": 1.0464,
+      "M5_ttr": 0.4554,
+      "M6_heaps": 0.8951
+    }
+  },
+  "per_metric_report": [
+    {
+      "metric": "M1 H_norm",
+      "hand_a": 0.8273,
+      "natural_mean": 0.7506,
+      "constructed": 0.5871,
+      "random_mean": 0.8276,
+      "d_natural": 0.0767,
+      "d_constructed": 0.2402,
+      "d_random": 0.0003,
+      "closest": "random"
+    },
+    {
+      "metric": "M2 H_cond",
+      "hand_a": 2.1906,
+      "natural_mean": 3.4765,
+      "constructed": 3.4501,
+      "random_mean": 3.0175,
+      "d_natural": 1.2859,
+      "d_constructed": 1.2595,
+      "d_random": 0.8269,
+      "closest": "random"
+    },
+    {
+      "metric": "M3 reach",
+      "hand_a": 0.4432,
+      "natural_mean": 0.2951,
+      "constructed": 0.054,
+      "random_mean": 0.5496,
+      "d_natural": 0.1481,
+      "d_constructed": 0.3892,
+      "d_random": 0.1064,
+      "closest": "random"
+    },
+    {
+      "metric": "M4 zipf",
+      "hand_a": 0.9735,
+      "natural_mean": 0.8395,
+      "constructed": 0.8793,
+      "random_mean": 0.9526,
+      "d_natural": 0.134,
+      "d_constructed": 0.0942,
+      "d_random": 0.0209,
+      "closest": "random"
+    },
+    {
+      "metric": "M5 ttr",
+      "hand_a": 0.3618,
+      "natural_mean": 0.4733,
+      "constructed": 0.4812,
+      "random_mean": 0.5888,
+      "d_natural": 0.1115,
+      "d_constructed": 0.1194,
+      "d_random": 0.227,
+      "closest": "natural"
+    },
+    {
+      "metric": "M6 heaps",
+      "hand_a": 0.8778,
+      "natural_mean": 0.9017,
+      "constructed": 0.9156,
+      "random_mean": 0.9269,
+      "d_natural": 0.0239,
+      "d_constructed": 0.0378,
+      "d_random": 0.0491,
+      "closest": "natural"
+    }
+  ],
+  "closest_counts": {
+    "natural": 2,
+    "constructed": 0,
+    "random": 4
+  },
+  "verdict": "CLOSEST_TO_RANDOM"
+}
