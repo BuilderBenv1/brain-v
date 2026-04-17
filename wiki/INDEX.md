@@ -7,6 +7,10 @@ last_updated: 2026-04-08
 
 Master index of every file in `wiki/`. One line per file.
 
+## Methodology
+
+- [methodology-lessons](methodology-lessons.md) — three lessons from pre-registered failures (T3 numerator/denominator; M4 tokenisation inheritance; DENSITY-DIAGNOSIS external-baseline sanity check). Canonical source for v2's methodology section.
+
 ## Concepts
 
 - [master-architecture](concepts/master-architecture.md) — full architecture: drives, layers, infrastructure stack, build sequence
