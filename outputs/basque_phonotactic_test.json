@@ -1,0 +1,86 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-BASQUE-PHONOTACTIC-01",
+  "n_valid_tokens": 8794,
+  "n_stripped_stems": 8779,
+  "P1_initial_r": {
+    "count": 24,
+    "fraction": 0.0027,
+    "threshold": "<=0.05",
+    "pass": true
+  },
+  "P2_vowel_balance": {
+    "per_vowel_presence_fraction": {
+      "a": 0.3718,
+      "e": 0.3006,
+      "o": 0.4983,
+      "i": 0.223
+    },
+    "threshold": "each >=0.05",
+    "pass": true
+  },
+  "P3_vc_ratio": {
+    "vowels": 15756,
+    "consonants": 16181,
+    "ratio": 0.4933,
+    "threshold": "[0.35, 0.45]",
+    "pass": false
+  },
+  "P4_vowel_final": {
+    "count": 5452,
+    "fraction": 0.621,
+    "threshold": ">=0.40",
+    "pass": true
+  },
+  "P5_cluster_density": {
+    "count": 3169,
+    "fraction": 0.361,
+    "threshold": "<=0.25",
+    "pass": false
+  },
+  "n_pass": 3,
+  "verdict": "CONFIRMED",
+  "rationale": "3/5 phonotactic properties match Basque expectations; stems are Basque-compatible",
+  "diagnostic_stem_initial_top10": [
+    [
+      "ch",
+      1646
+    ],
+    [
+      "o",
+      1452
+    ],
+    [
+      "d",
+      1434
+    ],
+    [
+      "k",
+      935
+    ],
+    [
+      "sh",
+      667
+    ],
+    [
+      "t",
+      593
+    ],
+    [
+      "y",
+      558
+    ],
+    [
+      "s",
+      281
+    ],
+    [
+      "cth",
+      236
+    ],
+    [
+      "a",
+      220
+    ]
+  ]
+}
