@@ -1,0 +1,274 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-CARBON-SAMPLE-VALIDATION-01",
+  "tokenisation": "A (MULTI_GLYPHS + 'ol')",
+  "paradigms": {
+    "hand_A": {
+      "y": "cons",
+      "n": "vowel_excl",
+      "r": "vowel",
+      "ol": "cons",
+      "l": "vowel"
+    },
+    "hand_B": {
+      "y": "cons",
+      "n": "vowel_excl",
+      "r": "vowel",
+      "ol": null,
+      "l": "vowel"
+    }
+  },
+  "folio_assignment": {
+    "f8": "hand_A",
+    "f47": "hand_A",
+    "f26": "hand_B",
+    "f68": null
+  },
+  "folio_groups": {
+    "f8": [
+      "f8r",
+      "f8v"
+    ],
+    "f26": [
+      "f26r",
+      "f26v"
+    ],
+    "f47": [
+      "f47r",
+      "f47v"
+    ],
+    "f68": [
+      "f68r1",
+      "f68r2",
+      "f68r3",
+      "f68v1",
+      "f68v2",
+      "f68v3"
+    ]
+  },
+  "results": {
+    "f8": {
+      "assignment": "hand_A",
+      "data": {
+        "n_words": 235,
+        "n_valid_tokens": 181,
+        "n_vowel_inner_tokens": 133,
+        "n_cons_inner_tokens": 42,
+        "counts": {
+          "y": {
+            "count_V": 22,
+            "count_C": 25,
+            "p_V": 0.1654,
+            "p_C": 0.5952
+          },
+          "n": {
+            "count_V": 51,
+            "count_C": 0,
+            "p_V": 0.3835,
+            "p_C": 0.0
+          },
+          "r": {
+            "count_V": 40,
+            "count_C": 0,
+            "p_V": 0.3008,
+            "p_C": 0.0
+          },
+          "ol": {
+            "count_V": 0,
+            "count_C": 10,
+            "p_V": 0.0,
+            "p_C": 0.2381
+          },
+          "l": {
+            "count_V": 6,
+            "count_C": 0,
+            "p_V": 0.0451,
+            "p_C": 0.0
+          }
+        }
+      },
+      "match": true,
+      "matched": [
+        "n-exclusivity holds (count_C(n) = 0)",
+        "y: cons-preferring as expected (V=22, C=25)",
+        "r: vowel-preferring as expected (V=40, C=0)",
+        "ol: cons-preferring as expected (V=0, C=10)",
+        "l: vowel-preferring as expected (V=6, C=0)"
+      ],
+      "neutral": [],
+      "violations": []
+    },
+    "f26": {
+      "assignment": "hand_B",
+      "data": {
+        "n_words": 164,
+        "n_valid_tokens": 146,
+        "n_vowel_inner_tokens": 60,
+        "n_cons_inner_tokens": 78,
+        "counts": {
+          "y": {
+            "count_V": 12,
+            "count_C": 75,
+            "p_V": 0.2,
+            "p_C": 0.9615
+          },
+          "n": {
+            "count_V": 14,
+            "count_C": 0,
+            "p_V": 0.2333,
+            "p_C": 0.0
+          },
+          "r": {
+            "count_V": 17,
+            "count_C": 0,
+            "p_V": 0.2833,
+            "p_C": 0.0
+          },
+          "ol": {
+            "count_V": 2,
+            "count_C": 0,
+            "p_V": 0.0333,
+            "p_C": 0.0
+          },
+          "l": {
+            "count_V": 1,
+            "count_C": 0,
+            "p_V": 0.0167,
+            "p_C": 0.0
+          }
+        }
+      },
+      "match": true,
+      "matched": [
+        "n-exclusivity holds (count_C(n) = 0)",
+        "y: cons-preferring as expected (V=12, C=75)",
+        "r: vowel-preferring as expected (V=17, C=0)"
+      ],
+      "neutral": [
+        "ol: no expectation (unconstrained)",
+        "l: count_V=1, count_C=0 (total<3, neutral)"
+      ],
+      "violations": []
+    },
+    "f47": {
+      "assignment": "hand_A",
+      "data": {
+        "n_words": 150,
+        "n_valid_tokens": 112,
+        "n_vowel_inner_tokens": 66,
+        "n_cons_inner_tokens": 34,
+        "counts": {
+          "y": {
+            "count_V": 17,
+            "count_C": 20,
+            "p_V": 0.2576,
+            "p_C": 0.5882
+          },
+          "n": {
+            "count_V": 23,
+            "count_C": 0,
+            "p_V": 0.3485,
+            "p_C": 0.0
+          },
+          "r": {
+            "count_V": 16,
+            "count_C": 0,
+            "p_V": 0.2424,
+            "p_C": 0.0
+          },
+          "ol": {
+            "count_V": 1,
+            "count_C": 6,
+            "p_V": 0.0152,
+            "p_C": 0.1765
+          },
+          "l": {
+            "count_V": 3,
+            "count_C": 0,
+            "p_V": 0.0455,
+            "p_C": 0.0
+          }
+        }
+      },
+      "match": true,
+      "matched": [
+        "n-exclusivity holds (count_C(n) = 0)",
+        "y: cons-preferring as expected (V=17, C=20)",
+        "r: vowel-preferring as expected (V=16, C=0)",
+        "ol: cons-preferring as expected (V=1, C=6)",
+        "l: vowel-preferring as expected (V=3, C=0)"
+      ],
+      "neutral": [],
+      "violations": []
+    },
+    "f68": {
+      "assignment": null,
+      "data": {
+        "n_words": 609,
+        "n_valid_tokens": 537,
+        "n_vowel_inner_tokens": 310,
+        "n_cons_inner_tokens": 185,
+        "counts": {
+          "y": {
+            "count_V": 106,
+            "count_C": 144,
+            "p_V": 0.3419,
+            "p_C": 0.7784
+          },
+          "n": {
+            "count_V": 29,
+            "count_C": 0,
+            "p_V": 0.0935,
+            "p_C": 0.0
+          },
+          "r": {
+            "count_V": 61,
+            "count_C": 1,
+            "p_V": 0.1968,
+            "p_C": 0.0054
+          },
+          "ol": {
+            "count_V": 23,
+            "count_C": 24,
+            "p_V": 0.0742,
+            "p_C": 0.1297
+          },
+          "l": {
+            "count_V": 23,
+            "count_C": 2,
+            "p_V": 0.0742,
+            "p_C": 0.0108
+          }
+        }
+      },
+      "descriptive_hand_A": {
+        "match": true,
+        "matched": [
+          "n-exclusivity holds (count_C(n) = 0)",
+          "y: cons-preferring as expected (V=106, C=144)",
+          "r: vowel-preferring as expected (V=61, C=1)",
+          "ol: cons-preferring as expected (V=23, C=24)",
+          "l: vowel-preferring as expected (V=23, C=2)"
+        ],
+        "neutral": [],
+        "violations": []
+      },
+      "descriptive_hand_B": {
+        "match": true,
+        "matched": [
+          "n-exclusivity holds (count_C(n) = 0)",
+          "y: cons-preferring as expected (V=106, C=144)",
+          "r: vowel-preferring as expected (V=61, C=1)",
+          "l: vowel-preferring as expected (V=23, C=2)"
+        ],
+        "neutral": [
+          "ol: no expectation (unconstrained)"
+        ],
+        "violations": []
+      }
+    }
+  },
+  "n_reference_matches": 3,
+  "verdict": "CONFIRMED",
+  "rationale": "All 3 reference folios match their predicted paradigm within power limits"
+}
