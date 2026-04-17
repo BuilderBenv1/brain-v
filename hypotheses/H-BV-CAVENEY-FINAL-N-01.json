@@ -1,0 +1,30 @@
+{
+  "id": "H-BV-CAVENEY-FINAL-N-01",
+  "claim": "Caveney's (2020) positional constraint on EVA n — 'of all n occurrences in the Hand A corpus, the vast majority are word-final' — holds at >=85% when measured as (n occurrences word-final) / (all n occurrences). This is the corrected specification after H-BV-EXTERNAL-PREDICTIONS-01 locked an inverted denominator for the same underlying claim. If confirmed, n is strongly positionally biased and becomes a load-bearing candidate for composite-outer decomposition.",
+  "type": "structural",
+  "confidence": 0.85,
+  "evidence_for": [
+    "Caveney (2020, voynich.ninja thread 3354) asserted that EVA n 'occurs almost exclusively either in word-final position or in the coda position' in the Voynich corpus, as part of a Basque-leaning positional argument.",
+    "Diagnostic run during H-BV-EXTERNAL-PREDICTIONS-01 (not the locked metric, reported as context) yielded 94.61% word-final n on Hand A. This hypothesis formally pre-registers the test that diagnostic measured.",
+    "Word-final positional bias for specific glyphs is a well-documented Voynichese feature (Stolfi, Currier). n behaving this way is consistent with the broader positional-slot grammar."
+  ],
+  "evidence_against": [
+    "Caveney's original claim was informal (forum post, not peer-reviewed). His actual threshold ('almost exclusively', 'vast majority') was natural-language, not numeric. The 0.85 threshold is Brain-V's operationalisation, loosened from 'almost exclusively' to absorb measurement ambiguity.",
+    "Caveney mentioned 'word-final OR coda position'. The locked metric uses word-final strictly (n is the last EVA glyph in the token). Intra-word coda occurrences are counted in the denominator but not the numerator; this is the conservative choice — if anything the metric under-counts relative to Caveney's full claim.",
+    "A confirmation here does not by itself validate Caveney's full Basque-Voynich proposal; it validates one specific positional claim within it."
+  ],
+  "test": "LOCKED PROCEDURE.\n\n  DATA: Hand A corpus, EVA transliteration. Loaded from raw/perception/voynich-corpus.json. Hand A = folios with currier_language == 'A'. All tokens in all Hand A lines.\n\n  TOKENISATION: per the standard Brain-V tokenizer used in scripts/run_external_predictions.py. Multi-char ligatures (cth, cph, ckh, cfh, ch, sh, ee) matched greedily; remaining characters as single glyphs.\n\n  METRIC (PRECISELY OPERATIONALISED):\n    Let T = multiset of all Hand A tokens, each tokenised into an ordered glyph sequence.\n    For each token t in T, for each position i in t:\n      - count_n_total += 1 iff t[i] == 'n'\n      - count_n_final += 1 iff t[i] == 'n' AND i == len(t) - 1\n    Metric: caveney_ratio = count_n_final / count_n_total\n\n  NUMERATOR:   count_n_final   = total occurrences of the glyph 'n' at the final position of their token across all Hand A tokens\n  DENOMINATOR: count_n_total   = total occurrences of the glyph 'n' at any position across all Hand A tokens\n\n  PASS CONDITION: caveney_ratio >= 0.85\n  FAIL CONDITION: caveney_ratio < 0.85\n\n  DECISION RULE (LOCKED):\n    CONFIRMED: caveney_ratio >= 0.85. Caveney's positional constraint holds in Hand A.\n    REFUTED: caveney_ratio < 0.85. The constraint does not hold.\n\n  WORKED EXAMPLE (to lock denominator interpretation):\n    Token 'daiin' tokenises as ['d','a','i','i','n']. This token contributes:\n      count_n_total += 1  (one n at position 4)\n      count_n_final += 1  (position 4 IS the final position)\n    Token 'nchol' tokenises as ['n','ch','o','l']. This token contributes:\n      count_n_total += 1  (one n at position 0)\n      count_n_final += 0  (position 0 is NOT the final position)\n    Token 'chnn' (hypothetical) tokenises as ['ch','n','n']. This token contributes:\n      count_n_total += 2\n      count_n_final += 1  (only the n at position 2 is final)\n\n  REPORTING: record count_n_total, count_n_final, caveney_ratio to 4 decimals; pass/fail verdict.",
+  "test_metric": "caveney_ratio = count(n_word_final) / count(n_any_position)",
+  "test_threshold": "CONFIRMED if caveney_ratio >= 0.85. REFUTED otherwise.",
+  "tests_run": [],
+  "tests_remaining": [
+    "locked_caveney_final_n_test: run on Hand A corpus with locked metric, numerator, denominator, threshold"
+  ],
+  "status": "active",
+  "parent": "H-BV-EXTERNAL-PREDICTIONS-01",
+  "created": "2026-04-17",
+  "last_tested": null,
+  "reasoning": "H-BV-EXTERNAL-PREDICTIONS-01's Test 3 locked an inverted denominator (tokens ending in n / all tokens) relative to Caveney's actual claim (of all n occurrences, fraction word-final). That pre-registration failed formally at 15.5% while the diagnostic measure of Caveney's actual claim reached 94.6%. Rather than treat the methodology error as resolved by noting it, this hypothesis pre-registers the correctly-specified test cleanly. If CONFIRMED, Caveney's positional claim becomes a properly-validated input to the composite-outer test (3). The worked example in the procedure is explicit to prevent the numerator/denominator ambiguity that caused the earlier error.",
+  "source": "Brain-V 2026-04-17. Corrective pre-registration following methodology note in H-BV-EXTERNAL-PREDICTIONS-01. External claim sourced from Caveney 2020, voynich.ninja thread 3354.",
+  "researcher": "brain-v"
+}
