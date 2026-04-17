@@ -46,7 +46,15 @@
         "stolfi_predicted_prefix": 0.14,
         "stolfi_predicted_suffix": 0.80,
         "stolfi_predicted_ratio": 0.175,
-        "interpretation": "Asymmetry DIRECTION is confirmed (suffix 3.4x prefix, same direction as Stolfi's 5.7x). Asymmetry RATIO narrowly misses the 0.25 threshold (0.29). Absolute dealer counts are roughly 5x Stolfi's values (0.70/2.42 vs 0.14/0.80), indicating Hand A has substantially denser crust glyphs per position than Stolfi's B-derived corpus. The structural pattern Stolfi identified is qualitatively present; the specific numeric threshold fails."
+        "interpretation": "Asymmetry DIRECTION is confirmed (suffix 3.4x prefix, same direction as Stolfi's 5.7x). Asymmetry RATIO narrowly misses the 0.25 threshold (0.29). Absolute dealer counts are roughly 5x Stolfi's values (0.70/2.42 vs 0.14/0.80), indicating Hand A has substantially denser crust glyphs per position than Stolfi's B-derived corpus. The structural pattern Stolfi identified is qualitatively present; the specific numeric threshold fails.",
+        "interpretation_amendment_2026_04_17": {
+          "date": "2026-04-17",
+          "triggered_by": "H-BV-DENSITY-DIAGNOSIS-01 verdict OPERATIONALISATION_DRIFT (candidate b passes at fraction_methodological = 1.06)",
+          "revision": "The interpretation above — that Hand A has substantially denser crust glyphs per position than Stolfi's baseline — is not supported under scrutiny. DENSITY-DIAGNOSIS-01 ran Brain-V's Stolfi operationalisation on Hand B directly and measured suffix_dealer_mean(B) = 2.5168, nearly identical to Hand A's 2.4182. Both hands are ~3x Stolfi's published 0.80. The 3x gap is not a Hand-A-specific property of the manuscript; it is a drift between Brain-V's implementation and Stolfi's published numbers, affecting both hands equally.",
+          "locked_result_unchanged": "The T2 pass/fail verdict (FAIL), raw statistics (prefix 0.7042, suffix 2.4182, ratio 0.2912), and pass band (< 0.25) are UNCHANGED. Pre-registration discipline: published verdicts stand.",
+          "what_still_holds": "The asymmetry DIRECTION finding (suffix >> prefix in Hand A) is still valid — it is a within-hand positional finding and does not depend on the Stolfi baseline. The Stolfi-grammar qualitative structure is still confirmed in Hand A.",
+          "what_does_not_hold": "Any claim that Hand A is 'unusually dense' relative to Currier B, or that Hand A has 'excess suffix dealers', or that the 2.42 value indicates Hand-A-specific morphology richness. Those readings were artefacts of comparing Brain-V's pipeline to Stolfi's published numbers without a prerequisite sanity check."
+        }
       },
       "test_3_caveney_final_n": {
         "observed_locked_metric": 0.1546,
