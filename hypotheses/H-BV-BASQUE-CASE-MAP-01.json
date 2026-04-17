@@ -1,0 +1,31 @@
+{
+  "id": "H-BV-BASQUE-CASE-MAP-01",
+  "claim": "Hand A's Layer-2 outers {y, n, r, ol, l} correspond distributionally to Basque case markers (ergative -k, absolutive zero, dative -ri, genitive -ren, instrumental -z, locative -n). An injective mapping from at least 3 of 5 Hand A outers to distinct Basque cases, where the Hand A outer matches the Basque case on frequency band and selectional/positional pattern, would support the Basque-like reading.",
+  "type": "language",
+  "confidence": 0.35,
+  "evidence_for": [
+    "CAPPELLI-MATCH-01 CONFIRMED 4/5 structural matches between Hand A Layer-2 outers and Latin scribal conventions. If those are abbreviation marks over an underlying Basque text, Basque case markers should underlie the same Hand A outer positions.",
+    "AGGLUTINATIVE-SCREEN-01 matched Hand A to Basque's 12 core case markers / 5 peripheral clitics inventory scale (Hand A's 10/5 profile fits)",
+    "Basque nominal morphology is strict-slot, terminal-suffixed, and shows categorical selectional constraints — all properties Brain-V has documented in Hand A."
+  ],
+  "evidence_against": [
+    "Basque case markers are multi-character (-(r)en, -(r)i, -tik) while Hand A Layer-2 outers are single-glyph. A direct one-to-one mapping is prima facie unlikely without involving Layer-1 inners in the case encoding.",
+    "Without a Basque corpus reference, 'frequency band' and 'distributional pattern' for each Basque case must be specified from published grammar literature and are approximate ranges.",
+    "The test risks the mapping being forced post-hoc. Lock all predictions before execution to prevent result-shaping.",
+    "Basque has 8+ cases; Hand A has 5 outers. Some cases will necessarily be unmatched, and that mismatch needs a principled interpretation."
+  ],
+  "test": "LOCKED PROCEDURE.\n\n  BASQUE CASE MARKER PROFILES (locked, from Hualde & Ortiz de Urbina 2003, de Rijk 2008, Laka 1996):\n\n  C_ERG (-k, ergative, marks transitive subject):\n    Terminal: yes\n    Frequency band in nominal-rich text: 5-15% of word-terminal positions\n    Selection: attaches to any stem type; no strong vowel/consonant preference\n    Key Basque test: sigmatic — ends in a consonant (-k)\n\n  C_ABS (zero, absolutive):\n    Terminal: bare stem (no suffix)\n    Frequency: typically 30-50% of tokens are bare absolutive forms\n    Selection: N/A (no marker)\n    Hand A analog: the fraction of tokens with NO Layer-2 outer from the set {y,n,r,ol,l}\n\n  C_DAT (-(r)i, dative):\n    Terminal: yes\n    Frequency band: 3-10%\n    Selection: following vowel-ending stem takes -ri; consonant-ending takes -i with linker. Overall behaviour is vowel-preferring.\n    Key Basque test: ends in vowel 'i'\n\n  C_GEN (-(r)en, genitive):\n    Terminal: yes\n    Frequency band: 5-15% in nominal-rich text\n    Selection: vowel-ending stem takes -ren; consonant-ending takes -en. Overall vowel-preferring.\n    Key Basque test: ends in consonant 'n'\n\n  C_INST (-z, instrumental):\n    Terminal: yes\n    Frequency band: 2-8%\n    Selection: any stem; may show slight vowel preference\n    Key Basque test: ends in sibilant 'z'\n\n  C_LOC (-n, inessive locative):\n    Terminal: yes\n    Frequency band: 5-15%\n    Selection: vowel-ending stem takes -(a)n; consonant-ending stems are rare in locative.\n    Key Basque test: ends in consonant 'n'; vowel-preferring selection\n\n  HAND A OUTER PROFILES (from CAPPELLI-MATCH-01 output):\n    y   term 0.773  freq 0.315  diff V/C 0.256   (cons-preferring)\n    n   term 0.946  freq 0.155  diff V/C inf     (vowel-exclusive)\n    r   term 0.799  freq 0.169  diff V/C 76.06   (vowel-preferring)\n    ol  term 0.735  freq 0.143  diff V/C 0.292   (cons-preferring)\n    l   term 0.549  freq 0.043  diff V/C 8.97    (vowel-preferring)\n    bare (no top-5 outer): approximately 14% of N>=3 tokens (computed at execution)\n\n  PER-OUTER MATCHING (LOCKED):\n    For each Hand A outer, determine the single best-matching Basque case by evaluating:\n      (1) Is the Hand A outer's frequency within the case's frequency band? (FREQ)\n      (2) Does the Hand A outer's selectional profile match the case's expected selection? (SEL)\n      (3) Is the Hand A outer's terminal fraction compatible with the case being a suffix? (TERMINAL >= 0.60)\n    An outer-to-case match requires 2-of-3 criteria to pass.\n\n  INJECTIVE MAPPING:\n    At most one Hand A outer maps to each Basque case. If two outers both best-match the same case, only the better-matching is counted; the other is unmatched.\n\n  DECISION RULE (LOCKED):\n    CONFIRMED: >=3 Hand A outers map to distinct Basque cases at 2-of-3 criteria each.\n    MARGINAL: Exactly 2 Hand A outers map.\n    REFUTED: <=1 Hand A outer maps.\n\n  DIAGNOSTIC (non-decision-feeding):\n    Report whether the Hand A 'bare' population fraction (tokens with no top-5 outer) falls within Basque's 30-50% C_ABS absolutive expected range.",
+  "test_metric": "count_of_hand_a_outers_with_injective_basque_case_match",
+  "test_threshold": "CONFIRMED if >=3 outers map injectively to distinct cases. MARGINAL if 2. REFUTED if <=1.",
+  "tests_run": [],
+  "tests_remaining": [
+    "locked_basque_case_mapping_test"
+  ],
+  "status": "active",
+  "parent": "H-BV-AGGLUTINATIVE-SCREEN-01",
+  "created": "2026-04-17",
+  "last_tested": null,
+  "reasoning": "If Hand A encodes a Basque-like language under Latin scribal abbreviation, the observed Layer-2 outer positions are where Basque case markers would appear in a hypothetical underlying text. The test checks whether the mapping from Hand A outers to Basque cases can be made injectively on the basis of frequency and selectional properties — without looking at surface glyph shape (which would already be governed by the abbreviation-mapping, not by Basque sounds). The test is honest about its limits: with 5 outers vs 8 Basque cases, some cases will necessarily be unmatched; the question is whether the RE-COVERABLE sub-mapping shows enough internal coherence to support the Basque-like reading.",
+  "source": "Brain-V 2026-04-17 user-directed falsification attempt on Basque-like+Latin-abbreviation convergence hypothesis; test 2 of 4",
+  "researcher": "brain-v"
+}
