@@ -16,6 +16,68 @@ Append-only. Newest at the top.
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Action**: Brain-V's loop broke. Check `outputs/failures.log` for details.
 
+## 2026-04-17 — Basque-specificity batch (4 tests): 2 CONFIRMED at threshold, 1 MARGINAL, 1 CONFIRMED-with-caveats — convergence survives but is not a clean finding
+
+Four locked tests, motivated by the user-posed falsifiability question: "if Hand A is Basque-like under Latin-style scribal abbreviation, several testable predictions follow. Run them before claiming convergence as a finding."
+
+### BASQUE-PHONOTACTIC-01: CONFIRMED 3/5 at threshold
+Strip Layer-2 outers + leading qo-, test Basque phonotactic compatibility of stripped stems (n=8779).
+- **P1 Initial-r rarity: PASS** 0.27% (threshold ≤5%) — sharpest Basque-specific falsifier, passes decisively
+- **P2 4-vowel balance: PASS**
+- P3 V:C ratio: **FAIL** (0.49 vs target 0.35-0.45 — stems are *too vowel-heavy*)
+- **P4 Vowel-final ≥40%: PASS** (0.62)
+- P5 Cluster density: **FAIL** (0.36 vs ≤0.25)
+
+The r-initial rule passes the hardest test; but V:C and cluster density fail. Stems are simultaneously more vowel-heavy AND more cluster-heavy than standard Basque — a peculiar combination.
+
+### BASQUE-CASE-MAP-01: CONFIRMED 4/5 (letter) with frequency saturation failure
+Injective outer-to-case mapping at 2/3 criteria each: ol→ERG (3/3), y→INST, n→DAT, r→GEN (each 2/3); l unmatched.
+
+**But critical diagnostic fails**: Hand A bare-fraction 14.25% vs Basque C_ABS expected 30-50%. Only 2/25 outer-case pairs pass the FREQ criterion — Hand A outers are systematically *more frequent* than Basque cases. Hand A outers are likely COMPOSITE markers encoding multiple Basque morphemes, not 1-to-1 case matches.
+
+### BASQUE-FREQ-DIST-01: MARGINAL 2/3 — Zipf too shallow
+- Z1 Zipf exponent: **FAIL** 0.751 (target 0.85-1.15)
+- Z2 top-10 share: PASS 0.151 (at lower bound)
+- Z3 rank-1/rank-10: PASS 4.72
+
+The shallow Zipf replicates H-BV-NOMENCLATOR-NLREF-01's finding that Hand A is more extreme than Latin or Italian on compression. Top-10 types (`daiin`, `chol`, `chor`, `s`, `y`, `shol`, `or`, `ol`, `chy`, `dy`) are longer than typical natural-language function words. This is the **cleanest partial-failure** of the Basque-like reading.
+
+### BASQUE-HEADER-MAP-01: CONFIRMED 3/5 with informative H4 failure
+14-item header pool (chor, ol, shol, cho, or, cheol, aiin, chol, odaiin, cheody, chody, chocthy, shor, eol).
+- H1 no r-initial: **PASS** (0/14)
+- H2 length: **PASS** (mean 3.07)
+- H3 vowel-final ≥35%: **FAIL** (7.1%)
+- H4 clusters ≥8: **FAIL** (only 4; one 9-member giant cluster contains chor/shor/or/cho/chol/eol/cheol/shol/ol)
+- H5 Hand-A consistency ≥70%: **PASS** (100%)
+
+The 9-member cluster is striking — it suggests the headers are morphological variants of a small root set, consistent with agglutinative case-marking of a recurring category word rather than distinct encyclopedic section names.
+
+### Overall assessment
+
+The four tests collectively tell a partial story:
+
+**What survives**: The single hardest Basque-specific test (no initial r) passes decisively in both the general stripped stems and the header pool. Injective outer-to-case mapping is achievable. Length distributions are plausible. Headers integrate with the general Hand A lexicon.
+
+**What does not cleanly fit**:
+- V:C ratio and cluster density are off-Basque
+- Hand A outers are over-frequent relative to Basque cases
+- Bare-fraction (proxy for absolutive) is under-represented (14.25% vs 30-50%)
+- Zipf exponent is shallower than Basque narrative text
+- Top-10 Hand A types are not short function morphemes
+
+**Interpretation for v2 preprint**: The Basque-like + Latin-abbreviation convergence survives these four falsification tests at the letter of the locked rules (3 CONFIRMED, 1 MARGINAL), but the quantitative details consistently indicate either (a) Hand A outers are COMPOSITE markers encoding multiple morphemes per position (consistent with scribal abbreviation but not directly proven), (b) Hand A is a Basque-adjacent language with denser case-marking than standard Basque, or (c) the identification is wrong and the morphological-structural similarity is coincidental with another agglutinative family.
+
+The convergence should be framed as a **hypothesis with quantitative tensions**, not as an identification. The frequency-distribution shallowness in particular cannot be explained away by abbreviation or morphological saturation alone and represents a genuine unresolved anomaly.
+
+**Confidence updates**:
+- "Hand A stems are Basque-compatible phonotactically" 0.4 → 0.55
+- "Hand A outers map to Basque cases" 0.35 → 0.45
+- "Hand A frequency distribution matches Basque" 0.4 → 0.35 (unchanged or slight decrease)
+- "Header pool is Basque-compatible" 0.3 → 0.45
+- **Overall "Hand A is Basque-like under Latin scribal abbreviation" ~0.45** (hypothesis-level, not finding-level)
+
+---
+
 ## 2026-04-17 — H-BV-AGGLUTINATIVE-SCREEN-01 CONFIRMED: Basque 5/5, Japanese 4/5, Quechua 3/5
 
 **Hypothesis**: Hand A's morphological profile matches at least one non-harmonic agglutinative candidate on ≥3/5 metrics. Candidates (narrowed per VOWEL-HARMONY-01 REFUTED): Basque, Quechua, Japanese. Metrics: mean morphemes/word, Layer-1/Layer-2 inventory sizes, productivity ratio, categorical gap density, slot ordering strictness. Reference values from published typological literature.
