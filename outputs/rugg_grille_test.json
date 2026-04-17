@@ -1,0 +1,94 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-RUGG-GRILLE-01",
+  "seed": 20260417,
+  "n_sims_per_k": 200,
+  "k_values": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.5
+  ],
+  "tokens_per_sim": 11022,
+  "inner_inventory": [
+    "i",
+    "e",
+    "o",
+    "a",
+    "ch",
+    "d",
+    "k",
+    "t",
+    "sh",
+    "l"
+  ],
+  "outer_inventory": [
+    "y",
+    "n",
+    "r",
+    "ol",
+    "l"
+  ],
+  "inner_weights": [
+    0.2206,
+    0.1906,
+    0.1804,
+    0.1353,
+    0.0865,
+    0.0794,
+    0.0397,
+    0.0308,
+    0.0213,
+    0.0152
+  ],
+  "outer_weights": [
+    0.3863,
+    0.2252,
+    0.2165,
+    0.118,
+    0.054
+  ],
+  "results_by_k": {
+    "0.0": {
+      "n_sims": 200,
+      "n_reproduce": 0,
+      "reproduction_rate": 0.0,
+      "mean_C_total": 3009.1,
+      "mean_n_after_C": 677.58
+    },
+    "0.1": {
+      "n_sims": 200,
+      "n_reproduce": 0,
+      "reproduction_rate": 0.0,
+      "mean_C_total": 3009.6,
+      "mean_n_after_C": 665.87
+    },
+    "0.2": {
+      "n_sims": 200,
+      "n_reproduce": 0,
+      "reproduction_rate": 0.0,
+      "mean_C_total": 3010.0,
+      "mean_n_after_C": 685.06
+    },
+    "0.3": {
+      "n_sims": 200,
+      "n_reproduce": 1,
+      "reproduction_rate": 0.005,
+      "mean_C_total": 3004.9,
+      "mean_n_after_C": 684.02
+    },
+    "0.5": {
+      "n_sims": 200,
+      "n_reproduce": 2,
+      "reproduction_rate": 0.01,
+      "mean_C_total": 3005.7,
+      "mean_n_after_C": 721.09
+    }
+  },
+  "total_sims": 1000,
+  "total_reproduce": 3,
+  "overall_reproduction_rate": 0.003,
+  "verdict": "CONFIRMED_RUGG_REFUTED",
+  "rationale": "Only 0.30% (<1%) of 1000 simulations reproduce the n/C-inner gap; the gap requires a grammatical constraint, Rugg-grille REFUTED as explanation for Hand A"
+}
