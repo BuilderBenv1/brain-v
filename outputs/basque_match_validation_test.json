@@ -1,0 +1,321 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-BASQUE-MATCH-VALIDATION-01",
+  "S1_provenance_audit": {
+    "per_metric": {
+      "M1": {
+        "primary_sources": [
+          "Hualde & Ortiz de Urbina 2003",
+          "de Rijk 2008"
+        ],
+        "methodology_alignment": "approximate \u2014 Brain-V M1 is mean glyph-units/word; published sources give mean morphemes/word qualitatively",
+        "timing": "literature-derived; locked in H-BV-AGGLUTINATIVE-SCREEN-01 on 2026-04-17 SAME SESSION as Hand A measurement"
+      },
+      "M2_L1": {
+        "primary_sources": [
+          "Hualde & Ortiz de Urbina 2003"
+        ],
+        "methodology_alignment": "derived from Basque case-marker + clitic count (~12 core case + peripherals); Brain-V M2 is top-K inventory at position N-2; not identical but both are bounded productive inventories",
+        "timing": "same session"
+      },
+      "M2_L2": {
+        "primary_sources": [
+          "Hualde & Ortiz de Urbina 2003"
+        ],
+        "methodology_alignment": "derived from peripheral clitic/particle count; Brain-V L2 is top-5 outer glyphs; approximate alignment",
+        "timing": "same session"
+      },
+      "M3": {
+        "primary_sources": [
+          "Hualde & Ortiz de Urbina 2003",
+          "de Rijk 2008"
+        ],
+        "methodology_alignment": "derived from 'nominal stems take 3-4 case forms'; Brain-V M3 is distinct inners/productive stem; conceptually aligned",
+        "timing": "same session"
+      },
+      "M4": {
+        "primary_sources": [
+          "Hualde & Ortiz de Urbina 2003"
+        ],
+        "methodology_alignment": "derived from 'animacy-based categorical constraints'; Brain-V M4 is zero-cells in top-K x top-K paradigm; indirect derivation",
+        "timing": "same session"
+      },
+      "M5": {
+        "primary_sources": [
+          "Hualde & Ortiz de Urbina 2003"
+        ],
+        "methodology_alignment": "derived from 'strictly slot-ordered' qualitative description; Brain-V M5 is 3x asymmetry fraction; qualitative-to-quantitative approximation",
+        "timing": "same session"
+      }
+    },
+    "contemporaneous_all": false,
+    "single_source_count": 4,
+    "status": "PARTIAL",
+    "note": "Mixed: most ranges are single-source derivations, but the prior Basque locks provide some prior-art anchoring."
+  },
+  "S2_sensitivity_20pct": {
+    "basque_narrowed_ranges": {
+      "M1": [
+        2.7,
+        4.3
+      ],
+      "M2_L1": [
+        8.8,
+        15.2
+      ],
+      "M2_L2": [
+        3.5,
+        7.5
+      ],
+      "M3": [
+        2.3,
+        4.7
+      ],
+      "M4": [
+        0.03799999999999999,
+        0.182
+      ],
+      "M5": [
+        0.64,
+        0.9600000000000001
+      ]
+    },
+    "top3_results": [
+      {
+        "language": "Basque",
+        "distance": 0.25,
+        "matches": 4,
+        "per_metric": {
+          "M1": {
+            "v": 4.12,
+            "range": [
+              2.7,
+              4.3
+            ],
+            "d": 0.0,
+            "in_range": true
+          },
+          "M2_L1": {
+            "v": 10,
+            "range": [
+              8.8,
+              15.2
+            ],
+            "d": 0.0,
+            "in_range": true
+          },
+          "M2_L2": {
+            "v": 5,
+            "range": [
+              3.5,
+              7.5
+            ],
+            "d": 0.0,
+            "in_range": true
+          },
+          "M3": {
+            "v": 3.16,
+            "range": [
+              2.3,
+              4.7
+            ],
+            "d": 0.0,
+            "in_range": true
+          },
+          "M4": {
+            "v": 0.2,
+            "range": [
+              0.03799999999999999,
+              0.182
+            ],
+            "d": 0.125,
+            "in_range": false
+          },
+          "M5": {
+            "v": 1.0,
+            "range": [
+              0.64,
+              0.9600000000000001
+            ],
+            "d": 0.125,
+            "in_range": false
+          }
+        }
+      },
+      {
+        "language": "Georgian",
+        "distance": 0.26,
+        "matches": 4,
+        "per_metric": {
+          "M1": {
+            "v": 4.12,
+            "range": [
+              2.0,
+              4.0
+            ],
+            "d": 0.06,
+            "in_range": false
+          },
+          "M2_L1": {
+            "v": 10,
+            "range": [
+              10,
+              20
+            ],
+            "d": 0.0,
+            "in_range": true
+          },
+          "M2_L2": {
+            "v": 5,
+            "range": [
+              4,
+              10
+            ],
+            "d": 0.0,
+            "in_range": true
+          },
+          "M3": {
+            "v": 3.16,
+            "range": [
+              2.0,
+              4.5
+            ],
+            "d": 0.0,
+            "in_range": true
+          },
+          "M4": {
+            "v": 0.2,
+            "range": [
+              0.1,
+              0.3
+            ],
+            "d": 0.0,
+            "in_range": true
+          },
+          "M5": {
+            "v": 1.0,
+            "range": [
+              0.7,
+              0.95
+            ],
+            "d": 0.2,
+            "in_range": false
+          }
+        }
+      },
+      {
+        "language": "Swahili",
+        "distance": 0.375,
+        "matches": 5,
+        "per_metric": {
+          "M1": {
+            "v": 4.12,
+            "range": [
+              3.0,
+              5.5
+            ],
+            "d": 0.0,
+            "in_range": true
+          },
+          "M2_L1": {
+            "v": 10,
+            "range": [
+              6,
+              12
+            ],
+            "d": 0.0,
+            "in_range": true
+          },
+          "M2_L2": {
+            "v": 5,
+            "range": [
+              8,
+              16
+            ],
+            "d": 0.375,
+            "in_range": false
+          },
+          "M3": {
+            "v": 3.16,
+            "range": [
+              2.5,
+              5.0
+            ],
+            "d": 0.0,
+            "in_range": true
+          },
+          "M4": {
+            "v": 0.2,
+            "range": [
+              0.05,
+              0.2
+            ],
+            "d": 0.0,
+            "in_range": true
+          },
+          "M5": {
+            "v": 1.0,
+            "range": [
+              0.85,
+              1.0
+            ],
+            "d": 0.0,
+            "in_range": true
+          }
+        }
+      }
+    ],
+    "margin": "1.04",
+    "status": "PARTIAL"
+  },
+  "S3_alternative_operationalisations": {
+    "V1_M1_raw_char": 4.9662,
+    "V3_M3_prod_ge_5": 3.8227,
+    "V5_M5_asym_2x": 0.8,
+    "variants_detail": [
+      {
+        "variant": "V1 M1 raw char length",
+        "override": "M1=4.9662",
+        "rank1": "Basque",
+        "rank1_d": 0.2331,
+        "rank2": "Swahili",
+        "rank2_d": 0.375,
+        "margin": "1.6087516087516087",
+        "verdict": "PASS"
+      },
+      {
+        "variant": "V3 M3 productivity >=5",
+        "override": "M3=3.8227",
+        "rank1": "Basque",
+        "rank1_d": 0.0,
+        "rank2": "Georgian",
+        "rank2_d": 0.26,
+        "margin": "inf",
+        "verdict": "PASS"
+      },
+      {
+        "variant": "V5 M5 asymmetry >=2x",
+        "override": "M5=0.8",
+        "rank1": "Basque",
+        "rank1_d": 0.0,
+        "rank2": "Georgian",
+        "rank2_d": 0.06,
+        "margin": "inf",
+        "verdict": "PASS"
+      }
+    ],
+    "pass_count": 3,
+    "status": "PASS"
+  },
+  "S4_ud_basque_corpus": {
+    "m1_measured": 3.3796,
+    "m1_p10": 1,
+    "m1_p90": 5,
+    "m3_measured": 5.5262,
+    "status": "PASS",
+    "note": "Measured M1 3.380 in [2.5, 4.5]; Hand A 4.12 in UD_Basque p10-p90 [1, 5]."
+  },
+  "aggregate_score": 3.0,
+  "denominator": 4,
+  "verdict": "PROVISIONAL_CONFIRMATION"
+}
