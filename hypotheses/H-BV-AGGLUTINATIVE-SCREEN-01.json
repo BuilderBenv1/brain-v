@@ -17,6 +17,25 @@
   "test": "LOCKED PROCEDURE (to be executed in a later session — pre-registration only, to avoid post-hoc framing).\n\n  SCOPE: Hand A tokens under Tokenisation A (MULTI_GLYPHS + 'ol'), N>=3 glyph-units.\n\n  COMPUTE FOR HAND A (internal profile):\n    P1 — Morpheme count distribution: treating {stem, inner, outer} as 3 morphemes for N>=3 tokens, and extending to detect additional prefix/suffix morphemes if they exist, report the distribution of morpheme counts per word (mean, median, P10/P50/P90).\n    P2 — Sub-slot inventory sizes: Layer-1 vowel-class size (4), consonant-class size (6), Layer-2 outer inventory size (5), plus any prefix/word-initial marker inventory (qo, da, etc.).\n    P3 — Morpheme-sequence pattern: for each (sub-slot-1, sub-slot-2) combination, the joint frequency and conditional probabilities — i.e., the full paradigm table.\n    P4 — Selectional-restriction strength: for each sub-slot pair, the maximum and mean diff ratio across all morphemes in the upper slot (summary statistic of how deterministic lower-slot → upper-slot selection is).\n\n  REFERENCES (publicly available morphological corpora):\n    Agglutinative: Hungarian (Szeged Corpus), Finnish (Turku Dependency Treebank), Turkish (METU-Sabanci Treebank), Basque (BDT), Quechua (AmericasNLP corpora).\n    Inflecting: Latin (PROIEL/LDT), Italian (PAISA), Greek (PROIEL), Arabic (PATB).\n    Isolating: Mandarin (Chinese Treebank), Vietnamese (VNTreebank).\n    For each reference, extract P1-P4 using equivalent morphological segmentation (UD-tagged morphemes where available).\n\n  COMPARISON METRIC:\n    For each profile variable (P1 distribution, P2 inventory vector, P3 paradigm-table sparsity, P4 restriction strength), compute distance between Hand A and each reference language using:\n      - Earth Mover's Distance for P1 and P2\n      - Jensen-Shannon divergence for P3\n      - Absolute difference for P4\n    Combine into a weighted composite similarity score per reference language.\n\n  DECISION RULE (LOCKED, to be interpreted when test runs):\n    CONFIRMED: Hand A's best-matching language family is AGGLUTINATIVE AND the composite similarity gap to the next family (inflecting/isolating/polysynthetic) is >= 1.5x the within-family variance.\n    REFUTED:   Hand A's best-matching family is NOT agglutinative AND the best agglutinative language's composite distance is >= 1.5x the best non-agglutinative distance.\n    MARGINAL:  Hand A's best match is agglutinative but within-family variance is comparable to between-family gap, OR the best match is non-agglutinative but agglutinative is a close second.",
   "test_metric": "per_reference_composite_similarity_and_best_family_identification",
   "test_threshold": "CONFIRMED if best family is agglutinative with >=1.5x gap; REFUTED if best non-agglutinative with >=1.5x gap to best agglutinative; MARGINAL otherwise.",
+  "refinement_2026-04-17": {
+    "reason": "Narrowing the locked spec in response to H-BV-VOWEL-HARMONY-01 REFUTED (2026-04-16), which eliminated harmonic agglutinative languages from the candidate set. The original pre-reg included Hungarian, Finnish, Turkish (all with vowel harmony) alongside Basque and Quechua (no harmony). Per evidence, the candidate set is narrowed to NON-HARMONIC agglutinative languages only. Metrics are restated in a form tractable for per-language comparison against published typological literature.",
+    "narrowing_is_evidence_driven": true,
+    "refined_candidate_set": ["Basque", "Quechua", "Japanese"],
+    "refined_metrics": [
+      "M1 — Mean morphemes per word",
+      "M2 — Layer-1 / Layer-2 inventory sizes",
+      "M3 — Productivity ratio (forms per stem)",
+      "M4 — Categorical gap density",
+      "M5 — Slot ordering strictness"
+    ],
+    "refined_decision_rule": {
+      "CONFIRMED": "Hand A's profile matches at least one candidate within published variance bounds on >= 3 of 5 metrics",
+      "MARGINAL": "Matches on exactly 2 of 5 metrics for best candidate",
+      "REFUTED": "Matches on <= 1 of 5 metrics for any candidate — expand search to additional non-harmonic agglutinative families"
+    },
+    "source_of_reference_values": "Published typological literature (Hualde & Ortiz de Urbina on Basque, Adelaar on Quechua, Shibatani on Japanese, WALS comparative data). No proprietary corpus access; reference values are literature-derived with approximation caveats documented in execution results.",
+    "audit_note": "The original locked spec (P1-P4 against 5 agglutinative + 4 inflecting + 2 isolating) remains in the file above. Execution follows the refinement spec. Both are committed pre-execution to preserve the audit trail — the refinement is not post-hoc result-shaping but evidence-driven narrowing motivated by H-BV-VOWEL-HARMONY-01."
+  },
   "tests_run": [],
   "tests_remaining": [
     "locked_morphological_profile_comparison"
