@@ -1,0 +1,31 @@
+{
+  "id": "H-BV-BASQUE-PHONOTACTIC-01",
+  "claim": "Stripping Hand A's Layer-2 outers {y, n, r, ol, l} (mapped to Latin scribal abbreviations by CAPPELLI-MATCH-01) from Hand A tokens leaves a stem inventory with phonotactic properties compatible with Basque. Specifically: rare initial-r, balanced 5-vowel distribution, vowel-dominant word-final positions, low consonant-cluster density, and 35-45% overall vowel fraction.",
+  "type": "language",
+  "confidence": 0.4,
+  "evidence_for": [
+    "CAPPELLI-MATCH-01 (2026-04-17) CONFIRMED 4/5 Layer-2 outers match documented Latin scribal abbreviation conventions structurally.",
+    "AGGLUTINATIVE-SCREEN-01 (2026-04-17) identified Basque as the best 5/5 morphological-profile match among non-harmonic agglutinative candidates.",
+    "If the CAPPELLI + AGGLUTINATIVE convergence reflects a real mechanism (Basque-like language written with Latin-style scribal abbreviation), then stripping the abbreviation layer should expose an underlying stem inventory with Basque-compatible phonotactics.",
+    "Basque has distinctive phonotactic features that distinguish it from Latin and from most other European languages (no initial r, strong CV-preference, 5-vowel balance, characteristic palatal and affricate consonants) — making phonotactic testing a concrete falsifier of the Basque-like hypothesis."
+  ],
+  "evidence_against": [
+    "Stripping Layer-2 outers may not be sufficient — if Layer-1 inners are also part of the abbreviation layer (e.g., encoding theme vowels or additional inflection), the stripped 'stem' is still morphologically decorated and not directly comparable to a raw Basque lexical stem.",
+    "Basque phonotactic properties vary by historical period, dialect, and loanword integration. Using modern-Basque phonotactic ranges risks mismatch with 15th-c. Basque, for which limited attestation exists.",
+    "Hand A's glyph inventory includes items (e.g., ch, sh, ckh, cth, cph as ligatures) whose phonological mapping to Basque phonemes is entirely speculative without decoding. The phonotactic test treats EVA glyphs as category-assigned (vowel/consonant) based on Brain-V's sub-slot analysis, not based on a true phonological reading."
+  ],
+  "test": "LOCKED PROCEDURE.\n\n  DATA: Hand A tokens under Tokenisation A (MULTI_GLYPHS + 'ol'), N>=3 glyph-units.\n\n  STRIPPING PROCEDURE:\n    For each Hand-A token, remove the last glyph-unit IF it is in the Layer-2 outer set {y, n, r, ol, l}. Otherwise keep the token as-is. Additionally, remove leading 'qo' if the token begins with qo (per CAPPELLI-MATCH-01's word-initial qu- mapping). The remaining token is the STRIPPED STEM.\n\n  GLYPH PHONOLOGICAL CATEGORIES (LOCKED):\n    VOWEL-like: {i, e, o, a}\n    CONSONANT-like: {k, t, p, d, l, m, n, r, s, q, f, g, v, x, y} plus ligatures {ch, sh, ckh, cth, cph, ol}\n    (y, n, r, ol, l are stripped from Layer-2 position but may still appear medially in stems)\n\n  FIVE PHONOTACTIC PROPERTIES (LOCKED):\n\n  P1 — INITIAL-R RARITY:\n    Compute fraction of stripped stems whose first glyph-unit is 'r'.\n    Basque prediction: native Basque has no initial /r/; expect <5%.\n    PASS if fraction <= 0.05.\n\n  P2 — 5-VOWEL BALANCE:\n    For the 4 vowel-like glyphs {i, e, o, a}, each must appear as a glyph-unit in >=5% of stripped stems. (Basque has a 5-vowel system with u as the 5th; EVA lacks a distinct u, so the test is for 4-vowel presence.)\n    PASS if all of {i, e, o, a} are in at least 5% of stripped stems each.\n\n  P3 — VOWEL-CONSONANT RATIO:\n    Compute the fraction of glyph-units across all stripped stems that are vowel-like.\n    Basque prediction: ~35-45% (Basque has vowel-heavy text).\n    PASS if fraction in [0.35, 0.45].\n\n  P4 — VOWEL-FINAL PREFERENCE:\n    Compute fraction of stripped stems whose final glyph-unit is vowel-like.\n    Basque prediction: >=40% (definite article -a, frequent vowel endings).\n    PASS if fraction >= 0.40.\n\n  P5 — LOW CONSONANT-CLUSTER DENSITY:\n    Compute fraction of stripped stems that contain 2+ consecutive consonant-like glyph-units (i.e., a 2+ consonant cluster anywhere in the stem, not counting ligatures as clusters).\n    Basque prediction: relatively low; most Basque native words follow CV patterns. Expect <25% of stems to have consonant clusters.\n    PASS if fraction <= 0.25.\n\n  DECISION RULE (LOCKED):\n    CONFIRMED: >=3/5 phonotactic properties PASS. Stripped stems are Basque-compatible.\n    MARGINAL: 1-2/5 PASS. Partial compatibility; could be another language or the stripping is imperfect.\n    REFUTED: 0/5 PASS. The Basque-like hypothesis fails at the phonotactic level.",
+  "test_metric": "count_of_phonotactic_properties_passing_out_of_5",
+  "test_threshold": "CONFIRMED if >=3/5 pass. MARGINAL if 1-2/5. REFUTED if 0/5.",
+  "tests_run": [],
+  "tests_remaining": [
+    "locked_basque_phonotactic_test"
+  ],
+  "status": "active",
+  "parent": "H-BV-AGGLUTINATIVE-SCREEN-01",
+  "created": "2026-04-17",
+  "last_tested": null,
+  "reasoning": "The CAPPELLI-MATCH-01 + AGGLUTINATIVE-SCREEN-01 convergence identified a hypothesis (Basque-like agglutinative language under Latin scribal abbreviation), not a finding. If the hypothesis is correct, stripping the Latin-abbreviation layer (Layer-2 outers) should reveal a stem inventory with Basque-specific phonotactic signatures — particularly the characteristic absence of initial /r/ in native Basque vocabulary, which is a hard phonotactic rule not shared by Latin, Italian, or most European languages. This is the sharpest single falsifier available: if stripped Hand A stems are r-initial at more than 5%, the Basque-like hypothesis is in serious trouble. The other four properties provide supporting evidence.",
+  "source": "Brain-V 2026-04-17 user-directed falsification attempt on Basque-like+Latin-abbreviation convergence hypothesis; test 1 of 4",
+  "researcher": "brain-v"
+}
