@@ -1,0 +1,32 @@
+{
+  "id": "H-BV-HAND-B-SECTION-INDEPENDENCE-01",
+  "claim": "Hand B text statistics show the same section-independence pattern as Hand A: no significant correlation between section/quire assignment and text metrics (TTR, mean length, Layer-2 outer usage, marker frequency). If confirmed, the generative-process-overlay interpretation extends manuscript-wide — both hands produce section-independent text. If refuted, Hand B differs from Hand A and may encode section-specific content.",
+  "type": "structural",
+  "confidence": 0.5,
+  "evidence_for": [
+    "H-BV-EXTERNAL-CORRELATION-01 established section-independence for Hand A on 4 of 4 section-correlation tests (C1-C4 all p > 0.01). The question is whether Hand B exhibits the same pattern.",
+    "H-BV-HAND-B-MARKOV-01 CONFIRMED that Hand B shares Hand A's Markov-1-flat character-level signature. If the generative process is shared between hands, and Hand A's output is section-independent, Hand B's output would be expected to be section-independent too.",
+    "Hand B has BETTER section balance than Hand A: 32 herbal / 23 recipes / 19 biological / 5 text-only / 3 cosmological among folios with >=30 tokens. Statistical power for inter-section ANOVA is substantially higher than Hand A (which was 95 herbal dominated).",
+    "Hand B's most frequent token 'chedy' (491 occurrences) is an ideal marker for frequency-per-section testing, analogous to Hand A's 'daiin' use. The pre-reg locks chedy as the marker before execution."
+  ],
+  "evidence_against": [
+    "Hand B differs from Hand A in several ways: longer mean word length (4.47 vs 4.24), steeper Zipf slope (1.06 vs 0.97), more repetitive TTR (0.34 vs 0.36). These are parameter-level differences under the shared generative-process reading. Section correlations could differ parametrically — Hand B might show section-specific effects that Hand A masks or vice versa.",
+    "Hand B's section composition includes biological folios (19) that Hand A doesn't have at the tested scale. If biological content is statistically different from recipes/herbal at the text level, Hand B may show section effects that Hand A couldn't have shown regardless of underlying structure.",
+    "Multiple-testing and shuffle-null design are identical to EXTERNAL-CORRELATION-01. C8 (word_count x TTR) remains a likely sampling artefact and should be flagged.",
+    "A Hand B CONFIRMED result (section-independence) extends the generative-process-overlay narrative. A Hand B REFUTED result (section-specificity) requires a more complex reading: same generative process but B is section-aware while A isn't."
+  ],
+  "test": "LOCKED PROCEDURE.\n\n  DATA: Hand B folios from voynich-corpus.json filtered to currier_language=='B' AND word_count >= 30.\n\n  EXTERNAL FEATURES (per folio) — same as EXTERNAL-CORRELATION-01:\n    F1 Section, F2 Quire, F3 Folio linear position, F4 Word count, F5 Line count.\n\n  TEXT STATISTICS (per folio) — same metric definitions, Hand B marker:\n    T1 TTR: distinct types / total tokens\n    T2 Mean token length: mean character length across tokens\n    T3 Layer-2 outer usage: count of {y, n, r, ol, l} appearing in folio (0-5)\n    T4 chedy frequency: count of 'chedy' tokens / total tokens in folio (analogous to Hand A's daiin test)\n\n  EIGHT LOCKED CORRELATIONS (identical structure to EXTERNAL-CORRELATION-01):\n    C1 Section x TTR (ANOVA)\n    C2 Section x mean_length (ANOVA)\n    C3 Section x L2_outer_usage (ANOVA)\n    C4 Section x chedy_freq (ANOVA)\n    C5 Quire x TTR (ANOVA)\n    C6 Position x TTR (Spearman)\n    C7 Position x mean_length (Spearman)\n    C8 Word_count x TTR (Spearman) — flagged as likely sampling artefact per methodology lesson 8\n\n  NULL DISTRIBUTION: 1000 shuffles per correlation, same seed offsets as EXTERNAL-CORRELATION-01.\n\n  DECISION RULE (LOCKED):\n    CONFIRMED: Hand B section correlations (C1-C4) show >= 3 of 4 non-significant at p < 0.01 (matching Hand A's 4/4 non-significant pattern, with one allowed significant to accommodate Hand B's better power).\n    REFUTED: Hand B section correlations show >= 2 of 4 significant at p < 0.01 (different from Hand A; Hand B has section-specific content the methodology detects).\n    PARTIAL: exactly 2 of 4 section correlations fall in the p ∈ [0.01, 0.05] range (borderline).\n\n    SECONDARY: count total significant across all 8 correlations. Compare to Hand A's 2/8. If Hand B also gets 2/8 with the same structural pattern (C7 significant, C8 artefact), the manuscript-wide overlay reading is reinforced. If Hand B gets substantially more or fewer, the reading shifts.\n\n    COMPARISON TO HAND A (explicit): report a side-by-side table of the 8 p-values for Hand A vs Hand B. Note any correlation where the two hands DIFFER in significance.\n\n  REPORTING: same format as EXTERNAL-CORRELATION-01 plus Hand A vs Hand B comparison table.",
+  "test_metric": "8 correlations on 82-ish Hand B folios with >=30 tokens. Null: 1000 shuffles per correlation. Decision rule focuses on section correlations C1-C4 to match the primary Hand A finding.",
+  "test_threshold": "CONFIRMED if >=3 of 4 section correlations non-sig at p<0.01 (matching Hand A pattern). REFUTED if >=2 of 4 section significant. PARTIAL otherwise.",
+  "tests_run": [],
+  "tests_remaining": [
+    "locked_hand_b_section_independence_test: execute 8 correlations on Hand B; compare to Hand A; apply decision rule"
+  ],
+  "status": "active",
+  "parent": "H-BV-EXTERNAL-CORRELATION-01",
+  "created": "2026-04-17",
+  "last_tested": null,
+  "reasoning": "H-BV-EXTERNAL-CORRELATION-01 found Hand A is section-independent on 4 of 4 section correlations. H-BV-HAND-B-MARKOV-01 found Hand B shares Hand A's character-level Markov-flat signature. The natural extension: does Hand B also show section-independence? If yes, the 'generative-process overlay' reading is manuscript-wide. If no, Hand B differs from Hand A in how it relates to section content. Hand B has better section balance than Hand A (32/23/19/5/3 vs 95/16/2/1/0 across sections with >=30 tokens), giving this test more power to detect section effects if they exist. The pre-reg locks chedy as the Hand B marker (analogous to Hand A's daiin) and uses identical methodology and thresholds as EXTERNAL-CORRELATION-01 for direct comparability.",
+  "source": "Brain-V 2026-04-17 user-directed parallel test of H-BV-EXTERNAL-CORRELATION-01 on Hand B, following H-BV-HAND-B-MARKOV-01 CONFIRMED_MARKOV_B.",
+  "researcher": "brain-v"
+}
