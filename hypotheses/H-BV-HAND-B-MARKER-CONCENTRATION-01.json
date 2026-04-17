@@ -56,7 +56,14 @@
         {"token": "ar", "note": "d=-1.30 for biological — ar is strongly depleted in biological. Consistent with biological being its own vocabulary regime."},
         {"token": "qokeedy", "note": "d=+1.40 biological at p=0.0001 (boundary miss of strict <0.0001 threshold); d=-0.88 herbal at p<0.0001. Would classify as biological-concentrated under slightly looser threshold."}
       ],
-      "confidence_change": "0.4 -> 0.85"
+      "confidence_change": "0.4 -> 0.85",
+      "literature_audit_note_2026_04_17": {
+        "date": "2026-04-17",
+        "triggered_by": "v2 literature audit",
+        "prior_work": "Montemurro & Zanette 2013 (PLOS ONE, 'Keywords and Co-Occurrence Patterns in the Voynich Manuscript: An Information-Theoretic Analysis') already identified chedy, shedy, qokeedy, qokedy, qokain among their top-30 informative tokens with non-uniform section distribution. Their methodology was information-theoretic (mutual information between word and section); Brain-V's methodology is per-folio Welch t-test on token frequencies.",
+        "novelty_classification": "QUANTITATIVE_REFINEMENT (per literature audit). The qualitative phenomenon (these specific tokens are section-concentrated) is established by M&Z. Brain-V's contribution is: (a) specific Cohen's d effect sizes per token-section pair; (b) systematic locked top-20 test instead of cherry-picked tokens; (c) section-AVOIDANCE pattern (negative d for aiin and ar in biological); (d) 0/20 universal classification.",
+        "v2_citation_required": "v2 must cite Montemurro & Zanette 2013 as primary source for the section-concentration phenomenon. Brain-V's contribution is measurement and validation, not discovery."
+      }
     }
   ],
   "tests_remaining": [],

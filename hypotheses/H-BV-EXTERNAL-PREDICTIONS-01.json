@@ -34,7 +34,15 @@
         "delta": "-0.48",
         "diagnostic_no_core_allowing_mantle": 0.5339,
         "diagnostic_mantle_present_fraction": 0.4891,
-        "interpretation": "Hand A is roughly half-mantle-bearing. Stolfi's 'crust-only' (no core, no mantle) applies to 27% of Hand A tokens, far from his ~75%. Even relaxing to 'no core allowing mantle' only gets to 53%. Hand A has substantially more mantle and core content than Stolfi's B-derived baseline."
+        "interpretation": "Hand A is roughly half-mantle-bearing. Stolfi's 'crust-only' (no core, no mantle) applies to 27% of Hand A tokens, far from his ~75%. Even relaxing to 'no core allowing mantle' only gets to 53%. Hand A has substantially more mantle and core content than Stolfi's B-derived baseline.",
+        "interpretation_amendment_2026_04_17_literature_audit": {
+          "date": "2026-04-17",
+          "triggered_by": "v2 literature audit + direct WebFetch verification of Stolfi grammar.html",
+          "finding": "Stolfi's grammar page contains TWO DIRECTLY CONTRADICTORY statements about crust-only frequency: (A) 'the crust comprises either the whole word (almost exactly 75% of the normal tokens), or a prefix and a suffix thereof (25%)' AND (B) 'Almost exactly 1/4 of the normal words have no core or mantle, only the crust layer.' Both appear in the same 'The crust layer' section. The page is internally inconsistent on this specific figure.",
+          "impact_on_this_test": "The pass band [0.70, 0.80] was locked based on Passage A. Brain-V's observed 0.2718 fails that band. Under a band based on Passage B ([0.20, 0.30]), Brain-V's 0.2718 would PASS. The locked verdict (FAIL) stands — pre-registration discipline requires the locked band to remain the reference. But the substantive interpretation should be: Brain-V's measurement matches ONE of Stolfi's two contradictory figures; it does not match the other. This is a Stolfi-internal ambiguity, not cleanly a Brain-V vs Stolfi divergence.",
+          "locked_result_unchanged": "T1 FAIL verdict, observed 0.2718, pass band [0.70, 0.80] all UNCHANGED. Pre-registration discipline: the original pre-reg chose one Stolfi reading to lock against; that choice cannot be revised after execution.",
+          "v2_framing_guidance": "v2 should report: 'Brain-V measures 26-29% crust-only. Stolfi 2000 contains two contradictory statements — one reporting 75%, one reporting 25%. Brain-V's measurement matches the 25% figure.' This is more honest than either (a) claiming Brain-V contradicts Stolfi, or (b) silently switching Stolfi readings post-hoc."
+        }
       },
       "test_2_stolfi_asymmetry": {
         "observed_prefix_dealer_mean": 0.7042,

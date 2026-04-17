@@ -76,7 +76,18 @@
       },
       "in_band_count": 0,
       "locked_verdict": "UNRESOLVED_OPEN_QUESTION",
-      "confidence_change": "0.4 -> 0.25"
+      "confidence_change": "0.4 -> 0.25",
+      "interpretation_amendment_2026_04_17_literature_audit": {
+        "date": "2026-04-17",
+        "triggered_by": "v2 literature audit + direct WebFetch verification of Stolfi grammar.html",
+        "critical_finding": "The premise of this investigation — that Stolfi reports ~75% crust-only and Brain-V's 26-29% is a discrepancy — was based on Passage A of Stolfi's grammar page. Direct verification revealed that Stolfi's same page also contains Passage B which states '1/4 of the normal words have no core or mantle, only the crust layer' (= 25%). Brain-V's 26-29% measurement matches Passage B almost exactly. The 'discrepancy' Brain-V was investigating may be an artefact of choosing the wrong Stolfi passage to compare against.",
+        "passage_A_quote": "In normal words, the crust comprises either the whole word (almost exactly 75% of the normal tokens), or a prefix and a suffix thereof (25%).",
+        "passage_B_quote": "Almost exactly 1/4 of the normal words have no core or mantle, only the crust layer.",
+        "stolfi_internal_contradiction": "Both passages describe the same structural category (tokens with no core and no mantle). They give opposite percentages and cannot both be correct. This is a contradiction in Stolfi's own published text, not in Brain-V's measurement.",
+        "revised_interpretation": "Brain-V's 26-29% reproduces Passage B of Stolfi (~25%) within 1-4 percentage points across all tested transcriptions, filters, and sub-corpora. This is best classified as INDEPENDENT_VERIFICATION of Stolfi's Passage B. The original UNRESOLVED_OPEN_QUESTION verdict reflected an inability to reach Passage A (75%); under Passage B, the question is resolved — Brain-V's number matches.",
+        "locked_verdict_unchanged": "UNRESOLVED_OPEN_QUESTION verdict stands per pre-registration discipline. The locked target was 75% (Passage A); Brain-V did not reach that target under any tested configuration. The amendment adds the verification-time discovery that Passage B (25%) exists and Brain-V's measurement matches it.",
+        "v2_implications": "v2 should NOT report this finding as 'Brain-V contradicts Stolfi.' Instead: 'Stolfi 2000 contains two contradictory statements about crust-only frequency (25% in one passage, 75% in another). Brain-V's measurement (26-29% across transcriptions) matches the 25% figure within tight tolerance.' This honestly represents the literature situation."
+      }
     }
   ],
   "tests_remaining": [],
