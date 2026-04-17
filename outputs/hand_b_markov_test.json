@@ -1,0 +1,171 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-HAND-B-MARKOV-01",
+  "corpus_sizes_chars": {
+    "Hand_A": 65758,
+    "Hand_B": 144583,
+    "Basque": 481692,
+    "Hungarian": 130293,
+    "Turkish": 234554,
+    "Esperanto": 360432,
+    "Shuffled_B": 144583,
+    "Markov_B": 144583
+  },
+  "per_corpus_metrics": {
+    "Hand_A": {
+      "M1_H_norm": 0.8273,
+      "M2_H_cond": 2.1906,
+      "M3_reach": 0.4432,
+      "M4_zipf": 0.9735,
+      "M5_ttr": 0.3618,
+      "M6_heaps": 0.8778,
+      "alphabet": 25
+    },
+    "Hand_B": {
+      "M1_H_norm": 0.8336,
+      "M2_H_cond": 2.0191,
+      "M3_reach": 0.4736,
+      "M4_zipf": 1.057,
+      "M5_ttr": 0.3402,
+      "M6_heaps": 0.8595,
+      "alphabet": 25
+    },
+    "Basque": {
+      "M1_H_norm": 0.7016,
+      "M2_H_cond": 3.2433,
+      "M3_reach": 0.2809,
+      "M4_zipf": 0.8733,
+      "M5_ttr": 0.4856,
+      "M6_heaps": 0.909,
+      "alphabet": 58
+    },
+    "Hungarian": {
+      "M1_H_norm": 0.7824,
+      "M2_H_cond": 3.7029,
+      "M3_reach": 0.3255,
+      "M4_zipf": 0.8264,
+      "M5_ttr": 0.4752,
+      "M6_heaps": 0.899,
+      "alphabet": 59
+    },
+    "Turkish": {
+      "M1_H_norm": 0.7678,
+      "M2_H_cond": 3.4833,
+      "M3_reach": 0.279,
+      "M4_zipf": 0.8188,
+      "M5_ttr": 0.459,
+      "M6_heaps": 0.8972,
+      "alphabet": 55
+    },
+    "Esperanto": {
+      "M1_H_norm": 0.5871,
+      "M2_H_cond": 3.4501,
+      "M3_reach": 0.054,
+      "M4_zipf": 0.8793,
+      "M5_ttr": 0.4812,
+      "M6_heaps": 0.9156,
+      "alphabet": 190
+    },
+    "Shuffled_B": {
+      "M1_H_norm": 0.8336,
+      "M2_H_cond": 3.8689,
+      "M3_reach": 0.6864,
+      "M4_zipf": 0.9896,
+      "M5_ttr": 0.7284,
+      "M6_heaps": 0.9596,
+      "alphabet": 25
+    },
+    "Markov_B": {
+      "M1_H_norm": 0.8441,
+      "M2_H_cond": 2.0092,
+      "M3_reach": 0.4844,
+      "M4_zipf": 1.1117,
+      "M5_ttr": 0.4076,
+      "M6_heaps": 0.886,
+      "alphabet": 24
+    }
+  },
+  "side_by_side_hand_a_vs_b": {
+    "M1 H_norm": {
+      "Hand_A": 0.8273,
+      "Hand_B": 0.8336
+    },
+    "M2 H_cond": {
+      "Hand_A": 2.1906,
+      "Hand_B": 2.0191
+    },
+    "M3 reach": {
+      "Hand_A": 0.4432,
+      "Hand_B": 0.4736
+    },
+    "M4 zipf": {
+      "Hand_A": 0.9735,
+      "Hand_B": 1.057
+    },
+    "M5 ttr": {
+      "Hand_A": 0.3618,
+      "Hand_B": 0.3402
+    },
+    "M6 heaps": {
+      "Hand_A": 0.8778,
+      "Hand_B": 0.8595
+    }
+  },
+  "per_metric_report": [
+    {
+      "metric": "M1 H_norm",
+      "hand_b": 0.8336,
+      "natural_mean": 0.7506,
+      "constructed": 0.5871,
+      "random_mean": 0.8388,
+      "closest": "random"
+    },
+    {
+      "metric": "M2 H_cond",
+      "hand_b": 2.0191,
+      "natural_mean": 3.4765,
+      "constructed": 3.4501,
+      "random_mean": 2.939,
+      "closest": "random"
+    },
+    {
+      "metric": "M3 reach",
+      "hand_b": 0.4736,
+      "natural_mean": 0.2951,
+      "constructed": 0.054,
+      "random_mean": 0.5854,
+      "closest": "random"
+    },
+    {
+      "metric": "M4 zipf",
+      "hand_b": 1.057,
+      "natural_mean": 0.8395,
+      "constructed": 0.8793,
+      "random_mean": 1.0507,
+      "closest": "random"
+    },
+    {
+      "metric": "M5 ttr",
+      "hand_b": 0.3402,
+      "natural_mean": 0.4733,
+      "constructed": 0.4812,
+      "random_mean": 0.568,
+      "closest": "natural"
+    },
+    {
+      "metric": "M6 heaps",
+      "hand_b": 0.8595,
+      "natural_mean": 0.9017,
+      "constructed": 0.9156,
+      "random_mean": 0.9228,
+      "closest": "natural"
+    }
+  ],
+  "closest_counts": {
+    "natural": 2,
+    "constructed": 0,
+    "random": 4
+  },
+  "locked_verdict": "CONFIRMED_MARKOV_B",
+  "m2_sharp_diagnostic": "MARKOV_FLAT_CONFIRMED"
+}
