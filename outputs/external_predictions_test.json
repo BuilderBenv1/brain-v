@@ -1,0 +1,89 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-EXTERNAL-PREDICTIONS-01",
+  "n_hand_a_tokens": 11022,
+  "unknown_glyphs": [
+    "b",
+    "c",
+    "j",
+    "u",
+    "v",
+    "z"
+  ],
+  "stolfi_categories": {
+    "core": [
+      "cfh",
+      "ckh",
+      "cph",
+      "cth",
+      "f",
+      "k",
+      "p",
+      "t"
+    ],
+    "mantle": [
+      "ch",
+      "ee",
+      "sh"
+    ],
+    "crust": [
+      "a",
+      "d",
+      "e",
+      "g",
+      "i",
+      "l",
+      "m",
+      "n",
+      "o",
+      "q",
+      "r",
+      "s",
+      "x",
+      "y"
+    ]
+  },
+  "test_1_stolfi_crust_only": {
+    "count": 2996,
+    "fraction": 0.2718,
+    "pass_band": [
+      0.7,
+      0.8
+    ],
+    "pass": false
+  },
+  "test_2_stolfi_asymmetry": {
+    "n_tokens_with_core_non_q_initial": 4199,
+    "prefix_dealer_mean": 0.7042,
+    "suffix_dealer_mean": 2.4182,
+    "asymmetry_ratio": 0.2912,
+    "stolfi_expected_prefix": 0.14,
+    "stolfi_expected_suffix": 0.8,
+    "stolfi_expected_ratio": 0.175,
+    "threshold": "< 0.25",
+    "pass": false
+  },
+  "test_3_caveney_final_n": {
+    "count": 1704,
+    "fraction": 0.1546,
+    "pass_band": [
+      0.85,
+      1.0
+    ],
+    "pass": false,
+    "diagnostic_caveney_original_metric": {
+      "description": "of all n occurrences, fraction that are word-final",
+      "total_n_occurrences": 1801,
+      "n_occurrences_word_final": 1704,
+      "fraction": 0.9461,
+      "note": "not the pre-registered metric; included as diagnostic"
+    }
+  },
+  "diagnostics": {
+    "no_core_fraction_allowing_mantle": 0.5339,
+    "mantle_present_fraction": 0.4891,
+    "single_glyph_token_fraction": 0.0466
+  },
+  "n_pass": 0,
+  "verdict": "WEAK_CONVERGENCE"
+}

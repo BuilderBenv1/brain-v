@@ -18,14 +18,73 @@
   "test": "LOCKED PROCEDURE.\n\n  DATA: Hand A corpus, EVA transliteration. Use the same folio partition as H-BV-BASQUE-* series. Hand A tokens only; Hand B excluded from all three tests.\n\n  TEST 1 — STOLFI CRUST-ONLY FRACTION:\n    Stolfi layer categories (LOCKED per Stolfi 2000, voynich.nu/hist/stolfi/grammar.html):\n      CORE:   {t, p, k, f, cth, cph, ckh, cfh}\n      MANTLE: {ch, sh, ee}\n      CRUST:  {d, l, r, s, n, x, i, m, g, q, o, y, a, e}\n    Tokenise each Hand A word into Stolfi units. A token is 'crust-only' if it contains zero core glyphs and zero mantle ligatures. Compute:\n      crust_only_fraction = |{tokens with no core and no mantle}| / |all Hand A tokens|\n    PASS if crust_only_fraction in [0.70, 0.80].\n    FAIL otherwise.\n\n  TEST 2 — STOLFI PREFIX/SUFFIX DEALER ASYMMETRY:\n    For each Hand A token with at least one core glyph, split the token at the first core glyph into (prefix, core, suffix). Stolfi's 'dealer' count per position = mean number of crust glyphs in that position across all split tokens.\n    Compute:\n      prefix_dealer_mean = mean number of crust glyphs in prefix across all split tokens\n      suffix_dealer_mean = mean number of crust glyphs in suffix across all split tokens\n      asymmetry_ratio    = prefix_dealer_mean / suffix_dealer_mean\n    Stolfi's published values (without q): prefix ~0.14, suffix ~0.80, ratio ~0.175.\n    PASS if asymmetry_ratio < 0.25.\n    FAIL if asymmetry_ratio >= 0.25.\n    NOTE: exclude q-initial tokens from this test per Stolfi's original specification.\n\n  TEST 3 — CAVENEY WORD-FINAL n FREQUENCY:\n    For each Hand A token, check whether the final glyph (after EVA tokenisation) is 'n'.\n    Compute:\n      final_n_fraction = |{Hand A tokens ending in 'n'}| / |all Hand A tokens|\n    PASS if final_n_fraction in [0.85, 1.00].\n    FAIL otherwise.\n    NOTE: Caveney's original claim was 'word-final or coda position >=90%'. Because 'coda' is ambiguous in EVA, the locked test uses strict word-final only. Pass band loosened to 0.85 to absorb the coda/final-only distinction.\n\n  DECISION RULE (LOCKED):\n    STRONG CONVERGENCE: 3/3 predictions pass. Brain-V's Hand A characterisation aligns with three independent prior frameworks. The composite-outer hypothesis (test (3) of the v2 plan) becomes a refinement of an already-validated structural picture.\n    MODERATE CONVERGENCE: 2/3 pass. Identify which specific prediction fails. Document what the failure implies about Brain-V's framework. Composite-outer hypothesis still worth running but with explicit acknowledgment of the divergence.\n    WEAK/NO CONVERGENCE: 0-1/3 pass. External predictions disagree with Brain-V's data. Either the prior researchers were wrong, or Brain-V has a systematic measurement error. v2 must address this explicitly — either by identifying a defensible reason the priors don't apply to Hand A, or by re-examining Brain-V's tokenisation/statistical pipeline.\n\n  REPORTING:\n    For each test, record: the raw statistic, the pass band, the pass/fail verdict. Do not retrospectively adjust pass bands — they are locked by this file.",
   "test_metric": "count_of_external_predictions_passing_out_of_3",
   "test_threshold": "STRONG if 3/3. MODERATE if 2/3. WEAK if 0-1/3.",
-  "tests_run": [],
-  "tests_remaining": [
-    "locked_external_predictions_test: run Tests 1, 2, 3 on Hand A corpus with locked pass bands; report 3-vector of pass/fail plus raw statistics"
+  "tests_run": [
+    {
+      "date": "2026-04-17",
+      "test": "locked_external_predictions_test",
+      "script": "scripts/run_external_predictions.py",
+      "results_file": "outputs/external_predictions_test.json",
+      "n_hand_a_tokens": 11022,
+      "test_1_stolfi_crust_only": {
+        "observed_fraction": 0.2718,
+        "raw_count": "2996/11022",
+        "pass_band": [0.70, 0.80],
+        "pass": false,
+        "stolfi_predicted": "approximately 0.75",
+        "delta": "-0.48",
+        "diagnostic_no_core_allowing_mantle": 0.5339,
+        "diagnostic_mantle_present_fraction": 0.4891,
+        "interpretation": "Hand A is roughly half-mantle-bearing. Stolfi's 'crust-only' (no core, no mantle) applies to 27% of Hand A tokens, far from his ~75%. Even relaxing to 'no core allowing mantle' only gets to 53%. Hand A has substantially more mantle and core content than Stolfi's B-derived baseline."
+      },
+      "test_2_stolfi_asymmetry": {
+        "observed_prefix_dealer_mean": 0.7042,
+        "observed_suffix_dealer_mean": 2.4182,
+        "observed_asymmetry_ratio": 0.2912,
+        "n_split_tokens_non_q_initial_with_core": 4199,
+        "threshold": "< 0.25",
+        "pass": false,
+        "stolfi_predicted_prefix": 0.14,
+        "stolfi_predicted_suffix": 0.80,
+        "stolfi_predicted_ratio": 0.175,
+        "interpretation": "Asymmetry DIRECTION is confirmed (suffix 3.4x prefix, same direction as Stolfi's 5.7x). Asymmetry RATIO narrowly misses the 0.25 threshold (0.29). Absolute dealer counts are roughly 5x Stolfi's values (0.70/2.42 vs 0.14/0.80), indicating Hand A has substantially denser crust glyphs per position than Stolfi's B-derived corpus. The structural pattern Stolfi identified is qualitatively present; the specific numeric threshold fails."
+      },
+      "test_3_caveney_final_n": {
+        "observed_locked_metric": 0.1546,
+        "locked_metric_definition": "tokens ending in n / all Hand A tokens",
+        "raw_count_locked": "1704/11022",
+        "pass_band": [0.85, 1.00],
+        "pass": false,
+        "specification_error_flag": true,
+        "specification_error_note": "The locked metric inverts Caveney's actual claim. Caveney (2020) asserted 'of all n occurrences, almost all are word-final or coda position'. The pre-registered metric computed '(tokens ending in n) / (all tokens)' — this measures how common final-n is in the vocabulary, not whether n is word-final when it appears. The correct Caveney-spec metric is (n occurrences word-final) / (all n occurrences). Diagnostic result for the correct metric below.",
+        "diagnostic_caveney_original_metric": {
+          "description": "of all n occurrences in Hand A, fraction that are word-final",
+          "total_n_occurrences": 1801,
+          "n_occurrences_word_final": 1704,
+          "fraction": 0.9461,
+          "would_pass_locked_band": true
+        },
+        "interpretation": "The locked test fails under the pre-registered (erroneously specified) metric. Caveney's ACTUAL claim, run as a diagnostic, yields 94.6% — firmly in the [0.85, 1.00] band. When n appears in Hand A, it is almost always word-final. This is a methodology lesson (pre-reg the exact computation, not just the natural-language claim) rather than a Brain-V or Caveney error."
+      },
+      "n_pass_locked": 0,
+      "verdict_locked": "WEAK_CONVERGENCE",
+      "verdict_note": "0/3 passes under the locked pass bands. Per the decision rule, this is WEAK_CONVERGENCE. The locked verdict stands. However, the three failures have qualitatively different character: T1 reflects a genuine quantitative disagreement with Stolfi (Hand A differs materially from the Currier-B-derived baseline); T2 narrowly fails the ratio threshold while confirming Stolfi's qualitative direction with ~5x denser absolute counts; T3 fails due to a specification error in the pre-registration (inverted denominator) — the underlying Caveney claim is confirmed at 94.6% under its correct metric. Raw verdict: WEAK. Honest read: one genuine divergence (T1), one partial convergence (T2), one methodology error (T3).",
+      "confidence_change": "0.5 -> 0.35"
+    }
   ],
-  "status": "active",
+  "tests_remaining": [],
+  "status": "refuted_under_locked_rule",
+  "verdict_note": "WEAK_CONVERGENCE (0/3 under locked bands). Each failure has a distinct character: T1 Stolfi crust-only — genuine quantitative divergence (Hand A 27% vs Stolfi's ~75%); Hand A has substantially more mantle content than Stolfi's Currier-B-derived baseline. T2 Stolfi asymmetry — qualitative confirmation (suffix 3.4x prefix) but narrow quantitative miss on ratio (0.29 vs <0.25); absolute dealer counts ~5x Stolfi's numbers. T3 Caveney final-n — specification error in pre-registration (inverted denominator); Caveney's actual claim confirmed at 94.6% under its correct metric, but the locked metric fails at 15.5%.",
+  "findings_for_followup": [
+    "T1 is the most substantive finding: Hand A genuinely differs from Stolfi's Currier-B baseline on the crust-only fraction. If Brain-V's Hand A characterisation is correct, the composite-outer hypothesis (3) must NOT assume Stolfi's ~75% crust-only figure; it is a B-specific baseline. The composite-outer test design should compute Hand-A-specific crust/mantle/core fractions rather than importing Stolfi's B numbers.",
+    "T2's narrow miss (0.29 vs <0.25) plus 5x scale difference suggests Hand A has denser per-position crust loading than B. Under an agglutinative reading, this could reflect more case/derivational suffixes per stem in A than in B. The composite-outer test (3) should investigate whether the excess crust glyphs on the suffix side are consistent with Basque-style morphological stacking, or whether they indicate a different structural regime entirely.",
+    "T3's specification error is a methodology lesson for the entire pre-registration workflow: pre-register the EXACT numerator and denominator of each metric, not just the natural-language claim. Caveney's claim was 'of n occurrences, most are word-final' — a positional-within-glyph-occurrences measure. The pre-reg converted this to 'fraction of tokens ending in n' — a vocabulary-level measure. Future pre-registrations should include a worked mini-example showing the denominator.",
+    "The 94.6% Caveney-correct result is a LOAD-BEARING finding for the composite-outer test (3). It confirms that n is strongly word-final-biased in Hand A — making n a prime candidate for an outer-slot morpheme (case marker, verbal ending, or equivalent). The composite-outer hypothesis should include n as one of the candidate outer morphemes to decompose against.",
+    "Stolfi's qualitative structural picture (suffix-heavy asymmetry) holds; his quantitative baselines (75% crust-only, 0.14/0.80 dealers) do not transfer to Hand A. For v2's prior-work section: cite Stolfi for the qualitative grammar, not for specific numeric thresholds. Hand A requires its own derived baselines.",
+    "The 0/3 locked verdict underscores that external predictions from prior work cannot be naively transplanted onto Brain-V's Hand-A-specific framework. The composite-outer test (3) should be pre-registered with Hand-A-derived baselines (measured from Brain-V's own corpus) rather than imported from Stolfi's published values. This does not weaken the prior-work citation — it clarifies scope."
+  ],
   "parent": "H-BV-BASQUE-HEADER-MAP-01",
   "created": "2026-04-17",
-  "last_tested": null,
+  "last_tested": "2026-04-17",
   "reasoning": "Prior-work literature search (2026-04-17, saved to outputs/reports/prior-work-basque-voynich.md) established that Brain-V's Basque-leaning Hand A findings emerged independently of the published Voynich structural literature. Three external predictions are concrete enough to pre-register against: two from Stolfi (2000), one from Caveney (2020). Havrankova (2025) was considered but contains zero quantitative predictions, so cannot be locked against. Testing Brain-V's Hand A data against these three external predictions provides an unbiased convergence check before designing the composite-outer hypothesis test (v2 test 3). A strong external convergence result would let the composite-outer test be pre-registered as a refinement of an already-validated picture; a weak convergence would force a re-examination of Brain-V's tokenisation pipeline before further Basque-specific testing.",
   "source": "Brain-V 2026-04-17 pre-registration derived from prior-work search findings (outputs/reports/prior-work-basque-voynich.md). External predictions sourced from: Stolfi 2000 (voynich.nu/hist/stolfi/grammar.html) and Caveney 2020 (voynich.ninja thread 3354).",
   "researcher": "brain-v"
