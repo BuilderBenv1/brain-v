@@ -18,14 +18,85 @@
   "test": "LOCKED PROCEDURE.\n\n  DATA: Voynich corpus from raw/perception/voynich-corpus.json. Partition by currier_language field. Hand A = folios with currier_language == 'A'; Hand B = folios with currier_language == 'B'. Hands with other values (neutral, mixed) excluded from all measurements.\n\n  TOKENISATION (LOCKED, Stolfi-consistent):\n    MULTI = ['cth', 'cph', 'ckh', 'cfh', 'ch', 'sh', 'ee'], longest-match-first.\n    NOTE: 'ol' is NOT treated as a ligature in this test, matching the tokenisation of H-BV-EXTERNAL-PREDICTIONS-01 T2 so the 2.4182 baseline carries forward cleanly. Rationale: we are diagnosing a number measured under that tokenisation; changing tokenisations here would compound the methodology drift being diagnosed.\n\n  CATEGORIES (LOCKED per Stolfi 2000):\n    CORE_SET  = {t, p, k, f, cth, cph, ckh, cfh}\n    MANTLE_SET = {ch, sh, ee}\n    CRUST_SET = {d, l, r, s, n, x, i, m, g, q, o, y, a, e}\n\n  THREE MEASUREMENTS (M1, M2, M3) and three pass/fail DECISIONS ((a), (b), (c)).\n\n  M1 — LAYER-1 INNER INVENTORY SIZE (80% coverage) per hand:\n    For hand H in {A, B}:\n      Take all H tokens tokenised per MULTI; keep only those with length(t) >= 3 glyph-units.\n      For each such token, the 'inner' glyph is position length(t) - 2 (second-from-last).\n      Count frequency of each distinct inner glyph.\n      Rank inner glyphs by frequency descending.\n      inventory_size_80(H) = smallest K such that sum of top-K frequencies / total inner occurrences >= 0.80.\n\n    BOOTSTRAP for (a) significance:\n      Resample tokens with replacement 1000 times, compute inventory_size_80 on each resample.\n      Record bootstrap distributions D_A and D_B.\n      p_a = fraction of resamples where inventory_size_80_A_sample <= inventory_size_80_B_sample (one-sided; we expect A > B under (a)).\n\n    STOLFI REFERENCE (FIXED, NOT MEASURED):\n      inventory_size_80_stolfi_proxy = 15\n      Rationale: Stolfi 2000 reports ~14-15 glyph types dominating the crust layer of his primary (Currier B) corpus. 15 is taken as the comparative baseline.\n\n    REPORT: inventory_size_80(A), inventory_size_80(B), bootstrap means and 95% CIs for each, p_a, Stolfi reference 15.\n\n  M2 — MEAN TOKENISED LENGTH per hand (proxy for 'morphemes per token'):\n    For hand H in {A, B}:\n      mean_length(H) = mean over all H tokens of length(tokenise(t)) in glyph-units.\n      std_length(H)  = standard deviation.\n      n(H)           = number of tokens.\n    Welch's t-test on per-token lengths: A vs B. Record t-statistic and p-value.\n    REPORT: mean_length(A), mean_length(B), t-statistic, p-value.\n    INTERPRETATION NOTE: This is a proxy for morpheme count. A true morpheme count would require a morphological parser. Glyph-unit length after ligature-aware tokenisation is the closest practical surrogate and is what Stolfi himself uses in his published analyses.\n\n  M3 — STOLFI-CONSISTENT SUFFIX DEALER MEAN per hand:\n    For hand H in {A, B}:\n      Take H tokens, tokenised per MULTI, excluding q-initial tokens AND tokens without at least one CORE glyph.\n      For each qualifying token t: split at first CORE glyph index, let suffix = glyphs after that index.\n      per_token_suffix_dealer = count of glyphs in suffix that are in CRUST_SET.\n      suffix_dealer_mean(H) = mean of per_token_suffix_dealer across qualifying H tokens.\n      suffix_dealer_std(H)  = standard deviation.\n      n_split(H)            = number of qualifying tokens.\n    Welch's t-test on per-token suffix dealer counts: A vs B. Record t-statistic and p-value.\n    REPORT: suffix_dealer_mean(A), suffix_dealer_mean(B), t-statistic, p-value.\n    SANITY CHECK: suffix_dealer_mean(A) should be ~2.4182 (the EXTERNAL-PREDICTIONS-01 T2 value) to within 0.01. Deviation >0.01 indicates a tokenisation or category drift in this script vs. the earlier one; flag and investigate before interpreting (b).\n\n  DECISION RULES (LOCKED, NON-EXCLUSIVE):\n\n    (a) INVENTORY-RICHNESS PASS iff:\n          inventory_size_80(A) > inventory_size_80(B)\n          AND p_a < 0.01\n          AND inventory_size_80(A) > 15 (Stolfi reference)\n\n    (b) OPERATIONALISATION-ARTEFACT PASS iff:\n          (suffix_dealer_mean(B) - 0.80) / (suffix_dealer_mean(A) - 0.80) > 0.50\n          (equivalently, suffix_dealer_mean(B) > 0.80 + 0.50 * (suffix_dealer_mean(A) - 0.80))\n          with suffix_dealer_mean(A) expected near 2.4182, this threshold is suffix_dealer_mean(B) > ~1.61\n\n    (c) A-OVER-B-PRODUCTIVITY PASS iff:\n          Welch t-test p-value (M3) < 0.01\n          AND (suffix_dealer_mean(A) - suffix_dealer_mean(B)) / (suffix_dealer_mean(A) - 0.80) > 0.30\n          (at least 30% of the Hand-A excess over Stolfi is attributable to A > B, not shared methodology)\n\n    MULTIPLE PASSES ALLOWED. Report all three verdicts independently. If none pass: flag as 'UNDIAGNOSED' — the 3x gap is not explained by the three candidates; a follow-up hypothesis is needed.\n\n  WORKED EXAMPLE (to lock M1 denominator):\n    Token 'chedy' tokenises under MULTI as ['ch', 'e', 'd', 'y']. Length 4. Inner glyph = position 4-2 = 2, which is 'd'. Contributes:\n      count_inner_occurrences['d'] += 1\n      total_inner_occurrences += 1\n    Token 'ky' tokenises as ['k', 'y']. Length 2. Excluded (length < 3).\n    Token 'daiin' tokenises as ['d', 'a', 'i', 'i', 'n']. Length 5. Inner glyph = position 3, which is 'i'. Contributes:\n      count_inner_occurrences['i'] += 1\n      total_inner_occurrences += 1\n    inventory_size_80 = smallest K such that sum(top-K counts) / total_inner_occurrences >= 0.80\n\n  WORKED EXAMPLE (to lock M3 denominator):\n    Token 'chedy' = ['ch', 'e', 'd', 'y']. No CORE glyph (t, p, k, f, cth, cph, ckh, cfh). Excluded from M3.\n    Token 'qokedy' = ['q', 'o', 'k', 'e', 'd', 'y']. q-initial. Excluded from M3.\n    Token 'chekedy' = ['ch', 'e', 'k', 'e', 'd', 'y']. Not q-initial, contains 'k' (CORE). Split at first CORE:\n      prefix = ['ch', 'e']\n      core   = 'k'\n      suffix = ['e', 'd', 'y']\n    per_token_suffix_dealer = count of {e, d, y} that are in CRUST = 3.",
   "test_metric": "M1 inventory_size_80 per hand with bootstrap; M2 mean tokenised length per hand with Welch t-test; M3 Stolfi-consistent suffix dealer mean per hand with Welch t-test.",
   "test_threshold": "(a) inv_A > inv_B at p_a<0.01 AND inv_A > 15; (b) (B_mean - 0.80)/(A_mean - 0.80) > 0.50; (c) t-test p<0.01 AND (A_mean - B_mean)/(A_mean - 0.80) > 0.30. Non-exclusive. Report all passes.",
-  "tests_run": [],
-  "tests_remaining": [
-    "locked_density_diagnosis_test: run M1/M2/M3 on Hand A and Hand B per locked procedure; evaluate (a)/(b)/(c) per locked thresholds; report all passes, all failures, and sanity-check result for Hand A suffix dealer mean vs 2.4182"
+  "tests_run": [
+    {
+      "date": "2026-04-17",
+      "test": "locked_density_diagnosis_test",
+      "script": "scripts/run_density_diagnosis.py",
+      "results_file": "outputs/density_diagnosis_test.json",
+      "n_hand_a_tokens": 11022,
+      "n_hand_b_tokens": 23766,
+      "M1_inventory_size_80": {
+        "hand_a": 6,
+        "hand_b": 5,
+        "stolfi_reference": 15,
+        "bootstrap_resamples": 1000,
+        "hand_a_ci_95": [6, 6],
+        "hand_b_ci_95": [5, 5],
+        "p_A_greater_B": 1.0000,
+        "interpretation": "Both hands reach 80% inner-position coverage with only 5-6 distinct glyphs. Neither exceeds Stolfi's 15-glyph crust reference because the measurements are non-comparable: Brain-V's 'inner' is a single positional slot (position N-2), while Stolfi's 15-glyph crust covers multiple positions in the word. The fact that both hands are tight at this positional slot is consistent but does not speak to the inventory-richness hypothesis as intended."
+      },
+      "M2_mean_tokenised_length": {
+        "hand_a_mean": 4.2352,
+        "hand_b_mean": 4.4740,
+        "hand_a_n": 11022,
+        "hand_b_n": 23766,
+        "welch_t": -11.5994,
+        "welch_p": 5.28e-31,
+        "interpretation": "Hand B tokens are LONGER on average than Hand A (4.47 vs 4.24). This contradicts the intuition that Hand A is more inflectionally productive. Highly significant statistically (p=5e-31) but direction is OPPOSITE to candidate (c)."
+      },
+      "M3_suffix_dealer_mean": {
+        "hand_a_mean": 2.4182,
+        "hand_b_mean": 2.5168,
+        "hand_a_n_split": 4199,
+        "hand_b_n_split": 8793,
+        "welch_t": -3.6464,
+        "welch_p": 2.68e-04,
+        "sanity_hand_a_matches_2p4182": true,
+        "interpretation": "CENTRAL FINDING: Hand A and Hand B show nearly identical suffix dealer means (2.42 vs 2.52) under Brain-V's Stolfi operationalisation. Both are ~3x Stolfi's published 0.80. The 'Hand A excess' framed in H-BV-EXTERNAL-PREDICTIONS-01 T2 and inherited by H-BV-COMPOSITE-OUTER-01 M4 is not Hand-A-specific — it's a Brain-V-wide measurement that differs from Stolfi's published numbers. Hand B's sanity-check yields 2.52, where Stolfi reported 0.80. The gap is between Brain-V's pipeline and Stolfi's original analysis, not between hands."
+      },
+      "decisions": {
+        "a_inventory_richness": {
+          "inv_a_greater_inv_b": true,
+          "p_a_below_0_01": true,
+          "inv_a_greater_stolfi_15": false,
+          "pass": false,
+          "interpretation": "(a) FAILS: inv_A (6) > inv_B (5) at p<0.01, but both are far below the 15-glyph Stolfi reference. The test operationalised inv_A > 15 but Brain-V's positional inner slot is intrinsically tighter than Stolfi's whole-crust cardinality — this makes the 15-threshold non-comparable rather than a genuine pass/fail. (a) is indeterminate-under-this-operationalisation, recorded as FAIL per the locked rule."
+        },
+        "b_operationalisation_drift": {
+          "fraction_methodological": 1.0609,
+          "threshold": 0.50,
+          "pass": true,
+          "interpretation": "(b) PASSES DECISIVELY: Hand B's excess over Stolfi's 0.80 is 106% of Hand A's excess. The entire observed gap (both hands to Stolfi) is methodological, and Hand B's is marginally larger than Hand A's. Brain-V's implementation of Stolfi's crust-mantle-core operationalisation does not reproduce Stolfi's published suffix dealer statistics for Currier B. Candidate sources of drift: (1) tokenisation convention (Stolfi's original may treat glyphs differently), (2) CORE/MANTLE/CRUST set assignment (minor Stolfi-vs-Brain-V differences), (3) definition of 'suffix' (Stolfi may have used only the glyphs immediately after the core, not all post-core glyphs until word end), (4) token filtering (Stolfi may have excluded certain token classes like hapaxes or q-initials differently). Follow-up required to pin down which."
+        },
+        "c_a_over_b_productivity": {
+          "welch_p_below_0_01": true,
+          "fraction_productivity": -0.0609,
+          "threshold": 0.30,
+          "pass": false,
+          "interpretation": "(c) FAILS — AND WITH OPPOSITE SIGN. The Welch t-test is highly significant (p=2.7e-4), but Hand B's suffix dealer mean is HIGHER than Hand A's, not lower. If anything, Hand B is marginally more productive (or equivalently, more morphemically dense) than Hand A at the suffix position. The 'Hand A is special' framing is not supported on this metric."
+        }
+      },
+      "passing_candidates": ["b"],
+      "verdict": "OPERATIONALISATION_DRIFT",
+      "confidence_change": "0.5 -> 0.75"
+    }
   ],
-  "status": "active",
+  "tests_remaining": [],
+  "status": "confirmed_candidate_b",
+  "verdict_note": "OPERATIONALISATION_DRIFT. Only candidate (b) passes the locked rule, and it passes decisively at 106% fractional methodology. The 3x suffix dealer mean gap is not a Hand-A-specific finding — it is a drift between Brain-V's implementation of Stolfi's operationalisation and Stolfi's published numbers, affecting Hand A (2.42) and Hand B (2.52) almost equally. (a) fails at the Stolfi reference (both hands reach 80% coverage with just 5-6 glyphs vs Stolfi's whole-crust 15; the reference is non-comparable for this positional slot). (c) fails with opposite sign — Hand B is marginally higher than Hand A, not lower. This finding substantially reframes the H-BV-EXTERNAL-PREDICTIONS-01 T2 and H-BV-COMPOSITE-OUTER-01 M4 interpretations: the '3x excess' is real relative to Stolfi's published 0.80 but is shared across both hands and likely arises from pipeline/operational differences, not from Hand A structural uniqueness.",
+  "findings_for_followup": [
+    "CRITICAL FOR v2: the 'Hand A suffix density excess' framing used in H-BV-EXTERNAL-PREDICTIONS-01 T2 and H-BV-COMPOSITE-OUTER-01 M4 is not Hand-A-specific. Both Brain-V Hand A (2.42) and Brain-V Hand B (2.52) are ~3x Stolfi's published 0.80. v2 must reframe any density-based claim as 'Brain-V vs Stolfi' rather than 'Hand A vs baseline'. The Hand-A-as-special reading does not survive this diagnosis on this metric.",
+    "FOLLOW-UP HYPOTHESIS NEEDED: reconcile Brain-V's pipeline with Stolfi's original measurements. Candidate sources of drift: (1) tokenisation — Stolfi may tokenise certain sequences differently (e.g., 'ee' may or may not be a ligature for him at various places in his corpus); (2) CORE/MANTLE/CRUST assignment — Stolfi's boundaries are documented but there may be edge cases (e.g., does 'e' count as crust or does it only count when isolated?); (3) 'suffix' definition — Stolfi may count only glyphs immediately after the innermost core, not all post-core glyphs until word end; (4) token filtering — Stolfi may exclude certain token classes. The cleanest next hypothesis pre-registers specific Stolfi-reconciliation tests, one per candidate source, and measures which reduces the Brain-V-vs-Stolfi gap most.",
+    "M2's Hand B > Hand A tokenised length finding (4.47 vs 4.24, p=5e-31) is new and independently interesting. It aligns with the commonly-observed 'Hand B is the longer, more complex text' impression from the literature. If Hand B has more glyphs per token on average but approximately the same suffix dealer mean, the extra length must come from elsewhere — prefix/stem region, or Layer-2 outer region, or core-adjacent slots. Worth a dedicated length-decomposition test.",
+    "The (a) candidate's failure mode is instructive: inventory_size_80 at a single positional slot is intrinsically tighter than whole-layer cardinality. For any future inventory-richness comparison against Stolfi, the right metric is the cardinality of the whole crust inventory USED in the corpus (distinct crust glyph types with non-zero count), not the 80%-coverage count at a single position. Brain-V's crust inventory size at the corpus level should be ~14 glyphs (same as Stolfi's) if the classification is consistent.",
+    "The CONFIRMED verdict of H-BV-CAVENEY-FINAL-N-01 (0.9461) remains valid and is not affected by this diagnosis. Caveney's claim is positional-within-occurrences; it does not depend on Stolfi's density numbers. The 94.6% word-final-n result holds independently.",
+    "H-BV-COMPOSITE-OUTER-01's M3 PASS (y-terminal with r/ol/l penultimate) and M5 PASS (strong folio clustering) ALSO remain valid. These are ordering and distribution findings that don't depend on the density baseline. Only M4 (density reduction) is affected by this diagnosis — its FAIL verdict is reframed from 'composite decomposition doesn't explain the Hand A excess' to 'there is no Hand A excess to explain; the 3x gap is a Brain-V-vs-Stolfi artefact'.",
+    "Third methodology lesson (after T3's numerator/denominator and M4's tokenisation inheritance): pre-registered references to external published baselines (like Stolfi's 0.80) must include a SANITY CHECK that Brain-V's implementation reproduces the external number on the corpus it was originally measured from. Had H-BV-EXTERNAL-PREDICTIONS-01 run its Stolfi operationalisation on Hand B first as a sanity check, the 3x discrepancy would have been caught before the Hand-A-vs-Stolfi interpretation was published. For v2: add this sanity check as a boilerplate prerequisite for any test that imports an external baseline."
+  ],
   "parent": "H-BV-COMPOSITE-OUTER-01",
   "created": "2026-04-17",
-  "last_tested": null,
+  "last_tested": "2026-04-17",
   "reasoning": "H-BV-COMPOSITE-OUTER-01 M4 ruled out Layer-2 composite decomposition as the driver of Hand A's 3x suffix dealer density excess. The remaining plausible sources are: (a) Hand A has a genuinely richer Layer-1 inner inventory, (b) Brain-V's Stolfi operationalisation drifts from Stolfi's own, or (c) Hand A is more inflectionally productive than Hand B. These are not mutually exclusive, and the test is designed to report all that hold. The Hand B suffix dealer measurement under Brain-V's operationalisation is the key diagnostic: if it matches Stolfi's 0.80, the operationalisation is faithful and (b) fails; if it's elevated, (b) has support. The A-vs-B comparison via Welch's t-test operationalises (c). The inventory-size-80 bootstrap on top-rank glyphs operationalises (a) against both Hand B and a fixed Stolfi proxy of 15. Every metric has a worked example following the T3 and M4 methodology lessons. Tokenisation is locked to the EXTERNAL-PREDICTIONS-01 convention (no 'ol' ligature) so the 2.4182 baseline carries forward cleanly — changing tokenisations would compound the drift being diagnosed.",
   "source": "Brain-V 2026-04-17 user-directed follow-up to H-BV-COMPOSITE-OUTER-01 PARTIAL_DENSITY verdict. The central question is: if not composite decomposition, what does explain the 3x excess?",
   "researcher": "brain-v"

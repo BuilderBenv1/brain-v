@@ -1,0 +1,67 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-DENSITY-DIAGNOSIS-01",
+  "n_hand_a_tokens": 11022,
+  "n_hand_b_tokens": 23766,
+  "M1_inventory_size_80": {
+    "hand_a": 6,
+    "hand_b": 5,
+    "stolfi_reference": 15,
+    "bootstrap_resamples": 1000,
+    "hand_a_bootstrap_mean": 6,
+    "hand_a_bootstrap_ci_95": [
+      6,
+      6
+    ],
+    "hand_b_bootstrap_mean": 5,
+    "hand_b_bootstrap_ci_95": [
+      5,
+      5
+    ],
+    "p_A_greater_B": 1.0,
+    "p_a_one_sided": 0.0
+  },
+  "M2_mean_tokenised_length": {
+    "hand_a_mean": 4.2352,
+    "hand_a_std": 1.8604,
+    "hand_a_n": 11022,
+    "hand_b_mean": 4.474,
+    "hand_b_std": 1.6175,
+    "hand_b_n": 23766,
+    "welch_t": -11.5994,
+    "welch_p": 5.2791279649510575e-31
+  },
+  "M3_suffix_dealer_mean": {
+    "hand_a_mean": 2.4182,
+    "hand_a_std": 1.513,
+    "hand_a_n_split": 4199,
+    "hand_b_mean": 2.5168,
+    "hand_b_std": 1.278,
+    "hand_b_n_split": 8793,
+    "welch_t": -3.6464,
+    "welch_p": 0.0002678768043250944,
+    "sanity_hand_a_matches_2p4182": true
+  },
+  "decisions": {
+    "a_inventory_richness": {
+      "inv_a_greater_inv_b": true,
+      "p_a_below_0_01": true,
+      "inv_a_greater_stolfi_15": false,
+      "pass": false
+    },
+    "b_operationalisation_drift": {
+      "fraction_methodological": 1.0609,
+      "threshold": 0.5,
+      "pass": true
+    },
+    "c_a_over_b_productivity": {
+      "welch_p_below_0_01": "True",
+      "fraction_productivity": -0.0609,
+      "threshold": 0.3,
+      "pass": false
+    }
+  },
+  "passing_candidates": [
+    "b"
+  ]
+}
