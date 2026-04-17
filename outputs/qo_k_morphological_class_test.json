@@ -1,0 +1,24 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-QO-K-MORPHOLOGICAL-CLASS-01",
+  "n_biological_folios": 19,
+  "n_non_biological_folios": 63,
+  "total_qok_tokens": 2532,
+  "total_qo_non_k_tokens": 1549,
+  "class_A_qo_k": {
+    "mean_bio": 0.15915,
+    "mean_non_bio": 0.07796,
+    "cohens_d": 2.0463,
+    "t": 7.5237,
+    "p": 0.0
+  },
+  "class_B_qo_non_k": {
+    "mean_bio": 0.08059,
+    "mean_non_bio": 0.05035,
+    "cohens_d": 0.9979,
+    "t": 4.0973,
+    "p": 3.1e-05
+  },
+  "d_ratio_qok_over_qo_non_k": 2.0506,
+  "verdict": "PARTIAL"
+}
