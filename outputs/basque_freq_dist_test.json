@@ -1,0 +1,82 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-BASQUE-FREQ-DIST-01",
+  "total_tokens": 11022,
+  "unique_types": 3513,
+  "high_class_size": 146,
+  "high_class_coverage": 0.5006,
+  "Z1_zipf_exponent": {
+    "value": 0.7513,
+    "range": [
+      0.85,
+      1.15
+    ],
+    "pass": false
+  },
+  "Z2_top10_share": {
+    "value": 0.1513,
+    "range": [
+      0.15,
+      0.3
+    ],
+    "pass": true
+  },
+  "Z3_rank_1_over_10": {
+    "value": 4.7216,
+    "range": [
+      3.5,
+      7.0
+    ],
+    "pass": true
+  },
+  "diagnostic": {
+    "top10_types": [
+      {
+        "type": "daiin",
+        "count": 458
+      },
+      {
+        "type": "chol",
+        "count": 261
+      },
+      {
+        "type": "chor",
+        "count": 167
+      },
+      {
+        "type": "s",
+        "count": 164
+      },
+      {
+        "type": "y",
+        "count": 111
+      },
+      {
+        "type": "shol",
+        "count": 108
+      },
+      {
+        "type": "or",
+        "count": 102
+      },
+      {
+        "type": "ol",
+        "count": 102
+      },
+      {
+        "type": "chy",
+        "count": 98
+      },
+      {
+        "type": "dy",
+        "count": 97
+      }
+    ],
+    "rank1_over_rank20": 7.3871,
+    "one_glyph_types_in_high_class": 6,
+    "top10_mean_length": 2.8
+  },
+  "n_pass": 2,
+  "verdict": "MARGINAL",
+  "rationale": "2/3 metrics match; partial compatibility"
+}
