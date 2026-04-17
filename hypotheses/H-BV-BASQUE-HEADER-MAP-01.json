@@ -1,0 +1,30 @@
+{
+  "id": "H-BV-BASQUE-HEADER-MAP-01",
+  "claim": "The 14-item header pool identified in H-BV-GALLOWS-STRIP-HEADER-01 (chor, ol, shol, cho, or, cheol, aiin, chol, odaiin, cheody, chody, chocthy, shor, eol) — which recur at Hand A paragraph-initial positions with gallows-prefix decoration — exhibits phonotactic and structural properties compatible with a Basque medical/herbal vocabulary pool. If compatible: Brain-V has a candidate for Basque section-header vocabulary; if not: the Basque-like reading does not extend to Hand A's topic/header layer.",
+  "type": "language",
+  "confidence": 0.3,
+  "evidence_for": [
+    "If Hand A is Basque-like under Latin scribal abbreviation, the recurrent header stems should be a small, closed semantic class (plant types, body parts, pharmaceutical operations) following the same phonotactic rules as the rest of the Hand A stem inventory.",
+    "14 recurrent stems is roughly compatible with the size of a typical herbal section-header vocabulary (see Circa Instans: 15-20 principal section heads for plant families; typical pharmaceutical antidotarium: 10-25 operation types).",
+    "The header stems are paragraph-initial by construction (from GALLOWS-STRIP-HEADER-01), matching the structural role of Basque-language herbal catalog entries where each plant/operation would anchor its own paragraph."
+  ],
+  "evidence_against": [
+    "No extant 15th-c. Basque medical/herbal text is available to Brain-V as a reference corpus. Brain-V's earliest substantial Basque attestation is Bernat Etxepare's 'Linguae Vasconum Primitiae' (1545), and earlier fragments (glosses, oaths) are lexically non-medical. Without medical-register reference, a direct vocabulary match is effectively untestable — only structural compatibility can be assessed.",
+    "Even if Hand A is Basque, the headers may be opaque compounds, proper names (plant species names in Latin transliteration), or abbreviations that do not obey regular Basque phonotactics.",
+    "The header pool size (14) is small; any phonotactic test on 14 items has low statistical power. Absence of signal is not evidence of absence."
+  ],
+  "test": "LOCKED PROCEDURE.\n\n  DATA: The 14-item stripped header pool from H-BV-GALLOWS-STRIP-HEADER-01:\n    {chor, ol, shol, cho, or, cheol, aiin, chol, odaiin, cheody, chody, chocthy, shor, eol}\n\n  GLYPH PHONOLOGICAL CATEGORIES (LOCKED, imported from H-BV-BASQUE-PHONOTACTIC-01):\n    VOWEL-like: {i, e, o, a}\n    CONSONANT-like: {k, t, p, d, l, m, n, r, s, q, f, g, v, x, y} plus ligatures {ch, sh, ckh, cth, cph, ol}\n\n  FIVE HEADER-POOL PROPERTIES (LOCKED):\n\n  H1 — NO R-INITIAL:\n    Number of header stems starting with 'r'. Basque predicts zero.\n    PASS if count == 0.\n\n  H2 — LENGTH DISTRIBUTION:\n    Compute mean and median length (in glyph-units) of header stems. Basque category/topic words (plant names, body parts, operations) are typically 3-7 glyph-units. The stripped headers should fall in a plausible Basque content-word-length range.\n    PASS if mean length in [2.5, 6.0] AND median in [2, 6].\n\n  H3 — VOWEL-FINAL COMPATIBILITY:\n    Fraction of header stems whose final glyph-unit is vowel-like. Basque common nouns often end in vowels (especially -a). Medical/herbal category terms in Basque include: belar 'grass/herb' (cons-final); lore 'flower' (vowel-final); hosto 'leaf' (vowel-final); zuhaitz 'tree' (cons-final). Mixed expectation — not a strong prediction.\n    PASS if >=0.35 of headers are vowel-final (lower bar than general Hand A — categories can be cons-final).\n\n  H4 — STEM DIVERSITY:\n    14 header stems should be reasonably diverse (not all variants of one root). Compute: Levenshtein/edit-distance-based cluster count. Group stems whose pairwise edit distance is <=1. Basque section vocabulary for a coherent herbal would have at least 8 distinct clusters (each plant family, or each operation type).\n    PASS if cluster count (at edit distance <=1) >= 8.\n\n  H5 — CONSISTENCY WITH HAND A STEM PROFILE:\n    The 14 headers should be drawn from Hand A's general stem inventory — they should not be outliers. Check: for each header, does it appear as a non-paragraph-initial form elsewhere in Hand A (possibly with additional outer suffixes)?\n    PASS if >=70% of headers have at least one non-header occurrence in Hand A (with any Layer-2 outer).\n\n  DECISION RULE (LOCKED):\n    CONFIRMED: >=3/5 properties PASS. Headers are Basque-compatible structurally.\n    MARGINAL: 1-2/5 PASS. Headers have some Basque-compatible properties but not systematically.\n    REFUTED: 0/5 PASS. The header pool is structurally incompatible with a Basque herbal category vocabulary.\n\n  CAVEAT (locked): without a Basque medical/herbal corpus to compare against, this test can only falsify via structural incompatibility. It cannot CONFIRM lexical match — a PASS means 'consistent with Basque', not 'identified as Basque'.",
+  "test_metric": "count_of_header_pool_properties_passing_out_of_5",
+  "test_threshold": "CONFIRMED if >=3/5 properties pass. MARGINAL if 1-2/5. REFUTED if 0/5.",
+  "tests_run": [],
+  "tests_remaining": [
+    "locked_basque_header_mapping_test"
+  ],
+  "status": "active",
+  "parent": "H-BV-AGGLUTINATIVE-SCREEN-01",
+  "created": "2026-04-17",
+  "last_tested": null,
+  "reasoning": "If Hand A is a Basque-like herbal/pharmaceutical text, the recurring paragraph-initial stems are the closest Brain-V can get to a 'vocabulary surface' — they are the section anchors, presumably naming plants, body parts, or operations. Testing whether this small pool is structurally compatible with a Basque content-word profile provides a final cross-check on the Basque-like hypothesis. Honest limitation: without medieval-Basque medical vocabulary, the test can only rule OUT incompatibility; it cannot positively identify the headers as Basque words.",
+  "source": "Brain-V 2026-04-17 user-directed falsification attempt on Basque-like+Latin-abbreviation convergence hypothesis; test 4 of 4",
+  "researcher": "brain-v"
+}
