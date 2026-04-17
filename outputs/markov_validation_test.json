@@ -1,0 +1,127 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-MARKOV-VALIDATION-01",
+  "S1_tokenisation": {
+    "results": {
+      "Hand_A": {
+        "T1a_raw": 2.1906,
+        "T1b_ol": 2.252,
+        "T1c_ol_qo": 2.2756,
+        "T1d_benchgallows": 2.1835
+      },
+      "Hand_B": {
+        "T1a_raw": 2.0191,
+        "T1b_ol": 2.0552,
+        "T1c_ol_qo": 2.0978,
+        "T1d_benchgallows": 1.9852
+      }
+    },
+    "max_deviation": 0.085,
+    "verdict": "PASS"
+  },
+  "S2_reference_normalisation": {
+    "per_corpus": {
+      "Hand_A": {
+        "h_raw": 2.1906,
+        "alphabet": 25,
+        "h_norm": 0.4717
+      },
+      "Hand_B": {
+        "h_raw": 2.0191,
+        "alphabet": 25,
+        "h_norm": 0.4348
+      },
+      "Basque": {
+        "h_raw": 3.2433,
+        "alphabet": 58,
+        "h_norm": 0.5537
+      },
+      "Hungarian": {
+        "h_raw": 3.7029,
+        "alphabet": 59,
+        "h_norm": 0.6295
+      },
+      "Turkish": {
+        "h_raw": 3.4833,
+        "alphabet": 55,
+        "h_norm": 0.6025
+      },
+      "Esperanto": {
+        "h_raw": 3.4501,
+        "alphabet": 190,
+        "h_norm": 0.4558
+      }
+    },
+    "reproduction_ok": true,
+    "ha_gap_normalised": 0.1235,
+    "hb_gap_normalised": 0.1604,
+    "verdict": "PASS"
+  },
+  "S3_higher_order": {
+    "per_corpus": {
+      "Hand_A": {
+        "k=1": 2.1907,
+        "k=2": 1.9363,
+        "k=3": 1.8479,
+        "k=4": 1.7553,
+        "ratio_3_1": 0.8435
+      },
+      "Hand_B": {
+        "k=1": 2.0192,
+        "k=2": 1.765,
+        "k=3": 1.6979,
+        "k=4": 1.6316,
+        "ratio_3_1": 0.8409
+      },
+      "Basque": {
+        "k=1": 3.2433,
+        "k=2": 2.804,
+        "k=3": 2.2843,
+        "k=4": 1.8151,
+        "ratio_3_1": 0.7043
+      },
+      "Hungarian": {
+        "k=1": 3.7032,
+        "k=2": 2.9565,
+        "k=3": 2.1369,
+        "k=4": 1.6456,
+        "ratio_3_1": 0.577
+      },
+      "Esperanto": {
+        "k=1": 3.4513,
+        "k=2": 2.8208,
+        "k=3": 2.1452,
+        "k=4": 1.6491,
+        "ratio_3_1": 0.6216
+      }
+    },
+    "hand_a_ratio": 0.8435,
+    "hand_b_ratio": 0.8409,
+    "natural_mean_ratio": 0.6406,
+    "verdict": "PARTIAL"
+  },
+  "S4_subset_stability": {
+    "subsets": {
+      "A-herbal": {
+        "h_cond": 2.1509,
+        "chars": 44914
+      },
+      "A-pharma": {
+        "h_cond": 2.1338,
+        "chars": 15251
+      },
+      "A-first_half": {
+        "h_cond": 2.1217,
+        "chars": 33297
+      },
+      "A-second_half": {
+        "h_cond": 2.2013,
+        "chars": 32460
+      }
+    },
+    "range": 0.0796,
+    "verdict": "PASS"
+  },
+  "aggregate_score": 3.5,
+  "overall_verdict": "ROBUST"
+}

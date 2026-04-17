@@ -18,14 +18,82 @@
   "test": "LOCKED PROCEDURE.\n\n  CORPORA: Hand A and Hand B (from voynich-corpus.json); reference corpora UD_Basque-BDT, UD_Hungarian-Szeged, UD_Turkish-IMST, Esperanto Wikipedia sample (all already downloaded). All text normalisation per H-BV-CONSTRUCTED-SIGNATURE-01.\n\n  BASELINE (from prior tests):\n    Hand A H_cond = 2.1906 (alphabet 25)\n    Hand B H_cond = 2.0191 (alphabet 25)\n    Basque H_cond = 3.2433 (alphabet 58)\n    Hungarian H_cond = 3.7029 (alphabet 59)\n    Turkish H_cond = 3.4833 (alphabet 55)\n    Esperanto H_cond = 3.4501 (alphabet 190)\n\n  SUB-TEST 1 — TOKENISATION INVARIANCE:\n    Apply each of four tokenisation variants to Hand A and Hand B text BEFORE character-level H_cond computation:\n      T1a: RAW — no substitution (baseline, matches CONSTRUCTED-SIGNATURE-01)\n      T1b: OL-LIGATURE — substitute each 'ol' with single placeholder character 'Q'\n      T1c: OL+QO-LIGATURE — substitute 'ol' and 'qo' with single placeholders 'Q' and 'X'\n      T1d: BENCH-GALLOWS — substitute 'cth', 'cph', 'ckh', 'cfh' with 'W', 'X', 'Y', 'Z' placeholders\n    Compute H_cond under each variant for BOTH hands. Report 4x2 table.\n    S1 PASS iff: max |H_cond_variant - H_cond_raw| <= 0.30 for each hand (Markov-flatness is invariant under reasonable tokenisation choices).\n    S1 FAIL iff: any variant deviates by > 0.30 for either hand.\n\n  SUB-TEST 2 — REFERENCE CORPUS RECOMPUTATION AND NORMALISATION:\n    Part A: Re-run H_cond on Basque, Hungarian, Turkish, Esperanto using identical methodology. Should reproduce CONSTRUCTED-SIGNATURE-01 values within floating-point noise. PASS iff reproduced within 0.01.\n    Part B: Compute NORMALISED H_cond = H_cond / log2(alphabet_size) for each corpus including Hand A and Hand B.\n    Part C: Under normalised H_cond, check:\n      Hand A normalised H_cond_n_A\n      Hand B normalised H_cond_n_B\n      Natural mean normalised H_cond_n_nat = mean of Basque/Hungarian/Turkish normalised values\n      Constructed normalised H_cond_n_con = Esperanto normalised\n    S2 PASS iff: BOTH Part A reproduces raw values within tolerance AND the normalised Hand A/B values are still lower than natural mean by >= 0.10 absolute (i.e., alphabet normalisation preserves the 'Hand A is more predictable than natural' finding).\n    S2 PARTIAL iff: Part A reproduces but the normalised Hand A/B is within 0.10 of natural mean (alphabet size accounts for most of the raw contrast).\n    S2 FAIL iff: Part A fails reproduction (methodology is inconsistent between original and replication).\n\n  SUB-TEST 3 — HIGHER-ORDER H_cond CHECK:\n    Compute H_cond(k) for k = 1, 2, 3, 4 on Hand A, Hand B, Basque, Hungarian, Esperanto.\n    H_cond(k) = sum over (context_k, x) of p(context_k, x) * log2(1 / p(x | context_k))\n    where context_k is a k-character context.\n    Use MLE estimates without smoothing. Ignore contexts with < 5 occurrences (noise threshold).\n    Report 4x5 table.\n    For each corpus, compute the ratio H_cond(k=3) / H_cond(k=1). Natural languages typically have this ratio significantly less than 1 (more context = more predictable). A Markov-1 source has ratio close to 1 (no higher-order structure).\n    S3 PASS iff: Hand A and Hand B H_cond(k=3)/H_cond(k=1) ratio is >= 0.75 (little additional predictability at higher k) AND natural languages show ratio <= 0.60 (substantial higher-order structure).\n    S3 FAIL iff: Hand A/B ratio is <= 0.60 AND natural ratio is comparable — then Hand A has higher-order structure similar to natural languages, Markov-1 framing is wrong.\n    S3 PARTIAL iff: intermediate values.\n\n  SUB-TEST 4 — SUBSET STABILITY:\n    For Hand A, compute H_cond on:\n      A-herbal: folios with section == 'herbal' AND currier == 'A'\n      A-pharma: folios with section == 'pharmaceutical' AND currier == 'A'\n      A-first-half: Hand A folios by folio_id sort order, first 50% by token count\n      A-second-half: remaining 50%\n    Report 4 values. Compute max - min H_cond across subsets.\n    S4 PASS iff: max - min H_cond across subsets <= 0.30 (consistent within Hand A).\n    S4 FAIL iff: max - min > 0.30 (heterogeneous).\n\n  AGGREGATE DECISION RULE (LOCKED):\n    Each sub-test contributes 1.0 (PASS), 0.5 (PARTIAL), 0.0 (FAIL). Sum across 4.\n    ROBUST: 3.5+ (essentially all pass)\n    VALIDATED_WITH_CAVEATS: 2.5-3.0 (3 pass, 1 partial OR 2 pass, 2 partial)\n    FRAGILE: 1.5-2.0 (2 pass)\n    ARTEFACT_DRIVEN: <= 1.0\n\n  WORKED EXAMPLE (for S1 variant T1b):\n    Hand A contains 'sheol' → under T1a raw: [s, h, e, o, l]; bigrams: (s,h), (h,e), (e,o), (o,l).\n    Under T1b ol-ligature: [s, h, e, Q]; bigrams: (s,h), (h,e), (e,Q). The (e,o) and (o,l) bigrams are collapsed into (e,Q).\n    H_cond recomputed on the substituted string. Expected: small shift since 'ol' is moderately frequent in Hand A.\n\n  WORKED EXAMPLE (for S3 H_cond(k=3)):\n    Text: 'daiindaiin'\n    4-grams (context + next): (d,a,i,i|n), (a,i,i,n|d), (i,i,n,d|a), (i,n,d,a|i), (n,d,a,i|i), (d,a,i,i|n)\n    For each 3-char context, count what follows. Compute H_cond(k=3) over the distribution.",
   "test_metric": "4 sub-tests each yielding PASS (1.0), PARTIAL (0.5), or FAIL (0.0). Aggregate sum across 4.",
   "test_threshold": "ROBUST if 3.5+; VALIDATED_WITH_CAVEATS if 2.5-3.0; FRAGILE if 1.5-2.0; ARTEFACT_DRIVEN if <= 1.0.",
-  "tests_run": [],
-  "tests_remaining": [
-    "locked_markov_validation: execute S1 (tokenisation), S2 (reference+normalisation), S3 (higher-order), S4 (subset); apply decision rule"
+  "tests_run": [
+    {
+      "date": "2026-04-17",
+      "test": "locked_markov_validation",
+      "script": "scripts/run_markov_validation.py",
+      "results_file": "outputs/markov_validation_test.json",
+      "S1_tokenisation": {
+        "Hand_A": {"T1a_raw": 2.1906, "T1b_ol": 2.2520, "T1c_ol_qo": 2.2756, "T1d_benchgallows": 2.1835},
+        "Hand_B": {"T1a_raw": 2.0191, "T1b_ol": 2.0552, "T1c_ol_qo": 2.0978, "T1d_benchgallows": 1.9852},
+        "max_deviation_across_variants": 0.0850,
+        "threshold": 0.30,
+        "verdict": "PASS",
+        "note": "All four tokenisation variants give H_cond values within 0.09 of the raw baseline. Substituting ol, qo, or bench gallows as single characters does not change the Markov-flat finding. Tokenisation invariance confirmed."
+      },
+      "S2_reference_recomputation_and_normalisation": {
+        "reference_reproduction_all_exact": true,
+        "normalised_h_cond": {
+          "Hand_A": 0.4717,
+          "Hand_B": 0.4348,
+          "Basque": 0.5537,
+          "Hungarian": 0.6295,
+          "Turkish": 0.6025,
+          "Esperanto": 0.4558
+        },
+        "natural_mean_normalised": 0.5952,
+        "constructed_normalised": 0.4558,
+        "hand_a_gap_to_natural_normalised": 0.1235,
+        "hand_b_gap_to_natural_normalised": 0.1604,
+        "threshold": 0.10,
+        "verdict": "PASS",
+        "note": "Part A reproduces all reference H_cond values exactly (diff 0.0000). Part B shows that under alphabet-size normalisation, Hand A (0.47) and Hand B (0.43) still fall below natural mean (0.60) by 0.12 and 0.16 respectively — both above the 0.10 threshold. The Markov-flat finding is NOT alphabet-size-driven. Notable nuance: normalised Esperanto (0.46) is intermediate between the two hands, suggesting under normalisation Esperanto's signature is similar to Hand A's. But the natural-vs-Hand-A gap remains."
+      },
+      "S3_higher_order_h_cond": {
+        "Hand_A": {"k_1": 2.1907, "k_2": 1.9363, "k_3": 1.8479, "k_4": 1.7553, "ratio_3_1": 0.8435},
+        "Hand_B": {"k_1": 2.0192, "k_2": 1.7650, "k_3": 1.6979, "k_4": 1.6316, "ratio_3_1": 0.8409},
+        "Basque": {"k_1": 3.2433, "k_2": 2.8040, "k_3": 2.2843, "k_4": 1.8151, "ratio_3_1": 0.7043},
+        "Hungarian": {"k_1": 3.7032, "k_2": 2.9565, "k_3": 2.1369, "k_4": 1.6456, "ratio_3_1": 0.5770},
+        "Esperanto": {"k_1": 3.4513, "k_2": 2.8208, "k_3": 2.1452, "k_4": 1.6491, "ratio_3_1": 0.6216},
+        "natural_mean_ratio": 0.6406,
+        "hand_a_b_pass_ratio_ge_0_75": true,
+        "natural_pass_ratio_le_0_60": false,
+        "verdict": "PARTIAL",
+        "note": "Hand A and Hand B DO satisfy ratio >= 0.75 (both 0.84) — they retain high predictability at order 3 relative to order 1, consistent with Markov-1-flat structure. HOWEVER, natural languages do NOT all satisfy ratio <= 0.60: Hungarian does (0.58) but Basque (0.70) and Esperanto (0.62) are above 0.60. Natural mean 0.64 marginally misses the threshold. Interpretation: the Hand A/B higher-order flatness is real (ratios 0.84 vs natural mean 0.64 is a meaningful contrast), but the strict natural <= 0.60 expectation was too demanding. The Markov-flat direction holds; the binary test fails on the natural side."
+      },
+      "S4_subset_stability": {
+        "A_herbal": {"chars": 44914, "H_cond": 2.1509},
+        "A_pharma": {"chars": 15251, "H_cond": 2.1338},
+        "A_first_half": {"chars": 33297, "H_cond": 2.1217},
+        "A_second_half": {"chars": 32460, "H_cond": 2.2013},
+        "range_max_min": 0.0796,
+        "threshold": 0.30,
+        "verdict": "PASS",
+        "note": "H_cond is remarkably stable across Hand A subsets (range 0.08). The Markov-flat signature is consistent across herbal vs pharmaceutical sections and first-half vs second-half folios. No within-Hand-A heterogeneity explains the manuscript-wide finding."
+      },
+      "aggregate_score": "3.5 / 4",
+      "locked_verdict": "ROBUST",
+      "confidence_change": "0.5 -> 0.85"
+    }
   ],
-  "status": "active",
+  "tests_remaining": [],
+  "status": "robust",
+  "verdict_note": "ROBUST (aggregate 3.5/4 at the threshold). The Markov-1-flat finding survives three decisive stress tests: S1 tokenisation invariance (max deviation 0.09 across all 4 variants × 2 hands, well below 0.30 threshold), S2 alphabet normalisation (Hand A normalised H_cond 0.47, Hand B 0.43, natural mean 0.60 — gaps 0.12 and 0.16 both above 0.10 threshold), and S4 subset stability (H_cond range 0.08 across Hand A herbal/pharma/first-half/second-half subsets). S3 (higher-order) returns PARTIAL — Hand A/B correctly show ratio(k=3/k=1) ~0.84 (high retention, consistent with Markov-flat), but natural mean ratio 0.64 marginally misses the <= 0.60 threshold: Hungarian (0.58) and Esperanto (0.62) match expectations but Basque (0.70) is higher. The Markov-flat direction holds on S3 but the binary threshold fails on the reference side. Net: the generative-process interpretation is STRONGLY SUPPORTED. Notable nuance from S2: under alphabet-size normalisation, Esperanto (0.46) is close to Hand A (0.47), not 0.22 below as raw H_cond suggested. The 'Esperanto is closer to natural language than Hand A' framing from CONSTRUCTED-SIGNATURE-01 needs adjustment — it's true at raw H_cond, less clear under normalisation. But Hand A/B are still below natural language mean under either measure.",
+  "findings_for_followup": [
+    "ROBUST FINDING FOR v2: the Markov-1-flat character-level signature in both Voynich hands survives four-dimensional stress testing. v2 can cite this as a reliable structural characterisation of the manuscript.",
+    "TOKENISATION INVARIANCE (S1): the finding does not depend on how ambiguous glyph sequences (ol, qo, cth, cph, ckh, cfh) are tokenised. H_cond shifts by less than 0.1 under any reasonable tokenisation choice. This addresses a long-standing methodological concern about EVA-based Voynich analyses.",
+    "ALPHABET NORMALISATION (S2): raw H_cond contrasts are partly alphabet-size-driven (Hand A 25 chars vs Hungarian 59 chars), but normalised H_cond = H_cond / log2(alphabet) still places Hand A/B at 0.43-0.47 vs natural mean 0.60 — a genuine 0.13-0.16 gap. Important for v2: report BOTH raw and normalised H_cond. The raw 2.2 vs 3.5 contrast overstates the finding; the normalised 0.45 vs 0.60 is the honest comparison.",
+    "SUBSET STABILITY (S4): H_cond ranges 0.08 across Hand A sections and folio halves. The signature is not an averaging artefact — herbal, pharmaceutical, first-half, and second-half all show Markov-flat structure. This rules out sectional heterogeneity as an explanation.",
+    "HIGHER-ORDER (S3) NUANCE: Hand A/B ratios 0.84 vs natural mean 0.64 shows Hand A/B lose LESS predictability at higher orders — the Markov-flat pattern. But natural languages vary: Hungarian (0.58) is well below; Basque (0.70) is close to Hand A; Esperanto (0.62) is intermediate. The contrast is real but not as categorical as the pre-reg anticipated. Basque's relatively flat higher-order structure is itself interesting — it partially overlaps Hand A in this dimension.",
+    "IMPLICATION FOR THE BASQUE NARRATIVE: Basque's ratio 0.70 is closer to Hand A's 0.84 than to Hungarian's 0.58. This suggests Basque itself has more limited higher-order character structure than some other natural languages. The aggregate distributional match between Hand A and Basque (AGGLUTINATIVE-EXPANSION-01) plus the somewhat similar higher-order profile (Basque 0.70 vs Hand A 0.84) may be related — both may reflect Basque's specific phonotactic constraints. Not a full match, but worth noting.",
+    "v2 METHODOLOGY SECTION: this hypothesis exemplifies the stress-testing pattern from wiki/methodology-lessons.md. A finding that appeared 'too clean' (H_cond = 2.2 near-identical to Markov generation) was subjected to four locked stress tests; three passed, one partially. The finding survives but with a specific caveat documented. This is the honest reporting pattern v2 should model throughout.",
+    "METHODOLOGY LESSON 7 CANDIDATE: when comparing entropy-based metrics across corpora with different alphabet sizes, BOTH raw and normalised values should be reported. Raw values contrast alphabet + structure confounds; normalised values isolate structure. The difference between them is informative (how much of the apparent contrast is alphabet-driven). CONSTRUCTED-SIGNATURE-01 and HAND-B-MARKOV-01 used only raw values; this validation retroactively shows the raw contrast overstated the finding on M2.",
+    "NEXT STEP CANDIDATE: now that the manuscript-wide Markov-flat signature is validated, the specific generative mechanism is the open question. Candidate tests: which of (a) n-gram sampling at order 1 vs 2, (b) syllable-table lookup, (c) cipher-wheel / Cardan grille, (d) table-substitution best reproduces the full 6-metric profile of Hand A AND Hand B AND the M5 rigidity?"
+  ],
   "parent": "H-BV-HAND-B-MARKOV-01",
   "created": "2026-04-17",
-  "last_tested": null,
+  "last_tested": "2026-04-17",
   "reasoning": "H-BV-CONSTRUCTED-SIGNATURE-01 and H-BV-HAND-B-MARKOV-01 collectively established that both Voynich hands exhibit Markov-1-flat character-level statistics, with H_cond near 2.1 vs natural-language H_cond ~3.5. This finding reframes Brain-V's entire Basque-direction program: if robust, the manuscript is a generative process output; if fragile, the Markov-flat characterisation is an artefact. Four stress tests probe the main concerns: (S1) is H_cond dependent on tokenisation choices that handle ambiguous glyph sequences differently? (S2) does alphabet-size normalisation change the natural-vs-Hand-A contrast? (S3) does the flatness extend to higher orders, or is Hand A just bigram-Markov while natural languages have deeper structure? (S4) is the signature consistent across Hand A's sections, or does it average over heterogeneous content? The aggregate decision rule maps 0-4 pass/partial/fail to four severity levels. Per methodology lesson 3, this is the diagnostic that should have preceded confident citation of the generative-process hypothesis; running it now retroactively validates (or not).",
   "source": "Brain-V 2026-04-17 user-directed stress test of the Markov-1-flat finding from H-BV-CONSTRUCTED-SIGNATURE-01 and H-BV-HAND-B-MARKOV-01. Applies methodology lesson 3 (external-baseline sanity check) and the operationalisation-invariance pattern from H-BV-BASQUE-MATCH-VALIDATION-01.",
   "researcher": "brain-v"
