@@ -1,0 +1,132 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-COMPOSITE-OUTER-01",
+  "n_hand_a_tokens": 11022,
+  "M1_outer_position_frequency": {
+    "l": {
+      "numerator": 472,
+      "denominator": 828,
+      "final_rate": 0.57
+    },
+    "n": {
+      "numerator": 1704,
+      "denominator": 1781,
+      "final_rate": 0.9568
+    },
+    "ol": {
+      "numerator": 1580,
+      "denominator": 2082,
+      "final_rate": 0.7589
+    },
+    "r": {
+      "numerator": 1858,
+      "denominator": 2255,
+      "final_rate": 0.8239
+    },
+    "y": {
+      "numerator": 3466,
+      "denominator": 4080,
+      "final_rate": 0.8495
+    }
+  },
+  "M2_multi_outer_rate": {
+    "numerator": 288,
+    "denominator": 10406,
+    "multi_outer_rate": 0.0277
+  },
+  "M3_pair_ordering": {
+    "qualifying_pairs": [
+      {
+        "pair": "{r,y}",
+        "count_AB": 83,
+        "count_BA": 1,
+        "pair_total": 84,
+        "pair_asymmetry": 0.9762,
+        "A_first_direction": "r->y"
+      },
+      {
+        "pair": "{ol,y}",
+        "count_AB": 65,
+        "count_BA": 1,
+        "pair_total": 66,
+        "pair_asymmetry": 0.9697,
+        "A_first_direction": "ol->y"
+      },
+      {
+        "pair": "{l,y}",
+        "count_AB": 84,
+        "count_BA": 3,
+        "pair_total": 87,
+        "pair_asymmetry": 0.931,
+        "A_first_direction": "l->y"
+      }
+    ],
+    "max_asymmetry": 0.9762,
+    "argmax_pair_total": 84,
+    "threshold": "max_asymmetry >= 0.80 AND argmax_pair_total >= 50",
+    "pass": true
+  },
+  "M4_density_reduction": {
+    "composite_set_C": [
+      [
+        "l",
+        "y"
+      ],
+      [
+        "r",
+        "y"
+      ],
+      [
+        "ol",
+        "y"
+      ],
+      [
+        "r",
+        "ol"
+      ],
+      [
+        "l",
+        "ol"
+      ],
+      [
+        "n",
+        "y"
+      ],
+      [
+        "r",
+        "l"
+      ],
+      [
+        "y",
+        "l"
+      ],
+      [
+        "n",
+        "ol"
+      ],
+      [
+        "y",
+        "ol"
+      ]
+    ],
+    "n_split_tokens": 4199,
+    "observed_glyph_mean": 2.4182,
+    "glyph_mean_check": 2.0414,
+    "new_morpheme_mean": 2.0233,
+    "stolfi_target": 0.8,
+    "observed_excess": 1.6182,
+    "anomaly_reduction": 0.244,
+    "threshold": "anomaly_reduction >= 0.50",
+    "pass": false
+  },
+  "M5_folio_clustering": {
+    "eligible_folios": 81,
+    "composite_columns": 10,
+    "chi2": 905.7013,
+    "p_value": 2.7604947848655984e-06,
+    "cramers_V": 0.6116,
+    "threshold": "p_value < 0.05 AND cramers_V >= 0.15",
+    "pass": true
+  },
+  "verdict": "PARTIAL_DENSITY"
+}
