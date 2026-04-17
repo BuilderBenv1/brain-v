@@ -1,0 +1,403 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-HAND-B-SECTION-BREAKDOWN-01",
+  "hand_b_sections_n": {
+    "recipes": 23,
+    "herbal": 32,
+    "text-only": 5,
+    "biological": 19,
+    "cosmological": 3
+  },
+  "S1_pairwise": [
+    {
+      "pair": "recipes vs herbal",
+      "metric": "TTR",
+      "n1": 23,
+      "n2": 32,
+      "mean1": 0.6339,
+      "mean2": 0.8291,
+      "t": -9.7072,
+      "p": null,
+      "sig_bonferroni": true
+    },
+    {
+      "pair": "recipes vs herbal",
+      "metric": "marker_freq",
+      "n1": 23,
+      "n2": 32,
+      "mean1": 0.0178,
+      "mean2": 0.018,
+      "t": -0.0471,
+      "p": 0.962431,
+      "sig_bonferroni": false
+    },
+    {
+      "pair": "recipes vs text-only",
+      "metric": "TTR",
+      "n1": 23,
+      "n2": 5,
+      "mean1": 0.6339,
+      "mean2": 0.6077,
+      "t": 0.5472,
+      "p": 0.013528,
+      "sig_bonferroni": false
+    },
+    {
+      "pair": "recipes vs text-only",
+      "metric": "marker_freq",
+      "n1": 23,
+      "n2": 5,
+      "mean1": 0.0178,
+      "mean2": 0.017,
+      "t": 0.1296,
+      "p": 0.003713,
+      "sig_bonferroni": false
+    },
+    {
+      "pair": "recipes vs biological",
+      "metric": "TTR",
+      "n1": 23,
+      "n2": 19,
+      "mean1": 0.6339,
+      "mean2": 0.5558,
+      "t": 4.2486,
+      "p": 2.2e-05,
+      "sig_bonferroni": true
+    },
+    {
+      "pair": "recipes vs biological",
+      "metric": "marker_freq",
+      "n1": 23,
+      "n2": 19,
+      "mean1": 0.0178,
+      "mean2": 0.0296,
+      "t": -4.0666,
+      "p": 4.8e-05,
+      "sig_bonferroni": true
+    },
+    {
+      "pair": "recipes vs cosmological",
+      "metric": "TTR",
+      "n1": 23,
+      "n2": 3,
+      "mean1": 0.6339,
+      "mean2": 0.7004,
+      "t": -1.8072,
+      "p": 0.059879,
+      "sig_bonferroni": false
+    },
+    {
+      "pair": "recipes vs cosmological",
+      "metric": "marker_freq",
+      "n1": 23,
+      "n2": 3,
+      "mean1": 0.0178,
+      "mean2": 0.0117,
+      "t": 1.0862,
+      "p": 0.084487,
+      "sig_bonferroni": false
+    },
+    {
+      "pair": "herbal vs text-only",
+      "metric": "TTR",
+      "n1": 32,
+      "n2": 5,
+      "mean1": 0.8291,
+      "mean2": 0.6077,
+      "t": 4.7706,
+      "p": 0.004775,
+      "sig_bonferroni": false
+    },
+    {
+      "pair": "herbal vs text-only",
+      "metric": "marker_freq",
+      "n1": 32,
+      "n2": 5,
+      "mean1": 0.018,
+      "mean2": 0.017,
+      "t": 0.1447,
+      "p": 0.003322,
+      "sig_bonferroni": false
+    },
+    {
+      "pair": "herbal vs biological",
+      "metric": "TTR",
+      "n1": 32,
+      "n2": 19,
+      "mean1": 0.8291,
+      "mean2": 0.5558,
+      "t": 19.5819,
+      "p": null,
+      "sig_bonferroni": true
+    },
+    {
+      "pair": "herbal vs biological",
+      "metric": "marker_freq",
+      "n1": 32,
+      "n2": 19,
+      "mean1": 0.018,
+      "mean2": 0.0296,
+      "t": -3.4422,
+      "p": 0.000577,
+      "sig_bonferroni": true
+    },
+    {
+      "pair": "herbal vs cosmological",
+      "metric": "TTR",
+      "n1": 32,
+      "n2": 3,
+      "mean1": 0.8291,
+      "mean2": 0.7004,
+      "t": 3.7027,
+      "p": 0.035561,
+      "sig_bonferroni": false
+    },
+    {
+      "pair": "herbal vs cosmological",
+      "metric": "marker_freq",
+      "n1": 32,
+      "n2": 3,
+      "mean1": 0.018,
+      "mean2": 0.0117,
+      "t": 1.0601,
+      "p": 0.064816,
+      "sig_bonferroni": false
+    },
+    {
+      "pair": "text-only vs biological",
+      "metric": "TTR",
+      "n1": 5,
+      "n2": 19,
+      "mean1": 0.6077,
+      "mean2": 0.5558,
+      "t": 1.1363,
+      "p": 0.036743,
+      "sig_bonferroni": false
+    },
+    {
+      "pair": "text-only vs biological",
+      "metric": "marker_freq",
+      "n1": 5,
+      "n2": 19,
+      "mean1": 0.017,
+      "mean2": 0.0296,
+      "t": -1.8196,
+      "p": 0.028109,
+      "sig_bonferroni": false
+    },
+    {
+      "pair": "text-only vs cosmological",
+      "metric": "TTR",
+      "n1": 5,
+      "n2": 3,
+      "mean1": 0.6077,
+      "mean2": 0.7004,
+      "t": -1.6641,
+      "p": 0.022955,
+      "sig_bonferroni": false
+    },
+    {
+      "pair": "text-only vs cosmological",
+      "metric": "marker_freq",
+      "n1": 5,
+      "n2": 3,
+      "mean1": 0.017,
+      "mean2": 0.0117,
+      "t": 0.6197,
+      "p": 0.012377,
+      "sig_bonferroni": false
+    },
+    {
+      "pair": "biological vs cosmological",
+      "metric": "TTR",
+      "n1": 19,
+      "n2": 3,
+      "mean1": 0.5558,
+      "mean2": 0.7004,
+      "t": -4.2778,
+      "p": 0.03445,
+      "sig_bonferroni": false
+    },
+    {
+      "pair": "biological vs cosmological",
+      "metric": "marker_freq",
+      "n1": 19,
+      "n2": 3,
+      "mean1": 0.0296,
+      "mean2": 0.0117,
+      "t": 3.024,
+      "p": 0.039217,
+      "sig_bonferroni": false
+    }
+  ],
+  "S1_sig_count": 5,
+  "S2_bio_exclusion": {
+    "TTR": {
+      "F": 37.6596,
+      "p": 0.0
+    },
+    "chedy": {
+      "F": 0.2786,
+      "p": 0.849
+    }
+  },
+  "S3_single_vs_rest": [
+    {
+      "section": "recipes",
+      "metric": "TTR",
+      "n_in": 23,
+      "n_out": 59,
+      "mean_in": 0.6339,
+      "mean_out": 0.7158,
+      "t": -3.3102,
+      "p": 0.000932,
+      "cohens_d": -0.6437
+    },
+    {
+      "section": "recipes",
+      "metric": "marker_freq",
+      "n_in": 23,
+      "n_out": 59,
+      "mean_in": 0.0178,
+      "mean_out": 0.0213,
+      "t": -1.4676,
+      "p": 0.142202,
+      "cohens_d": -0.2856
+    },
+    {
+      "section": "herbal",
+      "metric": "TTR",
+      "n_in": 32,
+      "n_out": 50,
+      "mean_in": 0.8291,
+      "mean_out": 0.6056,
+      "t": 14.0551,
+      "p": null,
+      "cohens_d": 3.0504
+    },
+    {
+      "section": "herbal",
+      "metric": "marker_freq",
+      "n_in": 32,
+      "n_out": 50,
+      "mean_in": 0.018,
+      "mean_out": 0.0218,
+      "t": -1.3633,
+      "p": 0.172803,
+      "cohens_d": -0.3203
+    },
+    {
+      "section": "text-only",
+      "metric": "TTR",
+      "n_in": 5,
+      "n_out": 77,
+      "mean_in": 0.6077,
+      "mean_out": 0.6983,
+      "t": -1.911,
+      "p": 0.029146,
+      "cohens_d": -0.6938
+    },
+    {
+      "section": "text-only",
+      "metric": "marker_freq",
+      "n_in": 5,
+      "n_out": 77,
+      "mean_in": 0.017,
+      "mean_out": 0.0206,
+      "t": -0.5394,
+      "p": 0.017556,
+      "cohens_d": -0.2931
+    },
+    {
+      "section": "biological",
+      "metric": "TTR",
+      "n_in": 19,
+      "n_out": 63,
+      "mean_in": 0.5558,
+      "mean_out": 0.7342,
+      "t": -10.3081,
+      "p": null,
+      "cohens_d": -1.6457
+    },
+    {
+      "section": "biological",
+      "metric": "marker_freq",
+      "n_in": 19,
+      "n_out": 63,
+      "mean_in": 0.0296,
+      "mean_out": 0.0175,
+      "t": 4.2953,
+      "p": 1.7e-05,
+      "cohens_d": 1.0819
+    },
+    {
+      "section": "cosmological",
+      "metric": "TTR",
+      "n_in": 3,
+      "n_out": 79,
+      "mean_in": 0.7004,
+      "mean_out": 0.6925,
+      "t": 0.2173,
+      "p": 0.012748,
+      "cohens_d": 0.0592
+    },
+    {
+      "section": "cosmological",
+      "metric": "marker_freq",
+      "n_in": 3,
+      "n_out": 79,
+      "mean_in": 0.0117,
+      "mean_out": 0.0207,
+      "t": -1.6056,
+      "p": 0.09563,
+      "cohens_d": -0.7349
+    }
+  ],
+  "S3_largest_ttr_driver": {
+    "section": "herbal",
+    "metric": "TTR",
+    "n_in": 32,
+    "n_out": 50,
+    "mean_in": 0.8291,
+    "mean_out": 0.6056,
+    "t": 14.0551,
+    "p": null,
+    "cohens_d": 3.0504
+  },
+  "S3_largest_marker_driver": {
+    "section": "biological",
+    "metric": "marker_freq",
+    "n_in": 19,
+    "n_out": 63,
+    "mean_in": 0.0296,
+    "mean_out": 0.0175,
+    "t": 4.2953,
+    "p": 1.7e-05,
+    "cohens_d": 1.0819
+  },
+  "S4_herbal_cross_hand": {
+    "TTR": {
+      "hand_a_mean": 0.8284,
+      "hand_b_mean": 0.8291,
+      "t": -0.0516,
+      "p": 0.958829,
+      "cohens_d": -0.0099
+    },
+    "mean_length": {
+      "hand_a_mean": 4.991,
+      "hand_b_mean": 5.0723,
+      "t": -0.9495,
+      "p": 0.342343,
+      "cohens_d": -0.1819
+    },
+    "marker_freq": {
+      "hand_a_mean": 0.0485,
+      "hand_b_mean": 0.018,
+      "t": 6.5724,
+      "p": 0.0,
+      "cohens_d": 0.8852
+    }
+  },
+  "primary_verdict": "DISTRIBUTED_EFFECT",
+  "scribal_overlay_detected": false
+}

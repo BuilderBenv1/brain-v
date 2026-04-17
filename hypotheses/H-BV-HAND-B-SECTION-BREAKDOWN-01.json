@@ -18,14 +18,62 @@
   "test": "LOCKED PROCEDURE.\n\n  DATA: Hand B folios with >=30 tokens from voynich-corpus.json. Same filtering as H-BV-HAND-B-SECTION-INDEPENDENCE-01.\n\n  SECTIONS WITH n>=3 folios: herbal (32), recipes (23), biological (19), text-only (5), cosmological (3).\n\n  METRICS: TTR (types/tokens), chedy_freq (count of 'chedy' / total tokens).\n\n  SUB-TEST 1 — PAIRWISE SECTION COMPARISONS:\n    For each unordered pair of sections with both having n>=3 folios (10 pairs total):\n      For each metric (TTR, chedy_freq):\n        Welch's t-test on folio-level metric values between the two sections.\n        Report t-statistic and two-tailed p-value.\n    Apply Bonferroni correction for 10 pairs x 2 metrics = 20 tests: corrected p < 0.0025.\n    Identify which pairs show significant differences under Bonferroni correction.\n\n  SUB-TEST 2 — BIOLOGICAL-EXCLUSION:\n    Re-run H-BV-HAND-B-SECTION-INDEPENDENCE-01's C1 (Section x TTR) and C4 (Section x chedy_freq) ANOVAs with biological folios EXCLUDED.\n    Sections in the exclusion run: herbal (32), recipes (23), text-only (5), cosmological (3). n_total = 63.\n    Shuffle-null 1000 samples. Record observed F and p-value.\n    REPORT: F and p for each metric. Compare to original C1 (F=61, p<0.0001) and C4 (F=4.38, p<0.0001).\n    Interpretation:\n      If new p < 0.01 on either: biological is NOT sole driver — other sections contribute.\n      If new p >= 0.10 on both: biological IS sole driver — effect vanishes without it.\n      Intermediate: partial driver.\n\n  SUB-TEST 3 — SINGLE-SECTION-VS-REST:\n    For each Hand B section with n>=3 folios:\n      For each metric:\n        Welch's t-test: this section's folio values vs all OTHER sections' folio values combined.\n        Report t-statistic, p-value, and effect size (Cohen's d).\n    Identify which section contributes largest effect to each metric.\n\n  SUB-TEST 4 — CROSS-HAND HERBAL COMPARISON:\n    Compare Hand A herbal folios to Hand B herbal folios on TTR and (separately) marker_freq.\n    Hand A marker = daiin (Hand A's most frequent token); Hand B marker = chedy.\n    This is a within-section, across-hand comparison — does the same content section produce statistically different text across scribes/hands?\n    Welch's t-test for each metric.\n    Also compare MEAN TOKEN LENGTH (comparable across hands using same definition).\n    Interpretation: if herbal-A and herbal-B differ significantly on TTR or length, scribal convention matters within-section. If null, the within-section statistics are hand-invariant.\n\n  DECISION RULE (LOCKED):\n    BIOLOGICAL_SOLE_DRIVER: Sub-test 2 biological-exclusion yields p >= 0.10 on BOTH C1 and C4. Effect vanishes without biological.\n    BIOLOGICAL_DOMINANT: Sub-test 2 exclusion yields p in [0.01, 0.10) on either C1 or C4 (effect weakens substantially). AND Sub-test 3 shows biological's single-vs-rest effect is the largest for both metrics.\n    DISTRIBUTED_EFFECT: Sub-test 2 exclusion yields p < 0.01 on EITHER C1 or C4. Other sections contribute alongside biological.\n    CROSS_HAND_SCRIBAL_OVERLAY: if Sub-test 4 shows herbal-A vs herbal-B differ significantly (p < 0.01) on TTR or mean length, scribal convention is a confounder; even the same content type produces different statistics per hand.\n\n  REPORTING: all four sub-test results plus aggregate verdict per decision rule.\n\n  WORKED EXAMPLE (Sub-test 1 pair biological vs herbal-B):\n    Biological TTR values: [ttr_f75r, ttr_f75v, ...] for 19 folios.\n    Herbal-B TTR values: [ttr_f...] for 32 folios.\n    Welch t-test: t = (mean_bio - mean_herbal) / sqrt(s_bio^2/n_bio + s_herbal^2/n_herbal).\n    Approximate p from Student's t distribution (two-tailed).",
   "test_metric": "4 sub-tests with per-subtest verdicts. Aggregate classification per decision rule.",
   "test_threshold": "Decision rule bins: BIOLOGICAL_SOLE_DRIVER, BIOLOGICAL_DOMINANT, DISTRIBUTED_EFFECT, CROSS_HAND_SCRIBAL_OVERLAY (separable, can combine with other verdicts).",
-  "tests_run": [],
-  "tests_remaining": [
-    "locked_hand_b_section_breakdown: pairwise comparisons + biological exclusion + single-section-vs-rest + herbal-A vs herbal-B; apply decision rule"
+  "tests_run": [
+    {
+      "date": "2026-04-17",
+      "test": "locked_hand_b_section_breakdown",
+      "script": "scripts/run_hand_b_section_breakdown.py",
+      "results_file": "outputs/hand_b_section_breakdown_test.json",
+      "S1_pairwise_significant_at_bonferroni": [
+        {"pair": "recipes vs herbal", "metric": "TTR", "t": -9.71, "note": "Large effect — recipes LOWER TTR than herbal"},
+        {"pair": "recipes vs biological", "metric": "TTR", "t": 4.25},
+        {"pair": "recipes vs biological", "metric": "marker_freq", "t": -4.07, "note": "Recipes has much LESS chedy than biological"},
+        {"pair": "herbal vs biological", "metric": "TTR", "t": 19.58, "note": "Enormous effect — herbal HIGH TTR (0.83), biological LOW TTR (0.56)"},
+        {"pair": "herbal vs biological", "metric": "marker_freq", "t": -3.44, "p": 0.0006}
+      ],
+      "S1_total_pairs_tested": 20,
+      "S1_sig_count": 5,
+      "S2_biological_exclusion": {
+        "TTR_without_biological": {"F": 37.66, "p": 0.0000, "verdict": "PERSISTS (STILL SIGNIFICANT)"},
+        "chedy_without_biological": {"F": 0.28, "p": 0.8490, "verdict": "VANISHES (EFFECT GONE)"}
+      },
+      "S3_single_section_vs_rest_effect_sizes": {
+        "TTR_largest_effect": {"section": "herbal", "cohens_d": 3.0504, "mean_in": 0.8291, "mean_out": 0.6056, "note": "Herbal has MUCH higher TTR than non-herbal. This is the single strongest driver of the TTR section effect."},
+        "TTR_second_largest": {"section": "biological", "cohens_d": -1.6457, "mean_in": 0.5558, "mean_out": 0.7342, "note": "Biological has LOW TTR. Pulls the other direction from herbal."},
+        "marker_freq_largest_effect": {"section": "biological", "cohens_d": 1.0819, "mean_in": 0.0296, "mean_out": 0.0175, "note": "Biological has 70% HIGHER chedy frequency than other sections. Sole driver of chedy section effect."},
+        "marker_freq_second": {"section": "cosmological", "cohens_d": -0.7349, "n": 3, "note": "Cosmological low chedy, but only n=3, high variance"}
+      },
+      "S4_cross_hand_herbal": {
+        "TTR": {"hand_a_herbal": 0.8284, "hand_b_herbal": 0.8291, "t": -0.052, "p": 0.9588, "verdict": "IDENTICAL — no scribal overlay on TTR within herbal"},
+        "mean_length": {"hand_a_herbal": 4.9910, "hand_b_herbal": 5.0723, "t": -0.950, "p": 0.3423, "verdict": "STATISTICALLY INDISTINGUISHABLE — no scribal overlay on length"},
+        "marker_freq": {"hand_a_herbal_daiin": 0.0485, "hand_b_herbal_chedy": 0.0180, "p": 0.0000, "note": "Markers differ by definition (daiin vs chedy), so this is descriptive not diagnostic. Hand A uses daiin ~2.7x more often than Hand B uses chedy in herbal. Reflects different most-common-tokens per hand, not scribal overlay."}
+      },
+      "primary_verdict": "DISTRIBUTED_EFFECT",
+      "metric_specific_verdicts": {
+        "TTR": "DISTRIBUTED_EFFECT — herbal drives positively, recipes+biological drive negatively. Biological-exclusion leaves F=37.66 p<0.0001 — effect clearly persists.",
+        "chedy_freq": "BIOLOGICAL_SOLE_DRIVER — without biological the effect completely vanishes (p=0.85). Biological has 70% more chedy than other sections."
+      },
+      "scribal_overlay_detected": false,
+      "confidence_change": "0.5 -> 0.8"
+    }
   ],
-  "status": "active",
+  "tests_remaining": [],
+  "status": "distributed_effect_with_metric_specific_drivers",
+  "verdict_note": "DISTRIBUTED_EFFECT primary verdict, but with METRIC-SPECIFIC drivers. TTR section effect persists without biological (F=37.66, p<0.0001 after exclusion) — driven by herbal (d=+3.05, huge positive) and recipes (d=-0.64) with biological contributing a secondary negative pull (d=-1.65). Chedy section effect is BIOLOGICAL_SOLE_DRIVER (without biological, effect vanishes at p=0.85). Biological has 70% higher chedy frequency than other sections. No scribal overlay detected on herbal-A vs herbal-B (TTR identical at 0.83, mean length within 0.08 chars). The picture: Hand B's TTR varies because different sections have genuinely different vocabulary-diversity patterns (herbal diverse, recipes compact), while chedy specifically concentrates in biological content.",
+  "findings_for_followup": [
+    "CRITICAL FOR v2: two distinct section effects with different drivers. TTR is a broad section-vocabulary-diversity signal driven primarily by herbal (high TTR) vs recipes/biological (low TTR). Chedy frequency is a narrow biological-specific marker. These require different v2 interpretations.",
+    "TTR PATTERN (distributed): herbal folios have MUCH more vocabulary diversity (0.83) than recipes (0.63) or biological (0.56) folios. Recipes are highly repetitive text; biological is also repetitive; herbal has more unique tokens per folio. This is consistent with recipes containing formulaic or list-like content, biological having restricted vocabulary around its topic, herbal each plant getting its own distinct nomenclature.",
+    "CHEDY PATTERN (biological-sole): chedy specifically concentrates in biological folios at 70% higher rate than elsewhere. Biological is the section with distinctive visual content (naked figures, bathing scenes, tube/fluid structures). The chedy concentration suggests chedy functions as a biological-context marker. This is the FIRST CONCRETE EVIDENCE in Brain-V's arc that a specific Voynichese token correlates with a specific content type.",
+    "NO SCRIBAL OVERLAY: Hand A herbal and Hand B herbal produce statistically identical TTR (0.83 vs 0.83, p=0.96) and indistinguishable mean length (4.99 vs 5.07, p=0.34). The same content section yields the same statistics across hands. Whatever distinguishes Hand A from Hand B, it is NOT a hand-specific way of encoding herbal content.",
+    "RECONCILING HAND A vs HAND B: Hand A section distribution is 95 herbal + 16 pharma + 2 recipes + 1 text-only. The 'section-independence' finding in H-BV-EXTERNAL-CORRELATION-01 was largely driven by Hand A being 86% herbal — effectively a single-section sample. Hand B's 32 herbal + 23 recipes + 19 biological + 5 text-only + 3 cosmo distribution has enough non-herbal content for section effects to emerge. Hand A's apparent section-independence may be a sampling artefact: Hand A just doesn't have enough non-herbal content for sections to differ visibly.",
+    "v2 NARRATIVE UPDATE: the 'section-independent overlay' interpretation of Hand A (from EXTERNAL-CORRELATION-01) must be qualified — Hand A's section-independence is partly a consequence of Hand A being dominantly herbal. Hand B, with its richer section composition, reveals genuine section-content coupling. The combined evidence is consistent with: 'the text does respond to section content; Hand A happened to be sampled from predominantly one section so inter-section contrasts were unavailable.'",
+    "CHEDY AS BIOLOGICAL MARKER: this is a concrete follow-up candidate. Test whether OTHER specific Hand B tokens (shedy, qokedy, qokain) show section-specific concentrations, and whether specific herbal-distinctive or recipes-distinctive tokens exist. If each section has its own set of concentrated markers, the 'text responds to content' reading is substantially strengthened.",
+    "H-BV-EXTERNAL-CORRELATION-01 AMENDMENT NEEDED: the section-independence claim for Hand A should be amended with 'this finding is likely a consequence of Hand A's 86%-herbal sampling; Hand B with richer section composition shows genuine section effects on TTR and on specific-marker frequencies'.",
+    "METHODOLOGY LESSON 10 CANDIDATE: when comparing two corpora for 'same effect present' vs 'different effect present', check whether sample composition is comparable. A corpus sampled from one condition cannot show condition-differences regardless of underlying structure. EXTERNAL-CORRELATION-01's Hand A result may have been under-powered for the section question because of composition."
+  ],
   "parent": "H-BV-HAND-B-SECTION-INDEPENDENCE-01",
   "created": "2026-04-17",
-  "last_tested": null,
+  "last_tested": "2026-04-17",
   "reasoning": "H-BV-HAND-B-SECTION-INDEPENDENCE-01 REFUTED showed Hand B is section-sensitive unlike Hand A. Two candidate explanations: (a) biological section alone drives the effect (consistent with biological being Hand B's unique visually-distinctive content); (b) section-coupling is distributed across multiple sections. This hypothesis distinguishes them via biological-exclusion and pairwise comparisons. Additionally tests cross-hand herbal — if herbal-A and herbal-B differ statistically on the same metrics that distinguish sections within Hand B, scribal convention is a confounder that complicates the content interpretation.",
   "source": "Brain-V 2026-04-17 user-directed diagnostic follow-up to H-BV-HAND-B-SECTION-INDEPENDENCE-01 REFUTED. Sharpens the interpretation of Hand B's section sensitivity.",
   "researcher": "brain-v"
