@@ -1,0 +1,299 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-BASQUE-CASE-MAP-01",
+  "outer_profile": {
+    "y": {
+      "freq": 0.31446198512066775,
+      "term_frac": 0.7729705619982159,
+      "diff": 0.256036662059003,
+      "sel_class": "C-pref"
+    },
+    "n": {
+      "freq": 0.15459989112683722,
+      "term_frac": 0.9461410327595781,
+      "diff": "inf",
+      "sel_class": "V-pref"
+    },
+    "r": {
+      "freq": 0.16857194701506079,
+      "term_frac": 0.7991397849462366,
+      "diff": 76.05633802816902,
+      "sel_class": "V-pref"
+    },
+    "ol": {
+      "freq": 0.14334966430774815,
+      "term_frac": 0.7352256863657515,
+      "diff": 0.29176489552479395,
+      "sel_class": "C-pref"
+    },
+    "l": {
+      "freq": 0.04282344402104881,
+      "term_frac": 0.5488372093023256,
+      "diff": 8.967136150234742,
+      "sel_class": "V-pref"
+    }
+  },
+  "basque_cases": {
+    "C_ERG": {
+      "freq_range": [
+        0.05,
+        0.15
+      ],
+      "sel_req": "any",
+      "desc": "ergative -k"
+    },
+    "C_DAT": {
+      "freq_range": [
+        0.03,
+        0.1
+      ],
+      "sel_req": "V-pref",
+      "desc": "dative -(r)i"
+    },
+    "C_GEN": {
+      "freq_range": [
+        0.05,
+        0.15
+      ],
+      "sel_req": "V-pref",
+      "desc": "genitive -(r)en"
+    },
+    "C_INST": {
+      "freq_range": [
+        0.02,
+        0.08
+      ],
+      "sel_req": "any",
+      "desc": "instrumental -z"
+    },
+    "C_LOC": {
+      "freq_range": [
+        0.05,
+        0.15
+      ],
+      "sel_req": "V-pref",
+      "desc": "locative -n"
+    }
+  },
+  "scoring_matrix": {
+    "y": {
+      "C_ERG": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": true,
+        "score": 2,
+        "match": true
+      },
+      "C_DAT": {
+        "freq_pass": false,
+        "sel_pass": false,
+        "term_pass": true,
+        "score": 1,
+        "match": false
+      },
+      "C_GEN": {
+        "freq_pass": false,
+        "sel_pass": false,
+        "term_pass": true,
+        "score": 1,
+        "match": false
+      },
+      "C_INST": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": true,
+        "score": 2,
+        "match": true
+      },
+      "C_LOC": {
+        "freq_pass": false,
+        "sel_pass": false,
+        "term_pass": true,
+        "score": 1,
+        "match": false
+      }
+    },
+    "n": {
+      "C_ERG": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": true,
+        "score": 2,
+        "match": true
+      },
+      "C_DAT": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": true,
+        "score": 2,
+        "match": true
+      },
+      "C_GEN": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": true,
+        "score": 2,
+        "match": true
+      },
+      "C_INST": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": true,
+        "score": 2,
+        "match": true
+      },
+      "C_LOC": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": true,
+        "score": 2,
+        "match": true
+      }
+    },
+    "r": {
+      "C_ERG": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": true,
+        "score": 2,
+        "match": true
+      },
+      "C_DAT": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": true,
+        "score": 2,
+        "match": true
+      },
+      "C_GEN": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": true,
+        "score": 2,
+        "match": true
+      },
+      "C_INST": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": true,
+        "score": 2,
+        "match": true
+      },
+      "C_LOC": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": true,
+        "score": 2,
+        "match": true
+      }
+    },
+    "ol": {
+      "C_ERG": {
+        "freq_pass": true,
+        "sel_pass": true,
+        "term_pass": true,
+        "score": 3,
+        "match": true
+      },
+      "C_DAT": {
+        "freq_pass": false,
+        "sel_pass": false,
+        "term_pass": true,
+        "score": 1,
+        "match": false
+      },
+      "C_GEN": {
+        "freq_pass": true,
+        "sel_pass": false,
+        "term_pass": true,
+        "score": 2,
+        "match": true
+      },
+      "C_INST": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": true,
+        "score": 2,
+        "match": true
+      },
+      "C_LOC": {
+        "freq_pass": true,
+        "sel_pass": false,
+        "term_pass": true,
+        "score": 2,
+        "match": true
+      }
+    },
+    "l": {
+      "C_ERG": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": false,
+        "score": 1,
+        "match": false
+      },
+      "C_DAT": {
+        "freq_pass": true,
+        "sel_pass": true,
+        "term_pass": false,
+        "score": 2,
+        "match": true
+      },
+      "C_GEN": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": false,
+        "score": 1,
+        "match": false
+      },
+      "C_INST": {
+        "freq_pass": true,
+        "sel_pass": true,
+        "term_pass": false,
+        "score": 2,
+        "match": true
+      },
+      "C_LOC": {
+        "freq_pass": false,
+        "sel_pass": true,
+        "term_pass": false,
+        "score": 1,
+        "match": false
+      }
+    }
+  },
+  "injective_mapping": [
+    {
+      "outer": "ol",
+      "case": "C_ERG",
+      "score": 3,
+      "desc": "ergative -k"
+    },
+    {
+      "outer": "y",
+      "case": "C_INST",
+      "score": 2,
+      "desc": "instrumental -z"
+    },
+    {
+      "outer": "n",
+      "case": "C_DAT",
+      "score": 2,
+      "desc": "dative -(r)i"
+    },
+    {
+      "outer": "r",
+      "case": "C_GEN",
+      "score": 2,
+      "desc": "genitive -(r)en"
+    }
+  ],
+  "unmatched_outers": [
+    "l"
+  ],
+  "bare_fraction": 0.1425,
+  "diagnostic_abs_in_range": false,
+  "n_mapped": 4,
+  "verdict": "CONFIRMED",
+  "rationale": "4/5 outers map injectively to distinct Basque cases at 2-of-3 criteria"
+}
