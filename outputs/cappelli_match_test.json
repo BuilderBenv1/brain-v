@@ -1,0 +1,328 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-CAPPELLI-MATCH-01",
+  "hand_a_word_count": 11022,
+  "latin_references": {
+    "L1_Tironian_us": {
+      "description": "Tironian -us (9-shape): word-terminal only, replaces declension ending. Stems of any type.",
+      "position_rule": "terminal_only",
+      "selection_rule": "any",
+      "frequency_range": [
+        0.05,
+        0.25
+      ]
+    },
+    "L2_macron_nasal": {
+      "description": "Macron/overline (nasal suspension): mark over a vowel indicating omitted n/m. Strictly over vowels.",
+      "position_rule": "flexible",
+      "selection_rule": "vowel_only",
+      "frequency_range": [
+        0.05,
+        0.2
+      ]
+    },
+    "L3_rum_suspension": {
+      "description": "-rum / -orum / -arum: word-terminal, follows stem vowel (-Vrum).",
+      "position_rule": "terminal_only",
+      "selection_rule": "vowel_only",
+      "frequency_range": [
+        0.02,
+        0.15
+      ]
+    },
+    "L4_bus_dative": {
+      "description": "-bus (dative/ablative plural): word-terminal, follows consonant or i-theme stems.",
+      "position_rule": "terminal_only",
+      "selection_rule": "consonant_preferring",
+      "frequency_range": [
+        0.01,
+        0.1
+      ]
+    },
+    "L5_lis_adjectival": {
+      "description": "-alis / -ilis / -olis adjectival: word-terminal, follows stem vowel.",
+      "position_rule": "terminal_only",
+      "selection_rule": "vowel_preferring",
+      "frequency_range": [
+        0.01,
+        0.1
+      ]
+    }
+  },
+  "outer_results": {
+    "y": {
+      "profile": {
+        "total_occurrences": 4484,
+        "terminal_fraction": 0.773,
+        "medial_fraction": 0.227,
+        "layer2_frequency": 0.3145,
+        "count_V_inner": 1028,
+        "count_C_inner": 1508,
+        "p_V_inner": 0.1724,
+        "p_C_inner": 0.6732,
+        "diff_V_over_C": 0.256036662059003
+      },
+      "reference_scores": {
+        "L1_Tironian_us": {
+          "pos": 0,
+          "sel": 1,
+          "frq": 0,
+          "total": 1,
+          "match": false
+        },
+        "L2_macron_nasal": {
+          "pos": 1,
+          "sel": 0,
+          "frq": 0,
+          "total": 1,
+          "match": false
+        },
+        "L3_rum_suspension": {
+          "pos": 0,
+          "sel": 0,
+          "frq": 0,
+          "total": 0,
+          "match": false
+        },
+        "L4_bus_dative": {
+          "pos": 0,
+          "sel": 1,
+          "frq": 0,
+          "total": 1,
+          "match": false
+        },
+        "L5_lis_adjectival": {
+          "pos": 0,
+          "sel": 0,
+          "frq": 0,
+          "total": 0,
+          "match": false
+        }
+      },
+      "best_latin": "L1_Tironian_us",
+      "best_match_score": 1,
+      "strong_correspondence": false
+    },
+    "n": {
+      "profile": {
+        "total_occurrences": 1801,
+        "terminal_fraction": 0.9461,
+        "medial_fraction": 0.0539,
+        "layer2_frequency": 0.1546,
+        "count_V_inner": 1697,
+        "count_C_inner": 0,
+        "p_V_inner": 0.2845,
+        "p_C_inner": 0.0,
+        "diff_V_over_C": "inf"
+      },
+      "reference_scores": {
+        "L1_Tironian_us": {
+          "pos": 1,
+          "sel": 1,
+          "frq": 1,
+          "total": 3,
+          "match": true
+        },
+        "L2_macron_nasal": {
+          "pos": 1,
+          "sel": 1,
+          "frq": 1,
+          "total": 3,
+          "match": true
+        },
+        "L3_rum_suspension": {
+          "pos": 1,
+          "sel": 1,
+          "frq": 0,
+          "total": 2,
+          "match": true
+        },
+        "L4_bus_dative": {
+          "pos": 1,
+          "sel": 0,
+          "frq": 0,
+          "total": 1,
+          "match": false
+        },
+        "L5_lis_adjectival": {
+          "pos": 1,
+          "sel": 1,
+          "frq": 0,
+          "total": 2,
+          "match": true
+        }
+      },
+      "best_latin": "L1_Tironian_us",
+      "best_match_score": 3,
+      "strong_correspondence": true
+    },
+    "r": {
+      "profile": {
+        "total_occurrences": 2325,
+        "terminal_fraction": 0.7991,
+        "medial_fraction": 0.2009,
+        "layer2_frequency": 0.1686,
+        "count_V_inner": 1620,
+        "count_C_inner": 8,
+        "p_V_inner": 0.2716,
+        "p_C_inner": 0.0036,
+        "diff_V_over_C": 76.05633802816902
+      },
+      "reference_scores": {
+        "L1_Tironian_us": {
+          "pos": 0,
+          "sel": 1,
+          "frq": 1,
+          "total": 2,
+          "match": true
+        },
+        "L2_macron_nasal": {
+          "pos": 1,
+          "sel": 1,
+          "frq": 1,
+          "total": 3,
+          "match": true
+        },
+        "L3_rum_suspension": {
+          "pos": 0,
+          "sel": 1,
+          "frq": 0,
+          "total": 1,
+          "match": false
+        },
+        "L4_bus_dative": {
+          "pos": 0,
+          "sel": 0,
+          "frq": 0,
+          "total": 0,
+          "match": false
+        },
+        "L5_lis_adjectival": {
+          "pos": 0,
+          "sel": 1,
+          "frq": 0,
+          "total": 1,
+          "match": false
+        }
+      },
+      "best_latin": "L2_macron_nasal",
+      "best_match_score": 3,
+      "strong_correspondence": true
+    },
+    "ol": {
+      "profile": {
+        "total_occurrences": 2149,
+        "terminal_fraction": 0.7352,
+        "medial_fraction": 0.2648,
+        "layer2_frequency": 0.1433,
+        "count_V_inner": 362,
+        "count_C_inner": 466,
+        "p_V_inner": 0.0607,
+        "p_C_inner": 0.208,
+        "diff_V_over_C": 0.29176489552479395
+      },
+      "reference_scores": {
+        "L1_Tironian_us": {
+          "pos": 0,
+          "sel": 1,
+          "frq": 1,
+          "total": 2,
+          "match": true
+        },
+        "L2_macron_nasal": {
+          "pos": 1,
+          "sel": 0,
+          "frq": 1,
+          "total": 2,
+          "match": true
+        },
+        "L3_rum_suspension": {
+          "pos": 0,
+          "sel": 0,
+          "frq": 1,
+          "total": 1,
+          "match": false
+        },
+        "L4_bus_dative": {
+          "pos": 0,
+          "sel": 1,
+          "frq": 0,
+          "total": 1,
+          "match": false
+        },
+        "L5_lis_adjectival": {
+          "pos": 0,
+          "sel": 0,
+          "frq": 0,
+          "total": 0,
+          "match": false
+        }
+      },
+      "best_latin": "L1_Tironian_us",
+      "best_match_score": 2,
+      "strong_correspondence": true
+    },
+    "l": {
+      "profile": {
+        "total_occurrences": 860,
+        "terminal_fraction": 0.5488,
+        "medial_fraction": 0.4512,
+        "layer2_frequency": 0.0428,
+        "count_V_inner": 382,
+        "count_C_inner": 16,
+        "p_V_inner": 0.0641,
+        "p_C_inner": 0.0071,
+        "diff_V_over_C": 8.967136150234742
+      },
+      "reference_scores": {
+        "L1_Tironian_us": {
+          "pos": 0,
+          "sel": 1,
+          "frq": 0,
+          "total": 1,
+          "match": false
+        },
+        "L2_macron_nasal": {
+          "pos": 1,
+          "sel": 1,
+          "frq": 0,
+          "total": 2,
+          "match": true
+        },
+        "L3_rum_suspension": {
+          "pos": 0,
+          "sel": 1,
+          "frq": 1,
+          "total": 2,
+          "match": true
+        },
+        "L4_bus_dative": {
+          "pos": 0,
+          "sel": 0,
+          "frq": 1,
+          "total": 1,
+          "match": false
+        },
+        "L5_lis_adjectival": {
+          "pos": 0,
+          "sel": 1,
+          "frq": 1,
+          "total": 2,
+          "match": true
+        }
+      },
+      "best_latin": "L2_macron_nasal",
+      "best_match_score": 2,
+      "strong_correspondence": true
+    }
+  },
+  "word_initial_markers": {
+    "qo_initial_count": 1066,
+    "qo_initial_fraction_of_words": 0.0967,
+    "da_initial_count": 1014,
+    "da_initial_fraction_of_words": 0.092
+  },
+  "n_strong_correspondences": 4,
+  "verdict": "CONFIRMED",
+  "rationale": "4/5 outers show strong correspondence (>=2/3 dimensions) to Latin scribal conventions; scribal-abbreviation hypothesis gains material support"
+}

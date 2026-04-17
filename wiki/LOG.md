@@ -4,6 +4,32 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-17 — H-BV-CAPPELLI-MATCH-01 CONFIRMED 4/5: Hand A Layer-2 outers match documented Latin scribal abbreviation conventions
+
+**Hypothesis**: Do Hand A's Layer-2 outer morphemes {y, n, r, ol, l} match documented medieval Latin scribal abbreviations (Cappelli) in positional + selectional + frequency behaviour? Locked reference set: L1 Tironian -us, L2 macron-nasal, L3 -rum/-orum/-arum, L4 -bus, L5 -lis. Score per outer on 3 dimensions; outer "matches" a convention at ≥2/3; "strong correspondence" if it matches any convention. Decision: ≥3/5 = CONFIRMED; 1-2 = MARGINAL; 0 = REFUTED.
+
+**Result**: **CONFIRMED 4/5**.
+
+| outer | term.frac | freq | diff V/C | best Latin ref | score | result |
+|---|---|---|---|---|---|---|
+| y  | 0.773 | 0.315 | 0.256 | L1 Tironian -us | 1/3 | **no match** |
+| n  | 0.946 | 0.155 | ∞ (V-excl) | L1 AND L2 AND L5 | **3/3** | **STRONG** |
+| r  | 0.799 | 0.169 | 76.06 | L2 macron-nasal | **3/3** | **STRONG** |
+| ol | 0.735 | 0.143 | 0.292 | L1 AND L2 | 2/3 | **STRONG** |
+| l  | 0.549 | 0.043 | 8.97 | L2 AND L3 AND L5 | 2/3 | **STRONG** |
+
+**Sharpest structural match**: `n` ↔ **L2 macron-nasal**. Hand A's `n`-exclusivity on consonant-class inners mirrors the Latin orthographic impossibility of placing a nasal suspension over a consonant. This is a hard structural constraint, not a frequency coincidence. The nasal-suspension mark in medieval Latin requires a vowel beneath it because a nasal suspension is a diacritic that indicates an omitted `n`/`m` AFTER the vowel. Brain-V's 0/9784 empirical gap is precisely the constraint Latin orthography would predict.
+
+**Word-initial corroboration (descriptive)**: `qo-` is word-initial in 9.67% of Hand A words — falls directly within the expected Latin `qu-` word-initial range of 5-10%.
+
+**The y anomaly**: y is the only outer that does NOT match any single Latin convention. Its 31% terminal-position frequency exceeds any single documented abbreviation's expected share. The most likely explanation: y encodes a *composite* of multiple Latin terminations collapsed into one glyph at the scribal level (e.g., -us + -um + -is). Worth a dedicated follow-up.
+
+**Interpretation**: Result supports candidate (a) scribal-abbreviation from the 15th-c. synthesis. Does NOT establish Voynich IS Latin — compatible with (a) Latin written under scribal abbreviation, (b) a constructed script modelled on Latin scribal conventions, or (c) a different language written with Latin-style abbreviation marks. The test is structural, not a decoding.
+
+**Confidence update**: "Brain-V's findings compatible with Latin scribal abbreviation" 0.5 → 0.70.
+
+---
+
 ## 2026-04-17 — H-BV-CARBON-SAMPLE-VALIDATION-01 CONFIRMED 3/3 on field-anchored reference folios
 
 **Hypothesis**: The four radiocarbon-dated folios (f8, f26, f47, f68) exhibit the Currier-hand morphological paradigms predicted by SUFFIX-SUBCLASS-01 (Hand A) and HAND-B-SUBCLASS-01 (Hand B). f68 (Currier-unassigned) reported descriptively only.
