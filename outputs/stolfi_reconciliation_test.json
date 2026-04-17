@@ -1,0 +1,127 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-STOLFI-RECONCILIATION-01",
+  "n_whole_tokens": 38053,
+  "n_A_tokens": 11022,
+  "n_B_tokens": 23766,
+  "baseline_suffix_mean_whole": 2.4661,
+  "baseline_suffix_mean_A": 2.3792,
+  "baseline_suffix_mean_B": 2.4845,
+  "S1_tokenisation_variants": [
+    {
+      "label": "T1a MULTI = [cth,cph,ckh,cfh,ch,sh,ee]  (Brain-V / Stolfi literal)",
+      "mean": 2.4661,
+      "delta_vs_baseline": 0.0
+    },
+    {
+      "label": "T1b MULTI = [cth,cph,ckh,cfh,ch,sh]      (no ee)",
+      "mean": 2.8052,
+      "delta_vs_baseline": 0.3391
+    },
+    {
+      "label": "T1c MULTI = [cth,cph,ckh,cfh]            (core ligatures only)",
+      "mean": 2.8405,
+      "delta_vs_baseline": 0.3744
+    },
+    {
+      "label": "T1d MULTI = []                           (no ligatures)",
+      "mean": 2.8405,
+      "delta_vs_baseline": 0.3744
+    }
+  ],
+  "S2_slot_assignment_variants": [
+    {
+      "label": "S2a CRUST_BV (14 letters, Brain-V current)",
+      "mean": 2.4661,
+      "delta_vs_baseline": 0.0
+    },
+    {
+      "label": "S2b DEALERS_STOLFI_STRICT (9 letters)",
+      "mean": 1.0615,
+      "delta_vs_baseline": -1.4046
+    },
+    {
+      "label": "S2c DEALERS_STOLFI_WITH_Q (10 letters)",
+      "mean": 1.0624,
+      "delta_vs_baseline": -1.4037
+    },
+    {
+      "label": "S2d CRUST_BV - {e} (13 letters)",
+      "mean": 2.2025,
+      "delta_vs_baseline": -0.2636
+    },
+    {
+      "label": "S2e CRUST_BV - {a,o,y} (11 letters)",
+      "mean": 1.326,
+      "delta_vs_baseline": -1.1401
+    }
+  ],
+  "S3_suffix_definition_variants": [
+    {
+      "label": "D3a after_first_core (Brain-V current)",
+      "mean": 2.4661,
+      "delta_vs_baseline": 0.0
+    },
+    {
+      "label": "D3b after_last_core",
+      "mean": 2.4046,
+      "delta_vs_baseline": -0.0615
+    },
+    {
+      "label": "D3c strict_layer_before_mantle",
+      "mean": 1.7241,
+      "delta_vs_baseline": -0.742
+    },
+    {
+      "label": "D3d only_split_crust",
+      "mean": 2.4155,
+      "delta_vs_baseline": -0.0506
+    }
+  ],
+  "S4_token_filtering_variants": [
+    {
+      "label": "F4a all tokens (Brain-V current)",
+      "mean": 2.4661,
+      "delta_vs_baseline": 0.0
+    },
+    {
+      "label": "F4b exclude q-initial",
+      "mean": 2.4986,
+      "delta_vs_baseline": 0.0325
+    },
+    {
+      "label": "F4c exclude non-standard glyphs",
+      "mean": 2.4666,
+      "delta_vs_baseline": 0.0005
+    },
+    {
+      "label": "F4d F4b + F4c",
+      "mean": 2.4992,
+      "delta_vs_baseline": 0.0331
+    }
+  ],
+  "S5_cumulative": {
+    "config": "tokenize_standard + DEALERS_STOLFI_STRICT + after_first_core + exclude_q_initial + exclude_non_standard",
+    "mean_whole": 1.0645,
+    "mean_A": 0.9795,
+    "mean_B": 1.1232,
+    "stolfi_target": 0.8,
+    "delta_whole_vs_target": 0.2645,
+    "tolerance": 0.05,
+    "pass": false
+  },
+  "diagnostic_extended_cumulative": {
+    "config": "S2b + S3c + F4b + F4c (adds strict_layer_before_mantle)",
+    "mean_whole": 0.7913,
+    "mean_A": 0.7285,
+    "mean_B": 0.8323,
+    "delta_whole_vs_target": -0.0087,
+    "note": "Not locked. Diagnostic showing what happens if the cumulative adds S3c (strict layer before mantle) as a fifth component."
+  },
+  "largest_single_source": {
+    "sub_test": "S2_slot_assignment",
+    "variant_label": "S2b DEALERS_STOLFI_STRICT (9 letters)",
+    "delta_vs_baseline": -1.4046
+  },
+  "verdict": "FUNDAMENTAL_DIFFERENCE"
+}
