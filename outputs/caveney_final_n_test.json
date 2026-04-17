@@ -1,0 +1,11 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-CAVENEY-FINAL-N-01",
+  "n_hand_a_tokens": 11022,
+  "count_n_total": 1801,
+  "count_n_final": 1704,
+  "caveney_ratio": 0.9461,
+  "pass_threshold": 0.85,
+  "pass": true,
+  "verdict": "CONFIRMED"
+}
