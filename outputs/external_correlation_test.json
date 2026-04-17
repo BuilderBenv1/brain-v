@@ -1,0 +1,80 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-EXTERNAL-CORRELATION-01",
+  "n_folios_filtered": 114,
+  "section_distribution": {
+    "pharmaceutical": 16,
+    "herbal": 95,
+    "text-only": 1,
+    "recipes": 2
+  },
+  "correlation_results": [
+    {
+      "correlation": "C1 Section x TTR",
+      "test": "ANOVA",
+      "statistic": 6.4305,
+      "p_value": 0.017,
+      "sig_01": false,
+      "sig_bonferroni": false
+    },
+    {
+      "correlation": "C2 Section x mean_length",
+      "test": "ANOVA",
+      "statistic": 0.4074,
+      "p_value": 0.525,
+      "sig_01": false,
+      "sig_bonferroni": false
+    },
+    {
+      "correlation": "C3 Section x L2_outer_usage",
+      "test": "ANOVA",
+      "statistic": 0.3379,
+      "p_value": 0.956,
+      "sig_01": false,
+      "sig_bonferroni": false
+    },
+    {
+      "correlation": "C4 Section x daiin_freq",
+      "test": "ANOVA",
+      "statistic": 1.9261,
+      "p_value": 0.169,
+      "sig_01": false,
+      "sig_bonferroni": false
+    },
+    {
+      "correlation": "C5 Quire x TTR",
+      "test": "ANOVA",
+      "statistic": 0.9157,
+      "p_value": 0.502,
+      "sig_01": false,
+      "sig_bonferroni": false
+    },
+    {
+      "correlation": "C6 Position x TTR",
+      "test": "Spearman",
+      "statistic": 0.1468,
+      "p_value": 0.12,
+      "sig_01": false,
+      "sig_bonferroni": false
+    },
+    {
+      "correlation": "C7 Position x mean_length",
+      "test": "Spearman",
+      "statistic": 0.364,
+      "p_value": 0.0,
+      "sig_01": true,
+      "sig_bonferroni": true
+    },
+    {
+      "correlation": "C8 Word_count x TTR",
+      "test": "Spearman",
+      "statistic": -0.4228,
+      "p_value": 0.0,
+      "sig_01": true,
+      "sig_bonferroni": true
+    }
+  ],
+  "significant_count_01": 2,
+  "significant_count_bonferroni": 2,
+  "verdict": "PARTIAL"
+}
