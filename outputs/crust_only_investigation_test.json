@@ -1,0 +1,163 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-CRUST-ONLY-INVESTIGATION-01",
+  "stolfi_target": 0.75,
+  "tolerance": 0.05,
+  "S1_transcription_version": {
+    "IT2a": {
+      "n": 9024,
+      "d": 37044,
+      "fraction": 0.2436
+    },
+    "RF1b": {
+      "n": 8987,
+      "d": 37087,
+      "fraction": 0.2423
+    },
+    "ZL3b": {
+      "n": 7840,
+      "d": 35514,
+      "fraction": 0.2208
+    }
+  },
+  "S1_max_delta_across_versions": 0.0228,
+  "baseline_zl3b_no_filter": {
+    "n": 9918,
+    "d": 38053,
+    "fraction": 0.2606
+  },
+  "S2_normal_words_filter": {
+    "F1_exclude_hapaxes": {
+      "n": 9184,
+      "d": 32259,
+      "fraction": 0.2847
+    },
+    "F2_exclude_non_standard": {
+      "n": 9886,
+      "d": 37989,
+      "fraction": 0.2602
+    },
+    "F3_exclude_short_len_lt_3": {
+      "n": 6252,
+      "d": 33342,
+      "fraction": 0.1875
+    },
+    "F4_exclude_weirdos": {
+      "n": 9915,
+      "d": 37447,
+      "fraction": 0.2648
+    },
+    "F_cumulative_F1_F2_F3_F4": {
+      "n": 5541,
+      "d": 27573,
+      "fraction": 0.201
+    },
+    "F3b_len_ge_2": {
+      "n": 8574,
+      "d": 36617,
+      "fraction": 0.2342
+    },
+    "F3c_len_ge_4": {
+      "n": 4207,
+      "d": 26580,
+      "fraction": 0.1583
+    }
+  },
+  "S3_sub_corpus_scope": {
+    "currier_A": {
+      "n": 2996,
+      "d": 11022,
+      "fraction": 0.2718
+    },
+    "currier_B": {
+      "n": 5952,
+      "d": 23766,
+      "fraction": 0.2504
+    },
+    "currier_other": {
+      "n": 970,
+      "d": 3265,
+      "fraction": 0.2971
+    },
+    "section_astronomical": {
+      "n": 258,
+      "d": 872,
+      "fraction": 0.2959
+    },
+    "section_biological": {
+      "n": 1608,
+      "d": 6315,
+      "fraction": 0.2546
+    },
+    "section_cosmological": {
+      "n": 769,
+      "d": 2199,
+      "fraction": 0.3497
+    },
+    "section_herbal": {
+      "n": 2799,
+      "d": 10872,
+      "fraction": 0.2575
+    },
+    "section_pharmaceutical": {
+      "n": 801,
+      "d": 2538,
+      "fraction": 0.3156
+    },
+    "section_recipes": {
+      "n": 2715,
+      "d": 11611,
+      "fraction": 0.2338
+    },
+    "section_text-only": {
+      "n": 661,
+      "d": 2349,
+      "fraction": 0.2814
+    },
+    "section_zodiac": {
+      "n": 307,
+      "d": 1297,
+      "fraction": 0.2367
+    },
+    "cross_herbal_A": {
+      "n": 1925,
+      "d": 7523,
+      "fraction": 0.2559
+    },
+    "cross_herbal_B": {
+      "n": 865,
+      "d": 3307,
+      "fraction": 0.2616
+    },
+    "cross_pharmaceutical_B": {
+      "n": 0,
+      "d": 0,
+      "fraction": 0.0
+    },
+    "cross_biological_B": {
+      "n": 1608,
+      "d": 6315,
+      "fraction": 0.2546
+    },
+    "cross_astronomical_A": {
+      "n": 0,
+      "d": 0,
+      "fraction": 0.0
+    },
+    "cross_zodiac_B": {
+      "n": 0,
+      "d": 0,
+      "fraction": 0.0
+    }
+  },
+  "closest_variant": {
+    "sub_test": "S3",
+    "label": "section_cosmological",
+    "fraction": 0.3497,
+    "n_tokens": 2199,
+    "delta_vs_0_75": -0.4003
+  },
+  "in_band_count": 0,
+  "in_band_variants": [],
+  "verdict": "UNRESOLVED_OPEN_QUESTION"
+}

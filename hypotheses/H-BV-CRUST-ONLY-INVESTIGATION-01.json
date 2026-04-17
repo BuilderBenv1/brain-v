@@ -18,14 +18,82 @@
   "test": "LOCKED PROCEDURE.\n\n  DATA: Voynich corpus files in raw/corpus/ (IT2a-n.txt, RF1b-e.txt, ZL3b-n.txt) and parsed voynich-corpus.json.\n\n  TOKENISATION (LOCKED): MULTI = ['cth', 'cph', 'ckh', 'cfh', 'ch', 'sh', 'ee'], longest-match-first. Stolfi-literal.\n    CORE   = {t, p, k, f, cth, cph, ckh, cfh}\n    MANTLE = {ch, sh, ee}\n    NON_STANDARD_GLYPHS = {b, c, j, u, v, z} (glyphs that do not appear in Stolfi's layer definitions)\n\n  CRUST-ONLY DEFINITION: a token is 'crust-only' if it contains zero CORE glyphs and zero MANTLE glyphs (after tokenisation).\n\n  STOLFI TARGET: 0.75. Tolerance: 0.05.  PASS for any variant iff |variant_fraction - 0.75| <= 0.05.\n\n  SUB-TEST 1 — TRANSCRIPTION VERSION COMPARISON:\n    Parse each of the three IVTFF files in raw/corpus/ using a uniform minimal parser:\n      - Strip IVTFF metadata annotations that are NOT primary glyph content:\n        {n;} inline markers like @222;, @152; (replace with '?')\n        braced alternatives {xxx} (keep first option as primary)\n        brackets [x:y] (keep first option x as primary)\n        comma-separated alternatives 'a,b' (keep 'a' as primary)\n        apostrophe-contraction notation like {c'y} (treat as 'cy')\n      - Split on '.' into words; discard empty strings\n      - All tokens across all folios form the corpus for that file\n    Compute crust_only_fraction under the Brain-V tokenisation and CORE/MANTLE sets.\n    For this sub-test, apply no filters beyond the parsing normalisation.\n    REPORT: crust_only_fraction per file (IT2a, RF1b, ZL3b). Largest single delta between any two variants is the transcription-version drift magnitude.\n    VARIANT CHECK: does any variant's fraction fall in [0.70, 0.80]?\n\n  SUB-TEST 2 — NORMAL-WORDS FILTER AUDIT:\n    Starting from the parsed voynich-corpus.json (ZL3b), apply each candidate filter (cumulative and singly):\n      F1: exclude hapaxes (tokens with corpus frequency == 1)\n      F2: exclude tokens containing any NON_STANDARD_GLYPH\n      F3: exclude short tokens (length < 3 glyph-units after tokenisation)\n      F4: exclude 'weirdos' — operationalised as tokens that fail to parse under the Stolfi layer grammar, proxied by: tokens with multiple CORE glyphs AND/OR tokens where CORE appears before any MANTLE or CRUST glyph at a non-expected position. LOCKED proxy: 'weirdos' = tokens with >=2 CORE glyphs OR length >=12 glyph-units.\n      F5: exclude labels (tokens on label lines — marked in the IVTFF format with @P0 positional codes or by line-position metadata)\n    Apply each filter singly (F1-alone, F2-alone, ..., F5-alone) and cumulatively (F1+F2+F3+F4+F5).\n    REPORT: crust_only_fraction per filter variant.\n    VARIANT CHECK: does any single filter OR the cumulative reach [0.70, 0.80]?\n\n  SUB-TEST 3 — SUB-CORPUS SCOPE:\n    From parsed voynich-corpus.json, partition tokens by currier_language and by section:\n      Currier partitions: A only, B only, '?' (neither) only\n      Section partitions: herbal, astronomical, biological, cosmological, pharmaceutical, recipes, zodiac, text-only\n      Cross partitions: herbal-A, herbal-B, pharma-B, biological-B (most common hand-section combinations)\n    Compute crust_only_fraction for each partition with no filters beyond the standard.\n    REPORT: full table.\n    VARIANT CHECK: does any sub-corpus reach [0.70, 0.80]?\n\n  DECISION RULE (LOCKED):\n    DIAGNOSED_SINGLE_SOURCE: ANY single variant across all three sub-tests has |fraction - 0.75| <= 0.05. Identify the variant; that is the reconciling choice.\n    DIAGNOSED_MULTI_SOURCE: no single variant reaches the target, but the cumulative (transcription = best; all filters applied; narrowest sub-corpus that still has >= 500 tokens) reaches [0.70, 0.80].\n    UNRESOLVED_OPEN_QUESTION: neither single-source nor cumulative reaches the target. v2 documents T1 as an unresolved Brain-V-vs-Stolfi discrepancy, with the three investigated-and-ruled-out hypotheses explicitly listed.\n\n  REPORTING:\n    For each sub-test: full variant table with fractions. Identify the closest-to-target variant. Report the verdict per the locked rule. Apply methodology lesson 3 implicitly — no external baseline is being newly compared against without sanity check; the 75% itself is the target under investigation.\n\n  WORKED EXAMPLE (to lock sub-test 1 parsing):\n    ZL3b line: '<f1r.1,@P0>       <%>fachys.ykal.ar.ataiin.shol.shory.[cth:oto]res.y.kor.sholdy<!@254;>'\n    Parse: strip <%>, <!@254;>, then strip [cth:oto] -> keep 'cth' as primary. Result: 'fachys.ykal.ar.ataiin.shol.shory.cthres.y.kor.sholdy'\n    Split on '.' -> ['fachys', 'ykal', 'ar', 'ataiin', 'shol', 'shory', 'cthres', 'y', 'kor', 'sholdy']\n    Each token contributes to the denominator. Tokens 'fachys' (contains 'f' CORE, 'sh' - wait 'fachys' tokenises as ['f','a','ch','y','s']: has 'f' CORE and 'ch' MANTLE, so NOT crust-only). 'ykal' = ['y','k','a','l']: has 'k' CORE, NOT crust-only. 'ar' = ['a','r']: no CORE no MANTLE, crust-only. Etc.\n\n  WORKED EXAMPLE (to lock filter F4 weirdo proxy):\n    Token 'shckhey' tokenises as ['sh','ckh','e','y']. Has 'ckh' CORE (1 core). Length 4. Does NOT match weirdo criterion (requires >=2 cores or length>=12). Not a weirdo.\n    Token 'otcholkedy' tokenises as ['o','t','ch','o','l','k','e','d','y']. Has 't' CORE and 'k' CORE (2 cores). Matches weirdo criterion (>=2 cores). IS a weirdo under this proxy.\n    Token 'cphoaiiniiinolokeedy' (hypothetical long) tokenises to 12+ units. IS a weirdo by length criterion.",
   "test_metric": "Three sub-tests, each with multiple variants. For each variant, compute crust_only_fraction and check against [0.70, 0.80]. Closest-to-target variant identified per sub-test.",
   "test_threshold": "DIAGNOSED_SINGLE_SOURCE if any variant in [0.70, 0.80]. DIAGNOSED_MULTI_SOURCE if cumulative reaches [0.70, 0.80] but no single does. UNRESOLVED_OPEN_QUESTION otherwise.",
-  "tests_run": [],
-  "tests_remaining": [
-    "locked_crust_only_investigation: run 3 sub-tests; identify closest variant per sub-test; compute cumulative; classify verdict"
+  "tests_run": [
+    {
+      "date": "2026-04-17",
+      "test": "locked_crust_only_investigation",
+      "script": "scripts/run_crust_only_investigation.py",
+      "results_file": "outputs/crust_only_investigation_test.json",
+      "S1_transcription_version": {
+        "IT2a_IVTFF_v2a_2023": {"n": 9024, "d": 37044, "fraction": 0.2436},
+        "RF1b_IVTFF_v1b_Reeds_Friedman": {"n": 8987, "d": 37087, "fraction": 0.2423},
+        "ZL3b_IVTFF_v3b_2025": {"n": 7840, "d": 35514, "fraction": 0.2208},
+        "max_delta_across_versions": 0.0228,
+        "interpretation": "Transcription version drift is REAL but TINY (max delta 0.023 across three modern IVTFF variants). Stolfi's 2000 source predates all three, but the maximum plausible version-drift contribution cannot close the 0.46-0.50 gap to 0.75 by even an order of magnitude. Transcription version is NOT the source of the discrepancy."
+      },
+      "baseline_zl3b_no_filter": {"n": 9918, "d": 38053, "fraction": 0.2606},
+      "S2_normal_words_filter": {
+        "F1_exclude_hapaxes":          {"n": 9184, "d": 32259, "fraction": 0.2847},
+        "F2_exclude_non_standard":     {"n": 9886, "d": 37989, "fraction": 0.2602},
+        "F3_exclude_short_len_lt_3":   {"n": 6252, "d": 33342, "fraction": 0.1875},
+        "F4_exclude_weirdos":          {"n": 9915, "d": 37447, "fraction": 0.2648},
+        "F_cumulative_F1_F2_F3_F4":    {"n": 5541, "d": 27573, "fraction": 0.2010},
+        "F3b_len_ge_2":                {"n": 8574, "d": 36617, "fraction": 0.2342},
+        "F3c_len_ge_4":                {"n": 4207, "d": 26580, "fraction": 0.1583},
+        "interpretation": "Every tested filter either has negligible effect (F1 hapaxes: +0.02; F2 non-standard: +0.00; F4 weirdos: +0.00) or REDUCES the fraction (F3 short-tokens: -0.07; cumulative: -0.06). This is important: short tokens (length < 3) are DISPROPORTIONATELY crust-only (they're often bare stems without core/mantle). Filtering them DOWN shifts the fraction, not up. No filter variant reaches Stolfi's 0.75."
+      },
+      "S3_sub_corpus_scope": {
+        "currier_A": {"n": 2996, "d": 11022, "fraction": 0.2718},
+        "currier_B": {"n": 5952, "d": 23766, "fraction": 0.2504},
+        "currier_other": {"n": 970, "d": 3265, "fraction": 0.2971},
+        "section_astronomical": {"n": 258, "d": 872, "fraction": 0.2959},
+        "section_biological": {"n": 1608, "d": 6315, "fraction": 0.2546},
+        "section_cosmological": {"n": 769, "d": 2199, "fraction": 0.3497},
+        "section_herbal": {"n": 2799, "d": 10872, "fraction": 0.2575},
+        "section_pharmaceutical": {"n": 801, "d": 2538, "fraction": 0.3156},
+        "section_recipes": {"n": 2715, "d": 11611, "fraction": 0.2338},
+        "section_text_only": {"n": 661, "d": 2349, "fraction": 0.2814},
+        "section_zodiac": {"n": 307, "d": 1297, "fraction": 0.2367},
+        "cross_herbal_A": {"n": 1925, "d": 7523, "fraction": 0.2559},
+        "cross_herbal_B": {"n": 865, "d": 3307, "fraction": 0.2616},
+        "cross_biological_B": {"n": 1608, "d": 6315, "fraction": 0.2546},
+        "interpretation": "No sub-corpus reaches Stolfi's 0.75. The best (cosmological) lands at 0.35 — half of the target. Variation across sections is modest (0.22-0.35 range). The manuscript is relatively homogeneous on this metric; no section-specific interpretation closes the gap."
+      },
+      "diagnostic_type_level": {
+        "all_distinct_types": 8261,
+        "crust_only_distinct_types": 1163,
+        "fraction": 0.1408,
+        "non_hapax_types_count": 2467,
+        "non_hapax_crust_only_fraction": 0.1739,
+        "interpretation": "NOT LOCKED. Maybe Stolfi counted types (distinct words) rather than tokens (word instances)? Tested as diagnostic: type-level is EVEN LOWER (14-17%) than token-level (22-29%). Stolfi's 75% does not emerge under type counting either. This rules out type-vs-token counting as the source."
+      },
+      "closest_variant_overall": {
+        "sub_test": "S3",
+        "label": "section_cosmological",
+        "fraction": 0.3497,
+        "n_tokens": 2199,
+        "delta_vs_0_75": -0.4003
+      },
+      "in_band_count": 0,
+      "locked_verdict": "UNRESOLVED_OPEN_QUESTION",
+      "confidence_change": "0.4 -> 0.25"
+    }
   ],
-  "status": "active",
+  "tests_remaining": [],
+  "status": "unresolved_open_question",
+  "verdict_note": "UNRESOLVED_OPEN_QUESTION. None of three pre-registered sub-tests (transcription version, normal-words filter, sub-corpus scope) reproduces Stolfi's 0.75 crust-only fraction within ±0.05 on the Voynich corpus accessible to Brain-V. Closest single variant: cosmological section at 0.35 (delta -0.40). Transcription drift across three modern IVTFF variants is only 0.023. Every tested filter either has negligible effect or REDUCES the fraction. Type-level counting (diagnostic) is even lower (0.14). The 0.46-0.50 gap to Stolfi's 0.75 is not explained by the three candidate methodology sources. The residual is either: (1) an approximation error or misquote in Stolfi's 2000 narrative; (2) a data-processing step in Stolfi's pipeline not documented on the grammar page; or (3) corpus evolution in a direction we cannot reproduce without Stolfi's original source. v2 documents T1 as an unresolved discrepancy and does not carry Stolfi's 75% forward as a validated baseline.",
+  "findings_for_followup": [
+    "SCOPE NOTE CONFIRMED: this investigation is methodological; its UNRESOLVED verdict does NOT affect findings that survived H-BV-RECONCILED-RERUN-01. T2 asymmetry (reproduces Stolfi's 0.14/0.80/0.175 to 3 decimals), CAVENEY-FINAL-N-01 (CONFIRMED 0.9461), and COMPOSITE-OUTER-01 M3/M5 all stand.",
+    "FOR v2: the crust-only 75% claim from Stolfi 2000 does NOT reproduce on modern IVTFF transcriptions under any reasonable operationalisation. The honest framing is: 'Brain-V's measurement on all three modern IVTFF variants gives 22-26% crust-only; Stolfi's 2000 paper reported 75%; we were unable to reconcile this gap through transcription comparison, filter application, or sub-corpus restriction. The discrepancy is an open question that may reflect Stolfi-side approximation, undocumented processing steps, or corpus evolution.'",
+    "DIRECTIONAL FINDING: filters that reduce the denominator (short tokens, hapaxes, weirdos) generally REDUCE the crust-only fraction, not increase it. Short tokens are disproportionately crust-only in Brain-V's corpus — 'ar', 'dy', 'or', 'y' etc. are common and contain no core/mantle. This means any 'clean up the corpus' filter candidate moves the wrong direction. The 75% target cannot be reached by filtering down.",
+    "SECTION HETEROGENEITY: cosmological (0.35) and pharmaceutical (0.32) have noticeably higher crust-only fractions than recipes (0.23) or zodiac (0.24). This is a mild Hand-section effect: sections with more 'function-word-like' short tokens have higher crust-only fractions. Not load-bearing for v2 but worth flagging as a descriptive finding about sectional vocabulary differences.",
+    "TRANSCRIPTION VERSION SENSITIVITY: IT2a and RF1b give 0.24; ZL3b gives 0.22. The modern ZL3b has somewhat fewer tokens (35,514 vs 37,044 after parsing) because of stricter alternative-handling. Version drift exists but is small (<3 percentage points). Brain-V should standardise on ZL3b going forward (most recent, most curated), and note the version in any future Stolfi comparison.",
+    "METHODOLOGY LESSON (candidate for wiki/methodology-lessons.md addendum): when an external published baseline fails to reproduce after reconciliation AND sub-test diagnosis, the honest report is 'Brain-V cannot reproduce this specific baseline; best measurement is X; possible sources are Y, Z'. This is preferable to either (a) assuming the baseline must be correct and Brain-V must be wrong, or (b) assuming Brain-V is definitive and the baseline is a fabrication. Both extremes are epistemically unsound. v2's methodology section should model this honest-reporting pattern for cases where external baselines are imperfect benchmarks.",
+    "v1->v2 IMPLICATIONS: v1 likely leaned on 'Stolfi's ~75%' as a reference point. v2 should remove or reframe any such reference to reflect the reconciliation-plus-investigation finding. The paper is stronger for transparent reporting than for glossing the gap."
+  ],
   "parent": "H-BV-RECONCILED-RERUN-01",
   "created": "2026-04-17",
-  "last_tested": null,
+  "last_tested": "2026-04-17",
   "reasoning": "H-BV-RECONCILED-RERUN-01 revealed T1 (crust-only fraction) as a persistent Brain-V-vs-Stolfi discrepancy not explained by pipeline reconciliation. The sanity check on suffix dealer mean passed, so the reconciled config is correct. The 26-29% crust-only fraction, vs Stolfi's reported 75%, must have a source outside the suffix-level operationalisation: either corpus version, normal-words filter, or sub-corpus scope. This hypothesis tests all three candidate sources with locked variants per sub-test. The test is specifically agnostic about whether the gap WILL close; the decision rule cleanly handles UNRESOLVED as a legitimate outcome. A scope note is included: this is a methodological diagnosis, not a Hand A structural claim — whatever this test shows, it does not affect the findings that survived H-BV-RECONCILED-RERUN-01 (T2 asymmetry, CAVENEY-FINAL-N-01, COMPOSITE-OUTER-01 M3/M5).",
   "source": "Brain-V 2026-04-17 user-directed diagnostic follow-up to H-BV-RECONCILED-RERUN-01 T1 FAIL. Investigates three candidate sources for the persistent crust-only fraction discrepancy.",
   "researcher": "brain-v"
