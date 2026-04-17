@@ -1,0 +1,44 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-M5-RIGIDITY-DIAGNOSIS-01",
+  "hand_a_m5_original": 1.0,
+  "S1_ud_basque_partitions": {
+    "U0_case_number": 0.0,
+    "U1_case_aspect": null,
+    "U2_case_person": null,
+    "U3_case_prontype": null,
+    "U4_mood_number": 0.0,
+    "max": 0.0,
+    "mean": 0.0,
+    "verdict": "GENUINE"
+  },
+  "S2_partition_sensitivity": {
+    "H1_vc_original": 1.0,
+    "H2_single_vs_multi_char": 0.8,
+    "H3_freq_top5_vs_rest": 0.8,
+    "H4_random_4_6": {
+      "n": 100,
+      "mean": 0.612,
+      "p5": 0.4,
+      "p95": 1.0
+    },
+    "H5_random_5_5": {
+      "n": 100,
+      "mean": 0.6,
+      "p5": 0.4,
+      "p95": 1.0
+    },
+    "fraction_random_4_6_ge_vc": 0.09,
+    "vc_at_or_above_95th_pct": true,
+    "verdict": "GENUINE"
+  },
+  "S3_noise_floor": {
+    "shuffled_mean": 0.0,
+    "shuffled_p5": 0.0,
+    "shuffled_p95": 0.0,
+    "p_ge_observed": 0.0,
+    "verdict": "GENUINE"
+  },
+  "aggregate_score": 3.0,
+  "overall_verdict": "STRONG_GENUINE"
+}
