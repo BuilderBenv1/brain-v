@@ -82,6 +82,16 @@
     "Stolfi's qualitative structural picture (suffix-heavy asymmetry) holds; his quantitative baselines (75% crust-only, 0.14/0.80 dealers) do not transfer to Hand A. For v2's prior-work section: cite Stolfi for the qualitative grammar, not for specific numeric thresholds. Hand A requires its own derived baselines.",
     "The 0/3 locked verdict underscores that external predictions from prior work cannot be naively transplanted onto Brain-V's Hand-A-specific framework. The composite-outer test (3) should be pre-registered with Hand-A-derived baselines (measured from Brain-V's own corpus) rather than imported from Stolfi's published values. This does not weaken the prior-work citation — it clarifies scope."
   ],
+  "methodology_note": {
+    "date": "2026-04-17",
+    "scope": "Test 3 (Caveney word-final n)",
+    "issue": "The pre-registered metric inverted the denominator of Caveney's actual claim. Caveney (2020) claimed 'of all n occurrences in the corpus, almost all are word-final or coda'. This is a positional-within-occurrences measure: numerator = n occurrences that are word-final; denominator = all n occurrences. The locked pre-registration instead defined numerator = tokens ending in n; denominator = all Hand A tokens. That is a vocabulary-prevalence measure, not a positional measure.",
+    "impact": "Under the locked (incorrect) metric: 15.46% FAIL. Under Caveney's actual metric (recorded as diagnostic): 94.61% would PASS the same [0.85, 1.00] band. The divergence is large — from a 0.15 'refute' to a 0.95 'confirm' — and reverses the interpretation of one of three locked tests.",
+    "discipline_decision": "The locked verdict (0/3 WEAK_CONVERGENCE) stands as recorded. Pre-registration integrity requires that results report against the locked specification, not against what the specification ought to have said. Post-hoc re-scoring against a 'correct' metric would defeat the purpose of pre-registration.",
+    "corrective_action": "A new, separately pre-registered hypothesis H-BV-CAVENEY-FINAL-N-01 carries Caveney's actual claim under a precisely operationalised metric with worked denominator example. That hypothesis — not this one — is the authoritative Brain-V test of Caveney's positional constraint going forward.",
+    "generalised_lesson": "Future pre-registrations must (a) specify numerator and denominator explicitly; (b) include at least one worked mini-example showing the computation on a concrete token; (c) distinguish 'fraction of tokens with property X' from 'fraction of occurrences at position Y' — these are distinct measures and natural-language claims often leave this ambiguous.",
+    "amendment_status": "This note was added as an amendment on 2026-04-17 after execution. It does not alter the locked test, locked bands, locked verdict, or recorded raw statistics. It adds an audit trail for the specification error."
+  },
   "parent": "H-BV-BASQUE-HEADER-MAP-01",
   "created": "2026-04-17",
   "last_tested": "2026-04-17",
