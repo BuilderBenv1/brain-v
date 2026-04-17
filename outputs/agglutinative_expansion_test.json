@@ -1,0 +1,645 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-AGGLUTINATIVE-EXPANSION-01",
+  "hand_a_values": {
+    "M1": 4.12,
+    "M2_L1": 10,
+    "M2_L2": 5,
+    "M3": 3.16,
+    "M4": 0.2,
+    "M5": 1.0
+  },
+  "candidates": {
+    "Basque": {
+      "M1": [
+        2.5,
+        4.5
+      ],
+      "M2_L1": [
+        8,
+        16
+      ],
+      "M2_L2": [
+        3,
+        8
+      ],
+      "M3": [
+        2.0,
+        5.0
+      ],
+      "M4": [
+        0.02,
+        0.2
+      ],
+      "M5": [
+        0.6,
+        1.0
+      ],
+      "confidence": "high"
+    },
+    "Georgian": {
+      "M1": [
+        2.0,
+        4.0
+      ],
+      "M2_L1": [
+        10,
+        20
+      ],
+      "M2_L2": [
+        4,
+        10
+      ],
+      "M3": [
+        2.0,
+        4.5
+      ],
+      "M4": [
+        0.1,
+        0.3
+      ],
+      "M5": [
+        0.7,
+        0.95
+      ],
+      "confidence": "moderate"
+    },
+    "Swahili": {
+      "M1": [
+        3.0,
+        5.5
+      ],
+      "M2_L1": [
+        6,
+        12
+      ],
+      "M2_L2": [
+        8,
+        16
+      ],
+      "M3": [
+        2.5,
+        5.0
+      ],
+      "M4": [
+        0.05,
+        0.2
+      ],
+      "M5": [
+        0.85,
+        1.0
+      ],
+      "confidence": "high"
+    },
+    "Tagalog": {
+      "M1": [
+        1.8,
+        3.2
+      ],
+      "M2_L1": [
+        15,
+        30
+      ],
+      "M2_L2": [
+        2,
+        6
+      ],
+      "M3": [
+        1.5,
+        3.5
+      ],
+      "M4": [
+        0.25,
+        0.55
+      ],
+      "M5": [
+        0.4,
+        0.7
+      ],
+      "confidence": "moderate"
+    },
+    "Mapudungun": {
+      "M1": [
+        3.0,
+        6.0
+      ],
+      "M2_L1": [
+        20,
+        40
+      ],
+      "M2_L2": [
+        6,
+        14
+      ],
+      "M3": [
+        2.0,
+        5.0
+      ],
+      "M4": [
+        0.3,
+        0.6
+      ],
+      "M5": [
+        0.55,
+        0.8
+      ],
+      "confidence": "low-moderate"
+    },
+    "Ainu": {
+      "M1": [
+        2.5,
+        5.0
+      ],
+      "M2_L1": [
+        12,
+        25
+      ],
+      "M2_L2": [
+        4,
+        10
+      ],
+      "M3": [
+        2.0,
+        4.5
+      ],
+      "M4": [
+        0.2,
+        0.5
+      ],
+      "M5": [
+        0.5,
+        0.8
+      ],
+      "confidence": "low-moderate"
+    },
+    "Inuktitut": {
+      "M1": [
+        4.0,
+        8.0
+      ],
+      "M2_L1": [
+        300,
+        500
+      ],
+      "M2_L2": [
+        6,
+        14
+      ],
+      "M3": [
+        3.0,
+        7.0
+      ],
+      "M4": [
+        0.6,
+        0.9
+      ],
+      "M5": [
+        0.75,
+        0.95
+      ],
+      "confidence": "high inventory / moderate other"
+    }
+  },
+  "ranked_results": [
+    {
+      "language": "Basque",
+      "profile_distance": 0.0,
+      "match_count": 6,
+      "per_metric": {
+        "M1": {
+          "hand_a_value": 4.12,
+          "range": [
+            2.5,
+            4.5
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M2_L1": {
+          "hand_a_value": 10,
+          "range": [
+            8,
+            16
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M2_L2": {
+          "hand_a_value": 5,
+          "range": [
+            3,
+            8
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M3": {
+          "hand_a_value": 3.16,
+          "range": [
+            2.0,
+            5.0
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M4": {
+          "hand_a_value": 0.2,
+          "range": [
+            0.02,
+            0.2
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M5": {
+          "hand_a_value": 1.0,
+          "range": [
+            0.6,
+            1.0
+          ],
+          "distance": 0.0,
+          "in_range": true
+        }
+      },
+      "confidence": "high"
+    },
+    {
+      "language": "Georgian",
+      "profile_distance": 0.26,
+      "match_count": 4,
+      "per_metric": {
+        "M1": {
+          "hand_a_value": 4.12,
+          "range": [
+            2.0,
+            4.0
+          ],
+          "distance": 0.06,
+          "in_range": false
+        },
+        "M2_L1": {
+          "hand_a_value": 10,
+          "range": [
+            10,
+            20
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M2_L2": {
+          "hand_a_value": 5,
+          "range": [
+            4,
+            10
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M3": {
+          "hand_a_value": 3.16,
+          "range": [
+            2.0,
+            4.5
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M4": {
+          "hand_a_value": 0.2,
+          "range": [
+            0.1,
+            0.3
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M5": {
+          "hand_a_value": 1.0,
+          "range": [
+            0.7,
+            0.95
+          ],
+          "distance": 0.2,
+          "in_range": false
+        }
+      },
+      "confidence": "moderate"
+    },
+    {
+      "language": "Swahili",
+      "profile_distance": 0.375,
+      "match_count": 5,
+      "per_metric": {
+        "M1": {
+          "hand_a_value": 4.12,
+          "range": [
+            3.0,
+            5.5
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M2_L1": {
+          "hand_a_value": 10,
+          "range": [
+            6,
+            12
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M2_L2": {
+          "hand_a_value": 5,
+          "range": [
+            8,
+            16
+          ],
+          "distance": 0.375,
+          "in_range": false
+        },
+        "M3": {
+          "hand_a_value": 3.16,
+          "range": [
+            2.5,
+            5.0
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M4": {
+          "hand_a_value": 0.2,
+          "range": [
+            0.05,
+            0.2
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M5": {
+          "hand_a_value": 1.0,
+          "range": [
+            0.85,
+            1.0
+          ],
+          "distance": 0.0,
+          "in_range": true
+        }
+      },
+      "confidence": "high"
+    },
+    {
+      "language": "Ainu",
+      "profile_distance": 0.8205,
+      "match_count": 4,
+      "per_metric": {
+        "M1": {
+          "hand_a_value": 4.12,
+          "range": [
+            2.5,
+            5.0
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M2_L1": {
+          "hand_a_value": 10,
+          "range": [
+            12,
+            25
+          ],
+          "distance": 0.1538,
+          "in_range": false
+        },
+        "M2_L2": {
+          "hand_a_value": 5,
+          "range": [
+            4,
+            10
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M3": {
+          "hand_a_value": 3.16,
+          "range": [
+            2.0,
+            4.5
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M4": {
+          "hand_a_value": 0.2,
+          "range": [
+            0.2,
+            0.5
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M5": {
+          "hand_a_value": 1.0,
+          "range": [
+            0.5,
+            0.8
+          ],
+          "distance": 0.6667,
+          "in_range": false
+        }
+      },
+      "confidence": "low-moderate"
+    },
+    {
+      "language": "Mapudungun",
+      "profile_distance": 1.7583,
+      "match_count": 2,
+      "per_metric": {
+        "M1": {
+          "hand_a_value": 4.12,
+          "range": [
+            3.0,
+            6.0
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M2_L1": {
+          "hand_a_value": 10,
+          "range": [
+            20,
+            40
+          ],
+          "distance": 0.5,
+          "in_range": false
+        },
+        "M2_L2": {
+          "hand_a_value": 5,
+          "range": [
+            6,
+            14
+          ],
+          "distance": 0.125,
+          "in_range": false
+        },
+        "M3": {
+          "hand_a_value": 3.16,
+          "range": [
+            2.0,
+            5.0
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M4": {
+          "hand_a_value": 0.2,
+          "range": [
+            0.3,
+            0.6
+          ],
+          "distance": 0.3333,
+          "in_range": false
+        },
+        "M5": {
+          "hand_a_value": 1.0,
+          "range": [
+            0.55,
+            0.8
+          ],
+          "distance": 0.8,
+          "in_range": false
+        }
+      },
+      "confidence": "low-moderate"
+    },
+    {
+      "language": "Tagalog",
+      "profile_distance": 2.1571,
+      "match_count": 2,
+      "per_metric": {
+        "M1": {
+          "hand_a_value": 4.12,
+          "range": [
+            1.8,
+            3.2
+          ],
+          "distance": 0.6571,
+          "in_range": false
+        },
+        "M2_L1": {
+          "hand_a_value": 10,
+          "range": [
+            15,
+            30
+          ],
+          "distance": 0.3333,
+          "in_range": false
+        },
+        "M2_L2": {
+          "hand_a_value": 5,
+          "range": [
+            2,
+            6
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M3": {
+          "hand_a_value": 3.16,
+          "range": [
+            1.5,
+            3.5
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M4": {
+          "hand_a_value": 0.2,
+          "range": [
+            0.25,
+            0.55
+          ],
+          "distance": 0.1667,
+          "in_range": false
+        },
+        "M5": {
+          "hand_a_value": 1.0,
+          "range": [
+            0.4,
+            0.7
+          ],
+          "distance": 1.0,
+          "in_range": false
+        }
+      },
+      "confidence": "moderate"
+    },
+    {
+      "language": "Inuktitut",
+      "profile_distance": 3.1583,
+      "match_count": 2,
+      "per_metric": {
+        "M1": {
+          "hand_a_value": 4.12,
+          "range": [
+            4.0,
+            8.0
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M2_L1": {
+          "hand_a_value": 10,
+          "range": [
+            300,
+            500
+          ],
+          "distance": 1.45,
+          "in_range": false
+        },
+        "M2_L2": {
+          "hand_a_value": 5,
+          "range": [
+            6,
+            14
+          ],
+          "distance": 0.125,
+          "in_range": false
+        },
+        "M3": {
+          "hand_a_value": 3.16,
+          "range": [
+            3.0,
+            7.0
+          ],
+          "distance": 0.0,
+          "in_range": true
+        },
+        "M4": {
+          "hand_a_value": 0.2,
+          "range": [
+            0.6,
+            0.9
+          ],
+          "distance": 1.3333,
+          "in_range": false
+        },
+        "M5": {
+          "hand_a_value": 1.0,
+          "range": [
+            0.75,
+            0.95
+          ],
+          "distance": 0.25,
+          "in_range": false
+        }
+      },
+      "confidence": "high inventory / moderate other"
+    }
+  ],
+  "rank_1_language": "Basque",
+  "rank_2_language": "Georgian",
+  "margin_rank2_over_rank1": null,
+  "margin_is_infinite": true,
+  "family_level_cluster": false,
+  "verdict": "BASQUE_UNIQUELY_BEST"
+}
