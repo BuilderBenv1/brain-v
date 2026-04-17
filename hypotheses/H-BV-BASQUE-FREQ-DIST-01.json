@@ -1,0 +1,30 @@
+{
+  "id": "H-BV-BASQUE-FREQ-DIST-01",
+  "claim": "Hand A's HIGH class (top 146 types, cumulative 50.1% token coverage, from H-BV-NOMENCLATOR-01) exhibits word-frequency distribution properties matching published Basque text statistics: Zipf exponent in the 0.9-1.1 range, top-10 token share 15-25%, and rank-1 to rank-10 frequency ratio of 4-6x. Matching all three would support the Basque-like interpretation at the vocabulary-frequency level.",
+  "type": "language",
+  "confidence": 0.4,
+  "evidence_for": [
+    "Natural languages uniformly exhibit Zipfian frequency distributions, but the exponent varies across languages and text registers. Basque corpora (Euskaltzaindia, Ereduzko Prosa Gaur) show ZIPF exponents typically 0.9-1.1 for narrative text — a narrower band than English (~1.0) or Latin (~0.8-0.9).",
+    "Hand A's HIGH class was characterised in H-BV-NOMENCLATOR-01 and H-BV-NOMENCLATOR-NLREF-01; the 50.1%-by-146-types compression is comparable to Basque's high-frequency-word compression due to rich case-marked function morphology.",
+    "Basque's top-10 highest-frequency words are dominated by function words (izan, ukan auxiliaries; eta 'and'; hau/hori/hura demonstratives; eta conjunctions). Their combined share in Basque narrative text typically runs 15-25% of tokens — a range Hand A's HIGH class top-10 can be compared against."
+  ],
+  "evidence_against": [
+    "Natural-language frequency distributions are broadly similar (all Zipfian); distinguishing Basque from other agglutinative non-harmonic candidates by Zipf parameters alone is coarse-grained.",
+    "Hand A's HIGH class contains ambiguously-defined tokens (some may be abbreviated compound forms, some may be genuinely single morphemes). Direct comparison to Basque word types assumes comparable tokenisation.",
+    "Published Basque frequency statistics come from modern-Basque corpora; 15th-c. Basque would have had different high-frequency vocabulary (fewer Spanish-influenced loans; different auxiliary paradigm) and the frequency distribution may shift accordingly."
+  ],
+  "test": "LOCKED PROCEDURE.\n\n  DATA: Hand A full corpus, all tokens (not filtered to N>=3).\n\n  HIGH CLASS (LOCKED): top 146 types by frequency, cumulative 50.1% of tokens. Identical definition to H-BV-NOMENCLATOR-01.\n\n  METRICS:\n\n  Z1 — ZIPF EXPONENT:\n    Compute Zipf exponent alpha via least-squares fit of log(frequency) vs log(rank) on the HIGH class types only. Formula: log(f_r) = C - alpha * log(r), fit on ranks 1..146.\n    Basque-compatible range: alpha in [0.85, 1.15] (slightly widened from [0.90, 1.10] to account for fit noise on 146 data points).\n\n  Z2 — TOP-10 TOKEN SHARE:\n    Compute sum of counts of top-10 Hand-A types as a fraction of total Hand-A tokens.\n    Basque-compatible range: [0.15, 0.30] (slightly widened to account for register variation).\n\n  Z3 — RANK-1 / RANK-10 FREQUENCY RATIO:\n    Ratio of count(rank-1) / count(rank-10).\n    Basque-compatible range: [3.5, 7.0] (slightly widened from [4, 6]).\n\n  DIAGNOSTIC (non-decision-feeding):\n    Also report: rank-1 / rank-20 ratio; fraction of HIGH types that are 1-glyph tokens (Basque function words are often short 2-4 letter words like 'eta', 'hau', 'bat'); mean length of top-10 HIGH types.\n\n  DECISION RULE (LOCKED):\n    CONFIRMED: all 3 metrics fall within Basque-compatible ranges.\n    MARGINAL: 2 of 3 match.\n    REFUTED: 0-1 of 3 match.\n\n  CONTROL REFERENCE (informational): Hand A's parameters under the NOMENCLATOR-NLREF-01 comparison against Latin Vulgate and Italian Dante (3-of-5 head/tail measures showed Hand A more extreme than either reference). Note whether the current result is consistent with the NLREF observation or contradicts it.",
+  "test_metric": "count_of_zipf_metrics_in_basque_range_out_of_3",
+  "test_threshold": "CONFIRMED if 3/3 metrics match Basque-compatible ranges. MARGINAL if 2/3. REFUTED if 0-1/3.",
+  "tests_run": [],
+  "tests_remaining": [
+    "locked_basque_frequency_distribution_test"
+  ],
+  "status": "active",
+  "parent": "H-BV-AGGLUTINATIVE-SCREEN-01",
+  "created": "2026-04-17",
+  "last_tested": null,
+  "reasoning": "Frequency-distribution shape is a necessary-but-not-sufficient test for language identification. If Hand A is Basque-like, its HIGH class should compress similarly to Basque's high-frequency vocabulary. If it does not, the Basque-like hypothesis is weakened — though any natural language with similar morphological profile (heavy case marking, agglutinative) could pass this test, so passing is not decisive. The test is included because it is cheap, locked, and provides a directional constraint on the family of candidate languages.",
+  "source": "Brain-V 2026-04-17 user-directed falsification attempt on Basque-like+Latin-abbreviation convergence hypothesis; test 3 of 4",
+  "researcher": "brain-v"
+}
