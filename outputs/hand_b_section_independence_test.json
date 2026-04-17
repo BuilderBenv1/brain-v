@@ -1,0 +1,90 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-HAND-B-SECTION-INDEPENDENCE-01",
+  "hand_b_marker": "chedy",
+  "n_folios_filtered": 82,
+  "section_distribution": {
+    "recipes": 23,
+    "herbal": 32,
+    "text-only": 5,
+    "biological": 19,
+    "cosmological": 3
+  },
+  "correlation_results": [
+    {
+      "correlation": "C1 Section x TTR",
+      "test": "ANOVA",
+      "statistic": 60.9866,
+      "p_value": 0.0,
+      "sig_01": true,
+      "sig_bonf": true,
+      "hand_a_p": 0.017
+    },
+    {
+      "correlation": "C2 Section x mean_length",
+      "test": "ANOVA",
+      "statistic": 1.7046,
+      "p_value": 0.139,
+      "sig_01": false,
+      "sig_bonf": false,
+      "hand_a_p": 0.525
+    },
+    {
+      "correlation": "C3 Section x L2_outer_usage",
+      "test": "ANOVA",
+      "statistic": 0.7825,
+      "p_value": 0.479,
+      "sig_01": false,
+      "sig_bonf": false,
+      "hand_a_p": 0.956
+    },
+    {
+      "correlation": "C4 Section x marker_freq",
+      "test": "ANOVA",
+      "statistic": 4.3754,
+      "p_value": 0.0,
+      "sig_01": true,
+      "sig_bonf": true,
+      "hand_a_p": 0.169
+    },
+    {
+      "correlation": "C5 Quire x TTR",
+      "test": "ANOVA",
+      "statistic": 32.9601,
+      "p_value": 0.0,
+      "sig_01": true,
+      "sig_bonf": true,
+      "hand_a_p": 0.502
+    },
+    {
+      "correlation": "C6 Position x TTR",
+      "test": "Spearman",
+      "statistic": 0.0272,
+      "p_value": 0.798,
+      "sig_01": false,
+      "sig_bonf": false,
+      "hand_a_p": 0.12
+    },
+    {
+      "correlation": "C7 Position x mean_length",
+      "test": "Spearman",
+      "statistic": -0.1931,
+      "p_value": 0.085,
+      "sig_01": false,
+      "sig_bonf": false,
+      "hand_a_p": 0.0
+    },
+    {
+      "correlation": "C8 Word_count x TTR",
+      "test": "Spearman",
+      "statistic": -0.7644,
+      "p_value": 0.0,
+      "sig_01": true,
+      "sig_bonf": true,
+      "hand_a_p": 0.0
+    }
+  ],
+  "section_correlations_non_sig": 2,
+  "total_sig": 4,
+  "locked_verdict": "REFUTED"
+}
