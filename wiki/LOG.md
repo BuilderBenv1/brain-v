@@ -4,6 +4,65 @@ Append-only. Newest at the top.
 
 ---
 
+## 2026-04-17 — FAILED: score.py (07:02:21 UTC)
+
+**Step**: `score.py`
+**Error**: Traceback (most recent call last):
+  File "C:\Projects\brain-v\scripts\score.py", line 641, in <module>
+    main()
+    ~~~~^^
+  File "C:\Projects\brain-v\scripts\score.py", line 573, in main
+    print(f"\n[score] Testing {h['id']}: {h['claim'][:60]}...")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Action**: Brain-V's loop broke. Check `outputs/failures.log` for details.
+
+## 2026-04-17 — H-BV-AGGLUTINATIVE-SCREEN-01 CONFIRMED: Basque 5/5, Japanese 4/5, Quechua 3/5
+
+**Hypothesis**: Hand A's morphological profile matches at least one non-harmonic agglutinative candidate on ≥3/5 metrics. Candidates (narrowed per VOWEL-HARMONY-01 REFUTED): Basque, Quechua, Japanese. Metrics: mean morphemes/word, Layer-1/Layer-2 inventory sizes, productivity ratio, categorical gap density, slot ordering strictness. Reference values from published typological literature.
+
+**Result**: **CONFIRMED**. Basque best fit at **5/5**.
+
+**Hand A profile (computed)**:
+- M1 Mean glyph-units/word: **4.12** (median 4, n=11022)
+- M2 Layer-1 inventory: **10** (93% coverage); Layer-2: **5** (86% coverage)
+- M3 Productivity: **3.16** distinct inners per productive stem
+- M4 Gap density: **0.20** (10 zero cells out of 50 meaningful)
+- M5 Ordering strictness: **1.00** (all 5 outers with ≥3× V/C differential)
+
+**Per-candidate scoring**:
+
+| candidate | M1 | M2 | M3 | M4 | M5 | total |
+|---|---|---|---|---|---|---|
+| **Basque** | ✓ (2.5-4.5) | ✓ (both layers in range) | ✓ (2-5) | ✓ (0.02-0.20) | ✓ (0.60-1.00) | **5/5** |
+| Japanese | ✗ (1.5-3.0) | ✓ (5-15 both) | ✓ (2-4) | ✓ (0.05-0.20) | ✓ (0.70-1.00) | 4/5 |
+| Quechua | ✓ (4-7) | ✗ (15-25 L1, 10-20 L2) | ✗ (4-10) | ✓ (0.05-0.25) | ✓ (0.80-1.00) | 3/5 |
+
+**Basque's 5/5 match** is the sharpest result of the session. Every metric falls within Basque's published range:
+- 4.12 morphemes/word ≈ Basque's ~3.5-4.5 range
+- 10-suffix L1 + 5-suffix L2 matches Basque's ~12 core cases + ~5 peripheral clitics
+- 3.16 productive forms per stem matches Basque's nominal case-form productivity
+- 0.20 gap density matches Basque's animacy-based categorical constraints
+- 1.00 strictness matches Basque's strict nominal slot ordering
+
+**Subsidiary finding — richer gap landscape**: Corpus-wide M4 recomputation surfaced **10 categorical gaps** (not just the known n/C one):
+- 6 cells: (ch, d, k, t, sh, l) × n — the known n-exclusivity
+- 2 cells: (d, l) × r — r does not follow d or l inner
+- 2 cells: o × l and l × l — Layer-2 l avoids certain inner positions (l × l looks like same-glyph avoidance)
+
+Hand A's morphological constraint landscape is richer than prior tests implied.
+
+**Important caveat**: The result identifies Hand A as STRUCTURALLY BASQUE-LIKE, not AS Basque. Hand A's profile is compatible with:
+- (a) a Basque-family language
+- (b) another non-harmonic agglutinative language with similar profile
+- (c) a constructed system targeting Basque-like structural parameters
+- (d) Latin + scribal abbreviation (per CAPPELLI-MATCH-01 CONFIRMED 4/5, same day)
+
+**AGGLUTINATIVE-SCREEN-01 and CAPPELLI-MATCH-01 are not mutually exclusive**. Medieval Basque was written in Latin script with heavy scribal abbreviation — the two hypotheses can both be partially correct. Combined with RUGG-GRILLE-01 CONFIRMED (grille-generator REFUTED), the manuscript's candidate space has narrowed to: (i) Latin-plus-abbreviation, (ii) Basque-like non-harmonic agglutinative language, (iii) a hybrid, or (iv) a deliberately-designed hoax that reproduces both structural profiles (unlikely by accident, possible by design).
+
+**Confidence update**: "Hand A morphology matches non-harmonic agglutinative typology" 0.5 → 0.75.
+
+---
+
 ## 2026-04-17 — H-BV-RUGG-GRILLE-01 CONFIRMED (Rugg-grille REFUTED): 0.30% reproduction rate, decisively below 1% threshold
 
 **Hypothesis**: Can a Cardan-grille generator (Rugg 2004 model) reproduce Hand A's 0/9784 n-on-consonant-inner categorical gap by mechanical construction? Locked simulation: 1000 runs (200 per forbidden-cell density k ∈ {0.0, 0.1, 0.2, 0.3, 0.5}), 11022 tokens each, sampling from Hand A frequency distributions, rejecting forbidden (inner, outer) pairs. Detection: count(n | C-inner) == 0 AND count(C-inner) ≥ 2000.

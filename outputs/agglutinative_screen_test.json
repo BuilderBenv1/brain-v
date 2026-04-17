@@ -1,0 +1,153 @@
+{
+  "generated": "2026-04-17",
+  "hypothesis": "H-BV-AGGLUTINATIVE-SCREEN-01",
+  "hand_a_profile": {
+    "M1": 4.12,
+    "M2_layer1": 10,
+    "M2_layer2": 5,
+    "M2_total": 15,
+    "M3": 3.16,
+    "M4": 0.2,
+    "M5": 1.0
+  },
+  "reference_profiles": {
+    "Basque": {
+      "M1_range": [
+        2.5,
+        4.5
+      ],
+      "M2_layer1_range": [
+        8,
+        16
+      ],
+      "M2_layer2_range": [
+        3,
+        8
+      ],
+      "M2_total_range": [
+        15,
+        25
+      ],
+      "M3_range": [
+        2.0,
+        5.0
+      ],
+      "M4_range": [
+        0.02,
+        0.2
+      ],
+      "M5_range": [
+        0.6,
+        1.0
+      ],
+      "citation": "Hualde & Ortiz de Urbina 2003; de Rijk 2008"
+    },
+    "Quechua": {
+      "M1_range": [
+        4.0,
+        7.0
+      ],
+      "M2_layer1_range": [
+        15,
+        25
+      ],
+      "M2_layer2_range": [
+        10,
+        20
+      ],
+      "M2_total_range": [
+        30,
+        45
+      ],
+      "M3_range": [
+        4.0,
+        10.0
+      ],
+      "M4_range": [
+        0.05,
+        0.25
+      ],
+      "M5_range": [
+        0.8,
+        1.0
+      ],
+      "citation": "Adelaar 2004; Cusihuaman 2001"
+    },
+    "Japanese": {
+      "M1_range": [
+        1.5,
+        3.0
+      ],
+      "M2_layer1_range": [
+        5,
+        15
+      ],
+      "M2_layer2_range": [
+        5,
+        15
+      ],
+      "M2_total_range": [
+        15,
+        30
+      ],
+      "M3_range": [
+        2.0,
+        4.0
+      ],
+      "M4_range": [
+        0.05,
+        0.2
+      ],
+      "M5_range": [
+        0.7,
+        1.0
+      ],
+      "citation": "Shibatani 1990; Tsujimura 2013"
+    }
+  },
+  "scoring": {
+    "Basque": {
+      "M1_match": true,
+      "M2_match": true,
+      "M2_loose_match": true,
+      "M2_layer1_in_range": true,
+      "M2_layer2_in_range": true,
+      "M3_match": true,
+      "M4_match": true,
+      "M5_match": true,
+      "total_matches": 5
+    },
+    "Quechua": {
+      "M1_match": true,
+      "M2_match": false,
+      "M2_loose_match": false,
+      "M2_layer1_in_range": false,
+      "M2_layer2_in_range": false,
+      "M3_match": false,
+      "M4_match": true,
+      "M5_match": true,
+      "total_matches": 3
+    },
+    "Japanese": {
+      "M1_match": false,
+      "M2_match": true,
+      "M2_loose_match": true,
+      "M2_layer1_in_range": true,
+      "M2_layer2_in_range": true,
+      "M3_match": true,
+      "M4_match": true,
+      "M5_match": true,
+      "total_matches": 4
+    }
+  },
+  "best_candidate": "Basque",
+  "best_candidate_score": 5,
+  "verdict": "CONFIRMED",
+  "rationale": "Basque matches Hand A on 5/5 metrics; candidate identified for next round",
+  "caveats": [
+    "Reference values are approximate ranges derived from published typological literature; no direct corpus access in this environment",
+    "Hand A 'morpheme count' is approximated as glyph-unit count per word, which is a lower-bound proxy \u2014 real morpheme count likely slightly higher once stem decomposition is attempted",
+    "Cross-language morpheme-count methodology varies in segmentation grain; matches on M1 should be interpreted with 20-30% tolerance",
+    "M4 categorical gap density is computed on top-10 x top-5 cells with both-axis >=20 token minimum; other segmentation grains would yield different values"
+  ]
+}
