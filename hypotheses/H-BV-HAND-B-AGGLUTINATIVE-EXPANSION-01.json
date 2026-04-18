@@ -1,0 +1,30 @@
+{
+  "id": "H-BV-HAND-B-AGGLUTINATIVE-EXPANSION-01",
+  "claim": "Hand B's morphological profile (M1=4.49, M2 L1=10, M2 L2=5, M3=2.79, M4=0.26, M5=0.80) ranks among the seven non-harmonic agglutinative candidates from H-BV-AGGLUTINATIVE-EXPANSION-01. Sub-test 1d of H-BV-HAND-B-FULL-BATTERY-01.",
+  "type": "language",
+  "confidence": 0.4,
+  "evidence_for": [
+    "Hand A's H-BV-AGGLUTINATIVE-EXPANSION-01 returned BASQUE_UNIQUELY_BEST (6/6 match, distance 0.0). The natural question: does Hand B show the same Basque-best pattern, or rank differently among the candidates?",
+    "Hand B has slightly different M1-M5 values than Hand A (M1 4.49 vs 4.12; M3 2.79 vs 3.16; M4 0.26 vs 0.20; M5 0.80 vs 1.00) — could shift rankings.",
+    "Replicating with the same 7 candidates as Hand A maintains direct comparability. If Hand B also lands on Basque, the Basque-like profile is manuscript-wide; if on a different language, the hands diverge typologically."
+  ],
+  "evidence_against": [
+    "H-BV-HAND-B-VOWEL-HARMONY-01 (sub-test 1c) just CONFIRMED harmony in Hand B. The Hand A test deliberately excluded harmonic agglutinatives (Hungarian, Turkish) because Hand A was non-harmonic. For Hand B specifically, harmonic candidates may be MORE relevant. This sub-test still uses the locked 7 non-harmonic candidates for direct comparability with Hand A; a follow-up with harmonic candidates is the natural next step.",
+    "Hand B's M5 = 0.80 (vs Hand A's 1.00) sits at the upper boundary of Mapudungun's published range and well within Basque's [0.60, 1.00] range — multiple candidates may match.",
+    "The 'right' candidate ranking depends on whether harmonic candidates are included. With Hand B confirmed harmonic, this 7-candidate test cannot be the final word."
+  ],
+  "test": "LOCKED PROCEDURE — IDENTICAL METHODOLOGY TO H-BV-AGGLUTINATIVE-EXPANSION-01 with Hand B metric values.\n\n  HAND B VALUES (computed via Hand B versions of SUFFIX-SEQUENCE-01 / SUFFIX-SUBCLASS-01):\n    M1 = 4.4935 (mean glyph-units per token)\n    M2 L1 = 10 (top-10 cov 96.3%)\n    M2 L2 = 5 (top-5 cov 90.9%)\n    M3 = 2.7901 (mean distinct inners per productive stem)\n    M4 = 0.26 (gap density 13/50)\n    M5 = 0.80 (4/5 outers >=3x V/C differential)\n\n  CANDIDATE LANGUAGES AND PUBLISHED RANGES (LOCKED, identical to AGGLUTINATIVE-EXPANSION-01):\n    BASQUE     [Hualde & Ortiz de Urbina; de Rijk]:     M1[2.5,4.5] M2L1[8,16]   M2L2[3,8]   M3[2.0,5.0] M4[0.02,0.20] M5[0.60,1.00]\n    GEORGIAN   [Aronson; Hewitt]:                       M1[2.0,4.0] M2L1[10,20]  M2L2[4,10]  M3[2.0,4.5] M4[0.10,0.30] M5[0.70,0.95]\n    SWAHILI    [Ashton; Mohammed]:                      M1[3.0,5.5] M2L1[6,12]   M2L2[8,16]  M3[2.5,5.0] M4[0.05,0.20] M5[0.85,1.00]\n    TAGALOG    [Schachter & Otanes]:                    M1[1.8,3.2] M2L1[15,30]  M2L2[2,6]   M3[1.5,3.5] M4[0.25,0.55] M5[0.40,0.70]\n    MAPUDUNGUN [Smeets 2008]:                           M1[3.0,6.0] M2L1[20,40]  M2L2[6,14]  M3[2.0,5.0] M4[0.30,0.60] M5[0.55,0.80]\n    AINU       [Tamura 2000]:                           M1[2.5,5.0] M2L1[12,25]  M2L2[4,10]  M3[2.0,4.5] M4[0.20,0.50] M5[0.50,0.80]\n    INUKTITUT  [Fortescue]:                             M1[4.0,8.0] M2L1[300,500] M2L2[6,14] M3[3.0,7.0] M4[0.60,0.90] M5[0.75,0.95]\n\n  DISTANCE METRIC (LOCKED, identical to AGGLUTINATIVE-EXPANSION-01):\n    For each sub-metric m_i with published range [lo_i, hi_i] and Hand B value v_i:\n      width_i = hi_i - lo_i\n      d_i = 0 if lo_i <= v_i <= hi_i else min(|v_i - lo_i|, |v_i - hi_i|) / width_i\n    profile_distance(language) = sum d_i over 6 sub-metrics.\n\n  MATCH COUNT: count of sub-metrics where v_i in [lo_i, hi_i] (0 to 6).\n\n  RANKING: sort candidates by profile_distance ascending.\n\n  DECISION RULE (LOCKED):\n    BASQUE_UNIQUELY_BEST: Basque rank 1 AND margin (rank2/rank1) >= 1.10 OR rank1 == 0\n    BASQUE_BEST_NOT_UNIQUELY: Basque rank 1 AND margin < 1.10\n    NOT_BASQUE_FIRST: Another language at rank 1\n    FAMILY_LEVEL: top-3 all within margin 1.10\n\n  PARALLEL COMPARISON: report side-by-side with Hand A AGGLUTINATIVE-EXPANSION-01 result (Basque rank 1 distance 0.0; Georgian rank 2 distance 0.26).",
+  "test_metric": "profile_distance and match_count per language; verdict per locked rule.",
+  "test_threshold": "BASQUE_UNIQUELY_BEST if Basque at rank 1 with margin >= 1.10. PARTIAL bins per locked rule.",
+  "tests_run": [],
+  "tests_remaining": [
+    "locked_hand_b_agglutinative_expansion_test: distance computation for 7 candidates against Hand B values"
+  ],
+  "status": "active",
+  "parent": "H-BV-HAND-B-FULL-BATTERY-01",
+  "created": "2026-04-18",
+  "last_tested": null,
+  "reasoning": "Sub-test 1d. Hand B M1-M5 values computed from sub-tests 1a/1b. Same 7 non-harmonic candidates as Hand A AGGLUTINATIVE-EXPANSION-01 for direct comparability. The vowel-harmony confirmation in 1c suggests the candidate set should arguably be expanded to include harmonic agglutinatives (Hungarian, Turkish) for Hand B specifically — flagged as natural follow-up but outside the locked scope of this test.",
+  "source": "Brain-V 2026-04-18 sub-test 1d.",
+  "researcher": "brain-v"
+}
