@@ -1,0 +1,56 @@
+{
+  "id": "H-BV-HAND-B-FULL-BATTERY-01",
+  "claim": "Systematic replication of Hand A's morphological characterisation on Hand B via 5 parallel sub-tests. The batch-level outcome reports which sub-tests confirm the Hand A pattern, which diverge, and which are inconclusive — establishing a parallel evidence base for Hand B equivalent to v2's Hand A coverage.",
+  "type": "structural",
+  "confidence": 0.5,
+  "evidence_for": [
+    "Each sub-test uses methodology identical to its Hand A equivalent with only the corpus filter changed.",
+    "Each sub-test has its own pre-registration and execution commit per pre-registration discipline.",
+    "Methodology lesson 9 (always run parallel tests on companion corpora) and lesson 10 (sample-composition parity) both directly support this batch design."
+  ],
+  "evidence_against": [
+    "Some Hand A tests had Hand-A-specific values (e.g. AGGLUTINATIVE-EXPANSION-01 used Hand A's specific M1-M5 values). The Hand B parallel must use Hand-B-specific values, which means the test isn't strictly identical — the methodology is identical but the inputs are hand-specific.",
+    "Five sub-tests with five separate verdicts can produce mixed outcomes that don't cleanly map to the user's three-bin expected categories (all-confirm / 3-4-confirm / 0-2-confirm)."
+  ],
+  "test": "BATCH-LEVEL DESCRIPTION (each sub-test has its own LOCKED PROCEDURE in its own hypothesis file):\n\n  Sub-test 1a: H-BV-HAND-B-SUFFIX-SEQUENCE-01 — 5-criterion two-layer morphology test on Hand B\n  Sub-test 1b: H-BV-HAND-B-SUFFIX-SUBCLASS-01 — V/C sub-class partition + M2 outer-preference table on Hand B\n  Sub-test 1c: H-BV-HAND-B-VOWEL-HARMONY-01 — k-means clustering of stems by vowel-inner distribution + harmony prediction\n  Sub-test 1d: H-BV-HAND-B-AGGLUTINATIVE-EXPANSION-01 — 7-language profile-distance ranking on Hand B M1-M5 values\n  Sub-test 1e: H-BV-HAND-B-BASQUE-DIRECT-CORPUS-01 — Hand B values vs UD_Basque-BDT direct measurements\n\n  BATCH-LEVEL VERDICT INTERPRETATION (LOCKED, descriptive per user's spec):\n    For each sub-test, classify outcome as CONFIRM_HAND_A_PATTERN, DIVERGE_FROM_HAND_A, or INCONCLUSIVE.\n    Count confirmations vs divergences across the 5 sub-tests.\n    Specialist interpretation per user's expected outcomes:\n      All 5 confirm: unified morphological system across hands\n      3-4 confirm: largely unified with specific divergences\n      0-2 confirm: structurally different systems",
+  "test_metric": "Per-sub-test classification (CONFIRM / DIVERGE / INCONCLUSIVE).",
+  "test_threshold": "All 5 confirm = unified; 3-4 confirm = largely unified; 0-2 confirm = structurally different.",
+  "tests_run": [
+    {
+      "date": "2026-04-18",
+      "test": "batch_synthesis",
+      "sub_tests": [
+        {"id": "H-BV-HAND-B-SUFFIX-SEQUENCE-01", "verdict": "MARGINAL 4/5 (matches Hand A 4/5 MARGINAL)", "classification": "CONFIRM_HAND_A_PATTERN", "note": "Identical 4/5 with C4 ordering as sole failure (HB ratio 1.14 vs HA 1.12)"},
+        {"id": "H-BV-HAND-B-SUFFIX-SUBCLASS-01", "verdict": "MARGINAL with n vowel-exclusivity replicated (4/5 outers >=3x V/C; ol differs)", "classification": "CONFIRM_HAND_A_PATTERN", "note": "n vowel-exclusive in both hands (HA 0/2240, HB 0/7403); ol selectional pattern Hand-A-specific"},
+        {"id": "H-BV-HAND-B-VOWEL-HARMONY-01", "verdict": "CONFIRMED_HARMONY (silhouette 0.6495 + accuracy 0.7674); Hand A REFUTED at silhouette 0.3305", "classification": "DIVERGE_FROM_HAND_A", "note": "MAJOR divergence — Hand B shows clean vowel harmony Hand A lacks"},
+        {"id": "H-BV-HAND-B-AGGLUTINATIVE-EXPANSION-01", "verdict": "NOT_BASQUE_FIRST (Ainu rank 1 dist 0.154; Basque rank 3 dist 0.333)", "classification": "DIVERGE_FROM_HAND_A", "note": "Hand A: Basque uniquely best dist 0.0. Hand B: Ainu best, Basque rank 3"},
+        {"id": "H-BV-HAND-B-BASQUE-DIRECT-CORPUS-01", "verdict": "CORPUS_REFUTED 2/6 (Hand A: CORPUS_WEAK 3/6)", "classification": "DIVERGE_FROM_HAND_A", "note": "Hand B fits fewer Basque metrics; M4 (Hand A boundary fit) now misses; M5 closer than Hand A but still outside band"}
+      ],
+      "n_confirm": 2,
+      "n_diverge": 3,
+      "n_inconclusive": 0,
+      "batch_verdict": "STRUCTURALLY_DIFFERENT_SYSTEMS",
+      "batch_verdict_note": "Per the user-specified specialist interpretation: 0-2 confirm = structurally different systems (significant re-interpretation needed). The two-layer terminal morphology and V/C sub-class structure are SHARED (sub-tests 1a, 1b). But vowel harmony, candidate-language ranking, and direct-corpus Basque fit all DIVERGE between hands. The hands appear to share basic morphological architecture (closed inventories, productive stems, V/C sub-slots, n vowel-exclusivity) but diverge on typological-feature coupling (harmony, candidate language, Basque fit). This is consistent with: (a) two related dialects of the same language with different content domains and harmony rules; (b) two different scribes encoding different content with different conventions; (c) the same language at two different layers of structural abstraction where one shows harmony and the other doesn't.",
+      "confidence_change": "0.5 -> 0.85"
+    }
+  ],
+  "tests_remaining": [],
+  "status": "structurally_different_systems_2_confirm_3_diverge",
+  "verdict_note": "Batch verdict: 2/5 sub-tests CONFIRM Hand A pattern, 3/5 DIVERGE. Per user-specified interpretation: 0-2 confirm = structurally different systems requiring significant re-interpretation. Sharing basic morphological architecture (sub-tests 1a/1b) but diverging on harmony, candidate language, and Basque fit (1c/1d/1e).",
+  "findings_for_followup": [
+    "CRITICAL FOR v2 (or v3): Hand B is NOT just 'Hand A with different scribal parameters.' The two hands diverge on three load-bearing typological metrics (vowel harmony, candidate-language ranking, direct-corpus Basque fit). The v2 framing of 'Currier A/B is partly section-confounded; within-section the hands converge' (from H-BV-HAND-B-SECTION-BREAKDOWN-01) holds for SURFACE statistics (TTR, mean length) but NOT for deep typological features.",
+    "VOWEL HARMONY DIVERGENCE (1c): Hand B silhouette 0.65 vs Hand A 0.33. Cluster structure clean: BACK cluster a-preferring (mean p(a)=0.68), FRONT cluster e-preferring (mean p(e)=0.69). Stem-internal vowel composition predicts cluster at 77% accuracy. This is the SHARPEST cross-hand divergence of the batch.",
+    "CANDIDATE LANGUAGE DIVERGENCE (1d): Hand A pointed to Basque (uniquely best, distance 0.0). Hand B points to Ainu (rank 1, distance 0.154); Basque rank 3 (distance 0.333). With Hand B confirmed harmonic in 1c, the natural follow-up is to expand the candidate set to include harmonic agglutinatives (Hungarian, Turkish, Finnish) for Hand B specifically.",
+    "BASQUE FIT WEAKER (1e): Hand B fits 2/6 UD_Basque metrics (Hand A: 3/6). M4 gap density crosses out of Basque tolerance (0.26 vs band [0.067, 0.20]). The Basque-congruent finding for Hand A does NOT extend to Hand B at the corpus-direct level.",
+    "SHARED FEATURES (1a/1b): Both hands have 4/5 SUFFIX-SEQUENCE criteria pass with identical patterns (closed inventories, productive stems, high coverage, weak ordering at ratio ~1.13). Both hands have V/C sub-class structure with n vowel-exclusivity (categorical 0/2240 in A, 0/7403 in B). The basic morphological architecture is shared.",
+    "INTERPRETATION CANDIDATES: (a) Two related dialects of the same language, with Hand B retaining vowel harmony Hand A has lost (or vice versa); (b) Same language but different content domains where Hand B's section diversity reveals harmony Hand A's herbal sample masks; (c) Different authors/scribes with different encoding conventions; (d) Two different languages sharing surface morphological architecture (a typological convergence rather than genetic relation).",
+    "v3 NARRATIVE OUTLINE: the 'unified morphology + section-confounded A/B' framing from v2 is too simple. The hands share surface morphological architecture but diverge on deep typological features. v3 should distinguish 'shared architecture' findings (v2 carryover) from 'hand-specific typological signature' findings (this batch). The Basque-best finding from v2 is now Hand-A-specific.",
+    "FOLLOW-UP CANDIDATES: (1) Re-run AGGLUTINATIVE-EXPANSION on Hand B with harmonic candidates added; (2) Direct corpus comparison against UD_Hungarian or UD_Turkish for Hand B; (3) Per-section analysis of vowel harmony within Hand B (does it concentrate in biological/recipes/herbal differently?); (4) Test whether Hand A would show harmony if restricted to its non-herbal sub-corpus."
+  ],
+  "parent": "H-BV-AGGLUTINATIVE-EXPANSION-01",
+  "created": "2026-04-18",
+  "last_tested": "2026-04-18",
+  "reasoning": "Batch hypothesis containing 5 parallel sub-tests applied to Hand B with methodology identical to Hand A equivalents. The batch-level outcome answers whether Hand A's morphological characterisation extends to Hand B. Per the v2 literature audit and methodology lesson 9, parallel testing on companion corpora is a discipline requirement before manuscript-wide claims.",
+  "source": "Brain-V 2026-04-18 user-directed batch H-BV-HAND-B-FULL-BATTERY-01 systematic Hand B replication.",
+  "researcher": "brain-v"
+}
