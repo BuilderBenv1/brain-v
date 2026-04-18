@@ -1,0 +1,44 @@
+{
+  "generated": "2026-04-18",
+  "hypothesis": "H-BV-HAND-B-CLUSTER-DIAGNOSTIC-01",
+  "n_eligible_stems": 78,
+  "n_front": 52,
+  "n_back": 26,
+  "edy_family_set": [
+    "qokeedy",
+    "qokedy",
+    "chedy",
+    "shedy",
+    "otedy",
+    "eody",
+    "eedy",
+    "edy"
+  ],
+  "aiin_family_set": [
+    "qokaiin",
+    "okaiin",
+    "qokain",
+    "daiin",
+    "aiiin",
+    "aiin",
+    "iin",
+    "ain"
+  ],
+  "front_cluster_mean_edy_fraction": 0.3275,
+  "front_cluster_mean_aiin_fraction": 0.0,
+  "back_cluster_mean_edy_fraction": 0.0255,
+  "back_cluster_mean_aiin_fraction": 0.0158,
+  "welch_edy": {
+    "t": 5.8409,
+    "p": 0.0,
+    "d": 1.094
+  },
+  "welch_aiin": {
+    "t": 1.0,
+    "p": 0.001414,
+    "d": 0.3419
+  },
+  "front_edy_advantage_meets_threshold": true,
+  "back_aiin_advantage_meets_threshold": false,
+  "verdict": "PARTIAL"
+}
