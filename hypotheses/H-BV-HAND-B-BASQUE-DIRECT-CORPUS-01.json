@@ -16,11 +16,30 @@
   "test": "LOCKED PROCEDURE — IDENTICAL METHODOLOGY TO H-BV-BASQUE-DIRECT-CORPUS-01 with Hand B values.\n\n  HAND B VALUES (from sub-tests 1a/1b):\n    M1=4.4935, M2_L1=10, M2_L2=5, M3=2.7901, M4=0.26, M5=0.80\n\n  UD_BASQUE-BDT DIRECT MEASUREMENTS (LOCKED, identical to H-BV-BASQUE-DIRECT-CORPUS-01):\n    M1_direct = 3.3796\n    M2_L1_direct = 6  (Number=2 + Aspect=4)\n    M2_L2_direct = 25  (Case=15 + Mood=5 + VerbForm=3 + Definite=2)\n    M3_direct = 4.4107  (mean distinct forms per productive lemma)\n    M4_direct = 0.1333  (zero cells in Number x Case)\n    M5_direct = 0.6429  (Case values with >=3x Number asymmetry)\n\n  TOLERANCE BANDS (LOCKED, identical formulas):\n    M1: ±50% of direct -> [1.69, 5.07]\n    M2_L1: ±30% of direct -> [4.2, 7.8]\n    M2_L2: ±30% of direct -> [17.5, 32.5]\n    M3: ±50% of direct -> [2.21, 6.62]\n    M4: ±50% of direct -> [0.067, 0.20]\n    M5: ±0.10 absolute -> [0.54, 0.74]\n\n  PER-METRIC CHECK: HAND_B_FITS_i iff Hand B value is in the tolerance band around direct UD_Basque measurement.\n\n  DECISION RULE (LOCKED, identical to H-BV-BASQUE-DIRECT-CORPUS-01):\n    CORPUS_CONFIRMED: Hand B fits 6/6\n    CORPUS_PARTIAL: 4-5/6\n    CORPUS_WEAK: 3/6\n    CORPUS_REFUTED: <=2/6\n    PUBLISHED_RANGE_FAILURE overlay if >=3/6 published ranges (from H-BV-AGGLUTINATIVE-EXPANSION-01) miss the direct UD_Basque value (already known to be 1/6 for M2 L1 and L2 from Hand A test).\n\n  PARALLEL COMPARISON: Hand A had CORPUS_WEAK 3/6 fit under direct UD_Basque (M1, M3, M4 fit; M2 L1, M2 L2, M5 missed).",
   "test_metric": "Per-metric Hand B fit count vs direct UD_Basque tolerance bands.",
   "test_threshold": "CORPUS_CONFIRMED 6/6; PARTIAL 4-5; WEAK 3; REFUTED <=2.",
-  "tests_run": [],
-  "tests_remaining": [
-    "locked_hand_b_basque_direct_corpus_test: per-metric fit check against UD_Basque-BDT direct measurements"
+  "tests_run": [
+    {
+      "date": "2026-04-18",
+      "test": "locked_hand_b_basque_direct_corpus_test",
+      "script": "scripts/run_hand_b_basque_direct_corpus.py",
+      "results_file": "outputs/hand_b_basque_direct_corpus_test.json",
+      "per_metric": [
+        {"metric":"M1","hand_b":4.4935,"direct":3.3796,"tolerance":[1.69,5.07],"hand_b_fits":true,"hand_a_fits":true},
+        {"metric":"M2_L1","hand_b":10,"direct":6,"tolerance":[4.2,7.8],"hand_b_fits":false,"hand_a_fits":false,"note":"Operational scale mismatch (glyph vs morpheme); same direction as Hand A"},
+        {"metric":"M2_L2","hand_b":5,"direct":25,"tolerance":[17.5,32.5],"hand_b_fits":false,"hand_a_fits":false,"note":"Same operational mismatch"},
+        {"metric":"M3","hand_b":2.7901,"direct":4.4107,"tolerance":[2.21,6.62],"hand_b_fits":true,"hand_a_fits":true},
+        {"metric":"M4","hand_b":0.26,"direct":0.1333,"tolerance":[0.067,0.20],"hand_b_fits":false,"hand_a_fits":true,"note":"Hand A 0.20 at boundary (just fit); Hand B 0.26 above band — Basque M4 fit was Hand-A-specific"},
+        {"metric":"M5","hand_b":0.80,"direct":0.6429,"tolerance":[0.54,0.74],"hand_b_fits":false,"hand_a_fits":false,"note":"Both miss; Hand B over by 0.06; Hand A over by 0.26"}
+      ],
+      "hand_b_fits_count": 2,
+      "hand_a_fits_count_reference": 3,
+      "verdict": "CORPUS_REFUTED",
+      "hand_a_reference": "CORPUS_WEAK 3/6 (M1, M3, M4 fit; M2 inventory mismatched; M5 over-rigid)",
+      "interpretation": "Hand B fits FEWER UD_Basque metrics than Hand A. Only M1 (mean morphemes/word) and M3 (productivity ratio) fit; M4 (gap density) which fit for Hand A by epsilon now misses for Hand B at 0.26 (Hand A 0.20 was at the boundary). M2 inventory metrics still mismatched in same direction as Hand A (operational scale). M5 (selectional strictness) closer for Hand B (0.80 vs Basque 0.64) than Hand A (1.00) but still outside ±0.10 band. Net: the Basque structural fit is WEAKER for Hand B than Hand A under direct corpus comparison. Combined with 1d (Ainu rank 1, not Basque) and 1c (vowel harmony confirmed for Hand B, refuted for Hand A), the Hand B vs Basque relationship is consistently weaker than Hand A vs Basque. The Hand A finding 'Hand A is Basque-congruent at distribution-level' does NOT extend to Hand B.",
+      "confidence_change": "0.4 -> 0.7"
+    }
   ],
-  "status": "active",
+  "tests_remaining": [],
+  "status": "corpus_refuted_basque_fit_weaker_than_hand_a",
   "parent": "H-BV-HAND-B-FULL-BATTERY-01",
   "created": "2026-04-18",
   "last_tested": null,

@@ -1,0 +1,98 @@
+{
+  "generated": "2026-04-18",
+  "hypothesis": "H-BV-HAND-B-BASQUE-DIRECT-CORPUS-01",
+  "hand_b_values": {
+    "M1": 4.4935,
+    "M2_L1": 10,
+    "M2_L2": 5,
+    "M3": 2.7901,
+    "M4": 0.26,
+    "M5": 0.8
+  },
+  "ud_basque_direct": {
+    "M1": 3.3796,
+    "M2_L1": 6,
+    "M2_L2": 25,
+    "M3": 4.4107,
+    "M4": 0.1333,
+    "M5": 0.6429
+  },
+  "per_metric": [
+    {
+      "metric": "M1",
+      "hand_b": 4.4935,
+      "direct": 3.3796,
+      "tolerance": [
+        1.6898,
+        5.0694
+      ],
+      "hand_b_fits": true,
+      "hand_a_fits": true,
+      "published_validated": true
+    },
+    {
+      "metric": "M2_L1",
+      "hand_b": 10,
+      "direct": 6,
+      "tolerance": [
+        4.2,
+        7.8
+      ],
+      "hand_b_fits": false,
+      "hand_a_fits": false,
+      "published_validated": false
+    },
+    {
+      "metric": "M2_L2",
+      "hand_b": 5,
+      "direct": 25,
+      "tolerance": [
+        17.5,
+        32.5
+      ],
+      "hand_b_fits": false,
+      "hand_a_fits": false,
+      "published_validated": false
+    },
+    {
+      "metric": "M3",
+      "hand_b": 2.7901,
+      "direct": 4.4107,
+      "tolerance": [
+        2.2054,
+        6.6161
+      ],
+      "hand_b_fits": true,
+      "hand_a_fits": true,
+      "published_validated": true
+    },
+    {
+      "metric": "M4",
+      "hand_b": 0.26,
+      "direct": 0.1333,
+      "tolerance": [
+        0.0667,
+        0.2
+      ],
+      "hand_b_fits": false,
+      "hand_a_fits": false,
+      "published_validated": true
+    },
+    {
+      "metric": "M5",
+      "hand_b": 0.8,
+      "direct": 0.6429,
+      "tolerance": [
+        0.5429,
+        0.7429
+      ],
+      "hand_b_fits": false,
+      "hand_a_fits": false,
+      "published_validated": true
+    }
+  ],
+  "hand_b_fits_count": 2,
+  "hand_a_fits_count_reference": 3,
+  "verdict": "CORPUS_REFUTED",
+  "hand_a_reference": "CORPUS_WEAK 3/6 (M1, M3, M4 fit)"
+}
