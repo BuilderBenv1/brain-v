@@ -1,0 +1,32 @@
+{
+  "id": "H-BV-HAND-B-SUFFIX-SUBCLASS-01",
+  "claim": "Hand B Layer-1 inner inventory partitions into VOWEL-INNER class {i,e,o,a} and CONSONANT-INNER class {d,k,ch,t,ckh,r} with the same complementary Layer-2 outer selectional pattern as Hand A: every top-5 outer shows >=3x V/C differential, with at least one outer showing strict selectional restriction. Sub-test 1b of H-BV-HAND-B-FULL-BATTERY-01.",
+  "type": "structural",
+  "confidence": 0.7,
+  "evidence_for": [
+    "Hand A's H-BV-SUFFIX-SUBCLASS-01 found MARGINAL ordering ratios (V 0.985, C 1.055) but a strong M2 outer-preference signal: every top-5 outer shows >=3x V/C differential, n is vowel-exclusive (0/2240 cons-inner attachments). The complementary outer-selection pattern is the substantive finding.",
+    "H-BV-HAND-B-SUFFIX-SEQUENCE-01 (sub-test 1a, just executed) confirmed Hand B has the same 4-vowel / 6-consonant top-10 split, with same 4 vowels and structurally analogous consonant set.",
+    "Both hands share the manuscript-wide Markov-1-flat character signature. Sub-class selectional patterns are likely also shared if morphology is uniform.",
+    "Hand B's consonant set differs slightly from Hand A's (B has ckh, r where A has sh, l). This provides a natural test: if the V/C-selectional pattern holds despite different consonant glyphs, the partition is generalisable; if not, the pattern was Hand-A-specific."
+  ],
+  "evidence_against": [
+    "Hand B's most-frequent outers (from sub-test 1a: y, n, r, l, ol) overlap but are not identical to Hand A's (y, n, r, ol, l). Selectional patterns may shift.",
+    "Hand A's M2 outer-preference table showed n vowel-exclusive (0/2240). If the same n-exclusivity does NOT hold in Hand B, the sub-class structure is hand-specific.",
+    "Hand B has section-coupled vocabulary (H-BV-HAND-B-MARKER-CONCENTRATION-01); section-specific markers might disrupt the V/C selectional pattern when computed on whole Hand B.",
+    "The qo-k- biological-amplification finding (H-BV-QO-K-MORPHOLOGICAL-CLASS-01) means k-inners are biological-concentrated. This could shift outer preferences if biological folios use distinctive outer patterns."
+  ],
+  "test": "LOCKED PROCEDURE — IDENTICAL METHODOLOGY TO H-BV-SUFFIX-SUBCLASS-01 with Hand B substitutions.\n\n  DATA: Hand B tokens under Tokenisation A (MULTI_GLYPHS + 'ol'), N>=3 glyph-units (matches H-BV-HAND-B-SUFFIX-SEQUENCE-01).\n\n  PARTITION (LOCKED, derived from Hand B top-10 inners measured in 1a):\n    VOWEL-INNERS = {i, e, o, a}  (same 4 vowels as Hand A)\n    CONSONANT-INNERS = {d, k, ch, t, ckh, r}  (Hand B specific — swap sh,l for ckh,r vs Hand A)\n    TOP-5 OUTERS = {y, n, r, l, ol}  (from sub-test 1a)\n\n  METRICS (locked, identical to Hand A SUFFIX-SUBCLASS-01):\n\n  M1 ORDERING RATIO PER SUB-CLASS:\n    For S in {VOWEL, CONSONANT}:\n      ratio_S = P(outer in TOP-5 | inner in S) / P(outer in TOP-5 | inner NOT in S)\n      where 'NOT in S' = all non-S inners in Hand B N>=3 token pool.\n\n  M1b COMBINED RATIO (sanity check):\n    ratio_combined = P(outer in TOP-5 | inner in VOWEL ∪ CONSONANT) / P(outer in TOP-5 | inner outside top-10)\n    Should reproduce ~ Hand B SUFFIX-SEQUENCE-01 C4 ratio (1.14) for sanity.\n\n  M2 SUB-CLASS OUTER PREFERENCE (the central finding for Hand A):\n    For each top-5 outer o:\n      p_VOWEL(o) = count(inner ∈ VOWEL-INNERS, outer = o) / count(inner ∈ VOWEL-INNERS)\n      p_CONSONANT(o) = count(inner ∈ CONSONANT-INNERS, outer = o) / count(inner ∈ CONSONANT-INNERS)\n      diff(o) = p_VOWEL(o) / p_CONSONANT(o)  (or 'vowel-exclusive' if p_C = 0; 'cons-exclusive' if p_V = 0)\n    Report full 2x5 table.\n\n  DECISION RULE (LOCKED, identical to Hand A):\n    CONFIRMED: max(ratio_VOWEL, ratio_CONSONANT) >= 2.0\n    REFUTED: ratio_VOWEL < 1.5 AND ratio_CONSONANT < 1.5 AND no outer o has diff(o) >= 3.0 or <= 1/3.0\n    MARGINAL: any other combination\n\n  PARALLEL COMPARISON: report side-by-side Hand A (from SUFFIX-SUBCLASS-01) vs Hand B (this test). For Hand A: M1 ratios 0.985/1.055; M2 every outer >=3x differential; n vowel-exclusive (0/2240).",
+  "test_metric": "ratio_VOWEL, ratio_CONSONANT, diff(o) for o in {y,n,r,l,ol}",
+  "test_threshold": "CONFIRMED if max ratio >=2.0. REFUTED if both <1.5 and no outer >=3x. MARGINAL otherwise.",
+  "tests_run": [],
+  "tests_remaining": [
+    "locked_hand_b_suffix_subclass_test: Hand B V/C partition + M2 outer-preference table"
+  ],
+  "status": "active",
+  "parent": "H-BV-HAND-B-FULL-BATTERY-01",
+  "created": "2026-04-18",
+  "last_tested": null,
+  "reasoning": "Sub-test 1b of the systematic Hand B replication. Locks Hand-B-specific V/C partition (same vowels, different consonants matching Hand B top-10) and runs identical M1+M2 methodology as SUFFIX-SUBCLASS-01. The substantive question: does Hand A's complementary outer-selection pattern (n vowel-exclusive, every outer >=3x differential) reproduce in Hand B?",
+  "source": "Brain-V 2026-04-18 sub-test 1b of H-BV-HAND-B-FULL-BATTERY-01.",
+  "researcher": "brain-v"
+}
