@@ -18,14 +18,73 @@
   "test": "LOCKED PROCEDURE — EXACT REPLICATION OF B&L 2021 MATTR METHODOLOGY.\n\n  DATA:\n    Voynichese (primary): Hand A all tokens, Hand B all tokens (from voynich-corpus.json filtering by currier_language).\n    Voynichese (hand+section controlled): Hand A herbal tokens, Hand B herbal tokens.\n    Reference corpora (from raw/corpus/reference-corpora/):\n      Germanic: UD_English-EWT (204,572 tokens), UD_German-GSD (263,777)\n      Romance: UD_Spanish-GSD (382,444), UD_French-GSD (354,648)\n      Iranian: UD_Persian-Seraji (121,067)\n      Semitic: UD_Arabic-PADT (223,881), UD_Hebrew-HTB (136,501)\n      Vasconic: UD_Basque-BDT (39,456 content, ~72k total)\n      Uralic (= B&L's Finno-Ugric): UD_Hungarian-Szeged (~130k)\n      Turkic: UD_Turkish-IMST (~234k)\n      Dravidian: UD_Tamil-TTB (6,329) + UD_Telugu-MTG (5,082)\n      Constructed: Esperanto Wikipedia plaintext (~60k tokens)\n    Missing: Kartvelian (Georgian). Flagged as a gap; not blocker.\n\n  TOKENISATION: tokens are whitespace-separated words as extracted from each corpus. For Voynichese, tokens are raw EVA words (no ligature tokenisation). For UD corpora, tokens are the FORM column (one per row, MWT ranges skipped).\n\n  MATTR COMPUTATION (LOCKED, per Covington & McFall 2010 / Gheuens 2019 / B&L 2021):\n    Window W = 2000 words.\n    For each starting position i = 0 to N-W (step 1):\n      window = tokens[i : i+W]\n      TTR(i) = |distinct types in window| / W\n    MATTR = mean of TTR(i) across all positions.\n    If N < W + 1: corpus has insufficient tokens for a stable MATTR; mark LOW_POWER and compute what's possible (but do not compare to reference family means).\n\n  LANGUAGE FAMILY MEANS (lock family assignment):\n    Germanic_mean = mean(MATTR(English), MATTR(German))\n    Romance_mean = mean(MATTR(Spanish), MATTR(French))\n    Iranian_mean = MATTR(Persian)\n    Semitic_mean = mean(MATTR(Arabic), MATTR(Hebrew))\n    Vasconic = MATTR(Basque)   (family of 1 since Basque is isolate)\n    Uralic = MATTR(Hungarian)\n    Turkic = MATTR(Turkish)\n    Dravidian_mean = mean(MATTR(Tamil), MATTR(Telugu))  — flag Tamil/Telugu as marginal\n\n  DECISION RULE (LOCKED):\n    Compute MATTR for Hand A (and Hand B) and compute absolute distance from each language family mean.\n    Determine which family Hand A is CLOSEST to.\n    Classify the result into one of four bins:\n\n    BIN 1 — B&L CONFIRMED on Hand A:\n      Hand A MATTR is closest to Germanic / Romance / Iranian / Semitic means (B&L's 'closest' cluster).\n      AND Hand A distance to closest agglutinative family (Turkic / Uralic / Vasconic / Dravidian) is > 2x its distance to closest non-agglutinative.\n      Implication: B&L's conclusion holds even under hand separation; Brain-V's Basque finding is methodology-dependent (M1-M5 vs MATTR give different answers).\n\n    BIN 2 — B&L CONTRADICTED on Hand A:\n      Hand A MATTR is closest to Turkic / Uralic / Vasconic / Dravidian means.\n      AND Hand A distance to closest non-agglutinative family is > 2x its distance to closest agglutinative.\n      Implication: B&L's aggregate result masks hand-specific typology. Brain-V's Basque finding is a genuine extension: hand-controlled MATTR reveals agglutinative-congruence that whole-language aggregate misses.\n\n    BIN 3 — AMBIGUOUS:\n      Hand A MATTR is between family clusters, or closest distance ratio is less than 2x.\n      Implication: MATTR methodology on Hand A doesn't cleanly resolve either way. Report as methodology-dependent inconclusive.\n\n    BIN 4 — LOW_POWER:\n      Hand A has <= 2000 tokens (not the case — Hand A has ~11k) OR reference family n is too small for reliable mean (e.g. Dravidian with only Tamil+Telugu each <10k tokens).\n\n  PARALLEL REPORTING:\n    Same classification for Hand B (expected to also fall somewhere).\n    Same classification for Hand A herbal and Hand B herbal (hand+section controlled).\n    Voynich full manuscript MATTR (reproducing B&L's aggregate number).\n\n  COMPARISON TO BRAIN-V PRIOR AGGLUTINATIVE FINDING:\n    H-BV-AGGLUTINATIVE-EXPANSION-01 used M1-M5 morphological profile and concluded Hand A is BASQUE_UNIQUELY_BEST.\n    This test uses B&L's MATTR and will classify Hand A into BIN 1/2/3/4.\n    Report side-by-side: which methodology gives which conclusion.",
   "test_metric": "MATTR (2000-word window) per corpus. Hand A distance to each family mean. Classification into bins.",
   "test_threshold": "BIN 1 (B&L CONFIRMED), BIN 2 (B&L CONTRADICTED), BIN 3 (AMBIGUOUS), BIN 4 (LOW_POWER).",
-  "tests_run": [],
-  "tests_remaining": [
-    "locked_mattr_reproduction: compute MATTR with 2000-word window on all corpora; compute family means; classify Hand A and Hand B"
+  "tests_run": [
+    {
+      "date": "2026-04-18",
+      "test": "locked_mattr_reproduction",
+      "script": "scripts/run_bl_mattr_reproduction.py",
+      "results_file": "outputs/bl_mattr_reproduction_test.json",
+      "mattr_values": {
+        "Voynich_HandA_all": 0.4733,
+        "Voynich_HandB_all": 0.4216,
+        "Voynich_HandA_herbal": 0.4544,
+        "Voynich_HandB_herbal": 0.4612,
+        "Voynich_full_manuscript": 0.4547,
+        "English_EWT": 0.3475,
+        "German_GSD": 0.4980,
+        "Spanish_GSD": 0.4579,
+        "French_GSD": 0.4520,
+        "Persian_Seraji": 0.3821,
+        "Arabic_PADT": 0.4263,
+        "Hebrew_HTB": 0.3734,
+        "Basque_BDT": 0.5809,
+        "Hungarian_Szeged": 0.5253,
+        "Turkish_IMST": 0.5339,
+        "Tamil_TTB": 0.5232,
+        "Telugu_MTG": 0.4278,
+        "Esperanto_Wiki": 0.4548
+      },
+      "family_means": {
+        "Germanic": {"mean": 0.4227, "within_family_variance": 0.15, "unreliable_flag": "English 0.3475 and German 0.4980 differ by 0.15"},
+        "Romance": {"mean": 0.4550, "within_family_variance": 0.006, "reliable": true},
+        "Iranian": {"mean": 0.3821, "n": 1},
+        "Semitic": {"mean": 0.3998, "within_family_variance": 0.053},
+        "Vasconic": {"mean": 0.5809, "n": 1},
+        "Uralic": {"mean": 0.5253, "n": 1},
+        "Turkic": {"mean": 0.5339, "n": 1},
+        "Dravidian": {"mean": 0.4755, "within_family_variance": 0.095, "unreliable_flag": "Tamil 0.5232 and Telugu 0.4278 differ by 0.09; both corpora <10k tokens"},
+        "Constructed": {"mean": 0.4548, "n": 1}
+      },
+      "classifications_locked": {
+        "Hand_A_all": {"closest_family_mean": "Dravidian", "distance": 0.0022, "bin": "BIN_2_BL_CONTRADICTED", "ratio_ag_non_ag": 0.12},
+        "Hand_B_all": {"closest_family_mean": "Germanic", "distance": 0.0011, "bin": "BIN_1_BL_CONFIRMED", "ratio_ag_non_ag": 46.97},
+        "Hand_A_herbal": {"closest_family_mean": "Constructed", "distance": 0.0004, "bin": "BIN_3_AMBIGUOUS"},
+        "Hand_B_herbal": {"closest_family_mean": "Romance", "distance": 0.0062, "bin": "BIN_1_BL_CONFIRMED", "ratio_ag_non_ag": 2.29},
+        "Voynich_full": {"closest_family_mean": "Constructed", "distance": 0.0001, "bin": "BIN_3_AMBIGUOUS"}
+      },
+      "locked_verdict_hand_a": "BIN_2_BL_CONTRADICTED",
+      "robustness_concern": "Hand A's BIN_2 classification is driven by proximity to Dravidian family mean 0.4755. Dravidian mean is constructed from only two small corpora (Tamil 6329 tokens, Telugu 5082 tokens) with 0.09 within-family variance — unreliable. Under individual-language analysis, Hand A's MATTR (0.4733) is closest to Spanish (0.4579, d=0.015), Esperanto (0.4548, d=0.019), French (0.4520, d=0.021), and German (0.498, d=0.025) — all non-agglutinative. Hand A is distant from strongly-agglutinative individual languages: Basque 0.58 (d=0.108), Hungarian 0.53 (d=0.052), Turkish 0.53 (d=0.061), Tamil 0.52 (d=0.050). The individual-language view supports BIN_1 (B&L confirmed). The locked family-mean view gives BIN_2 (B&L contradicted) due to small-sample Dravidian mean instability.",
+      "substantive_interpretation": "The locked BIN_2 verdict reflects a small-sample artifact. Honest reading of the MATTR values: Hand A (0.47) is in the low-medium range, close to Romance (0.45-0.46), Esperanto (0.45), and German (0.50). Hand A is FAR BELOW strongly-agglutinative values (Basque 0.58, Hungarian 0.53, Turkish 0.53). B&L's conclusion — Voynichese closest to Germanic/Iranian/Romance — HOLDS for Hand A under individual-language comparison. The BIN_2 locked result is produced by Dravidian family mean being coincidentally close due to Telugu's low MATTR (0.43), not by Hand A genuinely clustering with agglutinative languages.",
+      "confidence_change": "0.5 -> 0.75",
+      "critical_implication_for_v2": "Brain-V's BASQUE_UNIQUELY_BEST finding from H-BV-AGGLUTINATIVE-EXPANSION-01 (M1-M5 profile methodology) does NOT reproduce under B&L's MATTR methodology. Hand A MATTR = 0.47 is 0.11 below Basque MATTR = 0.58. The agglutinative-match claim is METHODOLOGY-DEPENDENT. Under Brain-V's 5-metric profile, Hand A matches Basque published ranges perfectly. Under B&L's MATTR with 2000-word window, Hand A clusters with Romance/Esperanto/Germanic — not with agglutinative families. v2 must acknowledge this methodological tension explicitly."
+    }
   ],
-  "status": "active",
+  "tests_remaining": [],
+  "status": "locked_bin_2_but_small_sample_artifact_bin_1_under_individual_analysis",
+  "verdict_note": "Locked verdict: BIN_2_BL_CONTRADICTED for Hand A (closest to Dravidian family mean). BUT this is driven by Dravidian family-mean instability (Tamil 0.52 + Telugu 0.43 averaging to 0.48, with both corpora <10k tokens). Under individual-language comparison: Hand A MATTR (0.4733) is closest to Spanish (0.015 away), Esperanto (0.019), French (0.021) — all non-agglutinative — and FAR from Basque (0.58, 0.108 away). B&L's substantive conclusion (Voynichese matches Germanic/Iranian/Romance) HOLDS for Hand A under individual-language comparison. Brain-V's BASQUE_UNIQUELY_BEST finding (M1-M5 methodology) does NOT reproduce under MATTR. The agglutinative-match is METHODOLOGY-DEPENDENT: M1-M5 says Basque, MATTR says Germanic/Romance.",
+  "findings_for_followup": [
+    "CRITICAL FOR v2 REWRITE: the agglutinative-typology finding (§4.1 Basque-congruent profile) is METHODOLOGY-DEPENDENT. Under Brain-V's M1-M5 profile, Hand A lands in Basque's published range (6/6 match). Under B&L's MATTR methodology, Hand A lands with Romance/Esperanto/Germanic (far from Basque). These two typological measures legitimately disagree for Hand A. v2 must report both and frame the Basque claim as conditional on methodology choice.",
+    "B&L'S CONCLUSION LARGELY HOLDS: Hand A MATTR 0.47 is far below strongly-agglutinative languages (Basque 0.58, Hungarian 0.53, Turkish 0.53) and near Romance/Germanic medium-morphology languages. Hand B MATTR 0.42 is even closer to Germanic (closest: Germanic mean 0.42, exact match 0.001 distance). Both hands' MATTR ranges are consistent with B&L's 'medium morphological complexity' characterization.",
+    "LOCKED BIN_2 ARTIFACT: the family-mean-based decision rule produced BIN_2 for Hand A because Dravidian mean happened to fall at 0.48 due to small-sample Tamil+Telugu averaging. This is a cautionary example of family-mean classification being sensitive to reference-corpus availability. Future MATTR comparisons should either (a) use many corpora per family to stabilise means, or (b) report individual-language distances primarily.",
+    "Hand A herbal = 0.4544 (closest to Esperanto 0.4548). This is intriguing — Hand A herbal MATTR is essentially IDENTICAL to a constructed language. Under the v3 framing where 'herbal is the Voynich's most characteristic content', this suggests herbal vocabulary diversity is constructed-language-like. Worth a dedicated follow-up: compute MATTR on Hand A herbal against MULTIPLE constructed-language corpora (Lojban, Toki Pona, a priori languages) to see if the match is specifically Esperanto-like or broadly constructed-like.",
+    "HAND B CLEAN BIN_1: Hand B's MATTR (0.42) is the cleanest BIN_1 confirmation — closest to Germanic mean at distance 0.001, with agglutinative/non-agglutinative distance ratio 47x. B&L's conclusion fully reproduces for Hand B under hand separation.",
+    "Basque's MATTR 0.58 is the HIGHEST of all 11 tested languages — agglutinative family members cluster at top (Basque 0.58, Turkish 0.53, Hungarian 0.53, Tamil 0.52). Voynichese's hands cluster at middle-to-low (A 0.47, B 0.42). The separation is large: Basque MATTR is 10-13 percentage points higher than either Voynich hand. This is strong evidence AGAINST a Basque-typology match for Voynichese under the MATTR methodology.",
+    "V2 REWRITE GUIDANCE: §4.1 needs substantial revision. Three framings to consider:\n      (a) Strong downgrade: 'Brain-V's M1-M5 profile matches Basque for Hand A, but B&L's MATTR methodology does not. The agglutinative claim is methodology-dependent; v2 acknowledges B&L's MATTR-based conclusion (Germanic/Romance-like) as the more established framework and presents the M1-M5 Basque match as a secondary typological signal that does not replicate under MATTR.'\n      (b) Methodological contrast framing: 'Two typological methodologies give different answers for Hand A. Brain-V reports both and presents the methodological disagreement as the finding, not a language identification.'\n      (c) Minimal framing: drop §4.1's Basque-unique conclusion, retain only the M1-M5 profile measurements as descriptive without the typological-match interpretation.\n    Recommendation: (b) — the methodological disagreement IS the finding. v2 doesn't need to pick a winner; it documents that Hand A profiles differently under different typology methodologies and leaves the interpretation open.",
+    "THE TRULY_NOVEL BASQUE CLAIM IS WEAKER: combined with BASQUE-DIRECT-CORPUS-01's CORPUS_WEAK 3/6 under direct UD_Basque measurement, now also MATTR-Basque-distant (0.11 below Basque), the Basque-candidate hypothesis has accumulated three methodological pushbacks. Brain-V's Basque claim for v3 should be: 'Hand A's morphological profile under Brain-V's 5-metric methodology matches Basque published ranges. This match does not hold under direct UD_Basque-BDT corpus comparison (3/6 fit) or under B&L MATTR methodology. The Basque hypothesis as a language identification is unsupported; as a candidate pending further testing with different methodologies, it remains a flagged possibility.'"
+  ],
   "parent": null,
   "created": "2026-04-18",
-  "last_tested": null,
+  "last_tested": "2026-04-18",
   "reasoning": "Direct pipeline replication of B&L 2021's MATTR methodology on Brain-V's hand-separated data. Tests whether their aggregate conclusion (Voynichese closest to Germanic/Iranian/Romance, least like agglutinative families) holds when Hand A is analysed specifically. Outcome determines whether Brain-V's Basque finding (from M1-M5 profile methodology) is (a) compatible with B&L's framework under hand separation, or (b) a methodology artefact that MATTR doesn't support. This is the highest-stakes remaining test for v2 rewrite — the single item classified CONTRADICTS_B&L in the framework audit.",
   "source": "Brain-V 2026-04-18 direct replication of Bowern & Lindemann 2021 MATTR methodology, motivated by the Bowern-Lindemann framework audit flagging finding #10 (agglutinative typology) as CONTRADICTS_B&L.",
   "researcher": "brain-v"

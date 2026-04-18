@@ -1,0 +1,230 @@
+{
+  "generated": "2026-04-18",
+  "hypothesis": "H-BV-BL-MATTR-REPRODUCTION-01",
+  "window_size": 2000,
+  "methodology": "B&L 2021 LV \u00a73.4 \u2014 Moving Average TTR with 2000-word window, sliding step 1",
+  "raw_mattr": {
+    "Voynich_HandA_all": {
+      "tokens": 11022,
+      "mattr": 0.4733,
+      "n_windows": 9023
+    },
+    "Voynich_HandB_all": {
+      "tokens": 23766,
+      "mattr": 0.4216,
+      "n_windows": 21767
+    },
+    "Voynich_HandA_herbal": {
+      "tokens": 7523,
+      "mattr": 0.4544,
+      "n_windows": 5524
+    },
+    "Voynich_HandB_herbal": {
+      "tokens": 3307,
+      "mattr": 0.4612,
+      "n_windows": 1308
+    },
+    "Voynich_full": {
+      "tokens": 38053,
+      "mattr": 0.4547,
+      "n_windows": 36054
+    },
+    "Germanic__English_EWT": {
+      "tokens": 204572,
+      "mattr": 0.3475,
+      "n_windows": 202573
+    },
+    "Germanic__German_GSD": {
+      "tokens": 263777,
+      "mattr": 0.498,
+      "n_windows": 261778
+    },
+    "Romance__Spanish_GSD": {
+      "tokens": 382444,
+      "mattr": 0.4579,
+      "n_windows": 380445
+    },
+    "Romance__French_GSD": {
+      "tokens": 354818,
+      "mattr": 0.452,
+      "n_windows": 352819
+    },
+    "Iranian__Persian_Seraji": {
+      "tokens": 121067,
+      "mattr": 0.3821,
+      "n_windows": 119068
+    },
+    "Semitic__Arabic_PADT": {
+      "tokens": 223881,
+      "mattr": 0.4263,
+      "n_windows": 221882
+    },
+    "Semitic__Hebrew_HTB": {
+      "tokens": 136501,
+      "mattr": 0.3734,
+      "n_windows": 134502
+    },
+    "Vasconic__Basque_BDT": {
+      "tokens": 72974,
+      "mattr": 0.5809,
+      "n_windows": 70975
+    },
+    "Uralic__Hungarian_Szeged": {
+      "tokens": 20166,
+      "mattr": 0.5253,
+      "n_windows": 18167
+    },
+    "Turkic__Turkish_IMST": {
+      "tokens": 37513,
+      "mattr": 0.5339,
+      "n_windows": 35514
+    },
+    "Dravidian__Tamil_TTB": {
+      "tokens": 6329,
+      "mattr": 0.5232,
+      "n_windows": 4330
+    },
+    "Dravidian__Telugu_MTG": {
+      "tokens": 5082,
+      "mattr": 0.4278,
+      "n_windows": 3083
+    },
+    "Constructed__Esperanto_Wiki": {
+      "tokens": 54204,
+      "mattr": 0.4548,
+      "n_windows": 52205
+    }
+  },
+  "family_means": {
+    "Germanic": {
+      "mean": 0.4227,
+      "n_langs": 2
+    },
+    "Romance": {
+      "mean": 0.455,
+      "n_langs": 2
+    },
+    "Iranian": {
+      "mean": 0.3821,
+      "n_langs": 1
+    },
+    "Semitic": {
+      "mean": 0.3998,
+      "n_langs": 2
+    },
+    "Vasconic": {
+      "mean": 0.5809,
+      "n_langs": 1
+    },
+    "Uralic": {
+      "mean": 0.5253,
+      "n_langs": 1
+    },
+    "Turkic": {
+      "mean": 0.5339,
+      "n_langs": 1
+    },
+    "Dravidian": {
+      "mean": 0.4755,
+      "n_langs": 2
+    },
+    "Constructed": {
+      "mean": 0.4548,
+      "n_langs": 1
+    }
+  },
+  "classifications": {
+    "HandA_all": {
+      "closest_family": "Dravidian",
+      "distances": {
+        "Germanic": 0.0506,
+        "Romance": 0.0184,
+        "Iranian": 0.0912,
+        "Semitic": 0.0735,
+        "Vasconic": 0.1076,
+        "Uralic": 0.052,
+        "Turkic": 0.0606,
+        "Dravidian": 0.0022,
+        "Constructed": 0.0185
+      },
+      "bin": "BIN_2_BL_CONTRADICTED",
+      "ratio_ag_non_ag": 0.1183
+    },
+    "HandB_all": {
+      "closest_family": "Germanic",
+      "distances": {
+        "Germanic": 0.0011,
+        "Romance": 0.0334,
+        "Iranian": 0.0395,
+        "Semitic": 0.0217,
+        "Vasconic": 0.1593,
+        "Uralic": 0.1037,
+        "Turkic": 0.1123,
+        "Dravidian": 0.0539,
+        "Constructed": 0.0332
+      },
+      "bin": "BIN_1_BL_CONFIRMED",
+      "ratio_ag_non_ag": 46.9693
+    },
+    "HandA_herbal": {
+      "closest_family": "Constructed",
+      "distances": {
+        "Germanic": 0.0316,
+        "Romance": 0.0006,
+        "Iranian": 0.0723,
+        "Semitic": 0.0545,
+        "Vasconic": 0.1265,
+        "Uralic": 0.0709,
+        "Turkic": 0.0795,
+        "Dravidian": 0.0211,
+        "Constructed": 0.0004
+      },
+      "bin": "BIN_3_AMBIGUOUS",
+      "ratio_ag_non_ag": 35.4989
+    },
+    "HandB_herbal": {
+      "closest_family": "Romance",
+      "distances": {
+        "Germanic": 0.0385,
+        "Romance": 0.0062,
+        "Iranian": 0.0791,
+        "Semitic": 0.0614,
+        "Vasconic": 0.1197,
+        "Uralic": 0.0641,
+        "Turkic": 0.0727,
+        "Dravidian": 0.0143,
+        "Constructed": 0.0064
+      },
+      "bin": "BIN_1_BL_CONFIRMED",
+      "ratio_ag_non_ag": 2.2858
+    },
+    "full_manuscript": {
+      "closest_family": "Constructed",
+      "distances": {
+        "Germanic": 0.0319,
+        "Romance": 0.0003,
+        "Iranian": 0.0726,
+        "Semitic": 0.0548,
+        "Vasconic": 0.1262,
+        "Uralic": 0.0706,
+        "Turkic": 0.0792,
+        "Dravidian": 0.0208,
+        "Constructed": 0.0001
+      },
+      "bin": "BIN_3_AMBIGUOUS",
+      "ratio_ag_non_ag": 69.9607
+    }
+  },
+  "non_agglutinative_families": [
+    "Germanic",
+    "Romance",
+    "Iranian",
+    "Semitic"
+  ],
+  "agglutinative_families": [
+    "Turkic",
+    "Uralic",
+    "Vasconic",
+    "Dravidian"
+  ]
+}
