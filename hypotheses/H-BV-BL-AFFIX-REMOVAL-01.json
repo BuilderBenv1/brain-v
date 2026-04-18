@@ -18,14 +18,62 @@
   "test": "LOCKED PROCEDURE.\n\n  DATA: voynich-corpus.json. Hand A = currier_language=='A'; Hand B = currier_language=='B'.\n\n  TOKENISATION (LOCKED, identical to H-BV-CONSTRUCTED-SIGNATURE-01 for direct comparability):\n    No multi-glyph ligatures applied at the character-level analysis. Tokens are joined into a single text string with single-space separators between tokens. Lowercase. Whitespace normalised.\n    Character-level h2 = conditional Shannon entropy H(X_n | X_{n-1}) computed over the raw character sequence.\n\n  AFFIX REMOVAL FILTER (LOCKED):\n    Remove the entire token if EITHER condition holds:\n      Condition A: token.endswith('edy')\n      Condition B: token.startswith('qo')\n    Tokens matching either are excluded from the corpus before re-tokenising and joining.\n\n  PROCEDURE:\n    For each hand (A, B):\n      Build raw token list.\n      Compute baseline h2 on the joined text.\n      Apply the affix filter.\n      Compute post-removal h2 on the filtered joined text.\n      Record the percentage of tokens removed by the filter.\n    Report:\n      h2_baseline(A), h2_post(A), token_removal_rate(A)\n      h2_baseline(B), h2_post(B), token_removal_rate(B)\n      A/B gap pre and post removal (absolute and percentage).\n\n  COMPARISON TO B&L:\n    B&L LV p.12 post-removal target: A ≈ 2.23, B ≈ 2.24, A/B gap < 1%.\n    B&L pre-removal LV: A=2.17, B=2.01.\n    B&L pre-removal CE: A=2.122, B=1.973.\n    Brain-V baseline H_cond from CONSTRUCTED-SIGNATURE-01: A=2.19, B=2.02.\n\n  DECISION RULE (LOCKED):\n    CONFIRMED: |Brain-V post-removal h2 - 2.235| <= 0.10 for BOTH hands AND post-removal A/B gap < 0.05 (5%).\n    PARTIAL: |Brain-V post-removal h2 - 2.235| in (0.10, 0.25] for either or both hands.\n    REFUTED: any post-removal h2 deviates from 2.23/2.24 by more than 0.25.\n    IMPLICATION_GAP_COLLAPSED: post-removal A/B gap < 0.05 (separately reported regardless of magnitude verdict).\n    IMPLICATION_GAP_PRESERVED: post-removal A/B gap >= 0.05.\n\n  SENSITIVITY DIAGNOSTICS (reported but not part of locked verdict):\n    Variant 1: Remove tokens containing the substring 'edy' anywhere (looser).\n    Variant 2: Remove the substrings -edy / qo- from tokens but keep token stems (B&L's wording could support this).\n    Variant 3: Remove only -edy (not qo-).\n    Variant 4: Remove only qo- (not -edy).\n    Each variant's resulting h2 is reported as diagnostic for understanding the affix-driven entropy contribution.",
   "test_metric": "Per-hand baseline and post-affix-removal character-level conditional entropy h2; A/B gap pre and post removal.",
   "test_threshold": "CONFIRMED if both hands' post-removal h2 within ±0.10 of 2.235 AND A/B gap < 0.05. PARTIAL if within ±0.25. REFUTED if beyond.",
-  "tests_run": [],
-  "tests_remaining": [
-    "locked_bl_affix_removal_test: compute baseline + post-affix-removal h2 for both hands; check against B&L's 2.23/2.24 target"
+  "tests_run": [
+    {
+      "date": "2026-04-18",
+      "test": "locked_bl_affix_removal_test",
+      "script": "scripts/run_bl_affix_removal.py",
+      "results_file": "outputs/bl_affix_removal_test.json",
+      "baseline": {
+        "hand_a_h2": 2.1906,
+        "hand_b_h2": 2.0191,
+        "gap_a_minus_b": 0.1715,
+        "bl_lv_reference": "A=2.17, B=2.01 (matches Brain-V to within 0.02)",
+        "bl_ce_reference": "A=2.122, B=1.973 (Brain-V slightly higher)",
+        "interpretation": "Brain-V's baseline h2 aligns most closely with B&L's LV 2021 numbers within 0.02 absolute. Slightly higher than CE arXiv numbers — likely reflects minor tokenisation/corpus-version differences."
+      },
+      "locked_filter_post_removal": {
+        "rule": "token.endswith('edy') OR token.startswith('qo') -> remove entire token",
+        "tokens_removed_hand_a": 1094,
+        "removal_rate_a_pct": 9.93,
+        "tokens_removed_hand_b": 7163,
+        "removal_rate_b_pct": 30.14,
+        "hand_a_h2_post": 2.1758,
+        "hand_b_h2_post": 2.1634,
+        "gap_a_minus_b_post": 0.0125,
+        "gap_pct_post": "0.57%",
+        "bl_target": "A=2.23, B=2.24, gap <1%",
+        "deviation_a_from_target": 0.0592,
+        "deviation_b_from_target": 0.0716,
+        "gap_collapsed": true,
+        "interpretation": "Both hands' post-removal h2 within 0.07 of B&L's 2.235 target — meets the ±0.10 CONFIRMED threshold. A/B gap collapses from 0.17 to 0.01 (0.57%, well under B&L's 'about 1%' claim). Hand B has 3x the removal rate of Hand A (30.1% vs 9.9%), consistent with B&L's finding that -edy is 86x more common and qo- about 2x more common in B."
+      },
+      "sensitivity_diagnostics": {
+        "V1_substring_anywhere": {"hand_a_h2": 2.1717, "hand_b_h2": 2.1590, "gap": 0.0127, "note": "Substring 'edy' or 'qo' anywhere in token; result essentially identical to locked filter"},
+        "V2_remove_substring_keep_stem": {"hand_a_h2": 2.1930, "hand_b_h2": 2.2450, "gap": -0.0521, "note": "Removing substrings but keeping stems gives different result; gap REVERSES. B&L's wording supports the locked 'remove token' interpretation, not this variant"},
+        "V3_only_edy_removed": {"hand_a_h2": 2.1891, "hand_b_h2": 2.1097, "gap": 0.0794, "note": "Removing only -edy collapses about half the gap"},
+        "V4_only_qo_removed": {"hand_a_h2": 2.1774, "hand_b_h2": 2.0811, "gap": 0.0964, "note": "Removing only qo- collapses about a third of the gap"}
+      },
+      "locked_verdict": "CONFIRMED",
+      "gap_implication": "GAP_COLLAPSED",
+      "confidence_change": "0.6 -> 0.92"
+    }
   ],
-  "status": "active",
+  "tests_remaining": [],
+  "status": "confirmed_bl_affix_collapse_reproduced",
+  "verdict_note": "CONFIRMED. Brain-V's pipeline reproduces B&L's affix-removal h2 collapse. Post-removal h2: A=2.176, B=2.163 (B&L target 2.23/2.24, deviation 0.06-0.07, within ±0.10 threshold). A/B gap collapses from 0.17 to 0.01 (0.57%), well under B&L's 'about 1%' qualitative claim. Both affixes contribute roughly equally; both required for full collapse. Brain-V's pipeline is reliable for character-level h2 measurement.",
+  "findings_for_followup": [
+    "PIPELINE VALIDATED for character-level h2 — Brain-V can cite Bowern & Lindemann's published numbers in v2 with confidence that the pipeline reproduces them. Methodology lesson 3 (sanity-check external baselines) applied retroactively.",
+    "WITHIN-HERBAL A/B CONVERGENCE INTERPRETATION (v2 §4.2) — needs investigation. The within-herbal A/B convergence Brain-V reported (TTR 0.83 = 0.83, mean length 4.99 vs 5.07) is plausibly the same affix-driven phenomenon B&L identify: if herbal tokens have lower -edy and qo- frequencies than other sections, the within-herbal A/B convergence happens 'for free' as a manifestation of B&L's affix-removal collapse at the section level. Cross-reference: chedy (an -edy token) is biological-concentrated per H-BV-HAND-B-MARKER-CONCENTRATION-01, suggesting -edy IS depleted in herbal vs biological. Direct test: compute -edy/qo- frequency by section in Hand B; if herbal has the lowest rate, the within-herbal convergence is B&L's effect at section granularity.",
+    "v2 REVISION GUIDANCE — substantial. Items #1, #2, #3 from the framework audit (RE_DISCOVERY: A/B h2 gap, -edy in B, qo- in B) should be reframed as 'Brain-V's pipeline reproduces B&L's published numbers within ±0.07 deviation' with explicit B&L citations. Item #4 (positional constraints) similarly cites B&L. The within-herbal A/B convergence (#5, EXTENDS_B&L) is conditional on the section-level affix-frequency check above.",
+    "DIAGNOSTIC FROM SENSITIVITY ANALYSIS: V3 (only -edy removed) and V4 (only qo- removed) each collapse about half the A/B gap. Both affixes contribute. V2 (remove substrings keep stems) actually REVERSES the gap — the -edy and qo- substrings carry the entropy structure that drives the A/B difference, removing them while keeping stems exposes a residual structure where B is now slightly higher than A. This is publishable methodological detail.",
+    "BRAIN-V vs B&L NUMERIC ALIGNMENT: Brain-V baseline matches B&L LV (2.17/2.01) within 0.02 absolute; matches B&L CE (2.122/1.973) within 0.07. Post-removal Brain-V (2.176/2.163) is 0.06-0.07 below B&L's 2.23/2.24. The consistent ~0.05-0.07 lower-h2 offset post-removal probably reflects tokenisation differences (Brain-V uses raw character-level over space-joined tokens; B&L's exact tokenisation isn't specified in detail). Direction and magnitude of the collapse reproduce; the absolute value is methodology-sensitive.",
+    "FOR v3 NARRATIVE: this test is the gold-standard sanity check the v2 entropy section needed. v3 should lead the entropy section with: 'Brain-V reproduces B&L 2021's affix-removal h2 collapse within 0.07 absolute on both hands. Pipeline reliability validated. Post-removal h2 values: A=2.176, B=2.163, A/B gap 0.57%.' Then build any extension claims on this validated foundation.",
+    "FOLLOW-UP CANDIDATE: per-section affix frequency. Compute fraction of tokens ending in -edy and starting with qo- per section (herbal/biological/recipes/pharmaceutical/etc.) for both hands. If herbal-A and herbal-B both have low affix frequencies relative to other sections in their respective hands, the within-herbal A/B convergence is B&L's effect at section granularity. This would resolve §4.2's interpretation cleanly."
+  ],
   "parent": null,
   "created": "2026-04-18",
-  "last_tested": null,
+  "last_tested": "2026-04-18",
   "reasoning": "B&L's affix-removal collapse is one of their thesis-level claims and a direct pipeline reproducibility check Brain-V has not yet run. Methodology lesson 3 (sanity-check external baselines on the original corpus) directly motivates this. The result determines whether Brain-V's v2 entropy framings (§3.5, §3.6, §4.2) need revision: if Brain-V reproduces 2.23/2.24, the within-herbal A/B convergence in §4.2 is plausibly the same affix-driven phenomenon and should be cited as a re-instantiation of B&L's affix-removal observation. If Brain-V's pipeline deviates, the entropy claims need wider caveats and the within-herbal convergence may be a separate effect.",
   "source": "Brain-V 2026-04-18 user-directed methodology check following H-BV-HAND-B-CLUSTER-DIAGNOSTIC-01 (harmony dissolves into -edy concentration) and the Bowern & Lindemann framework audit (RE_DISCOVERIES on entropy findings).",
   "researcher": "brain-v"

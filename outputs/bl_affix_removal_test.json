@@ -1,0 +1,50 @@
+{
+  "generated": "2026-04-18",
+  "hypothesis": "H-BV-BL-AFFIX-REMOVAL-01",
+  "n_hand_a_tokens": 11022,
+  "n_hand_b_tokens": 23766,
+  "baseline": {
+    "hand_a_h2": 2.1906,
+    "hand_b_h2": 2.0191,
+    "gap_a_minus_b": 0.1715,
+    "bl_lv_reference": "A=2.17, B=2.01",
+    "bl_ce_reference": "A=2.122, B=1.973"
+  },
+  "locked_filter_post_removal": {
+    "rule": "token.endswith('edy') OR token.startswith('qo') -> remove",
+    "tokens_removed_hand_a": 1094,
+    "tokens_removed_hand_b": 7163,
+    "removal_rate_a_pct": 9.93,
+    "removal_rate_b_pct": 30.14,
+    "hand_a_h2_post": 2.1758,
+    "hand_b_h2_post": 2.1634,
+    "gap_a_minus_b_post": 0.0125,
+    "bl_target": "A=2.23, B=2.24, gap <1%",
+    "deviation_a_from_target": 0.0592,
+    "deviation_b_from_target": 0.0716
+  },
+  "sensitivity_diagnostics": {
+    "V1 substring 'edy' or 'qo' anywhere -> remove token": {
+      "h2_a": 2.1717,
+      "h2_b": 2.159,
+      "gap": 0.0127
+    },
+    "V2 remove substrings -edy and qo- but keep stems": {
+      "h2_a": 2.193,
+      "h2_b": 2.245,
+      "gap": -0.0521
+    },
+    "V3 only -edy removed (endswith)": {
+      "h2_a": 2.1891,
+      "h2_b": 2.1097,
+      "gap": 0.0794
+    },
+    "V4 only qo- removed (startswith)": {
+      "h2_a": 2.1774,
+      "h2_b": 2.0811,
+      "gap": 0.0964
+    }
+  },
+  "verdict": "CONFIRMED",
+  "gap_implication": "GAP_COLLAPSED"
+}
