@@ -1,0 +1,58 @@
+{
+  "generated": "2026-04-18",
+  "hypothesis": "H-BV-HAND-A-NON-HERBAL-HARMONY-01",
+  "hand_a_folios": 114,
+  "non_herbal_subset": {
+    "label": "Hand A NON-HERBAL",
+    "n_folios": 19,
+    "n_tokens": 3499,
+    "n_eligible_stems": 25,
+    "silhouette": 0.4787,
+    "accuracy": 0.5,
+    "cluster_0_centre": [
+      0.001,
+      0.626,
+      0.231,
+      0.142
+    ],
+    "cluster_1_centre": [
+      -0.0,
+      0.241,
+      0.335,
+      0.423
+    ],
+    "verdict": "PARTIAL_LOW_POWER"
+  },
+  "herbal_control": {
+    "label": "Hand A HERBAL (control)",
+    "n_folios": 95,
+    "n_tokens": 7523,
+    "n_eligible_stems": 45,
+    "silhouette": 0.3359,
+    "accuracy": 0.4783,
+    "cluster_0_centre": [
+      0.0,
+      0.265,
+      0.593,
+      0.142
+    ],
+    "cluster_1_centre": [
+      0.011,
+      0.42,
+      0.329,
+      0.239
+    ],
+    "verdict": "REFUTED"
+  },
+  "non_herbal_silhouette_95_ci": [
+    0.3404,
+    0.569
+  ],
+  "herbal_silhouette_95_ci": [
+    0.3087,
+    0.5713
+  ],
+  "hand_a_all_reference": "silhouette 0.3305 REFUTED",
+  "hand_b_all_reference": "silhouette 0.6495 CONFIRMED",
+  "final_verdict": "PARTIAL"
+}

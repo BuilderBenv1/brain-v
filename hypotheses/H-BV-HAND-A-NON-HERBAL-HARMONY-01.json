@@ -18,14 +18,58 @@
   "test": "LOCKED PROCEDURE.\n\n  DATA: Hand A folios (currier_language=='A') partitioned by section.\n    NON-HERBAL = folios with section in {pharmaceutical, recipes, text-only} (excludes herbal). Approximately 19 folios.\n    HERBAL_CONTROL = folios with section == herbal. Approximately 95 folios.\n\n  TOKENISATION: identical to H-BV-VOWEL-HARMONY-01 (MULTI = ['ckh','cth','cph','ch','sh','ol']), N>=3 glyph-units.\n\n  VOWEL HARMONY METHODOLOGY: identical to H-BV-VOWEL-HARMONY-01.\n    Eligible stems: >=3 distinct vowel-inner attachments AND >=5 total vowel-inner tokens.\n    Feature vectors: 4-dim L1-normalised distribution over {i,e,o,a}.\n    K-means k=2, 50 random restarts, Euclidean distance.\n    Silhouette score over the clustering.\n    Front/back labelling by mean p(i)+p(e).\n    Stem-internal vowel prediction accuracy.\n\n  BOOTSTRAP CONFIDENCE INTERVALS:\n    For each subset (non-herbal, herbal-control):\n      Resample folios with replacement 200 times.\n      Recompute eligible stems and silhouette per resample.\n      Report 95% CI on silhouette.\n    Provides a measure of uncertainty driven by sample size.\n\n  DECISION RULE (LOCKED):\n    CONFIRMED sample-composition masking: Hand A non-herbal silhouette >= 0.50 AND prediction accuracy >= 0.65\n    PARTIAL: silhouette 0.35-0.50, OR (silhouette >= 0.50 AND accuracy < 0.65)\n    REFUTED sample-composition masking: silhouette < 0.35\n    LOW-POWER flag: <30 eligible stems in non-herbal subset (still report results)\n\n  REPORTING:\n    Side-by-side comparison of:\n      Hand A all (silhouette 0.3305, REFUTED) — from H-BV-VOWEL-HARMONY-01\n      Hand A non-herbal (this test)\n      Hand A herbal (this test, control)\n      Hand B all (silhouette 0.6495, CONFIRMED) — from H-BV-HAND-B-VOWEL-HARMONY-01\n    Plus bootstrap 95% CI on each Hand A subset.",
   "test_metric": "Silhouette score and prediction accuracy on Hand A non-herbal vs herbal-only, with bootstrap CIs.",
   "test_threshold": "CONFIRMED if non-herbal silhouette>=0.50 AND accuracy>=0.65. PARTIAL if 0.35-0.50. REFUTED if <0.35.",
-  "tests_run": [],
-  "tests_remaining": [
-    "locked_hand_a_non_herbal_harmony_test: vowel harmony on non-herbal Hand A subset + herbal control + bootstrap"
+  "tests_run": [
+    {
+      "date": "2026-04-18",
+      "test": "locked_hand_a_non_herbal_harmony_test",
+      "script": "scripts/run_hand_a_non_herbal_harmony.py",
+      "results_file": "outputs/hand_a_non_herbal_harmony_test.json",
+      "hand_a_non_herbal": {
+        "n_folios": 19,
+        "n_tokens": 3499,
+        "n_n3_tokens": 2964,
+        "n_eligible_stems": 25,
+        "silhouette": 0.4787,
+        "accuracy": 0.5000,
+        "evaluated_stems": 12,
+        "skipped_stems": 13,
+        "verdict": "PARTIAL_LOW_POWER",
+        "bootstrap_silhouette_95_ci": [0.3404, 0.569]
+      },
+      "hand_a_herbal_control": {
+        "n_folios": 95,
+        "n_tokens": 7523,
+        "n_eligible_stems": 45,
+        "silhouette": 0.3359,
+        "accuracy": 0.4783,
+        "verdict": "REFUTED",
+        "bootstrap_silhouette_95_ci": [0.3087, 0.5713]
+      },
+      "comparison_summary": {
+        "Hand_A_all": "silhouette 0.3305 REFUTED",
+        "Hand_A_non_herbal": "silhouette 0.4787 PARTIAL (LOW_POWER 25 stems)",
+        "Hand_A_herbal_control": "silhouette 0.3359 REFUTED",
+        "Hand_B_all": "silhouette 0.6495 CONFIRMED"
+      },
+      "final_verdict": "PARTIAL",
+      "interpretation": "Sample composition DOES matter — Hand A non-herbal silhouette (0.48) is meaningfully higher than Hand A herbal-control (0.34) and Hand A all (0.33). The herbal section DOES dilute the harmony signal. BUT Hand A non-herbal silhouette (0.48) does NOT reach the 0.50 CONFIRMED threshold and falls short of Hand B's 0.65. Bootstrap CI for non-herbal [0.34, 0.57] overlaps with herbal CI [0.31, 0.57] — the two distributions are not clearly separable at small sample sizes. Accuracy on non-herbal is 0.50 (chance level) on only 12 evaluated stems. Net: partial sample-composition masking exists but does NOT fully account for the Hand A vs Hand B harmony divergence. The hands likely differ typologically AND composition contributes. Two interpretations remain compatible with this result: (a) genuine typological divergence on harmony with composition adding modest masking; (b) same harmonic language with Hand A's composition + small non-herbal sample insufficient to detect signal that exists.",
+      "confidence_change": "0.4 -> 0.55"
+    }
   ],
-  "status": "active",
+  "tests_remaining": [],
+  "status": "partial_composition_explains_some_not_all",
+  "verdict_note": "PARTIAL. Sample composition DOES matter — Hand A non-herbal silhouette (0.48) meaningfully exceeds Hand A herbal control (0.34) and Hand A all (0.33). But it does not reach the 0.50 CONFIRMED threshold, falls short of Hand B's 0.65, has chance-level prediction accuracy (0.50 on 12 stems), and bootstrap CI overlaps with the herbal control. Composition explains some of the divergence; sample size of Hand A non-herbal (25 eligible stems) is too small for definitive resolution.",
+  "findings_for_followup": [
+    "PARTIAL VERDICT INTERPRETATION: removing herbal content from Hand A pushes silhouette from 0.33 to 0.48 — a real signal that herbal content was masking. But the silhouette doesn't cross 0.50 and accuracy stays at chance. Two compatible readings remain: (a) genuine cross-hand typological divergence with composition adding modest masking; (b) same harmonic language across hands with Hand A's small non-herbal sample insufficient to detect the signal.",
+    "FOR v3: the binary 'sample-composition explains everything' vs 'genuinely different systems' framing is too clean. The honest report: composition explains part of the gap (silhouette 0.33 -> 0.48), but Hand A non-herbal still falls short of Hand B's harmony confirmation by a meaningful margin (0.48 vs 0.65). The hands likely differ to some degree AND composition contributes.",
+    "POWER LIMITATION: Hand A has only 19 non-herbal folios producing 25 eligible stems. Hand B has 50 non-herbal folios producing 78 eligible stems. The 3x difference in eligible-stem count creates a real power asymmetry. Bootstrap CI on Hand A non-herbal silhouette is [0.34, 0.57] — wide enough that the test cannot definitively distinguish 'no harmony' from 'harmony but undersampled'.",
+    "UNEXPECTED OBSERVATION: the herbal-only control silhouette (0.34) is essentially identical to the Hand A all silhouette (0.33). This suggests the herbal section is not just masking — it's also contributing the dominant signal in Hand A. The Hand A all-corpus harmony signal is essentially the herbal signal because herbal is 86% of Hand A.",
+    "FOLLOW-UP CANDIDATES: (1) Combine Hand A non-herbal + Hand B non-herbal (~50 folios total, ~100 eligible stems) and test harmony — would resolve power asymmetry; (2) Test specific section pairings: Hand A pharma vs Hand B pharma, Hand A recipes vs Hand B recipes; (3) Different harmonic-language candidates (Hungarian, Turkish, Finnish) for Hand B specifically given confirmed harmony.",
+    "v3 NARRATIVE NEEDS NUANCED FRAMING: 'Hand A and Hand B share basic morphological architecture (sub-tests 1a, 1b) but diverge on three deep typological tests (1c, 1d, 1e). Sample composition partially accounts for the harmony divergence but does not fully resolve it. The two hands may represent: (a) related dialects with different harmony rules, (b) the same language with hand-specific scribal conventions, (c) genuinely different languages sharing surface morphology, or (d) sampling-power-limited measurement of a unified harmonic system.' All four readings remain on the table."
+  ],
   "parent": "H-BV-HAND-B-FULL-BATTERY-01",
   "created": "2026-04-18",
-  "last_tested": null,
+  "last_tested": "2026-04-18",
   "reasoning": "Cross-hand divergence diagnostic. H-BV-HAND-B-VOWEL-HARMONY-01 confirmed harmony in Hand B (silhouette 0.65); H-BV-VOWEL-HARMONY-01 refuted in Hand A (0.33). Two candidate explanations: (a) hands are typologically different (different languages or dialect deep features); (b) sample-composition difference (Hand A 86% herbal masks harmony Hand B's diverse composition reveals). This test isolates (b) by computing harmony on Hand A non-herbal subset only. Outcome is decisive for the v3 narrative.",
   "source": "Brain-V 2026-04-18 follow-up to H-BV-HAND-B-FULL-BATTERY-01 STRUCTURALLY_DIFFERENT_SYSTEMS verdict.",
   "researcher": "brain-v"
