@@ -16,11 +16,34 @@
   "test": "LOCKED PROCEDURE — IDENTICAL METHODOLOGY TO H-BV-VOWEL-HARMONY-01 with corpus filter changed from currier_language=='A' to 'B'.\n\n  DATA: Hand B tokens under Tokenisation A (MULTI_GLYPHS + 'ol'), N>=3 glyph-units.\n\n  DEFINITIONS (LOCKED, identical to Hand A test):\n    VOWEL-INNERS = {i, e, o, a}\n    FRONT-VOWELS = {i, e}\n    BACK-VOWELS  = {o, a}\n    STEM = all glyph-units before the final two\n\n  STEP 1 STEM POOL: Eligible stems = >=3 distinct vowel-inner attachments AND >=5 total vowel-inner tokens. LOW-POWER if <50.\n  STEP 2 FEATURE VECTORS: 4-dim L1-normalised distribution over {i,e,o,a} per eligible stem.\n  STEP 3 CLUSTERING: K-means k=2, 50 restarts, Euclidean distance. Silhouette score.\n  STEP 4 LABELLING: Cluster with larger mean p(i)+p(e) -> FRONT; other -> BACK.\n  STEP 5 PREDICTION: For each stem, count front and back vowels inside. Predict FRONT or BACK from majority. Compute accuracy vs cluster label.\n\n  DECISION RULE (LOCKED, identical to Hand A):\n    CONFIRMED vowel harmony: silhouette >= 0.50 AND accuracy >= 0.70\n    CONFIRMED two-class non-harmonic: silhouette >= 0.50 AND accuracy < 0.70\n    REFUTED: silhouette < 0.35\n    MARGINAL: silhouette in [0.35, 0.50] OR (silhouette >= 0.50 AND accuracy in [0.60, 0.70))\n    LOW-POWER if eligible <50.",
   "test_metric": "silhouette score on k-means k=2 over stems-by-vowel-distribution, plus stem-internal-vowel prediction accuracy.",
   "test_threshold": "CONFIRMED if silhouette>=0.50 AND accuracy>=0.70. REFUTED if silhouette<0.35. MARGINAL otherwise.",
-  "tests_run": [],
-  "tests_remaining": [
-    "locked_hand_b_vowel_harmony_test: parallel methodology on Hand B"
+  "tests_run": [
+    {
+      "date": "2026-04-18",
+      "test": "locked_hand_b_vowel_harmony_test",
+      "script": "scripts/run_hand_b_vowel_harmony.py",
+      "results_file": "outputs/hand_b_vowel_harmony_test.json",
+      "n_eligible_stems": 78,
+      "low_power_flag": false,
+      "silhouette": 0.6495,
+      "cluster_0_label": "BACK",
+      "cluster_0_centre": [0.061, 0.136, 0.120, 0.682],
+      "cluster_0_size": 26,
+      "cluster_1_label": "FRONT",
+      "cluster_1_centre": [0.000, 0.688, 0.185, 0.128],
+      "cluster_1_size": 52,
+      "prediction_eval": 43,
+      "prediction_correct": 33,
+      "prediction_accuracy": 0.7674,
+      "skipped_stems": 35,
+      "verdict": "CONFIRMED_HARMONY",
+      "hand_a_reference": "REFUTED at silhouette 0.3305 (under 0.35 threshold)",
+      "hand_b_result": "CONFIRMED_HARMONY at silhouette 0.6495 (above 0.50) AND accuracy 0.7674 (above 0.70)",
+      "interpretation": "MAJOR cross-hand divergence. Hand A was REFUTED for vowel harmony at silhouette 0.33; Hand B CONFIRMS vowel harmony at silhouette 0.65 (nearly 2x Hand A's value) AND prediction accuracy 0.77 (above the 0.70 threshold). The cluster structure is sharply bimodal: Cluster 0 is strongly a-preferring (mean p(a)=0.68, p(e)=0.14), Cluster 1 is strongly e-preferring (mean p(e)=0.69, p(a)=0.13). Stem-internal vowel composition predicts cluster membership at 77% accuracy — exactly the signature of vowel harmony. This is a SHARP STRUCTURAL DIFFERENCE between hands and contradicts a unified-morphology interpretation. Implications: (a) Hand A and Hand B may encode different linguistic systems, OR (b) the same language with hand-specific scribal conventions, OR (c) different content domains using different vocabulary patterns where Hand B's more diverse section composition reveals harmony Hand A's heavily herbal sample doesn't.",
+      "confidence_change": "0.3 -> 0.85"
+    }
   ],
-  "status": "active",
+  "tests_remaining": [],
+  "status": "confirmed_harmony_diverging_from_hand_a",
   "parent": "H-BV-HAND-B-FULL-BATTERY-01",
   "created": "2026-04-18",
   "last_tested": null,

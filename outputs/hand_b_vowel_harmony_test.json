@@ -1,0 +1,26 @@
+{
+  "generated": "2026-04-18",
+  "hypothesis": "H-BV-HAND-B-VOWEL-HARMONY-01",
+  "n_eligible_stems": 78,
+  "low_power_flag": false,
+  "silhouette": 0.6495,
+  "cluster_0_centre": [
+    0.061,
+    0.136,
+    0.12,
+    0.682
+  ],
+  "cluster_1_centre": [
+    0.0,
+    0.688,
+    0.185,
+    0.128
+  ],
+  "cluster_0_label": "BACK",
+  "cluster_1_label": "FRONT",
+  "prediction_eval": 43,
+  "prediction_correct": 33,
+  "prediction_accuracy": 0.7674,
+  "verdict": "CONFIRMED_HARMONY",
+  "hand_a_reference": "REFUTED at silhouette 0.3305"
+}
