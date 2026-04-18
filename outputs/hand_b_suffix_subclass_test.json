@@ -1,0 +1,65 @@
+{
+  "generated": "2026-04-18",
+  "hypothesis": "H-BV-HAND-B-SUFFIX-SUBCLASS-01",
+  "n_valid_tokens": 20682,
+  "n_vowel_inner": 12523,
+  "n_consonant_inner": 7403,
+  "M1_ratio_VOWEL": 0.9187,
+  "M1_ratio_CONSONANT": 1.1116,
+  "M1b_combined": 1.1357,
+  "M2_outer_preference": [
+    {
+      "outer": "y",
+      "p_vowel": 0.2158,
+      "p_cons": 0.9257,
+      "diff": "0.233",
+      "note": "",
+      "n_vowel_outer": 2703,
+      "n_cons_outer": 6853,
+      "ratio_ge_3x": true
+    },
+    {
+      "outer": "n",
+      "p_vowel": 0.3188,
+      "p_cons": 0.0,
+      "diff": "inf",
+      "note": "vowel-EXCLUSIVE",
+      "n_vowel_outer": 3992,
+      "n_cons_outer": 0,
+      "ratio_ge_3x": true
+    },
+    {
+      "outer": "r",
+      "p_vowel": 0.2148,
+      "p_cons": 0.0024,
+      "diff": "88.344",
+      "note": "",
+      "n_vowel_outer": 2690,
+      "n_cons_outer": 18,
+      "ratio_ge_3x": true
+    },
+    {
+      "outer": "l",
+      "p_vowel": 0.0975,
+      "p_cons": 0.0088,
+      "diff": "11.105",
+      "note": "",
+      "n_vowel_outer": 1221,
+      "n_cons_outer": 65,
+      "ratio_ge_3x": true
+    },
+    {
+      "outer": "ol",
+      "p_vowel": 0.0318,
+      "p_cons": 0.0351,
+      "diff": "0.905",
+      "note": "",
+      "n_vowel_outer": 398,
+      "n_cons_outer": 260,
+      "ratio_ge_3x": false
+    }
+  ],
+  "n_outers_with_3x_differential": 4,
+  "verdict": "MARGINAL",
+  "hand_a_reference": "MARGINAL: M1 0.985/1.055; M2 5/5 outers >=3x; n vowel-exclusive 0/2240"
+}

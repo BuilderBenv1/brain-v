@@ -18,11 +18,38 @@
   "test": "LOCKED PROCEDURE — IDENTICAL METHODOLOGY TO H-BV-SUFFIX-SUBCLASS-01 with Hand B substitutions.\n\n  DATA: Hand B tokens under Tokenisation A (MULTI_GLYPHS + 'ol'), N>=3 glyph-units (matches H-BV-HAND-B-SUFFIX-SEQUENCE-01).\n\n  PARTITION (LOCKED, derived from Hand B top-10 inners measured in 1a):\n    VOWEL-INNERS = {i, e, o, a}  (same 4 vowels as Hand A)\n    CONSONANT-INNERS = {d, k, ch, t, ckh, r}  (Hand B specific — swap sh,l for ckh,r vs Hand A)\n    TOP-5 OUTERS = {y, n, r, l, ol}  (from sub-test 1a)\n\n  METRICS (locked, identical to Hand A SUFFIX-SUBCLASS-01):\n\n  M1 ORDERING RATIO PER SUB-CLASS:\n    For S in {VOWEL, CONSONANT}:\n      ratio_S = P(outer in TOP-5 | inner in S) / P(outer in TOP-5 | inner NOT in S)\n      where 'NOT in S' = all non-S inners in Hand B N>=3 token pool.\n\n  M1b COMBINED RATIO (sanity check):\n    ratio_combined = P(outer in TOP-5 | inner in VOWEL ∪ CONSONANT) / P(outer in TOP-5 | inner outside top-10)\n    Should reproduce ~ Hand B SUFFIX-SEQUENCE-01 C4 ratio (1.14) for sanity.\n\n  M2 SUB-CLASS OUTER PREFERENCE (the central finding for Hand A):\n    For each top-5 outer o:\n      p_VOWEL(o) = count(inner ∈ VOWEL-INNERS, outer = o) / count(inner ∈ VOWEL-INNERS)\n      p_CONSONANT(o) = count(inner ∈ CONSONANT-INNERS, outer = o) / count(inner ∈ CONSONANT-INNERS)\n      diff(o) = p_VOWEL(o) / p_CONSONANT(o)  (or 'vowel-exclusive' if p_C = 0; 'cons-exclusive' if p_V = 0)\n    Report full 2x5 table.\n\n  DECISION RULE (LOCKED, identical to Hand A):\n    CONFIRMED: max(ratio_VOWEL, ratio_CONSONANT) >= 2.0\n    REFUTED: ratio_VOWEL < 1.5 AND ratio_CONSONANT < 1.5 AND no outer o has diff(o) >= 3.0 or <= 1/3.0\n    MARGINAL: any other combination\n\n  PARALLEL COMPARISON: report side-by-side Hand A (from SUFFIX-SUBCLASS-01) vs Hand B (this test). For Hand A: M1 ratios 0.985/1.055; M2 every outer >=3x differential; n vowel-exclusive (0/2240).",
   "test_metric": "ratio_VOWEL, ratio_CONSONANT, diff(o) for o in {y,n,r,l,ol}",
   "test_threshold": "CONFIRMED if max ratio >=2.0. REFUTED if both <1.5 and no outer >=3x. MARGINAL otherwise.",
-  "tests_run": [],
-  "tests_remaining": [
-    "locked_hand_b_suffix_subclass_test: Hand B V/C partition + M2 outer-preference table"
+  "tests_run": [
+    {
+      "date": "2026-04-18",
+      "test": "locked_hand_b_suffix_subclass_test",
+      "script": "scripts/run_hand_b_suffix_subclass.py",
+      "results_file": "outputs/hand_b_suffix_subclass_test.json",
+      "n_valid_tokens": 20682,
+      "n_vowel_inner": 12523,
+      "n_consonant_inner": 7403,
+      "M1_ratios": {"VOWEL": 0.9187, "CONSONANT": 1.1116, "combined": 1.1357},
+      "M2_outer_preference": [
+        {"outer": "y",  "p_vowel": 0.2158, "p_cons": 0.9257, "diff": "0.233", "note": "4.3x cons-preferring"},
+        {"outer": "n",  "p_vowel": 0.3188, "p_cons": 0.0000, "diff": "inf",   "note": "VOWEL-EXCLUSIVE (0/7403 cons-inner attachments)"},
+        {"outer": "r",  "p_vowel": 0.2148, "p_cons": 0.0024, "diff": "88.34", "note": "88x vowel-preferring"},
+        {"outer": "l",  "p_vowel": 0.0975, "p_cons": 0.0088, "diff": "11.10", "note": "11x vowel-preferring"},
+        {"outer": "ol", "p_vowel": 0.0318, "p_cons": 0.0351, "diff": "0.905", "note": "1.1x cons-preferring (FAILS 3x threshold; differs from Hand A where ol was 3.4x cons-preferring)"}
+      ],
+      "n_outers_with_3x_differential": 4,
+      "verdict": "MARGINAL",
+      "hand_a_comparison": {
+        "M1_VOWEL": "Hand A 0.985 / Hand B 0.9187",
+        "M1_CONSONANT": "Hand A 1.055 / Hand B 1.1116",
+        "M2_outers_with_3x": "Hand A 5/5 / Hand B 4/5",
+        "n_vowel_exclusivity": "REPLICATED — Hand A 0/2240, Hand B 0/7403 (both categorical)",
+        "ol_difference": "Hand A: ol cons-preferring at 3.4x; Hand B: ol near-symmetric at 1.1x. The ol selectional asymmetry is Hand-A-specific."
+      },
+      "interpretation": "Strong replication with one specific divergence. The CORE finding — n is vowel-exclusive — reproduces categorically in Hand B (0/7403 cons-inner attachments matching Hand A's 0/2240). The complementary outer-selection pattern (n, r, l vowel-preferring; y consonant-preferring) holds for 4 of 5 outers. The ol outer is the differing case: Hand A had ol cons-preferring at 3.4x; Hand B has ol nearly symmetric (1.1x). The ol-cons-preferring pattern is therefore Hand A-specific. M1 ratios match Hand A's MARGINAL pattern (both hands ~1.0). Net: V/C sub-class selectional structure is manuscript-wide; one specific pairing (ol-consonant) is Hand A-specific.",
+      "confidence_change": "0.7 -> 0.85"
+    }
   ],
-  "status": "active",
+  "tests_remaining": [],
+  "status": "marginal_with_n_exclusivity_replicated",
   "parent": "H-BV-HAND-B-FULL-BATTERY-01",
   "created": "2026-04-18",
   "last_tested": null,
