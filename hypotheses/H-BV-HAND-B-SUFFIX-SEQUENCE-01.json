@@ -18,11 +18,39 @@
   "test": "LOCKED PROCEDURE — IDENTICAL METHODOLOGY TO H-BV-SUFFIX-SEQUENCE-01 with corpus filter changed from currier_language=='A' to currier_language=='B'.\n\n  DATA: Hand B tokens from voynich-corpus.json (currier_language=='B').\n\n  TOKENISATIONS (LOCKED, identical to SUFFIX-SEQUENCE-01):\n    A) MULTI_GLYPHS + 'ol' = ['ckh','cth','cph','ch','sh','ol']\n    B) MULTI_GLYPHS + 'ol' + 'qo' = ['ckh','cth','cph','ch','sh','ol','qo']\n    Longest-match-first.\n\n  For each tokenisation:\n    Restrict to tokens with N >= 3 glyph-units.\n    For each w = [g_1, ..., g_N]: STEM = g_1..g_{N-2}, INNER = g_{N-1}, OUTER = g_N.\n\n  FIVE CRITERIA (LOCKED, identical thresholds to SUFFIX-SEQUENCE-01):\n    C1 INNER CLOSURE: top-10 inners cover >= 70% of inner positions.\n    C2 OUTER CLOSURE: top-5 outers cover >= 70% of outer positions.\n    C3 PRODUCTIVITY: mean distinct inners per productive stem (>=3 occurrences) >= 2.0 AND >= 40% of productive stems take >= 2 distinct inners.\n    C4 ORDERING: P(outer in top-5 | inner in top-10) / P(outer in top-5 | inner not in top-10) >= 2.0 with both conditionals non-trivial.\n    C5 COVERAGE: (top-10 inner) x (top-5 outer) template covers >= 60% of N>=3 tokens.\n\n  PER-TOKENISATION VERDICT:\n    CONFIRMED if all 5 pass; MARGINAL if 3-4 pass; REFUTED if 0-2 pass.\n\n  OVERALL TWO-TOKENISATION VERDICT (matches SUFFIX-SEQUENCE-01 framework):\n    Both A and B CONFIRMED -> CONFIRMED morphology robust to qo treatment\n    Only A CONFIRMED -> CONFIRMED, qo is NOT a ligature\n    Only B CONFIRMED -> CONFIRMED, qo IS a ligature\n    Both REFUTED -> REFUTED morphology flat\n    Mixed -> MARGINAL\n\n  PARALLEL COMPARISON: report side-by-side Hand A (from SUFFIX-SEQUENCE-01) vs Hand B (this test) per-criterion and overall verdict, to enable batch-level synthesis.",
   "test_metric": "5 criteria per tokenisation + overall 2-tokenisation verdict.",
   "test_threshold": "All 5 pass = CONFIRMED. 3-4 = MARGINAL. <=2 = REFUTED. Overall maps to four named outcomes per SUFFIX-SEQUENCE-01.",
-  "tests_run": [],
-  "tests_remaining": [
-    "locked_hand_b_suffix_sequence_test: parallel methodology replication on Hand B"
+  "tests_run": [
+    {
+      "date": "2026-04-18",
+      "test": "locked_hand_b_suffix_sequence_test",
+      "script": "scripts/run_hand_b_suffix_sequence.py",
+      "results_file": "outputs/hand_b_suffix_sequence_test.json",
+      "tokenisation_A": {
+        "n_valid_tokens": 20682,
+        "C1_inner_closure": {"top10": ["d","i","e","a","o","k","ch","t","ckh","r"], "coverage": 0.963, "pass": true},
+        "C2_outer_closure": {"top5": ["y","n","r","l","ol"], "coverage": 0.910, "pass": true},
+        "C3_productivity": {"productive_stems": 629, "mean_inners": 2.790, "pct_ge2": 0.712, "pass": true},
+        "C4_ordering": {"p_a": 0.913, "p_b": 0.804, "ratio": 1.14, "pass": false},
+        "C5_coverage": {"coverage": 0.880, "pass": true},
+        "n_pass": 4, "verdict": "MARGINAL"
+      },
+      "tokenisation_B": {
+        "n_valid_tokens": 20638,
+        "C1": {"coverage": 0.963, "pass": true},
+        "C2": {"coverage": 0.910, "pass": true},
+        "C3": {"mean_inners": 2.787, "pct_ge2": 0.712, "pass": true},
+        "C4": {"ratio": 1.14, "pass": false},
+        "C5": {"coverage": 0.881, "pass": true},
+        "n_pass": 4, "verdict": "MARGINAL"
+      },
+      "overall_verdict": "MARGINAL",
+      "hand_a_reference": "4/5 MARGINAL (C4 failed at 1.12)",
+      "hand_b_result": "4/5 MARGINAL (C4 failed at 1.14)",
+      "interpretation": "Strong replication of Hand A's pattern. Both hands have IDENTICAL 5-criterion outcome (4/5 MARGINAL with C4 ordering as the sole failure). Hand B inner closure 96% (Hand A 93%); outer closure 91% (Hand A 86%); productivity mean 2.79 (Hand A 3.15); coverage 88% (Hand A 81%). Hand B's C4 ratio (1.14) is essentially identical to Hand A's (1.12). The two-layer terminal morphology with closed inventories, productive stems, high template coverage, and weak ordering is a manuscript-wide structural property.",
+      "confidence_change": "0.7 -> 0.9"
+    }
   ],
-  "status": "active",
+  "tests_remaining": [],
+  "status": "marginal_matching_hand_a",
   "parent": "H-BV-HAND-B-FULL-BATTERY-01",
   "created": "2026-04-18",
   "last_tested": null,

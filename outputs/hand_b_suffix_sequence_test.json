@@ -1,0 +1,104 @@
+{
+  "generated": "2026-04-18",
+  "hypothesis": "H-BV-HAND-B-SUFFIX-SEQUENCE-01",
+  "hand_b_tokenisation_A_ol": {
+    "label": "A (ol only)",
+    "n_valid": 20682,
+    "C1": {
+      "top10": [
+        "d",
+        "i",
+        "e",
+        "a",
+        "o",
+        "k",
+        "ch",
+        "t",
+        "ckh",
+        "r"
+      ],
+      "cov": 0.963,
+      "pass": true
+    },
+    "C2": {
+      "top5": [
+        "y",
+        "n",
+        "r",
+        "l",
+        "ol"
+      ],
+      "cov": 0.909,
+      "pass": true
+    },
+    "C3": {
+      "n_prod": 629,
+      "mean_inners": 2.79,
+      "pct_ge2": 0.712,
+      "pass": true
+    },
+    "C4": {
+      "p_a": 0.9134,
+      "p_b": 0.8042,
+      "ratio": 1.14,
+      "pass": false
+    },
+    "C5": {
+      "cov": 0.88,
+      "pass": true
+    },
+    "n_pass": 4,
+    "verdict": "MARGINAL"
+  },
+  "hand_b_tokenisation_B_ol_qo": {
+    "label": "B (ol+qo)",
+    "n_valid": 20638,
+    "C1": {
+      "top10": [
+        "d",
+        "i",
+        "e",
+        "a",
+        "o",
+        "k",
+        "ch",
+        "t",
+        "ckh",
+        "r"
+      ],
+      "cov": 0.963,
+      "pass": true
+    },
+    "C2": {
+      "top5": [
+        "y",
+        "n",
+        "r",
+        "l",
+        "ol"
+      ],
+      "cov": 0.91,
+      "pass": true
+    },
+    "C3": {
+      "n_prod": 629,
+      "mean_inners": 2.787,
+      "pct_ge2": 0.712,
+      "pass": true
+    },
+    "C4": {
+      "p_a": 0.9143,
+      "p_b": 0.8053,
+      "ratio": 1.14,
+      "pass": false
+    },
+    "C5": {
+      "cov": 0.881,
+      "pass": true
+    },
+    "n_pass": 4,
+    "verdict": "MARGINAL"
+  },
+  "hand_b_overall_verdict": "MARGINAL",
+  "hand_a_reference_verdict": "MARGINAL 4/5 (C4 ordering failed at ratio 1.12)"
+}
