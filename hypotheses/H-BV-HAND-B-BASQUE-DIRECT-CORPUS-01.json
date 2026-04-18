@@ -1,0 +1,30 @@
+{
+  "id": "H-BV-HAND-B-BASQUE-DIRECT-CORPUS-01",
+  "claim": "Hand B's morphological profile, when compared to UD_Basque-BDT direct measurements (rather than published reference ranges), fits the same number of metrics as Hand A or fewer. Sub-test 1e of H-BV-HAND-B-FULL-BATTERY-01.",
+  "type": "language",
+  "confidence": 0.4,
+  "evidence_for": [
+    "H-BV-BASQUE-DIRECT-CORPUS-01 measured UD_Basque-BDT directly: M1=3.38, M2 L1=6, M2 L2=25, M3=4.41, M4=0.13, M5=0.64. Hand A fit 3/6 metrics under tolerance bands (M1, M3, M4); missed M2 inventory metrics (operational scale mismatch) and M5 (over-rigid).",
+    "Hand B values from sub-tests: M1=4.49, M2 L1=10, M2 L2=5, M3=2.79, M4=0.26, M5=0.80. The pattern of fits/misses against direct UD_Basque values can be predicted: M5 may now fit (0.80 vs Basque 0.64, gap 0.16 — closer than Hand A's 0.36).",
+    "Sub-test 1d showed Basque is rank 3 for Hand B (vs rank 1 for Hand A) under range-level comparison. The direct-corpus comparison sharpens this further."
+  ],
+  "evidence_against": [
+    "M2 inventory operational mismatch (glyph-level vs morpheme-level) is unchanged — Hand B M2 L1=10 / L2=5 will still mismatch UD_Basque's L1=6 / L2=25 in opposite directions, regardless of which hand.",
+    "Hand B M4 = 0.26 is OUT of UD_Basque tolerance band (M4 direct 0.13, ±50% gives [0.067, 0.20]). So M4 will now MISS for Hand B (Hand A's 0.20 was at the boundary, fit by epsilon).",
+    "Hand B's vowel harmony confirmation (1c) is orthogonal to Basque (Basque is non-harmonic). Direct-corpus M5 may fit but this could be coincidental given the harmony divergence."
+  ],
+  "test": "LOCKED PROCEDURE — IDENTICAL METHODOLOGY TO H-BV-BASQUE-DIRECT-CORPUS-01 with Hand B values.\n\n  HAND B VALUES (from sub-tests 1a/1b):\n    M1=4.4935, M2_L1=10, M2_L2=5, M3=2.7901, M4=0.26, M5=0.80\n\n  UD_BASQUE-BDT DIRECT MEASUREMENTS (LOCKED, identical to H-BV-BASQUE-DIRECT-CORPUS-01):\n    M1_direct = 3.3796\n    M2_L1_direct = 6  (Number=2 + Aspect=4)\n    M2_L2_direct = 25  (Case=15 + Mood=5 + VerbForm=3 + Definite=2)\n    M3_direct = 4.4107  (mean distinct forms per productive lemma)\n    M4_direct = 0.1333  (zero cells in Number x Case)\n    M5_direct = 0.6429  (Case values with >=3x Number asymmetry)\n\n  TOLERANCE BANDS (LOCKED, identical formulas):\n    M1: ±50% of direct -> [1.69, 5.07]\n    M2_L1: ±30% of direct -> [4.2, 7.8]\n    M2_L2: ±30% of direct -> [17.5, 32.5]\n    M3: ±50% of direct -> [2.21, 6.62]\n    M4: ±50% of direct -> [0.067, 0.20]\n    M5: ±0.10 absolute -> [0.54, 0.74]\n\n  PER-METRIC CHECK: HAND_B_FITS_i iff Hand B value is in the tolerance band around direct UD_Basque measurement.\n\n  DECISION RULE (LOCKED, identical to H-BV-BASQUE-DIRECT-CORPUS-01):\n    CORPUS_CONFIRMED: Hand B fits 6/6\n    CORPUS_PARTIAL: 4-5/6\n    CORPUS_WEAK: 3/6\n    CORPUS_REFUTED: <=2/6\n    PUBLISHED_RANGE_FAILURE overlay if >=3/6 published ranges (from H-BV-AGGLUTINATIVE-EXPANSION-01) miss the direct UD_Basque value (already known to be 1/6 for M2 L1 and L2 from Hand A test).\n\n  PARALLEL COMPARISON: Hand A had CORPUS_WEAK 3/6 fit under direct UD_Basque (M1, M3, M4 fit; M2 L1, M2 L2, M5 missed).",
+  "test_metric": "Per-metric Hand B fit count vs direct UD_Basque tolerance bands.",
+  "test_threshold": "CORPUS_CONFIRMED 6/6; PARTIAL 4-5; WEAK 3; REFUTED <=2.",
+  "tests_run": [],
+  "tests_remaining": [
+    "locked_hand_b_basque_direct_corpus_test: per-metric fit check against UD_Basque-BDT direct measurements"
+  ],
+  "status": "active",
+  "parent": "H-BV-HAND-B-FULL-BATTERY-01",
+  "created": "2026-04-18",
+  "last_tested": null,
+  "reasoning": "Sub-test 1e. Tests Hand B against the same UD_Basque-BDT direct measurements that Hand A was tested against. The expected outcome: M5 likely now fits for Hand B (closer to Basque 0.64 than Hand A's 1.0), but M4 likely now misses (Hand B 0.26 above Basque tolerance upper 0.20). Net fit count compared to Hand A's 3/6.",
+  "source": "Brain-V 2026-04-18 sub-test 1e of H-BV-HAND-B-FULL-BATTERY-01.",
+  "researcher": "brain-v"
+}
