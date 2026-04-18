@@ -1,0 +1,88 @@
+{
+  "generated": "2026-04-18",
+  "test": "per_section_affix_frequency_diagnostic",
+  "parent_hypothesis": "H-BV-BL-AFFIX-REMOVAL-01",
+  "per_section": [
+    {
+      "hand": "A",
+      "section": "herbal",
+      "folios": 95,
+      "tokens": 7523,
+      "edy_pct": 0.07,
+      "qo_pct": 9.23,
+      "combined_pct": 9.29
+    },
+    {
+      "hand": "A",
+      "section": "pharmaceutical",
+      "folios": 16,
+      "tokens": 2538,
+      "edy_pct": 0.43,
+      "qo_pct": 11.11,
+      "combined_pct": 11.54
+    },
+    {
+      "hand": "A",
+      "section": "recipes",
+      "folios": 2,
+      "tokens": 752,
+      "edy_pct": 0.8,
+      "qo_pct": 13.16,
+      "combined_pct": 13.96
+    },
+    {
+      "hand": "A",
+      "section": "text-only",
+      "folios": 1,
+      "tokens": 209,
+      "edy_pct": 0.0,
+      "qo_pct": 0.0,
+      "combined_pct": 0.0
+    },
+    {
+      "hand": "B",
+      "section": "biological",
+      "folios": 19,
+      "tokens": 6315,
+      "edy_pct": 25.8,
+      "qo_pct": 24.01,
+      "combined_pct": 49.8
+    },
+    {
+      "hand": "B",
+      "section": "cosmological",
+      "folios": 3,
+      "tokens": 1147,
+      "edy_pct": 11.16,
+      "qo_pct": 7.85,
+      "combined_pct": 19.01
+    },
+    {
+      "hand": "B",
+      "section": "herbal",
+      "folios": 32,
+      "tokens": 3307,
+      "edy_pct": 13.52,
+      "qo_pct": 9.65,
+      "combined_pct": 23.16
+    },
+    {
+      "hand": "B",
+      "section": "recipes",
+      "folios": 23,
+      "tokens": 10859,
+      "edy_pct": 14.54,
+      "qo_pct": 16.86,
+      "combined_pct": 31.4
+    },
+    {
+      "hand": "B",
+      "section": "text-only",
+      "folios": 5,
+      "tokens": 2138,
+      "edy_pct": 12.44,
+      "qo_pct": 15.2,
+      "combined_pct": 27.64
+    }
+  ]
+}
