@@ -1,0 +1,32 @@
+{
+  "id": "H-BV-HAND-A-NON-HERBAL-HARMONY-01",
+  "claim": "Hand A's non-herbal content (pharmaceutical + recipes + text-only sections) exhibits the same vowel harmony signature Hand B shows. If confirmed, the apparent typological divergence between hands (H-BV-HAND-B-VOWEL-HARMONY-01 CONFIRMED vs H-BV-VOWEL-HARMONY-01 REFUTED on Hand A) is sample-composition masking — Hand A's 86%-herbal sample drowned the harmony signal that emerges from non-herbal content.",
+  "type": "language",
+  "confidence": 0.4,
+  "evidence_for": [
+    "Hand A's all-folio test (H-BV-VOWEL-HARMONY-01) was REFUTED at silhouette 0.33, just below the 0.35 threshold. The signal was weakly absent; possible that herbal content was diluting a signal present in non-herbal.",
+    "Hand B's harmony confirmation (silhouette 0.65) came from a corpus where herbal is ~39% of content (vs Hand A's 86%). If harmony is content-domain-specific (or content-domain-revealed), Hand A non-herbal should show it.",
+    "Methodology lesson 10 (sample-composition parity) directly motivates this test: Hand A and Hand B differed in section composition; Hand A non-herbal subset is the natural composition-controlled comparator.",
+    "If Hand A non-herbal CONFIRMS harmony, the manuscript-wide narrative becomes 'one harmonic language sampled differently in each hand' — much cleaner than 'two structurally different systems'."
+  ],
+  "evidence_against": [
+    "Hand A non-herbal has only ~19 folios (per H-BV-EXTERNAL-CORRELATION-01: 16 pharma + 2 recipes + 1 text-only). Token count ~2,200-2,500. Eligible stems for vowel harmony test (>=3 distinct vowel-inners + >=5 total) likely 15-30 — well below Hand B's 78 eligible stems.",
+    "Low eligible-stem count could produce noisy silhouette regardless of true harmony presence. The locked rule with bootstrap CIs reports both point estimate and confidence interval to reflect this uncertainty.",
+    "If sample size is the issue, the test may be inconclusive (silhouette 0.35-0.50 PARTIAL bin) without resolving the question.",
+    "If Hand A non-herbal still shows REFUTED silhouette < 0.35, the hands diverge typologically and the v3 narrative needs to handle that genuinely."
+  ],
+  "test": "LOCKED PROCEDURE.\n\n  DATA: Hand A folios (currier_language=='A') partitioned by section.\n    NON-HERBAL = folios with section in {pharmaceutical, recipes, text-only} (excludes herbal). Approximately 19 folios.\n    HERBAL_CONTROL = folios with section == herbal. Approximately 95 folios.\n\n  TOKENISATION: identical to H-BV-VOWEL-HARMONY-01 (MULTI = ['ckh','cth','cph','ch','sh','ol']), N>=3 glyph-units.\n\n  VOWEL HARMONY METHODOLOGY: identical to H-BV-VOWEL-HARMONY-01.\n    Eligible stems: >=3 distinct vowel-inner attachments AND >=5 total vowel-inner tokens.\n    Feature vectors: 4-dim L1-normalised distribution over {i,e,o,a}.\n    K-means k=2, 50 random restarts, Euclidean distance.\n    Silhouette score over the clustering.\n    Front/back labelling by mean p(i)+p(e).\n    Stem-internal vowel prediction accuracy.\n\n  BOOTSTRAP CONFIDENCE INTERVALS:\n    For each subset (non-herbal, herbal-control):\n      Resample folios with replacement 200 times.\n      Recompute eligible stems and silhouette per resample.\n      Report 95% CI on silhouette.\n    Provides a measure of uncertainty driven by sample size.\n\n  DECISION RULE (LOCKED):\n    CONFIRMED sample-composition masking: Hand A non-herbal silhouette >= 0.50 AND prediction accuracy >= 0.65\n    PARTIAL: silhouette 0.35-0.50, OR (silhouette >= 0.50 AND accuracy < 0.65)\n    REFUTED sample-composition masking: silhouette < 0.35\n    LOW-POWER flag: <30 eligible stems in non-herbal subset (still report results)\n\n  REPORTING:\n    Side-by-side comparison of:\n      Hand A all (silhouette 0.3305, REFUTED) — from H-BV-VOWEL-HARMONY-01\n      Hand A non-herbal (this test)\n      Hand A herbal (this test, control)\n      Hand B all (silhouette 0.6495, CONFIRMED) — from H-BV-HAND-B-VOWEL-HARMONY-01\n    Plus bootstrap 95% CI on each Hand A subset.",
+  "test_metric": "Silhouette score and prediction accuracy on Hand A non-herbal vs herbal-only, with bootstrap CIs.",
+  "test_threshold": "CONFIRMED if non-herbal silhouette>=0.50 AND accuracy>=0.65. PARTIAL if 0.35-0.50. REFUTED if <0.35.",
+  "tests_run": [],
+  "tests_remaining": [
+    "locked_hand_a_non_herbal_harmony_test: vowel harmony on non-herbal Hand A subset + herbal control + bootstrap"
+  ],
+  "status": "active",
+  "parent": "H-BV-HAND-B-FULL-BATTERY-01",
+  "created": "2026-04-18",
+  "last_tested": null,
+  "reasoning": "Cross-hand divergence diagnostic. H-BV-HAND-B-VOWEL-HARMONY-01 confirmed harmony in Hand B (silhouette 0.65); H-BV-VOWEL-HARMONY-01 refuted in Hand A (0.33). Two candidate explanations: (a) hands are typologically different (different languages or dialect deep features); (b) sample-composition difference (Hand A 86% herbal masks harmony Hand B's diverse composition reveals). This test isolates (b) by computing harmony on Hand A non-herbal subset only. Outcome is decisive for the v3 narrative.",
+  "source": "Brain-V 2026-04-18 follow-up to H-BV-HAND-B-FULL-BATTERY-01 STRUCTURALLY_DIFFERENT_SYSTEMS verdict.",
+  "researcher": "brain-v"
+}
