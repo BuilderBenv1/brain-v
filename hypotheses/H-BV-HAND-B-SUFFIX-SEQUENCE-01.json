@@ -1,0 +1,32 @@
+{
+  "id": "H-BV-HAND-B-SUFFIX-SEQUENCE-01",
+  "claim": "Hand B exhibits the same two-layer terminal morphology (stem + Layer-1 inner + Layer-2 outer) as Hand A, with all five SUFFIX-SEQUENCE-01 criteria passing under either tokenisation A (MULTI + 'ol') or tokenisation B (MULTI + 'ol' + 'qo'). Sub-test 1a of the H-BV-HAND-B-FULL-BATTERY-01 systematic replication of Hand A's morphological characterisation.",
+  "type": "structural",
+  "confidence": 0.7,
+  "evidence_for": [
+    "Hand A's SUFFIX-SEQUENCE-01 found 4/5 criteria pass on both tokenisations (MARGINAL — only the C4 ordering ratio failed at 1.12 vs 2.0 threshold). Closed inner inventory (93%), closed outer inventory (86%), productive stems (mean 3.15 distinct inners), 80.6% template coverage all confirmed for Hand A.",
+    "Both hands share the manuscript-wide Markov-1-flat character signature (H-BV-MARKOV-VALIDATION-01). If terminal morphology is also shared, the two-layer structural model is a manuscript-level property.",
+    "Hand B has more tokens than Hand A (~23,700 vs ~11,000) — better statistical power for detecting closure and productivity criteria.",
+    "Locking the test as exact methodology replication of SUFFIX-SEQUENCE-01 with only the corpus filter changed (B instead of A) maintains pre-registration discipline and methodological lesson 9 (parallel testing on companion corpora)."
+  ],
+  "evidence_against": [
+    "Hand B's longer mean word length (4.47 vs Hand A 4.24) may shift the closure thresholds — if Hand B has more inner glyph variety, top-10 coverage could fall below the 70% threshold.",
+    "Hand B's section composition is more diverse than Hand A's; section-specific vocabulary could affect inner/outer inventory uniformity, potentially changing closure rates.",
+    "C4 (ordering) failed on Hand A; the underlying selectional permissiveness is a manuscript-wide property per H-BV-SUFFIX-SUBCLASS-01. Hand B is likely to also fail C4 for the same reason.",
+    "H-BV-HAND-B-MARKER-CONCENTRATION-01 found Hand B has section-concentrated tokens — this might affect the ordering ratio in either direction."
+  ],
+  "test": "LOCKED PROCEDURE — IDENTICAL METHODOLOGY TO H-BV-SUFFIX-SEQUENCE-01 with corpus filter changed from currier_language=='A' to currier_language=='B'.\n\n  DATA: Hand B tokens from voynich-corpus.json (currier_language=='B').\n\n  TOKENISATIONS (LOCKED, identical to SUFFIX-SEQUENCE-01):\n    A) MULTI_GLYPHS + 'ol' = ['ckh','cth','cph','ch','sh','ol']\n    B) MULTI_GLYPHS + 'ol' + 'qo' = ['ckh','cth','cph','ch','sh','ol','qo']\n    Longest-match-first.\n\n  For each tokenisation:\n    Restrict to tokens with N >= 3 glyph-units.\n    For each w = [g_1, ..., g_N]: STEM = g_1..g_{N-2}, INNER = g_{N-1}, OUTER = g_N.\n\n  FIVE CRITERIA (LOCKED, identical thresholds to SUFFIX-SEQUENCE-01):\n    C1 INNER CLOSURE: top-10 inners cover >= 70% of inner positions.\n    C2 OUTER CLOSURE: top-5 outers cover >= 70% of outer positions.\n    C3 PRODUCTIVITY: mean distinct inners per productive stem (>=3 occurrences) >= 2.0 AND >= 40% of productive stems take >= 2 distinct inners.\n    C4 ORDERING: P(outer in top-5 | inner in top-10) / P(outer in top-5 | inner not in top-10) >= 2.0 with both conditionals non-trivial.\n    C5 COVERAGE: (top-10 inner) x (top-5 outer) template covers >= 60% of N>=3 tokens.\n\n  PER-TOKENISATION VERDICT:\n    CONFIRMED if all 5 pass; MARGINAL if 3-4 pass; REFUTED if 0-2 pass.\n\n  OVERALL TWO-TOKENISATION VERDICT (matches SUFFIX-SEQUENCE-01 framework):\n    Both A and B CONFIRMED -> CONFIRMED morphology robust to qo treatment\n    Only A CONFIRMED -> CONFIRMED, qo is NOT a ligature\n    Only B CONFIRMED -> CONFIRMED, qo IS a ligature\n    Both REFUTED -> REFUTED morphology flat\n    Mixed -> MARGINAL\n\n  PARALLEL COMPARISON: report side-by-side Hand A (from SUFFIX-SEQUENCE-01) vs Hand B (this test) per-criterion and overall verdict, to enable batch-level synthesis.",
+  "test_metric": "5 criteria per tokenisation + overall 2-tokenisation verdict.",
+  "test_threshold": "All 5 pass = CONFIRMED. 3-4 = MARGINAL. <=2 = REFUTED. Overall maps to four named outcomes per SUFFIX-SEQUENCE-01.",
+  "tests_run": [],
+  "tests_remaining": [
+    "locked_hand_b_suffix_sequence_test: parallel methodology replication on Hand B"
+  ],
+  "status": "active",
+  "parent": "H-BV-HAND-B-FULL-BATTERY-01",
+  "created": "2026-04-18",
+  "last_tested": null,
+  "reasoning": "Sub-test 1a of the systematic Hand B replication batch. Locks identical methodology to H-BV-SUFFIX-SEQUENCE-01 with only the corpus filter changed (B instead of A). Decision rule and thresholds locked verbatim from the Hand A test for direct comparability. Methodology lesson 9: parallel testing on companion corpora — do not assume extension. The result determines whether Hand A's 4/5 MARGINAL pattern (closed inventories, productive stems, 80%+ coverage, but ordering failure) reproduces in Hand B.",
+  "source": "Brain-V 2026-04-18 sub-test 1a of H-BV-HAND-B-FULL-BATTERY-01 systematic Hand B replication of Hand A morphological characterisation.",
+  "researcher": "brain-v"
+}
