@@ -1,0 +1,30 @@
+{
+  "id": "H-BV-HAND-B-VOWEL-HARMONY-01",
+  "claim": "Hand B exhibits vowel harmony: stem-internal vowel composition (front {i,e} vs back {o,a}) predicts the cluster membership of stems based on which vowel-class Layer-1 inner morphemes they preferentially take. Sub-test 1c of H-BV-HAND-B-FULL-BATTERY-01.",
+  "type": "language",
+  "confidence": 0.3,
+  "evidence_for": [
+    "Hand A's H-BV-VOWEL-HARMONY-01 was REFUTED at silhouette 0.33 (just below 0.35 threshold) on 73 eligible stems. Hand B has more tokens (~23,700 vs ~11,000), giving more eligible stems and higher statistical power. If Hand A's near-threshold silhouette was under-powered, Hand B might cross the threshold.",
+    "Hand B and Hand A share the same V/C sub-class structure (H-BV-HAND-B-SUFFIX-SUBCLASS-01 sub-test 1b just confirmed n vowel-exclusivity in Hand B). If vowel harmony exists in the manuscript, Hand B should show it.",
+    "Locking the test as exact methodology replication of Hand A VOWEL-HARMONY-01 with only the corpus filter changed maintains pre-registration discipline and methodology lesson 9 (parallel testing on companion corpora — do not assume extension)."
+  ],
+  "evidence_against": [
+    "Hand A's silhouette was 0.33, very close to the 0.35 REFUTED threshold but not at it. The clustering structure is weak; more data may not push silhouette dramatically higher.",
+    "Vowel harmony as a typological feature is associated with Turkic and Finno-Ugric languages — both of which were ruled out as candidates by H-BV-VOWEL-HARMONY-01's REFUTED verdict on Hand A. The non-harmonic finding led directly to narrowing the AGGLUTINATIVE-EXPANSION candidate set to non-harmonic languages.",
+    "Hand B's section-coupled vocabulary may introduce stem-internal vowel patterns that confound the harmony test (sections might use different stem vowel patterns for content reasons)."
+  ],
+  "test": "LOCKED PROCEDURE — IDENTICAL METHODOLOGY TO H-BV-VOWEL-HARMONY-01 with corpus filter changed from currier_language=='A' to 'B'.\n\n  DATA: Hand B tokens under Tokenisation A (MULTI_GLYPHS + 'ol'), N>=3 glyph-units.\n\n  DEFINITIONS (LOCKED, identical to Hand A test):\n    VOWEL-INNERS = {i, e, o, a}\n    FRONT-VOWELS = {i, e}\n    BACK-VOWELS  = {o, a}\n    STEM = all glyph-units before the final two\n\n  STEP 1 STEM POOL: Eligible stems = >=3 distinct vowel-inner attachments AND >=5 total vowel-inner tokens. LOW-POWER if <50.\n  STEP 2 FEATURE VECTORS: 4-dim L1-normalised distribution over {i,e,o,a} per eligible stem.\n  STEP 3 CLUSTERING: K-means k=2, 50 restarts, Euclidean distance. Silhouette score.\n  STEP 4 LABELLING: Cluster with larger mean p(i)+p(e) -> FRONT; other -> BACK.\n  STEP 5 PREDICTION: For each stem, count front and back vowels inside. Predict FRONT or BACK from majority. Compute accuracy vs cluster label.\n\n  DECISION RULE (LOCKED, identical to Hand A):\n    CONFIRMED vowel harmony: silhouette >= 0.50 AND accuracy >= 0.70\n    CONFIRMED two-class non-harmonic: silhouette >= 0.50 AND accuracy < 0.70\n    REFUTED: silhouette < 0.35\n    MARGINAL: silhouette in [0.35, 0.50] OR (silhouette >= 0.50 AND accuracy in [0.60, 0.70))\n    LOW-POWER if eligible <50.",
+  "test_metric": "silhouette score on k-means k=2 over stems-by-vowel-distribution, plus stem-internal-vowel prediction accuracy.",
+  "test_threshold": "CONFIRMED if silhouette>=0.50 AND accuracy>=0.70. REFUTED if silhouette<0.35. MARGINAL otherwise.",
+  "tests_run": [],
+  "tests_remaining": [
+    "locked_hand_b_vowel_harmony_test: parallel methodology on Hand B"
+  ],
+  "status": "active",
+  "parent": "H-BV-HAND-B-FULL-BATTERY-01",
+  "created": "2026-04-18",
+  "last_tested": null,
+  "reasoning": "Sub-test 1c of the systematic Hand B replication. Hand A was REFUTED at silhouette 0.33; Hand B has ~2x token count and may cross the 0.35 threshold or push toward higher silhouette. The locked rule replicates Hand A's exactly. Result determines whether the non-harmonic conclusion is manuscript-wide or hand-specific.",
+  "source": "Brain-V 2026-04-18 sub-test 1c of H-BV-HAND-B-FULL-BATTERY-01.",
+  "researcher": "brain-v"
+}
