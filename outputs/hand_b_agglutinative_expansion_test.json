@@ -1,0 +1,446 @@
+{
+  "generated": "2026-04-18",
+  "hypothesis": "H-BV-HAND-B-AGGLUTINATIVE-EXPANSION-01",
+  "hand_b_values": {
+    "M1": 4.4935,
+    "M2_L1": 10,
+    "M2_L2": 5,
+    "M3": 2.7901,
+    "M4": 0.26,
+    "M5": 0.8
+  },
+  "ranked_results": [
+    {
+      "language": "Ainu",
+      "distance": 0.1538,
+      "matches": 5,
+      "per_metric": {
+        "M1": {
+          "v": 4.4935,
+          "range": [
+            2.5,
+            5.0
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M2_L1": {
+          "v": 10,
+          "range": [
+            12,
+            25
+          ],
+          "d": 0.1538,
+          "in_range": false
+        },
+        "M2_L2": {
+          "v": 5,
+          "range": [
+            4,
+            10
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M3": {
+          "v": 2.7901,
+          "range": [
+            2.0,
+            4.5
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M4": {
+          "v": 0.26,
+          "range": [
+            0.2,
+            0.5
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M5": {
+          "v": 0.8,
+          "range": [
+            0.5,
+            0.8
+          ],
+          "d": 0.0,
+          "in_range": true
+        }
+      }
+    },
+    {
+      "language": "Georgian",
+      "distance": 0.2468,
+      "matches": 5,
+      "per_metric": {
+        "M1": {
+          "v": 4.4935,
+          "range": [
+            2.0,
+            4.0
+          ],
+          "d": 0.2468,
+          "in_range": false
+        },
+        "M2_L1": {
+          "v": 10,
+          "range": [
+            10,
+            20
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M2_L2": {
+          "v": 5,
+          "range": [
+            4,
+            10
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M3": {
+          "v": 2.7901,
+          "range": [
+            2.0,
+            4.5
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M4": {
+          "v": 0.26,
+          "range": [
+            0.1,
+            0.3
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M5": {
+          "v": 0.8,
+          "range": [
+            0.7,
+            0.95
+          ],
+          "d": 0.0,
+          "in_range": true
+        }
+      }
+    },
+    {
+      "language": "Basque",
+      "distance": 0.3333,
+      "matches": 5,
+      "per_metric": {
+        "M1": {
+          "v": 4.4935,
+          "range": [
+            2.5,
+            4.5
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M2_L1": {
+          "v": 10,
+          "range": [
+            8,
+            16
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M2_L2": {
+          "v": 5,
+          "range": [
+            3,
+            8
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M3": {
+          "v": 2.7901,
+          "range": [
+            2.0,
+            5.0
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M4": {
+          "v": 0.26,
+          "range": [
+            0.02,
+            0.2
+          ],
+          "d": 0.3333,
+          "in_range": false
+        },
+        "M5": {
+          "v": 0.8,
+          "range": [
+            0.6,
+            1.0
+          ],
+          "d": 0.0,
+          "in_range": true
+        }
+      }
+    },
+    {
+      "language": "Mapudungun",
+      "distance": 0.7583,
+      "matches": 3,
+      "per_metric": {
+        "M1": {
+          "v": 4.4935,
+          "range": [
+            3.0,
+            6.0
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M2_L1": {
+          "v": 10,
+          "range": [
+            20,
+            40
+          ],
+          "d": 0.5,
+          "in_range": false
+        },
+        "M2_L2": {
+          "v": 5,
+          "range": [
+            6,
+            14
+          ],
+          "d": 0.125,
+          "in_range": false
+        },
+        "M3": {
+          "v": 2.7901,
+          "range": [
+            2.0,
+            5.0
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M4": {
+          "v": 0.26,
+          "range": [
+            0.3,
+            0.6
+          ],
+          "d": 0.1333,
+          "in_range": false
+        },
+        "M5": {
+          "v": 0.8,
+          "range": [
+            0.55,
+            0.8
+          ],
+          "d": 0.0,
+          "in_range": true
+        }
+      }
+    },
+    {
+      "language": "Swahili",
+      "distance": 1.1083,
+      "matches": 3,
+      "per_metric": {
+        "M1": {
+          "v": 4.4935,
+          "range": [
+            3.0,
+            5.5
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M2_L1": {
+          "v": 10,
+          "range": [
+            6,
+            12
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M2_L2": {
+          "v": 5,
+          "range": [
+            8,
+            16
+          ],
+          "d": 0.375,
+          "in_range": false
+        },
+        "M3": {
+          "v": 2.7901,
+          "range": [
+            2.5,
+            5.0
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M4": {
+          "v": 0.26,
+          "range": [
+            0.05,
+            0.2
+          ],
+          "d": 0.4,
+          "in_range": false
+        },
+        "M5": {
+          "v": 0.8,
+          "range": [
+            0.85,
+            1.0
+          ],
+          "d": 0.3333,
+          "in_range": false
+        }
+      }
+    },
+    {
+      "language": "Tagalog",
+      "distance": 1.5906,
+      "matches": 3,
+      "per_metric": {
+        "M1": {
+          "v": 4.4935,
+          "range": [
+            1.8,
+            3.2
+          ],
+          "d": 0.9239,
+          "in_range": false
+        },
+        "M2_L1": {
+          "v": 10,
+          "range": [
+            15,
+            30
+          ],
+          "d": 0.3333,
+          "in_range": false
+        },
+        "M2_L2": {
+          "v": 5,
+          "range": [
+            2,
+            6
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M3": {
+          "v": 2.7901,
+          "range": [
+            1.5,
+            3.5
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M4": {
+          "v": 0.26,
+          "range": [
+            0.25,
+            0.55
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M5": {
+          "v": 0.8,
+          "range": [
+            0.4,
+            0.7
+          ],
+          "d": 0.3333,
+          "in_range": false
+        }
+      }
+    },
+    {
+      "language": "Inuktitut",
+      "distance": 2.7608,
+      "matches": 2,
+      "per_metric": {
+        "M1": {
+          "v": 4.4935,
+          "range": [
+            4.0,
+            8.0
+          ],
+          "d": 0.0,
+          "in_range": true
+        },
+        "M2_L1": {
+          "v": 10,
+          "range": [
+            300,
+            500
+          ],
+          "d": 1.45,
+          "in_range": false
+        },
+        "M2_L2": {
+          "v": 5,
+          "range": [
+            6,
+            14
+          ],
+          "d": 0.125,
+          "in_range": false
+        },
+        "M3": {
+          "v": 2.7901,
+          "range": [
+            3.0,
+            7.0
+          ],
+          "d": 0.0525,
+          "in_range": false
+        },
+        "M4": {
+          "v": 0.26,
+          "range": [
+            0.6,
+            0.9
+          ],
+          "d": 1.1333,
+          "in_range": false
+        },
+        "M5": {
+          "v": 0.8,
+          "range": [
+            0.75,
+            0.95
+          ],
+          "d": 0.0,
+          "in_range": true
+        }
+      }
+    }
+  ],
+  "rank_1": "Ainu",
+  "rank_2": "Georgian",
+  "margin": 1.6047,
+  "verdict": "NOT_BASQUE_FIRST",
+  "hand_a_reference": "BASQUE_UNIQUELY_BEST (Basque 0.0, Georgian 0.26, Swahili 0.375)"
+}
